@@ -10,15 +10,15 @@ The framework of my PhD was to create a mechanistic model of species' developmen
 # PhD repository structure
 Currently the data pipeline for my PhD is organised in a multi-repository structure with each stage of the pipeline within its own repository. Each repository roughly corresponds with a publication but there are additional information which are not relevant to the corresponding publication but is relevant to the overall project. Hence each repository is not necessarily assigned a specific publication and DOI. Each repository for my PhD is labelled with "PhD" at the start.
 
-## 1. PhD-1-raw-data
+## 1. PhD-raw-data
 This repository contains the code to clean raw data from multiple experiments and generate clean .csv files. The raw data is not stored on GitHub. There were several experiments to characterise *Warramaba* egg development and some were repeated in different years. Each experiment is labelled with the year  and the experiment name which corresponds to the raw data. Each experiment has its own .rmd to conduct initial data exploration and to change variable names if legacy names were used. The "merging clean datasets.R" file merges the 2016 data into one .csv file.
 
 The .csv files are called in as input in the subsequent repositories.
 
-## 2. PhD-2-warramaba-traits
+## 2. PhD-warramaba-traits
 This repository analyses the cleaned dataset from PhD-1-raw-data. The statistical analysis are reported in publications. Egg development during desiccation and during dormancy at low temperature are calculated and stored as .rda files to be called in the mechanistic model of egg development in subsequent repositories. There is also code to simulate microclimates using NicheMapR.
 
-## 3. PhD-sexual-warramaba
+## 3. PhD-warramaba-model
 This is the main repository for the mechanistic model of egg development. It is modular and deals with general inputs. THe primary dataset is egg development in sexually reproducing *Warramaba* characterised in 2016. Here, the parameters of the development model are estimated and development rate is validated against replicated datasets. The model is currently based on data frames and can be further optomised using functional programming approaches.
 
 ## 4. PhD-warramaba-virgo
