@@ -4,8 +4,8 @@ School of BioSciences
 The University of Melbourne  
 Parkville 3010  
 Australia  
-You can find my regular research site at https://jacintakongresearch.wordpress.com  
-Google Scholar: https://scholar.google.com.au/citations?user=EBtRPuwAAAAJ&hl=en&oi=ao
+You can find my regular research site at (https://jacintakongresearch.wordpress.com)
+[Google Scholar](https://scholar.google.com.au/citations?user=EBtRPuwAAAAJ&hl=en&oi=ao)
 
 ***
 
