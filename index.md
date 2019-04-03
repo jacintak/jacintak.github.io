@@ -10,14 +10,13 @@ Australia
 ***
 
 This site describes the structure of my GitHub and the code it houses.
-On this site there is:
-
-1. Code from my PhD on modelling the life cycle of matchstick grasshoppers
+On this site there is currently code from my PhD on modelling the life cycle of matchstick grasshoppers.  
+The end goal of this GitHub site is to use my PhD as a documented example of a mechanistic model for modelling species responses to climate.
 
 # My PhD
 The framework of my PhD was to create a mechanistic model of species' development to use in modelling life cycles, phenology and distribution. I used the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera *Warramaba* and *Vandiemenella*. This GitHub houses the code for my data pipeline from the raw physiological data on egg development to the final mechanistic model. The code primarily focuses on my work on *Warramaba* but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.
 
-# PhD repository structure
+## PhD repository structure
 Currently the data pipeline for my PhD is organised in a multi-repository structure with each stage of the pipeline within its own repository. Each repository roughly corresponds with a publication but there is additional information which are not relevant to the corresponding publication but is relevant to the overall project. Hence each repository is not necessarily assigned a specific publication and DOI. Each repository for my PhD is labelled with "PhD" at the start.
 
 ## 1. PhD-raw-data
