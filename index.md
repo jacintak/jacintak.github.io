@@ -4,7 +4,7 @@ School of BioSciences
 The University of Melbourne  
 Parkville 3010  
 Australia  
-You can find my regular research site at (https://jacintakongresearch.wordpress.com)
+[My regular research site/blog](https://jacintakongresearch.wordpress.com)   
 [Google Scholar](https://scholar.google.com.au/citations?user=EBtRPuwAAAAJ&hl=en&oi=ao)
 
 ***
@@ -26,7 +26,7 @@ This repository contains the code to clean raw data from multiple experiments an
 The .csv files are called in as input in the subsequent repositories.
 
 ## 2. PhD-warramaba-traits
-This repository analyses the cleaned dataset from PhD-1-raw-data. The statistical analyses are reported in publications. Egg development during desiccation and during dormancy at low temperature are calculated and stored as .rda files to be called in the mechanistic model of egg development in subsequent repositories. There is also code to simulate microclimates using NicheMapR.
+This repository analyses the cleaned dataset from PhD-1-raw-data. The statistical analyses are reported in publications. Egg development during desiccation and during dormancy at low temperature are calculated and stored as .rda files to be called in the mechanistic model of egg development in subsequent repositories. There is also code to simulate microclimates using `NicheMapR`.
 
 ## 3. PhD-warramaba-model
 This is the main repository for the mechanistic model of egg development. It is modular and deals with general inputs. The primary dataset is egg development in sexually reproducing *Warramaba* characterised in 2016. Here, the parameters of the development model are estimated and development rate is validated against replicated datasets. The model is currently based on data frames and can be further optimised using functional programming approaches.
