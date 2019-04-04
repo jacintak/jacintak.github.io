@@ -42,7 +42,7 @@ ul.posts li {
     list-style: none;
 }
 
-blockquote {
+.markdown blockquote {
     display: block;
     background: #fff;
 }
