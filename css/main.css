@@ -42,7 +42,7 @@ ul.posts li {
     list-style: none;
 }
 
-.markdown blockquote {
+blockquote {
     display: block;
-    background: #fff;
+    border-left: 15px solid #31698a
 }
