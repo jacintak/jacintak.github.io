@@ -1,9 +1,9 @@
 # Contents
-[A basic model structure](# A basic model structure)
-[But what about species distributions?](# But what about species distributions?)
-[My mechanistic model](# My mechanistic model)
-[My repository structure](# My repository structure)
-[Single or multi repos?](## Single or multi repos?)
+[A basic model structure](#A basic model structure)
+[But what about species distributions?](#But what about species distributions?)
+[My mechanistic model](#My mechanistic model)
+[My repository structure](#My repository structure)
+[Single or multi repos?](##Single or multi repos?)
 
 ***
 
