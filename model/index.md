@@ -52,9 +52,7 @@ In addition to the assumptions of the developmental model used to calculate deve
 * Progression of development is additive (cumulative)
 
 ## Model output
-: The model output depends on the research question.
-
-There are three types of mechanistic modelling output I attempted in my own work:
+The best model output depends on the intended use of the model. There are three types of mechanistic modelling output I attempted in my own work:
 
 1. Single site output
  * These are models that are run for a single location at a time. They can be run for any number of sites. This was the main type of modelling I used.
@@ -97,7 +95,7 @@ My PhD pipeline is organised as a multi-repository data pipeline in the followin
 4. The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution
 
 ## Single or multi repos?
-Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline . Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
+Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
 
 ## About the repositories {#about}
 Repositories 1 and 2 are for processing my experimental data on the thermal response of egg development into a format for the model (Input data).  
