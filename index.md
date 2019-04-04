@@ -38,7 +38,10 @@ On this website I describe my data pipeline and how it fits into the mechanistic
 ## About me
 The mechanistic model is the end product of my PhD. I looked at the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera *Warramaba* and *Vandiemenella*. The model primarily focuses on my work on *Warramaba* but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.
 
-See my [regular research site/blog](https://jacintakongresearch.wordpress.com) for more information about my research. 
+### Note April 2019
+**My repositories are not public yet. I intend to make them public and to provide documentation of the files with explanations of the decision making process as the data gets published**
+
+See my [regular research site/blog](https://jacintakongresearch.wordpress.com) for information about my research. 
 
 Jacinta D. Kong  
 PhD Candidate  
