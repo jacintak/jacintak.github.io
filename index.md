@@ -42,7 +42,7 @@ See my [regular research site/blog](https://jacintakongresearch.wordpress.com) f
 
 Jacinta D. Kong  
 PhD Candidate  
-Climate and Metabolic Ecology Lab ([CAMEL])(https://camelunimelb.wordpress.com)  
+Climate and Metabolic Ecology Lab [(CAMEL)](https://camelunimelb.wordpress.com)  
 School of BioSciences   
 The University of Melbourne  
 Parkville 3010  
