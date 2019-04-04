@@ -34,7 +34,7 @@ The one I used in my work is `NicheMapR`. By default `NicheMapR` has microclim d
 There are even a few databases for organism trait data, some of these are only interested in thermal limits because that is what macrophysiology has been fixated on:
 
 * The Insect Developmental Database ([IDD](https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134)) contains temperature-rate data for mostly insect species of agricultural interest 
-* [GlobTherm](https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7) is a great initiative but covers CtMax and Ctmin only.
+* [GlobTherm](https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7) is a great initiative but covers CtMax and CtMin only.
 * A few recent metaanalyses have combed through the thermal biology literature so you don't have to! Isn't open, reproducible science great? Here's a recent [example](https://datadryad.org/resource/doi:10.5061/dryad.56s5d84)
 
 # R packages for modelling
