@@ -1,4 +1,5 @@
 # Resources
+A good model needs good input data!  
 A pretty important component of modelling species responses to enviromental variables are the environmental variables themselves. Keeping with the example of climate, the climatic data for your mechanistic model is already half the input data required. Ideally you would have climatic data at the scale of the target organism, which I will generally refer to as **microclimate**, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as **macroclimate**, then there are some solutions.
 
 The good news is with the increasing ease of generating and storing big data, data is now more accessible than ever before!
@@ -31,7 +32,7 @@ The one I used in my work is `NicheMapR`. Although the input data to run my scri
 # Traits
 There are even a few databases for organism trait data:
 
-* The Insect Developmental Database contains temperature-rate data for mostly insect species of agricultural interest [IDD](https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134)
+* The Insect Developmental Database ([IDD](https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134)) contains temperature-rate data for mostly insect species of agricultural interest 
 * [GlobTherm](https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7) is a great initiative but covers CtMax and Ctmin only.
 * A few recent metaanalyses have combed through the thermal biology literature so you don't have to! Isn't open, reproducible science great? Here's a recent [example](https://datadryad.org/resource/doi:10.5061/dryad.56s5d84)
 
