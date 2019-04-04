@@ -3,7 +3,7 @@ Jacinta's post-PhD, pre-postdoc pet project on documenting a mechanistic model
 
 ***
 
-# About this website
+# There's something about mechanistic models
 
 > The work you do is great but I don't understand it
 
@@ -11,6 +11,7 @@ This sentence paraphrases the most common sentiment I get about my research from
 
 Models are widespread in ecology and evolutionary biology and many things which are categorically or philosophically different can be referred to as a model. This can generate confusion, as exemplified in the species distribution modelling literature. There are many ways to model the distribution of species and the developments of various methods over the years has led to a full spectrum of approaches, including hybrid approaches. 
 
+## Mechanistic models
 I work on mechanistic models. Here, I define a mechanistic model as one which comprises of explicit processes and is grounded in first principles. I make a distinction between correlative and mechanistic, as well as between phenomenological and mechanistic. This site does not aim to be an introduction to mechanistic models nor will I debate the pros and cons of the different methods. I refer you to the published literature where all these questions have been debated to death. 
 
 Mechanistic models have a reputation for being data intensive, logistically challenging to implement to the point of being too specific to the organism in question, and too complicated to understand. These limitations and assumptions are not to be taken lightly. I emphasise that all modelling approaches need to be **appropriate to the organism or question at hand** and there are pros and cons in all approaches.
@@ -41,7 +42,7 @@ See my [regular research site/blog](https://jacintakongresearch.wordpress.com) f
 # Contact
 Jacinta D. Kong  
 PhD Candidate  
-Climate and Metabolic Ecology Lab [CAMEL](https://camelunimelb.wordpress.com)
+Climate and Metabolic Ecology Lab [CAMEL](https://camelunimelb.wordpress.com)  
 School of BioSciences   
 The University of Melbourne  
 Parkville 3010  
