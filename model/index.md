@@ -1,7 +1,6 @@
 # Contents
 * [A basic model structure](#model-structure)
-* [But what about species distributions?](#species-dist)
-* [My mechanistic model](#my-mod)
+* [Things to consider](#species-dist)
 * [My repository structure](#my-repo)
 * [About the repositories](#about)
 
@@ -65,7 +64,9 @@ Examples of all three modelling outputs are found in my repositories.
 
 ***
 
-# But what about species distributions? {#species-dist}
+# Things to consider {#species-dist}
+
+## But what about species distributions?
 This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really a mechanistic species distribution model requies a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. 
 
 ## Extending mechanistic models
@@ -76,9 +77,7 @@ A beauty of mechanistic modelling is its modularity.
 * It can also be linked across life stages to model whole life cycles or other models, like demographic population models
 * It can integrate behavioural and physiological responses.
 
-***
-
-# My mechanistic model {#my-mod}
+## The limitations of my model
 In most cases, single stage models won't be sufficient to capture all the processes important to an organisms' life cycle because ectotherms have complex life cycles and ecology is complex. But in simple cases or under certain scenarios that generate a bottleneck in the life cycle, a single stage model may effectively describe what is going on. 
 
 ***
