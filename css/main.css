@@ -4,7 +4,6 @@ body {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
 nav ul, footer ul {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
@@ -22,13 +21,13 @@ a:hover {
 }
 h1 {
     font-size: 2em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
+
 p {
     font-size: 1em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
     line-height: 1.4em;
     color: #333;
+     text-indent: 50px;
 }
 footer {
     border-top: 1px solid #d5d5d5;
