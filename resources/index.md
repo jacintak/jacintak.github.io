@@ -45,3 +45,5 @@ In my PhD I wrote a custom function for my code to calculate development rate. B
 
 With the resources available you can pretty much develop a mechanistic model without collecting your own data.  
 If there are other useful datasets or links not listed here, let me know!
+
+![](https://github.com/jacintak/jacintak.github.io/images/IMG_5606.JPG)
