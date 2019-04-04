@@ -1,13 +1,13 @@
 # Contents
-[A basic model structure](#A basic model structure)
-[But what about species distributions?](#But what about species distributions?)
-[My mechanistic model](#My mechanistic model)
-[My repository structure](#My repository structure)
-[Single or multi repos?](##Single or multi repos?)
+* [A basic model structure](#model-structure)
+* [But what about species distributions?](#species-dist)
+* [My mechanistic model](#my-mod)
+* [My repository structure](#my-repo)
+* [About the repositories](#about)
 
 ***
 
-# A basic model structure
+# A basic model structure {#model-structure}
 The mechanistic model I'm describing is what I call a **basic** model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. 
 
 At its most fundamental, a mechanistic modelling framework consists of three components:
@@ -50,7 +50,7 @@ Examples of all three modelling outputs are found in my repositories.
 
 ***
 
-# But what about species distributions?
+# But what about species distributions? {#species-dist}
 This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really a mechanistic species distribution model requies a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. 
 
 ## Extending mechanistic models
@@ -63,12 +63,12 @@ A beauty of mechanistic modelling is its modularity.
 
 ***
 
-# My mechanistic model
+# My mechanistic model {#my-mod}
 In most cases, single stage models won't be sufficient to capture all the processes important to an organisms' life cycle because ectotherms have complex life cycles and ecology is complex. But in simple cases or under certain scenarios that generate a bottleneck in the life cycle, a single stage model may effectively describe what is going on. 
 
 ***
 
-# My repository structure
+# My repository structure {#my-repo}
 The overall data pipeline should follow the three steps described above.
 
 My PhD pipeline is organised as a multi-repository data pipeline in the following structure:
@@ -82,7 +82,7 @@ My PhD pipeline is organised as a multi-repository data pipeline in the followin
 ## Single or multi repos?
 Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline . Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
 
-## About the repositories
+## About the repositories {#about}
 Repositories 1 and 2 are for processing my experimental data on the thermal response of egg development into a format for the model (Input data).  
 Repositories 3 and 4 contain the model themselves. The outputs of repositories 1 and 2 are called in as input for the relevant model.  
 You can check the documentation within each repository for details. A breif description is provided below.
