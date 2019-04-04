@@ -11,6 +11,7 @@ If you don't have access to gridded weather station data, there are some publica
 
 * [WorldClim](http://www.worldclim.org/)
 * [CliMond](https://www.climond.org/) with CLIMEX and Bioclim datasets 
+* [Climatic Research Unit](http://www.cru.uea.ac.uk/)
 
 # Microclimate
 There are currently a few publically available datasets of pre-calculated microclimate grids:
@@ -25,7 +26,7 @@ There are a few packages for `R` to simulate microclimates from gridded macrocli
 * [Microclima](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13093)
 * [TrenchR](https://trenchproject.github.io/tools/TrenchR/)
 
-The one I used in my work is `NicheMapR`. Although the input data to run my scripts is not available, `NicheMapR` was used to generate the microclim and MicroclimOz datasets which are publically available.
+The one I used in my work is `NicheMapR`. By default `NicheMapR` has microclim data at a larger resolution which is derived from the Climatic Research Unit dataset. I used input data at a higher spatial and temporal resolution than the default setting, in addition to querying gridded soil type data. Although the input data to run my scripts is not available, `NicheMapR` was used to generate the microclim and MicroclimOz datasets which are publically available under certain soil type parameters. 
 
 ***
 
