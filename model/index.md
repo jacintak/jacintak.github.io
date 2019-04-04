@@ -18,23 +18,40 @@ At its most fundamental, a mechanistic modelling framework consists of three com
 
 Let's break this down.
 
-Input data
-: This is the most important part of the model, in my opinion. There are two datasets to consider as input:
+## Input data
+This is the most important part of the model, in my opinion. There are two datasets to consider as input:
 
 * The traits of an organism - in this example, development rate as a function of time
-  * You can use any trait of interest, e.g. growth rate as a function of mass over time, but this may affect the choice of the model. 
+  * You can use any trait of interest, e.g. growth rate as a function of mass over time, but this may affect the choice of the model.
+  * I generated my trait data from my laboratory experiments
 * The environmental variables - in this example, soil temperature at 3 cm soil depth
-  * Ideally you would use environmental variables at a scale and resolution appropriate to the question
+  * Ideally you would use environmental variables at a scale and resolution appropriate to the question (microclimate)
+  * I used the microclimate modelling package `[NicheMapR](https://github.com/mrke)` to generate microclimate data for my work, which I won't go into detail here
   * See the [Resources](https://jacintak.github.io/resources) page for some potentially helpful links
-
-The development model
-: There are many types of mechanistic models to use but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models. But we won't talk about those.
+  
+## The development model
+There are many types of mechanistic models to use but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models. But we won't talk about those.
 
 There are even several thermodynamically-grounded models one could use for a basic model that have been continuously developed and modified over the years. These have been recently been reviewed in the literature so I won't go into them here. The model I am using is based on the Sharpe-Schoolfield model (1981). Originally proposed by Sharpe and DeMichele in 1977, the model has been further modified by Schoolfield and colleagues in 1981 and as recently as 2005 by Ikemoto. Regardless of which model is used, one should be aware of the underlying assumptions and principles.
 
 > as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be interested in a different aspect, i.e. growth and assimilation of mass, which have different patterns. 
 
-Model output
+### Incorporating adaptive responses
+An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment, they have dormancy responses that can have major consequences for the developmental trajectory through time. Modelling diapause responses is an ongoing and active body of work. Entomologists haven't gotten there yet but examples have been published recently.
+
+### So how does the model work?
+
+1. The development model is parameterised for the developmental traits of the target organism. For example, I was looking at variation within and among species so I had different model parameters for different species and the geographical regions they are found in. The units of development rate are % per hour.
+2. The model works in time steps from the start (oviposition) and end (hatching) of development. For each unit of time (hour in this example), development rate at the is calculated based on the soil temperature at that time. Any adaptive responses that modify the calculated development rate, like dormancy, are applied at this step.
+3. Development rate at each time step is cumulatively added until development has reached 100 %. The time at which this occurs is recorded.
+
+In addition to the assumptions of the developmental model used to calculate development rate, this modelling approach has several assumptions to consider. Here are some examples:
+
+* Development rate is a average response for a defined group of organisms for a given temperature and over time. It thus does not explicitly account for non-linear development over time
+* Other environmental parameters are not considered. For example, moisture availability is crucial for the development of most insect eggs.
+* Progression of development is additive (cumulative)
+
+## Model output
 : The model output depends on the research question.
 
 There are three types of mechanistic modelling output I attempted in my own work:
