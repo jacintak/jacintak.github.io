@@ -91,7 +91,7 @@ The overall data pipeline should follow the three steps described above.
 My PhD pipeline is organised as a multi-repository data pipeline in the following structure:
 
 1. Handling raw data
-  * This is for cleaning my trait data
+    - This is for cleaning my trait data
 2. Analysing my trait data
 3. The mechanistic model for single site modelling of species phenology. Including the code 
 4. The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution
