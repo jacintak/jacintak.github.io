@@ -41,3 +41,8 @@ ul.posts {
 ul.posts li {
     list-style: none;
 }
+
+blockquote{
+    display: block;
+    background:#fff
+}
