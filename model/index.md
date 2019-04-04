@@ -26,7 +26,7 @@ This is the most important part of the model, in my opinion. There are two datas
   * I generated my trait data from my laboratory experiments
 * The environmental variables - in this example, soil temperature at 3 cm soil depth
   * Ideally you would use environmental variables at a scale and resolution appropriate to the question (microclimate)
-  * I used the microclimate modelling package `[NicheMapR](https://github.com/mrke)` to generate microclimate data for my work, which I won't go into detail here
+  * I used the microclimate modelling package [NicheMapR](https://github.com/mrke/nichemapr) to generate microclimate data for my work, which I won't go into detail here
   * See the [Resources](https://jacintak.github.io/resources) page for some potentially helpful links
   
 ## The development model
