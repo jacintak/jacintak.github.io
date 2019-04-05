@@ -12,7 +12,7 @@ The mechanistic model I'm describing is what I call a **basic** model. Meaning i
 At its most fundamental, a mechanistic modelling framework consists of three components:
 
 1. Input data
-2. The development model itself
+2. The model itself where the fun stuff happens
 3. Model output
 
 Let's break this down.
@@ -36,7 +36,7 @@ There are even several models one could use that have been continuously develope
 > as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be interested in a different aspect, i.e. growth and assimilation of mass, which have different patterns. 
 
 ### Incorporating adaptive responses
-An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment, they have dormancy responses that can have major consequences for the developmental trajectory through time. Modelling diapause responses is an ongoing and active body of work. Entomologists haven't gotten there yet but examples have been published recently.
+An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment, they have dormancy responses that can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work, hindered in part because the complex mysteries of diapause have not been solved and not from a lack of trying. But that hasn't stopped entomologists from publishing models with an explicit or implicit diapause response.
 
 ### So how does the model work?
 
@@ -67,15 +67,16 @@ Examples of all three modelling outputs are found in my repositories.
 # Things to consider {#species-dist}
 
 ## But what about species distributions?
-This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really a mechanistic species distribution model requies a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. 
+This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really, a mechanistic species distribution model requies a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. So getting a working model is most of the hard work, after that, it is a matter of scaling up your computing power.
 
 ## Extending mechanistic models
 A beauty of mechanistic modelling is its modularity.
 
-* It can be applied to many traits, organisms or environments
+* It can be applied to other traits, organisms or environments
 * You can use it for sensitivity analyses or investigating different scenarios
 * It can also be linked across life stages to model whole life cycles or other models, like demographic population models
-* It can integrate behavioural and physiological responses.
+* It can integrate behavioural and physiological responses
+* Make it more comprehensive and try mechanistic niche modelling using multiple traits and environmental parameters as input
 
 ## The limitations of my model
 In most cases, single stage models won't be sufficient to capture all the processes important to an organisms' life cycle because ectotherms have complex life cycles and ecology is complex. But in simple cases or under certain scenarios that generate a bottleneck in the life cycle, a single stage model may effectively describe what is going on. 
@@ -88,17 +89,19 @@ The overall data pipeline should follow the three steps described above.
 My PhD pipeline is organised as a multi-repository data pipeline in the following structure:
 
 1. Handling raw data
-    - This is for cleaning my trait data
+    - This is for cleaning my trait data and collating datasets across multiple raw data sources
 2. Analysing my trait data
-3. The mechanistic model for single site modelling of species phenology. Including the code 
+    - This is for the non-modelling part of my PhD on the adaptation and evolution of insect life cycles
+    - This is where I prepare the input data for the mechanistic developmental model
+3. The mechanistic model for single site modelling of species phenology. Including the code for the model.
 4. The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution
 
 ## Single or multi repos?
 Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
 
 ## About the repositories {#about}
-Repositories 1 and 2 are for processing my experimental data on the thermal response of egg development into a format for the model (Input data).  
-Repositories 3 and 4 contain the model themselves. The outputs of repositories 1 and 2 are called in as input for the relevant model.  
+I split the mechanistic model output across two repos becuase I was applying the same model to different questions and focal species. I also tried different ways of building a mechanistic model to serve the same purpose.
+
 You can check the documentation within each repository for details. A breif description is provided below.
 
 ### 1. PhD-raw-data
