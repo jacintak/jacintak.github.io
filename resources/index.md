@@ -41,6 +41,9 @@ There are even a few databases for organism trait data, some of these are only i
 In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!  
 `devRate` is a package with commonly used temperature-rate functions, from statistical functions to biophysical ones. You can get it from [CRAN](https://cran.r-project.org/web/packages/devRate/index.html)
 
+# International Symposium and Thematic School on DEB Theory for Metabolic Organisation
+Interested in Dynamic Energy Budget modelling? There is an international symposium and tele-course that is held every two years. The next one is [April 2019](https://deb2019.sciencesconf.org/).
+
 ***
 
 With the resources available you can pretty much develop a mechanistic model without collecting your own data.  
