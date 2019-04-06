@@ -3,12 +3,12 @@ name: "Jacinta Kong"
 output_dir: "docs"
 navbar:
   title: "Mechanistic models of ectotherm development"
-  href: docs/index.html
+  href: index.html
   left:
     - text: "Model"
-      href: docs/model.html
+      href: model.html
     - text: "Resources"
-      href: docs/resources.html
+      href: resources.html
   right: 
 output: 
   html_document:
