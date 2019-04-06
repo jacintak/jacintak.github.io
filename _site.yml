@@ -9,7 +9,9 @@ navbar:
       href: model.html
     - text: "Resources"
       href: resources.html
-  right: 
+  right:    
+    - text: "Home"
+      href: https://jacintak.github.io
 output: 
   html_document:
     theme: sandstone
