@@ -1,6 +1,6 @@
 ---
 name: "Jacinta Kong"
-output_dir: "docs"
+output_dir: "model"
 navbar:
   title: "Mechanistic models of ectotherm development"
   href: index.html
