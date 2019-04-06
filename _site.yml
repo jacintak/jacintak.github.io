@@ -1,0 +1,18 @@
+---
+name: "Jacinta Kong"
+navbar:
+  title: "Mechanistic models of ectotherm development"
+  left:
+    - text: "Model"
+      href: model.html
+    - text: "Resources"
+      href: resources.html
+  right: 
+output:
+  html_document:
+    theme: sandstone
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: styles.css
+---
