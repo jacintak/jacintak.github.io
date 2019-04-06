@@ -31,7 +31,7 @@ The point of this website is to document the mechanistic modelling framework I u
 
 This site does not aim to be a tutorial on how to do a mechanistic model. I have been using Git in my PhD for version control and the primary aim of my GitHub site is to document my code for my personal use. In my documentation I have tried to justify the decisions I made about what to features to mode, or not. Therefore, my code has been annotated with someone with existing knowledge about mechanistic modelling in mind (e.g. me or my supervisor). I also do not provide all my data on my GitHub. But I hope that one could understand the sort of data or decisions required for this approach.
 
-On this website I describe my data pipeline and how it fits into the mechanistic modelling framework I used. I also point out some resources people can access if they want to try modelling themselves, either with their own data or data from public databases. 
+Under the [model](https://jacintak.github.io/model) tab I describe my data pipeline and how it fits into the mechanistic modelling framework I used. I also point out some [resources](https://jacintak.github.io/resources) people can access if they want to try modelling themselves, either with their own data or data from public databases. 
 
 ***
 
