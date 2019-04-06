@@ -1,13 +1,15 @@
 # Contents
-* [A basic model structure](#model-structure)
+* [The modelling framework](#model-structure)
+	* [The development model](#dev-mod)
 * [Things to consider](#species-dist)
 * [My repository structure](#my-repo)
-* [About the repositories](#about)
 
 ***
 
-# A basic model structure {#model-structure}
-The mechanistic model I'm describing is what I call a **basic** model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. 
+# The modelling framework {#model-structure}
+The mechanistic model I'm describing is what I call a **basic** model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. In my model, this mean it is modelling temperature-development rate relationships of insect eggs.
+
+There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models. Aside from their theoretical differences, on a practical level, they follow the same framework discussed here but differ in their data requirements. You can even link them together, but we won't talk about those.
 
 At its most fundamental, a mechanistic modelling framework consists of three components:
 
@@ -20,33 +22,31 @@ Let's break this down.
 ## Input data
 This is the most important part of the model, in my opinion. There are two datasets to consider as input:
 
-* The traits of an organism - in this example, development rate as a function of time
+* The traits of an organism 
+* In my model it was development rate as a function of time, calculated from laboratory experiments
   * You can use any trait of interest, e.g. growth rate as a function of mass over time, but this may affect the choice of the model.
-  * I generated my trait data from my laboratory experiments
 * The environmental variables - in this example, soil temperature at 3 cm soil depth
   * Ideally you would use environmental variables at a scale and resolution appropriate to the question (microclimate)
   * I used the microclimate modelling package [NicheMapR](https://github.com/mrke/nichemapr) to generate microclimate data for my work, which I won't go into detail here
   * See the [Resources](https://jacintak.github.io/resources) page for some potentially helpful links
   
-## The development model
-There are many types of mechanistic models to use but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models. But we won't talk about those.
+## The development model {#dev-mod}
+When modelling temperature-rate relationships for ectotherms, there are several models to choose from. These have been recently been reviewed in the literature, so I won't go into them here. The model I am using is based on the Sharpe-Schoolfield model (1981). Originally proposed by Sharpe and DeMichele in 1977, the model was modified by Schoolfield and colleagues in 1981 and again in 2005 by Ikemoto. Regardless of which model is used, one should be aware of the underlying assumptions and principles.
 
-There are even several models one could use that have been continuously developed and modified over the years. These have been recently been reviewed in the literature so I won't go into them here. The model I am using is based on the Sharpe-Schoolfield model (1981). Originally proposed by Sharpe and DeMichele in 1977, the model has been further modified by Schoolfield and colleagues in 1981 and as recently as 2005 by Ikemoto. Regardless of which model is used, one should be aware of the underlying assumptions and principles.
-
-> as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be interested in a different aspect, i.e. growth and assimilation of mass, which have different patterns. 
+> as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be more interested in growth and assimilation of mass, which have different patterns to development rate. 
 
 ### Incorporating adaptive responses
-An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment, they have dormancy responses that can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work, hindered in part because the complex mysteries of diapause have not been solved and not from a lack of trying. But that hasn't stopped entomologists from publishing models with an explicit or implicit diapause response.
+An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment. Insects have dormancy responses that can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work.
 
 ### So how does the model work?
 
-1. The development model is parameterised for the developmental traits of the target organism. For example, I was looking at variation within and among species so I had different model parameters for different species and the geographical regions they are found in. The units of development rate are % per hour.
+1. The development model is parameterised for the developmental traits of the target organism. For example, I was looking at variation within and among species, so I had different model parameters for different species and the geographical regions they are found in. The units of development rate are % per hour.
 2. The model works in time steps from the start (oviposition) and end (hatching) of development. For each unit of time (hour in this example), development rate at the is calculated based on the soil temperature at that time. Any adaptive responses that modify the calculated development rate, like dormancy, are applied at this step.
 3. Development rate at each time step is cumulatively added until development has reached 100 %. The time at which this occurs is recorded.
 
-In addition to the assumptions of the developmental model used to calculate development rate, this modelling approach has several assumptions to consider. Here are some examples:
+In addition to the assumptions of the developmental model used to calculate development rate, this modelling approach has several assumptions to consider. Here is a non-exhaustive list:
 
-* Development rate is a average response for a defined group of organisms for a given temperature and over time. It thus does not explicitly account for non-linear development over time
+* Development rate is an average response for a defined group of organisms for a given temperature and over time. It thus does not explicitly account for non-linear development over time
 * Other environmental parameters are not considered. For example, moisture availability is crucial for the development of most insect eggs.
 * Progression of development is additive (cumulative)
 
@@ -67,7 +67,7 @@ Examples of all three modelling outputs are found in my repositories.
 # Things to consider {#species-dist}
 
 ## But what about species distributions?
-This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really, a mechanistic species distribution model requies a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. So getting a working model is most of the hard work, after that, it is a matter of scaling up your computing power.
+This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it's for a single site or time point. Really, a mechanistic species distribution model requires a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. Getting a working model is most of the hard work, after that, it is a matter of scaling up your computing power.
 
 ## Extending mechanistic models
 A beauty of mechanistic modelling is its modularity.
@@ -97,26 +97,11 @@ My PhD pipeline is organised as a multi-repository data pipeline in the followin
 4. The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution
 
 ## Single or multi repos?
+I split the mechanistic model output across two repos because I was applying the same model to different questions and focal species. I also tried different ways of building a mechanistic model to serve the same purpose.
+
+You can check the documentation within each repository for details. 
+
 Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
-
-## About the repositories {#about}
-I split the mechanistic model output across two repos becuase I was applying the same model to different questions and focal species. I also tried different ways of building a mechanistic model to serve the same purpose.
-
-You can check the documentation within each repository for details. A breif description is provided below.
-
-### 1. PhD-raw-data
-This repository contains the code to clean raw data from multiple experiments and generate clean .csv files. The raw data is not stored on GitHub. There were several experiments to characterise *Warramaba* egg development and some were repeated in different years. Each experiment is labelled with the year  and the experiment name which corresponds to the raw data. Each experiment has its own .rmd to conduct initial data exploration and to change variable names if legacy names were used. The "merging clean datasets.R" file merges the 2016 data into one .csv file.
-
-The .csv files are called in as input in the subsequent repositories.
-
-### 2. PhD-warramaba-traits
-This repository analyses the cleaned dataset from PhD-1-raw-data. The statistical analyses are reported in publications. Egg development during desiccation and during dormancy at low temperature are calculated and stored as .rda files to be called in the mechanistic model of egg development in subsequent repositories. There is also code to simulate microclimates using `NicheMapR`.
-
-### 3. PhD-warramaba-model
-This is the main repository for the mechanistic model of egg development. It is modular and deals with general inputs. The primary dataset is egg development in sexually reproducing *Warramaba* characterised in 2016. Here, the parameters of the development model are estimated and development rate is validated against replicated datasets. The model is currently based on data frames and can be further optimised using functional programming approaches.
-
-### 4. PhD-warramaba-virgo
-This repository uses the mechanistic model in PhD-sexual-warramaba to simulate *Warramaba virgo* egg development. There are three types of coding using the same mechanistic modelling framework: single site modelling, raster, and cluster supercomputing.
 
 ***
 
