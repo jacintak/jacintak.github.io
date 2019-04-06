@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mechanistic models of ectotherm development</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="model.html">Model</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<hr />
+<hr />
+<div id="contents" class="section level1">
+<h1>Contents</h1>
+<ul>
+<li><a href="#model-structure">The modelling framework</a>
+<ul>
+<li><a href="#dev-mod">The development model</a></li>
+</ul></li>
+<li><a href="#species-dist">Things to consider</a></li>
+<li><a href="#my-repo">My repository structure</a></li>
+</ul>
+<hr />
+</div>
+<div id="model-structure" class="section level1">
+<h1>The modelling framework</h1>
+<p>The mechanistic model I’m describing is what I call a <strong>basic</strong> model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. In my model, this mean it is modelling temperature-development rate relationships of insect eggs.</p>
+<p>There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won’t talk about those. Aside from their theoretical differences, on a practical level, they follow the same framework discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology together.</p>
+<p>At its most fundamental, a mechanistic modelling framework consists of three components:</p>
+<ol style="list-style-type: decimal">
+<li>Input data</li>
+<li>The model itself where the fun stuff happens</li>
+<li>Model output</li>
+</ol>
+<p>Let’s break this down.</p>
+<div id="input-data" class="section level2">
+<h2>Input data</h2>
+<p>This is the most important part of the model, in my opinion. There are two datasets to consider as input:</p>
+<ul>
+<li>The traits of an organism</li>
+<li>In my model it was development rate as a function of time, calculated from laboratory experiments</li>
+<li>You can use any trait of interest, e.g. growth rate as a function of mass over time, but this may affect the choice of the model.</li>
+<li>The environmental variables - in this example, soil temperature at 3 cm soil depth</li>
+<li>Ideally you would use environmental variables at a scale and resolution appropriate to the question (microclimate)</li>
+<li>I used the microclimate modelling package <a href="https://github.com/mrke/nichemapr">NicheMapR</a> to generate microclimate data for my work, which I won’t go into detail here</li>
+<li>See the <a href="https://jacintak.github.io/resources">Resources</a> page for some potentially helpful links</li>
+</ul>
+</div>
+<div id="dev-mod" class="section level2">
+<h2>The development model</h2>
+<p>When modelling temperature-rate relationships for ectotherms, there are several models to choose from. These have been recently been reviewed in the literature, so I won’t go into them here. The model I am using is based on the Sharpe-Schoolfield model (1981). Originally proposed by Sharpe and DeMichele in 1977, the model was modified by Schoolfield and colleagues in 1981 and again in 2005 by Ikemoto. Regardless of which model is used, one should be aware of the underlying assumptions and principles.</p>
+<blockquote>
+<p>as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be more interested in growth and assimilation of mass, which have different patterns to development rate.</p>
+</blockquote>
+<div id="incorporating-adaptive-responses" class="section level3">
+<h3>Incorporating adaptive responses</h3>
+<p>An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect dormancy responses can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work.</p>
+</div>
+<div id="so-how-does-the-model-work" class="section level3">
+<h3>So how does the model work?</h3>
+<ol style="list-style-type: decimal">
+<li>The development model is parameterised for the developmental traits of the target organism. For example, I was looking at variation within and among species, so I had different model parameters for different species and the geographical regions they are found in. The units of development rate are % per hour.</li>
+<li>The model works in time steps from the start (oviposition) and end (hatching) of development. For each unit of time (hour in this example), development rate is calculated based on the soil temperature at that time. Any adaptive responses that modify the calculated development rate, like dormancy, are applied at this step.</li>
+<li>Development rate at each time step is cumulatively added until development has reached 100 %. The time at which this occurs is recorded.</li>
+</ol>
+<p>In addition to the assumptions of the developmental model used to calculate development rate, this modelling approach has several assumptions to consider. Here is a non-exhaustive list:</p>
+<ul>
+<li>Development rate is an average response for a defined group of organisms for a given temperature and over time. It thus does not explicitly account for non-linear development over time</li>
+<li>Other environmental parameters are not considered. For example, moisture availability is crucial for the development of most insect eggs.</li>
+<li>Progression of development is additive (cumulative)</li>
+</ul>
+</div>
+</div>
+<div id="model-output" class="section level2">
+<h2>Model output</h2>
+<p>The best model output depends on the intended use of the model. There are three types of mechanistic modelling output I attempted in my own work:</p>
+<ol style="list-style-type: decimal">
+<li>Single site output</li>
+</ol>
+<ul>
+<li>These are models that are run for a single location at a time. They can be run for any number of sites. This was the main type of modelling I used.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Raster based output</li>
+</ol>
+<ul>
+<li>These are based on using rasters to store data, often for environmental data. The development function is applied to each cell in the raster to generate rasters of development rate.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Supercomputing</li>
+</ol>
+<ul>
+<li>Using a supercomputer to do parallel processing becomes essential for larger scale modelling because mechanistic models become computationally intensive pretty quickly. It also is cool.</li>
+</ul>
+<p>Examples of all three modelling outputs are found in my repositories.</p>
+<hr />
+</div>
+</div>
+<div id="species-dist" class="section level1">
+<h1>Things to consider</h1>
+<div id="but-what-about-species-distributions" class="section level2">
+<h2>But what about species distributions?</h2>
+<p>This is apparently a common misconception about mechanistic models for people trying it out themselves. They build a model but realise it’s for a single site or time point. Really, a mechanistic species distribution model requires a spatial component. This can be achieved either by using rasters or by repeatedly computing single sites across spatial grids, maybe using a supercomputer. Getting a working model is most of the hard work, after that, it is a matter of scaling up your computing power.</p>
+</div>
+<div id="extending-mechanistic-models" class="section level2">
+<h2>Extending mechanistic models</h2>
+<p>A beauty of mechanistic modelling is its modularity.</p>
+<ul>
+<li>It can be applied to other traits, organisms or environments</li>
+<li>You can use it for sensitivity analyses or investigating different scenarios</li>
+<li>It can also be linked across life stages to model whole life cycles or other models, like demographic population models</li>
+<li>It can integrate behavioural and physiological responses</li>
+<li>Make it more comprehensive and try mechanistic niche modelling using multiple traits and environmental parameters as input</li>
+</ul>
+</div>
+<div id="the-limitations-of-my-model" class="section level2">
+<h2>The limitations of my model</h2>
+<p>In most cases, single stage models won’t be sufficient to capture all the processes important to an organisms’ life cycle because ectotherms have complex life cycles and ecology is complex. But in simple cases or under certain scenarios that generate a bottleneck in the life cycle, a single stage model may effectively describe what is going on.</p>
+<hr />
+</div>
+</div>
+<div id="my-repo" class="section level1">
+<h1>My repository structure</h1>
+<p>The overall data pipeline should follow the three steps described above.</p>
+<p>My PhD pipeline is organised as a multi-repository data pipeline in the following structure:</p>
+<ol style="list-style-type: decimal">
+<li>Handling raw data
+<ul>
+<li>This is for cleaning my trait data and collating datasets across multiple raw data sources</li>
+</ul></li>
+<li>Analysing my trait data
+<ul>
+<li>This is for the non-modelling part of my PhD on the adaptation and evolution of insect life cycles</li>
+<li>This is where I prepare the input data for the mechanistic developmental model</li>
+</ul></li>
+<li>The mechanistic model for single site modelling of species phenology
+<ul>
+<li>Here I call in the trait and microclimate data to calculate development rate. This is the main repository for the model</li>
+<li>The output are generated as tables</li>
+</ul></li>
+<li>The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution</li>
+</ol>
+<div id="single-or-multi-repos" class="section level2">
+<h2>Single or multi repos?</h2>
+<p>I split the mechanistic model output across two repos because I was applying the same model to different questions and focal species. I also tried different ways of building a mechanistic model to serve the same purpose.</p>
+<p>You can check the documentation within each repository for details.</p>
+<p>Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the project.</p>
+<hr />
+</div>
+</div>
+<div id="literature-cited" class="section level1">
+<h1>Literature cited</h1>
+<p>Ikemoto, T. (2005) Intrinsic optimum temperature for development of insects and mites. Environmental Entomology, 34, 1377-1387.<br />
+Schoolfield, R.M., Sharpe, P.J. &amp; Magnuson, C.E. (1981) Non-linear regression of biological temperature-dependent rate models based on absolute reaction-rate theory. Journal of Theoretical Biology, 88, 719-731.<br />
+Sharpe, P.J. &amp; DeMichele, D.W. (1977) Reaction kinetics of poikilotherm development. Journal of Theoretical Biology, 64, 649-670.</p>
+</div>
+
+<footer>
+	    		<ul>
+	    		    <li><a href="https://jacintakongresearch.wordpress.com">Jacinta D. Kong</a></li>
+	        		<li><a href="mailto:jacintadkong@gmail.com">email</a></li>
+	        		<li><a href="https://github.com/jacintak">github.com/jacintak</a></li>
+				</ul>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

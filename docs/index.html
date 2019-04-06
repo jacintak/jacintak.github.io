@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Jacinta’s post-PhD, pre-postdoc pet project on documenting a mechanistic model</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mechanistic models of ectotherm development</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="model.html">Model</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Jacinta’s post-PhD, pre-postdoc pet project on documenting a mechanistic model</h1>
+
+</div>
+
+
+<hr />
+<div id="theres-something-about-mechanistic-models" class="section level2">
+<h2>There’s something about mechanistic models</h2>
+<blockquote>
+<p>The work you do is great, but I don’t understand it</p>
+</blockquote>
+<p>This sentence paraphrases the most common sentiment I get about my research from other ecologists. People understand the concepts and appreciate the applications of mechanistic models but something about the term “mechanistic model” puts people off.</p>
+<p>I think the primary reason for this knowledge gap comes from the <strong>hefty</strong> body of literature on modelling species that is TL;DR.</p>
+<hr />
+</div>
+<div id="what-is-a-mechanistic-model" class="section level2">
+<h2>What is a mechanistic model?</h2>
+<p>Here, I define a mechanistic model as one which describes explicit processes and is grounded in first principles. I make a distinction between correlative and mechanistic, as well as between phenomenological and mechanistic. This site does not aim to be an introduction to mechanistic models nor will I debate the pros and cons of the different methods. I refer you to the published literature where all these questions have been discussed to death.</p>
+<p>Mechanistic models have a reputation for being data intensive, logistically challenging to implement to the point of being too specific to the organism in question, and too complicated to understand. These limitations and assumptions are not to be taken lightly. I emphasise that all modelling approaches need to be <strong>appropriate to the organism or question at hand</strong> and one should consider the assumptions of the model.</p>
+</div>
+<div id="why-i-like-mechanistic-models" class="section level2">
+<h2>Why I like mechanistic models</h2>
+<p>I like mechanistic models because the underlying philosophy nicely corresponds with how I perceive ecology and approach ecological problems. They intersect my research philosophies and interests in environmental physiology, adaptation and theoretical ecology. To me, using mechanistic models to solve ecological problems make <em>sense</em>.</p>
+<p>One of the things I like most about mechanistic models is that it’s more than just modelling species distributions. Mechanistic models are first and foremost tools. They are a representation of the fundamental processes of an organism and how they relate to the environment. This means that they explicitly capture how an organism responds or is adapted to their environment. I used my model to not just investigate the factors underlying the distribution of species, but also their phenology and the evolution of insect life cycles.</p>
+</div>
+<div id="how-can-i-help-people-understand-mechanistic-models-better" class="section level2">
+<h2>How can I help people understand mechanistic models better?</h2>
+<p>I think the lack of accessible, practical documentation on building a mechanistic model is problematic. This is where the correlative modelling community shines. There are a lot of papers on the frameworks and underlying theory of mechanistic models and lots of people work on models. But this information is not disseminated for the general scientist and is grounded in (dare I say it) old-fashioned ideologies about science. This is generally unhelpful for people with little or no background knowledge wanting to try modelling themselves.</p>
+<p>Mechanistic modelling approaches are taught at the University of Melbourne at undergraduate and masters levels. The masters course is publicly available through the University’s Community Access Program. You can learn more about it <a href="https://handbook.unimelb.edu.au/2019/subjects/evsc90026">here (2019 subject)</a>. The subject covers both mechanistic and correlative modelling approaches with a focus on modelling distribution.</p>
+</div>
+<div id="what-is-the-point-of-this-site" class="section level2">
+<h2>What is the point of this site?</h2>
+<p>The point of this website is to document the mechanistic modelling framework I used in my PhD. By using my PhD as a worked example, I hope to demystify mechanistic models somewhat to bridge the knowledge gap.</p>
+<p>This site does not aim to be a tutorial on how to do a mechanistic model. I have been using Git in my PhD for version control and the primary aim of my GitHub site is to document my code for my personal use. In my documentation I have tried to justify the decisions I made about what to features to include, or not. Therefore, my code has been annotated with someone with existing knowledge about mechanistic modelling in mind (e.g. me or my supervisor). I also do not provide all my data on my GitHub. But I hope that one could understand the sort of data or decisions required for this approach.</p>
+<p>Under the <a href="https://jacintak.github.io/model">model</a> tab I describe my data pipeline and how it fits into the mechanistic modelling framework I used. I also point out some <a href="https://jacintak.github.io/resources">resources</a> people can access if they want to try modelling themselves, either with their own data or data from public databases.</p>
+<hr />
+</div>
+<div id="about-me" class="section level2">
+<h2>About me</h2>
+<p>In my PhD, I looked at the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera <em>Warramaba</em> and <em>Vandiemenella</em>. The mechanistic model is the end product of my PhD. The model primarily focuses on my work on <em>Warramaba</em> but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.</p>
+<div id="note-april-2019" class="section level3">
+<h3>Note April 2019</h3>
+<p><strong>My repositories are not public yet. I intend to make them public and to provide documentation of the files with explanations of the decision making process as the data gets published.</strong> As more of my work gets published, I may add more detailed documentation to supplement the publications.</p>
+<p>Please drop me a line if you have questions or suggestions about this site.</p>
+<p>See my <a href="https://jacintakongresearch.wordpress.com">regular research site/blog</a> for information about my research.</p>
+<p>Jacinta D. Kong<br />
+PhD Candidate<br />
+Climate and Metabolic Ecology Lab (<a href="https://camelunimelb.wordpress.com">CAMEL</a>)<br />
+School of BioSciences<br />
+The University of Melbourne<br />
+Parkville 3010<br />
+Australia<br />
+<a href="https://scholar.google.com.au/citations?user=EBtRPuwAAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a></p>
+</div>
+</div>
+
+<footer>
+	    		<ul>
+	    		    <li><a href="https://jacintakongresearch.wordpress.com">Jacinta D. Kong</a></li>
+	        		<li><a href="mailto:jacintadkong@gmail.com">email</a></li>
+	        		<li><a href="https://github.com/jacintak">github.com/jacintak</a></li>
+				</ul>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
