@@ -9,7 +9,7 @@
 # The modelling framework {#model-structure}
 The mechanistic model I'm describing is what I call a **basic** model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. In my model, this mean it is modelling temperature-development rate relationships of insect eggs.
 
-There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models. Aside from their theoretical differences, on a practical level, they follow the same framework discussed here but differ in their data requirements. You can even link them together, but we won't talk about those.
+There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won't talk about those. Aside from their theoretical differences, on a practical level, they follow the same framework discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology  together.
 
 At its most fundamental, a mechanistic modelling framework consists of three components:
 
@@ -23,7 +23,7 @@ Let's break this down.
 This is the most important part of the model, in my opinion. There are two datasets to consider as input:
 
 * The traits of an organism 
-* In my model it was development rate as a function of time, calculated from laboratory experiments
+  * In my model it was development rate as a function of time, calculated from laboratory experiments
   * You can use any trait of interest, e.g. growth rate as a function of mass over time, but this may affect the choice of the model.
 * The environmental variables - in this example, soil temperature at 3 cm soil depth
   * Ideally you would use environmental variables at a scale and resolution appropriate to the question (microclimate)
@@ -36,12 +36,12 @@ When modelling temperature-rate relationships for ectotherms, there are several 
 > as a side note, the models that entomologists and herpetologists use have a common history but the uptake and use of these models differs between these taxonomic groups. Marine biologists seem to be more interested in growth and assimilation of mass, which have different patterns to development rate. 
 
 ### Incorporating adaptive responses
-An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect development is not independent of their environment. Insects have dormancy responses that can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work.
+An important part of modelling life cycles, especially for insects, is to include their adaptive developmental responses to the environment. Insect dormancy responses  can have major consequences for the developmental trajectory through time. I included different types of dormancy responses in my model and I could run sensitivity analyses to see if these responses consequently affected phenology. Modelling diapause responses is an ongoing and active body of work.
 
 ### So how does the model work?
 
 1. The development model is parameterised for the developmental traits of the target organism. For example, I was looking at variation within and among species, so I had different model parameters for different species and the geographical regions they are found in. The units of development rate are % per hour.
-2. The model works in time steps from the start (oviposition) and end (hatching) of development. For each unit of time (hour in this example), development rate at the is calculated based on the soil temperature at that time. Any adaptive responses that modify the calculated development rate, like dormancy, are applied at this step.
+2. The model works in time steps from the start (oviposition) and end (hatching) of development. For each unit of time (hour in this example), development rate is calculated based on the soil temperature at that time. Any adaptive responses that modify the calculated development rate, like dormancy, are applied at this step.
 3. Development rate at each time step is cumulatively added until development has reached 100 %. The time at which this occurs is recorded.
 
 In addition to the assumptions of the developmental model used to calculate development rate, this modelling approach has several assumptions to consider. Here is a non-exhaustive list:
@@ -93,7 +93,9 @@ My PhD pipeline is organised as a multi-repository data pipeline in the followin
 2. Analysing my trait data
     - This is for the non-modelling part of my PhD on the adaptation and evolution of insect life cycles
     - This is where I prepare the input data for the mechanistic developmental model
-3. The mechanistic model for single site modelling of species phenology. Including the code for the model.
+3. The mechanistic model for single site modelling of species phenology
+    - Here I call in the trait and microclimate data to calculate development rate. This is the main repository for the model
+    - The output are generated as tables
 4. The mechanistic model for single site modelling, raster modelling and supercomputer modelling of species distribution
 
 ## Single or multi repos?
@@ -101,7 +103,7 @@ I split the mechanistic model output across two repos because I was applying the
 
 You can check the documentation within each repository for details. 
 
-Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the model. 
+Multi-repository structures have their disadvantages but were suitable for me. Each repository corresponds to a stage in my data pipeline. Because the mechanistic model was not the only component of my PhD research, there are data and analyses which were not relevant to the end model and which I wanted to separate from the modelling component. A single repository might be more efficient if the model is the main component of the project. 
 
 ***
 
