@@ -28,8 +28,8 @@ There are a few packages for `R` to simulate microclimates from gridded macrocli
 
 The one I used in my work is `NicheMapR`. The default function to generate microclimate in `NicheMapR` uses the Climatic Research Unit dataset to generate default microclimate output. I used input data at a higher spatial and temporal resolution than the default setting, in addition to querying gridded soil type data. Although the input data to run my scripts is not available, `NicheMapR` was used to generate the microclim and MicroclimOz datasets which are publicly available under certain soil type parameters. 
 
-## Other environmental variables
-Check to see if the environmental datasets are at the resolution and scale appropriate for your intended purposes. If you want to simulate microclimate, you need to make sure you have all the environmental variables needed for the microclimate package – temperature, precipitation, soil type, topography, wind speed, solar radiation etc. You may have to collate input data from multiple sources.
+## Things to consider
+Check if the environmental datasets are at the resolution and scale appropriate for your intended purposes. If you want to simulate microclimate, you need to make sure you have all the environmental variables needed for the microclimate package – temperature, precipitation, soil type, topography, wind speed, solar radiation etc. You may have to collate input data from multiple sources.
 
 ***
 
@@ -39,6 +39,8 @@ There are even a few databases for organism trait data, some of these are only i
 * The Insect Developmental Database ([IDD](https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134)) contains temperature-rate data for mostly insect species of agricultural interest 
 * [GlobTherm](https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7) is a great initiative but covers CtMax and CtMin only.
 * A few recent metaanalyses have combed through the thermal biology literature so you don't have to! Then you can extract the information you want. Isn't open, reproducible science great? Here's a recent [example](https://datadryad.org/resource/doi:10.5061/dryad.56s5d84)
+
+***
 
 # R packages for modelling
 In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!  
