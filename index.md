@@ -29,7 +29,7 @@ Mechanistic modelling approaches are taught at the University of Melbourne at un
 ## What is the point of this site?
 The point of this website is to document the mechanistic modelling framework I used in my PhD. By using my PhD as a worked example, I hope to demystify mechanistic models somewhat to bridge the knowledge gap.
 
-This site does not aim to be a tutorial on how to do a mechanistic model. I have been using Git in my PhD for version control and the primary aim of my GitHub site is to document my code for my personal use. Therefore, my code has been annotated with someone with existing knowledge about mechanistic modelling in mind (e.g. me or my supervisor). I also do not provide all my data on my GitHub. But I hope that one could understand the sort of data inputs and outputs required for this approach.
+This site does not aim to be a tutorial on how to do a mechanistic model. I have been using Git in my PhD for version control and the primary aim of my GitHub site is to document my code for my personal use. In my documentation I have tried to justify the decisions I made about what to features to mode, or not. Therefore, my code has been annotated with someone with existing knowledge about mechanistic modelling in mind (e.g. me or my supervisor). I also do not provide all my data on my GitHub. But I hope that one could understand the sort of data or decisions required for this approach.
 
 On this website I describe my data pipeline and how it fits into the mechanistic modelling framework I used. I also point out some resources people can access if they want to try modelling themselves, either with their own data or data from public databases. 
 
