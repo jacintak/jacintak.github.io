@@ -5,7 +5,7 @@ Jacinta's post-PhD, pre-postdoc pet project on documenting a mechanistic model
 This is my GitHub site where I am documenting the code for my research.
 
 # Contents
-* [Mechanistic models of ectotherm development](#https:jacintak.github.io/model)
+* [Mechanistic models of ectotherm development](https://jacintak.github.io/model)
 
 ## About me
 In my PhD, I looked at the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera *Warramaba* and *Vandiemenella*. The mechanistic model is the end product of my PhD. The model primarily focuses on my work on *Warramaba* but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.
