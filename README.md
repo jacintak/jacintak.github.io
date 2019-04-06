@@ -1,7 +1,4 @@
-# Mechanistic models of ectotherm development
-Jacinta's post-PhD, pre-postdoc pet project on documenting a mechanistic model
 
-***
 This is my GitHub site where I am documenting the code for my research.
 
 # Contents
