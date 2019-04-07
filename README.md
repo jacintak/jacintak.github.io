@@ -1,5 +1,12 @@
 
-This is my GitHub site where I am documenting the code for my research.
+
+# site metadata
+
+This is my GitHub site where I am documenting the code for my research.  
+It is locally rendered using `rmarkdown` and pushed to GitHub (sorry `bookdown`).  
+_site.yml details the html layout and base theme. Modifications to the base theme are detailed in styles.css
+
+***
 
 # About me
 I'm a environmental physiologist with an interest in how species are adapted to and respond to their physical environment. I look at these questions using field, experimental and computational modelling approaches, preferably within a theroteical framework.
