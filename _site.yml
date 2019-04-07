@@ -1,13 +1,13 @@
 ---
-name: 
-output_dir: "."
-exclude: ["README.md"]
+name: # name of the website
+output_dir: "." # output directory of rendered html file - "." is in source file (not a sub directory)
+exclude: ["README.md"] # ignore the readme file
 navbar:
   title: "Jacinta's GitHub"
   href: index.html
-  left:
+  left: # start from left hand side of nav bar, right: is for right hand side
     - text: "Mechanistic models of ectotherm development"
-      menu:
+      menu: # drop down menu
        - text: "About"
          href: model-about.html
        - text: "Pipeline"
@@ -16,7 +16,7 @@ navbar:
          href: model-resources.html
 output: 
   html_document:
-    toc: true
+    toc: true # table of contents
     theme: sandstone
     highlight: textmate
     include:
