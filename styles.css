@@ -9,10 +9,11 @@ blockquote {
     padding-bottom: 0.32px;
 }
 
-/* format footer links */
+/* format footer links on right hand side*/
  footer ul li {
     display: inline;
     margin-right: 20px;
+    text-align: right;
 }
 
 /* format url links (unclicked) - grey*/
