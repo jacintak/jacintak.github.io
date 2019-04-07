@@ -1,19 +1,22 @@
 ---
-name: "Jacinta Kong"
-output_dir: "model"
+name: 
+output_dir: "."
+exclude: ["README.md"]
 navbar:
-  title: "Mechanistic models of ectotherm development"
+  title: "Jacinta's GitHub"
   href: index.html
   left:
-    - text: "Model"
-      href: model.html
-    - text: "Resources"
-      href: resources.html
-  right:    
-    - text: "Home"
-      href: https://jacintak.github.io
+    - text: "Mechanistic models of ectotherm development"
+      menu:
+       - text: "About"
+         href: model-about.html
+       - text: "Pipeline"
+         href: model-pipeline.html
+       - text: "Resources"
+         href: model-resources.html
 output: 
   html_document:
+    toc: true
     theme: sandstone
     highlight: textmate
     include:

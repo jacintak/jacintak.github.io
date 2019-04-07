@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>The model pipeline</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -275,21 +275,31 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Mechanistic models of ectotherm development</a>
+      <a class="navbar-brand" href="index.html">Jacinta's GitHub</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="model.html">Model</a>
-</li>
-<li>
-  <a href="resources.html">Resources</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mechanistic models of ectotherm development
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="model-about.html">About</a>
+    </li>
+    <li>
+      <a href="model-pipeline.html">Pipeline</a>
+    </li>
+    <li>
+      <a href="model-resources.html">Resources</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://jacintak.github.io">Home</a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -299,28 +309,34 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">The model pipeline</h1>
 
 </div>
 
-
-<p><br></p>
-<div id="contents" class="section level1">
-<h1>Contents</h1>
+<div id="TOC">
 <ul>
-<li><a href="#model-structure">The modelling framework</a>
-<ul>
-<li><a href="#dev-mod">The development model</a></li>
+<li><a href="#input-data">Input data</a></li>
+<li><a href="#dev-mod">The development model</a><ul>
+<li><a href="#incorporating-adaptive-responses">Incorporating adaptive responses</a></li>
+<li><a href="#so-how-does-the-model-work">So how does the model work?</a></li>
 </ul></li>
-<li><a href="#species-dist">Things to consider</a></li>
-<li><a href="#my-repo">My repository structure</a></li>
+<li><a href="#model-output">Model output</a></li>
+<li><a href="#species-dist">Things to consider</a><ul>
+<li><a href="#but-what-about-species-distributions">But what about species distributions?</a></li>
+<li><a href="#extending-mechanistic-models">Extending mechanistic models</a></li>
+<li><a href="#the-limitations-of-my-model">The limitations of my model</a></li>
+</ul></li>
+<li><a href="#my-repo">My repository structure</a><ul>
+<li><a href="#single-or-multi-repos">Single or multi repos?</a></li>
+</ul></li>
+<li><a href="#literature-cited">Literature cited</a></li>
 </ul>
-<hr />
 </div>
-<div id="model-structure" class="section level1">
-<h1>The modelling framework</h1>
+
 <p>The mechanistic model I’m describing is what I call a <strong>basic</strong> model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. In my model, this mean it is modelling temperature-development rate relationships of insect eggs.</p>
-<p>There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won’t talk about those. Aside from their theoretical differences, on a practical level, they follow the same framework discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology together.</p>
-<p>At its most fundamental, a mechanistic modelling framework consists of three components:</p>
+<p>There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won’t talk about those. Aside from their theoretical differences, on a practical level, they follow the same pipeline discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology together.</p>
+<hr />
+<p>At its most fundamental, a mechanistic modelling pipeline consists of three components:</p>
 <ol style="list-style-type: decimal">
 <li>Input data</li>
 <li>The model itself where the fun stuff happens</li>
@@ -388,7 +404,6 @@ $(document).ready(function () {
 </ul>
 <p>Examples of all three modelling outputs are found in my repositories.</p>
 <hr />
-</div>
 </div>
 <div id="species-dist" class="section level1">
 <h1>Things to consider</h1>

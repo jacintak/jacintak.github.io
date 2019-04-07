@@ -11,7 +11,7 @@
 
 
 
-<title>Resources</title>
+<title>About me</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -275,21 +275,31 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Mechanistic models of ectotherm development</a>
+      <a class="navbar-brand" href="index.html">Jacinta's GitHub</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="model.html">Model</a>
-</li>
-<li>
-  <a href="resources.html">Resources</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mechanistic models of ectotherm development
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="model-about.html">About</a>
+    </li>
+    <li>
+      <a href="model-pipeline.html">Pipeline</a>
+    </li>
+    <li>
+      <a href="model-resources.html">Resources</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://jacintak.github.io">Home</a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -299,68 +309,32 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Resources</h1>
+<h1 class="title toc-ignore">About me</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#note-april-2019">Note April 2019</a></li>
+</ul>
+</div>
 
-<p>A good model needs good input data!<br />
-A pretty important component of modelling species responses to environmental variables are the environmental variables themselves. In fact, it’s already half the data. Ideally, you would have climatic data at the scale of the target organism, which I will generally refer to as <strong>microclimate</strong>, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as <strong>macroclimate</strong>, then there are some solutions for generating microclimate data.</p>
-<p>Most experimental biologists will have access to plenty of data on organism traits but may not have the right environmental data for a model. The good news is with the increasing ease of generating and storing big data, data is now more accessible than ever before!</p>
+<p>This is my GitHub site where I am documenting the code for my research.</p>
 <hr />
-<div id="macroclimate" class="section level1">
-<h1>Macroclimate</h1>
-<p>If you don’t have access to gridded weather station data for your area of interest, there are some publicly available datasets online for various environmental variables at various scales and resolutions:</p>
-<ul>
-<li><a href="http://www.worldclim.org/">WorldClim</a></li>
-<li><a href="https://www.climond.org/">CliMond</a> with CLIMEX and Bioclim datasets</li>
-<li><a href="http://www.cru.uea.ac.uk/">Climatic Research Unit</a></li>
-</ul>
-</div>
-<div id="microclimate" class="section level1">
-<h1>Microclimate</h1>
-<p>There are currently a few publicly available datasets of pre-calculated microclimate grids:</p>
-<ul>
-<li><a href="https://www.nature.com/articles/sdata20146">microlim</a> for global scale</li>
-<li><a href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/knb.92484.39">MicroclimOz</a> for Australia only (the lucky country)</li>
-</ul>
-<div id="microclimate-simulation-packages-for-r" class="section level2">
-<h2>Microclimate simulation packages for <code>R</code></h2>
-<p>There are a few packages for <code>R</code> to simulate microclimates from gridded macroclimate data:</p>
-<ul>
-<li><a href="https://github.com/mrke/nichemapr">NicheMapR</a></li>
-<li><a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13093">Microclima</a></li>
-<li><a href="https://trenchproject.github.io/tools/TrenchR/">TrenchR</a></li>
-</ul>
-<p>The one I used in my work is <code>NicheMapR</code>. The default function to generate microclimate in <code>NicheMapR</code> uses the Climatic Research Unit dataset to generate default microclimate output. I used input data at a higher spatial and temporal resolution than the default setting, in addition to querying gridded soil type data. Although the input data to run my scripts is not available, <code>NicheMapR</code> was used to generate the microclim and MicroclimOz datasets which are publicly available under certain soil type parameters.</p>
-</div>
-<div id="things-to-consider" class="section level2">
-<h2>Things to consider</h2>
-<p>Check if the environmental datasets are at the resolution and scale appropriate for your intended purposes. If you want to simulate microclimate, you need to make sure you have all the environmental variables needed for the microclimate package â€“ temperature, precipitation, soil type, topography, wind speed, solar radiation etc. You may have to collate input data from multiple sources.</p>
-<hr />
-</div>
-</div>
-<div id="traits" class="section level1">
-<h1>Traits</h1>
-<p>There are even a few databases for organism trait data, some of these are only interested in thermal limits because that is what macrophysiology has been fixated on:</p>
-<ul>
-<li>The Insect Developmental Database (<a href="https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&amp;ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134">IDD</a>) contains temperature-rate data for mostly insect species of agricultural interest</li>
-<li><a href="https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7">GlobTherm</a> is a great initiative but covers CtMax and CtMin only.</li>
-<li>A few recent metaanalyses have combed through the thermal biology literature so you don’t have to! Then you can extract the information you want. Isn’t open, reproducible science great? Here’s a recent <a href="https://datadryad.org/resource/doi:10.5061/dryad.56s5d84">example</a></li>
-</ul>
-<hr />
-</div>
-<div id="r-packages-for-modelling" class="section level1">
-<h1>R packages for modelling</h1>
-<p>In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!<br />
-<code>devRate</code> is a package with commonly used temperature-rate functions, from statistical functions to biophysical ones. You can get it from <a href="https://cran.r-project.org/web/packages/devRate/index.html">CRAN</a>.</p>
-</div>
-<div id="international-symposium-and-thematic-school-on-deb-theory-for-metabolic-organisation" class="section level1">
-<h1>International Symposium and Thematic School on DEB Theory for Metabolic Organisation</h1>
-<p>Interested in Dynamic Energy Budget modelling? There is an international symposium, tele-course and school/workshop that is an intensive course in DEB and its applications. The symposium is held every two years. The most recent one was <a href="https://deb2019.sciencesconf.org/">April 2019</a>.</p>
-<hr />
-<p>With the resources available you can pretty much develop a mechanistic model without collecting your own data.<br />
-If there are other useful datasets or links not listed here, let me know!</p>
+<p>In my PhD, I looked at the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera <em>Warramaba</em> and <em>Vandiemenella</em>. The mechanistic model is the end product of my PhD. The model primarily focuses on my work on <em>Warramaba</em> but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.</p>
+<div id="note-april-2019" class="section level2">
+<h2>Note April 2019</h2>
+<p><strong>My repositories are not public yet. I intend to make them public and to provide documentation of the files with explanations of the decision making process as the data gets published.</strong> As more of my work gets published, I may add more detailed documentation to supplement the publications.</p>
+<p>Please drop me a line if you have questions or suggestions about this site.</p>
+<p>See my <a href="https://jacintakongresearch.wordpress.com">regular research site/blog</a> for information about my research.</p>
+<p>Jacinta D. Kong<br />
+PhD Candidate<br />
+Climate and Metabolic Ecology Lab (<a href="https://camelunimelb.wordpress.com">CAMEL</a>)<br />
+School of BioSciences<br />
+The University of Melbourne<br />
+Parkville 3010<br />
+Australia<br />
+<a href="https://scholar.google.com.au/citations?user=EBtRPuwAAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a></p>
 </div>
 
 <footer>
