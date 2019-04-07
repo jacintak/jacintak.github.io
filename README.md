@@ -9,7 +9,7 @@ _site.yml details the html layout and base theme. Modifications to the base them
 ***
 
 # About me
-I'm a environmental physiologist with an interest in how species are adapted to and respond to their physical environment. I look at these questions using field, experimental and computational modelling approaches, preferably within a theroteical framework.
+I'm a environmental physiologist with an interest in how species are adapted to and respond to their physical environment. I look at these questions using field, experimental and computational modelling approaches within a theroteical framework.
 
 ### Note April 2019
 **My repositories are not public yet. I intend to make them public and to provide documentation of the files with explanations of the decision making process as the data gets published.** As more of my work gets published, I may add more detailed documentation to supplement the publications.
