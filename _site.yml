@@ -1,4 +1,4 @@
----
+
 name: # name of the website
 output_dir: "." # output directory of rendered html file - "." is in source file (not a sub directory)
 exclude: ["*.md"] # ignore the readme file
@@ -23,4 +23,4 @@ output:
     include:
       after_body: footer.html
     css: styles.css
----
+

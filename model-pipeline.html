@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -261,6 +264,92 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -268,6 +357,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -318,29 +417,12 @@ $(document).ready(function () {
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#input-data">Input data</a></li>
-<li><a href="#dev-mod">The development model</a><ul>
-<li><a href="#incorporating-adaptive-responses">Incorporating adaptive responses</a></li>
-<li><a href="#so-how-does-the-model-work">So how does the model work?</a></li>
-</ul></li>
-<li><a href="#model-output">Model output</a></li>
-<li><a href="#species-dist">Things to consider</a><ul>
-<li><a href="#but-what-about-species-distributions">But what about species distributions?</a></li>
-<li><a href="#extending-mechanistic-models">Extending mechanistic models</a></li>
-<li><a href="#the-limitations-of-my-model">The limitations of my model</a></li>
-</ul></li>
-<li><a href="#my-repo">My repository structure</a><ul>
-<li><a href="#single-or-multi-repos">Single or multi repos?</a></li>
-</ul></li>
-<li><a href="#literature-cited">Literature cited</a></li>
-</ul>
-</div>
 
 <p>The mechanistic model I’m describing is what I call a <strong>basic</strong> model. Meaning it documents a one-dimensional relationship between a single trait of an organism and a single characteristic of the environment for a single life stage. In my model, this mean it is modelling temperature-development rate relationships of insect eggs.</p>
 <p>There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won’t talk about those. Aside from their theoretical differences, on a practical level, they follow the same pipeline discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology together.</p>
 <hr />
+<div id="the-components" class="section level1 tabset">
+<h1>The components</h1>
 <p>At its most fundamental, a mechanistic modelling pipeline consists of three components:</p>
 <ol style="list-style-type: decimal">
 <li>Input data</li>
@@ -360,6 +442,7 @@ $(document).ready(function () {
 <li>I used the microclimate modelling package <a href="https://github.com/mrke/nichemapr">NicheMapR</a> to generate microclimate data for my work, which I won’t go into detail here</li>
 <li>See the <a href="https://jacintak.github.io/resources">Resources</a> page for some potentially helpful links</li>
 </ul>
+<hr />
 </div>
 <div id="dev-mod" class="section level2">
 <h2>The development model</h2>
@@ -384,6 +467,7 @@ $(document).ready(function () {
 <li>Other environmental parameters are not considered. For example, moisture availability is crucial for the development of most insect eggs.</li>
 <li>Progression of development is additive (cumulative)</li>
 </ul>
+<hr />
 </div>
 </div>
 <div id="model-output" class="section level2">
@@ -409,6 +493,7 @@ $(document).ready(function () {
 </ul>
 <p>Examples of all three modelling outputs are found in my repositories.</p>
 <hr />
+</div>
 </div>
 <div id="species-dist" class="section level1">
 <h1>Things to consider</h1>
@@ -478,6 +563,8 @@ Sharpe, P.J. &amp; DeMichele, D.W. (1977) Reaction kinetics of poikilotherm deve
 </footer>
 
 
+</div>
+</div>
 
 </div>
 
