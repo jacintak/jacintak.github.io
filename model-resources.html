@@ -461,6 +461,7 @@ A pretty important component of modelling species responses to environmental var
 <li>The Insect Developmental Database (<a href="https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&amp;ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134">IDD</a>) contains temperature-rate data for mostly insect species of agricultural interest</li>
 <li><a href="https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7">GlobTherm</a> is a great initiative but covers CtMax and CtMin only.</li>
 <li>A few recent metaanalyses have combed through the thermal biology literature so you don’t have to! Then you can extract the information you want. Isn’t open, reproducible science great? Here’s a recent <a href="https://datadryad.org/resource/doi:10.5061/dryad.56s5d84">example</a></li>
+<li>Dell et al. 2013 complied a <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/12-2060.1">dataset</a> on various biological/ecological traits measured at different tempertures for species from all habitats.</li>
 </ul>
 <hr />
 </div>
@@ -472,9 +473,17 @@ A pretty important component of modelling species responses to environmental var
 <div id="international-symposium-and-thematic-school-on-deb-theory-for-metabolic-organisation" class="section level1">
 <h1>International Symposium and Thematic School on DEB Theory for Metabolic Organisation</h1>
 <p>Interested in Dynamic Energy Budget modelling? There is an international symposium, tele-course and school/workshop that is an intensive course in DEB and its applications. The symposium is held every two years. The most recent one was <a href="https://deb2019.sciencesconf.org/">April 2019</a>.</p>
+<div id="nichemapr-deb-biophysical-ecology" class="section level2">
+<h2>NicheMapR, DEB &amp; biophysical ecology</h2>
+<p>Fortunately, the NicheMapR package is a pretty complete toolkit to model the biology of an organism based on its environment and available resources. Not only does it have a microclimate model but it also has an implementation of the standard DEB model and a biophysical heat and water budget model for ecotherms and endotherms. All that is missing are the correct input parameters.</p>
+<div id="deb-parameters-and-add-my-pet" class="section level3">
+<h3>DEB parameters and Add-My-Pet</h3>
+<p>You can find standard DEB parameters at <a href="https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/">Add-My-Pet</a> and there is a vignette in NicheMapR which goes through the ectotherm model, the DEB model and how to use the DEB parameters from Add-My-Pet in NicheMapR.</p>
 <hr />
 <p>With the resources available you can pretty much develop a mechanistic model without collecting your own data.<br />
 If there are other useful datasets or links not listed here, let me know!</p>
+</div>
+</div>
 </div>
 
 <footer>

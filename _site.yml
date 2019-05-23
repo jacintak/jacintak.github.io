@@ -14,6 +14,7 @@ navbar:
          href: model-pipeline.html
        - text: "Resources"
          href: model-resources.html
+
 output: 
   html_document:
     toc: true # table of contents
