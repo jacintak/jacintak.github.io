@@ -14,6 +14,9 @@ navbar:
          href: model-pipeline.html
        - text: "Resources"
          href: model-resources.html
+     - text: "R/exams"
+       - text: "Quick guide to R/exams"
+         href: r-exams-guide.html
 
 output: 
   html_document:
