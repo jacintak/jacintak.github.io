@@ -12,7 +12,6 @@
 
 <meta name="author" content="Jacinta Kong" />
 
-<meta name="date" content="2019-05-09" />
 
 <title>Quick guide to R/exams</title>
 
@@ -90,7 +89,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -389,7 +387,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Quick guide to R/exams</h1>
 <h4 class="author">Jacinta Kong</h4>
-<h4 class="date">05/09/2019</h4>
+<h4 class="date">Sys.Date()</h4>
 
 </div>
 
@@ -403,7 +401,7 @@ Here, I provide a short walkthough for generating an online test for Blackboard 
 <div id="running-the-package-for-the-first-time" class="section level1">
 <h1>Running the package for the first time</h1>
 <p><code>exams</code> uses <code>rtools</code> to create zip files. An error message will appear if <code>rtools</code> does not have permission to create zip files.<br />
-For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:RTools/bin”</p>
+For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:/RTools/bin”</p>
 </div>
 <div id="types-of-questions" class="section level1">
 <h1>Types of questions</h1>
@@ -474,27 +472,69 @@ Answerlist<br />
 </div>
 <div id="an-example-question" class="section level1">
 <h1>An example question</h1>
+<p>This example displays the correct answer and 3 randomly chosen option out of 6 possible answers.</p>
 <pre><code>Question
 ========
-What is your favourite colour?
+What is your name?
 
-Answer
-=======
-* Red
-* Blue
-* Green
-* Yellow
+\```{r answerlist, results = &quot;hide&quot;, echo=F}
+# list of possible answer as a character vector
+knights_of_camelot &lt;- c(&quot;Arthur, King of the Britons&quot;, 
+                        &quot;Sir Lancelot the Brave&quot;,
+                        &quot;Sir Robin the Not-Quite-So-Brave-as-Sir-Lancelot&quot;,
+                        &quot;Sir Galahad the Pure&quot;,
+                        &quot;Sir Bedevere the Wise&quot;,
+                        &quot;Patsy&quot;)
+
+# Solution to the vector above                        
+solutions &lt;- c(FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)
+
+# explanations (feedback for students)
+explanations &lt;- c(&quot;I didn&#39;t vote for him&quot;,
+        &quot;His favourite colour is blue&quot;,
+        &quot;He doesn&#39;t know the capital of Assyria&quot;,
+        &quot;His favourite colour is blue. No, yel...&quot;,
+        &quot;Knows nothing about swallows&quot;,
+        &quot;Clip Clop&quot;)
+\```
+        
+\```{r answerlist, echo=F, results = &quot;asis&quot;}
+# helper function to format the list of possible answers
+answerlist(knights_of_camelot, markup = &quot;markdown&quot;)
+\```
+
 
 Solution
 ========
-Yellow
+\```{r solutionlist, echo = FALSE, results = &quot;asis&quot;}
+answerlist(ifelse(solultions, &quot;True&quot;, &quot;False&quot;), explanations, markup = &quot;markdown&quot;)
+\```
 
 Meta-information
 ================
-exname: Favourite colour
+exname: Bridgekeeper
 extype: schoice
-exsolution: 0001
-exshuffle: TRUE</code></pre>
+exsolution: 010000
+exshuffle: 4
+</code></pre>
+<p>This renders like this:</p>
+<pre><code>Exam 1
+
+    Question
+
+    What is your name?
+
+        Sir Bedevere the Wise
+        Arthur, King of the Britons
+        Sir Galahad the Pure
+        Sir Lancelot the Brave
+
+    Solution
+        False. Knows nothing about swallows
+        False. I didn&#39;t vote for him
+        False. His favourite colour is blue. No, yel.
+        True. His favourite colour is blue</code></pre>
+<p>You could also skip the solutions vector and include it in the explanations vector like <code>c("False. I didn't vote for him")</code>. Of course, the solution does not appear immediately in blackboard but make sure the option for solutions and feedback to appear is checked.</p>
 </div>
 <div id="compiling-the-exam" class="section level1">
 <h1>Compiling the exam</h1>
