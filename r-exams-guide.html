@@ -393,17 +393,17 @@ div.tocify {
 
 
 <p><a href="www.r-exams.org"><code>R/exams</code></a> is an R package that generates a reproducible workflow for designing, producing and marking exams.<br />
-Here, I provide a short walkthough for generating an online test for Blackboard - see the <a href="http://www.r-exams.org/tutorials/exams2blackboard/">R/exams website</a> for another tutorial.</p>
+Here, I provide a short walkthough for generating an online test for Blackboard - see the <a href="http://www.r-exams.org/tutorials/exams2blackboard/">R/exams website</a> for some tutorials.</p>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
 <p>Install R/exams via CRAN with <code>install.packages("exams")</code>.</p>
-<hr />
 </div>
 <div id="running-the-package-for-the-first-time" class="section level1">
 <h1>Running the package for the first time</h1>
-<p><code>exams</code> uses <code>rtools</code> to create zip files. An error message will appear if <code>rtools</code> does not have permission to create zip files.<br />
-For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:/RTools/bin”<br />
+<p><code>exams</code> uses <code>rtools</code> to create zip files. Make sure the proper <code>rtools</code> is installed. An error message will appear if <code>rtools</code> does not have permission to create zip files.<br />
+To give permission for creating .zip for windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:/RTools/bin”<br />
 You may also need to install dependent packages like <code>tth</code> for math notation.</p>
+<hr />
 </div>
 <div id="types-of-questions" class="section level1">
 <h1>Types of questions</h1>
@@ -416,14 +416,27 @@ You may also need to install dependent packages like <code>tth</code> for math n
 <p>Cloze is another option but is not supported by blackboard, this permits a combination of the above for the MCQ answer list</p>
 <hr />
 </div>
-<div id="building-the-questions" class="section level1">
-<h1>Building the questions</h1>
+<div id="building-an-exam-question" class="section level1 tabset">
+<h1>Building an exam question</h1>
+<p>There are several file types that are supported when writing your question but I have stuck with ‘.Rmd’. There are four parts of a question file:</p>
+<ol style="list-style-type: decimal">
+<li>The question</li>
+<li>The answer list</li>
+<li>The solution list for giving feedback</li>
+<li>The meta-information</li>
+</ol>
+<p>Each of these sections are defined by a header tag marked by =====. # does not work as a tag.</p>
+<div id="question" class="section level2">
+<h2>Question</h2>
 <p>The tag for defining the question is:</p>
 <p>Question<br />
 ========</p>
 <p>The various random number generators in R will be your friend.</p>
-<div id="things-to-note" class="section level2">
-<h2>Things to note</h2>
+<pre><code>sample() # pick n random number(s) from a vector of discrete numbers
+runif() # generate a vector of continuous numbers, can set min and max
+rnorm() # generate a vector of continuous numbers from a normal distribution with a defined mean and standard deviation</code></pre>
+<div id="things-to-note" class="section level3">
+<h3>Things to note</h3>
 <ul>
 <li>Code chunk options are in effect. By default figures will have captions, turn it of with <code>fig.caption = ""</code>. Other useful figure options are figure sizes. Figure options can also be defined when compiling the exam</li>
 <li>You can show code with <code>echo  = TRUE</code>, turn off R formatting with <code>results = "asis"</code> &amp; hide results with <code>results = "hide"</code></li>
@@ -434,24 +447,34 @@ You may also need to install dependent packages like <code>tth</code> for math n
 <hr />
 </div>
 </div>
-<div id="the-answer-list" class="section level1">
-<h1>The answer list</h1>
+<div id="the-answer-list" class="section level2">
+<h2>The answer list</h2>
 <p>The answer subheading is defined by the tag:</p>
 <p>Answer<br />
 ========</p>
 <p>Bulleted markdown after this tag will be considered the options for an MCQ answer list.</p>
-<p><code>exams</code> contains several helper functions to make it easy to generate lists of answers.<br />
-<code>answerlist</code> accepts a vector of answers. It also generates the answer subheading so there is no need to type it in. Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.<br />
-Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.<br />
-<code>comment = NA</code> in the code chunk options will remove the # from the R output</p>
+<div id="things-to-note-1" class="section level3">
+<h3>Things to note</h3>
+<ul>
+<li><code>exams</code> contains several helper functions to make it easy to generate lists of answers.<br />
+</li>
+<li><code>answerlist</code> accepts a vector of answers. It also generates the answer subheading so there is no need to type it in.</li>
+<li>Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.<br />
+</li>
+<li>Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.<br />
+<code>comment = NA</code> in the code chunk options will remove the # from the R output.<br />
+</li>
+<li>There are also helper functions for various things. <code>mchoice2string()</code> turns the solutions vector above into binary responses for the meta-information section. <code>num_to_choice</code> generates a MCQ list of numbers for a numeric answer.</li>
+</ul>
 <hr />
 </div>
-<div id="solution" class="section level1">
-<h1>Solution</h1>
+</div>
+<div id="solution" class="section level2">
+<h2>Solution</h2>
 <p>You can provide feedback via the solution header, including which answers are correct</p>
 <p>Solution<br />
 ========<br />
-Your solution here<br />
+Your solution here or correct answer: <code>code for answer</code> (or <code>answer[]</code>)<br />
 Answerlist<br />
 -———<br />
 * True<br />
@@ -462,8 +485,8 @@ Answerlist<br />
 </blockquote>
 <hr />
 </div>
-<div id="question-metainformation" class="section level1">
-<h1>Question metainformation</h1>
+<div id="question-metainformation" class="section level2">
+<h2>Question metainformation</h2>
 <p>This is an important section of the question because it defines the correct answer. Metainformation is defined by the tag:</p>
 <p>Meta-information<br />
 ================</p>
@@ -476,6 +499,7 @@ Answerlist<br />
 <li>exshuffle = Whether to shuffle the answers or not. This can be used to randomly select a subset of answers from an answer list. Provide a number of answers for non-numeric questions (e.g. 4 for 4 answers). <code>TRUE/FALSE</code> is also accepted.</li>
 </ul>
 <hr />
+</div>
 </div>
 <div id="an-example-question" class="section level1">
 <h1>An example question</h1>
@@ -546,7 +570,7 @@ exshuffle: 4
 </div>
 <div id="compiling-the-exam" class="section level1">
 <h1>Compiling the exam</h1>
-<p>I have written a script to compile the exam. The compiling function (<code>exams2blackboard</code>) requires a <em>list</em> of file names to generate the exam. Each file represents a question. Versions of a question (<code>n</code>) generate a pool of questions. There are several file types that are supported but I have stuck with ‘.rmd’. The list should not contain subdirectories or files not to be included in the exam. <code>exams2html</code> is a means of checking a file/list of exam questions renders properly in html (or <code>exams2pdf</code>).</p>
+<p>I have written a script to compile the exam. The compiling function (<code>exams2blackboard</code>) requires a <em>list</em> of file names to generate the exam. Each file represents a question. Versions of a question (<code>n</code>) generate a pool of questions. The list should not contain subdirectories or files not to be included in the exam. <code>exams2html</code> is a means of checking a file/list of exam questions renders properly in html (or <code>exams2pdf</code>).</p>
 <p>There are several means of customising the metadata of the exam. Here I have:</p>
 <ul>
 <li>turned off partial marks - is TRUE by default</li>
@@ -575,7 +599,7 @@ exams2blackboard(file = myexam, n = 10, name = &#39;Jacinta&#39;, dir = mydir,
                  )
 
 </code></pre>
-<div id="things-to-note-1" class="section level2">
+<div id="things-to-note-2" class="section level2">
 <h2>Things to note</h2>
 <ul>
 <li>You can create a mix of questions in the exam by defining it in the list of questions but it is not recommended for generating pools of questions</li>
@@ -588,7 +612,7 @@ exams2blackboard(file = myexam, n = 10, name = &#39;Jacinta&#39;, dir = mydir,
 <footer>
 	    		<ul>
 	    		    <li><a href="https://jacintakongresearch.wordpress.com">Jacinta D. Kong</a></li>
-	        		<li><a href="mailto:jacintadkong@gmail.com">email</a></li>
+	        		<li><a href="mailto:kongj@tcd.ie">email</a></li>
 	        		<li><a href="https://github.com/jacintak">github.com/jacintak</a></li>
 				</ul>
 </footer>
