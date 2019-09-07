@@ -397,11 +397,13 @@ Here, I provide a short walkthough for generating an online test for Blackboard 
 <div id="installation" class="section level1">
 <h1>Installation</h1>
 <p>Install R/exams via CRAN with <code>install.packages("exams")</code>.</p>
+<hr />
 </div>
 <div id="running-the-package-for-the-first-time" class="section level1">
 <h1>Running the package for the first time</h1>
 <p><code>exams</code> uses <code>rtools</code> to create zip files. An error message will appear if <code>rtools</code> does not have permission to create zip files.<br />
-For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:/RTools/bin”</p>
+For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Environmental Variables &gt; add “C:/RTools/bin”<br />
+You may also need to install dependent packages like <code>tth</code> for math notation.</p>
 </div>
 <div id="types-of-questions" class="section level1">
 <h1>Types of questions</h1>
@@ -412,6 +414,7 @@ For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced Sy
 <li>String (string)</li>
 </ul>
 <p>Cloze is another option but is not supported by blackboard, this permits a combination of the above for the MCQ answer list</p>
+<hr />
 </div>
 <div id="building-the-questions" class="section level1">
 <h1>Building the questions</h1>
@@ -428,6 +431,7 @@ For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced Sy
 <li>To allow for randomised questions within a question file I had to escape the R code chunk to render the output as html, else the randomised question would be rendered as R output</li>
 <li>You can generate a file to go with the question using any R write to file function. Include the file in the question as normal for Rmarkdown - [filename](filelink). Leave this as default or <code>exams</code> will not be able to find the file</li>
 </ul>
+<hr />
 </div>
 </div>
 <div id="the-answer-list" class="section level1">
@@ -440,6 +444,7 @@ For windows: Control Panel &gt; System and Security &gt; System &gt; Advanced Sy
 <code>answerlist</code> accepts a vector of answers. It also generates the answer subheading so there is no need to type it in. Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.<br />
 Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.<br />
 <code>comment = NA</code> in the code chunk options will remove the # from the R output</p>
+<hr />
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
@@ -455,6 +460,7 @@ Answerlist<br />
 <blockquote>
 <p><strong>Important</strong> There should be no spaces after the header tag title, i.e. markdown formatting</p>
 </blockquote>
+<hr />
 </div>
 <div id="question-metainformation" class="section level1">
 <h1>Question metainformation</h1>
@@ -469,6 +475,7 @@ Answerlist<br />
 <li>extol = the tolerance range for numeric questions</li>
 <li>exshuffle = Whether to shuffle the answers or not. This can be used to randomly select a subset of answers from an answer list. Provide a number of answers for non-numeric questions (e.g. 4 for 4 answers). <code>TRUE/FALSE</code> is also accepted.</li>
 </ul>
+<hr />
 </div>
 <div id="an-example-question" class="section level1">
 <h1>An example question</h1>
@@ -535,6 +542,7 @@ exshuffle: 4
         False. His favourite colour is blue. No, yel.
         True. His favourite colour is blue</code></pre>
 <p>You could also skip the solutions vector and include it in the explanations vector like <code>c("False. I didn't vote for him")</code>. Of course, the solution does not appear immediately in blackboard but make sure the option for solutions and feedback to appear is checked.</p>
+<hr />
 </div>
 <div id="compiling-the-exam" class="section level1">
 <h1>Compiling the exam</h1>
