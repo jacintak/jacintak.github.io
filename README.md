@@ -20,12 +20,12 @@ See my [regular research site/blog](https://jacintakongresearch.wordpress.com) f
 
 Jacinta D. Kong  
 
-|:Teaching and research fellow:|:PhD Candidate:|  
-|:-------------:||:-------------:|
-|Department of Zoology|Climate and Metabolic Ecology Lab ([CAMEL](https://camelunimelb.wordpress.com))|  
-|School of Natural Sciences|School of BioSciences|   
-|Trinity College Dublin|The University of Melbourne|  
-|The University of Dublin|Parkville 3010|  
-|Dublin,Ireland|Australia|  
+| Teaching and research fellow | PhD Candidate |  
+| ------------- | ------------- |
+| Department of Zoology | Climate and Metabolic Ecology Lab ([CAMEL](https://camelunimelb.wordpress.com)) |
+| School of Natural Sciences | School of BioSciences |
+| Trinity College Dublin | The University of Melbourne |
+| The University of Dublin | Parkville 3010 |
+| Dublin,Ireland | Australia |
 
 [Google Scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en&oi=ao)
