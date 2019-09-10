@@ -26,6 +26,6 @@ Jacinta D. Kong
 | School of Natural Sciences | School of BioSciences |
 | Trinity College Dublin | The University of Melbourne |
 | The University of Dublin | Parkville 3010 |
-| Dublin,Ireland | Australia |
+| Dublin, Ireland | Australia |
 
 [Google Scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en&oi=ao)
