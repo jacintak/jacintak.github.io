@@ -14,11 +14,16 @@ navbar:
          href: model-pipeline.html
        - text: "Resources"
          href: model-resources.html
-    - text: "R/exams"
+    - text: "Teaching intro statistics"
       menu: # drop down menu
        - text: "Quick guide to R/exams"
          href: r-exams-guide.html
-
+       - text: "Lecture 1: Parameter estimation"
+         href: stats-lecture1.html
+       - text: "Lecture 2: Multiple regression"
+         href: stats-lecture2.html
+       - text: "Lecture 3: Evaluating models"
+         href: stats-lecture3.html
 output: 
   html_document:
     toc: true # table of contents
