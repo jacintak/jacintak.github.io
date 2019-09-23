@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr Jacinta Kong" />
+<meta name="author" content="School of Natural Sciences" />
+<meta name="author" content="kongj@tcd.ie" />
+
+
+<title>Statistical modelling</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jacinta's GitHub</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mechanistic models of ectotherm development
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="model-about.html">About</a>
+    </li>
+    <li>
+      <a href="model-pipeline.html">Pipeline</a>
+    </li>
+    <li>
+      <a href="model-resources.html">Resources</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Teaching intro statistics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="r-exams-guide.html">Quick guide to R/exams</a>
+    </li>
+    <li>
+      <a href="stats-lecture1.html">Lecture 1: Parameter estimation</a>
+    </li>
+    <li>
+      <a href="stats-lecture2.html">Lecture 2: Multiple regression</a>
+    </li>
+    <li>
+      <a href="stats-lecture3.html">Lecture 3: Evaluating models</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Statistical modelling</h1>
+<h3 class="subtitle">Lecture 2: multiple regression</h3>
+<h4 class="author">Dr Jacinta Kong</h4>
+<h4 class="author">School of Natural Sciences</h4>
+<h4 class="author"><a href="mailto:kongj@tcd.ie" class="email">kongj@tcd.ie</a></h4>
+
+</div>
+
+
+<hr />
+<div id="overall-lecture-aims" class="section level1">
+<h1>Overall lecture aims</h1>
+<ul>
+<li>Identify the structure of general linear models</li>
+<li>Describe how linear models are parametrized</li>
+<li>Understand how to use linear models</li>
+<li>Understand how to interpret and evaluate linear models</li>
+</ul>
+<p>Recommended reading: Chapter 5.5 Getting Started with R</p>
+<div id="other-resources" class="section level2">
+<h2>Other resources</h2>
+<ul>
+<li>Seeing Theory. Chapter 6. <a href="https://seeing-theory.brown.edu/regression-analysis/index.html" class="uri">https://seeing-theory.brown.edu/regression-analysis/index.html</a></li>
+<li>Statistics: an introduction using R. Michael J. Crawley. Wiley Press. Chapters 7 - 11.</li>
+<li>Experimental Design and Data Analysis for Biologists. Gerry P. Quinn &amp; Michael J. Keough. Cambridge Press. Chapters 5, 6, 8, 12.</li>
+<li>R for Data Science (For more advanced R). <a href="https://r4ds.had.co.nz/index.html" class="uri">https://r4ds.had.co.nz/index.html</a></li>
+<li><a href="https://learningstatisticswithr.com/book/index.html" class="uri">https://learningstatisticswithr.com/book/index.html</a></li>
+</ul>
+</div>
+<div id="by-the-end-of-this-lecture-you-should" class="section level2">
+<h2>By the end of this lecture you should:</h2>
+<ul>
+<li>Understand the parameters of a linear model with multiple predictor variables</li>
+<li>Parametrise and use a multiple regression model to predict values from the R output of a linear regression</li>
+<li>Interpret and complete ANOVA tables with multiple predictor variables</li>
+<li>Understand an interaction between two predictor variables</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="probability-distribution-functions-pdf" class="section level1">
+<h1>Probability distribution functions (PDF)</h1>
+<blockquote>
+<p>Linear models need a descriptor of how response variables (or errors) should be distributed</p>
+</blockquote>
+<p><strong>Probability distributions</strong></p>
+<ul>
+<li>E.g. Gaussian/normal distribution</li>
+<li>Grouped by “family”</li>
+<li>Other types exist but not covered here – same principles apply, called generalised linear models (GLM)</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="stats-lecture2_files/figure-html/normal-1.png" alt="a normal distribution with mean = 0 and sd  = 1" width="300" />
+<p class="caption">
+a normal distribution with mean = 0 and sd = 1
+</p>
+</div>
+<div id="linear-models-in-the-gaussian-family" class="section level2">
+<h2>Linear models in the Gaussian family</h2>
+<blockquote>
+<p>Same principles, different names</p>
+</blockquote>
+<ul>
+<li>Linear regression
+<ul>
+<li>continuous response</li>
+<li>one or more continuous predictors</li>
+</ul></li>
+<li>Analysis of Variance (ANOVA)
+<ul>
+<li>continuous response</li>
+<li>categorical predictors</li>
+</ul></li>
+<li>Analysis of Covariance (ANCOVA)
+<ul>
+<li>continuous response</li>
+<li>A mix of continuous and categorical predictors</li>
+<li>Special case with special assumptions</li>
+</ul></li>
+</ul>
+<div id="you-have-seen-these-statistical-tests-in-previous-lectures" class="section level3">
+<h3>You have seen these statistical tests in previous lectures</h3>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Height by Sex
+t = -12.924, df = 192.7, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.14454 -11.13420
+sample estimates:
+mean in group Female   mean in group Male 
+            165.6867             178.8260 </code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sex</td>
+<td align="right">1</td>
+<td align="right">8974.12</td>
+<td align="right">8974.12</td>
+<td align="right">165.11</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">206</td>
+<td align="right">11196.29</td>
+<td align="right">54.35</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>A one-way ANOVA is mathematically identical to a t-test</p>
+<blockquote>
+<p>In this module, don’t focus on memorising what kind of test fits what kinds of data</p>
+</blockquote>
+<p>They are all variants on general linear models anyway…</p>
+<ul>
+<li>We are interested in <strong>slopes</strong> and (to a lesser extent) intercepts</li>
+<li>Understand how these models relate to your <em>hypotheses &amp; experimental design</em></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="previously-we-parametrised-slopes-and-intercepts-of-simple-linear-models" class="section level1">
+<h1>Previously, we parametrised slopes and intercepts of simple linear models</h1>
+<p>With one predictor variable</p>
+<p><span class="math inline">\(Y = \beta_0 + \beta_1 X\)</span></p>
+<p>where the parameters <span class="math inline">\(\beta_0\)</span> = intercept and <span class="math inline">\(\beta_1\)</span> = slope</p>
+<p><img src="stats-lecture2_files/figure-html/unnamed-chunk-1-1.png" width="300" style="display: block; margin: auto;" /></p>
+</div>
+<div id="parameters-of-a-linear-model-can-be-random-or-fixed" class="section level1">
+<h1>Parameters of a linear model can be <strong>random</strong> or <strong>fixed</strong></h1>
+<ul>
+<li>Important to consider when designing experiments – you decide!</li>
+<li>Changes the hypotheses &amp; interpretation of results</li>
+<li>Fixed: Constant across all groupings (how observations are related – e.g. populations of individuals)</li>
+<li>Random: Vary across groupings, or represent a random sample from a larger population</li>
+</ul>
+<div id="fixed-slopes-linear-model" class="section level2">
+<h2>Fixed slopes linear model</h2>
+<ul>
+<li>All groups (Frequency of exercise in this example) have the same slope</li>
+<li>Response of groups to predictor variable x is consistent across groups</li>
+<li>Cannot extrapolate beyond groups</li>
+<li>Thus can only draw conclusions for these people</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="stats-lecture2_files/figure-html/fixed%20slopes%20model-1.png" alt="Height of students of various frequencies of exercise and hand width" width="300" />
+<p class="caption">
+Height of students of various frequencies of exercise and hand width
+</p>
+</div>
+</div>
+<div id="random-slopes-linear-model" class="section level2">
+<h2>Random slopes linear model</h2>
+<ul>
+<li>All groups have different slopes</li>
+<li>Response of groups to predictor variable x varies among groups</li>
+<li>Can extrapolate beyond observed groups
+<ul>
+<li>E.g. colours represent multiple observations of 1 person</li>
+</ul></li>
+<li>Identity of person is not the main question</li>
+<li>Thus can generalise to other people outside study</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="stats-lecture2_files/figure-html/random%20slopes%20model-1.png" alt="Each group has a different slope" width="300" />
+<p class="caption">
+Each group has a different slope
+</p>
+</div>
+</div>
+<div id="distinguishing-between-fixed-or-random-is-important" class="section level2">
+<h2>Distinguishing between Fixed or random is important</h2>
+<blockquote>
+<p>Changes the way Analysis of Variance (ANOVA) is calculated</p>
+</blockquote>
+<ul>
+<li>Changes formula for Mean Sum of Squares</li>
+<li>Changes numerator/denominator of F ratio</li>
+<li>Thus changes interpretation</li>
+<li>Called Type I (fixed), II (random) or III (mixed)</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="t-tests-simple-linear-models-anova" class="section level1">
+<h1>t-tests, simple linear models, ANOVA</h1>
+<ul>
+<li>So far all of these have had 1 predictor variable and 1 response variable</li>
+<li>The predictor variable was continuous</li>
+<li>Predictor variables can also be categorical (called factors in R)</li>
+<li>Can have two or more sub-categories (called levels in R)
+<ul>
+<li>E.g. sex: male/female, level of drug: low/medium/high</li>
+</ul></li>
+</ul>
+<p>Typically, the relationship between a continuous response variable &amp; categorical predictors is analysed using a special case of statistical models:<br />
+One-way Analysis of Variance<br />
+One-way because there is one predictor variable (with any number of levels)</p>
+<div id="note-on-terminology" class="section level2">
+<h2>Note on terminology</h2>
+<p>Analysis of Variance is a misleading term. Was invented by Ronald Fisher and can refer to how data are spread around the mean (<em>variance</em>) or comparing means (via how similar their variances are)</p>
+</div>
+</div>
+<div id="fixed-one-way-anova-with-2-or-more-levels" class="section level1">
+<h1>Fixed one-way ANOVA with 2 or more levels</h1>
+<ul>
+<li>level = subsets within categories
+<ul>
+<li>e.g. male/female, low/medium/high</li>
+</ul></li>
+<li>We are testing means for each level</li>
+<li>What is the null hypothesis?</li>
+</ul>
+<blockquote>
+<p>All levels come from the same population (have the same mean)</p>
+</blockquote>
+<div id="pulse-rate-and-exercise" class="section level2">
+<h2>Pulse rate and exercise</h2>
+<p><img src="stats-lecture2_files/figure-html/pulse-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>We can do an ANOVA and get the following output:</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Df"],"name":[1],"type":["int"],"align":["right"]},{"label":["Sum Sq"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mean Sq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"900.4682","3":"450.2341","4":"3.378344","5":"0.03617603","_rn_":"Exer"},{"1":"189","2":"25188.1516","3":"133.2706","4":"NA","5":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<blockquote>
+<p>Conclusions: We can reject the null hypothesis that there is no difference in mean pulse rate of students with different amount of exercise</p>
+</blockquote>
+<p>Report the degrees of freedom, the F ratio and the P value like <span class="math display">\[F_{2,189} = 3.38, P = 0.036\]</span></p>
+</div>
+<div id="the-anova-table" class="section level2">
+<h2>The ANOVA table</h2>
+<table style="width:100%;">
+<colgroup>
+<col width="56%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Source of variation</th>
+<th align="center">SS</th>
+<th align="center">df</th>
+<th align="center">MS</th>
+<th align="center">F</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Variance among groups</td>
+<td align="center">SSR</td>
+<td align="center">number of levels - 1</td>
+<td align="center"><span class="math inline">\(\frac{SSR}{df}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{MSR}{MSE}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="center">Variance within group</td>
+<td align="center">SSE</td>
+<td align="center">number of observations - 2</td>
+<td align="center"><span class="math inline">\(\frac{SSE}{df}\)</span></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="center">Total error</td>
+<td align="center">SSY</td>
+<td align="center">total number of observations - 1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="calculating-group-means" class="section level2">
+<h2>Calculating group means</h2>
+<p>Check <code>summary()</code> to see group means</p>
+<pre><code>
+Call:
+lm(formula = Pulse ~ Exer, data = survey)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-41.188  -7.968  -0.188   7.812  32.032 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   71.968      1.184  60.763   &lt;2e-16 ***
+ExerNone       4.796      3.040   1.578    0.116    
+ExerSome       4.219      1.752   2.408    0.017 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 11.54 on 189 degrees of freedom
+  (45 observations deleted due to missingness)
+Multiple R-squared:  0.03452,   Adjusted R-squared:  0.0243 
+F-statistic: 3.378 on 2 and 189 DF,  p-value: 0.03618</code></pre>
+<ul>
+<li>Groups are calculated in alphabetical order - Here “Frequent” group is calculated first</li>
+<li><code>Estimate</code> column shows the <strong>difference in means</strong></li>
+<li>P values test differences in <strong>pairs of means</strong> BUT should we be doing multiple comparisons (no)</li>
+</ul>
+<p>Model coefficients:</p>
+<pre><code>(Intercept)    ExerNone    ExerSome 
+  71.968421    4.796285    4.219079 </code></pre>
+<p>R-calculated means:</p>
+<pre><code>    Freq     None     Some 
+71.96842 76.76471 76.18750 </code></pre>
+<p>Manually calculated means for “None” group: 71.9684211 + 4.7962848 = 76.7647059</p>
+<p>Manually calculated means for “Some” group: 71.9684211 + 4.2190789 = 76.1875</p>
+</div>
+</div>
+<div id="anova-and-hypothesis-testing" class="section level1">
+<h1>ANOVA and hypothesis testing</h1>
+<p><strong>Important to remember:</strong></p>
+<ul>
+<li>ANOVA is a test of means (analysis of variance about the mean)</li>
+<li>F-ratio tells you that there is a difference in the means between pairs of groups but NOT which pairs are different</li>
+<li>Need post-hoc tests like Tukey’s Honest Significant Differences (not covered in this module)</li>
+</ul>
+<hr />
+</div>
+<div id="multiple-regression" class="section level1">
+<h1>Multiple regression</h1>
+<p>We can include more than 1 predictor variable in our models</p>
+<blockquote>
+<p>Multiple regression: Linear models with two or more predictor variables</p>
+</blockquote>
+<ul>
+<li>Models the effect of multiple predictors on response</li>
+<li>Two-way ANOVAs etc. are special cases of multiple regression</li>
+<li>If 3 categorical predictors, then three-way ANOVA etc…</li>
+<li>With more predictor variables, the model becomes complex
+<ul>
+<li>And potentially less informative/difficult to interpret</li>
+<li>Remember the trade-off between generality &amp; complexity</li>
+<li>Keep it simple</li>
+</ul></li>
+</ul>
+<div id="height-and-hand-width" class="section level2">
+<h2>Height and hand width</h2>
+<p>Imagine we asked the class ‘is there a relationship between your height and the width of your hand?’<br />
+The linear model is:</p>
+<p><span class="math display">\[ height  = \beta_0 + \beta_1 hand \space width + \varepsilon_i\]</span></p>
+<p><img src="stats-lecture2_files/figure-html/hand%20height-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>Good, but let’s ask is it also important to consider the sex of the student?</p>
+<p><img src="stats-lecture2_files/figure-html/hand%20height%20sex-1.png" width="300" style="display: block; margin: auto;" /><img src="stats-lecture2_files/figure-html/hand%20height%20sex-2.png" width="300" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>Does including information about sex improve our ability to detect/understand patterns?</p>
+</blockquote>
+<p>The linear model now has two predictor variables and is written as:</p>
+<p><span class="math display">\[ height  = \beta_0 + \beta_{sex} hand \space width + \varepsilon_i\]</span></p>
+<p>Since Sex is a categorical predictor with 2 levels, this model now describes two lines - one for each level of the predictor (male/female)</p>
+<div id="does-student-height-vary-with-hand-width-and-between-sexes" class="section level3">
+<h3>Does student height vary with hand width and between sexes?</h3>
+<ul>
+<li>Continuous response</li>
+<li>Categorical predictor</li>
+<li>Continuous predictor (also called covariate)</li>
+<li>Can be analysed using multiple linear models</li>
+<li>Two types:
+<ul>
+<li>Additive model (<strong>Fixed slopes model</strong>)</li>
+<li>Interactive model (<strong>Random slopes model</strong>)</li>
+</ul></li>
+</ul>
+<p>Analysis of Covariance is a special case with unique assumptions (not considered here), else called a general linear model</p>
+</div>
+</div>
+<div id="fixed-slopes-additive-model" class="section level2">
+<h2>Fixed slopes (additive model)</h2>
+<ul>
+<li>No interaction term</li>
+<li>Same slope</li>
+<li>Intercept for each sex</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="stats-lecture2_files/figure-html/same%20slope-1.png" alt="the lines are parallel to each other" width="300" />
+<p class="caption">
+the lines are parallel to each other
+</p>
+</div>
+<pre><code>(Intercept)      Wr.Hnd     SexMale 
+ 137.686951    1.594446    9.489814 </code></pre>
+<p>Parametrised slope for females:<br />
+<em>Female height</em> = 137.687 + 1.594 <em>hand width</em></p>
+<p>Parametrised slope for males:<br />
+<em>Male height</em> = (137.687 + 9.49) + 1.594 <em>hand width</em></p>
+<blockquote>
+<p>Remember R shows the difference between parameter estimates so you need to extract the correct values</p>
+</blockquote>
+</div>
+<div id="random-slopes-interactive-model" class="section level2">
+<h2>Random slopes (interactive model)</h2>
+<p>The random slopes model has in interaction term. In R this is coded as either <code>lm(Height ~ Wr.Hnd * Sex, survey)</code> or <code>lm(Height ~ Wr.Hnd + Sex + Wr.Hnd:Sex, survey)</code>.</p>
+<p>The linear model is now:</p>
+<p><span class="math display">\[ height  = \beta_{0_{sex}} + \beta_{sex} hand \space width + \varepsilon_i\]</span></p>
+<div class="figure" style="text-align: center">
+<img src="stats-lecture2_files/figure-html/random%20slopes-1.png" alt="The lines have different slopes and intercepts" width="300" />
+<p class="caption">
+The lines have different slopes and intercepts
+</p>
+</div>
+<pre><code>   (Intercept)         Wr.Hnd        SexMale Wr.Hnd:SexMale 
+   147.4497131      1.0385045     -7.1567184      0.9020249 </code></pre>
+<p>To parametrise the model we now need to calculate different values for slopes. In the coefficient list, <code>Wr.Hnd:SexMale</code> is the <strong>difference in the value of the slope relative to the slope for female</strong> <code>Wr.Hnd</code>. Remember: female is alphabetically before male so R calculates the variances for females first, then males.</p>
+<p>Parametrised slope for females:<br />
+<em>Female height</em> = 147.45 + 1.039 <em>hand width</em></p>
+<p>Parametrised slope for males:<br />
+<em>Male height</em> = (147.45 -7.157) + (1.039 + 0.902) <em>hand width</em></p>
+</div>
+<div id="the-multiple-regression-anova-table" class="section level2">
+<h2>The multiple regression ANOVA table</h2>
+<blockquote>
+<p>Variance of predictors (SS) is partitioned out from total SS in order it is entered in to R</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wr.Hnd</td>
+<td align="right">1</td>
+<td align="right">7298.70</td>
+<td align="right">7298.70</td>
+<td align="right">150.13</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>Sex</td>
+<td align="right">1</td>
+<td align="right">2912.37</td>
+<td align="right">2912.37</td>
+<td align="right">59.91</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td>Wr.Hnd:Sex</td>
+<td align="right">1</td>
+<td align="right">90.07</td>
+<td align="right">90.07</td>
+<td align="right">1.85</td>
+<td align="right">0.17</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">203</td>
+<td align="right">9869.12</td>
+<td align="right">48.62</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-anova-table-for-2-predictors-and-their-interaction" class="section level2">
+<h2>The ANOVA table for 2 predictors and their interaction</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Source of variation</th>
+<th align="center">SS</th>
+<th align="center">df</th>
+<th align="center">MS</th>
+<th align="center">F</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Factor A</td>
+<td align="center">SSR of A</td>
+<td align="center">number of levels of A - 1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="center">Factor B</td>
+<td align="center">SSR of B</td>
+<td align="center">number of levels of B - 1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="center">Factor A x B</td>
+<td align="center">SSR of A &amp; B</td>
+<td align="center">df of A x df of B</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="center">Within error</td>
+<td align="center">SSE</td>
+<td align="center">levels of A x levels of B X (number of observations - 1)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="center">Total error</td>
+<td align="center">SSY</td>
+<td align="center">(levels of A x levels of B X number of observations) - 1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="interpreting-the-anova-table" class="section level2">
+<h2>Interpreting the ANOVA table</h2>
+<blockquote>
+<p>P(Interaction term) &gt; 0.05, thus the effect of hand width on student height is not dependent of the sex of the student</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wr.Hnd</td>
+<td align="right">1</td>
+<td align="right">7298.70</td>
+<td align="right">7298.70</td>
+<td align="right">150.13</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>Sex</td>
+<td align="right">1</td>
+<td align="right">2912.37</td>
+<td align="right">2912.37</td>
+<td align="right">59.91</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td>Wr.Hnd:Sex</td>
+<td align="right">1</td>
+<td align="right">90.07</td>
+<td align="right">90.07</td>
+<td align="right">1.85</td>
+<td align="right">0.17</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">203</td>
+<td align="right">9869.12</td>
+<td align="right">48.62</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-interaction-term-ab" class="section level2">
+<h2>The interaction term A:B</h2>
+<ul>
+<li>Measures the dependence of the level of one factor on the level of the other factors</li>
+<li>If interaction term is not significant:
+<ul>
+<li>effect of one factor on other is additive (independent of each other)</li>
+</ul></li>
+<li>If significant:
+<ul>
+<li>indicates synergistic or antagonistic effects between factors</li>
+<li>Should be main conclusion of analysis</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlN0YXRpc3RpY2FsIG1vZGVsbGluZyINCmF1dGhvcjoNCi0gRHIgSmFjaW50YSBLb25nDQotIFNjaG9vbCBvZiBOYXR1cmFsIFNjaWVuY2VzDQotIGtvbmdqQHRjZC5pZQ0Kb3V0cHV0Og0KICBodG1sX2RvY3VtZW50Og0KICAgIGRmX3ByaW50OiBwYWdlZA0KICAgIHRoZW1lOiBzYW5kc3RvbmUNCiAgICB0b2M6IFRSVUUNCiAgICBjb2RlX2Rvd25sb2FkOiBUUlVFDQpzdWJ0aXRsZTogJ0xlY3R1cmUgMjogbXVsdGlwbGUgcmVncmVzc2lvbicNCmVkaXRvcl9vcHRpb25zOg0KICBjaHVua19vdXRwdXRfdHlwZTogY29uc29sZQ0KLS0tDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCm9wdHNfY2h1bmskc2V0KGVjaG8gPSBGLCB3YXJuaW5nID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgY29tbWVudCA9IE5BLCBmaWcuaGVpZ2h0ID0gMywgZmlnLndpZHRoID0gMywgZHBpID0gMTAwLCBmaWcuYWxpZ24gPSAiY2VudGVyIiwgZmlnLnNob3cgPSAiaG9sZCIpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCnRoZW1lX3NldCh0aGVtZV9jbGFzc2ljKCkpDQpsaWJyYXJ5KE1BU1MpDQpvcHRpb25zKGdncGxvdDIuY29udGludW91cy5jb2xvdXI9InZpcmlkaXMiKQ0Kc2NhbGVfY29sb3VyX2Rpc2NyZXRlIDwtIGZ1bmN0aW9uKC4uLikgICBzY2FsZV9jb2xvdXJfdmlyaWRpc19kKCkNCmBgYA0KKioqDQoNCiMgT3ZlcmFsbCBsZWN0dXJlIGFpbXMNCg0KKiBJZGVudGlmeSB0aGUgc3RydWN0dXJlIG9mIGdlbmVyYWwgbGluZWFyIG1vZGVscw0KKiBEZXNjcmliZSBob3cgbGluZWFyIG1vZGVscyBhcmUgcGFyYW1ldHJpemVkDQoqIFVuZGVyc3RhbmQgaG93IHRvIHVzZSBsaW5lYXIgbW9kZWxzDQoqIFVuZGVyc3RhbmQgaG93IHRvIGludGVycHJldCBhbmQgZXZhbHVhdGUgbGluZWFyIG1vZGVscw0KDQpSZWNvbW1lbmRlZCByZWFkaW5nOg0KQ2hhcHRlciA1LjUgR2V0dGluZyBTdGFydGVkIHdpdGggUg0KDQoNCiMjIE90aGVyIHJlc291cmNlcw0KIA0KKiBTZWVpbmcgVGhlb3J5LiBDaGFwdGVyIDYuIGh0dHBzOi8vc2VlaW5nLXRoZW9yeS5icm93bi5lZHUvcmVncmVzc2lvbi1hbmFseXNpcy9pbmRleC5odG1sDQoqIFN0YXRpc3RpY3M6IGFuIGludHJvZHVjdGlvbiB1c2luZyBSLiBNaWNoYWVsIEouIENyYXdsZXkuIFdpbGV5IFByZXNzLiBDaGFwdGVycyA3IC0gMTEuDQoqIEV4cGVyaW1lbnRhbCBEZXNpZ24gYW5kIERhdGEgQW5hbHlzaXMgZm9yIEJpb2xvZ2lzdHMuIEdlcnJ5IFAuIFF1aW5uICYgTWljaGFlbCBKLiBLZW91Z2guIENhbWJyaWRnZSBQcmVzcy4gQ2hhcHRlcnMgNSwgNiwgOCwgMTIuDQoqIFIgZm9yIERhdGEgU2NpZW5jZSAoRm9yIG1vcmUgYWR2YW5jZWQgUikuIGh0dHBzOi8vcjRkcy5oYWQuY28ubnovaW5kZXguaHRtbA0KKiBodHRwczovL2xlYXJuaW5nc3RhdGlzdGljc3dpdGhyLmNvbS9ib29rL2luZGV4Lmh0bWwNCg0KIyMgQnkgdGhlIGVuZCBvZiB0aGlzIGxlY3R1cmUgeW91IHNob3VsZDoNCg0KKiBVbmRlcnN0YW5kIHRoZSBwYXJhbWV0ZXJzIG9mIGEgbGluZWFyIG1vZGVsIHdpdGggbXVsdGlwbGUgcHJlZGljdG9yIHZhcmlhYmxlcw0KKiBQYXJhbWV0cmlzZSBhbmQgdXNlIGEgbXVsdGlwbGUgcmVncmVzc2lvbiBtb2RlbCB0byBwcmVkaWN0IHZhbHVlcyBmcm9tIHRoZSBSIG91dHB1dCBvZiBhIGxpbmVhciByZWdyZXNzaW9uDQoqIEludGVycHJldCBhbmQgY29tcGxldGUgQU5PVkEgdGFibGVzIHdpdGggbXVsdGlwbGUgcHJlZGljdG9yIHZhcmlhYmxlcw0KKiBVbmRlcnN0YW5kIGFuIGludGVyYWN0aW9uIGJldHdlZW4gdHdvIHByZWRpY3RvciB2YXJpYWJsZXMgDQoNCioqKg0KDQojIFByb2JhYmlsaXR5IGRpc3RyaWJ1dGlvbiBmdW5jdGlvbnMgKFBERikNCg0KPiBMaW5lYXIgbW9kZWxzIG5lZWQgYSBkZXNjcmlwdG9yIG9mIGhvdyByZXNwb25zZSB2YXJpYWJsZXMgKG9yIGVycm9ycykgc2hvdWxkIGJlIGRpc3RyaWJ1dGVkDQoNCioqUHJvYmFiaWxpdHkgZGlzdHJpYnV0aW9ucyoqDQoNCiogRS5nLiBHYXVzc2lhbi9ub3JtYWwgZGlzdHJpYnV0aW9uDQoqIEdyb3VwZWQgYnkgImZhbWlseSINCiogT3RoZXIgdHlwZXMgZXhpc3QgYnV0IG5vdCBjb3ZlcmVkIGhlcmUg4oCTIHNhbWUgcHJpbmNpcGxlcyBhcHBseSwgY2FsbGVkIGdlbmVyYWxpc2VkIGxpbmVhciBtb2RlbHMgKEdMTSkNCg0KDQpgYGB7ciBub3JtYWwsIGZpZy5jYXA9ICJhIG5vcm1hbCBkaXN0cmlidXRpb24gd2l0aCBtZWFuID0gMCBhbmQgc2QgID0gMSJ9DQpnZ3Bsb3QoZGF0YSA9IGRhdGEuZnJhbWUoeCA9IGMoLTMsIDMpKSwgYWVzKHgpKSArDQogIHN0YXRfZnVuY3Rpb24oZnVuID0gZG5vcm0sIG4gPSAxMDEsIGFyZ3MgPSBsaXN0KG1lYW4gPSAwLCBzZCA9IDEpKSArIHlsYWIoIiIpICsNCiAgc2NhbGVfeV9jb250aW51b3VzKGJyZWFrcyA9IE5VTEwpDQpgYGANCg0KDQojIyBMaW5lYXIgbW9kZWxzIGluIHRoZSBHYXVzc2lhbiBmYW1pbHkNCg0KPiBTYW1lIHByaW5jaXBsZXMsIGRpZmZlcmVudCBuYW1lcw0KDQoqIExpbmVhciByZWdyZXNzaW9uDQogICogY29udGludW91cyByZXNwb25zZQ0KICAqIG9uZSBvciBtb3JlIGNvbnRpbnVvdXMgcHJlZGljdG9ycw0KKiBBbmFseXNpcyBvZiBWYXJpYW5jZSAoQU5PVkEpDQogICogY29udGludW91cyByZXNwb25zZQ0KICAqIGNhdGVnb3JpY2FsIHByZWRpY3RvcnMNCiogQW5hbHlzaXMgb2YgQ292YXJpYW5jZSAoQU5DT1ZBKQ0KICAqIGNvbnRpbnVvdXMgcmVzcG9uc2UNCiAgKiBBIG1peCBvZiBjb250aW51b3VzIGFuZCBjYXRlZ29yaWNhbCBwcmVkaWN0b3JzDQogICogU3BlY2lhbCBjYXNlIHdpdGggc3BlY2lhbCBhc3N1bXB0aW9ucw0KDQojIyMgWW91IGhhdmUgc2VlbiB0aGVzZSBzdGF0aXN0aWNhbCB0ZXN0cyBpbiBwcmV2aW91cyBsZWN0dXJlcw0KDQpgYGB7ciB0ZXN0c30NCnQudGVzdChIZWlnaHQgfiBTZXgsIHN1cnZleSkNCmthYmxlKGFub3ZhKGxtKEhlaWdodCB+IFNleCwgc3VydmV5KSksIGRpZ2l0cyA9IDIpDQpgYGANCg0KQSBvbmUtd2F5IEFOT1ZBIGlzIG1hdGhlbWF0aWNhbGx5IGlkZW50aWNhbCB0byBhIHQtdGVzdA0KDQoNCj4gSW4gdGhpcyBtb2R1bGUsIGRvbuKAmXQgZm9jdXMgb24gbWVtb3Jpc2luZyB3aGF0IGtpbmQgb2YgdGVzdCBmaXRzIHdoYXQga2luZHMgb2YgZGF0YQ0KDQpUaGV5IGFyZSBhbGwgdmFyaWFudHMgb24gZ2VuZXJhbCBsaW5lYXIgbW9kZWxzIGFueXdheS4uLg0KDQoqIFdlIGFyZSBpbnRlcmVzdGVkIGluICoqc2xvcGVzKiogYW5kICh0byBhIGxlc3NlciBleHRlbnQpIGludGVyY2VwdHMNCiogVW5kZXJzdGFuZCBob3cgdGhlc2UgbW9kZWxzIHJlbGF0ZSB0byB5b3VyICpoeXBvdGhlc2VzICYgZXhwZXJpbWVudGFsIGRlc2lnbioNCg0KKioqDQoNCiMgUHJldmlvdXNseSwgd2UgcGFyYW1ldHJpc2VkIHNsb3BlcyBhbmQgaW50ZXJjZXB0cyBvZiBzaW1wbGUgbGluZWFyIG1vZGVscw0KDQpXaXRoIG9uZSBwcmVkaWN0b3IgdmFyaWFibGUNCg0KJFkgPSBcYmV0YV8wICsgXGJldGFfMSBYJA0KDQp3aGVyZSB0aGUgcGFyYW1ldGVycyAkXGJldGFfMCQgID0gaW50ZXJjZXB0IGFuZCAkXGJldGFfMSQgPSBzbG9wZQ0KDQpgYGB7cn0NCmdncGxvdCh0cmVlcywgYWVzKEhlaWdodCwgR2lydGgpKSArDQogIGdlb21fc21vb3RoKG1ldGhvZCA9ICJsbSIsIHNlID0gRikgKw0KICB4bGFiKCJQcmVkaWN0b3IgdmFyaWFibGUsIFgiKSArDQogIHlsYWIoIlJlc3BvbnNlIHZhcmlhYmxlLCBZIikgKw0KICB0aGVtZShheGlzLnRpY2tzID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBheGlzLnRleHQgPSBlbGVtZW50X2JsYW5rKCkpIA0KYGBgDQoNCiMgUGFyYW1ldGVycyBvZiBhIGxpbmVhciBtb2RlbCBjYW4gYmUgKipyYW5kb20qKiBvciAqKmZpeGVkKioNCg0KKiBJbXBvcnRhbnQgdG8gY29uc2lkZXIgd2hlbiBkZXNpZ25pbmcgZXhwZXJpbWVudHMg4oCTIHlvdSBkZWNpZGUhDQoqIENoYW5nZXMgdGhlIGh5cG90aGVzZXMgJiBpbnRlcnByZXRhdGlvbiBvZiByZXN1bHRzDQoqIEZpeGVkOg0KICBDb25zdGFudCBhY3Jvc3MgYWxsIGdyb3VwaW5ncyAoaG93IG9ic2VydmF0aW9ucyBhcmUgcmVsYXRlZCDigJMgZS5nLiBwb3B1bGF0aW9ucyBvZiBpbmRpdmlkdWFscykNCiogUmFuZG9tOg0KIFZhcnkgYWNyb3NzIGdyb3VwaW5ncywgb3IgcmVwcmVzZW50IGEgcmFuZG9tIHNhbXBsZSBmcm9tIGEgbGFyZ2VyIHBvcHVsYXRpb24NCg0KIyMgRml4ZWQgc2xvcGVzIGxpbmVhciBtb2RlbA0KDQoqIEFsbCBncm91cHMgKEZyZXF1ZW5jeSBvZiBleGVyY2lzZSBpbiB0aGlzIGV4YW1wbGUpIGhhdmUgdGhlIHNhbWUgc2xvcGUNCiogUmVzcG9uc2Ugb2YgZ3JvdXBzIHRvIHByZWRpY3RvciB2YXJpYWJsZSB4IGlzIGNvbnNpc3RlbnQgYWNyb3NzIGdyb3Vwcw0KKiBDYW5ub3QgZXh0cmFwb2xhdGUgYmV5b25kIGdyb3Vwcw0KKiBUaHVzIGNhbiBvbmx5IGRyYXcgY29uY2x1c2lvbnMgZm9yIHRoZXNlIHBlb3BsZQ0KDQpgYGB7ciBmaXhlZCBzbG9wZXMgbW9kZWwsIGZpZy5jYXAgPSAiSGVpZ2h0IG9mIHN0dWRlbnRzIG9mIHZhcmlvdXMgZnJlcXVlbmNpZXMgb2YgZXhlcmNpc2UgYW5kIGhhbmQgd2lkdGgifQ0KZml0bG0gPC0gY29lZihsbShIZWlnaHQgfiBXci5IbmQgKyBFeGVyLCBkYXRhID0gc3VydmV5KSkNCg0KZ2dwbG90KHN1cnZleSwgYWVzKFdyLkhuZCwgSGVpZ2h0LCBjb2xvciA9IEV4ZXIpKSArDQogIGdlb21fcG9pbnQoKSArDQogIGdlb21fYWJsaW5lKGludGVyY2VwdCAgPSBmaXRsbVsxXSwgc2xvcGUgPSBmaXRsbVsyXSwgY29sb3VyID0gdmlyaWRpczo6dmlyaWRpcygzKVsxXSwgbHdkID0gMSkgKw0KICBnZW9tX2FibGluZShpbnRlcmNlcHQgID0gZml0bG1bMV0rZml0bG1bM10sIHNsb3BlID0gZml0bG1bMl0sIGNvbG91ciA9IHZpcmlkaXM6OnZpcmlkaXMoMylbMl0sIGx3ZCA9IDEpKw0KICBnZW9tX2FibGluZShpbnRlcmNlcHQgID0gZml0bG1bMV0rZml0bG1bNF0sIHNsb3BlID0gZml0bG1bMl0sICBjb2xvdXIgPSB2aXJpZGlzOjp2aXJpZGlzKDMpWzNdLCBsd2QgPSAxKSArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iKQ0KYGBgDQoNCiMjIFJhbmRvbSBzbG9wZXMgbGluZWFyIG1vZGVsDQoNCiogQWxsIGdyb3VwcyBoYXZlIGRpZmZlcmVudCBzbG9wZXMNCiogUmVzcG9uc2Ugb2YgZ3JvdXBzIHRvIHByZWRpY3RvciB2YXJpYWJsZSB4IHZhcmllcyBhbW9uZyBncm91cHMNCiogQ2FuIGV4dHJhcG9sYXRlIGJleW9uZCBvYnNlcnZlZCBncm91cHMNCiAgKiBFLmcuIGNvbG91cnMgcmVwcmVzZW50IG11bHRpcGxlIG9ic2VydmF0aW9ucyBvZiAxIHBlcnNvbg0KKiBJZGVudGl0eSBvZiBwZXJzb24gaXMgbm90IHRoZSBtYWluIHF1ZXN0aW9uDQoqIFRodXMgY2FuIGdlbmVyYWxpc2UgdG8gb3RoZXIgcGVvcGxlIG91dHNpZGUgc3R1ZHkNCg0KYGBge3IgcmFuZG9tIHNsb3BlcyBtb2RlbCwgZmlnLmNhcCA9ICJFYWNoIGdyb3VwIGhhcyBhIGRpZmZlcmVudCBzbG9wZSJ9DQpnZ3Bsb3Qoc3VydmV5LCBhZXMoV3IuSG5kLCBIZWlnaHQsIGNvbG91ciA9IEV4ZXIpKSArIA0KICBnZW9tX3BvaW50KCkgKw0KICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSAiYm90dG9tIikgKw0KICBnZW9tX3Ntb290aChtZXRob2QgPSAibG0iLCBzZSA9IEZBTFNFKQ0KYGBgDQoNCiMjIERpc3Rpbmd1aXNoaW5nIGJldHdlZW4gRml4ZWQgb3IgcmFuZG9tIGlzIGltcG9ydGFudA0KDQo+IENoYW5nZXMgdGhlIHdheSBBbmFseXNpcyBvZiBWYXJpYW5jZSAoQU5PVkEpIGlzIGNhbGN1bGF0ZWQNCg0KKiBDaGFuZ2VzIGZvcm11bGEgZm9yIE1lYW4gU3VtIG9mIFNxdWFyZXMNCiogQ2hhbmdlcyBudW1lcmF0b3IvZGVub21pbmF0b3Igb2YgRiByYXRpbw0KKiBUaHVzIGNoYW5nZXMgaW50ZXJwcmV0YXRpb24NCiogQ2FsbGVkIFR5cGUgSSAoZml4ZWQpLCBJSSAocmFuZG9tKSBvciBJSUkgKG1peGVkKQ0KDQoqKioNCg0KIyB0LXRlc3RzLCBzaW1wbGUgbGluZWFyIG1vZGVscywgQU5PVkENCg0KKiBTbyBmYXIgYWxsIG9mIHRoZXNlIGhhdmUgaGFkIDEgcHJlZGljdG9yIHZhcmlhYmxlIGFuZCAxIHJlc3BvbnNlIHZhcmlhYmxlDQoqIFRoZSBwcmVkaWN0b3IgdmFyaWFibGUgd2FzIGNvbnRpbnVvdXMNCiogUHJlZGljdG9yIHZhcmlhYmxlcyBjYW4gYWxzbyBiZSBjYXRlZ29yaWNhbCAoY2FsbGVkIGZhY3RvcnMgaW4gUikNCiogQ2FuIGhhdmUgdHdvIG9yIG1vcmUgc3ViLWNhdGVnb3JpZXMgKGNhbGxlZCBsZXZlbHMgaW4gUikNCiAgKiBFLmcuIHNleDogbWFsZS9mZW1hbGUsIGxldmVsIG9mIGRydWc6IGxvdy9tZWRpdW0vaGlnaCAgDQoNClR5cGljYWxseSwgdGhlIHJlbGF0aW9uc2hpcCBiZXR3ZWVuIGEgY29udGludW91cyByZXNwb25zZSB2YXJpYWJsZSAmIGNhdGVnb3JpY2FsIHByZWRpY3RvcnMgaXMgYW5hbHlzZWQgdXNpbmcgYSBzcGVjaWFsIGNhc2Ugb2Ygc3RhdGlzdGljYWwgbW9kZWxzOiAgDQpPbmUtd2F5IEFuYWx5c2lzIG9mIFZhcmlhbmNlICANCk9uZS13YXkgYmVjYXVzZSB0aGVyZSBpcyBvbmUgcHJlZGljdG9yIHZhcmlhYmxlICh3aXRoIGFueSBudW1iZXIgb2YgbGV2ZWxzKSANCg0KIyMgTm90ZSBvbiB0ZXJtaW5vbG9neQ0KDQpBbmFseXNpcyBvZiBWYXJpYW5jZSBpcyBhIG1pc2xlYWRpbmcgdGVybS4gV2FzIGludmVudGVkIGJ5IFJvbmFsZCBGaXNoZXIgYW5kIGNhbiByZWZlciB0byBob3cgZGF0YSBhcmUgc3ByZWFkIGFyb3VuZCB0aGUgbWVhbiAoKnZhcmlhbmNlKikgb3IgY29tcGFyaW5nIG1lYW5zICh2aWEgaG93IHNpbWlsYXIgdGhlaXIgdmFyaWFuY2VzIGFyZSkNCg0KIyBGaXhlZCBvbmUtd2F5IEFOT1ZBIHdpdGggMiBvciBtb3JlIGxldmVscw0KDQoqIGxldmVsID0gc3Vic2V0cyB3aXRoaW4gY2F0ZWdvcmllcw0KICAqIGUuZy4gbWFsZS9mZW1hbGUsIGxvdy9tZWRpdW0vaGlnaA0KKiBXZSBhcmUgdGVzdGluZyBtZWFucyBmb3IgZWFjaCBsZXZlbA0KKiBXaGF0IGlzIHRoZSBudWxsIGh5cG90aGVzaXM/DQoNCj4gQWxsIGxldmVscyBjb21lIGZyb20gdGhlIHNhbWUgcG9wdWxhdGlvbiAoaGF2ZSB0aGUgc2FtZSBtZWFuKQ0KDQojIyBQdWxzZSByYXRlIGFuZCBleGVyY2lzZQ0KDQpgYGB7ciBwdWxzZX0NCmdncGxvdChzdXJ2ZXksIGFlcyhFeGVyLCBQdWxzZSkpICsNCiAgZ2VvbV9ib3hwbG90KCkNCmBgYA0KDQpXZSBjYW4gZG8gYW4gQU5PVkEgYW5kIGdldCB0aGUgZm9sbG93aW5nIG91dHB1dDoNCg0KYGBge3IgcHVsc2UgYW5vdmF9DQpsbV9wdWxzZSA8LSBsbShQdWxzZSB+IEV4ZXIsIHN1cnZleSkNCmFub3ZhKGxtX3B1bHNlKQ0KYGBgDQoNCj4gQ29uY2x1c2lvbnM6IFdlIGNhbiByZWplY3QgdGhlIG51bGwgaHlwb3RoZXNpcyB0aGF0IHRoZXJlIGlzIG5vIGRpZmZlcmVuY2UgaW4gbWVhbiBwdWxzZSByYXRlIG9mIHN0dWRlbnRzIHdpdGggZGlmZmVyZW50IGFtb3VudCBvZiBleGVyY2lzZQ0KDQpSZXBvcnQgdGhlIGRlZ3JlZXMgb2YgZnJlZWRvbSwgdGhlIEYgcmF0aW8gYW5kIHRoZSBQIHZhbHVlIGxpa2UNCiQkRl97MiwxODl9ID0gMy4zOCwgUCA9IDAuMDM2JCQNCg0KIyMgVGhlIEFOT1ZBIHRhYmxlDQoNCnwgIFNvdXJjZSBvZiB2YXJpYXRpb24gIHwgU1MgfCBkZiB8IE1TIHwgRiB8IFAgfA0KfDotLS0tLS0tLS0tLS0tLS0tLS0tLS06fDotLTp8Oi0tOnw6LS06fDotOnwtLS18DQp8IFZhcmlhbmNlIGFtb25nIGdyb3VwcyB8IFNTUiB8IG51bWJlciBvZiBsZXZlbHMgLSAxIHwgJFxmcmFje1NTUn17ZGZ9JCB8ICRcZnJhY3tNU1J9e01TRX0kIHwgICB8DQp8IFZhcmlhbmNlIHdpdGhpbiBncm91cCB8IFNTRSB8IG51bWJlciBvZiBvYnNlcnZhdGlvbnMgLSAyIHwgJFxmcmFje1NTRX17ZGZ9JHwgICB8ICAgfA0KfCAgICAgICAgVG90YWwgZXJyb3IgICB8IFNTWSB8IHRvdGFsIG51bWJlciBvZiBvYnNlcnZhdGlvbnMgLSAxIHwgICAgfCAgIHwgICB8DQoNCiMjIENhbGN1bGF0aW5nIGdyb3VwIG1lYW5zDQoNCkNoZWNrIGBzdW1tYXJ5KClgIHRvIHNlZSBncm91cCBtZWFucw0KDQpgYGB7ciBncm91cCBtZWFuc30NCnN1bW1hcnkobG1fcHVsc2UpDQpgYGANCg0KKiBHcm91cHMgYXJlIGNhbGN1bGF0ZWQgaW4gYWxwaGFiZXRpY2FsIG9yZGVyIC0gSGVyZSAiRnJlcXVlbnQiIGdyb3VwIGlzIGNhbGN1bGF0ZWQgZmlyc3QNCiogYEVzdGltYXRlYCBjb2x1bW4gc2hvd3MgdGhlICoqZGlmZmVyZW5jZSBpbiBtZWFucyoqDQoqIFAgdmFsdWVzIHRlc3QgZGlmZmVyZW5jZXMgaW4gKipwYWlycyBvZiBtZWFucyoqIEJVVCBzaG91bGQgd2UgYmUgZG9pbmcgbXVsdGlwbGUgY29tcGFyaXNvbnMgKG5vKQ0KDQpNb2RlbCBjb2VmZmljaWVudHM6ICANCmBgYHtyIGNvZWZ9DQpjb2VmKGxtX3B1bHNlKQ0KYGBgDQoNClItY2FsY3VsYXRlZCBtZWFuczogDQpgYGB7ciBtZWFuc30NCiB0YXBwbHkoc3VydmV5JFB1bHNlLCBzdXJ2ZXkkRXhlciwgbWVhbiwgbmEucm0gPSBUKQ0KYGBgDQoNCk1hbnVhbGx5IGNhbGN1bGF0ZWQgbWVhbnMgZm9yICJOb25lIiBncm91cDogDQpgciBjb2VmKGxtX3B1bHNlKVsxXWAgKyBgciBjb2VmKGxtX3B1bHNlKVsyXWAgPSBgciBjb2VmKGxtX3B1bHNlKVsxXStjb2VmKGxtX3B1bHNlKVsyXWANCg0KTWFudWFsbHkgY2FsY3VsYXRlZCBtZWFucyBmb3IgIlNvbWUiIGdyb3VwOiANCmByIGNvZWYobG1fcHVsc2UpWzFdYCArIGByIGNvZWYobG1fcHVsc2UpWzNdYCA9IGByIGNvZWYobG1fcHVsc2UpWzFdK2NvZWYobG1fcHVsc2UpWzNdYA0KDQojIEFOT1ZBIGFuZCBoeXBvdGhlc2lzIHRlc3RpbmcNCg0KKipJbXBvcnRhbnQgdG8gcmVtZW1iZXI6KioNCg0KKiBBTk9WQSBpcyBhIHRlc3Qgb2YgbWVhbnMgKGFuYWx5c2lzIG9mIHZhcmlhbmNlIGFib3V0IHRoZSBtZWFuKQ0KKiBGLXJhdGlvIHRlbGxzIHlvdSB0aGF0IHRoZXJlIGlzIGEgZGlmZmVyZW5jZSBpbiB0aGUgbWVhbnMgYmV0d2VlbiBwYWlycyBvZiBncm91cHMgYnV0IE5PVCB3aGljaCBwYWlycyBhcmUgZGlmZmVyZW50DQoqIE5lZWQgcG9zdC1ob2MgdGVzdHMgbGlrZSBUdWtleeKAmXMgSG9uZXN0IFNpZ25pZmljYW50IERpZmZlcmVuY2VzIChub3QgY292ZXJlZCBpbiB0aGlzIG1vZHVsZSkNCg0KKioqDQoNCiMgTXVsdGlwbGUgcmVncmVzc2lvbg0KDQpXZSBjYW4gaW5jbHVkZSBtb3JlIHRoYW4gMSBwcmVkaWN0b3IgdmFyaWFibGUgaW4gb3VyIG1vZGVscw0KDQo+IE11bHRpcGxlIHJlZ3Jlc3Npb246IExpbmVhciBtb2RlbHMgd2l0aCB0d28gb3IgbW9yZSBwcmVkaWN0b3IgdmFyaWFibGVzDQoNCiogTW9kZWxzIHRoZSBlZmZlY3Qgb2YgbXVsdGlwbGUgcHJlZGljdG9ycyBvbiByZXNwb25zZQ0KKiBUd28td2F5IEFOT1ZBcyBldGMuIGFyZSBzcGVjaWFsIGNhc2VzIG9mIG11bHRpcGxlIHJlZ3Jlc3Npb24NCiogSWYgMyBjYXRlZ29yaWNhbCBwcmVkaWN0b3JzLCB0aGVuIHRocmVlLXdheSBBTk9WQSBldGPigKYNCiogV2l0aCBtb3JlIHByZWRpY3RvciB2YXJpYWJsZXMsIHRoZSBtb2RlbCBiZWNvbWVzIGNvbXBsZXgNCiAgKiBBbmQgcG90ZW50aWFsbHkgbGVzcyBpbmZvcm1hdGl2ZS9kaWZmaWN1bHQgdG8gaW50ZXJwcmV0DQogICogUmVtZW1iZXIgdGhlIHRyYWRlLW9mZiBiZXR3ZWVuIGdlbmVyYWxpdHkgJiBjb21wbGV4aXR5DQogICogS2VlcCBpdCBzaW1wbGUNCiAgDQojIyBIZWlnaHQgYW5kIGhhbmQgd2lkdGgNCg0KSW1hZ2luZSB3ZSBhc2tlZCB0aGUgY2xhc3Mg4oCYaXMgdGhlcmUgYSByZWxhdGlvbnNoaXAgYmV0d2VlbiB5b3VyIGhlaWdodCBhbmQgdGhlIHdpZHRoIG9mIHlvdXIgaGFuZD/igJkgIA0KVGhlIGxpbmVhciBtb2RlbCBpczoNCg0KJCQgaGVpZ2h0ICA9IFxiZXRhXzAgKyBcYmV0YV8xIGhhbmQgXHNwYWNlIHdpZHRoICsgXHZhcmVwc2lsb25faSQkDQoNCmBgYHtyIGhhbmQgaGVpZ2h0fQ0KaF9oYW5kIDwtIGdncGxvdChuYS5vbWl0KHN1cnZleSksIGFlcyhXci5IbmQsIEhlaWdodCkpICsNCiAgZ2VvbV9wb2ludCgpICsNCiAgeGxhYigiSGFuZCB3aWR0aCIpICArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iKQ0KaF9oYW5kDQpgYGANCg0KR29vZCwgYnV0IGxldCdzIGFzayBpcyBpdCBhbHNvIGltcG9ydGFudCB0byBjb25zaWRlciB0aGUgc2V4IG9mIHRoZSBzdHVkZW50Pw0KDQpgYGB7ciBoYW5kIGhlaWdodCBzZXh9DQpoX2hhbmQNCmhfaGFuZCArIGFlcyhjb2xvdXIgPSBTZXgpDQpgYGANCg0KPiBEb2VzIGluY2x1ZGluZyBpbmZvcm1hdGlvbiBhYm91dCBzZXggaW1wcm92ZSBvdXIgYWJpbGl0eSB0byBkZXRlY3QvdW5kZXJzdGFuZCBwYXR0ZXJucz8NCg0KVGhlIGxpbmVhciBtb2RlbCBub3cgaGFzIHR3byBwcmVkaWN0b3IgdmFyaWFibGVzIGFuZCBpcyB3cml0dGVuIGFzOg0KDQokJCBoZWlnaHQgID0gXGJldGFfMCArIFxiZXRhX3tzZXh9IGhhbmQgXHNwYWNlIHdpZHRoICsgXHZhcmVwc2lsb25faSQkDQoNClNpbmNlIFNleCBpcyBhIGNhdGVnb3JpY2FsIHByZWRpY3RvciB3aXRoIDIgbGV2ZWxzLCB0aGlzIG1vZGVsIG5vdyBkZXNjcmliZXMgdHdvIGxpbmVzIC0gb25lIGZvciBlYWNoIGxldmVsIG9mIHRoZSBwcmVkaWN0b3IgKG1hbGUvZmVtYWxlKQ0KDQojIyMgRG9lcyBzdHVkZW50IGhlaWdodCB2YXJ5IHdpdGggaGFuZCB3aWR0aCBhbmQgYmV0d2VlbiBzZXhlcz8NCg0KKiBDb250aW51b3VzIHJlc3BvbnNlDQoqIENhdGVnb3JpY2FsIHByZWRpY3Rvcg0KKiBDb250aW51b3VzIHByZWRpY3RvciAoYWxzbyBjYWxsZWQgY292YXJpYXRlKQ0KKiBDYW4gYmUgYW5hbHlzZWQgdXNpbmcgbXVsdGlwbGUgbGluZWFyIG1vZGVscw0KKiBUd28gdHlwZXM6DQogICogQWRkaXRpdmUgbW9kZWwgKCoqRml4ZWQgc2xvcGVzIG1vZGVsKiopDQogICogSW50ZXJhY3RpdmUgbW9kZWwgKCoqUmFuZG9tIHNsb3BlcyBtb2RlbCoqKQ0KICANCkFuYWx5c2lzIG9mIENvdmFyaWFuY2UgaXMgYSBzcGVjaWFsIGNhc2Ugd2l0aCB1bmlxdWUgYXNzdW1wdGlvbnMgKG5vdCBjb25zaWRlcmVkIGhlcmUpLCBlbHNlIGNhbGxlZCBhIGdlbmVyYWwgbGluZWFyIG1vZGVsDQoNCiMjIEZpeGVkIHNsb3BlcyAoYWRkaXRpdmUgbW9kZWwpDQoNCiogTm8gaW50ZXJhY3Rpb24gdGVybQ0KKiBTYW1lIHNsb3BlDQoqIEludGVyY2VwdCBmb3IgZWFjaCBzZXgNCg0KYGBge3Igc2FtZSBzbG9wZSwgZmlnLmNhcCA9ICJ0aGUgbGluZXMgYXJlIHBhcmFsbGVsIHRvIGVhY2ggb3RoZXIiLCAgZmlnLnNob3c9ImFzaXMifQ0KaF9oYW5kICsgDQogICBhZXMoY29sb3VyID0gU2V4KSArDQogIGdlb21fYWJsaW5lKGludGVyY2VwdCA9IDEzMi41NDQ1LCBzbG9wZSA9IDEuODc2MCAgLCBjb2xvdXIgPSB2aXJpZGlzTGl0ZTo6dmlyaWRpcygyKVsxXSwgbHdkPTIpICsgDQogIGdlb21fYWJsaW5lKGludGVyY2VwdCA9IDEzMi41NDQ1KzkuMzE2NCwgc2xvcGUgPSAxLjg3NjAgICwgY29sb3VyID12aXJpZGlzTGl0ZTo6dmlyaWRpcygyKVsyXSwgbHdkPTIpDQoNCmxtX2hoYW5kIDwtIGxtKEhlaWdodCB+IFdyLkhuZCArIFNleCwgc3VydmV5KQ0KY29lZihsbV9oaGFuZCkNCmBgYA0KDQpQYXJhbWV0cmlzZWQgc2xvcGUgZm9yIGZlbWFsZXM6ICANCipGZW1hbGUgaGVpZ2h0KiA9IGByIHJvdW5kKGNvZWYobG1faGhhbmQpWzFdLDMpYCArIGByIHJvdW5kKGNvZWYobG1faGhhbmQpWzJdLDMpYCAqaGFuZCB3aWR0aCoNCg0KUGFyYW1ldHJpc2VkIHNsb3BlIGZvciBtYWxlczogIA0KKk1hbGUgaGVpZ2h0KiA9IChgciByb3VuZChjb2VmKGxtX2hoYW5kKVsxXSwzKWAgKyBgciByb3VuZChjb2VmKGxtX2hoYW5kKVszXSwzKWApICsgYHIgcm91bmQoY29lZihsbV9oaGFuZClbMl0sMylgICpoYW5kIHdpZHRoKg0KDQo+IFJlbWVtYmVyIFIgc2hvd3MgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiBwYXJhbWV0ZXIgZXN0aW1hdGVzIHNvIHlvdSBuZWVkIHRvIGV4dHJhY3QgdGhlIGNvcnJlY3QgdmFsdWVzDQoNCiMjIFJhbmRvbSBzbG9wZXMgKGludGVyYWN0aXZlIG1vZGVsKQ0KDQpUaGUgcmFuZG9tIHNsb3BlcyBtb2RlbCBoYXMgaW4gaW50ZXJhY3Rpb24gdGVybS4gSW4gUiB0aGlzIGlzIGNvZGVkIGFzIGVpdGhlciBgbG0oSGVpZ2h0IH4gV3IuSG5kICogU2V4LCBzdXJ2ZXkpYCBvciBgbG0oSGVpZ2h0IH4gV3IuSG5kICsgU2V4ICsgV3IuSG5kOlNleCwgc3VydmV5KWAuDQoNClRoZSBsaW5lYXIgbW9kZWwgaXMgbm93Og0KDQokJCBoZWlnaHQgID0gXGJldGFfezBfe3NleH19ICsgXGJldGFfe3NleH0gaGFuZCBcc3BhY2Ugd2lkdGggKyBcdmFyZXBzaWxvbl9pJCQNCg0KYGBge3IgcmFuZG9tIHNsb3BlcywgZmlnLmNhcD0gIlRoZSBsaW5lcyBoYXZlIGRpZmZlcmVudCBzbG9wZXMgYW5kIGludGVyY2VwdHMiLCBmaWcuc2hvdz0iYXNpcyJ9DQpoX2hhbmQgKyBhZXMoY29sb3VyID0gU2V4KSArDQogIGdlb21fc21vb3RoKG1ldGhvZCA9ICJsbSIsIHNlID0gRiwgbHdkID0gMikgDQoNCmxtX2hoYW5kIDwtIHVwZGF0ZShsbV9oaGFuZCwgLiB+IC4gKyBXci5IbmQ6U2V4KQ0KY29lZihsbV9oaGFuZCkNCmBgYA0KDQpUbyBwYXJhbWV0cmlzZSB0aGUgbW9kZWwgd2Ugbm93IG5lZWQgdG8gY2FsY3VsYXRlIGRpZmZlcmVudCB2YWx1ZXMgZm9yIHNsb3Blcy4gSW4gdGhlIGNvZWZmaWNpZW50IGxpc3QsIGBXci5IbmQ6U2V4TWFsZWAgaXMgdGhlICoqZGlmZmVyZW5jZSBpbiB0aGUgdmFsdWUgb2YgdGhlIHNsb3BlIHJlbGF0aXZlIHRvIHRoZSBzbG9wZSBmb3IgZmVtYWxlKiogYFdyLkhuZGAuIFJlbWVtYmVyOiBmZW1hbGUgaXMgYWxwaGFiZXRpY2FsbHkgYmVmb3JlIG1hbGUgc28gUiBjYWxjdWxhdGVzIHRoZSB2YXJpYW5jZXMgZm9yIGZlbWFsZXMgZmlyc3QsIHRoZW4gbWFsZXMuDQoNClBhcmFtZXRyaXNlZCBzbG9wZSBmb3IgZmVtYWxlczogIA0KKkZlbWFsZSBoZWlnaHQqID0gYHIgcm91bmQoY29lZihsbV9oaGFuZClbMV0sMylgICsgYHIgcm91bmQoY29lZihsbV9oaGFuZClbMl0sMylgICpoYW5kIHdpZHRoKg0KDQpQYXJhbWV0cmlzZWQgc2xvcGUgZm9yIG1hbGVzOiAgDQoqTWFsZSBoZWlnaHQqID0gKGByIHJvdW5kKGNvZWYobG1faGhhbmQpWzFdLDMpYCBgciByb3VuZChjb2VmKGxtX2hoYW5kKVszXSwzKWApICsgKGByIHJvdW5kKGNvZWYobG1faGhhbmQpWzJdLDMpYCArIGByIHJvdW5kKGNvZWYobG1faGhhbmQpWzRdLDMpYCkgKmhhbmQgd2lkdGgqDQoNCiMjIFRoZSBtdWx0aXBsZSByZWdyZXNzaW9uIEFOT1ZBIHRhYmxlDQoNCj4gVmFyaWFuY2Ugb2YgcHJlZGljdG9ycyAoU1MpIGlzIHBhcnRpdGlvbmVkIG91dCBmcm9tIHRvdGFsIFNTIGluIG9yZGVyIGl0IGlzIGVudGVyZWQgaW4gdG8gUg0KDQpgYGB7ciBhbm92YSB0YWJsZSBoYW5kfQ0Ka2FibGUoYW5vdmEobG1faGhhbmQpLCBkaWdpdHMgPSAyKQ0KYGBgDQoNCiMjIFRoZSBBTk9WQSB0YWJsZSBmb3IgMiBwcmVkaWN0b3JzIGFuZCB0aGVpciBpbnRlcmFjdGlvbg0KDQp8ICBTb3VyY2Ugb2YgdmFyaWF0aW9uICB8IFNTIHwgZGYgfCBNUyB8IEYgfCBQIHwNCnw6LS0tLS0tLS0tLS0tLS0tLS0tLS0tOnw6LS06fDotLTp8Oi0tOnw6LTp8LS0tfA0KfCBGYWN0b3IgQSB8IFNTUiBvZiBBIHwgbnVtYmVyIG9mIGxldmVscyBvZiBBIC0gMSB8IHwgIHwgICB8DQp8IEZhY3RvciBCIHwgU1NSIG9mIEIgfCBudW1iZXIgb2YgbGV2ZWxzIG9mIEIgLSAxIHx8ICAgfCAgIHwNCnwgRmFjdG9yIEEgeCBCIHwgU1NSIG9mIEEgJiBCIHwgZGYgb2YgQSB4IGRmIG9mIEIgfHwgICB8ICAgfA0KfCBXaXRoaW4gZXJyb3IgfCBTU0UgfCBsZXZlbHMgb2YgQSB4IGxldmVscyBvZiBCIFggKG51bWJlciBvZiBvYnNlcnZhdGlvbnMgLSAxKSB8IHwgICB8ICAgfA0KfCAgVG90YWwgZXJyb3IgICB8IFNTWSB8IChsZXZlbHMgb2YgQSB4IGxldmVscyBvZiBCIFggbnVtYmVyIG9mIG9ic2VydmF0aW9ucykgLSAxIHwgICAgfCAgIHwgICB8DQoNCiMjIEludGVycHJldGluZyB0aGUgQU5PVkEgdGFibGUNCg0KPiBQKEludGVyYWN0aW9uIHRlcm0pID4gMC4wNSwgdGh1cyB0aGUgZWZmZWN0IG9mIGhhbmQgd2lkdGggb24NCnN0dWRlbnQgaGVpZ2h0IGlzIG5vdCBkZXBlbmRlbnQgb2YgdGhlIHNleCBvZiB0aGUgc3R1ZGVudA0KDQoNCmBgYHtyIGFub3ZhIHRhYmxlIGhhbmQgMn0NCmthYmxlKGFub3ZhKGxtX2hoYW5kKSwgZGlnaXRzID0gMikNCmBgYA0KDQojIyBUaGUgaW50ZXJhY3Rpb24gdGVybSBBOkINCg0KKiBNZWFzdXJlcyB0aGUgZGVwZW5kZW5jZSBvZiB0aGUgbGV2ZWwgb2Ygb25lIGZhY3RvciBvbiB0aGUgbGV2ZWwgb2YgdGhlIG90aGVyIGZhY3RvcnMNCiogSWYgaW50ZXJhY3Rpb24gdGVybSBpcyBub3Qgc2lnbmlmaWNhbnQ6DQogICogZWZmZWN0IG9mIG9uZSBmYWN0b3Igb24gb3RoZXIgaXMgYWRkaXRpdmUgKGluZGVwZW5kZW50IG9mIGVhY2ggb3RoZXIpDQoqIElmIHNpZ25pZmljYW50Og0KICAqIGluZGljYXRlcyBzeW5lcmdpc3RpYyBvciBhbnRhZ29uaXN0aWMgZWZmZWN0cyBiZXR3ZWVuIGZhY3RvcnMNCiAgKiBTaG91bGQgYmUgbWFpbiBjb25jbHVzaW9uIG9mIGFuYWx5c2lzDQo=</div>
+<footer>
+	    		<ul>
+	    		    <li><a href="https://jacintakongresearch.wordpress.com">Jacinta D. Kong</a></li>
+	        		<li><a href="mailto:kongj@tcd.ie">email</a></li>
+	        		<li><a href="https://github.com/jacintak">github.com/jacintak</a></li>
+				</ul>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("stats-lecture2.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
