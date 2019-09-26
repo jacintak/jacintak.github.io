@@ -20,25 +20,25 @@ blockquote {
 }
 
 /* format url links (unclicked) - grey*/
-a:link {
+/*a:link {
     text-decoration: none;
     color: #999;
 }
 
 /* format url links (clicked) - blue*/
-a:visited {
+/*a:visited {
     text-decoration: none;
     color: #8197b9;
 }
 
 /* url link when hovered - blue and underlined*/
-a:hover {
+/*a:hover {
     text-decoration: underline;
     color: #8197b9;
 }
 
 /* format url links when clicked- blue and underlined*/
-a:active {
+/*a:active {
     text-decoration: underline;
     color: #8197b9;
 }
