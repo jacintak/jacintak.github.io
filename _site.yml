@@ -29,7 +29,7 @@ output:
   html_document:
     toc: true # table of contents
     toc_float: true
-    theme: sandstone
+    theme: readable
     highlight: textmate
     include:
       after_body: footer.html
