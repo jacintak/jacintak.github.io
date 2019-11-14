@@ -25,6 +25,8 @@ navbar:
          href: https://jacintak.github.io/biostats/biostats-GLM2.html
        - text: "Lecture 3: Evaluating models"
          href: https://jacintak.github.io/biostats/biostats-GLM3.html
+    - text: "colRoz"
+      href: https://jacintak.github.io/colRoz/index.html
 output: 
   html_document:
     toc: true # table of contents
