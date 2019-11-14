@@ -26,9 +26,11 @@ navbar:
        - text: "Lecture 3: Evaluating models"
          href: https://jacintak.github.io/biostats/biostats-GLM3.html
     - text: "colRoz"
-      menu: # drop down menu
+      menu:
        - text: "Quick guide to colRoz"
          href: https://jacintak.github.io/colRoz/index.html
+       - text: "Warramaba palette"
+         href: https://jacintak.github.io/colRoz/warramaba-palette.html
 output: 
   html_document:
     toc: true # table of contents
