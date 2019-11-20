@@ -264,6 +264,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -579,9 +585,9 @@ Sharpe, P.J. &amp; DeMichele, D.W. (1977) Reaction kinetics of poikilotherm deve
 
 <footer>
 	    		<ul>
-	    		    <li><a href="https://jacintakongresearch.wordpress.com">Jacinta D. Kong</a></li>
-	        		<li><a href="mailto:kongj@tcd.ie">email</a></li>
-	        		<li><a href="https://github.com/jacintak">github.com/jacintak</a></li>
+	    		    <li><i class="fas fa-home"></i><a href="https://jacintakongresearch.wordpress.com"> Jacinta D. Kong</a></li>
+	        		<li><i class="fas fa-envelope"></i><a href="mailto:kongj@tcd.ie"> email</a></li>
+	        		<li><i class="fab fa-github"></i><a href="https://github.com/jacintak"> github.com/jacintak</a></li>
 				</ul>
 </footer>
 
