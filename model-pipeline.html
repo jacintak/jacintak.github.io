@@ -13,6 +13,7 @@
 
 <title>The model pipeline</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
@@ -25,8 +26,19 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -379,6 +391,9 @@ div.tocify {
       <a href="https://jacintak.github.io/biostats/r-exams-guide.html">Quick guide to R/exams</a>
     </li>
     <li>
+      <a href="https://jacintak.github.io/biostats/Drop_in_1.html">Introduction to R</a>
+    </li>
+    <li>
       <a href="https://jacintak.github.io/biostats/biostats-GLM1.html">Lecture 1: Simple linear models</a>
     </li>
     <li>
@@ -454,7 +469,7 @@ div.tocify {
 <p>There are many types of mechanistic models, but they all have one thing in common - they are grounded in first principles. Their function is to quantify the relationship between the traits of the organism and the environment. There are more comprehensive mechanistic modelling approaches, such as characterising the thermodynamic niche of an organism or metabolic theory like Dynamic Energy Budget models, but we won’t talk about those. Aside from their theoretical differences, on a practical level, they follow the same pipeline discussed here but differ in their data requirements. You can even link them and other frameworks in theoretical ecology together.</p>
 <hr />
 <div id="the-components" class="section level1 tabset">
-<h1>The components</h1>
+<h1 class="tabset">The components</h1>
 <p>At its most fundamental, a mechanistic modelling pipeline consists of three components:</p>
 <ol style="list-style-type: decimal">
 <li>Input data</li>
@@ -608,7 +623,7 @@ Sharpe, P.J. &amp; DeMichele, D.W. (1977) Reaction kinetics of poikilotherm deve
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

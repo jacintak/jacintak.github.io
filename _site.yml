@@ -18,6 +18,8 @@ navbar:
       menu: # drop down menu
        - text: "Quick guide to R/exams"
          href: https://jacintak.github.io/biostats/r-exams-guide.html
+       - text: "Introduction to R"
+         href: https://jacintak.github.io/biostats/Drop_in_1.html
        - text: "Lecture 1: Simple linear models"
          href: https://jacintak.github.io/biostats/biostats-GLM1.html
        - text: "Lecture 2: Multiple regression"
@@ -58,4 +60,3 @@ output:
     include:
       after_body: footer.html
     css: styles.css
-
