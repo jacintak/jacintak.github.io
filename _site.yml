@@ -30,24 +30,8 @@ navbar:
       menu:
        - text: "Quick guide to colRoz"
          href: https://jacintak.github.io/colRoz/index.html
-       - text: "Warramaba"
-         href: https://jacintak.github.io/colRoz/warramaba-palette.html
-       - text: "Lizards"
-         href: https://jacintak.github.io/colRoz/lizards-palette.html
-       - text: "Landscapes"
-         href: https://jacintak.github.io/colRoz/landscapes-palette.html
-       - text: "Birds"
-         href: https://jacintak.github.io/colRoz/birds-palette.html
-       - text: "Frogs"
-         href: https://jacintak.github.io/colRoz/frogs-palette.html
-       - text: "Snakes"
-         href: https://jacintak.github.io/colRoz/snakes-palette.html
-       - text: "Plants"
-         href: https://jacintak.github.io/colRoz/plants-palette.html
-       - text: "Fish"
-         href: https://jacintak.github.io/colRoz/fish-palette.html
-       - text: "Inverts"
-         href: https://jacintak.github.io/colRoz/inverts-palette.html
+       - text: "Palettes"
+         href: https://jacintak.github.io/colRoz/colRoz-palettes.html
   right:
     - icon: fa-github
       href: https://github.com/jacintak
