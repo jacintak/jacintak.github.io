@@ -14,11 +14,12 @@ navbar:
        - text: "Resources"
          href: model-resources.html
     - text: "Teaching intro statistics"
-      href: https://jacintak.github.io/biostats/index.html
       menu: # drop down menu
+       - text: "Introduction"
+         href: https://jacintak.github.io/biostats/index.html
        - text: "Quick guide to R/exams"
          href: https://jacintak.github.io/biostats/r-exams-guide.html
-       - text: "Introduction to R"
+       - text: "Setting up R"
          href: https://jacintak.github.io/biostats/Drop_in_1.html
        - text: "Lecture 1: Simple linear models"
          href: https://jacintak.github.io/biostats/biostats-GLM1.html
