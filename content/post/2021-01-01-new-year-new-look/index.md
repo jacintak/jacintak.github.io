@@ -1,10 +1,10 @@
 ---
 title: New Year, New Look!
 author: ~
-date: '2021-01-01'
+date: "2021-01-01"
 slug: []
 categories: []
-tags: [website, github, R, coding]
+tags: [website, github, R stats]
 subtitle: ''
 summary: ''
 authors: []

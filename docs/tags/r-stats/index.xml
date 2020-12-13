@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>code | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/tags/code/</link>
-      <atom:link href="https://jacintak.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
-    <description>code</description>
+    <title>R stats | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/tags/r-stats/</link>
+      <atom:link href="https://jacintak.github.io/tags/r-stats/index.xml" rel="self" type="application/rss+xml" />
+    <description>R stats</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-192.png</url>
-      <title>code</title>
-      <link>https://jacintak.github.io/tags/code/</link>
+      <title>R stats</title>
+      <link>https://jacintak.github.io/tags/r-stats/</link>
     </image>
     
     <item>

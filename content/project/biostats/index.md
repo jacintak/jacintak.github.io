@@ -13,7 +13,7 @@ slides:
 summary: Resources for teaching undergraduate biostatistics
 tags:
 - teaching
-- code
+- R stats
 title: Teaching biostatistics
 url_code: ""
 url_pdf: ""
