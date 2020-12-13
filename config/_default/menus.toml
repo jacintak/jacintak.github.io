@@ -19,10 +19,10 @@
   url = "#publications"
   weight = 40
 
-#[[main]]
-#  name = "Courses"
-#  url = "courses/"
-#  weight = 0
+[[main]]
+  name = "Teaching"
+  url = "#blank"
+  weight = 50
 
 [[main]]
   name = "Contact"

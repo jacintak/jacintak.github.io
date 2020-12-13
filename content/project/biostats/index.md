@@ -1,6 +1,6 @@
 ---
 date: "2020-12-13T00:00:00Z"
-external_link: "https://jacintak.github.io/biostats"
+external_link: https://github.com/jacintak/biostats/tree/master/biostats.tutorials"
 image:
   caption: 
   focal_point: Smart
@@ -10,11 +10,11 @@ links:
   name: Follow
   url: https://twitter.com/jacintakong
 slides: 
-summary: Resources for teaching undergraduate biostatistics
+summary: learnr tutorials for teaching undergraduate biostatistics
 tags:
 - teaching
 - R stats
-title: Teaching biostatistics
+title: Biostatistics tutorials
 url_code: ""
 url_pdf: ""
 url_slides: ""
