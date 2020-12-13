@@ -123,7 +123,7 @@
     
       <meta property="article:published_time" content="2020-12-13T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-12-13T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2020-12-13T17:31:32&#43;00:00">
   
 
   
@@ -156,7 +156,7 @@
   ],
   
   "datePublished": "2020-12-13T00:00:00Z",
-  "dateModified": "2020-12-13T00:00:00Z",
+  "dateModified": "2020-12-13T17:31:32Z",
   
   "author": {
     "@type": "Person",
@@ -464,6 +464,8 @@
     
     
       
+          Last updated on
+      
     
     13 Dec 2020
   </span>
@@ -566,11 +568,11 @@
 <hr>
 <h1 id="resources-for-forcasting">Resources for forcasting</h1>
 <p>A good model needs good input data!<br>
-A pretty important component of modelling species responses to environmental variables are the environmental variables themselves. In fact, it's already half the data. Ideally, you would have climatic data at the scale of the target organism, which I will generally refer to as <strong>microclimate</strong>, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as <strong>macroclimate</strong>, then there are some solutions for generating microclimate data.</p>
+A pretty important component of modelling species responses to environmental variables are the environmental variables themselves. In fact, it&rsquo;s already half the data. Ideally, you would have climatic data at the scale of the target organism, which I will generally refer to as <strong>microclimate</strong>, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as <strong>macroclimate</strong>, then there are some solutions for generating microclimate data.</p>
 <p>Most experimental biologists will have access to plenty of data on organism traits but may not have the right environmental data for a model. The good news is with the increasing ease of generating and storing big data, data is now more accessible than ever before!</p>
 <hr>
 <h2 id="macroclimate">Macroclimate</h2>
-<p>If you don't have access to gridded weather station data for your area of interest, there are some publicly available datasets online for various environmental variables at various scales and resolutions:</p>
+<p>If you don&rsquo;t have access to gridded weather station data for your area of interest, there are some publicly available datasets online for various environmental variables at various scales and resolutions:</p>
 <ul>
 <li><a href="http://www.worldclim.org/">WorldClim</a></li>
 <li><a href="https://www.climond.org/">CliMond</a> with CLIMEX and Bioclim datasets</li>
@@ -600,18 +602,18 @@ A pretty important component of modelling species responses to environmental var
 <ul>
 <li>The Insect Developmental Database (<a href="https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&amp;ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134">IDD</a>) contains temperature-rate data for mostly insect species of agricultural interest</li>
 <li>For physiological limits <a href="https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7">GlobTherm</a> is a great initiative but covers CtMax and CtMin only.</li>
-<li>A few recent metaanalyses have combed through the thermal biology literature so you don't have to! Then you can extract the information you want. Isn't open, reproducible science great? Here's a recent <a href="https://datadryad.org/resource/doi:10.5061/dryad.56s5d84">example</a></li>
+<li>A few recent metaanalyses have combed through the thermal biology literature so you don&rsquo;t have to! Then you can extract the information you want. Isn&rsquo;t open, reproducible science great? Here&rsquo;s a recent <a href="https://datadryad.org/resource/doi:10.5061/dryad.56s5d84">example</a></li>
 <li>Dell et al. 2013 complied a <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/12-2060.1">dataset</a> on various biological/ecological traits measured at different tempertures for species from all habitats.</li>
 </ul>
 <hr>
 <h1 id="r-packages-for-modelling">R packages for modelling</h1>
 <p>In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!<br>
 <a href="https://cran.r-project.org/web/packages/devRate/index.html"><code>devRate</code></a> is a package with commonly used temperature-rate functions, from statistical functions to biophysical ones. You can get it from CRAN.</p>
-<p>There is a similar package called <a href="https://github.com/padpadpadpad/rTPC"><code>rTPC</code></a>. It's not on CRAN but is available on GitHub.</p>
+<p>There is a similar package called <a href="https://github.com/padpadpadpad/rTPC"><code>rTPC</code></a>. It&rsquo;s not on CRAN but is available on GitHub.</p>
 <h2 id="nichemapr-deb--biophysical-ecology">NicheMapR, DEB &amp; biophysical ecology</h2>
 <p>Fortunately, the NicheMapR package is a pretty complete toolkit to model the biology of an organism based on its environment and available resources. Not only does it have a microclimate model but it also has an implementation of the standard DEB model and a biophysical heat and water budget model for ecotherms and endotherms. All that is missing are the correct input parameters.</p>
-<p>Heat and/or water budget equations are useful for calculating the body temperature of an organism but don't measure growth or development. You could use the estimates of body temperture for calculating development/growth rates but for most small ectotherms that are isothermic, this seems a bit excessive.</p>
-<h4 id="deb-parameters-and-addmypet">DEB parameters and Add-My-Pet</h4>
+<p>Heat and/or water budget equations are useful for calculating the body temperature of an organism but don&rsquo;t measure growth or development. You could use the estimates of body temperture for calculating development/growth rates but for most small ectotherms that are isothermic, this seems a bit excessive.</p>
+<h4 id="deb-parameters-and-add-my-pet">DEB parameters and Add-My-Pet</h4>
 <p>You can find standard DEB parameters at <a href="https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/">Add-My-Pet</a> and there is a vignette in NicheMapR which goes through the ectotherm model, the DEB model and how to use the DEB parameters from Add-My-Pet in NicheMapR.</p>
 <hr>
 <h1 id="international-symposium-and-thematic-school-on-deb-theory-for-metabolic-organisation">International Symposium and Thematic School on DEB Theory for Metabolic Organisation</h1>
@@ -777,11 +779,11 @@ If there are other useful datasets or links not listed here, let me know!</p>
       
       <li><a href="/project/temperature-dependence/">Thermal dependence of biological rates</a></li>
       
+      <li><a href="/talk/iea2021/">IEA2021</a></li>
+      
       <li><a href="/publication/2019-ptrsb/">Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism</a></li>
       
       <li><a href="/publication/2018-inte-zool/">Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</a></li>
-      
-      <li><a href="/publication/2016-cois/">Mechanistic models for predicting insect responses to climate change</a></li>
       
     </ul>
   </div>
@@ -846,7 +848,7 @@ If there are other useful datasets or links not listed here, let me know!</p>
 
 
   
-  <span><a href="/authors/admin/">Jacinta Kong</a></span>, <span><a href="/authors/jason-k.-axford/">Jason K. Axford</a></span>, <span><a href="/authors/ary-a.-hoffmann/">Ary A. Hoffmann</a></span>, <span><a href="/authors/michael-r.-kearney/">Michael R. Kearney</a></span>
+  <span><a href="/authors/admin/">Jacinta Kong</a></span>, <span><a href="/authors/jason-k.-axford/">Jason K. Axford</a></span>, <span><a href="/authors/ary-a.-hoffmann/">Ary A. Hoffmann</a></span>, <span><a href="/authors/michael-r.-kearney./">Michael R. Kearney</a></span>
 
       </div>
       

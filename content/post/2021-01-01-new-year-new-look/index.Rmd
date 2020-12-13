@@ -1,7 +1,7 @@
 ---
 title: New Year, New Look!
 author: ~
-date: '2021-1-01'
+date: '2021-01-01'
 slug: []
 categories: []
 tags: [website, github, R, coding]
@@ -15,6 +15,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+publishDate: "2020-12-13"
 ---
 
 # Welcome!

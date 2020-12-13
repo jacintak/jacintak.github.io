@@ -1,5 +1,5 @@
 ---
-abstract: Abstract for IEA 2021
+abstract: I will be at IEA 2021
 address:
 all_day: false
 authors: []
@@ -20,7 +20,7 @@ location: UCC, Cork, Ireland
 math: false
 projects:
 - temperature-dependence
-publishDate: ""
+publishDate: "2020-12-13"
 slides: 
 summary: 
 tags: [postdoc, conference, ectotherms, temperature]
