@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jacinta&#39;s Website</title>
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <description>Jacinta&#39;s Website</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Jacinta&#39;s Website</title>
+      <link>/</link>
+    </image>
+    
+    <item>
+      <title>A toolbox for trait-based forecasting</title>
+      <link>/project/toolbox/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/toolbox/</guid>
+      <description>&lt;h1 id=&#34;tools-for-forcasting-or-predicting&#34;&gt;Tools for forcasting or predicting&lt;/h1&gt;
+&lt;p&gt;I am interested in developing a toolbox for biologists to make trait-based predictions or forecasts about how ectotherms respond to environmental change that are grounded in theory. Fostering stronger links between our understanding of terrestrial ectotherm thermal biology and the aquatic realm is important to identify general patterns.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;resources-for-forcasting&#34;&gt;Resources for forcasting&lt;/h1&gt;
+&lt;p&gt;A good model needs good input data!&lt;br&gt;
+A pretty important component of modelling species responses to environmental variables are the environmental variables themselves. In fact, it&#39;s already half the data. Ideally, you would have climatic data at the scale of the target organism, which I will generally refer to as &lt;strong&gt;microclimate&lt;/strong&gt;, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as &lt;strong&gt;macroclimate&lt;/strong&gt;, then there are some solutions for generating microclimate data.&lt;/p&gt;
+&lt;p&gt;Most experimental biologists will have access to plenty of data on organism traits but may not have the right environmental data for a model. The good news is with the increasing ease of generating and storing big data, data is now more accessible than ever before!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;macroclimate&#34;&gt;Macroclimate&lt;/h2&gt;
+&lt;p&gt;If you don&#39;t have access to gridded weather station data for your area of interest, there are some publicly available datasets online for various environmental variables at various scales and resolutions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.worldclim.org/&#34;&gt;WorldClim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.climond.org/&#34;&gt;CliMond&lt;/a&gt; with CLIMEX and Bioclim datasets&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cru.uea.ac.uk/&#34;&gt;Climatic Research Unit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;microclimate&#34;&gt;Microclimate&lt;/h2&gt;
+&lt;p&gt;There are currently a few publicly available datasets of pre-calculated microclimate grids. All these examples were made using &lt;code&gt;NicheMapR&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nature.com/articles/sdata20146&#34;&gt;microlim&lt;/a&gt; for global scale&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://knb.ecoinformatics.org/knb/d1/mn/v2/object/knb.92484.39&#34;&gt;MicroclimOz&lt;/a&gt; for Australia only (the lucky country)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://knb.ecoinformatics.org/view/urn:uuid:b8a6dbfd-3a97-4a24-91d5-1648fdba1648&#34;&gt;MicroclimUS&lt;/a&gt; for USA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;microclimate-simulation-packages-for-r&#34;&gt;Microclimate simulation packages for &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;There are a few packages for &lt;code&gt;R&lt;/code&gt; to simulate microclimates from gridded macroclimate data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mrke.github.io&#34;&gt;NicheMapR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13093&#34;&gt;Microclima&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://trenchproject.github.io/tools/TrenchR/&#34;&gt;TrenchR&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The one I used in my work is &lt;code&gt;NicheMapR&lt;/code&gt;. The default function to generate microclimate in &lt;code&gt;NicheMapR&lt;/code&gt; uses the Climatic Research Unit dataset to generate default microclimate output. I used input data at a higher spatial and temporal resolution than the default setting, in addition to querying gridded soil type data. Although the input data to run my scripts is not available, &lt;code&gt;NicheMapR&lt;/code&gt; was used to generate the microclim and MicroclimOz datasets which are publicly available under certain soil type parameters.&lt;/p&gt;
+&lt;h3 id=&#34;things-to-consider&#34;&gt;Things to consider&lt;/h3&gt;
+&lt;p&gt;Check if the environmental datasets are at the resolution and scale appropriate for your intended purposes. If you want to simulate microclimate, you need to make sure you have all the environmental variables needed for the microclimate package: temperature, precipitation, soil type, topography, wind speed, solar radiation etc. You may have to collate input data from multiple sources.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traits&#34;&gt;Traits&lt;/h2&gt;
+&lt;p&gt;There are even a few databases for organism trait data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Insect Developmental Database (&lt;a href=&#34;https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&amp;amp;ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134&#34;&gt;IDD&lt;/a&gt;) contains temperature-rate data for mostly insect species of agricultural interest&lt;/li&gt;
+&lt;li&gt;For physiological limits &lt;a href=&#34;https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7&#34;&gt;GlobTherm&lt;/a&gt; is a great initiative but covers CtMax and CtMin only.&lt;/li&gt;
+&lt;li&gt;A few recent metaanalyses have combed through the thermal biology literature so you don&#39;t have to! Then you can extract the information you want. Isn&#39;t open, reproducible science great? Here&#39;s a recent &lt;a href=&#34;https://datadryad.org/resource/doi:10.5061/dryad.56s5d84&#34;&gt;example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dell et al. 2013 complied a &lt;a href=&#34;https://esajournals.onlinelibrary.wiley.com/doi/10.1890/12-2060.1&#34;&gt;dataset&lt;/a&gt; on various biological/ecological traits measured at different tempertures for species from all habitats.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;r-packages-for-modelling&#34;&gt;R packages for modelling&lt;/h1&gt;
+&lt;p&gt;In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!&lt;br&gt;
+&lt;a href=&#34;https://cran.r-project.org/web/packages/devRate/index.html&#34;&gt;&lt;code&gt;devRate&lt;/code&gt;&lt;/a&gt; is a package with commonly used temperature-rate functions, from statistical functions to biophysical ones. You can get it from CRAN.&lt;/p&gt;
+&lt;p&gt;There is a similar package called &lt;a href=&#34;https://github.com/padpadpadpad/rTPC&#34;&gt;&lt;code&gt;rTPC&lt;/code&gt;&lt;/a&gt;. It&#39;s not on CRAN but is available on GitHub.&lt;/p&gt;
+&lt;h2 id=&#34;nichemapr-deb--biophysical-ecology&#34;&gt;NicheMapR, DEB &amp;amp; biophysical ecology&lt;/h2&gt;
+&lt;p&gt;Fortunately, the NicheMapR package is a pretty complete toolkit to model the biology of an organism based on its environment and available resources. Not only does it have a microclimate model but it also has an implementation of the standard DEB model and a biophysical heat and water budget model for ecotherms and endotherms. All that is missing are the correct input parameters.&lt;/p&gt;
+&lt;p&gt;Heat and/or water budget equations are useful for calculating the body temperature of an organism but don&#39;t measure growth or development. You could use the estimates of body temperture for calculating development/growth rates but for most small ectotherms that are isothermic, this seems a bit excessive.&lt;/p&gt;
+&lt;h4 id=&#34;deb-parameters-and-addmypet&#34;&gt;DEB parameters and Add-My-Pet&lt;/h4&gt;
+&lt;p&gt;You can find standard DEB parameters at &lt;a href=&#34;https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/&#34;&gt;Add-My-Pet&lt;/a&gt; and there is a vignette in NicheMapR which goes through the ectotherm model, the DEB model and how to use the DEB parameters from Add-My-Pet in NicheMapR.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;international-symposium-and-thematic-school-on-deb-theory-for-metabolic-organisation&#34;&gt;International Symposium and Thematic School on DEB Theory for Metabolic Organisation&lt;/h1&gt;
+&lt;p&gt;Interested in learning Dynamic Energy Budget modelling? There is an international symposium, tele-course and school/workshop that is an intensive course in DEB and its applications. The symposium is held every two years. The most recent one was &lt;a href=&#34;https://deb2019.sciencesconf.org/&#34;&gt;April 2019&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With the resources available you can pretty much develop a mechanistic model without collecting your own data.&lt;br&gt;
+If there are other useful datasets or links not listed here, let me know!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New Year, New Look!</title>
+      <link>/post/2020-12-13-new-year-new-look/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-12-13-new-year-new-look/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;welcome&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome!&lt;/h1&gt;
+&lt;p&gt;After banging my head against &lt;code&gt;blogdown&lt;/code&gt; and Hugo for several months, I think I understand enough about it to refresh my site.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Predicting ectotherm life cycles</title>
+      <link>/project/life-cycles/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/life-cycles/</guid>
+      <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Teaching biostatistics</title>
+      <link>/project/biostats/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/biostats/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thermal dependence of biological rates</title>
+      <link>/project/temperature-dependence/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/temperature-dependence/</guid>
+      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
+&lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism</title>
+      <link>/publication/2019-ptrsb/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/2019-ptrsb/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Insect life cycles are adapted to a seasonal climate by expressing alternative voltinism phenotypes—the number of generations in a year. Variation in voltinism phenotypes along latitudinal gradients may be generated by developmental traits at critical life stages, such as eggs. Both voltinism and egg development are thermally determined traits, yet independently derived models of voltinism and thermal adaptation refer to the evolution of dormancy and thermal sensitivity of development rate, respectively, as independent influences on life history. To reconcile these models and test their respective predictions, we characterized patterns of voltinism and thermal response of egg development rate along a latitudinal temperature gradient using the matchstick grasshopper genus &lt;em&gt;Warramaba&lt;/em&gt;. We found remarkably strong variation in voltinism patterns, as well as corresponding egg dormancy patterns and thermal responses of egg development. Our results show that the switch in voltinism along the latitudinal gradient was explained by the combined predictions of the evolution of voltinism and of thermal adaptation. We suggest that latitudinal patterns in thermal responses and corresponding life histories need to consider the evolution of thermal response curves within the context of seasonal temperature cycles rather than based solely on optimality and trade-offs in performance. This article is part of the theme issue ‘Physiological diversity, biodiversity patterns and global climate change: testing key hypotheses involving temperature and oxygen’.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</title>
+      <link>/publication/2018-inte-zool/</link>
+      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/2018-inte-zool/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;The phenological response is among the most important traits affecting a species&amp;rsquo; sensitivity to climate. In insects, strongly seasonal environments often select for a univoltine life-cycle such that one seasonal extreme is avoided as an inactive stage. Through understanding the underlying mechanisms for univoltinism, and the consequences of its failure, we can better predict insect responses to climate change. Here we combine empirical data and simulation studies to investigate the consequences of an unusual diapause mechanism in a parthenogenetic matchstick grasshopper, &lt;em&gt;Warramaba virgo&lt;/em&gt;, from arid southern Australia. Our field body temperature measurements indicate that this species is a thermoconformer and our laboratory studies of the thermal response of feeding rate imply strong constraints on winter activity. However, the species exhibits no obligate winter diapause, and eggs can develop in one month under constant temperatures approximating the mean soil temperature at the time of oviposition (summer). We show that diurnal temperature cycles exceeding a peak of 36 degrees C inhibit egg development in summer, and that this is sufficient to prevent autumnal hatching of eggs. Development is also strongly retarded below 24 degrees C. Microclimate-driven simulation studies of egg development show that these thermal responses provide robust maintenance of a univoltine life cycle, thereby resulting in survival of heat stress as an egg (due to limited developmental state) and avoidance of cold stress as a nymph and adult (due to overwintering in the soil as an egg). This article is protected by copyright. All rights reserved.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mechanistic models for predicting insect responses to climate change</title>
+      <link>/publication/2016-cois/</link>
+      <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+      <guid>/publication/2016-cois/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Novel applications of thermocyclers for phenotyping invertebrate thermal responses</title>
+      <link>/publication/2016-mee/</link>
+      <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
+      <guid>/publication/2016-mee/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;High-throughput genomic methods are increasingly used to investigate invertebrate thermal responses with greater dimensionality and resolution than previously achieved. However, corresponding methods for characterizing invertebrate phenotypes are still lacking. To scale up the characterization of invertebrate thermal responses, we propose a novel use of thermocyclers as temperature-controlled incubators.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Here, we tested the performance of thermocyclers as incubators and demonstrated the application of this method to efficiently characterize the thermal responses of model and non-model invertebrates.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We found the thermocyclers performed with high precision, accuracy and resolution under various and fluctuating ambient conditions. We were able to successfully characterize the temperature-dependent development of grasshopper eggs (&lt;em&gt;Warramaba virgo&lt;/em&gt;), as well as the effects of fluctuating temperature cycles on the survival of mosquito eggs (&lt;em&gt;Aedes aegypti&lt;/em&gt;) and developmental success of &lt;em&gt;Drosophila simulans&lt;/em&gt; larvae, all with similar survival rates to conventional methods.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Thermocyclers are a general and transferrable means to scale up current methods of incubating small invertebrates. They permit rapid characterization of high-dimensional physiological responses to natural thermal regimes. When combined with existing approaches in thermal and evolutionary biology, these methods will advance our understanding of, and ability to predict, biological adaptations and responses to environmental changes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>colRoz</title>
+      <link>/project/colroz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/colroz/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

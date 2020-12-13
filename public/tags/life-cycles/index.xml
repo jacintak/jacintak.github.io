@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life cycles | Jacinta&#39;s Website</title>
+    <link>/tags/life-cycles/</link>
+      <atom:link href="/tags/life-cycles/index.xml" rel="self" type="application/rss+xml" />
+    <description>life cycles</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>life cycles</title>
+      <link>/tags/life-cycles/</link>
+    </image>
+    
+    <item>
+      <title>Predicting ectotherm life cycles</title>
+      <link>/project/life-cycles/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/life-cycles/</guid>
+      <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

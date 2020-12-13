@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Madeleine G. Barton | Jacinta&#39;s Website</title>
+    <link>/authors/madeleine-g.-barton/</link>
+      <atom:link href="/authors/madeleine-g.-barton/index.xml" rel="self" type="application/rss+xml" />
+    <description>Madeleine G. Barton</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 11 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Madeleine G. Barton</title>
+      <link>/authors/madeleine-g.-barton/</link>
+    </image>
+    
+    <item>
+      <title>Mechanistic models for predicting insect responses to climate change</title>
+      <link>/publication/2016-cois/</link>
+      <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+      <guid>/publication/2016-cois/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

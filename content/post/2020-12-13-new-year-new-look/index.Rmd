@@ -1,0 +1,22 @@
+---
+title: New Year, New Look!
+author: ~
+date: '2020-12-13'
+slug: []
+categories: []
+tags: [website, github, R, coding]
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-12-13T14:58:29Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+# Welcome!
+
+After banging my head against `blogdown` and Hugo for several months, I think I understand enough about it to refresh my site. 

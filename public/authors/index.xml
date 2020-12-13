@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Jacinta&#39;s Website</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;I want to know where animals live and how they persist in their environment. Functional traits are a focus of my work because traits are how organisms interact with their environment.&lt;/p&gt;
+&lt;p&gt;My research follows a general theme of the effect of temperature on ectotherms to understand the ecological and evolutionary processes underlying biological patterns. My interests lie at the intersection between ecology, evolutionary biology and climate adaptation.&lt;/p&gt;
+&lt;p&gt;I answer these questions through an integrative combination of field observations, manipulative laboratory experiments and computer modelling in R, grounded within a theoretical framework.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ary A. Hoffmann</title>
+      <link>/authors/ary-a.-hoffmann/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/ary-a.-hoffmann/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jason K. Axford</title>
+      <link>/authors/jason-k.-axford/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/jason-k.-axford/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Michael R. Kearney</title>
+      <link>/authors/michael-r.-kearney/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/michael-r.-kearney/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>John Deutscher</title>
+      <link>/authors/john-deutscher/</link>
+      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/john-deutscher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>James L. Maino</title>
+      <link>/authors/james-l.-maino/</link>
+      <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+      <guid>/authors/james-l.-maino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Madeleine G. Barton</title>
+      <link>/authors/madeleine-g.-barton/</link>
+      <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+      <guid>/authors/madeleine-g.-barton/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Michael R. Kearney.</title>
+      <link>/authors/michael-r.-kearney./</link>
+      <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+      <guid>/authors/michael-r.-kearney./</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

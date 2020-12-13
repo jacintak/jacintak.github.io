@@ -1,0 +1,8 @@
+build-last-errors="[]"
+build-last-errors-base-dir=""
+build-last-outputs="[{\"output\":\"==> rmarkdown::render_site(encoding = 'UTF-8')\\n\\n\",\"type\":0},{\"output\":\"\\r\\nRendering: ./index.Rmd\\r\\n\",\"type\":2},{\"output\":\"\\r  |                                                                            \\r  |                                                                      |   0%\\r  |                                                                            \\r  |......................................................................| 100%\\r\\n  ordinary text without R code\\r\\n\\r\\n\\r\\n\",\"type\":1},{\"output\":\"Error: $ operator is invalid for atomic vectors\\r\\nExecution halted\\r\\n\",\"type\":2},{\"output\":\"\\nExited with status 1.\\n\\n\",\"type\":2}]"
+compile_pdf_state="{\"errors\":[],\"output\":\"\",\"running\":false,\"tab_visible\":false,\"target_file\":\"\"}"
+files.monitored-path=""
+find-in-files-state="{\"handle\":\"\",\"input\":\"\",\"path\":\"\",\"regex\":true,\"results\":{\"file\":[],\"line\":[],\"lineValue\":[],\"matchOff\":[],\"matchOn\":[]},\"running\":false}"
+imageDirtyState="1"
+saveActionState="0"

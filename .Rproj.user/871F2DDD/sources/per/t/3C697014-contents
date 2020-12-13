@@ -1,0 +1,65 @@
+---
+title: "About me"
+---
+
+Welcome to my GitHub site. I use GitHub for documenting code for my teaching and research.
+
+***
+
+# Research
+In my PhD, I looked at the egg developmental traits of the matchstick grasshoppers (Orthoptera: Morabidae) in the genera *Warramaba* and *Vandiemenella*. The mechanistic model is the end product of my PhD. The model primarily focuses on my work on *Warramaba* but the codes and the overall framework should be applicable to any ectotherm to which this analytical framework is suitable for.
+
+
+## Notes
+
+**June 2019**  
+The [supplemental material](https://doi.org/10.6084/m9.figshare.c.4491050.v1) of my paper "Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism" contains the data on *Warramaba* egg development used in the manuscript.
+
+**April 2019**  
+My repositories are not public yet. I intend to make them public and to provide documentation of the files with explanations of the decision making process as the data gets published. As more of my work gets published, I may add more detailed documentation to supplement the publications.
+
+***
+
+# Teaching
+
+I currently teach into a new second year statistics and computation course for general biology students. This is an introductory level subject with a focus on using `R` both as a statistical environment and as a computational language. This is a new subject and as part of its development I have generated some documentation that I share here.
+
+## `R/exams`, a package for reproducible exams
+
+I have written a quick guide to the package `exams` which makes randomised MCQs that you can export to online learning mamangement systems (we use blackboard). 
+
+## Lecture material
+Because of the focus on teaching statistics in R, I have been playing with making lectures in R using `Rmarkdown`'s knit to powerpoint function. I found the knit to powerpoint function pretty rudimentary but is extremely useful for generating a skeleton of text, R output and code that can be touched up later. I like the beamer style of presenting statistics and code but I felt a beamer style presentation would not be as effective at engaging students at an intro level. The flexibility of animations and integrated turning point in powerpoint is an key advantage of powerpoint over beamer.  
+
+The students get three lectures on statistical models from me, which is not a lot of time to cover much material. The lectures thus focus on understanding the concepts of slopes and intercepts of linear models and introduces fixed and random slope models, as well as interactions. It takes a GLM centric approach with less emphasis on classifying linear models according to data types. This should provide the groundwork for later stats courses. 
+ 
+I have added my lecture handouts with the option to download the .rmd file.
+
+***
+# colRoz
+
+<center>
+![](https://raw.githubusercontent.com/jacintak/colRoz/master/images/colRoz_logo_v2.png){height=200}
+</center>
+
+`colRoz` is a colour palette package for `R` by myself and Nicholas Wu with palettes based on the flora, fauna & landscapes of Australia. See the [`colRoz` page](https://jacintak.github.io/colRoz) for details. 
+
+***
+
+Please drop me a line if you have questions or suggestions about this site and its contents.
+
+See my [regular research site/blog](https://jacintakongresearch.wordpress.com) for information about my research. 
+
+Jacinta D. Kong  
+PhD Candidate  
+Climate and Metabolic Ecology Lab ([CAMEL](https://camelunimelb.wordpress.com))  
+School of BioSciences   
+The University of Melbourne  
+Parkville 3010  
+Australia 
+
+Teaching and Research Fellow ([Payne Lab](https://thepaynelab.com))  
+School of Natural Sciences, Zoology Building   
+Trinity College Dublin, The University of Dublin
+Dublin2, Ireland  
+[Google Scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en&oi=ao)

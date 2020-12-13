@@ -1,0 +1,219 @@
+---
+title: "5 years of blogging"
+date: 2020-12-23
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+authors:
+- admin
+image: 
+  caption: ''
+  focal_point: ""
+  placement: 2
+  preview_only: false
+lastmod: 
+projects: []
+summary: Let's look at the most popular pages on my site
+output: 
+    blogdown:html_page:
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE)#, 	results = "hide")
+options(knitr.kable.NA = '')
+library(readxl)
+library(tidyverse)
+library(magrittr)
+read_excel_allsheets <- function(filename, tibble = FALSE) {
+    sheets <- readxl::excel_sheets(filename)
+    x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X))
+    if(!tibble) x <- lapply(x, as.data.frame)
+    names(x) <- sheets
+    x
+}
+```
+
+# It's been 5 years...
+
+Since this website went live. In fact, with 2020 I didn't notice and it's even closer to 6 years now!  
+Well... let's look at some stats. Sadly WordPress doesn't let you download all the stats in a neat csv file. I copied and pasted some of the more interesting stats into Excel. Data until October 24th 2020.
+
+```{r import}
+wordpress <- read_excel_allsheets("WordPress_stats.xlsx")
+```
+
+# All time stats
+
+2020 has taken a hit to my blogging productivity. Fair. I wrote really long posts in 2017 for only 3 of them. Over 20,000 words in total - I could have written three papers. There aren't any strong annual trends... oh well.
+
+```{r all_time}
+wordpress$all_time_stats %>% 
+  rbind(colSums(.)) %>% 
+  mutate(Year = replace(Year, `Total posts` == 50, "Totals")) %>%  # tidy up
+  kable(., caption = "Annual statistics", )
+
+ggplot(wordpress$all_time_stats) +
+  geom_line(aes(Year, `Total words`)) + geom_point(aes(Year, `Total words`)) +
+  geom_line(aes(Year, `Avg words per post`), col = 2) + geom_point(aes(Year, `Avg words per post`), col = 2) +
+  theme_classic() + ylab("Number of words")
+```
+
+# My CV
+
+My CV has been downloaded `r sum(wordpress$downloads_2020[-c(4,5),2])` times this year alone! Hope people enjoyed it. It's more popular than my preprints.
+
+We can plot how popular my CV is over time.
+
+```{r CV, fig.align="center", fig.cap="Mean number of views per month across years"}
+wordpress$CV %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb)) %>% 
+  ggplot(aes(Month, Views)) +
+  geom_bar(stat = "identity") +
+  theme_classic()
+```
+
+
+For no reason, we can see if there's a seasonal pattern. There isn't but there is an association between month and the number of views.
+
+```{r CV_month}
+wordpress$CV %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb),
+         Season = case_when(
+           Month %in%  month.abb[9:11] ~ "Spring",
+           Month %in%  month.abb[c(12, 1, 2)]  ~ "Summer",
+           Month %in%  month.abb[3:5]  ~ "Autumn",
+           TRUE ~ "Winter")) %$% 
+  tapply(Views, Season, sum) %T>%
+  print() %>% 
+  chisq.test()
+```
+
+# The most popular page/post
+
+Let's look at the 10 most visited pages or posts:
+
+```{r popularity}
+kable(head(wordpress$post_views, 10))
+```
+
+Most of these are unsurprising, they are pages meant to be relevant for a wide audience. I'm glad that people are reading about matchstick grasshoppers. The grasshoppers deserve it.  
+
+I am surprised at how many people are interested in using icons in Rmarkdown. I suspect that it is because the documentation is unclear unless you already get it. That was the reason I wrote that post. In contrast, my workaround for shared labels on faceted ggplots only had 31 views when I thought it would be a more common problem than icons.  
+
+There might be a year effect but WordPress doesn't say when these posts were published. But we can look at the monthly stats for individual pages
+
+# Monthly stats
+
+Some of the Northern Hemisphere insect bloggers have found that the number of views on insect related posts is seasonal. For n = 1 this pattern hasn't been found in the Southern Hemisphere. Typical hemisphere effect - it's prevalent in insect macrophysiology.
+
+Anyway, we can test the hypothesis that the number of views on insect related pages is seasonal. Let's look at the mean monthly views over time for the most popular insect page on my site - the Matchstick Grasshoppers.
+
+```{r views, fig.align="center", fig.cap="Mean number of views per month across years"}
+featured <- wordpress$matchsticks %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb)) %>%  
+  ggplot(aes(Month, Views)) +
+  geom_bar(stat = "identity") +
+  theme_classic() 
+
+featured
+
+ggsave(featured, filename = "featured.jpg")
+```
+
+There isn't a strong seasonal pattern. If there was, then we would expect more views in Spring and Summer because that's when these insects are active. We could do a Chi Squared test of association for total views aggregated by season. 
+
+```{r season}
+wordpress$matchsticks %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb),
+         Season = case_when(
+           Month %in%  month.abb[9:11] ~ "Spring",
+           Month %in%  month.abb[c(12, 1, 2)]  ~ "Summer",
+           Month %in%  month.abb[3:5]  ~ "Autumn",
+           TRUE ~ "Winter")) %$% 
+  tapply(Views, Season, sum) %T>%
+  print() %>% 
+  chisq.test() 
+
+```
+
+
+There's no strong association with season. The most views are in Autumn and Spring. There are differences among months too.
+
+```{r chi}
+wordpress$matchsticks %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.table() %T>%
+  print() %>% 
+  chisq.test()
+```
+
+We can do the same thing for the page on *Warramaba virgo*.
+
+```{r virgo, fig.align="center", fig.cap="Mean number of views per month across years"}
+wordpress$virgo %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb)) %>% 
+  ggplot(aes(Month, Views)) +
+  geom_bar(stat = "identity") +
+  theme_classic()
+```
+```{r virgo_season}
+wordpress$virgo %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.data.frame() %>%
+  rename(Views = names(.)) %>% 
+  mutate(Month = month.abb,
+         Month = factor(Month, levels = month.abb),
+         Season = case_when(
+           Month %in%  month.abb[9:11] ~ "Spring",
+           Month %in%  month.abb[c(12, 1, 2)]  ~ "Summer",
+           Month %in%  month.abb[3:5]  ~ "Autumn",
+           TRUE ~ "Winter")) %$% 
+  tapply(Views, Season, sum) %T>%
+  print() %>%  
+  chisq.test()
+```
+
+```{r virgo_chi}
+wordpress$virgo %>%
+  select (-c(Year, Total)) %>% 
+  colMeans(., na.rm = TRUE) %>% 
+  as.table() %T>%
+  print() %>% 
+  chisq.test()
+```
+
+We see that there's no association between month or season and the number of views. The patterns are similar with the Matchstick Grasshopper page.
+
+*** 
+That's all!  
+
+
