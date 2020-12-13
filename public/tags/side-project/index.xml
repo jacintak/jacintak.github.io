@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>side-project | Jacinta&#39;s Website</title>
-    <link>/tags/side-project/</link>
-      <atom:link href="/tags/side-project/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/tags/side-project/</link>
+      <atom:link href="https://jacintak.github.io/tags/side-project/index.xml" rel="self" type="application/rss+xml" />
     <description>side-project</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>https://jacintak.github.io/img/icon-192.png</url>
       <title>side-project</title>
-      <link>/tags/side-project/</link>
+      <link>https://jacintak.github.io/tags/side-project/</link>
     </image>
     
     <item>
       <title>colRoz</title>
-      <link>/project/colroz/</link>
+      <link>https://jacintak.github.io/project/colroz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/colroz/</guid>
+      <guid>https://jacintak.github.io/project/colroz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;

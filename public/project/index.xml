@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects | Jacinta&#39;s Website</title>
-    <link>/project/</link>
-      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/project/</link>
+      <atom:link href="https://jacintak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>https://jacintak.github.io/img/icon-192.png</url>
       <title>Projects</title>
-      <link>/project/</link>
+      <link>https://jacintak.github.io/project/</link>
     </image>
     
     <item>
       <title>A toolbox for trait-based forecasting</title>
-      <link>/project/toolbox/</link>
+      <link>https://jacintak.github.io/project/toolbox/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/project/toolbox/</guid>
+      <guid>https://jacintak.github.io/project/toolbox/</guid>
       <description>&lt;h1 id=&#34;tools-for-forcasting-or-predicting&#34;&gt;Tools for forcasting or predicting&lt;/h1&gt;
 &lt;p&gt;I am interested in developing a toolbox for biologists to make trait-based predictions or forecasts about how ectotherms respond to environmental change that are grounded in theory. Fostering stronger links between our understanding of terrestrial ectotherm thermal biology and the aquatic realm is important to identify general patterns.&lt;/p&gt;
 &lt;hr&gt;
@@ -79,26 +79,26 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
     
     <item>
       <title>Predicting ectotherm life cycles</title>
-      <link>/project/life-cycles/</link>
+      <link>https://jacintak.github.io/project/life-cycles/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/project/life-cycles/</guid>
+      <guid>https://jacintak.github.io/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Teaching biostatistics</title>
-      <link>/project/biostats/</link>
+      <link>https://jacintak.github.io/project/biostats/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/project/biostats/</guid>
+      <guid>https://jacintak.github.io/project/biostats/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thermal dependence of biological rates</title>
-      <link>/project/temperature-dependence/</link>
+      <link>https://jacintak.github.io/project/temperature-dependence/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/project/temperature-dependence/</guid>
+      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
 &lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
 </description>
@@ -106,9 +106,9 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
     
     <item>
       <title>colRoz</title>
-      <link>/project/colroz/</link>
+      <link>https://jacintak.github.io/project/colroz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/colroz/</guid>
+      <guid>https://jacintak.github.io/project/colroz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;

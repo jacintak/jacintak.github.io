@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>teaching | Jacinta&#39;s Website</title>
-    <link>/tags/teaching/</link>
-      <atom:link href="/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/tags/teaching/</link>
+      <atom:link href="https://jacintak.github.io/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>teaching</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>https://jacintak.github.io/img/icon-192.png</url>
       <title>teaching</title>
-      <link>/tags/teaching/</link>
+      <link>https://jacintak.github.io/tags/teaching/</link>
     </image>
     
     <item>
       <title>Teaching biostatistics</title>
-      <link>/project/biostats/</link>
+      <link>https://jacintak.github.io/project/biostats/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/project/biostats/</guid>
+      <guid>https://jacintak.github.io/project/biostats/</guid>
       <description></description>
     </item>
     

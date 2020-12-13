@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>James L. Maino | Jacinta&#39;s Website</title>
-    <link>/authors/james-l.-maino/</link>
-      <atom:link href="/authors/james-l.-maino/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/authors/james-l.-maino/</link>
+      <atom:link href="https://jacintak.github.io/authors/james-l.-maino/index.xml" rel="self" type="application/rss+xml" />
     <description>James L. Maino</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 11 Oct 2016 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-192.png</url>
+      <url>https://jacintak.github.io/img/icon-192.png</url>
       <title>James L. Maino</title>
-      <link>/authors/james-l.-maino/</link>
+      <link>https://jacintak.github.io/authors/james-l.-maino/</link>
     </image>
     
     <item>
       <title>Mechanistic models for predicting insect responses to climate change</title>
-      <link>/publication/2016-cois/</link>
+      <link>https://jacintak.github.io/publication/2016-cois/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-cois/</guid>
+      <guid>https://jacintak.github.io/publication/2016-cois/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
 </description>
