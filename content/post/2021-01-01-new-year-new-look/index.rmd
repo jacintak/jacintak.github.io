@@ -32,7 +32,7 @@ My code documentation was also messing up my GitHub. I'm not a big fan of having
 
 For example, I used the "Courses" feature to turn my lecture notes into a "tutorial" style page.
 
-There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can't comment or "follow" people, you can't schedule posts and you can't track views unless you set up Google Analytics or similar.
+There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can't comment or "follow" people, you can't schedule posts and you can't track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).
 
 I will keep the [wordpress site](https://jacintakongresearch.wordpress.com) up for now but will likely continue to update this one. 
 
@@ -46,4 +46,5 @@ There are some peculiarities that require things to be done a certain way:
     * In the "Courses" feature the parent page must be called "_index" or it won't work. :shrug:
 * Rmd and the "Courses" feature don't play nicely. Defining a table of contents via `bookdown` outputs in the YAML doesn't work and calling `toc: true` directly in the YAML (follow the guide) doesn't work either.
 * `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do it's thing and make a nice gitbook
+* Despite the template saying "Upcoming talks" Hugo doesn't render things in the future (incl blog posts). You need `publishDate` in the YAML
 * emojis are a nice feature
