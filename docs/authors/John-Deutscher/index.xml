@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>John Deutscher | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/authors/John-Deutscher/</link>
+      <atom:link href="https://jacintak.github.io/authors/John-Deutscher/index.xml" rel="self" type="application/rss+xml" />
+    <description>John Deutscher</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 13 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-192.png</url>
+      <title>John Deutscher</title>
+      <link>https://jacintak.github.io/authors/John-Deutscher/</link>
+    </image>
+    
+    <item>
+      <title>Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</title>
+      <link>https://jacintak.github.io/publication/2018-inte-zool/</link>
+      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2018-inte-zool/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;The phenological response is among the most important traits affecting a species&#39; sensitivity to climate. In insects, strongly seasonal environments often select for a univoltine life-cycle such that one seasonal extreme is avoided as an inactive stage. Through understanding the underlying mechanisms for univoltinism, and the consequences of its failure, we can better predict insect responses to climate change. Here we combine empirical data and simulation studies to investigate the consequences of an unusual diapause mechanism in a parthenogenetic matchstick grasshopper, &lt;em&gt;Warramaba virgo&lt;/em&gt;, from arid southern Australia. Our field body temperature measurements indicate that this species is a thermoconformer and our laboratory studies of the thermal response of feeding rate imply strong constraints on winter activity. However, the species exhibits no obligate winter diapause, and eggs can develop in one month under constant temperatures approximating the mean soil temperature at the time of oviposition (summer). We show that diurnal temperature cycles exceeding a peak of 36 degrees C inhibit egg development in summer, and that this is sufficient to prevent autumnal hatching of eggs. Development is also strongly retarded below 24 degrees C. Microclimate-driven simulation studies of egg development show that these thermal responses provide robust maintenance of a univoltine life cycle, thereby resulting in survival of heat stress as an egg (due to limited developmental state) and avoidance of cold stress as a nymph and adult (due to overwintering in the soil as an egg). This article is protected by copyright. All rights reserved.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

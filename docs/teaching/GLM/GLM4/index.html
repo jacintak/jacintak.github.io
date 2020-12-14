@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.2">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jacinta Kong">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This rmarkdown document contains some code for you to play with. You will need to copy and paste the code into your own R script (or Rmarkdown file). There are some questions for you to answer too. Click code to see the answers to the questions. Some questions don’t have answers but you should think about them.
+Checking that our data meets the assumption of linear models is pretty important.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://jacintak.github.io/teaching/GLM/GLM4/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://jacintak.github.io/teaching/GLM/GLM4/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@jacintakong">
+  <meta property="twitter:creator" content="@jacintakong">
+  
+  <meta property="og:site_name" content="Jacinta&#39;s Website">
+  <meta property="og:url" content="https://jacintak.github.io/teaching/GLM/GLM4/">
+  <meta property="og:title" content="Linear model assumptions | Jacinta&#39;s Website">
+  <meta property="og:description" content="This rmarkdown document contains some code for you to play with. You will need to copy and paste the code into your own R script (or Rmarkdown file). There are some questions for you to answer too. Click code to see the answers to the questions. Some questions don’t have answers but you should think about them.
+Checking that our data meets the assumption of linear models is pretty important."><meta property="og:image" content="https://jacintak.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://jacintak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Linear model assumptions | Jacinta&#39;s Website</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    
+    
+      <a class="navbar-brand" href="/">Jacinta&#39;s Website</a>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/Kong_JD_CV.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/teaching/GLM/">Overview</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/teaching/GLM/GLM1/">Simple regression</a>
+      </li>
+      
+      <li >
+        <a href="/teaching/GLM/GLM2/">Multiple regression</a>
+      </li>
+      
+      <li >
+        <a href="/teaching/GLM/GLM3/">Generalised linear models</a>
+      </li>
+      
+      <li class="active">
+        <a href="/teaching/GLM/GLM4/">Assumptions</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Linear model assumptions</h1>
+
+          <div class="article-style">
+            
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<hr />
+<p>This rmarkdown document contains some code for you to play with. You will need to copy and paste the code into your own R script (or Rmarkdown file). There are some questions for you to answer too. Click <code>code</code> to see the answers to the questions. Some questions don’t have answers but you should think about them.</p>
+<p>Checking that our data meets the assumption of linear models is pretty important. Else, we might make the wrong conclusion! Unfortunately, these checks may be ignored or forgotten about but that’s no excuse.</p>
+<p>Here are some things to look out for:</p>
+<div id="normality" class="section level1">
+<h1>Normality</h1>
+<p>Normality can be checked using Quantile-Quantile plots.<br />
+Quantile-Quantile (Q-Q) plots are useful alternatives to visualising distributions to density plots or histograms. They are easier to assess distribution and normality with than histograms.</p>
+<div id="q-q-plot-of-single-variables" class="section level2">
+<h2>Q-Q plot of single variables</h2>
+<p>We can see whether a single variable has a normal distribution - specifically that the distribution is symmetrical or not skewed.</p>
+<pre><code>qqnorm(chickwts$weight) # the weight of chicks fed different diets (built in dataset)</code></pre>
+<p>Here, the quantiles of our observations are plotted against the theoretical quantiles if our observations followed a normal distribution.<br />
+<strong>Question</strong> - What would you expect to see if our observations followed a normal distribution?</p>
+<pre class="r fold-hide"><code>Observations to fall along a straight line at approx a 45 degree angle</code></pre>
+<p>We can add a reference line to the above to help us evaluate how linear the Q-Q plot is. We can make the line red and thicker for fun.</p>
+<pre><code>qqnorm(chickwts$weight) # the weight of chicks fed different diets (built in dataset)
+qqline(chickwts$weight, col = &quot;red&quot;, lwd = 2)</code></pre>
+<p>Do the observations follow a normal distribution?</p>
+<p>Compare the above with the histogram and density plots</p>
+<pre><code>plot(density(chickwts$weight), col = &quot;purple&quot;) # density plot, purple for fun
+hist(chickwts$weight, col = &quot;yellow&quot;) # histogram, yellow for fun</code></pre>
+<p>Would you also conclude that the distribution of chick weights is normal?</p>
+<p>For comparison look at the Q-Q plots of a gamma distribution (distinctly not normal)</p>
+<pre><code>qqnorm(rgamma(100, 3, 5))
+qqline(rgamma(100, 3, 5)) # You should be able to see the skewness in the data. Compare with hist()</code></pre>
+</div>
+<div id="what-happens-with-data-that-is-not-continuous" class="section level2">
+<h2>What happens with data that is not continuous?</h2>
+<p>Q-Q plots also work with visualising data that is not continuous.</p>
+<pre><code>qqnorm(Loblolly$age) # the ages of pine trees, can also try rbinom(100, 10, 0.5)
+qqline(Loblolly$age)</code></pre>
+<p><strong>Question</strong> - What is the main difference between the Q-Q plots of the continuous and discrete data?</p>
+<pre class="r fold-hide"><code>You can see the discrete nature of the observations in the clustered groupings in the QQ plot - the staircase pattern</code></pre>
+<p>Why do you think that is?<br />
+You can also see it using <code>hist()</code></p>
+</div>
+<div id="q-q-plots-of-residuals-for-assessing-normality" class="section level2">
+<h2>Q-Q plots of residuals for assessing normality</h2>
+<p>Q-Q plots permit comparison of two probability distributions when one distribution is the expected and the other is the observed distribution, then we can evaluate how well our observations follow our expected distribution. Using Q-Q plots we can assess skewness or identify outliers or influential points.</p>
+<p>Q-Q plots are automatically generated when calling plot on a linear model (<code>lm</code>). It’s the second graph called (defined using which). You can also make one using <code>qqplot()</code></p>
+<pre><code>plot(lm(Height ~ Girth, trees), which = 2)</code></pre>
+<p>Does that look normal to you?</p>
+</div>
+<div id="another-use-of-q-q-plots" class="section level2">
+<h2>Another use of Q-Q plots</h2>
+<p>We can also compare the distribution of two variables. If they are distributed equally then they should fall along the straight line</p>
+<pre><code>qqplot(trees$Height, trees$Girth)</code></pre>
+<p>Compare with:</p>
+<pre><code>par(mfrow = c(2,1))
+hist(trees$Height)
+hist(trees$Girth)</code></pre>
+<hr />
+</div>
+</div>
+<div id="homoscedasticity" class="section level1">
+<h1>Homoscedasticity</h1>
+<p>Homoscedasticity is the statistical term for homogeneity of variance. The opposite is called <em>Heteroscedasticity</em>.</p>
+<p><strong>Question</strong> - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?</p>
+<pre class="r fold-hide"><code>We want the variation across our grouped observations to be similar so the error bars of standard deviation should also be similar.</code></pre>
+Look at this graph - does it show homoscedasticity or heteroscedasticity?
+<div class="figure" style="text-align: center"><span id="fig:homo"></span>
+<img src="/teaching/GLM/GLM4_files/figure-html/homo-1.png" alt="Bar plot of mean of two groups (A &amp; B). Error bars indicate standard deviation" width="672" />
+<p class="caption">
+Figure 1: Bar plot of mean of two groups (A &amp; B). Error bars indicate standard deviation
+</p>
+</div>
+<p>Here, you can see that group <code>B</code> has a higher standard deviation than group <code>A</code>. So, we would conclude that there is heteroscedasticity. We do not want heteroscedasticity because it would bias the calculations of variance if we were to do an ANOVA. Remember that ANOVA is a test of variance.</p>
+The same concept applies for scatter plots. Look at this plot - does it show homoscedasticity or heteroscedasticity?
+<div class="figure" style="text-align: center"><span id="fig:scatter"></span>
+<img src="/teaching/GLM/GLM4_files/figure-html/scatter-1.png" alt="A scatter plot and a fitted model" width="672" />
+<p class="caption">
+Figure 2: A scatter plot and a fitted model
+</p>
+</div>
+<p>Here, you can see that as the value of <code>x</code> increases so does the scatter around the trend line in <code>y</code>. It is sometimes referred to as a shotgun pattern or cone/triangle pattern. It’s common in time series data because your observations are not independent of each other, the value of one observation is dependent on what happens earlier in time. In other words, your response variable can be modelled based on the standard deviation.</p>
+<p><strong>Question</strong> - What would you expect to see in a scatter plot for the assumption of homogeneity of variance to be met?</p>
+<pre class="r fold-hide"><code>We want the variation across our grouped observations to be similar so the spread of observations along they axis (vertically) across the values of x (horizontally) should be similar.</code></pre>
+<p>You can assess this for a linear model from the (standardised or non-standardised) residual plot vs fitted values. Here’s the residual plot using the above data. Can you see the unequal variance?</p>
+<p><img src="/teaching/GLM/GLM4_files/figure-html/resid2-1.png" width="672" style="display: block; margin: auto;" /><img src="/teaching/GLM/GLM4_files/figure-html/resid2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>One way of dealing with heteroscedasticity is to use weighted least squares regression where the parameters are fitted to a single observation based on its residual to correct for variation in the residuals (that scatter). But that is beyond the scope of this module.</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/teaching/GLM/GLM3/" rel="next">Generalised linear models</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on 1 Jan 0001</p>
+
+          
+
+
+
+
+          
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

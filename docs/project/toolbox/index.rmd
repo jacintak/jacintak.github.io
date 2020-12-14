@@ -1,0 +1,100 @@
+---
+date: 
+external_link: ""
+image:
+  caption: 
+  focal_point: Smart
+links: 
+- icon: twitter
+  icon_pack: fab
+  name: Follow
+  url: https://twitter.com/jacintakong 
+summary: Forecasting the environmental physiology of ectotherms
+tags:
+- ectotherms
+title: A toolbox for trait-based forecasting
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+# Tools for forcasting or predicting
+
+I am interested in developing a toolbox for biologists to make trait-based predictions or forecasts about how ectotherms respond to environmental change that are grounded in theory. Fostering stronger links between our understanding of terrestrial ectotherm thermal biology and the aquatic realm is important to identify general patterns.
+
+***
+
+# Resources for forcasting
+
+A good model needs good input data!  
+A pretty important component of modelling species responses to environmental variables are the environmental variables themselves. In fact, it's already half the data. Ideally, you would have climatic data at the scale of the target organism, which I will generally refer to as **microclimate**, but this is often a challenge to acquire. But if you have access to climate data, e.g. gridded weather stations which I will refer to as **macroclimate**, then there are some solutions for generating microclimate data.
+
+Most experimental biologists will have access to plenty of data on organism traits but may not have the right environmental data for a model. The good news is with the increasing ease of generating and storing big data, data is now more accessible than ever before!
+
+***
+
+## Macroclimate
+If you don't have access to gridded weather station data for your area of interest, there are some publicly available datasets online for various environmental variables at various scales and resolutions:
+
+* [WorldClim](http://www.worldclim.org/)
+* [CliMond](https://www.climond.org/) with CLIMEX and Bioclim datasets 
+* [Climatic Research Unit](http://www.cru.uea.ac.uk/)
+
+***
+
+## Microclimate
+There are currently a few publicly available datasets of pre-calculated microclimate grids. All these examples were made using `NicheMapR`:
+
+* [microlim](https://www.nature.com/articles/sdata20146) for global scale
+* [MicroclimOz](https://knb.ecoinformatics.org/knb/d1/mn/v2/object/knb.92484.39) for Australia only (the lucky country)
+* [MicroclimUS](https://knb.ecoinformatics.org/view/urn:uuid:b8a6dbfd-3a97-4a24-91d5-1648fdba1648) for USA
+
+## Microclimate simulation packages for `R`
+There are a few packages for `R` to simulate microclimates from gridded macroclimate data:
+
+* [NicheMapR](https://mrke.github.io)
+* [Microclima](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13093)
+* [TrenchR](https://trenchproject.github.io/tools/TrenchR/)
+
+The one I used in my work is `NicheMapR`. The default function to generate microclimate in `NicheMapR` uses the Climatic Research Unit dataset to generate default microclimate output. I used input data at a higher spatial and temporal resolution than the default setting, in addition to querying gridded soil type data. Although the input data to run my scripts is not available, `NicheMapR` was used to generate the microclim and MicroclimOz datasets which are publicly available under certain soil type parameters. 
+
+### Things to consider
+Check if the environmental datasets are at the resolution and scale appropriate for your intended purposes. If you want to simulate microclimate, you need to make sure you have all the environmental variables needed for the microclimate package: temperature, precipitation, soil type, topography, wind speed, solar radiation etc. You may have to collate input data from multiple sources.
+
+***
+
+## Traits
+There are even a few databases for organism trait data:
+
+* The Insect Developmental Database ([IDD](https://nucleus.iaea.org/sites/naipc/twd/Lists/News/DispForm.aspx?ID=291&ContentTypeId=0x0100E051773707C04949A2F50750BBDBE134)) contains temperature-rate data for mostly insect species of agricultural interest 
+* For physiological limits [GlobTherm](https://datadryad.org/resource/doi:10.5061/dryad.1cv08/7) is a great initiative but covers CtMax and CtMin only.
+* A few recent metaanalyses have combed through the thermal biology literature so you don't have to! Then you can extract the information you want. Isn't open, reproducible science great? Here's a recent [example](https://datadryad.org/resource/doi:10.5061/dryad.56s5d84)
+* Dell et al. 2013 complied a [dataset](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/12-2060.1) on various biological/ecological traits measured at different tempertures for species from all habitats. 
+
+***
+
+# R packages for modelling
+In my PhD I wrote a custom function for my code to calculate development rate. But there is also a package for that!  
+[`devRate`](https://cran.r-project.org/web/packages/devRate/index.html) is a package with commonly used temperature-rate functions, from statistical functions to biophysical ones. You can get it from CRAN.
+
+There is a similar package called [`rTPC`](https://github.com/padpadpadpad/rTPC). It's not on CRAN but is available on GitHub.
+
+## NicheMapR, DEB & biophysical ecology
+Fortunately, the NicheMapR package is a pretty complete toolkit to model the biology of an organism based on its environment and available resources. Not only does it have a microclimate model but it also has an implementation of the standard DEB model and a biophysical heat and water budget model for ecotherms and endotherms. All that is missing are the correct input parameters.
+
+Heat and/or water budget equations are useful for calculating the body temperature of an organism but don't measure growth or development. You could use the estimates of body temperture for calculating development/growth rates but for most small ectotherms that are isothermic, this seems a bit excessive.  
+
+#### DEB parameters and Add-My-Pet
+You can find standard DEB parameters at [Add-My-Pet](https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/) and there is a vignette in NicheMapR which goes through the ectotherm model, the DEB model and how to use the DEB parameters from Add-My-Pet in NicheMapR.
+
+***
+
+# International Symposium and Thematic School on DEB Theory for Metabolic Organisation
+Interested in learning Dynamic Energy Budget modelling? There is an international symposium, tele-course and school/workshop that is an intensive course in DEB and its applications. The symposium is held every two years. The most recent one was [April 2019](https://deb2019.sciencesconf.org/).
+
+With the resources available you can pretty much develop a mechanistic model without collecting your own data.  
+If there are other useful datasets or links not listed here, let me know!
