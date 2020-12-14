@@ -4,7 +4,7 @@ author:
   - admin
   - Nicholas Wu
 date: 
-external_link: /colRoz/
+external_link: /colroz/
 image:
   caption: 
   focal_point: Smart
