@@ -1,9 +1,9 @@
 ---
 title: "colRoz - A colour package for the land down under"
+date: "`r Sys.Date()`"
 author:
   - admin
   - Nicholas Wu
-date: 
 external_link:
 links:
 - icon: twitter

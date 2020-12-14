@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include species distribution and phenology, microclimates & functional trait variation.
+bio: My research interests include species distributions, phenology, microclimates & functional trait variation.
 
 education:
   courses:

@@ -1,0 +1,145 @@
+---
+title: "Checking assumptions"
+subtitle: "BYU22S01"
+date: "2020"
+output: 
+  bookdown::html_document2:
+    code_folding: show
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE, fig.height = 4, fig.align = "center")
+```
+
+This rmarkdown document contains some code for you to play with. You will need to copy and paste the code into your own R script (or Rmarkdown file). There are some questions for you to answer too. Click `code` to see the answers to the questions. Some questions don't have answers but you should think about them.  
+
+Checking that our data meets the assumption of linear models is pretty important. Else, we might make the wrong conclusion! Unfortunately, these checks may be ignored or forgotten about but that's no excuse.  
+
+Here are some things to look out for:
+
+# Normality
+
+Normality can be checked using Quantile-Quantile plots.  
+Quantile-Quantile (Q-Q) plots are useful alternatives to visualising distributions to density plots or histograms. They are easier to assess distribution and normality with than histograms.
+
+## Q-Q plot of single variables
+
+We can see whether a single variable has a normal distribution - specifically that the distribution is symmetrical or not skewed.
+
+```
+qqnorm(chickwts$weight) # the weight of chicks fed different diets (built in dataset)
+```
+
+Here, the quantiles of our observations are plotted against the theoretical quantiles if our observations followed a normal distribution.  
+**Question** - What would you expect to see if our observations followed a normal distribution?
+```{r, class.source = 'fold-hide',eval = FALSE}
+Observations to fall along a straight line at approx a 45 degree angle
+```
+
+We can add a reference line to the above to help us evaluate how linear the Q-Q plot is. We can make the line red and thicker for fun.
+```
+qqnorm(chickwts$weight) # the weight of chicks fed different diets (built in dataset)
+qqline(chickwts$weight, col = "red", lwd = 2)
+```
+Do the observations follow a normal distribution?  
+
+Compare the above with the histogram and density plots
+```
+plot(density(chickwts$weight), col = "purple") # density plot, purple for fun
+hist(chickwts$weight, col = "yellow") # histogram, yellow for fun
+```
+Would you also conclude that the distribution of chick weights is normal?  
+
+For comparison look at the Q-Q plots of a gamma distribution (distinctly not normal)
+```
+qqnorm(rgamma(100, 3, 5))
+qqline(rgamma(100, 3, 5)) # You should be able to see the skewness in the data. Compare with hist()
+```
+
+## What happens with data that is not continuous? 
+
+Q-Q plots also work with visualising data that is not continuous.
+```
+qqnorm(Loblolly$age) # the ages of pine trees, can also try rbinom(100, 10, 0.5)
+qqline(Loblolly$age)
+```
+
+**Question** - What is the main difference between the Q-Q plots of the continuous and discrete data?
+```{r, class.source = 'fold-hide',eval = FALSE}
+You can see the discrete nature of the observations in the clustered groupings in the QQ plot - the staircase pattern
+```
+Why do you think that is?  
+You can also see it using `hist()`
+
+## Q-Q plots of residuals for assessing normality
+Q-Q plots permit comparison of two probability distributions when one distribution is the expected and the other is the observed distribution, then we can evaluate how well our observations follow our expected distribution. Using Q-Q plots we can assess skewness or identify outliers or influential points.
+
+Q-Q plots are automatically generated when calling plot on a linear model (`lm`). It's the second graph called (defined using which). You can also make one using `qqplot()`
+```
+plot(lm(Height ~ Girth, trees), which = 2)
+```
+Does that look normal to you?
+
+## Another use of Q-Q plots
+We can also compare the distribution of two variables. If they are distributed equally then they should fall along the straight line
+```
+qqplot(trees$Height, trees$Girth)
+```
+Compare with:
+```
+par(mfrow = c(2,1))
+hist(trees$Height)
+hist(trees$Girth)
+```
+
+***
+
+# Homoscedasticity
+
+Homoscedasticity is the statistical term for homogeneity of variance. The opposite is called *Heteroscedasticity*. 
+
+**Question** - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?
+```{r, class.source = 'fold-hide',eval = FALSE}
+We want the variation across our grouped observations to be similar so the error bars of standard deviation should also be similar.
+```
+
+Look at this graph - does it show homoscedasticity or heteroscedasticity?
+```{r homo, echo=FALSE, fig.cap = "Bar plot of mean of two groups (A & B). Error bars indicate standard deviation"}
+data <- rbind(data.frame(y = rnorm(50, mean = 50, sd = 5), x = rep("A", 50)),
+              data.frame(y = rnorm(50, mean = 50, sd = 20), x = rep("B", 50)))
+summ_data <- rbind(tapply(data$y, data$x, mean),
+                   tapply(data$y, data$x, mean)-tapply(data$y, data$x, sd),
+                   tapply(data$y, data$x, mean)+tapply(data$y, data$x, sd))
+bplot <- barplot(summ_data[1,], ylim = c(0, 75))
+arrows(bplot,summ_data[3,], bplot, summ_data[2,], angle=90, code=3, length=0.1) 
+```
+
+Here, you can see that group `B` has a higher standard deviation than group `A`. So, we would conclude that there is heteroscedasticity. We do not want heteroscedasticity because it would bias the calculations of variance if we were to do an ANOVA. Remember that ANOVA is a test of variance.
+
+The same concept applies for scatter plots. Look at this plot - does it show homoscedasticity or heteroscedasticity?
+```{r scatter, echo=FALSE, fig.cap= "A scatter plot and a fitted model", warning=FALSE}
+data <- data.frame(x = seq(1,100))
+for(i in seq_along(data$x)){
+  data$y[i] <- data$x + (20 + seq(0,20, length.out = length(data$x))[i]) + rnorm(1, 0, seq(1,15, length.out = length(data$x))[i])
+}
+plot(y ~ x, data, ylim = c(0, 60))
+abline(lm(y~x, data))
+```
+
+Here, you can see that as the value of `x` increases so does the scatter around the trend line in `y`. It is sometimes referred to as a shotgun pattern or cone/triangle pattern. It's common in time series data because your observations are not independent of each other, the value of one observation is dependent on what happens earlier in time. In other words, your response variable can be modelled based on the standard deviation.
+
+**Question** - What would you expect to see in a scatter plot for the assumption of homogeneity of variance to be met?
+```{r, class.source = 'fold-hide',eval = FALSE}
+We want the variation across our grouped observations to be similar so the spread of observations along they axis (vertically) across the values of x (horizontally) should be similar.
+```
+
+You can assess this for a linear model from the (standardised or non-standardised) residual plot vs fitted values. Here's the residual plot using the above data. Can you see the unequal variance?
+
+```{r resid, echo=FALSE, results = 'hold'}
+plot(lm(y~x, data), which = 1)
+plot(lm(y~x, data), which = 3)
+```
+
+One way of dealing with heteroscedasticity is to use weighted least squares regression where the parameters are fitted to a single observation based on its residual to correct for variation in the residuals (that scatter). But that is beyond the scope of this module.

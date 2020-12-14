@@ -1,5 +1,5 @@
 ---
-date: "2020-12-13T00:00:00Z"
+date:
 external_link: ""
 image:
   caption: 
