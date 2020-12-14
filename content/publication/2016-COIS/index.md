@@ -19,7 +19,7 @@ summary:
 tags:
 - ectotherms
 - thermal adaptation
-- life cycle
+- life cycles
 - microclimate
 - mechanistic models
 title: Mechanistic models for predicting insect responses to climate change

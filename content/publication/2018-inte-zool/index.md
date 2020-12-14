@@ -24,7 +24,7 @@ summary:
 tags:
 - ectotherms
 - thermal adaptation
-- life cycle
+- life cycles
 - microclimate
 - mechanistic models
 title: Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes

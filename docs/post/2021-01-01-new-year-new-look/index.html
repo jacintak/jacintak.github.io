@@ -28,8 +28,8 @@
   
     
   
-  <meta name="description" content="Welcome!After banging my head against blogdown and Hugo for several months, I think I understand enough about it to refresh my site. The rest of the site will need to be updated too.
-">
+  <meta name="description" content="Welcome to my revamped website!After banging my head against blogdown and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.
+Setting up a site is simple enough if you follow the instructions online.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://jacintak.github.io/post/2021-01-01-new-year-new-look/">
@@ -119,10 +119,12 @@
   <meta property="og:site_name" content="Jacinta&#39;s Website">
   <meta property="og:url" content="https://jacintak.github.io/post/2021-01-01-new-year-new-look/">
   <meta property="og:title" content="New Year, New Look! | Jacinta&#39;s Website">
-  <meta property="og:description" content="Welcome!After banging my head against blogdown and Hugo for several months, I think I understand enough about it to refresh my site. The rest of the site will need to be updated too.
-"><meta property="og:image" content="https://jacintak.github.io/img/icon-192.png">
+  <meta property="og:description" content="Welcome to my revamped website!After banging my head against blogdown and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.
+Setting up a site is simple enough if you follow the instructions online."><meta property="og:image" content="https://jacintak.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://jacintak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
+    
+      <meta property="article:published_time" content="2020-12-14T00:00:00&#43;00:00">
     
     <meta property="article:modified_time" content="2020-12-13T19:45:17&#43;00:00">
   
@@ -154,7 +156,7 @@
   },
   "headline": "New Year, New Look!",
   
-  "datePublished": "0001-01-01T00:00:00Z",
+  "datePublished": "2020-12-14T00:00:00Z",
   "dateModified": "2020-12-13T19:45:17Z",
   
   "author": {
@@ -170,7 +172,7 @@
       "url": "https://jacintak.github.io/img/icon-512.png"
     }
   },
-  "description": "\r\r\rWelcome!\rAfter banging my head against blogdown and Hugo for several months, I think I understand enough about it to refresh my site. The rest of the site will need to be updated too.\n\r"
+  "description": "Welcome to my revamped website!\rAfter banging my head against blogdown and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.\nSetting up a site is simple enough if you follow the instructions online."
 }
 </script>
 
@@ -494,7 +496,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    3 min read
   </span>
   
 
@@ -536,9 +538,31 @@
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<div id="welcome" class="section level1">
-<h1>Welcome!</h1>
-<p>After banging my head against <code>blogdown</code> and Hugo for several months, I think I understand enough about it to refresh my site. The rest of the site will need to be updated too.</p>
+<div id="welcome-to-my-revamped-website" class="section level1">
+<h1>Welcome to my revamped website!</h1>
+<p>After banging my head against <code>blogdown</code> and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.</p>
+<p>Setting up a site is simple enough if you follow the instructions online. The template builds a skeleton of the website and all you need to do is replace the placeholder text with your information. Simple right?</p>
+<p>Not quite. The underlying file structure takes some getting used to and you’ll have to trust the magic as your site gets compiled. But once you pass that hurdle, the system is quite powerful and the results are neat.</p>
+<p>There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (wordpress) with a blog and my code documentation separately on GitHub Pages.</p>
+<p>My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.</p>
+<p>For example, I used the “Courses” feature to turn my lecture notes into a “tutorial” style page.</p>
+<p>There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can’t comment or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar.</p>
+<p>I will keep the <a href="https://jacintakongresearch.wordpress.com">wordpress site</a> up for now but will likely continue to update this one.</p>
+<p>There are some peculiarities that require things to be done a certain way:</p>
+<div id="things-i-noted" class="section level2">
+<h2>Things I noted</h2>
+<ul>
+<li>Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML</li>
+<li>A header image/thumbnail can be included in the same folder as the content <em>but</em> it must be called “featured” or it won’t be recognised</li>
+<li>You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
+<ul>
+<li>In the “Courses” feature the parent page must be called "_index" or it won’t work. 🤷</li>
+</ul></li>
+<li>Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via <code>bookdown</code> outputs in the YAML doesn’t work and calling <code>toc: true</code> directly in the YAML (follow the guide) doesn’t work either.</li>
+<li><code>bookdown</code> and <code>blogdown</code> don’t play nicely together in the same project either. <code>blogdown</code> will try to render the <code>bookdown</code> pages as a site rather than letting <code>bookdown</code> do it’s thing and make a nice gitbook</li>
+<li>emojis are a nice feature</li>
+</ul>
+</div>
 </div>
 
     </div>
@@ -555,9 +579,7 @@
   
   <a class="badge badge-light" href="/tags/github/">github</a>
   
-  <a class="badge badge-light" href="/tags/R/">R</a>
-  
-  <a class="badge badge-light" href="/tags/coding/">coding</a>
+  <a class="badge badge-light" href="/tags/R-stats/">R stats</a>
   
 </div>
 
@@ -696,6 +718,21 @@
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/teaching/rexams/">Quick guide to R/exams</a></li>
+      
+      <li><a href="/teaching/introR/">Setup R</a></li>
+      
+      <li><a href="/post/2020-12-14-transparent-graphing-for-dark-backgrounds/">Transparent graphing for dark backgrounds</a></li>
+      
+      <li><a href="/project/biostats-tutorials/">Biostatistics tutorials</a></li>
+      
+    </ul>
+  </div>
   
 
 

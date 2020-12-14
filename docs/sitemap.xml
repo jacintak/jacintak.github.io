@@ -63,13 +63,43 @@
   </url>
   
   <url>
+    <loc>https://jacintak.github.io/categories/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/tags/code/</loc>
     <lastmod>2020-12-14T13:28:03+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://jacintak.github.io/categories/code/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/colRoz/</loc>
     <lastmod>2020-12-14T13:28:03+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/conferences/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/github/</loc>
+    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</loc>
+    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/poster/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -93,6 +123,11 @@
   </url>
   
   <url>
+    <loc>https://jacintak.github.io/tags/talks/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/tags/teaching/</loc>
     <lastmod>2020-12-14T13:28:03+00:00</lastmod>
   </url>
@@ -100,6 +135,16 @@
   <url>
     <loc>https://jacintak.github.io/teaching/</loc>
     <lastmod>2020-12-14T18:01:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/post/2020-12-14-transparent-graphing-for-dark-backgrounds/</loc>
+    <lastmod>2020-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/website/</loc>
+    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
   </url>
   
   <url>
@@ -158,8 +203,8 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/tags/life-cycle/</loc>
-    <lastmod>2020-12-13T17:31:32+00:00</lastmod>
+    <loc>https://jacintak.github.io/tags/life-cycles/</loc>
+    <lastmod>2020-12-14T13:28:03+00:00</lastmod>
   </url>
   
   <url>
@@ -213,15 +258,6 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/coding/</loc>
-    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/project/colRoz/</loc>
     <lastmod>2020-12-14T01:10:20+00:00</lastmod>
   </url>
@@ -229,21 +265,6 @@
   <url>
     <loc>https://jacintak.github.io/CV/</loc>
     <lastmod>2020-12-14T19:00:37+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/github/</loc>
-    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/life-cycles/</loc>
-    <lastmod>2020-12-14T13:28:03+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</loc>
-    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
   </url>
   
   <url>
@@ -267,11 +288,6 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/tags/R/</loc>
-    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/talk/</loc>
     <lastmod>2020-12-13T17:31:32+00:00</lastmod>
   </url>
@@ -279,11 +295,6 @@
   <url>
     <loc>https://jacintak.github.io/project/temperature-dependence/</loc>
     <lastmod>2020-12-14T13:28:03+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/website/</loc>
-    <lastmod>2020-12-13T19:45:17+00:00</lastmod>
   </url>
   
 </urlset>
