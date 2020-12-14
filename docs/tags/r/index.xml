@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/tags/r/</link>
-      <atom:link href="https://jacintak.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/tags/R/</link>
+      <atom:link href="https://jacintak.github.io/tags/R/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
       <url>https://jacintak.github.io/img/icon-192.png</url>
       <title>R</title>
-      <link>https://jacintak.github.io/tags/r/</link>
+      <link>https://jacintak.github.io/tags/R/</link>
     </image>
     
     <item>
