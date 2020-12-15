@@ -1,0 +1,5 @@
+book_filename: "Statistical Modelling"
+chapter_name: "Chapter "
+output_dir: lectures
+clean: []
+new_session: yes

@@ -1,18 +1,18 @@
 ---
-title: "CV -  Jacinta D Kong"
-author: 
-- admin
-date: "`r.Sys.Date()`"
+title: "CV"
+subtitle: "Jacinta D Kong"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
 output:
+  pdf_document: default 
   blogdown::html_page:
     toc: true
+urlcolor: blue
 links: 
 - icon: fa-file-pdf
   icon_pack: fab
   name: Download PDF
   url: files/Kong_JD_CV.pdf
 ---
-
 ***
 
 

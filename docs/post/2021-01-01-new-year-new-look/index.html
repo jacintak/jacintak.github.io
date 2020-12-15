@@ -108,10 +108,9 @@ Setting up a site is simple enough if you follow the instructions online.">
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="twitter:site" content="@jacintakong">
   <meta property="twitter:creator" content="@jacintakong">
@@ -120,11 +119,11 @@ Setting up a site is simple enough if you follow the instructions online.">
   <meta property="og:url" content="https://jacintak.github.io/post/2021-01-01-new-year-new-look/">
   <meta property="og:title" content="New Year, New Look! | Jacinta&#39;s Website">
   <meta property="og:description" content="Welcome to my revamped website!After banging my head against blogdown and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.
-Setting up a site is simple enough if you follow the instructions online."><meta property="og:image" content="https://jacintak.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://jacintak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+Setting up a site is simple enough if you follow the instructions online."><meta property="og:image" content="https://jacintak.github.io/post/2021-01-01-new-year-new-look/featured.png">
+  <meta property="twitter:image" content="https://jacintak.github.io/post/2021-01-01-new-year-new-look/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-12-14T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-12-15T00:00:00&#43;00:00">
     
     <meta property="article:modified_time" content="2020-12-14T22:16:20&#43;00:00">
   
@@ -156,7 +155,11 @@ Setting up a site is simple enough if you follow the instructions online."><meta
   },
   "headline": "New Year, New Look!",
   
-  "datePublished": "2020-12-14T00:00:00Z",
+  "image": [
+    "https://jacintak.github.io/post/2021-01-01-new-year-new-look/featured.png"
+  ],
+  
+  "datePublished": "2020-12-15T00:00:00Z",
   "dateModified": "2020-12-14T22:16:20Z",
   
   "author": {
@@ -460,18 +463,24 @@ Setting up a site is simple enough if you follow the instructions online."><meta
 
 
 
-  
+
+
+
+
+
+
+
 
   
   
-  
+
+
 <div class="article-container pt-3">
   <h1>New Year, New Look!</h1>
 
   
 
   
-    
 
 
 <div class="article-metadata">
@@ -496,7 +505,7 @@ Setting up a site is simple enough if you follow the instructions online."><meta
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    5 min read
   </span>
   
 
@@ -509,22 +518,29 @@ Setting up a site is simple enough if you follow the instructions online."><meta
 
 </div>
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 192px; max-height: 192px;">
+  <div style="position: relative">
+    <img src="/post/2021-01-01-new-year-new-look/featured.png" alt="" class="featured-image">
+    <span class="article-header-caption">Grasshopper emoji from <a href="https://openmoji.org/about/">OpenMoji</a></span>
+  </div>
 </div>
 
 
@@ -546,7 +562,7 @@ Setting up a site is simple enough if you follow the instructions online."><meta
 <p>There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (wordpress) with a blog and my code documentation separately on GitHub Pages.</p>
 <p>My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.</p>
 <p>For example, I used the “Courses” feature to turn my lecture notes into a “tutorial” style page.</p>
-<p>There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can’t comment or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar.</p>
+<p>There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can’t comment or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).</p>
 <p>I will keep the <a href="https://jacintakongresearch.wordpress.com">wordpress site</a> up for now but will likely continue to update this one.</p>
 <p>There are some peculiarities that require things to be done a certain way:</p>
 <div id="things-i-noted" class="section level2">
@@ -559,9 +575,46 @@ Setting up a site is simple enough if you follow the instructions online."><meta
 <li>In the “Courses” feature the parent page must be called "_index" or it won’t work. 🤷</li>
 </ul></li>
 <li>Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via <code>bookdown</code> outputs in the YAML doesn’t work and calling <code>toc: true</code> directly in the YAML (follow the guide) doesn’t work either.</li>
-<li><code>bookdown</code> and <code>blogdown</code> don’t play nicely together in the same project either. <code>blogdown</code> will try to render the <code>bookdown</code> pages as a site rather than letting <code>bookdown</code> do it’s thing and make a nice gitbook</li>
+<li><code>bookdown</code> and <code>blogdown</code> don’t play nicely together in the same project either. <code>blogdown</code> will try to render the <code>bookdown</code> pages as a site rather than letting <code>bookdown</code> do its thing and make a nice gitbook.
+<ul>
+<li>To allow this behaviour, you need to make use of the static file builder (See below)</li>
+</ul></li>
+<li>Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need <code>publishDate</code> in the YAML</li>
 <li>emojis are a nice feature</li>
 </ul>
+<hr />
+<div id="using-the-static-folder-to-render-a-gitbook" class="section level3">
+<h3>Using the static folder to render a gitbook</h3>
+<p>To render rmd files into another output than <code>blogdown::html_page</code> you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a <code>gitbook</code> page within the site:</p>
+<ol style="list-style-type: decimal">
+<li>Save the <code>bookdown</code> files in the “static” folder
+<ul>
+<li>It doesn’t work with files in the “content” folder, these will get the usual treatment</li>
+</ul></li>
+<li>Create a folder call “R” in the root directory</li>
+<li>Create an R script called “build.R” in the “R” folder</li>
+<li>Add the render functions you need.
+<ul>
+<li><code>blogdown::build_dir("static")</code> is a wrapper for plain <code>rmarkdown::render()</code> as is so it works best with simple files</li>
+<li><code>build_dir</code> doesn’t work for our gitbook example because we want a gitbook that knits with <code>bookdown::render_book</code>, otherwise you will get a bunch of HTML files from the standard render function</li>
+<li>There’s something funny going on with the working directories. Running <code>render_book("static/index.rmd")</code> doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.</li>
+</ul></li>
+</ol>
+<p>The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable.</p>
+<p>I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd.</p>
+<p>Here’s what my <code>build.R</code> file contains:</p>
+<pre><code># Make CV PDF
+rmarkdown::render(&#39;content/cv/index.Rmd&#39;, output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = &quot;static/files/&quot;, output_file = &quot;Kong_JD_CV.pdf&quot;)
+
+# make gitbook
+# blogdown::build_dir(&quot;static&quot;) doesn&#39;t work because we want a gitbook that knits with render_book
+# whereas build_dir uses rmakrdown::render() thus giving html files
+setwd(&quot;static/teaching/GLM/&quot;)
+bookdown::render_book(input = &quot;index.Rmd&quot;)</code></pre>
+<blockquote>
+<p>I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗</p>
+</blockquote>
+</div>
 </div>
 </div>
 
@@ -726,8 +779,6 @@ Setting up a site is simple enough if you follow the instructions online."><meta
       <li><a href="/teaching/rexams/">Quick guide to R/exams</a></li>
       
       <li><a href="/teaching/introR/">Setup R</a></li>
-      
-      <li><a href="/post/2020-12-14-transparent-graphing-for-dark-backgrounds/">Transparent graphing for dark backgrounds</a></li>
       
       <li><a href="/project/biostats-tutorials/">Biostatistics tutorials</a></li>
       

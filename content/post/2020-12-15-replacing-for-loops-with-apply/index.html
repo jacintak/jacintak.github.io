@@ -1,0 +1,95 @@
+---
+title: Replacing for loops with apply
+author: admin
+date: '2020-12-15'
+slug: []
+categories: [code]
+tags: [R stats, code]
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-12-15T00:39:22Z'
+publishDate: ""
+draft: true
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="leaving-the-valley-of-intermediate-competence" class="section level1">
+<h1>Leaving the valley of intermediate competence</h1>
+<blockquote>
+<p>If it ain’t broke, don’t fix it</p>
+</blockquote>
+<p>So you’ve spent a lot of time learning and practising <code>R</code> and you’re pretty comfortable with using functions, if else statements and loops like they teach at introductory programming. What more is there to improve?</p>
+<p>If the answer is no or you subscribe to the quote above, then turn back now. If yes, continue.</p>
+<p>I think that even if one has the skills to do fundamental programming competently, there’s always room for improvement or something new to learn. Or you know that there’s a better, more efficient, way to do it but something is holding you back. For me, it’s usually the latter.</p>
+<p>In a milestone of using <code>R</code> I think I have wrapped my head around replacing for loops with the <code>apply</code> family, specifically <code>mapply</code>. The last hurdle in delving into functional programming.</p>
+<p>I’ve used iterative coding quite a bit over the years and I’ve been using for loops to do so. As I’ve gotten more competent with applying basic concepts (like loops and functions), I’ve been moving towards optomising my code with more advanced <code>R</code> methods. I started with using more manual functions and sourcing functions from external scripts but I was still relying on loops to apply those functions iretatively.</p>
+<p>I know loops are inefficient. I’ve waited <em>days</em> for computationally intensive loops on large datasets to finish. I know that <code>apply</code> and co. can be more computationally efficient memory-wise but in your typical learning something new way, they hadn’t really clicked for me…until now.</p>
+<p>I’ve been trying to use <code>apply</code> family functions where appropriate for years but I’ve never felt comfortable with using them to use them from the start. So, I default back to loops to save time and frustration.</p>
+<p>I think the slow uptake is because the syntax is different to the logic of loops that are taught, even if <code>apply</code>’s logic better from a computing perspective. The syntax and the logic is also inconsistent within the <code>apply</code> family; a known disadvantage over similar functions (like <code>purrr::map</code>).</p>
+<p>But let’s focus on a specific case before this becomes a cooking blog: replacing for loops. I’m going to assume that you are comptent with manual functions, for loops and lists, and that you want to improve your code. I’m going to focus on lists because they are an efficient way of storing data in <code>R</code>. Here are two ways to replace a for loop:</p>
+</div>
+<div id="an-example-loop" class="section level1">
+<h1>An example loop</h1>
+<p>Here’s an example of a loop that we want to replace. It should be familiar to you as a general loop involving saving output to a list while keeping the original values and noting the . For example, a sensitivity analysis where we want to change parameter values.</p>
+<pre class="r"><code>loop_function &lt;- function(x) return(x$A + x$B) # A function
+# 3 data sets stored as a list
+loop_data &lt;- replicate(3, list(data.frame(A = c(11:15), B = c(20:24))))
+
+loop_ans &lt;- loop_data
+for(i in seq_along(loop_data)){
+  loop_ans [[i]]$C &lt;- loop_function(loop_data[[i]]) # apply the function
+}
+loop_ans</code></pre>
+<pre><code>## [[1]]
+##    A  B  C
+## 1 11 20 31
+## 2 12 21 33
+## 3 13 22 35
+## 4 14 23 37
+## 5 15 24 39
+## 
+## [[2]]
+##    A  B  C
+## 1 11 20 31
+## 2 12 21 33
+## 3 13 22 35
+## 4 14 23 37
+## 5 15 24 39
+## 
+## [[3]]
+##    A  B  C
+## 1 11 20 31
+## 2 12 21 33
+## 3 13 22 35
+## 4 14 23 37
+## 5 15 24 39</code></pre>
+</div>
+<div id="lapply" class="section level1">
+<h1>1. <code>lapply</code></h1>
+<p><code>lapply</code> takes a list as input, does stuff and gives a list as output. Hence, <code>l apply</code> for list. The key with using <code>lapply</code> is that you need to prepare the input data in a specific way. For example, you need to have the parameter you change within the list and the function applied to the list only takes one element - the list.</p>
+<pre class="r"><code>lapply(loop_data, FUN = loop_function)</code></pre>
+<pre><code>## [[1]]
+## [1] 31 33 35 37 39
+## 
+## [[2]]
+## [1] 31 33 35 37 39
+## 
+## [[3]]
+## [1] 31 33 35 37 39</code></pre>
+<p>Replacing the above is simple with if you don’t want to include the original</p>
+</div>
+<div id="mapply" class="section level1">
+<h1>2. <code>mapply</code></h1>
+<p>The m in <code>mapply</code> stands for multiple because it takes multiple arguments and applies them to the data.</p>
+</div>

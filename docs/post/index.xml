@@ -15,7 +15,7 @@
     <item>
       <title>New Year, New Look!</title>
       <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -31,7 +31,7 @@
 &lt;p&gt;There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (wordpress) with a blog and my code documentation separately on GitHub Pages.&lt;/p&gt;
 &lt;p&gt;My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.&lt;/p&gt;
 &lt;p&gt;For example, I used the “Courses” feature to turn my lecture notes into a “tutorial” style page.&lt;/p&gt;
-&lt;p&gt;There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can’t comment or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar.&lt;/p&gt;
+&lt;p&gt;There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can’t comment or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).&lt;/p&gt;
 &lt;p&gt;I will keep the &lt;a href=&#34;https://jacintakongresearch.wordpress.com&#34;&gt;wordpress site&lt;/a&gt; up for now but will likely continue to update this one.&lt;/p&gt;
 &lt;p&gt;There are some peculiarities that require things to be done a certain way:&lt;/p&gt;
 &lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
@@ -44,55 +44,48 @@
 &lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (follow the guide) doesn’t work either.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do it’s thing and make a nice gitbook&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
+&lt;ul&gt;
+&lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See below)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
 &lt;li&gt;emojis are a nice feature&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;using-the-static-folder-to-render-a-gitbook&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using the static folder to render a gitbook&lt;/h3&gt;
+&lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a &lt;code&gt;gitbook&lt;/code&gt; page within the site:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
+&lt;ul&gt;
+&lt;li&gt;It doesn’t work with files in the “content” folder, these will get the usual treatment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a folder call “R” in the root directory&lt;/li&gt;
+&lt;li&gt;Create an R script called “build.R” in the “R” folder&lt;/li&gt;
+&lt;li&gt;Add the render functions you need.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blogdown::build_dir(&#34;static&#34;)&lt;/code&gt; is a wrapper for plain &lt;code&gt;rmarkdown::render()&lt;/code&gt; as is so it works best with simple files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;build_dir&lt;/code&gt; doesn’t work for our gitbook example because we want a gitbook that knits with &lt;code&gt;bookdown::render_book&lt;/code&gt;, otherwise you will get a bunch of HTML files from the standard render function&lt;/li&gt;
+&lt;li&gt;There’s something funny going on with the working directories. Running &lt;code&gt;render_book(&#34;static/index.rmd&#34;)&lt;/code&gt; doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable.&lt;/p&gt;
+&lt;p&gt;I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd.&lt;/p&gt;
+&lt;p&gt;Here’s what my &lt;code&gt;build.R&lt;/code&gt; file contains:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Make CV PDF
+rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = &amp;quot;static/files/&amp;quot;, output_file = &amp;quot;Kong_JD_CV.pdf&amp;quot;)
+
+# make gitbook
+# blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
+# whereas build_dir uses rmakrdown::render() thus giving html files
+setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
+bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Transparent graphing for dark backgrounds</title>
-      <link>https://jacintak.github.io/post/2020-12-14-transparent-graphing-for-dark-backgrounds/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2020-12-14-transparent-graphing-for-dark-backgrounds/</guid>
-      <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but &lt;code&gt;ggplot2&lt;/code&gt; doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in &lt;code&gt;trees&lt;/code&gt; dataset:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tree_graph &amp;lt;- ggplot(data = trees, 
-       mapping = aes(x = Height, 
-                     y = Girth)) + 
-    geom_point(size = 0.5, colour = &amp;quot;#B8DE29FF&amp;quot;) + 
-    geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, col = &amp;quot;#B8DE29FF&amp;quot;) + 
-    geom_abline(intercept = 0, slope = 1, col = &amp;quot;white&amp;quot;, lwd = 0.5, lty = 2) + 
-    theme_classic() +
-    theme(plot.background = element_rect(fill = &amp;quot;transparent&amp;quot;, color = NA),
-          panel.background = element_rect(fill = &amp;quot;transparent&amp;quot;),
-          axis.text = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
-          axis.title = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
-          axis.line = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;),
-          axis.ticks = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;))
-
-ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot;transparent&amp;quot;, type = &amp;quot;cairo-png&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There are a couple of generally useful elements added on purpose:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;geom_smooth&lt;/code&gt; creates an automatically fitted linear model (defined using &lt;code&gt;method = &#34;lm&#34;&lt;/code&gt;). I have turned off plotting the standard errors (on by default) and manually set the colour.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;geom_abline&lt;/code&gt; is your standard straight line&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;theme&lt;/code&gt; is where the customisation begins:
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;plot.background&lt;/code&gt; &amp;amp; &lt;code&gt;panel.background&lt;/code&gt; are set to transparent&lt;/li&gt;
-&lt;li&gt;The various axis elements are set to the fill colour (a nice &lt;code&gt;viridis&lt;/code&gt; green) and desired text size&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ggsave&lt;/code&gt; specifies that the background is transparent and to save it as a “cairo-png”. Cairo is needed to create a vector based image so resizing the png isn’t an issue since the small font size is already defined
-&lt;ul&gt;
-&lt;li&gt;If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;
 </description>
     </item>
     

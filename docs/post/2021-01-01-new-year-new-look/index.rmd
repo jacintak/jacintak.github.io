@@ -9,10 +9,10 @@ tags: [website, github, R stats]
 subtitle: ''
 summary: ''
 authors: []
-publishDate: 
+publishDate: ""
 featured: no
 image:
-  caption: ''
+  caption: 'Grasshopper emoji from [OpenMoji](https://openmoji.org/about/)'
   focal_point: ''
   preview_only: no
 projects: []
@@ -45,6 +45,41 @@ There are some peculiarities that require things to be done a certain way:
 * You can have as many folders as you want called whatever but the (r)markdown file of the page must be called "index"
     * In the "Courses" feature the parent page must be called "_index" or it won't work. :shrug:
 * Rmd and the "Courses" feature don't play nicely. Defining a table of contents via `bookdown` outputs in the YAML doesn't work and calling `toc: true` directly in the YAML (follow the guide) doesn't work either.
-* `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do it's thing and make a nice gitbook
+* `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do its thing and make a nice gitbook. 
+    * To allow this behaviour, you need to make use of the static file builder (See below)
 * Despite the template saying "Upcoming talks" Hugo doesn't render things in the future (incl blog posts). You need `publishDate` in the YAML
 * emojis are a nice feature
+
+***
+
+### Using the static folder to render a gitbook
+
+To render rmd files into another output than `blogdown::html_page` you can put the rmd in the "static" folder then write a script that compiles the site in a specific order. To permit a `gitbook` page within the site:
+
+1. Save the `bookdown` files in the "static" folder
+    * It doesn't work with files in the "content" folder, these will get the usual treatment
+2. Create a folder call "R" in the root directory
+3. Create an R script called "build.R" in the "R" folder
+4. Add the render functions you need. 
+    * `blogdown::build_dir("static")` is a wrapper for plain `rmarkdown::render()` as is so it works best with simple files
+    * `build_dir` doesn't work for our gitbook example because we want a gitbook that knits with `bookdown::render_book`, otherwise you will get a bunch of HTML files from the standard render function
+    * There's something funny going on with the working directories. Running `render_book("static/index.rmd")` doesn't work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I'm not sure where the function is looking as the project working directory is the root directory. 
+    
+The above means that all the rmd files for the gitbook also get copied into the "docs" folder. I don't think it's avoidable.
+    
+I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the "docs" folder so I have an updated CV without needing to manually create one every time I update the original rmd.
+
+Here's what my `build.R` file contains:
+
+```
+# Make CV PDF
+rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = "static/files/", output_file = "Kong_JD_CV.pdf")
+
+# make gitbook
+# blogdown::build_dir("static") doesn't work because we want a gitbook that knits with render_book
+# whereas build_dir uses rmakrdown::render() thus giving html files
+setwd("static/teaching/GLM/")
+bookdown::render_book(input = "index.Rmd")
+```
+
+> I'm not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:

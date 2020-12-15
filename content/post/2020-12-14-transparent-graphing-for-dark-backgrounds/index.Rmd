@@ -9,7 +9,7 @@ tags: [code, conferences, talks, poster, R stats]
 subtitle: ''
 summary: ''
 authors: []
-publishDate: 
+publishDate: "2021-02-01"
 featured: no
 image:
   caption: ''

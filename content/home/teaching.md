@@ -12,5 +12,5 @@ I teach into third year Zoology and second year Biostatistics. Interactive tutor
 
 * BYU22S01 Statistics and Computation
     * Setting up [R](/teaching/introR)
-    * Statistical modelling [notes](/teaching/GLM)
+    * Statistical modelling [notes](/teaching/GLM/lectures)
 * Guide to [R/exams](/teaching/rexams)
