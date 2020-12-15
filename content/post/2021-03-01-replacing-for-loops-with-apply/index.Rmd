@@ -20,6 +20,17 @@ image:
 editor_options: 
   chunk_output_type: console
 ---
+```{r setup, include=FALSE}
+# some data to use
+loop_data <- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a <- seq(0.2, 1, 0.2)
+
+# data sets stored as a list - must not simplify or it will reduce to a matrix!
+loop_data <- replicate(length(a), loop_data, simplify = FALSE)
+```
+
 
 # Leaving the valley of intermediate competence
 
@@ -33,7 +44,7 @@ I think that even if one has the skills to do fundamental programming competentl
 
 In a milestone of using `R` I think I have wrapped my head around replacing for loops with the `apply` family, specifically `mapply`. The last hurdle in delving into functional programming.
 
-I've used iterative coding quite a bit over the years and I've been using for loops to do so. As I've gotten more competent with applying basic concepts (like loops and functions), I've been moving towards optomising my code with more advanced `R` methods. I started with using more manual functions and sourcing functions from external scripts but I was still relying on loops to apply those functions iretatively.
+I've used iterative coding quite a bit over the years and I've been using for loops to do so. As I've gotten more competent with applying basic concepts (like loops and functions), I've been moving towards optimising my code with more advanced `R` methods. I started with using more manual functions and sourcing functions from external scripts but I was still relying on loops to apply those functions iteratively.
 
 I know loops are inefficient. I've waited *days* for computationally intensive loops on large datasets to finish. I know that `apply` and co. can be more computationally efficient memory-wise but in your typical learning something new way, they hadn't really clicked for me...until now.
 
@@ -41,7 +52,7 @@ I've been trying to use `apply` family functions where appropriate for years but
 
 I think the slow uptake is because the syntax is different to the logic of loops that are taught, even if `apply`'s logic better from a computing perspective. The syntax and the logic is also inconsistent within the `apply` family; a known disadvantage over similar functions (like `purrr::map`). 
 
-But let's focus on a specific case before this becomes a cooking blog: replacing for loops. I'm going to assume that you are comptent with manual functions, for loops and lists, and that you want to improve your code. I'm going to focus on lists because they are an efficient way of storing data in `R`. 
+But let's focus on a specific case before this becomes a cooking blog: replacing for loops. I'm going to assume that you are competent with manual functions, for loops and lists, and that you want to improve your code. I'm going to focus on lists because they are an efficient way of storing data in `R`. 
 
 Here are two ways to replace a for loop.
 
@@ -61,11 +72,11 @@ The function that we want to do is add each element of `a` to `loop_data$col1` a
 # some data to use
 loop_data <- data.frame(col1 = c(11:15), col2 = c(20:24))
 
-# data sets stored as a list - must not simplify or it will reduce to a matrix!
-loop_data <- replicate(length(a), loop_data, simplify = FALSE)
-
 # define variable to change
 a <- seq(0.2, 1, 0.2)
+
+# data sets stored as a list - must not simplify or it will reduce to a matrix!
+loop_data <- replicate(length(a), loop_data, simplify = FALSE)
 ```
 
 We will be storing our data in lists in all our scenarios. Note that I created the list before the function rather than use the function to sequentially add to the list. You could start with an empty list.
@@ -110,7 +121,7 @@ lapply_function <- function(x){
 
 lapply_ans <- loop_data
 
-# add column ausing mapply
+# add column using mapply
 lapply_ans <- mapply(FUN = cbind, lapply_ans, "a" = a, SIMPLIFY = FALSE)
 
 # apply function
@@ -135,7 +146,7 @@ The m in `mapply` stands for multiple because it takes multiple arguments and ap
 * We can use the original loop function with two variables!
     * The additional variables (`a` in this example) placed after the function `FUN` are passed to the function 
 * We can also use the original list (`loop_data`) without further modification!
-* We need to tell `mapply` not to simplify the output into a matrix by default. Note the use of uppercase in `SIMPLIFY`.
+* We need to tell `mapply` not to simplify the output into a matrix by default. Note the use of upper case in `SIMPLIFY`.
 
 ```{r mapply}
 mapply_ans <- loop_data
