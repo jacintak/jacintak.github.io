@@ -26,7 +26,7 @@ introduction
 other-resources
 using-datasets
 revision-questions
-simple-linear-models
+simple
 overall-lecture-aims
 by-the-end-of-this-lecture-you-should
 height-and-girth-of-trees
@@ -49,7 +49,7 @@ probability-distribution-functions-pdf
 linear-models-in-the-gaussian-family
 you-have-seen-these-statistical-tests-in-previous-lectures
 revision-time
-multiple-regression
+multiple
 overall-lecture-aims-1
 by-the-end-of-this-lecture-you-should-1
 previously-we-parametrised-slopes-and-intercepts-of-simple-linear-models
@@ -64,7 +64,7 @@ the-anova-table
 calculating-group-means
 anova-and-hypothesis-testing
 recap-time
-multiple-regression-1
+multiple-regression
 height-and-hand-width
 does-student-height-vary-with-hand-width-and-between-sexes
 fixed-slopes-additive-model
@@ -115,7 +115,7 @@ ancova
 covariate-values-cover-a-similar-range-across-groups
 regression-slopes-are-similar-across-groups
 take-home-messages
-generalised-linear-models
+GLM
 overall-lecture-aims-3
 by-the-end-of-this-lecture-you-should-3
 some-data-are-never-normal
@@ -123,3 +123,8 @@ poisson-regression
 number-of-oystercatchers-wetland-birds-in-south-africa
 binomial-logistic-regression
 melanoma-tumor-thickness-and-survival
+answers
+chapter-2
+chapter-3
+chapter-4
+chapter-5

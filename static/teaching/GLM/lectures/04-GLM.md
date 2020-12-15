@@ -1,4 +1,4 @@
-# Generalised linear models
+# Generalised linear models {#GLM}
 
 
 
@@ -102,31 +102,11 @@ AIC: 114.06
 Number of Fisher Scoring iterations: 3
 ```
 
-Why did I add 1 to the variable Oystercatcher in the poisson regression?
+**Question 1** - Why did I add 1 to the variable Oystercatcher in the poisson regression?
 
-```{.r .fold-hide}
-1 is a dummy variable to remove 0s from the counts - or log(0) will mess up the estimation of parameters
-```
+**Question 2** - What is the link function for a poisson regression?
 
-What is the link function for a poisson regression?
-
-```{.r .fold-hide}
-(natural) log link
-```
-
-What is the expected number of Oystercatchers at site k?
-
-```{.r .fold-hide}
-474 oystercatchers
-
-Remember in linear regression (and by extension GLMs) the Intercept estimate is the estimated coefficient for the first site (site a) and the rest are the difference between site a and the respective site. So for site k you need to add the estimated coefficients together.
-
-Coefficient for k:  2.5649 + 3.5984 = 6.1633
-But remember this is log counts so you need to transform it back to regular counts:
-  exp(6.1633) = 474.993
-Then remember we added a dummy variable so you need to subtract that from our estimate:
-  474.993 - 1 = 473.993 which rounded to the nearest whole number (as counts are discrete variables) is 474!
-```
+**Question 3** - What is the expected number of Oystercatchers at site k?
 
 ***
 
@@ -138,11 +118,7 @@ Then remember we added a dummy variable so you need to subtract that from our es
     * Estimates for other groups are the ratio of log odds
     * Transform from log odds to odds using `exp()`
 
-What is the function to conduct an Poisson regression in R?
-
-```{.r .fold-hide}
-glm(Y ~ X, data, family = poisson)
-```
+**Question 4** - What is the function to conduct an Poisson regression in R?
 
 ### Melanoma tumor thickness and survival
 Data is `Melanoma` from `MASS`. I have maniuplated the data so it is suitable for analysis - code below.
@@ -192,34 +168,12 @@ lines(status ~ thickness, newdat, col="blue", lwd=2)
 
 <img src="04-GLM_files/figure-html/Melanoma-1.png" width="300" style="display: block; margin: auto;" />
 
-Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?
+**Question 5** - Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?
 
-```{.r .fold-hide}
-Yes. The thicker the tumour, the greater the odds of death. The P value of the slope of the binomial regression is significantly different from 0. P < 0.001.
-```
+**Question 6** - What does the coefficient estimate of `-0.24853` for the variable `thickness` represent?
 
-What does the coefficient estimate of `-0.24853` for the variable `thickness` represent?
+**Question 7** - What is the probability of survival with a tumor 5 mm thick?
 
-```{.r .fold-hide}
-The estimate represents the log odds of survival as a function of tumour thickness. In other words, we expect the log odds of survival to decrease by 0.25 for a 1 mm increase in tumour thickness. 
-
-We can transform log odds to odds by taking the exponential: exp(-0.24853) = 0.7799465. 1 - 0.7799465 = 0.22, so for every 1 mm increase in tumour thickness we expect the odds of survival to decrease by 22 %
-```
-
-What is the probability of survival with a tumor 5 mm thick?
-
-```{.r .fold-hide}
-The logit formula is logit = p/(1-p) and the regression equation is logit(p) = 1.61134 - 0.24853 * thickness
-so logit(p) =  1.61134 - 0.24853 * 5 = 0.36869
-
-and to turn logit p into probability (p):
-p = exp(logit(p))/(1 + exp(logit(p)))
-  = exp(0.36869)/(1 + exp(0.36869))
-  = 0.5911424
-
-The probability of surviving is 59 %
-```
-
-Wear sunscreen!
+> Wear sunscreen!
 
 ***

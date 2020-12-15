@@ -1,4 +1,4 @@
-# Assumptions
+# Assumptions {#assumptions}
 
 ```{r setup3, include=FALSE}
 library(knitr)
@@ -117,26 +117,16 @@ Interpreting ratios:
 Ratio > 1 = Line explains more than residual  
 Ratio ≤ 1 = Line explains very little (null hypothesis)  
 
-In other words, we want to know how much varaition is captured by the model relative to the total variation in our data.
+In other words, we want to know how much variation is captured by the model relative to the total variation in our data.
 
-What is the error that tells us how much varaition the line is (H1) explaining relative to our null hypothesis (H0)? 
-```{r, class.source = 'fold-hide', eval = FALSE, echo = TRUE}
-SSR - Sum of squares of the regression.
-```
+**Question 1** - What is the error that tells us how much variation the line is (H1) explaining relative to our null hypothesis (H0)?  
+**Question 2** - What is the error that tells us the total variation in our data?
 
-What is the error that tells us the total variation in our data?
-```{r, class.source = 'fold-hide', eval = FALSE, echo = TRUE}
-SSY - Sum of squares of the error. Sometimes called SST - total sum of squares
-```
-
-So we can evaluate how much varaition the model explains by:
+So, after answering the above, we can evaluate how much variation the model explains by:
 
 $$\frac{SSR}{SSY} = R^2$$
 
-Why can't we use SSE as the denominator?
-```{r, class.source = 'fold-hide', eval = FALSE, echo = TRUE}
-SSE depends on the total variation of Y. We could have more variation simply by having more data but the ratio values are the same. So using sum of squares does not tell us about how much variation is explained by our model in a way that is unbiased. 
-```
+**Question 3** - Why can't we use SSE as the denominator?
 
 ## Coefficient of determination $R^2$
 
@@ -272,10 +262,8 @@ qqnorm(chickwts$weight) ## the weight of chicks fed different diets (built in da
 ```
 
 Here, the quantiles of our observations are plotted against the theoretical quantiles if our observations followed a normal distribution.  
-**Question** - What would you expect to see if our observations followed a normal distribution?
-```{r, class.source = 'fold-hide',eval = FALSE}
-Observations to fall along a straight line at approx a 45 degree angle
-```
+
+**Question 4** - What would you expect to see if our observations followed a normal distribution?  
 
 We can add a reference line to the above to help us evaluate how linear the Q-Q plot is. We can make the line red and thicker for fun.
 ```
@@ -305,10 +293,8 @@ qqnorm(Loblolly$age) ## the ages of pine trees, can also try rbinom(100, 10, 0.5
 qqline(Loblolly$age)
 ```
 
-**Question** - What is the main difference between the Q-Q plots of the continuous and discrete data?
-```{r, class.source = 'fold-hide',eval = FALSE}
-You can see the discrete nature of the observations in the clustered groupings in the QQ plot - the staircase pattern
-```
+**Question 5** - What is the main difference between the Q-Q plots of the continuous and discrete data?
+
 Why do you think that is?  
 You can also see it using `hist()`
 
@@ -425,10 +411,7 @@ Fixes:
 
 > Homoscedasticity is the statistical term for homogeneity of variance. The opposite is called *Heteroscedasticity*. 
 
-**Question** - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?
-```{r, class.source = 'fold-hide',eval = FALSE}
-We want the variation across our grouped observations to be similar so the error bars of standard deviation should also be similar.
-```
+**Question 6** - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?
 
 Look at this graph - does it show homoscedasticity or heteroscedasticity?
 ```{r homo, echo=FALSE, fig.cap = "Bar plot of mean of two groups (A & B). Error bars indicate standard deviation"}
@@ -455,10 +438,7 @@ abline(lm(y~x, data))
 
 Here, you can see that as the value of `x` increases so does the scatter around the trend line in `y`. It is sometimes referred to as a shotgun pattern or cone/triangle pattern. It's common in time series data because your observations are not independent of each other, the value of one observation is dependent on what happens earlier in time. In other words, your response variable can be modelled based on the standard deviation.
 
-**Question** - What would you expect to see in a scatter plot for the assumption of homogeneity of variance to be met?
-```{r, class.source = 'fold-hide',eval = FALSE}
-We want the variation across our grouped observations to be similar so the spread of observations along they axis (vertically) across the values of x (horizontally) should be similar.
-```
+**Question 7** - What would you expect to see in a scatter plot for the assumption of homogeneity of variance to be met?
 
 You can assess this for a linear model from the (standardised or non-standardised) residual plot vs fitted values. Here's the residual plot using the above data. Can you see the unequal variance?
 

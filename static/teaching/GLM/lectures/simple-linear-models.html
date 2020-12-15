@@ -283,6 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="generalised-linear-models.html"><a href="generalised-linear-models.html#melanoma-tumor-thickness-and-survival"><i class="fa fa-check"></i><b>5.4.1</b> Melanoma tumor thickness and survival</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#chapter-2"><i class="fa fa-check"></i><b>6.1</b> Chapter 2</a></li>
+<li class="chapter" data-level="6.2" data-path="answers.html"><a href="answers.html#chapter-3"><i class="fa fa-check"></i><b>6.2</b> Chapter 3</a></li>
+<li class="chapter" data-level="6.3" data-path="answers.html"><a href="answers.html#chapter-4"><i class="fa fa-check"></i><b>6.3</b> Chapter 4</a></li>
+<li class="chapter" data-level="6.4" data-path="answers.html"><a href="answers.html#chapter-5"><i class="fa fa-check"></i><b>6.4</b> Chapter 5</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -457,13 +464,12 @@ Figure 2.2: Residuals (blue lines) are the difference between the data point and
 </div>
 <div id="halfway-there-revision-time" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Halfway there! Revision time!</h2>
-<p>Test your understanding so far by answering the questions below. Click <code>Code</code> to see the answer.</p>
-<p>What types of variables are used in simple linear regression?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb2-1"><a href="simple-linear-models.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Both the response and predictor variable should be <span class="fu">continuous.</span> (Categorical predictor variables are also allowed as we will see <span class="cf">in</span> later lectures)</span></code></pre></div>
-<p>What is the method for parameterising linear models called?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb3-1"><a href="simple-linear-models.html#cb3-1" aria-hidden="true" tabindex="-1"></a>Ordinary least squares regression. The aim is to minimise the sum of squared residuals.</span></code></pre></div>
-<p>What is random error in linear regression?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb4-1"><a href="simple-linear-models.html#cb4-1" aria-hidden="true" tabindex="-1"></a>The variation <span class="cf">in</span> data that cannot be explained by the linear model. i.e. the difference between the predicted value of the model and the observations<span class="sc">:</span> the residuals. Denoted ε.</span></code></pre></div>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol style="list-style-type: decimal">
+<li>What types of variables are used in simple linear regression?</li>
+<li>What is the method for parameterising linear models called?</li>
+<li>What is random error in linear regression?</li>
+</ol>
 <hr />
 </div>
 <div id="what-does-a-linear-model-tell-us" class="section level2" number="2.7">
@@ -653,17 +659,12 @@ mean in group Female   mean in group Male
 </div>
 <div id="revision-time" class="section level2" number="2.9">
 <h2><span class="header-section-number">2.9</span> Revision time!</h2>
-<p>Test your understanding so far by answering the questions below. Click <code>Code</code> to see the answer.</p>
-<p>What is the function in R to conduct a linear regression?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb8-1"><a href="simple-linear-models.html#cb8-1" aria-hidden="true" tabindex="-1"></a>The <span class="cf">function</span> is <span class="fu">lm</span>().</span></code></pre></div>
-<p>How do you find a predicted value of a response for a given predictor value using a parameterised linear model?</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb9-1"><a href="simple-linear-models.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Substitute the value of the predictor <span class="cf">in</span> the parameterised linear model and solve it.</span>
-<span id="cb9-2"><a href="simple-linear-models.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="simple-linear-models.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Y <span class="ot">=</span> <span class="dv">10</span> <span class="sc">*</span> X <span class="sc">+</span> <span class="dv">6</span> and X <span class="ot">=</span> <span class="dv">2</span><span class="sc">:</span></span>
-<span id="cb9-4"><a href="simple-linear-models.html#cb9-4" aria-hidden="true" tabindex="-1"></a>   Y <span class="ot">=</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">6</span> <span class="ot">=</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb9-5"><a href="simple-linear-models.html#cb9-5" aria-hidden="true" tabindex="-1"></a>   Y <span class="ot">=</span> <span class="dv">26</span> </span></code></pre></div>
-<p>What is the probability distribution function of linear regression?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb10-1"><a href="simple-linear-models.html#cb10-1" aria-hidden="true" tabindex="-1"></a>The normal distribution. Also called Gaussian.</span></code></pre></div>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>What is the function in R to conduct a linear regression?</li>
+<li>How do you find a predicted value of a response for a given predictor value using a parameterised linear model?</li>
+<li>What is the probability distribution function of linear regression?</li>
+</ol>
 
 </div>
 </div>

@@ -35,4 +35,4 @@ There are some example code that you should also ty out yourself. I recommend cr
 
 ## Revision questions
 
-There are some questions for you to answer throughout the chapters. Click `code` to see the answers to the questions. Some questions don't have answers but you should think about them. 
+There are some questions for you to answer throughout the chapters. The answers are at the end of the book in Chapter \@ref(answers). Some questions don't have answers but you should think about them. 

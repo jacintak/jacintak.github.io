@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="assumptions.html"/>
-
+<link rel="next" href="answers.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -283,6 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="generalised-linear-models.html"><a href="generalised-linear-models.html#melanoma-tumor-thickness-and-survival"><i class="fa fa-check"></i><b>5.4.1</b> Melanoma tumor thickness and survival</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#chapter-2"><i class="fa fa-check"></i><b>6.1</b> Chapter 2</a></li>
+<li class="chapter" data-level="6.2" data-path="answers.html"><a href="answers.html#chapter-3"><i class="fa fa-check"></i><b>6.2</b> Chapter 3</a></li>
+<li class="chapter" data-level="6.3" data-path="answers.html"><a href="answers.html#chapter-4"><i class="fa fa-check"></i><b>6.3</b> Chapter 4</a></li>
+<li class="chapter" data-level="6.4" data-path="answers.html"><a href="answers.html#chapter-5"><i class="fa fa-check"></i><b>6.4</b> Chapter 5</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -365,11 +372,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="number-of-oystercatchers-wetland-birds-in-south-africa" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Number of Oystercatchers (wetland birds) in South Africa</h3>
 <p>Data is <code>waders</code> from <code>MASS</code>. I have maniuplated the data so it is suitable for analysis - code below.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="generalised-linear-models.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data set of oystercatcher counts (column 1) and site labels</span></span>
-<span id="cb36-2"><a href="generalised-linear-models.html#cb36-2" aria-hidden="true" tabindex="-1"></a>waders <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Oystercatcher =</span> MASS<span class="sc">::</span>waders[,<span class="dv">1</span>],</span>
-<span id="cb36-3"><a href="generalised-linear-models.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">site =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>])</span>
-<span id="cb36-4"><a href="generalised-linear-models.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># poisson regression</span></span>
-<span id="cb36-5"><a href="generalised-linear-models.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glm</span>(Oystercatcher <span class="sc">+</span> <span class="dv">1</span> <span class="sc">~</span> site, waders, <span class="at">family =</span> poisson))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="generalised-linear-models.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data set of oystercatcher counts (column 1) and site labels</span></span>
+<span id="cb21-2"><a href="generalised-linear-models.html#cb21-2" aria-hidden="true" tabindex="-1"></a>waders <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Oystercatcher =</span> MASS<span class="sc">::</span>waders[,<span class="dv">1</span>],</span>
+<span id="cb21-3"><a href="generalised-linear-models.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">site =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>])</span>
+<span id="cb21-4"><a href="generalised-linear-models.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># poisson regression</span></span>
+<span id="cb21-5"><a href="generalised-linear-models.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glm</span>(Oystercatcher <span class="sc">+</span> <span class="dv">1</span> <span class="sc">~</span> site, waders, <span class="at">family =</span> poisson))</span></code></pre></div>
 <pre><code>
 Call:
 glm(formula = Oystercatcher + 1 ~ site, family = poisson, data = waders)
@@ -404,20 +411,9 @@ Residual deviance: 1.6653e-14  on  0  degrees of freedom
 AIC: 114.06
 
 Number of Fisher Scoring iterations: 3</code></pre>
-<p>Why did I add 1 to the variable Oystercatcher in the poisson regression?</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb38-1"><a href="generalised-linear-models.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> is a dummy variable to remove 0s from the counts <span class="sc">-</span> or <span class="fu">log</span>(<span class="dv">0</span>) will mess up the estimation of parameters</span></code></pre></div>
-<p>What is the link function for a poisson regression?</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb39-1"><a href="generalised-linear-models.html#cb39-1" aria-hidden="true" tabindex="-1"></a>(natural) log link</span></code></pre></div>
-<p>What is the expected number of Oystercatchers at site k?</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb40-1"><a href="generalised-linear-models.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dv">474</span> oystercatchers</span>
-<span id="cb40-2"><a href="generalised-linear-models.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="generalised-linear-models.html#cb40-3" aria-hidden="true" tabindex="-1"></a>Remember <span class="cf">in</span> linear <span class="fu">regression</span> (and by extension GLMs) the Intercept estimate is the estimated coefficient <span class="cf">for</span> the first <span class="fu">site</span> (site a) and the rest are the difference between site a and the respective site. So <span class="cf">for</span> site k you need to add the estimated coefficients together.</span>
-<span id="cb40-4"><a href="generalised-linear-models.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="generalised-linear-models.html#cb40-5" aria-hidden="true" tabindex="-1"></a>Coefficient <span class="cf">for</span> k<span class="sc">:</span>  <span class="fl">2.5649</span> <span class="sc">+</span> <span class="fl">3.5984</span> <span class="ot">=</span> <span class="fl">6.1633</span></span>
-<span id="cb40-6"><a href="generalised-linear-models.html#cb40-6" aria-hidden="true" tabindex="-1"></a>But remember this is log counts so you need to transform it back to regular counts<span class="sc">:</span></span>
-<span id="cb40-7"><a href="generalised-linear-models.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fl">6.1633</span>) <span class="ot">=</span> <span class="fl">474.993</span></span>
-<span id="cb40-8"><a href="generalised-linear-models.html#cb40-8" aria-hidden="true" tabindex="-1"></a>Then remember we added a dummy variable so you need to subtract that from our estimate<span class="sc">:</span></span>
-<span id="cb40-9"><a href="generalised-linear-models.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fl">474.993</span> <span class="sc">-</span> <span class="dv">1</span> <span class="ot">=</span> <span class="fl">473.993</span> which rounded to the nearest whole <span class="fu">number</span> (as counts are discrete variables) is <span class="dv">474</span><span class="sc">!</span></span></code></pre></div>
+<p><strong>Question 1</strong> - Why did I add 1 to the variable Oystercatcher in the poisson regression?</p>
+<p><strong>Question 2</strong> - What is the link function for a poisson regression?</p>
+<p><strong>Question 3</strong> - What is the expected number of Oystercatchers at site k?</p>
 <hr />
 </div>
 </div>
@@ -432,18 +428,17 @@ Number of Fisher Scoring iterations: 3</code></pre>
 <li>Transform from log odds to odds using <code>exp()</code></li>
 </ul></li>
 </ul>
-<p>What is the function to conduct an Poisson regression in R?</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb41-1"><a href="generalised-linear-models.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(Y <span class="sc">~</span> X, data, <span class="at">family =</span> poisson)</span></code></pre></div>
+<p><strong>Question 4</strong> - What is the function to conduct an Poisson regression in R?</p>
 <div id="melanoma-tumor-thickness-and-survival" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Melanoma tumor thickness and survival</h3>
 <p>Data is <code>Melanoma</code> from <code>MASS</code>. I have maniuplated the data so it is suitable for analysis - code below.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="generalised-linear-models.html#cb42-1" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> MASS<span class="sc">::</span>Melanoma</span>
-<span id="cb42-2"><a href="generalised-linear-models.html#cb42-2" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> <span class="fu">subset</span>(Melanoma, Melanoma<span class="sc">$</span>status <span class="sc">!=</span> <span class="dv">3</span>) <span class="co"># remove observations of other causes of death</span></span>
-<span id="cb42-3"><a href="generalised-linear-models.html#cb42-3" aria-hidden="true" tabindex="-1"></a>Melanoma<span class="sc">$</span>status <span class="ot">&lt;-</span> Melanoma<span class="sc">$</span>status <span class="sc">-</span> <span class="dv">1</span> <span class="co"># create binary variables: 0 = died, 1 = alive</span></span>
-<span id="cb42-4"><a href="generalised-linear-models.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="generalised-linear-models.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># binary regression</span></span>
-<span id="cb42-6"><a href="generalised-linear-models.html#cb42-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(status <span class="sc">~</span> thickness, Melanoma, <span class="at">family =</span> binomial)</span>
-<span id="cb42-7"><a href="generalised-linear-models.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="generalised-linear-models.html#cb23-1" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> MASS<span class="sc">::</span>Melanoma</span>
+<span id="cb23-2"><a href="generalised-linear-models.html#cb23-2" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> <span class="fu">subset</span>(Melanoma, Melanoma<span class="sc">$</span>status <span class="sc">!=</span> <span class="dv">3</span>) <span class="co"># remove observations of other causes of death</span></span>
+<span id="cb23-3"><a href="generalised-linear-models.html#cb23-3" aria-hidden="true" tabindex="-1"></a>Melanoma<span class="sc">$</span>status <span class="ot">&lt;-</span> Melanoma<span class="sc">$</span>status <span class="sc">-</span> <span class="dv">1</span> <span class="co"># create binary variables: 0 = died, 1 = alive</span></span>
+<span id="cb23-4"><a href="generalised-linear-models.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="generalised-linear-models.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># binary regression</span></span>
+<span id="cb23-6"><a href="generalised-linear-models.html#cb23-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(status <span class="sc">~</span> thickness, Melanoma, <span class="at">family =</span> binomial)</span>
+<span id="cb23-7"><a href="generalised-linear-models.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>
 Call:
 glm(formula = status ~ thickness, family = binomial, data = Melanoma)
@@ -466,29 +461,18 @@ Residual deviance: 213.45  on 189  degrees of freedom
 AIC: 217.45
 
 Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="generalised-linear-models.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(status <span class="sc">~</span> thickness, Melanoma, <span class="at">pch =</span> <span class="dv">19</span>) <span class="co"># plot</span></span>
-<span id="cb44-2"><a href="generalised-linear-models.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot binomial regression in blue</span></span>
-<span id="cb44-3"><a href="generalised-linear-models.html#cb44-3" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">thickness=</span><span class="fu">seq</span>(<span class="fu">min</span>(Melanoma<span class="sc">$</span>thickness), <span class="fu">max</span>(Melanoma<span class="sc">$</span>thickness),<span class="at">len=</span><span class="dv">100</span>))</span>
-<span id="cb44-4"><a href="generalised-linear-models.html#cb44-4" aria-hidden="true" tabindex="-1"></a>newdat<span class="sc">$</span>status <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata=</span>newdat, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
-<span id="cb44-5"><a href="generalised-linear-models.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(status <span class="sc">~</span> thickness, newdat, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="generalised-linear-models.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(status <span class="sc">~</span> thickness, Melanoma, <span class="at">pch =</span> <span class="dv">19</span>) <span class="co"># plot</span></span>
+<span id="cb25-2"><a href="generalised-linear-models.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot binomial regression in blue</span></span>
+<span id="cb25-3"><a href="generalised-linear-models.html#cb25-3" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">thickness=</span><span class="fu">seq</span>(<span class="fu">min</span>(Melanoma<span class="sc">$</span>thickness), <span class="fu">max</span>(Melanoma<span class="sc">$</span>thickness),<span class="at">len=</span><span class="dv">100</span>))</span>
+<span id="cb25-4"><a href="generalised-linear-models.html#cb25-4" aria-hidden="true" tabindex="-1"></a>newdat<span class="sc">$</span>status <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata=</span>newdat, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb25-5"><a href="generalised-linear-models.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(status <span class="sc">~</span> thickness, newdat, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="04-GLM_files/figure-html/Melanoma-1.png" width="300" style="display: block; margin: auto;" /></p>
-<p>Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb45-1"><a href="generalised-linear-models.html#cb45-1" aria-hidden="true" tabindex="-1"></a>Yes. The thicker the tumour, the greater the odds of death. The P value of the slope of the binomial regression is significantly different from <span class="fl">0.</span> P <span class="sc">&lt;</span> <span class="dv">0</span>.<span class="fl">001.</span></span></code></pre></div>
-<p>What does the coefficient estimate of <code>-0.24853</code> for the variable <code>thickness</code> represent?</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb46-1"><a href="generalised-linear-models.html#cb46-1" aria-hidden="true" tabindex="-1"></a>The estimate represents the log odds of survival as a <span class="cf">function</span> of tumour thickness. In other words, we expect the log odds of survival to decrease by <span class="fl">0.25</span> <span class="cf">for</span> a <span class="dv">1</span> mm increase <span class="cf">in</span> tumour thickness. </span>
-<span id="cb46-2"><a href="generalised-linear-models.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="generalised-linear-models.html#cb46-3" aria-hidden="true" tabindex="-1"></a>We can transform log odds to odds by taking the exponential<span class="sc">:</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.24853</span>) <span class="ot">=</span> <span class="dv">0</span>.<span class="fl">7799465.</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.7799465</span> <span class="ot">=</span> <span class="fl">0.22</span>, so <span class="cf">for</span> every <span class="dv">1</span> mm increase <span class="cf">in</span> tumour thickness we expect the odds of survival to decrease by <span class="dv">22</span> %</span></code></pre></div>
-<p>What is the probability of survival with a tumor 5 mm thick?</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb47-1"><a href="generalised-linear-models.html#cb47-1" aria-hidden="true" tabindex="-1"></a>The logit formula is logit <span class="ot">=</span> p<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>p) and the regression equation is <span class="fu">logit</span>(p) <span class="ot">=</span> <span class="fl">1.61134</span> <span class="sc">-</span> <span class="fl">0.24853</span> <span class="sc">*</span> thickness</span>
-<span id="cb47-2"><a href="generalised-linear-models.html#cb47-2" aria-hidden="true" tabindex="-1"></a>so <span class="fu">logit</span>(p) <span class="ot">=</span>  <span class="fl">1.61134</span> <span class="sc">-</span> <span class="fl">0.24853</span> <span class="sc">*</span> <span class="dv">5</span> <span class="ot">=</span> <span class="fl">0.36869</span></span>
-<span id="cb47-3"><a href="generalised-linear-models.html#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="generalised-linear-models.html#cb47-4" aria-hidden="true" tabindex="-1"></a>and to turn logit p into <span class="fu">probability</span> (p)<span class="sc">:</span></span>
-<span id="cb47-5"><a href="generalised-linear-models.html#cb47-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">exp</span>(<span class="fu">logit</span>(p))<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fu">logit</span>(p)))</span>
-<span id="cb47-6"><a href="generalised-linear-models.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.36869</span>)<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fl">0.36869</span>))</span>
-<span id="cb47-7"><a href="generalised-linear-models.html#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="fl">0.5911424</span></span>
-<span id="cb47-8"><a href="generalised-linear-models.html#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="generalised-linear-models.html#cb47-9" aria-hidden="true" tabindex="-1"></a>The probability of surviving is <span class="dv">59</span> %</span></code></pre></div>
+<p><strong>Question 5</strong> - Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?</p>
+<p><strong>Question 6</strong> - What does the coefficient estimate of <code>-0.24853</code> for the variable <code>thickness</code> represent?</p>
+<p><strong>Question 7</strong> - What is the probability of survival with a tumor 5 mm thick?</p>
+<blockquote>
 <p>Wear sunscreen!</p>
+</blockquote>
 <hr />
 
 </div>
@@ -499,8 +483,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
           </div>
         </div>
       </div>
-<a href="assumptions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="assumptions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="answers.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

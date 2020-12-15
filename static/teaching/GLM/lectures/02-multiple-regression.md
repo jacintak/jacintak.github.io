@@ -1,4 +1,4 @@
-# Multiple regression
+# Multiple regression {#multiple}
 
 
 ***
@@ -192,31 +192,14 @@ Manually calculated means for "Some" group:
 * Need post-hoc tests like Tukey’s Honest Significant Differences (not covered in this lecture) to see *which pairs* are significantly different
 
 ***
+
 ## Recap time!
 
-Test your understanding so far by answering the questions below. Click `Code` to see the answer.
+Test your understanding so far by answering the questions below.
 
-What is the significance of fixed and random variables for drawing conclusions?
-
-```{.r .fold-hide}
-It changes the inferred conclusion. In fixed models, the identities of the groupings are the main level of inference whereas in random models we consider the identity of the group to be randomly selected from a wider pool of candidates. Thus we can generalise our findings beyond our selected groups in random models but are limited to the groups we selected in fixed models. 
-
-For example, if we counted the population of 5 towns in Ireland and analysed the data using a fixed model, then we could only state our conclusion for those 5 towns and cannot draw conclusions for the whole of Ireland.
-
-With a random model, we consider those 5 towns to be representitive of the whole of Ireland, we are not interested in those 5 towns in particular, thus we can generalise our conclusions to the whole of Ireland. E.g. those 5 towns were randomly selected from all the candidate towns to survey.
-```
-
-What is the function to conduct an Analysis of Variance in R?
-
-```{.r .fold-hide}
-Either summary(aov()) or anova(lm()) will do a Type I ANOVA. Type II and Type III models require additional packages.
-```
-
-How many groups were in the categorical predictor variable in this one-way analysis of variance? $F_{5,24} = 14.23, P < 0.001$
-
-```{.r .fold-hide}
-6 groups. The degree of freedom for group is 5 and this is calculated from the number of groups - 1. So 5 + 1 = 6.
-```
+1. What is the significance of fixed and random variables for drawing conclusions?
+2. What is the function to conduct an Analysis of Variance in R?
+3. How many groups were in the categorical predictor variable in this one-way analysis of variance? $F_{5,24} = 14.23, P < 0.001$
 
 ***
 
@@ -402,21 +385,11 @@ Common statistical analyses you should be able to do by applying the concepts in
 
 ## Recap time!
 
-Test your understanding so far by answering the questions below. Click `Code` to see the answer.
+Test your understanding so far by answering the questions below.
 
-What is the difference between an additive and interactive linear model? 
-
-```{.r .fold-hide}
-An additive model does not describe an interaction between the two predictor variables. An interactive model describes that the effect of one predictor variable on the response variable is dependent on the second predictor variable.
-```
-
-What is the function to conduct an interactive multiple regression model in R?
-
-```{.r .fold-hide}
-lm(Y ~ A * B, data) where A & B are the two predictor variables. * denotes the interaction.
-```
-
-A multiple regression of crab shell width (response) with crab body depth (continuous predictor) for two species (categorical predictor: B or O) and their interaction had the following coefficients:  
+4. What is the difference between an additive and interactive linear model? 
+5. What is the function to conduct an interactive multiple regression model in R?
+6. A multiple regression of crab shell width (response) with crab body depth (continuous predictor) for two species (categorical predictor: B or O) and their interaction had the following coefficients:  
 
 
 |            |          x|
@@ -428,19 +401,4 @@ A multiple regression of crab shell width (response) with crab body depth (conti
 
   
 What is the predicted shell length (mm) of a species O crab with a body depth of 15mm?
-
-
-```{.r .fold-hide}
-Answer: 36.97951 mm
-
-Because B is alphabetically before O, the first parameter coefficients refer to species B. 
-The intercept for species O is 2.6942643-1.2531624 = 1.441102
-The slope for species O is  2.5449206-0.1756934 = 2.369227
-Thus the whole model for species O is:
-  shell length = 2.369227 * body depth + 1.441102
-
-Using a value of 15 for body depth:
-  shell length = 2.369227 * 15 + 1.441102
-               = 36.97951 mm
-```
 

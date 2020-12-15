@@ -1,4 +1,4 @@
-# Simple linear models
+# Simple linear models {#simple}
 
 
 ***
@@ -147,25 +147,11 @@ Residuals are squared to make all values positive - remember points can fall abo
 ***
 
 ## Halfway there! Revision time!
-Test your understanding so far by answering the questions below. Click `Code` to see the answer.
+Test your understanding so far by answering the questions below.  
 
-What types of variables are used in simple linear regression?
-
-```{.r .fold-hide}
-Both the response and predictor variable should be continuous. (Categorical predictor variables are also allowed as we will see in later lectures)
-```
-
-What is the method for parameterising linear models called?
-
-```{.r .fold-hide}
-Ordinary least squares regression. The aim is to minimise the sum of squared residuals.
-```
-
-What is random error in linear regression?
-
-```{.r .fold-hide}
-The variation in data that cannot be explained by the linear model. i.e. the difference between the predicted value of the model and the observations: the residuals. Denoted ε.
-```
+1. What types of variables are used in simple linear regression?
+2. What is the method for parameterising linear models called?
+3. What is random error in linear regression?
 
 ***
 
@@ -268,7 +254,7 @@ F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758
 
 * E.g. Gaussian/normal distribution
 * Grouped by "family"
-* Other types exist but not covered here – same principles apply, called generalised linear models (GLM)
+* Other types exist – same principles apply, called generalised linear models (GLM). GLMs are touched on in Chapter \@ref(GLM)
 
 
 <div class="figure" style="text-align: center">
@@ -329,26 +315,8 @@ They are all variants on general linear models anyway...
 ***
 
 ## Revision time!
-Test your understanding so far by answering the questions below. Click `Code` to see the answer.
+Test your understanding so far by answering the questions below.
 
-What is the function in R to conduct a linear regression?
-
-```{.r .fold-hide}
-The function is lm().
-```
-
-How do you find a predicted value of a response for a given predictor value using a parameterised linear model?
-
-```{.r .fold-hide}
-Substitute the value of the predictor in the parameterised linear model and solve it.
-
-if Y = 10 * X + 6 and X = 2:
-   Y = 10 * 2 + 6 = 20 + 6
-   Y = 26 
-```
-
-What is the probability distribution function of linear regression?
-
-```{.r .fold-hide}
-The normal distribution. Also called Gaussian.
-```
+4. What is the function in R to conduct a linear regression?
+5. How do you find a predicted value of a response for a given predictor value using a parameterised linear model?
+6. What is the probability distribution function of linear regression?

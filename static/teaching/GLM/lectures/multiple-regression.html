@@ -283,6 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="generalised-linear-models.html"><a href="generalised-linear-models.html#melanoma-tumor-thickness-and-survival"><i class="fa fa-check"></i><b>5.4.1</b> Melanoma tumor thickness and survival</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#chapter-2"><i class="fa fa-check"></i><b>6.1</b> Chapter 2</a></li>
+<li class="chapter" data-level="6.2" data-path="answers.html"><a href="answers.html#chapter-3"><i class="fa fa-check"></i><b>6.2</b> Chapter 3</a></li>
+<li class="chapter" data-level="6.3" data-path="answers.html"><a href="answers.html#chapter-4"><i class="fa fa-check"></i><b>6.3</b> Chapter 4</a></li>
+<li class="chapter" data-level="6.4" data-path="answers.html"><a href="answers.html#chapter-5"><i class="fa fa-check"></i><b>6.4</b> Chapter 5</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -535,17 +542,12 @@ F-statistic: 3.378 on 2 and 189 DF,  p-value: 0.03618</code></pre>
 </div>
 <div id="recap-time" class="section level2" number="3.8">
 <h2><span class="header-section-number">3.8</span> Recap time!</h2>
-<p>Test your understanding so far by answering the questions below. Click <code>Code</code> to see the answer.</p>
-<p>What is the significance of fixed and random variables for drawing conclusions?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb15-1"><a href="multiple-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a>It changes the inferred conclusion. In fixed models, the identities of the groupings are the main level of inference whereas <span class="cf">in</span> random models we consider the identity of the group to be randomly selected from a wider pool of candidates. Thus we can generalise our findings beyond our selected groups <span class="cf">in</span> random models but are limited to the groups we selected <span class="cf">in</span> fixed models. </span>
-<span id="cb15-2"><a href="multiple-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="multiple-regression.html#cb15-3" aria-hidden="true" tabindex="-1"></a>For example, <span class="cf">if</span> we counted the population of <span class="dv">5</span> towns <span class="cf">in</span> Ireland and analysed the data using a fixed model, then we could only state our conclusion <span class="cf">for</span> those <span class="dv">5</span> towns and cannot draw conclusions <span class="cf">for</span> the whole of Ireland.</span>
-<span id="cb15-4"><a href="multiple-regression.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="multiple-regression.html#cb15-5" aria-hidden="true" tabindex="-1"></a>With a random model, we consider those <span class="dv">5</span> towns to be representitive of the whole of Ireland, we are not interested <span class="cf">in</span> those <span class="dv">5</span> towns <span class="cf">in</span> particular, thus we can generalise our conclusions to the whole of Ireland. E.g. those <span class="dv">5</span> towns were randomly selected from all the candidate towns to survey.</span></code></pre></div>
-<p>What is the function to conduct an Analysis of Variance in R?</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb16-1"><a href="multiple-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a>Either <span class="fu">summary</span>(<span class="fu">aov</span>()) or <span class="fu">anova</span>(<span class="fu">lm</span>()) will do a Type I ANOVA. Type II and Type III models require additional packages.</span></code></pre></div>
-<p>How many groups were in the categorical predictor variable in this one-way analysis of variance? <span class="math inline">\(F_{5,24} = 14.23, P &lt; 0.001\)</span></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb17-1"><a href="multiple-regression.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> groups. The degree of freedom <span class="cf">for</span> group is <span class="dv">5</span> and this is calculated from the number of groups <span class="sc">-</span> <span class="fl">1.</span> So <span class="dv">5</span> <span class="sc">+</span> <span class="dv">1</span> <span class="ot">=</span> <span class="fl">6.</span></span></code></pre></div>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol style="list-style-type: decimal">
+<li>What is the significance of fixed and random variables for drawing conclusions?</li>
+<li>What is the function to conduct an Analysis of Variance in R?</li>
+<li>How many groups were in the categorical predictor variable in this one-way analysis of variance? <span class="math inline">\(F_{5,24} = 14.23, P &lt; 0.001\)</span></li>
+</ol>
 <hr />
 </div>
 <div id="multiple-regression-1" class="section level2" number="3.9">
@@ -857,11 +859,11 @@ They are widely used in biological statistics so you’ll likely come across the
 <div id="recap-time-1" class="section level2" number="3.11">
 <h2><span class="header-section-number">3.11</span> Recap time!</h2>
 <p>Test your understanding so far by answering the questions below. Click <code>Code</code> to see the answer.</p>
-<p>What is the difference between an additive and interactive linear model?</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb20-1"><a href="multiple-regression.html#cb20-1" aria-hidden="true" tabindex="-1"></a>An additive model does not describe an interaction between the two predictor variables. An interactive model describes that the effect of one predictor variable on the response variable is dependent on the second predictor variable.</span></code></pre></div>
-<p>What is the function to conduct an interactive multiple regression model in R?</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb21-1"><a href="multiple-regression.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> A <span class="sc">*</span> B, data) where A <span class="sc">&amp;</span> B are the two predictor variables. <span class="sc">*</span> denotes the interaction.</span></code></pre></div>
-<p>A multiple regression of crab shell width (response) with crab body depth (continuous predictor) for two species (categorical predictor: B or O) and their interaction had the following coefficients:</p>
+<ol start="4" style="list-style-type: decimal">
+<li>What is the difference between an additive and interactive linear model?</li>
+<li>What is the function to conduct an interactive multiple regression model in R?</li>
+<li>A multiple regression of crab shell width (response) with crab body depth (continuous predictor) for two species (categorical predictor: B or O) and their interaction had the following coefficients:</li>
+</ol>
 <table>
 <thead>
 <tr class="header">
@@ -889,17 +891,6 @@ They are widely used in biological statistics so you’ll likely come across the
 </tbody>
 </table>
 <p>What is the predicted shell length (mm) of a species O crab with a body depth of 15mm?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb22-1"><a href="multiple-regression.html#cb22-1" aria-hidden="true" tabindex="-1"></a>Answer<span class="sc">:</span> <span class="fl">36.97951</span> mm</span>
-<span id="cb22-2"><a href="multiple-regression.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="multiple-regression.html#cb22-3" aria-hidden="true" tabindex="-1"></a>Because B is alphabetically before O, the first parameter coefficients refer to species B. </span>
-<span id="cb22-4"><a href="multiple-regression.html#cb22-4" aria-hidden="true" tabindex="-1"></a>The intercept <span class="cf">for</span> species O is <span class="fl">2.6942643-1.2531624</span> <span class="ot">=</span> <span class="fl">1.441102</span></span>
-<span id="cb22-5"><a href="multiple-regression.html#cb22-5" aria-hidden="true" tabindex="-1"></a>The slope <span class="cf">for</span> species O is  <span class="fl">2.5449206-0.1756934</span> <span class="ot">=</span> <span class="fl">2.369227</span></span>
-<span id="cb22-6"><a href="multiple-regression.html#cb22-6" aria-hidden="true" tabindex="-1"></a>Thus the whole model <span class="cf">for</span> species O is<span class="sc">:</span></span>
-<span id="cb22-7"><a href="multiple-regression.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  shell length <span class="ot">=</span> <span class="fl">2.369227</span> <span class="sc">*</span> body depth <span class="sc">+</span> <span class="fl">1.441102</span></span>
-<span id="cb22-8"><a href="multiple-regression.html#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="multiple-regression.html#cb22-9" aria-hidden="true" tabindex="-1"></a>Using a value of <span class="dv">15</span> <span class="cf">for</span> body depth<span class="sc">:</span></span>
-<span id="cb22-10"><a href="multiple-regression.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  shell length <span class="ot">=</span> <span class="fl">2.369227</span> <span class="sc">*</span> <span class="dv">15</span> <span class="sc">+</span> <span class="fl">1.441102</span></span>
-<span id="cb22-11"><a href="multiple-regression.html#cb22-11" aria-hidden="true" tabindex="-1"></a>               <span class="ot">=</span> <span class="fl">36.97951</span> mm</span></code></pre></div>
 
 </div>
 </div>
