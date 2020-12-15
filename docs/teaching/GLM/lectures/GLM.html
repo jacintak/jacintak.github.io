@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="number-of-oystercatchers-wetland-birds-in-south-africa" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Number of Oystercatchers (wetland birds) in South Africa</h3>
-<p>Data is <code>waders</code> from <code>MASS</code>. I have maniuplated the data so it is suitable for analysis - code below.</p>
+<p>Data is <code>waders</code> from <code>MASS</code>. I have manipulated the data so it is suitable for analysis - code below.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="GLM.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data set of oystercatcher counts (column 1) and site labels</span></span>
 <span id="cb21-2"><a href="GLM.html#cb21-2" aria-hidden="true" tabindex="-1"></a>waders <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Oystercatcher =</span> MASS<span class="sc">::</span>waders[,<span class="dv">1</span>],</span>
 <span id="cb21-3"><a href="GLM.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">site =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>])</span>
@@ -431,7 +431,7 @@ Number of Fisher Scoring iterations: 3</code></pre>
 <p><strong>Question 4</strong> - What is the function to conduct an Poisson regression in R?</p>
 <div id="melanoma-tumor-thickness-and-survival" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Melanoma tumor thickness and survival</h3>
-<p>Data is <code>Melanoma</code> from <code>MASS</code>. I have maniuplated the data so it is suitable for analysis - code below.</p>
+<p>Data is <code>Melanoma</code> from <code>MASS</code>. I have manipulated the data so it is suitable for analysis - code below.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="GLM.html#cb23-1" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> MASS<span class="sc">::</span>Melanoma</span>
 <span id="cb23-2"><a href="GLM.html#cb23-2" aria-hidden="true" tabindex="-1"></a>Melanoma <span class="ot">&lt;-</span> <span class="fu">subset</span>(Melanoma, Melanoma<span class="sc">$</span>status <span class="sc">!=</span> <span class="dv">3</span>) <span class="co"># remove observations of other causes of death</span></span>
 <span id="cb23-3"><a href="GLM.html#cb23-3" aria-hidden="true" tabindex="-1"></a>Melanoma<span class="sc">$</span>status <span class="ot">&lt;-</span> Melanoma<span class="sc">$</span>status <span class="sc">-</span> <span class="dv">1</span> <span class="co"># create binary variables: 0 = died, 1 = alive</span></span>
@@ -467,9 +467,9 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <span id="cb25-4"><a href="GLM.html#cb25-4" aria-hidden="true" tabindex="-1"></a>newdat<span class="sc">$</span>status <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata=</span>newdat, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
 <span id="cb25-5"><a href="GLM.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(status <span class="sc">~</span> thickness, newdat, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="04-GLM_files/figure-html/Melanoma-1.png" width="300" style="display: block; margin: auto;" /></p>
-<p><strong>Question 5</strong> - Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?</p>
+<p><strong>Question 5</strong> - Is there a relationship between Melanoma tumour thickness (mm) and whether a patient survives?</p>
 <p><strong>Question 6</strong> - What does the coefficient estimate of <code>-0.24853</code> for the variable <code>thickness</code> represent?</p>
-<p><strong>Question 7</strong> - What is the probability of survival with a tumor 5 mm thick?</p>
+<p><strong>Question 7</strong> - What is the probability of survival with a tumour 5 mm thick?</p>
 <blockquote>
 <p>Wear sunscreen!</p>
 </blockquote>

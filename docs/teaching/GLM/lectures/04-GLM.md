@@ -54,7 +54,7 @@ But the model outputs are interpreted differently to normal distributions becaus
 * See later lectures about Chi-Squared tests ($\chi^2$).
 
 ### Number of Oystercatchers (wetland birds) in South Africa
-Data is `waders` from `MASS`. I have maniuplated the data so it is suitable for analysis - code below.
+Data is `waders` from `MASS`. I have manipulated the data so it is suitable for analysis - code below.
 
 
 ```r
@@ -121,7 +121,7 @@ Number of Fisher Scoring iterations: 3
 **Question 4** - What is the function to conduct an Poisson regression in R?
 
 ### Melanoma tumor thickness and survival
-Data is `Melanoma` from `MASS`. I have maniuplated the data so it is suitable for analysis - code below.
+Data is `Melanoma` from `MASS`. I have manipulated the data so it is suitable for analysis - code below.
 
 ```r
 Melanoma <- MASS::Melanoma
@@ -168,11 +168,11 @@ lines(status ~ thickness, newdat, col="blue", lwd=2)
 
 <img src="04-GLM_files/figure-html/Melanoma-1.png" width="300" style="display: block; margin: auto;" />
 
-**Question 5** - Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?
+**Question 5** - Is there a relationship between Melanoma tumour thickness (mm) and whether a patient survives?
 
 **Question 6** - What does the coefficient estimate of `-0.24853` for the variable `thickness` represent?
 
-**Question 7** - What is the probability of survival with a tumor 5 mm thick?
+**Question 7** - What is the probability of survival with a tumour 5 mm thick?
 
 > Wear sunscreen!
 

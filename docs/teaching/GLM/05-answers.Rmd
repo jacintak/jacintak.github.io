@@ -158,7 +158,7 @@ Then remember we added a dummy variable so you need to subtract that from our es
 glm(Y ~ X, data, family = poisson)
 ```
 
-**Question 5** - Is there a relationship between Melanoma tumor thickness (mm) and whether a patient survives?
+**Question 5** - Is there a relationship between Melanoma tumour thickness (mm) and whether a patient survives?
 ```
 Yes. The thicker the tumour, the greater the odds of death. The P value of the slope of the binomial regression is significantly different from 0. P < 0.001.
 ```
@@ -170,7 +170,7 @@ The estimate represents the log odds of survival as a function of tumour thickne
 We can transform log odds to odds by taking the exponential: exp(-0.24853) = 0.7799465. 1 - 0.7799465 = 0.22, so for every 1 mm increase in tumour thickness we expect the odds of survival to decrease by 22 %
 ```
 
-**Question 7** - What is the probability of survival with a tumor 5 mm thick?
+**Question 7** - What is the probability of survival with a tumour 5 mm thick?
 ```
 The logit formula is logit = p/(1-p) and the regression equation is logit(p) = 1.61134 - 0.24853 * thickness
 so logit(p) =  1.61134 - 0.24853 * 5 = 0.36869
