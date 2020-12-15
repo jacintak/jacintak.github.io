@@ -130,47 +130,58 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
       <link>https://jacintak.github.io/project/biostats-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
-      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
-&lt;h1 id=&#34;set-up&#34;&gt;Set up&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Set up&lt;/h1&gt;
 &lt;p&gt;We need to set up our computer to start using tutorials in R.&lt;/p&gt;
 &lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
-&lt;ol&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
 &lt;ul&gt;
 &lt;li&gt;You can check your R package version using &lt;code&gt;R.version()$version.string&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
 &lt;ul&gt;
 &lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages()&lt;/code&gt; to do so
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; (or &lt;code&gt;devtools&lt;/code&gt;) - needed to install the tutorials&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;knitr&lt;/code&gt; - for displaying content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;installing-the-tutorials&#34;&gt;Installing the tutorials&lt;/h1&gt;
-&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
+&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
 Use the following code:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are asked to install any other packages, choose yes but don&amp;rsquo;t do any compiling (press no if asked).&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).&lt;br /&gt;
 If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;running-a-tutorial&#34;&gt;Running a tutorial&lt;/h1&gt;
-&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br&gt;
-Make sure it&amp;rsquo;s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
-&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the &amp;ldquo;Show in new window&amp;rdquo; icon to open it in another window. Press the &amp;ldquo;Home&amp;rdquo; icon to return to the Tutorials tab.&lt;/p&gt;
-&lt;p&gt;If that doesn&amp;rsquo;t work use this code and the tutorial will open in another window:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
-&lt;p&gt;Quit a tutorial by pressing the &amp;ldquo;Stop&amp;rdquo; icon.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running a tutorial&lt;/h1&gt;
+&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
+Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
+&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
+&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

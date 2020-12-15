@@ -13,7 +13,7 @@ image:
   caption: 
   focal_point: ""
   preview_only: false
-projects: [Life cycles]
+projects: [life-cycles]
 publication: 'Integrative Zoology'
 publication_short: "Integr Zool"
 publication_types:

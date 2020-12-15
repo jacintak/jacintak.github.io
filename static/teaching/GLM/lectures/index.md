@@ -5,8 +5,8 @@ date: "2020-12-15"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: []
-biblio-style: apalike
+#bibliography: []
+#biblio-style: apalike
 link-citations: yes
 url: 'http://jacintak.github.io/teaching/GLM'
 description: "An introduction to linear regression"

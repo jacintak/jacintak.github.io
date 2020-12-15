@@ -12,7 +12,7 @@ image:
   caption: "*Warramaba ngadju* from Western Australia, Australia"
   focal_point: ""
   preview_only: false
-projects: [Life cycle]
+projects: [life-cycles]
 publication: 'Philosophical Transactions of the Royal Society B: Biological Sciences'
 publication_short: "Phil. Trans. R Soc. B"
 publication_types:

@@ -4,7 +4,11 @@ external_link:
 image:
   caption: 
   focal_point: Smart
-links:
+links: 
+- icon: wordpress-simple
+  icon_pack: fab
+  name: Blog
+  url: "https://jacintakongresearch.wordpress.com/2020/11/18/biostats-tutorials/"
 slides: 
 summary: learnr tutorials for teaching undergraduate biostatistics
 tags:

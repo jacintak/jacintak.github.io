@@ -122,7 +122,7 @@
   <meta property="twitter:image" content="https://jacintak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
-    <meta property="article:modified_time" content="2020-12-14T13:28:03&#43;00:00">
+    
   
 
   
@@ -151,7 +151,7 @@
   "headline": "Biostatistics tutorials",
   
   "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "2020-12-14T13:28:03Z",
+  "dateModified": "0001-01-01T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -478,10 +478,8 @@
     
     
       
-          Last updated on
-      
     
-    14 Dec 2020
+    1 Jan 0001
   </span>
   
 
@@ -550,6 +548,22 @@
 
 
 
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="https://jacintakongresearch.wordpress.com/2020/11/18/biostats-tutorials/" target="_blank" rel="noopener">
+    <i class="fab fa-fa-wordpress-simple mr-1"></i>
+    Blog
+  </a>
+
 
 </div>
 
@@ -562,47 +576,58 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h1 id="introduction">Introduction</h1>
+      
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p><code>biostats.tutorials</code> is an <code>R</code> package of <code>learnr</code> tutorials for introductory biostatistics and <code>R</code>.</p>
-<h1 id="set-up">Set up</h1>
+</div>
+<div id="set-up" class="section level1">
+<h1>Set up</h1>
 <p>We need to set up our computer to start using tutorials in R.</p>
 <p>Follow this checklist in order to make sure you are set up:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>Have you installed R version 4.0 or above? - if not, install/update R
 <ul>
 <li>You can check your R package version using <code>R.version()$version.string</code></li>
-</ul>
-</li>
+</ul></li>
 <li>Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
 <ul>
 <li>You can check your RStudio version using <code>RStudio.Version()$version</code></li>
-</ul>
-</li>
+</ul></li>
 <li>Have you installed the following packages? - if not use <code>install.packages()</code> to do so
 <ul>
 <li><code>learnr</code> - needed to run the tutorials</li>
 <li><code>remotes</code> (or <code>devtools</code>) - needed to install the tutorials</li>
 <li><code>knitr</code> - for displaying content</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)</p>
-<hr>
-<h1 id="installing-the-tutorials">Installing the tutorials</h1>
-<p>Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.<br>
+<hr />
+</div>
+<div id="installing-the-tutorials" class="section level1">
+<h1>Installing the tutorials</h1>
+<p>Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.<br />
 Use the following code:</p>
-<pre><code>remotes::install_github(&quot;jacintak/biostats&quot;, dependencies = TRUE)
-</code></pre><p>If you are asked to install any other packages, choose yes but don&rsquo;t do any compiling (press no if asked).<br>
+<pre><code>remotes::install_github(&quot;jacintak/biostats&quot;, dependencies = TRUE)</code></pre>
+<p>If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).<br />
 If the package installed properly, you should automatically see the tutorials in the Tutorial tab.</p>
-<hr>
-<h1 id="running-a-tutorial">Running a tutorial</h1>
-<p>You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.<br>
-Make sure it&rsquo;s a tutorial from the <code>biostats.tutorials</code> package.</p>
-<p>If you click run tutorial, the tutorial will show up in the tab. You can click the &ldquo;Show in new window&rdquo; icon to open it in another window. Press the &ldquo;Home&rdquo; icon to return to the Tutorials tab.</p>
-<p>If that doesn&rsquo;t work use this code and the tutorial will open in another window:</p>
-<pre><code>learnr::run_tutorial(&quot;&lt;insert name of the tutorial to run&gt;&quot;, package = &quot;biostats.tutorials&quot;)
-</code></pre><p>If neither works, check that the <code>biostats.tutorials</code> package installed properly.</p>
-<p>Quit a tutorial by pressing the &ldquo;Stop&rdquo; icon.</p>
+<hr />
+</div>
+<div id="running-a-tutorial" class="section level1">
+<h1>Running a tutorial</h1>
+<p>You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.<br />
+Make sure it’s a tutorial from the <code>biostats.tutorials</code> package.</p>
+<p>If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.</p>
+<p>If that doesn’t work use this code and the tutorial will open in another window:</p>
+<pre><code>learnr::run_tutorial(&quot;&lt;insert name of the tutorial to run&gt;&quot;, package = &quot;biostats.tutorials&quot;)</code></pre>
+<p>If neither works, check that the <code>biostats.tutorials</code> package installed properly.</p>
+<p>Quit a tutorial by pressing the “Stop” icon.</p>
+</div>
 
     </div>
 

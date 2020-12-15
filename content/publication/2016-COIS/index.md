@@ -8,7 +8,7 @@ authors:
 date: "2016-10-11"
 doi: "10.1016/j.cois.2016.07.006"
 featured: false
-projects: [Life cycles]
+projects: [Toolbox]
 publication: 'Current Opinion in Insect Science'
 publication_short: "Curr Opin Insect Sci."
 publication_types:
