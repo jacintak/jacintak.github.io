@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publication_types | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/publication_types/</link>
-      <atom:link href="https://jacintak.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
+    <link>/publication_types/</link>
+      <atom:link href="/publication_types/index.xml" rel="self" type="application/rss+xml" />
     <description>Publication_types</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <url>/img/icon-512.png</url>
       <title>Publication_types</title>
-      <link>https://jacintak.github.io/publication_types/</link>
+      <link>/publication_types/</link>
     </image>
     
   </channel>

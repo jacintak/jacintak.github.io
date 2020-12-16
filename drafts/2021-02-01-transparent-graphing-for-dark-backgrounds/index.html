@@ -1,0 +1,52 @@
+---
+title: Transparent graphing for dark backgrounds
+author: 
+- admin
+date: '2020-12-16'
+slug: []
+categories: [code]
+tags: [code, conferences, talks, poster, R stats]
+publishDate: "2021-02-01"
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p>I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but <code>ggplot2</code> doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in <code>trees</code> dataset:</p>
+<pre><code>tree_graph &lt;- ggplot(data = trees, 
+       mapping = aes(x = Height, 
+                     y = Girth)) + 
+    geom_point(size = 0.5, colour = &quot;#B8DE29FF&quot;) + 
+    geom_smooth(method = &quot;lm&quot;, se = FALSE, col = &quot;#B8DE29FF&quot;) + 
+    geom_abline(intercept = 0, slope = 1, col = &quot;white&quot;, lwd = 0.5, lty = 2) + 
+    theme_classic() +
+    theme(plot.background = element_rect(fill = &quot;transparent&quot;, color = NA),
+          panel.background = element_rect(fill = &quot;transparent&quot;),
+          axis.text = element_text(colour = &quot;#B8DE29FF&quot;, size = 8),
+          axis.title = element_text(colour = &quot;#B8DE29FF&quot;, size = 8),
+          axis.line = element_line(colour = &quot;#B8DE29FF&quot;),
+          axis.ticks = element_line(colour = &quot;#B8DE29FF&quot;))
+
+ggsave(tree_graph, filename = &quot;tree_graph.png&quot;, bg = &quot;transparent&quot;, type = &quot;cairo-png&quot;)</code></pre>
+<p>There are a couple of generally useful elements added on purpose:</p>
+<ul>
+<li><code>geom_smooth</code> creates an automatically fitted linear model (defined using <code>method = "lm"</code>). I have turned off plotting the standard errors (on by default) and manually set the colour.</li>
+<li><code>geom_abline</code> is your standard straight line</li>
+<li><code>theme</code> is where the customisation begins:
+<ul>
+<li><code>plot.background</code> &amp; <code>panel.background</code> are set to transparent</li>
+<li>The various axis elements are set to the fill colour (a nice <code>viridis</code> green) and desired text size</li>
+</ul></li>
+<li><code>ggsave</code> specifies that the background is transparent and to save it as a “cairo-png”. Cairo is needed to create a vector based image so resizing the png isn’t an issue since the small font size is already defined
+<ul>
+<li>If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill</li>
+</ul></li>
+</ul>

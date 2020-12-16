@@ -6,6 +6,6 @@
 # whereas build_dir uses rmakrdown::render() thus giving html files
 old <- getwd()
 setwd("static/teaching/GLM/")
-#bookdown::clean_book(clean =FALSE)
+# bookdown::clean_book(clean =FALSE)
 # bookdown::render_book(input = "index.Rmd")
 setwd(old)

@@ -37,6 +37,7 @@ projects: []
 <div id="things-i-noted" class="section level2">
 <h2>Things I noted</h2>
 <ul>
+<li>I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.</li>
 <li>Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML</li>
 <li>A header image/thumbnail can be included in the same folder as the content <em>but</em> it must be called “featured” or it won’t be recognised</li>
 <li>You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
@@ -78,11 +79,22 @@ rmarkdown::render(&#39;content/cv/index.Rmd&#39;, output_format = rmarkdown::pdf
 # make gitbook
 # blogdown::build_dir(&quot;static&quot;) doesn&#39;t work because we want a gitbook that knits with render_book
 # whereas build_dir uses rmakrdown::render() thus giving html files
+old &lt;- getwd()
 setwd(&quot;static/teaching/GLM/&quot;)
-bookdown::render_book(input = &quot;index.Rmd&quot;)</code></pre>
+# bookdown::clean_book(clean =FALSE)
+# bookdown::render_book(input = &quot;index.Rmd&quot;)
+setwd(old)</code></pre>
+<hr />
+</div>
+</div>
+</div>
+<div id="having-a-drafts-folder" class="section level1">
+<h1>Having a drafts folder</h1>
+<p>Hugo will not render draft blog posts by default but <code>blogdown</code> will still render the files for your local site and these files would also be pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.</p>
+<p>One solution to stop <code>blogdown</code> from rendering <code>.rmd</code> files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.</p>
+<p>We can have a “draft” folder under “content” and tell Hugo to ignore it in the <code>config.toml</code> file (ignorefile) but that doesn’t stop <code>blogdown</code> from rendering the file.</p>
+<p>I haven’t found a solution to stop <code>blogdown</code> from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. I so have a folder called “drafts” which contains my drafts. <code>Blogdown</code> will still render the files every time they are saved while in using <code>serve_site</code> but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also add the “drafts” folder to my <code>.gitignore</code>.</p>
 <blockquote>
 <p>I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:</p>
 </blockquote>
-</div>
-</div>
 </div>
