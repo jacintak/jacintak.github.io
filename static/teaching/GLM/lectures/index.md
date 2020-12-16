@@ -1,7 +1,7 @@
 ---
 title: "Statistical Modelling"
 author: "Jacinta Kong"
-date: "2020-12-15"
+date: "2020-12-16"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

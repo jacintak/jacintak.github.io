@@ -58,7 +58,7 @@ To render rmd files into another output than `blogdown::html_page` you can put t
 
 1. Save the `bookdown` files in the "static" folder
     * It doesn't work with files in the "content" folder, these will get the usual treatment
-2. Create a folder call "R" in the root directory
+2. Create a folder called "R" in the root directory
 3. Create an R script called "build.R" in the "R" folder
 4. Add the render functions you need. 
     * `blogdown::build_dir("static")` is a wrapper for plain `rmarkdown::render()` as is so it works best with simple files

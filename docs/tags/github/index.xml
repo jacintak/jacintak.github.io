@@ -5,9 +5,9 @@
     <link>https://jacintak.github.io/tags/github/</link>
       <atom:link href="https://jacintak.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <description>github</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 16 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://jacintak.github.io/img/icon-192.png</url>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>github</title>
       <link>https://jacintak.github.io/tags/github/</link>
     </image>
@@ -15,7 +15,7 @@
     <item>
       <title>New Year, New Look!</title>
       <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -60,7 +60,7 @@
 &lt;ul&gt;
 &lt;li&gt;It doesn’t work with files in the “content” folder, these will get the usual treatment&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Create a folder call “R” in the root directory&lt;/li&gt;
+&lt;li&gt;Create a folder called “R” in the root directory&lt;/li&gt;
 &lt;li&gt;Create an R script called “build.R” in the “R” folder&lt;/li&gt;
 &lt;li&gt;Add the render functions you need.
 &lt;ul&gt;
