@@ -2,7 +2,7 @@
 date:
 external_link: ""
 image:
-  caption: 
+  caption: "Credit: [Elia Pirtle](https://eliapirtle.com/)"
   focal_point: Smart
 links:
 - icon: twitter

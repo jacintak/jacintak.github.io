@@ -14,7 +14,7 @@ image:
 links:
 - icon: twitter
   icon_pack: fab
-  name: Follow
+  name: Hashtag
   url: https://twitter.com/hashtag/IEA21
 location: UCC, Cork, Ireland
 math: false
