@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts | Jacinta&#39;s Website</title>
-    <link>/post/</link>
-      <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/post/</link>
+      <atom:link href="https://jacintak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>/img/icon-512.png</url>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Posts</title>
-      <link>/post/</link>
+      <link>https://jacintak.github.io/post/</link>
     </image>
     
     <item>
       <title>New Year, New Look!</title>
-      <link>/post/2021-01-01-new-year-new-look/</link>
+      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2021-01-01-new-year-new-look/</guid>
+      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -37,6 +37,7 @@
 &lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Things I noted&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.&lt;/li&gt;
 &lt;li&gt;Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML&lt;/li&gt;
 &lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised&lt;/li&gt;
 &lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
@@ -49,11 +50,12 @@
 &lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See below)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
-&lt;li&gt;emojis are a nice feature&lt;/li&gt;
+&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;div id=&#34;using-the-static-folder-to-render-a-gitbook&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Using the static folder to render a gitbook&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-the-static-folder-to-render-a-gitbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using the static folder to render a gitbook&lt;/h2&gt;
 &lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a &lt;code&gt;gitbook&lt;/code&gt; page within the site:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
@@ -78,12 +80,25 @@ rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkd
 # make gitbook
 # blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
 # whereas build_dir uses rmakrdown::render() thus giving html files
+old &amp;lt;- getwd()
 setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
-bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)
+setwd(old)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;having-a-drafts-folder&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Having a drafts folder&lt;/h2&gt;
+&lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files would also be pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
+&lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
+&lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
+&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. I so have a folder called “drafts” which contains my drafts. &lt;code&gt;Blogdown&lt;/code&gt; will still render the files every time they are saved while in using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also add the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

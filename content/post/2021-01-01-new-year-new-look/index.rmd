@@ -3,7 +3,7 @@ title: New Year, New Look!
 author:
 - admin
 date: '`r Sys.Date()`'
-slug: []
+slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
@@ -49,11 +49,11 @@ There are some peculiarities that require things to be done a certain way:
 * `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do its thing and make a nice gitbook. 
     * To allow this behaviour, you need to make use of the static file builder (See below)
 * Despite the template saying "Upcoming talks" Hugo doesn't render things in the future (incl blog posts). You need `publishDate` in the YAML
-* emojis are a nice feature
+* emojis are a nice feature :smile:
 
 ***
 
-### Using the static folder to render a gitbook
+## Using the static folder to render a gitbook
 
 To render rmd files into another output than `blogdown::html_page` you can put the rmd in the "static" folder then write a script that compiles the site in a specific order. To permit a `gitbook` page within the site:
 
@@ -81,14 +81,14 @@ rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_documen
 # whereas build_dir uses rmakrdown::render() thus giving html files
 old <- getwd()
 setwd("static/teaching/GLM/")
-# bookdown::clean_book(clean =FALSE)
-# bookdown::render_book(input = "index.Rmd")
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = "index.Rmd")
 setwd(old)
 ```
 
 ***
 
-# Having a drafts folder
+## Having a drafts folder
 
 Hugo will not render draft blog posts by default but `blogdown` will still render the files for your local site and these files would also be pushed to GitHub. If you don't want your repo to contain spoilers, then you need to separate your draft posts from the published posts.  
 
@@ -98,4 +98,10 @@ We can have a "draft" folder under "content" and tell Hugo to ignore it in the `
 
 I haven't found a solution to stop `blogdown` from rendering and Hugo from copying the file but Hugo doesn't add every folder from the root directory to "Public". I so have a folder called "drafts" which contains my drafts. `Blogdown` will still render the files every time they are saved while in using `serve_site` but they won't interfere with the site itself. When I'm ready to publish them I can copy them to the "content/post" folder. I also add the "drafts" folder to my `.gitignore`.
 
+`blogdown` has a handy function to generate a new blog post. By default it will add the new files to "content/post" but I changed this to write directly to the "drafts" folder via the variable `subdir` and with a custom date that is used to name the folder:
+
+```
+blogdown::new_post(ext = ".Rmd", title = "test", subdir = "../drafts/", date = "2021-01-01")
+```
+***
 > I'm not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:

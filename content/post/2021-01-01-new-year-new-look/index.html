@@ -3,7 +3,7 @@ title: New Year, New Look!
 author:
 - admin
 date: '2020-12-16'
-slug: []
+slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
@@ -50,11 +50,12 @@ projects: []
 <li>To allow this behaviour, you need to make use of the static file builder (See below)</li>
 </ul></li>
 <li>Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need <code>publishDate</code> in the YAML</li>
-<li>emojis are a nice feature</li>
+<li>emojis are a nice feature :smile:</li>
 </ul>
 <hr />
-<div id="using-the-static-folder-to-render-a-gitbook" class="section level3">
-<h3>Using the static folder to render a gitbook</h3>
+</div>
+<div id="using-the-static-folder-to-render-a-gitbook" class="section level2">
+<h2>Using the static folder to render a gitbook</h2>
 <p>To render rmd files into another output than <code>blogdown::html_page</code> you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a <code>gitbook</code> page within the site:</p>
 <ol style="list-style-type: decimal">
 <li>Save the <code>bookdown</code> files in the “static” folder
@@ -81,20 +82,22 @@ rmarkdown::render(&#39;content/cv/index.Rmd&#39;, output_format = rmarkdown::pdf
 # whereas build_dir uses rmakrdown::render() thus giving html files
 old &lt;- getwd()
 setwd(&quot;static/teaching/GLM/&quot;)
-# bookdown::clean_book(clean =FALSE)
-# bookdown::render_book(input = &quot;index.Rmd&quot;)
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = &quot;index.Rmd&quot;)
 setwd(old)</code></pre>
 <hr />
 </div>
-</div>
-</div>
-<div id="having-a-drafts-folder" class="section level1">
-<h1>Having a drafts folder</h1>
+<div id="having-a-drafts-folder" class="section level2">
+<h2>Having a drafts folder</h2>
 <p>Hugo will not render draft blog posts by default but <code>blogdown</code> will still render the files for your local site and these files would also be pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.</p>
 <p>One solution to stop <code>blogdown</code> from rendering <code>.rmd</code> files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.</p>
 <p>We can have a “draft” folder under “content” and tell Hugo to ignore it in the <code>config.toml</code> file (ignorefile) but that doesn’t stop <code>blogdown</code> from rendering the file.</p>
 <p>I haven’t found a solution to stop <code>blogdown</code> from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. I so have a folder called “drafts” which contains my drafts. <code>Blogdown</code> will still render the files every time they are saved while in using <code>serve_site</code> but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also add the “drafts” folder to my <code>.gitignore</code>.</p>
+<p><code>blogdown</code> has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable <code>subdir</code> and with a custom date that is used to name the folder:</p>
+<pre><code>blogdown::new_post(ext = &quot;.Rmd&quot;, title = &quot;test&quot;, subdir = &quot;../drafts/&quot;, date = &quot;2021-01-01&quot;)</code></pre>
+<hr />
 <blockquote>
 <p>I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:</p>
 </blockquote>
+</div>
 </div>

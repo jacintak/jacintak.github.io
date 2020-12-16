@@ -1,15 +1,24 @@
 ---
-title: "Replacing for loops with apply"
-author: 
-    - admin
-date: '2020-03-01'
+title: Leaving the valley of intermediate competence
+author:
+- admin
+date: '`r Sys.Date()`'
+slug: [using-mapply]
 categories: [code]
-tags: [R stats, code]
+tags: [code, R stats]
+subtitle: 'Replacing for loops with apply'
+summary: ''
+authors: []
+publishDate: ""
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
 ---
 
-# Leaving the valley of intermediate competence
-
-> If it ain't broke, don't fix it
+# If it ain't broke, don't fix it?
 
 So you've spent a lot of time learning and practising `R` and you're pretty comfortable with using functions, if else statements and loops like they teach at introductory programming. What more is there to improve?
 

@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jacinta&#39;s Website</title>
-    <link>/</link>
-      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/</link>
+      <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-512.png</url>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
-      <link>/</link>
+      <link>https://jacintak.github.io/</link>
     </image>
     
     <item>
       <title>IEA2021</title>
-      <link>/talk/IEA2021/</link>
+      <link>https://jacintak.github.io/talk/IEA2021/</link>
       <pubDate>Fri, 01 Jan 2021 13:00:00 +0000</pubDate>
-      <guid>/talk/IEA2021/</guid>
+      <guid>https://jacintak.github.io/talk/IEA2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>colRoz - A colour package for the land down under</title>
-      <link>/colRoz/</link>
+      <link>https://jacintak.github.io/colRoz/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/colRoz/</guid>
+      <guid>https://jacintak.github.io/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -364,9 +364,9 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
     
     <item>
       <title>New Year, New Look!</title>
-      <link>/post/2021-01-01-new-year-new-look/</link>
+      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2021-01-01-new-year-new-look/</guid>
+      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -387,6 +387,7 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
 &lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Things I noted&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.&lt;/li&gt;
 &lt;li&gt;Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML&lt;/li&gt;
 &lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised&lt;/li&gt;
 &lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
@@ -399,11 +400,12 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
 &lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See below)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
-&lt;li&gt;emojis are a nice feature&lt;/li&gt;
+&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;div id=&#34;using-the-static-folder-to-render-a-gitbook&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Using the static folder to render a gitbook&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-the-static-folder-to-render-a-gitbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using the static folder to render a gitbook&lt;/h2&gt;
 &lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a &lt;code&gt;gitbook&lt;/code&gt; page within the site:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
@@ -428,12 +430,25 @@ rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkd
 # make gitbook
 # blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
 # whereas build_dir uses rmakrdown::render() thus giving html files
+old &amp;lt;- getwd()
 setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
-bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)
+setwd(old)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;having-a-drafts-folder&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Having a drafts folder&lt;/h2&gt;
+&lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files would also be pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
+&lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
+&lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
+&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. I so have a folder called “drafts” which contains my drafts. &lt;code&gt;Blogdown&lt;/code&gt; will still render the files every time they are saved while in using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also add the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -441,9 +456,9 @@ bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Quick guide to R/exams</title>
-      <link>/teaching/rexams/</link>
+      <link>https://jacintak.github.io/teaching/rexams/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/teaching/rexams/</guid>
+      <guid>https://jacintak.github.io/teaching/rexams/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -673,9 +688,9 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     
     <item>
       <title>Setup R</title>
-      <link>/teaching/introR/</link>
+      <link>https://jacintak.github.io/teaching/introR/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/teaching/introR/</guid>
+      <guid>https://jacintak.github.io/teaching/introR/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1107,16 +1122,16 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
 &lt;div id=&#34;learnr-tutorials&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/h1&gt;
 &lt;p&gt;In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.&lt;/p&gt;
-&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;https://jacintak.github.io/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism</title>
-      <link>/publication/2019-PTRSB/</link>
+      <link>https://jacintak.github.io/publication/2019-PTRSB/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/2019-PTRSB/</guid>
+      <guid>https://jacintak.github.io/publication/2019-PTRSB/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Insect life cycles are adapted to a seasonal climate by expressing alternative voltinism phenotypes—the number of generations in a year. Variation in voltinism phenotypes along latitudinal gradients may be generated by developmental traits at critical life stages, such as eggs. Both voltinism and egg development are thermally determined traits, yet independently derived models of voltinism and thermal adaptation refer to the evolution of dormancy and thermal sensitivity of development rate, respectively, as independent influences on life history. To reconcile these models and test their respective predictions, we characterized patterns of voltinism and thermal response of egg development rate along a latitudinal temperature gradient using the matchstick grasshopper genus &lt;em&gt;Warramaba&lt;/em&gt;. We found remarkably strong variation in voltinism patterns, as well as corresponding egg dormancy patterns and thermal responses of egg development. Our results show that the switch in voltinism along the latitudinal gradient was explained by the combined predictions of the evolution of voltinism and of thermal adaptation. We suggest that latitudinal patterns in thermal responses and corresponding life histories need to consider the evolution of thermal response curves within the context of seasonal temperature cycles rather than based solely on optimality and trade-offs in performance. This article is part of the theme issue ‘Physiological diversity, biodiversity patterns and global climate change: testing key hypotheses involving temperature and oxygen’.&lt;/p&gt;
 </description>
@@ -1124,9 +1139,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</title>
-      <link>/publication/2018-inte-zool/</link>
+      <link>https://jacintak.github.io/publication/2018-inte-zool/</link>
       <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/2018-inte-zool/</guid>
+      <guid>https://jacintak.github.io/publication/2018-inte-zool/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;The phenological response is among the most important traits affecting a species&#39; sensitivity to climate. In insects, strongly seasonal environments often select for a univoltine life-cycle such that one seasonal extreme is avoided as an inactive stage. Through understanding the underlying mechanisms for univoltinism, and the consequences of its failure, we can better predict insect responses to climate change. Here we combine empirical data and simulation studies to investigate the consequences of an unusual diapause mechanism in a parthenogenetic matchstick grasshopper, &lt;em&gt;Warramaba virgo&lt;/em&gt;, from arid southern Australia. Our field body temperature measurements indicate that this species is a thermoconformer and our laboratory studies of the thermal response of feeding rate imply strong constraints on winter activity. However, the species exhibits no obligate winter diapause, and eggs can develop in one month under constant temperatures approximating the mean soil temperature at the time of oviposition (summer). We show that diurnal temperature cycles exceeding a peak of 36 degrees C inhibit egg development in summer, and that this is sufficient to prevent autumnal hatching of eggs. Development is also strongly retarded below 24 degrees C. Microclimate-driven simulation studies of egg development show that these thermal responses provide robust maintenance of a univoltine life cycle, thereby resulting in survival of heat stress as an egg (due to limited developmental state) and avoidance of cold stress as a nymph and adult (due to overwintering in the soil as an egg). This article is protected by copyright. All rights reserved.&lt;/p&gt;
 </description>
@@ -1134,9 +1149,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Mechanistic models for predicting insect responses to climate change</title>
-      <link>/publication/2016-COIS/</link>
+      <link>https://jacintak.github.io/publication/2016-COIS/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-COIS/</guid>
+      <guid>https://jacintak.github.io/publication/2016-COIS/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
 </description>
@@ -1144,9 +1159,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Novel applications of thermocyclers for phenotyping invertebrate thermal responses</title>
-      <link>/publication/2016-MEE/</link>
+      <link>https://jacintak.github.io/publication/2016-MEE/</link>
       <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-MEE/</guid>
+      <guid>https://jacintak.github.io/publication/2016-MEE/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -1167,9 +1182,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>A toolbox for trait-based forecasting</title>
-      <link>/project/toolbox/</link>
+      <link>https://jacintak.github.io/project/toolbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/toolbox/</guid>
+      <guid>https://jacintak.github.io/project/toolbox/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1280,9 +1295,9 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
     
     <item>
       <title>Biostatistics tutorials</title>
-      <link>/project/biostats-tutorials/</link>
+      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/biostats-tutorials/</guid>
+      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1340,9 +1355,9 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>colRoz</title>
-      <link>/project/colRoz/</link>
+      <link>https://jacintak.github.io/project/colRoz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/colRoz/</guid>
+      <guid>https://jacintak.github.io/project/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1355,9 +1370,9 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>CV</title>
-      <link>/CV/</link>
+      <link>https://jacintak.github.io/CV/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/CV/</guid>
+      <guid>https://jacintak.github.io/CV/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1437,7 +1452,7 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;div id=&#34;refereed-journal-articles&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Refereed journal articles&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;See &lt;a href=&#34;/publication/&#34;&gt;Publications&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;https://jacintak.github.io/publication/&#34;&gt;Publications&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Kong JD, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). &lt;a href=&#34;DOI:10.1098/rstb.2018.0547&#34; class=&#34;uri&#34;&gt;DOI:10.1098/rstb.2018.0547&lt;/a&gt;&lt;/li&gt;
@@ -1646,18 +1661,18 @@ Student Chaperone for the International Baccalaureate World Student Conference, 
     
     <item>
       <title>Predicting ectotherm life cycles</title>
-      <link>/project/life-cycles/</link>
+      <link>https://jacintak.github.io/project/life-cycles/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/life-cycles/</guid>
+      <guid>https://jacintak.github.io/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Thermal dependence of biological rates</title>
-      <link>/project/temperature-dependence/</link>
+      <link>https://jacintak.github.io/project/temperature-dependence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/temperature-dependence/</guid>
+      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
 &lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
 </description>
