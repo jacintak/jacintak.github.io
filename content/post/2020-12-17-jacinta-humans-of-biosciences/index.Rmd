@@ -1,0 +1,32 @@
+---
+title: Jacinta @ Humans of BioSciences
+author: ~
+date: '2020-12-17'
+slug: [humans-of-biosciences]
+categories: []
+tags: [PhD, postdoc]
+subtitle: ''
+summary: "Find out what I've been doing during a pandemic"
+authors: []
+lastmod: '2020-12-17T12:29:35Z'
+featured: no
+image:
+  caption: 'Me and my graduation balloon'
+  focal_point: ''
+  preview_only: no
+projects: []
+links:
+- icon: twitter
+  icon_pack: fab
+  name: Thread
+  url: https://twitter.com/BioSci_UniMelb/status/1339375265961582592
+- icon: 
+  icon_pack: 
+  name: Interview
+  url: https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences
+---
+
+I was recently featured on Humans of BioSciences, a series about the people of the [School of Biosciences](https://biosciences.unimelb.edu.au/). 
+
+You can read the Twitter thread (link in button) and the full interview [here](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences)
+

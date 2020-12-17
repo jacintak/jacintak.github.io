@@ -26,15 +26,13 @@ Setting up a site is simple enough if you follow the instructions online. The te
 
 Not quite. The underlying file structure takes some getting used to and you'll have to trust the magic as your site gets compiled. But once you pass that hurdle, the system is quite powerful and the results are neat. 
 
-There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a "regular" website (wordpress) with a blog and my code documentation separately on GitHub Pages. 
+There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a "regular" website (WordPress) with a blog and my code documentation separately on GitHub Pages. 
 
 My code documentation was also messing up my GitHub. I'm not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn't like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It's better this way as some of the static pages weren't even relevant to the rest of the repo.
 
-For example, I used the "Courses" feature to turn my lecture notes into a "tutorial" style page.
+There are some features that are missing/not easily implemented compared to WordPress that I will miss. You can't comment (without third party systems) or "follow" people, you can't schedule posts and you can't track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).
 
-There are some features that are missing/not easily implemented compared to Wordpress that I will miss. You can't comment or "follow" people, you can't schedule posts and you can't track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).
-
-I will keep the [wordpress site](https://jacintakongresearch.wordpress.com) up for now but will likely continue to update this one. 
+I will keep blog posts on the [WordPress site](https://jacintakongresearch.wordpress.com) as an archive. I have linked to relevant blog posts in this site. 
 
 There are some peculiarities that require things to be done a certain way:
 
@@ -42,20 +40,20 @@ There are some peculiarities that require things to be done a certain way:
 
 * I changed the name of the "Public" folder to "docs" so that my site can be built from the "docs" folder on GitHub. This seems the simplest way to organise this. The alternative is to have the "Public" folder on a different branch.
 * Sometimes it's a challenge to troubleshoot why things aren't working they way you want. E.g. I couldn't work out why the country wouldn't show up in the document when including an address in YAML
-* A header image/thumbnail can be included in the same folder as the content *but* it must be called "featured" or it won't be recognised
+* A header image/thumbnail can be included in the same folder as the content *but* it must be called "featured" or it won't be recognised. File names are case-sensitive
 * You can have as many folders as you want called whatever but the (r)markdown file of the page must be called "index"
     * In the "Courses" feature the parent page must be called "_index" or it won't work. :shrug:
 * Rmd and the "Courses" feature don't play nicely. Defining a table of contents via `bookdown` outputs in the YAML doesn't work and calling `toc: true` directly in the YAML (follow the guide) doesn't work either.
 * `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do its thing and make a nice gitbook. 
-    * To allow this behaviour, you need to make use of the static file builder (See below)
+    * To allow this behaviour, you need to make use of the static file builder (See [below](#gitbook))
 * Despite the template saying "Upcoming talks" Hugo doesn't render things in the future (incl blog posts). You need `publishDate` in the YAML
 * emojis are a nice feature :smile:
 
 ***
 
-## Using the static folder to render a gitbook
+## Using the static folder to render a gitbook {#gitbook}
 
-To render rmd files into another output than `blogdown::html_page` you can put the rmd in the "static" folder then write a script that compiles the site in a specific order. To permit a `gitbook` page within the site:
+To render rmd files into another output than `blogdown::html_page` you can put the rmd in the "static" folder then write a script that compiles the site in a specific order. To permit a gitbook page within the site:
 
 1. Save the `bookdown` files in the "static" folder
     * It doesn't work with files in the "content" folder, these will get the usual treatment
@@ -66,9 +64,9 @@ To render rmd files into another output than `blogdown::html_page` you can put t
     * `build_dir` doesn't work for our gitbook example because we want a gitbook that knits with `bookdown::render_book`, otherwise you will get a bunch of HTML files from the standard render function
     * There's something funny going on with the working directories. Running `render_book("static/index.rmd")` doesn't work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I'm not sure where the function is looking as the project working directory is the root directory. 
     
-The above means that all the rmd files for the gitbook also get copied into the "docs" folder. I don't think it's avoidable.
+The above means that all the rmd files for the gitbook also get copied into the "docs" folder. I don't think it's avoidable. It's also s l o w e r to build the site because the gitbook gets rendered every time. 
     
-I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the "docs" folder so I have an updated CV without needing to manually create one every time I update the original rmd.
+I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the "docs" folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.
 
 Here's what my `build.R` file contains:
 
@@ -90,13 +88,13 @@ setwd(old)
 
 ## Having a drafts folder
 
-Hugo will not render draft blog posts by default but `blogdown` will still render the files for your local site and these files would also be pushed to GitHub. If you don't want your repo to contain spoilers, then you need to separate your draft posts from the published posts.  
+Hugo will not render draft blog posts by default but `blogdown` will still render the files for your local site and these files get pushed to GitHub. If you don't want your repo to contain spoilers, then you need to separate your draft posts from the published posts.  
 
 One solution to stop `blogdown` from rendering `.rmd` files is to keep them in the "static" folder but Hugo will copy these files to the "public" (or "docs" folder in my case). I could not find an option to tell Hugo to ignore some files in the "static" folder. This does not solve our spoiler problem.
 
 We can have a "draft" folder under "content" and tell Hugo to ignore it in the `config.toml` file (ignorefile) but that doesn't stop `blogdown` from rendering the file. 
 
-I haven't found a solution to stop `blogdown` from rendering and Hugo from copying the file but Hugo doesn't add every folder from the root directory to "Public". I so have a folder called "drafts" which contains my drafts. `Blogdown` will still render the files every time they are saved while in using `serve_site` but they won't interfere with the site itself. When I'm ready to publish them I can copy them to the "content/post" folder. I also add the "drafts" folder to my `.gitignore`.
+I haven't found a solution to stop `blogdown` from rendering and Hugo from copying the file but Hugo doesn't add every folder from the root directory to "Public". So I have a folder called "drafts" which contains my drafts. `blogdown` will still render the files every time they are saved while using `serve_site` but they won't interfere with the site itself. When I'm ready to publish them I can copy them to the "content/post" folder. I also added the "drafts" folder to my `.gitignore`.
 
 `blogdown` has a handy function to generate a new blog post. By default it will add the new files to "content/post" but I changed this to write directly to the "drafts" folder via the variable `subdir` and with a custom date that is used to name the folder:
 

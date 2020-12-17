@@ -16,6 +16,8 @@ publication_types:
 publishDate: "2016-10-11"
 slides: 
 summary: 
+image:
+    caption: "Australian Carpenter Bee (*Xylocopa (Koptortosoma)* sp.)"
 tags:
 - ectotherms
 - thermal adaptation

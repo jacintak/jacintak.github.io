@@ -10,7 +10,7 @@ date: "2018-03-13"
 doi: "10.1111/1749-4877.12314"
 featured: false
 image:
-  caption: 
+  caption: "Matchstick grasshopper (*Warramaba virgo*) egg in blastokinesis"
   focal_point: ""
   preview_only: false
 projects: [life-cycles]

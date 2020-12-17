@@ -1,13 +1,16 @@
 ---
 title: "CV"
-subtitle: "Jacinta D Kong"
+subtitle: Jacinta D Kong
 date: "`r format(Sys.Date(), '%d %B %Y')`"
 output:
-  pdf_document: default 
+  html_document:
+    toc: yes
+    df_print: paged
   blogdown::html_page:
-    toc: true
+    toc: yes
+  pdf_document: default
 urlcolor: blue
-links: 
+links:
 - icon: fa-file-pdf
   icon_pack: fab
   name: Download PDF
@@ -241,7 +244,9 @@ The University of Queensland Undergraduate Research Conference
 ***
 
 # Community outreach and communication
- * 2020 	Guest interview with Newstalk radio, Ireland
+
+ * 2020  Profiled on Humans of BioSciences by the School of BioSciences, the University of Melbourne, Australia. [Website](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences) & [Twitter](https://twitter.com/BioSci_UniMelb/status/1339375265961582592). 17th December
+ * 2020 	Guest interview with Newstalk radio, Ireland. 14th January.
  * 2019 	Home and Away: Would a Rosella by any other name smell as sweet (online 1 Nov).  
           Home and Away: Monotreme mistakes (online 22 Nov).  
           Home and Away: Australian expats (online 12 Dec).  
@@ -253,7 +258,7 @@ The University of Queensland Undergraduate Research Conference
  * 2017 	Blog post for Graduate Student Association, University of Melbourne on the biodiversity photo competition
  * 2016 	Novel applications of thermocyclers for characterising invertebrate thermal responses. Video for Methods in Ecology and Evolution. https://youtu.be/uXzEfvR_hoE
  * 2015 	The Real Life of a Research Student. Science Undergraduate Research Journal (SURJ), Issue 2. The University of Queensland, Australia
- * 2015	Jacinta on Zoology & Research. Interview with BITE BACK, Black Dog Institute, Australia. 31st August 2015
+ * 2015	Jacinta on Zoology & Research. Interview with BITE BACK, Black Dog Institute, Australia. 31st August
  * 2014 	Brisbane Open House Volunteer, Brisbane Open House, Brisbane, Australia
 	Student Chaperone for the International Baccalaureate World Student Conference, the University of Queensland, Australia
  * 2012/14 	Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia
