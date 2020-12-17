@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R stats | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/tags/R-stats/</link>
-      <atom:link href="https://jacintak.github.io/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/R-stats/</link>
+      <atom:link href="/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
     <description>R stats</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <url>/img/icon-512.png</url>
       <title>R stats</title>
-      <link>https://jacintak.github.io/tags/R-stats/</link>
+      <link>/tags/R-stats/</link>
     </image>
     
     <item>
       <title>New Year, New Look!</title>
-      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
+      <link>/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
+      <guid>/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -105,9 +105,9 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Quick guide to R/exams</title>
-      <link>https://jacintak.github.io/teaching/rexams/</link>
+      <link>/teaching/rexams/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/teaching/rexams/</guid>
+      <guid>/teaching/rexams/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -337,9 +337,9 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     
     <item>
       <title>Setup R</title>
-      <link>https://jacintak.github.io/teaching/introR/</link>
+      <link>/teaching/introR/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <guid>/teaching/introR/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -771,16 +771,16 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
 &lt;div id=&#34;learnr-tutorials&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/h1&gt;
 &lt;p&gt;In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.&lt;/p&gt;
-&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;https://jacintak.github.io/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Biostatistics tutorials</title>
-      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
+      <link>/project/biostats-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
+      <guid>/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;

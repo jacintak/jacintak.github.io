@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/project/</link>
-      <atom:link href="https://jacintak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    <link>/project/</link>
+      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <url>/img/icon-512.png</url>
       <title>Projects</title>
-      <link>https://jacintak.github.io/project/</link>
+      <link>/project/</link>
     </image>
     
     <item>
       <title>A toolbox for trait-based forecasting</title>
-      <link>https://jacintak.github.io/project/toolbox/</link>
+      <link>/project/toolbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/toolbox/</guid>
+      <guid>/project/toolbox/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -127,9 +127,9 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
     
     <item>
       <title>Biostatistics tutorials</title>
-      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
+      <link>/project/biostats-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
+      <guid>/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -187,9 +187,9 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>colRoz</title>
-      <link>https://jacintak.github.io/project/colRoz/</link>
+      <link>/project/colRoz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/colRoz/</guid>
+      <guid>/project/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -202,18 +202,18 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>Predicting ectotherm life cycles</title>
-      <link>https://jacintak.github.io/project/life-cycles/</link>
+      <link>/project/life-cycles/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/life-cycles/</guid>
+      <guid>/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Thermal dependence of biological rates</title>
-      <link>https://jacintak.github.io/project/temperature-dependence/</link>
+      <link>/project/temperature-dependence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
+      <guid>/project/temperature-dependence/</guid>
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
 &lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
 </description>

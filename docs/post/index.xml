@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts | Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/post/</link>
-      <atom:link href="https://jacintak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <link>/post/</link>
+      <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <url>/img/icon-512.png</url>
       <title>Posts</title>
-      <link>https://jacintak.github.io/post/</link>
+      <link>/post/</link>
     </image>
     
     <item>
       <title>Jacinta @ Humans of BioSciences</title>
-      <link>https://jacintak.github.io/post/2020-12-17-jacinta-humans-of-biosciences/</link>
+      <link>/post/2020-12-17-jacinta-humans-of-biosciences/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2020-12-17-jacinta-humans-of-biosciences/</guid>
+      <guid>/post/2020-12-17-jacinta-humans-of-biosciences/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -30,9 +30,9 @@
     
     <item>
       <title>New Year, New Look!</title>
-      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
+      <link>/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
+      <guid>/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;

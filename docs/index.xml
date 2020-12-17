@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jacinta&#39;s Website</title>
-    <link>https://jacintak.github.io/</link>
-      <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <url>/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
-      <link>https://jacintak.github.io/</link>
+      <link>/</link>
     </image>
     
     <item>
       <title>IEA2021</title>
-      <link>https://jacintak.github.io/talk/IEA2021/</link>
+      <link>/talk/IEA2021/</link>
       <pubDate>Fri, 01 Jan 2021 13:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/talk/IEA2021/</guid>
+      <guid>/talk/IEA2021/</guid>
       <description></description>
     </item>
     
     <item>
       <title>colRoz - A colour package for the land down under</title>
-      <link>https://jacintak.github.io/colRoz/</link>
+      <link>/colRoz/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/colRoz/</guid>
+      <guid>/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -364,9 +364,9 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
     
     <item>
       <title>Jacinta @ Humans of BioSciences</title>
-      <link>https://jacintak.github.io/post/2020-12-17-jacinta-humans-of-biosciences/</link>
+      <link>/post/2020-12-17-jacinta-humans-of-biosciences/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2020-12-17-jacinta-humans-of-biosciences/</guid>
+      <guid>/post/2020-12-17-jacinta-humans-of-biosciences/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -380,9 +380,9 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
     
     <item>
       <title>New Year, New Look!</title>
-      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
+      <link>/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
+      <guid>/post/2021-01-01-new-year-new-look/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -471,9 +471,9 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Quick guide to R/exams</title>
-      <link>https://jacintak.github.io/teaching/rexams/</link>
+      <link>/teaching/rexams/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/teaching/rexams/</guid>
+      <guid>/teaching/rexams/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -703,9 +703,9 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     
     <item>
       <title>Setup R</title>
-      <link>https://jacintak.github.io/teaching/introR/</link>
+      <link>/teaching/introR/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <guid>/teaching/introR/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1137,16 +1137,16 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
 &lt;div id=&#34;learnr-tutorials&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/h1&gt;
 &lt;p&gt;In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.&lt;/p&gt;
-&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;https://jacintak.github.io/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism</title>
-      <link>https://jacintak.github.io/publication/2019-PTRSB/</link>
+      <link>/publication/2019-PTRSB/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/publication/2019-PTRSB/</guid>
+      <guid>/publication/2019-PTRSB/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Insect life cycles are adapted to a seasonal climate by expressing alternative voltinism phenotypes—the number of generations in a year. Variation in voltinism phenotypes along latitudinal gradients may be generated by developmental traits at critical life stages, such as eggs. Both voltinism and egg development are thermally determined traits, yet independently derived models of voltinism and thermal adaptation refer to the evolution of dormancy and thermal sensitivity of development rate, respectively, as independent influences on life history. To reconcile these models and test their respective predictions, we characterized patterns of voltinism and thermal response of egg development rate along a latitudinal temperature gradient using the matchstick grasshopper genus &lt;em&gt;Warramaba&lt;/em&gt;. We found remarkably strong variation in voltinism patterns, as well as corresponding egg dormancy patterns and thermal responses of egg development. Our results show that the switch in voltinism along the latitudinal gradient was explained by the combined predictions of the evolution of voltinism and of thermal adaptation. We suggest that latitudinal patterns in thermal responses and corresponding life histories need to consider the evolution of thermal response curves within the context of seasonal temperature cycles rather than based solely on optimality and trade-offs in performance. This article is part of the theme issue ‘Physiological diversity, biodiversity patterns and global climate change: testing key hypotheses involving temperature and oxygen’.&lt;/p&gt;
 </description>
@@ -1154,9 +1154,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</title>
-      <link>https://jacintak.github.io/publication/2018-inte-zool/</link>
+      <link>/publication/2018-inte-zool/</link>
       <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/publication/2018-inte-zool/</guid>
+      <guid>/publication/2018-inte-zool/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;The phenological response is among the most important traits affecting a species&#39; sensitivity to climate. In insects, strongly seasonal environments often select for a univoltine life-cycle such that one seasonal extreme is avoided as an inactive stage. Through understanding the underlying mechanisms for univoltinism, and the consequences of its failure, we can better predict insect responses to climate change. Here we combine empirical data and simulation studies to investigate the consequences of an unusual diapause mechanism in a parthenogenetic matchstick grasshopper, &lt;em&gt;Warramaba virgo&lt;/em&gt;, from arid southern Australia. Our field body temperature measurements indicate that this species is a thermoconformer and our laboratory studies of the thermal response of feeding rate imply strong constraints on winter activity. However, the species exhibits no obligate winter diapause, and eggs can develop in one month under constant temperatures approximating the mean soil temperature at the time of oviposition (summer). We show that diurnal temperature cycles exceeding a peak of 36 degrees C inhibit egg development in summer, and that this is sufficient to prevent autumnal hatching of eggs. Development is also strongly retarded below 24 degrees C. Microclimate-driven simulation studies of egg development show that these thermal responses provide robust maintenance of a univoltine life cycle, thereby resulting in survival of heat stress as an egg (due to limited developmental state) and avoidance of cold stress as a nymph and adult (due to overwintering in the soil as an egg). This article is protected by copyright. All rights reserved.&lt;/p&gt;
 </description>
@@ -1164,9 +1164,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Mechanistic models for predicting insect responses to climate change</title>
-      <link>https://jacintak.github.io/publication/2016-COIS/</link>
+      <link>/publication/2016-COIS/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/publication/2016-COIS/</guid>
+      <guid>/publication/2016-COIS/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
 </description>
@@ -1174,9 +1174,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>Novel applications of thermocyclers for phenotyping invertebrate thermal responses</title>
-      <link>https://jacintak.github.io/publication/2016-MEE/</link>
+      <link>/publication/2016-MEE/</link>
       <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/publication/2016-MEE/</guid>
+      <guid>/publication/2016-MEE/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -1197,9 +1197,9 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     
     <item>
       <title>A toolbox for trait-based forecasting</title>
-      <link>https://jacintak.github.io/project/toolbox/</link>
+      <link>/project/toolbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/toolbox/</guid>
+      <guid>/project/toolbox/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1310,9 +1310,9 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
     
     <item>
       <title>Biostatistics tutorials</title>
-      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
+      <link>/project/biostats-tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
+      <guid>/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1370,9 +1370,9 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>colRoz</title>
-      <link>https://jacintak.github.io/project/colRoz/</link>
+      <link>/project/colRoz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/colRoz/</guid>
+      <guid>/project/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1385,9 +1385,9 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     
     <item>
       <title>CV</title>
-      <link>https://jacintak.github.io/CV/</link>
+      <link>/CV/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/CV/</guid>
+      <guid>/CV/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1467,7 +1467,7 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;div id=&#34;refereed-journal-articles&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Refereed journal articles&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;See &lt;a href=&#34;https://jacintak.github.io/publication/&#34;&gt;Publications&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;/publication/&#34;&gt;Publications&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Kong JD, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). &lt;a href=&#34;DOI:10.1098/rstb.2018.0547&#34; class=&#34;uri&#34;&gt;DOI:10.1098/rstb.2018.0547&lt;/a&gt;&lt;/li&gt;
@@ -1677,18 +1677,18 @@ Student Chaperone for the International Baccalaureate World Student Conference, 
     
     <item>
       <title>Predicting ectotherm life cycles</title>
-      <link>https://jacintak.github.io/project/life-cycles/</link>
+      <link>/project/life-cycles/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/life-cycles/</guid>
+      <guid>/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Thermal dependence of biological rates</title>
-      <link>https://jacintak.github.io/project/temperature-dependence/</link>
+      <link>/project/temperature-dependence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
+      <guid>/project/temperature-dependence/</guid>
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
 &lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
 </description>
