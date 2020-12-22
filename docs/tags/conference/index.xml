@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>conference | Jacinta&#39;s Website</title>
-    <link>/tags/conference/</link>
-      <atom:link href="/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jacintak.github.io/tags/conference/</link>
+      <atom:link href="https://jacintak.github.io/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     <description>conference</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 07 Jan 2021 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-512.png</url>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>conference</title>
-      <link>/tags/conference/</link>
+      <link>https://jacintak.github.io/tags/conference/</link>
     </image>
     
     <item>
       <title>IEA2021</title>
-      <link>/talk/IEA2021/</link>
+      <link>https://jacintak.github.io/talk/IEA2021/</link>
       <pubDate>Thu, 07 Jan 2021 13:00:00 +0000</pubDate>
-      <guid>/talk/IEA2021/</guid>
+      <guid>https://jacintak.github.io/talk/IEA2021/</guid>
       <description></description>
     </item>
     

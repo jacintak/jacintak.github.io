@@ -1,0 +1,362 @@
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="simple" class="section level1">
+<h1>Simple linear models</h1>
+<hr />
+<div id="overall-lecture-aims" class="section level2">
+<h2>Overall lecture aims</h2>
+<ul>
+<li>Identify the structure of general linear models</li>
+<li>Describe how linear models are parametrized</li>
+<li>Understand how to use linear models</li>
+<li>Understand how to interpret and evaluate linear models</li>
+</ul>
+<p>Recommended reading:
+Chapter 5.5 Getting Started with R</p>
+<div id="by-the-end-of-this-lecture-you-should" class="section level3">
+<h3>By the end of this lecture you should:</h3>
+<ul>
+<li>Describe the structure of a general linear model</li>
+<li>Understand how a simple linear model is parametrised</li>
+<li>Understand what the parameters of a linear model represent</li>
+<li>Parametrise a simple linear model from given information</li>
+<li>Interpret a simple linear model in a graphical format</li>
+</ul>
+<p>In R:</p>
+<ul>
+<li>Use built-in R datasets and R libraries</li>
+<li>Conduct a simple linear model</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="height-and-girth-of-trees" class="section level2">
+<h2>Height and girth of trees</h2>
+<p>Imagine we measured the height and girth of trees to test the hypothesis that thicker trees are taller.</p>
+<p><img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/linear-model-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>How should test our hypothesis? We could assign trees to categories like “thick” or “thin” trees and do a t-test. What does our t-test say?</p>
+<p><img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/t-test-1.png" width="300" style="display: block; margin: auto;" /></p>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Height by Thickness
+t = 1.6339, df = 28.168, p-value = 0.1134
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.9240387  8.2181563
+sample estimates:
+mean in group Thick  mean in group Thin 
+           78.00000            74.35294 </code></pre>
+<div id="but-this-isnt-the-best-way" class="section level3">
+<h3><strong>But</strong> this isn’t the best way</h3>
+<ul>
+<li>How did we define “thick” or “thin”?</li>
+<li>We lost information using groups - tree girth is not categorical data, it’s continuous</li>
+<li>This increases unexplained variance = <em>bad!</em></li>
+<li>When might you want to group data?</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="linear-regression" class="section level2">
+<h2>Linear regression</h2>
+<blockquote>
+<p>models the linear relationship between 2 continuous variables</p>
+</blockquote>
+<ul>
+<li>Continuous response variable (Y)</li>
+<li>Continuous predictor variable (X)</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:regression-model"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/regression-model-1.png" alt="Fit a line" width="400" />
+<p class="caption">
+Figure 1: Fit a line
+</p>
+</div>
+<div id="what-does-linear-mean" class="section level3">
+<h3>What does linear mean?</h3>
+<ul>
+<li>By definition, all predictor parameters should not be divided by each other</li>
+<li>No parameter is an exponent</li>
+<li>No parameter is multiplied or divided by another</li>
+</ul>
+<p>Not a linear model:<br />
+<span class="math inline">\(H_a = \frac{a \times H \times T}{1 + a \times H \times T}\)</span> e.g. Holling’s Type II predation equation<br />
+<span class="math inline">\(y = \frac{\beta_1 x}{\beta_2 x}\)</span> e.g. enzyme rate of reactions</p>
+</div>
+<div id="why-do-we-use-a-linear-model" class="section level3">
+<h3>Why do we use a linear model?</h3>
+<ul>
+<li>Quantify a relationship
+<ul>
+<li>E.g. relationship between drug concentration and time</li>
+</ul></li>
+<li>Predict what will happen
+<ul>
+<li>E.g. growth at different time points</li>
+</ul></li>
+<li>Explain as much about the response variable as possible</li>
+<li>Partition variation
+<ul>
+<li>E.g. Phenotypic variation = genetic variation + environmental variation</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="structure-of-a-general-linear-model" class="section level2">
+<h2>Structure of a general linear model</h2>
+<blockquote>
+<p><span class="math display">\[Y = intercept + slope \times X\]</span></p>
+</blockquote>
+<p><img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/general-linear-model-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>Intercepts and slopes can be mathematically represented by any symbol or letter but conventionally the equation is written as:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 \times x_i + \varepsilon_i\]</span></p>
+<p>Where <span class="math inline">\(i\)</span> refers to individual data points.</p>
+<div id="variables-of-a-linear-model" class="section level3">
+<h3>Variables of a linear model</h3>
+<p>Variables are <span class="math inline">\(y_i\)</span> and <span class="math inline">\(x_i\)</span><br />
+<span class="math inline">\(y_i\)</span> = response variable, what you are interested in, e.g. height<br />
+<span class="math inline">\(x_i\)</span> = predictor variable, what you are manipulating, e.g. girth</p>
+</div>
+<div id="parameters-of-a-linear-model" class="section level3">
+<h3>Parameters of a linear model</h3>
+<p>Parameters are what we don’t know and we need to work out (<em>parametrise</em>). They are <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.<br />
+<span class="math inline">\(\beta_0\)</span> = population intercept, value of y when x is 0, constant<br />
+<span class="math inline">\(\beta_1\)</span> = population slope, unit change in y with a unit change in x<br />
+<span class="math inline">\(\varepsilon_i\)</span> = the residual of the model (how much the line gets wrong for each data point or what is left over), also called <strong>random error</strong></p>
+<hr />
+</div>
+</div>
+<div id="ordinary-least-squares-regression" class="section level2">
+<h2>Ordinary least squares regression</h2>
+<p>Ordinary least squares regression (OLS) is the technique used to parametrise the linear model by finding the ‘best fitting’ line.</p>
+<blockquote>
+<p>The aim is to make the sum of the squared residuals, <span class="math inline">\(\sum{\varepsilon_i^2}\)</span>, as small as possible</p>
+</blockquote>
+<p>Meaning calculating the difference between each point and the line, squaring that difference and adding it all up (Figure <a href="#fig:residuals">2</a>).<br />
+Residuals are squared to make all values positive - remember points can fall above and below the best fit line.</p>
+<div class="figure" style="text-align: center"><span id="fig:residuals"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/residuals-1.png" alt="Residuals (blue lines) are the difference between the data point and the predicted line (black line)" width="500" />
+<p class="caption">
+Figure 2: Residuals (blue lines) are the difference between the data point and the predicted line (black line)
+</p>
+</div>
+<div id="finding-the-intercept" class="section level3">
+<h3>Finding the intercept</h3>
+<ul>
+<li>Why not extrapolate to 0?</li>
+<li>We know <span class="math inline">\(\bar{y}\)</span> and <span class="math inline">\(\bar{x}\)</span> - the means of x and y</li>
+<li>We can rearrange the linear equation to <span class="math inline">\(\beta_0 = \bar{y} - \beta_1 \bar{x}\)</span> where <span class="math inline">\(\beta_1\)</span> is the estimated slope</li>
+<li>But <code>R</code> will do all this for you!</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="halfway-there-revision-time" class="section level2">
+<h2>Halfway there! Revision time!</h2>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol style="list-style-type: decimal">
+<li>What types of variables are used in simple linear regression?</li>
+<li>What is the method for parameterising linear models called?</li>
+<li>What is random error in linear regression?</li>
+</ol>
+<hr />
+</div>
+<div id="what-does-a-linear-model-tell-us" class="section level2">
+<h2>What does a linear model tell us?</h2>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>What will Y be, given a new value of X?</li>
+<li>Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</li>
+</ol>
+</blockquote>
+<div id="back-to-trees" class="section level3">
+<h3>Back to trees</h3>
+<p>The function <code>lm()</code> in <code>R</code> stands for linear model. It will do the OLS calculations for us. The function takes data in the form <code>lm(Y ~ X, data)</code>. Use <code>summary()</code> on your <code>lm</code> to get more information.</p>
+<pre><code>
+Call:
+lm(formula = Height ~ Girth, data = trees)
+
+Coefficients:
+(Intercept)        Girth  
+     62.031        1.054  </code></pre>
+<p>Here the <code>(Intercept)</code> is the value of the intercept, <span class="math inline">\(\beta_0\)</span> and <code>Girth</code> is the slope of the model, <span class="math inline">\(\beta_1\)</span>.<br />
+We then put these numbers in our linear model equation to get the <strong>parametrised linear model</strong></p>
+<p><span class="math inline">\(Y = \beta_0 + \beta_1 \times X\)</span><br />
+becomes <span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times Girth\)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:tree-plot-2"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/tree-plot-2-1.png" alt="Does the above equation match this line?" width="300" />
+<p class="caption">
+Figure 3: Does the above equation match this line?
+</p>
+</div>
+</div>
+<div id="calculating-a-new-value-of-y" class="section level3">
+<h3>Calculating a new value of Y</h3>
+<p>We can use the parametrised equation to work out the height of a tree for any value of girth. If a tree is 10cm thick, what is its predicted height?</p>
+<p><span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times Girth\)</span>
+<span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times 10\)</span><br />
+<span class="math inline">\(Height =\)</span> 72.571 cm</p>
+</div>
+<div id="does-the-population-slope-beta_1-differ-to-0" class="section level3">
+<h3>Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</h3>
+<p>Typically we are more interested in the value of the slope than the intercept. We want to know if the slope of the fitted line is statistically different to 0 because that represents our hypotheses:</p>
+<blockquote>
+<p>Null hypothesis (in orange, Figure <a href="#fig:tree-slopes">4</a>):
+<span class="math display">\[H_0: \beta_1 = 0\]</span>
+Alternative hypothesis (Figure <a href="#fig:regression-slopes">5</a>):
+<span class="math display">\[H_1: \beta_1 \neq 0\]</span></p>
+</blockquote>
+<div class="figure" style="text-align: center"><span id="fig:tree-slopes"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/tree-slopes-1.png" alt="Hypotheses of linear models" width="300" />
+<p class="caption">
+Figure 4: Hypotheses of linear models
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:regression-slopes"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/regression-slopes-1.png" alt="Regression lines can have positive (blue) or negative (red) slopes, either are H1" width="300" />
+<p class="caption">
+Figure 5: Regression lines can have positive (blue) or negative (red) slopes, either are H1
+</p>
+</div>
+<div id="testing-linear-model-parameters-in-r" class="section level4">
+<h4>Testing linear model parameters in R</h4>
+<p>R will conduct a statistical test on the model parameters for us. You can see it using <code>summary(lm())</code></p>
+<pre><code>
+Call:
+lm(formula = Height ~ Girth, data = trees)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-12.5816  -2.7686   0.3163   2.4728   9.9456 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  62.0313     4.3833  14.152 1.49e-14 ***
+Girth         1.0544     0.3222   3.272  0.00276 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 5.538 on 29 degrees of freedom
+Multiple R-squared:  0.2697,    Adjusted R-squared:  0.2445 
+F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758</code></pre>
+<ul>
+<li>The P values above test whether our slope is significantly different to 0</li>
+<li>Tested like a single parameter t-test (why?)
+<ul>
+<li>What are the degrees of freedom?</li>
+</ul></li>
+</ul>
+<p><strong>Based on the R output above, does our estimated slope for Girth differ to 0 and what can we conclude about our hypothesis?</strong></p>
+</div>
+</div>
+</div>
+<div id="probability-distribution-functions-pdf" class="section level2">
+<h2>Probability distribution functions (PDF)</h2>
+<blockquote>
+<p>Linear models need a descriptor of how response variables (or errors) should be distributed</p>
+</blockquote>
+<p><strong>Probability distributions</strong></p>
+<ul>
+<li>E.g. Gaussian/normal distribution</li>
+<li>Grouped by “family”</li>
+<li>Other types exist – same principles apply, called generalised linear models (GLM). GLMs are touched on in Chapter <a href="#GLM"><strong>??</strong></a></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:normal"></span>
+<img src="docs/teaching/GLM/01-regression-fundamentals_files/figure-html/normal-1.png" alt="a normal distribution with mean = 0 and sd  = 1" width="300" />
+<p class="caption">
+Figure 6: a normal distribution with mean = 0 and sd = 1
+</p>
+</div>
+<div id="linear-models-in-the-gaussian-family" class="section level3">
+<h3>Linear models in the Gaussian family</h3>
+<blockquote>
+<p>Same principles, different names</p>
+</blockquote>
+<ul>
+<li>Linear regression
+<ul>
+<li>continuous response</li>
+<li>one or more continuous predictors</li>
+</ul></li>
+<li>Analysis of Variance (ANOVA)
+<ul>
+<li>continuous response</li>
+<li>categorical predictors</li>
+</ul></li>
+<li>Analysis of Covariance (ANCOVA)
+<ul>
+<li>continuous response</li>
+<li>A mix of continuous and categorical predictors</li>
+<li>Special case with special assumptions</li>
+</ul></li>
+</ul>
+<div id="you-have-seen-these-statistical-tests-in-previous-lectures" class="section level4">
+<h4>You have seen these statistical tests in previous lectures</h4>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Height by Sex
+t = -12.924, df = 192.7, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.14454 -11.13420
+sample estimates:
+mean in group Female   mean in group Male 
+            165.6867             178.8260 </code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sex</td>
+<td align="right">1</td>
+<td align="right">8974.12</td>
+<td align="right">8974.1197</td>
+<td align="right">165.1145</td>
+<td align="right">3.8618e-28</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">206</td>
+<td align="right">11196.29</td>
+<td align="right">54.3509</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>A one-way ANOVA is mathematically identical to a t-test</p>
+<blockquote>
+<p>In this module, don’t focus on memorising what kind of test fits what kinds of data</p>
+</blockquote>
+<p>They are all variants on general linear models anyway…</p>
+<ul>
+<li>We are interested in <strong>slopes</strong> and (to a lesser extent) intercepts</li>
+<li>Understand how these models relate to your <em>hypotheses &amp; experimental design</em></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="revision-time" class="section level2">
+<h2>Revision time!</h2>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>What is the function in R to conduct a linear regression?</li>
+<li>How do you find a predicted value of a response for a given predictor value using a parameterised linear model?</li>
+<li>What is the probability distribution function of linear regression?</li>
+</ol>
+</div>
+</div>
