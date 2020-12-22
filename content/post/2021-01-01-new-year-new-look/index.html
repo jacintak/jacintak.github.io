@@ -7,7 +7,7 @@ slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
-summary: ''
+summary: 'Welcome to my revamped website!'
 authors: []
 publishDate: '2020-12-22'
 featured: no
@@ -92,9 +92,17 @@ setwd(old)</code></pre>
 <p>I haven’t found a solution to stop <code>blogdown</code> from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. So I have a folder called “drafts” which contains my drafts. <code>blogdown</code> will still render the files every time they are saved while using <code>serve_site</code> but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my <code>.gitignore</code>.</p>
 <p><code>blogdown</code> has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable <code>subdir</code> and with a custom date that is used to name the folder:</p>
 <pre><code>blogdown::new_post(ext = &quot;.Rmd&quot;, title = &quot;test&quot;, subdir = &quot;../drafts/&quot;, date = &quot;2021-01-01&quot;)</code></pre>
+<div id="blogdown-does-theoretically-have-a-means-of-excluding-files" class="section level3">
+<h3><code>blogdown</code> does theoretically have a means of excluding files…</h3>
+<p>In <code>blogdown::build_site</code> there is a function (<code>list_rmds</code>) that lists files in the “content” folder and excludes files beginning with <code>_</code>:</p>
+<pre><code>files = files[!grepl(&quot;^_&quot;, basename(files)) | grepl(&quot;^_index[.]&quot;, basename(files))]</code></pre>
+<p>But you’ll notice it doesn’t exclude files called <code>_index</code> without another <code>!</code> in front of <code>grepl</code>. For example, if I have an file called <code>_drafts.Rmd</code>, then <code>build_site</code> will ignore it. But if I have a file called <code>_index.Rmd</code>, then <code>build_site</code> will render it. I don’t know what the behaviour of this is supposed to be so I’m not sure if it is a mistake.</p>
+<p>This function is not present in <code>preview_site</code> which means that the live preview is going to build all your <code>.Rmd</code> files regardless and it will show up on the live preview.</p>
+<p>Either way, your drafts will still get pushed to GitHub unless you specify the files in <code>.gitignore</code> (e.g. <code>**/_*.Rmd</code>) so I wouldn’t say using <code>_</code> in your file names is an easier option.</p>
 <hr />
 <blockquote>
 <p>I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:</p>
 </blockquote>
+</div>
 </div>
 </div>

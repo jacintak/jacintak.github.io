@@ -7,7 +7,7 @@ slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
-summary: ''
+summary: 'Welcome to my revamped website!'
 authors: []
 publishDate: '`r Sys.Date()`'
 featured: no

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transparent graphing for dark backgrounds | Jacinta&#39;s Website</title>
+    <link>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</link>
+      <atom:link href="/post/2021-02-01-transparent-graphing-for-dark-backgrounds/index.xml" rel="self" type="application/rss+xml" />
+    <description>Transparent graphing for dark backgrounds</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/featured.png</url>
+      <title>Transparent graphing for dark backgrounds</title>
+      <link>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</link>
+    </image>
+    
+    <item>
+      <title>Transparent graphing for dark backgrounds</title>
+      <link>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/_draft/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/_draft/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but &lt;code&gt;ggplot2&lt;/code&gt; doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in &lt;code&gt;trees&lt;/code&gt; dataset:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tree_graph &amp;lt;- ggplot(data = trees, 
+       mapping = aes(x = Height, 
+                     y = Girth)) + 
+    geom_point(size = 0.5, colour = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, col = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_abline(intercept = 0, slope = 1, col = &amp;quot;white&amp;quot;, lwd = 0.5, lty = 2) + 
+    theme_classic() +
+    theme(plot.background = element_rect(fill = &amp;quot;transparent&amp;quot;, color = NA),
+          panel.background = element_rect(fill = &amp;quot;transparent&amp;quot;),
+          axis.text = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.title = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.line = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;),
+          axis.ticks = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;))
+
+ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot;transparent&amp;quot;, type = &amp;quot;cairo&amp;quot;, width = 10, height = 10, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are a couple of generally useful elements added on purpose:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;geom_smooth&lt;/code&gt; creates an automatically fitted linear model (defined using &lt;code&gt;method = &#34;lm&#34;&lt;/code&gt;). I have turned off plotting the standard errors (on by default) and manually set the colour.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;geom_abline&lt;/code&gt; is your standard straight line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;theme&lt;/code&gt; is where the customisation begins:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;plot.background&lt;/code&gt; &amp;amp; &lt;code&gt;panel.background&lt;/code&gt; are set to transparent&lt;/li&gt;
+&lt;li&gt;The various axis elements are set to the fill colour (a nice &lt;code&gt;viridis&lt;/code&gt; green) and desired text size&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggsave&lt;/code&gt; specifies that the background is transparent and to save it using the Cairo engine (&lt;code&gt;type = &#34;cairo&#34;&lt;/code&gt;). Cairo will create a vector based image so resizing the png isn’t an issue since the small font size is already defined.
+&lt;ul&gt;
+&lt;li&gt;You can also use &lt;code&gt;cairo-png&lt;/code&gt; but the graph height and width options appear to be ignored.&lt;/li&gt;
+&lt;li&gt;If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Transparent graphing for dark backgrounds</title>
+      <link>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but &lt;code&gt;ggplot2&lt;/code&gt; doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in &lt;code&gt;trees&lt;/code&gt; dataset:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tree_graph &amp;lt;- ggplot(data = trees, 
+       mapping = aes(x = Height, 
+                     y = Girth)) + 
+    geom_point(size = 0.5, colour = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, col = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_abline(intercept = 0, slope = 1, col = &amp;quot;white&amp;quot;, lwd = 0.5, lty = 2) + 
+    theme_classic() +
+    theme(plot.background = element_rect(fill = &amp;quot;transparent&amp;quot;, color = NA),
+          panel.background = element_rect(fill = &amp;quot;transparent&amp;quot;),
+          axis.text = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.title = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.line = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;),
+          axis.ticks = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;))
+
+ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot;transparent&amp;quot;, type = &amp;quot;cairo&amp;quot;, width = 10, height = 10, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are a couple of generally useful elements added on purpose:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;geom_smooth&lt;/code&gt; creates an automatically fitted linear model (defined using &lt;code&gt;method = &#34;lm&#34;&lt;/code&gt;). I have turned off plotting the standard errors (on by default) and manually set the colour.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;geom_abline&lt;/code&gt; is your standard straight line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;theme&lt;/code&gt; is where the customisation begins:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;plot.background&lt;/code&gt; &amp;amp; &lt;code&gt;panel.background&lt;/code&gt; are set to transparent&lt;/li&gt;
+&lt;li&gt;The various axis elements are set to the fill colour (a nice &lt;code&gt;viridis&lt;/code&gt; green) and desired text size&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggsave&lt;/code&gt; specifies that the background is transparent and to save it using the Cairo engine (&lt;code&gt;type = &#34;cairo&#34;&lt;/code&gt;). Cairo will create a vector based image so resizing the png isn’t an issue since the small font size is already defined.
+&lt;ul&gt;
+&lt;li&gt;You can also use &lt;code&gt;cairo-png&lt;/code&gt; but the graph height and width options appear to be ignored.&lt;/li&gt;
+&lt;li&gt;If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

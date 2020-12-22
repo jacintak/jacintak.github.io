@@ -7,7 +7,7 @@ slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
-summary: ''
+summary: 'Welcome to my revamped website!'
 authors: []
 publishDate: '`r Sys.Date()`'
 featured: no
@@ -101,5 +101,19 @@ I haven't found a solution to stop `blogdown` from rendering and Hugo from copyi
 ```
 blogdown::new_post(ext = ".Rmd", title = "test", subdir = "../drafts/", date = "2021-01-01")
 ```
+
+### `blogdown` does theoretically have a means of excluding files...
+
+In `blogdown::build_site` there is a function (`list_rmds`) that lists files in the "content" folder and excludes files beginning with `_`:
+```
+files = files[!grepl("^_", basename(files)) | grepl("^_index[.]", basename(files))]
+```
+But you'll notice it doesn't exclude files called `_index` without another `!` in front of `grepl`. For example, if I have an file called `_drafts.Rmd`, then `build_site` will ignore it. But if I have a file called `_index.Rmd`, then `build_site` will render it. I don't know what the behaviour of this is supposed to be so I'm not sure if it is a mistake. 
+
+This function is not present in `preview_site` which means that the live preview is going to build all your `.Rmd` files regardless and it will show up on the live preview.
+
+Either way, your drafts will still get pushed to GitHub unless you specify the files in `.gitignore` (e.g. `**/_*.Rmd`) so I wouldn't say using `_` in your file names is an easier option.
+
 ***
+
 > I'm not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:

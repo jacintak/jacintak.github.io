@@ -1,9 +1,9 @@
 ---
-abstract: I will be at IEA 2021
+abstract: I will be at the Irish Ecological Association Conference 2021
 address:
 all_day: false
 authors: []
-date: "2021-01-01T13:00:00Z"
+date: "2021-01-07T13:00:00Z"
 date_end: ""
 event: Irish Ecological Association Conference
 event_url: https://www.irishecologicalassociation-conference.org/

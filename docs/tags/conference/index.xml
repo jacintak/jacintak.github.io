@@ -5,7 +5,7 @@
     <link>/tags/conference/</link>
       <atom:link href="/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     <description>conference</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 13:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 07 Jan 2021 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-512.png</url>
       <title>conference</title>
@@ -15,7 +15,7 @@
     <item>
       <title>IEA2021</title>
       <link>/talk/IEA2021/</link>
-      <pubDate>Fri, 01 Jan 2021 13:00:00 +0000</pubDate>
+      <pubDate>Thu, 07 Jan 2021 13:00:00 +0000</pubDate>
       <guid>/talk/IEA2021/</guid>
       <description></description>
     </item>
