@@ -2,14 +2,14 @@
 title: New Year, New Look!
 author:
 - admin
-date: '`r Sys.Date()`'
+date: '2021-01-01'
 slug: [hello-world]
 categories: []
 tags: [website, github, R stats]
 subtitle: ''
 summary: ''
 authors: []
-publishDate: ""
+publishDate: '`r Sys.Date()`'
 featured: no
 image:
   caption: '[OpenMoji](https://openmoji.org/about/)'

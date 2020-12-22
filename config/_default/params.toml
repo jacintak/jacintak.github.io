@@ -162,6 +162,9 @@ sharing = true
 # Link authors to their profile page? (true/false)
 link_authors = true
 
+# Highlight my name
+highlight_superuser = true
+  
 # Load JS plugins
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
 plugins_js  = []
@@ -182,7 +185,7 @@ plugins_js  = []
 
   # Citation style ("apa" or "mla")
   citation_style = "apa"
-
+  
 # Configuration of project pages.
 [projects]
   # Views for associated content.

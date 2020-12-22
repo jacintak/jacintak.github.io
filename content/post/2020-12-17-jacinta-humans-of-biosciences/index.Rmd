@@ -8,7 +8,7 @@ tags: [PhD, postdoc]
 subtitle: ''
 summary: "Find out what I've been doing during a pandemic"
 authors: []
-lastmod: '2020-12-17T12:29:35Z'
+lastmod: ""
 featured: no
 image:
   caption: 'Me and my graduation balloon'
@@ -26,7 +26,7 @@ links:
   url: https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences
 ---
 
-I was recently featured on Humans of BioSciences, a series about the people of the [School of Biosciences](https://biosciences.unimelb.edu.au/). 
+I was recently featured on Humans of BioSciences, a series about the people of the [School of Biosciences](https://biosciences.unimelb.edu.au/) at the University of Melbourne (my alma mater). 
 
-You can read the Twitter thread (link in button) and the full interview [here](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences)
+You can read the Twitter [thread](https://twitter.com/BioSci_UniMelb/status/1339375265961582592) and the full interview [here](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences).
 

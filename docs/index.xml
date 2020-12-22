@@ -21,6 +21,95 @@
     </item>
     
     <item>
+      <title>New Year, New Look!</title>
+      <link>/post/2021-01-01-new-year-new-look/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>/post/2021-01-01-new-year-new-look/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;welcome-to-my-revamped-website&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome to my revamped website!&lt;/h1&gt;
+&lt;p&gt;After banging my head against &lt;code&gt;blogdown&lt;/code&gt; and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.&lt;/p&gt;
+&lt;p&gt;Setting up a site is simple enough if you follow the instructions online. The template builds a skeleton of the website and all you need to do is replace the placeholder text with your information. Simple right?&lt;/p&gt;
+&lt;p&gt;Not quite. The underlying file structure takes some getting used to and you’ll have to trust the magic as your site gets compiled. But once you pass that hurdle, the system is quite powerful and the results are neat.&lt;/p&gt;
+&lt;p&gt;There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (WordPress) with a blog and my code documentation separately on GitHub Pages.&lt;/p&gt;
+&lt;p&gt;My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.&lt;/p&gt;
+&lt;p&gt;There are some features that are missing/not easily implemented compared to WordPress that I will miss. You can’t comment (without third party systems) or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).&lt;/p&gt;
+&lt;p&gt;I will keep blog posts on the &lt;a href=&#34;https://jacintakongresearch.wordpress.com&#34;&gt;WordPress site&lt;/a&gt; as an archive. I have linked to relevant blog posts in this site.&lt;/p&gt;
+&lt;p&gt;There are some peculiarities that require things to be done a certain way:&lt;/p&gt;
+&lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things I noted&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.&lt;/li&gt;
+&lt;li&gt;Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML&lt;/li&gt;
+&lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised. File names are case-sensitive&lt;/li&gt;
+&lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
+&lt;ul&gt;
+&lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (follow the guide) doesn’t work either.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
+&lt;ul&gt;
+&lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See &lt;a href=&#34;#gitbook&#34;&gt;below&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
+&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gitbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using the static folder to render a gitbook&lt;/h2&gt;
+&lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a gitbook page within the site:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
+&lt;ul&gt;
+&lt;li&gt;It doesn’t work with files in the “content” folder, these will get the usual treatment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a folder called “R” in the root directory&lt;/li&gt;
+&lt;li&gt;Create an R script called “build.R” in the “R” folder&lt;/li&gt;
+&lt;li&gt;Add the render functions you need.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blogdown::build_dir(&#34;static&#34;)&lt;/code&gt; is a wrapper for plain &lt;code&gt;rmarkdown::render()&lt;/code&gt; as is so it works best with simple files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;build_dir&lt;/code&gt; doesn’t work for our gitbook example because we want a gitbook that knits with &lt;code&gt;bookdown::render_book&lt;/code&gt;, otherwise you will get a bunch of HTML files from the standard render function&lt;/li&gt;
+&lt;li&gt;There’s something funny going on with the working directories. Running &lt;code&gt;render_book(&#34;static/index.rmd&#34;)&lt;/code&gt; doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time.&lt;/p&gt;
+&lt;p&gt;I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.&lt;/p&gt;
+&lt;p&gt;Here’s what my &lt;code&gt;build.R&lt;/code&gt; file contains:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Make CV PDF
+rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = &amp;quot;static/files/&amp;quot;, output_file = &amp;quot;Kong_JD_CV.pdf&amp;quot;)
+
+# make gitbook
+# blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
+# whereas build_dir uses rmakrdown::render() thus giving html files
+old &amp;lt;- getwd()
+setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)
+setwd(old)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;having-a-drafts-folder&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Having a drafts folder&lt;/h2&gt;
+&lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files get pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
+&lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
+&lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
+&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. So I have a folder called “drafts” which contains my drafts. &lt;code&gt;blogdown&lt;/code&gt; will still render the files every time they are saved while using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>colRoz - A colour package for the land down under</title>
       <link>/colRoz/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
@@ -369,103 +458,10 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
       <guid>/post/2020-12-17-jacinta-humans-of-biosciences/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;I was recently featured on Humans of BioSciences, a series about the people of the &lt;a href=&#34;https://biosciences.unimelb.edu.au/&#34;&gt;School of Biosciences&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can read the Twitter thread (link in button) and the full interview &lt;a href=&#34;https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>New Year, New Look!</title>
-      <link>/post/2021-01-01-new-year-new-look/</link>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2021-01-01-new-year-new-look/</guid>
-      <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;div id=&#34;welcome-to-my-revamped-website&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Welcome to my revamped website!&lt;/h1&gt;
-&lt;p&gt;After banging my head against &lt;code&gt;blogdown&lt;/code&gt; and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.&lt;/p&gt;
-&lt;p&gt;Setting up a site is simple enough if you follow the instructions online. The template builds a skeleton of the website and all you need to do is replace the placeholder text with your information. Simple right?&lt;/p&gt;
-&lt;p&gt;Not quite. The underlying file structure takes some getting used to and you’ll have to trust the magic as your site gets compiled. But once you pass that hurdle, the system is quite powerful and the results are neat.&lt;/p&gt;
-&lt;p&gt;There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (WordPress) with a blog and my code documentation separately on GitHub Pages.&lt;/p&gt;
-&lt;p&gt;My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.&lt;/p&gt;
-&lt;p&gt;There are some features that are missing/not easily implemented compared to WordPress that I will miss. You can’t comment (without third party systems) or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).&lt;/p&gt;
-&lt;p&gt;I will keep blog posts on the &lt;a href=&#34;https://jacintakongresearch.wordpress.com&#34;&gt;WordPress site&lt;/a&gt; as an archive. I have linked to relevant blog posts in this site.&lt;/p&gt;
-&lt;p&gt;There are some peculiarities that require things to be done a certain way:&lt;/p&gt;
-&lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Things I noted&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.&lt;/li&gt;
-&lt;li&gt;Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML&lt;/li&gt;
-&lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised. File names are case-sensitive&lt;/li&gt;
-&lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
-&lt;ul&gt;
-&lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (follow the guide) doesn’t work either.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
-&lt;ul&gt;
-&lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See &lt;a href=&#34;#gitbook&#34;&gt;below&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
-&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;gitbook&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using the static folder to render a gitbook&lt;/h2&gt;
-&lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a gitbook page within the site:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
-&lt;ul&gt;
-&lt;li&gt;It doesn’t work with files in the “content” folder, these will get the usual treatment&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Create a folder called “R” in the root directory&lt;/li&gt;
-&lt;li&gt;Create an R script called “build.R” in the “R” folder&lt;/li&gt;
-&lt;li&gt;Add the render functions you need.
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;blogdown::build_dir(&#34;static&#34;)&lt;/code&gt; is a wrapper for plain &lt;code&gt;rmarkdown::render()&lt;/code&gt; as is so it works best with simple files&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;build_dir&lt;/code&gt; doesn’t work for our gitbook example because we want a gitbook that knits with &lt;code&gt;bookdown::render_book&lt;/code&gt;, otherwise you will get a bunch of HTML files from the standard render function&lt;/li&gt;
-&lt;li&gt;There’s something funny going on with the working directories. Running &lt;code&gt;render_book(&#34;static/index.rmd&#34;)&lt;/code&gt; doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time.&lt;/p&gt;
-&lt;p&gt;I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.&lt;/p&gt;
-&lt;p&gt;Here’s what my &lt;code&gt;build.R&lt;/code&gt; file contains:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Make CV PDF
-rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = &amp;quot;static/files/&amp;quot;, output_file = &amp;quot;Kong_JD_CV.pdf&amp;quot;)
-
-# make gitbook
-# blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
-# whereas build_dir uses rmakrdown::render() thus giving html files
-old &amp;lt;- getwd()
-setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
-bookdown::clean_book(clean = TRUE)
-bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)
-setwd(old)&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;having-a-drafts-folder&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Having a drafts folder&lt;/h2&gt;
-&lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files get pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
-&lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
-&lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
-&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. So I have a folder called “drafts” which contains my drafts. &lt;code&gt;blogdown&lt;/code&gt; will still render the files every time they are saved while using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;I was recently featured on Humans of BioSciences, a series about the people of the &lt;a href=&#34;https://biosciences.unimelb.edu.au/&#34;&gt;School of Biosciences&lt;/a&gt; at the University of Melbourne (my alma mater).&lt;/p&gt;
+&lt;p&gt;You can read the Twitter &lt;a href=&#34;https://twitter.com/BioSci_UniMelb/status/1339375265961582592&#34;&gt;thread&lt;/a&gt; and the full interview &lt;a href=&#34;https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

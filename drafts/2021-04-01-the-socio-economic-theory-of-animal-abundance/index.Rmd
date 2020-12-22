@@ -9,7 +9,7 @@ tags: [fun, crabs, theory]
 subtitle: 'A case study on ghost crabs'
 summary: "Where do animals live and why? These are some of the ecological questions I am interested in. Sure, we can talk about patterns of abundance in a population in terms of abiotic or biotic factors. But what if there's more to animals than that?"
 authors: []
-lastmod: '2020-12-15T19:50:15Z'
+lastmod: ""
 featured: no
 image:
   caption: ''

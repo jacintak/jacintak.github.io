@@ -2,7 +2,7 @@
 title: Leaving the valley of intermediate competence
 author:
 - admin
-date: '`r Sys.Date()`'
+date: "2021-03-01"
 slug: [using-mapply]
 categories: [code]
 tags: [code, R stats]

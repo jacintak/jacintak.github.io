@@ -2,7 +2,7 @@
 title: Transparent graphing for dark backgrounds
 author: 
 - admin
-date: '`r Sys.Date()`'
+date: "2021-02-01"
 slug: []
 categories: [code]
 tags: [code, conferences, talks, poster, R stats]
@@ -50,7 +50,7 @@ tree_graph <- ggplot(data = trees,
           axis.line = element_line(colour = "#B8DE29FF"),
           axis.ticks = element_line(colour = "#B8DE29FF"))
 
-ggsave(tree_graph, filename = "tree_graph.png", bg = "transparent", type = "cairo-png")
+ggsave(tree_graph, filename = "tree_graph.png", bg = "transparent", type = "cairo", width = 10, height = 10, dpi = 300)
 ```
 
 There are a couple of generally useful elements added on purpose:
@@ -60,5 +60,6 @@ There are a couple of generally useful elements added on purpose:
  * `theme` is where the customisation begins:
      * `plot.background` & `panel.background` are set to transparent
      * The various axis elements are set to the fill colour (a nice `viridis` green) and desired text size
-* `ggsave` specifies that the background is transparent and to save it as a "cairo-png". Cairo is needed to create a vector based image so resizing the png isn't an issue since the small font size is already defined
+ * `ggsave` specifies that the background is transparent and to save it using the Cairo engine (`type = "cairo"`). Cairo will create a vector based image so resizing the png isn't an issue since the small font size is already defined. 
+    * You can also use `cairo-png` but the graph height and width options appear to be ignored.
      * If you don't save it as a Cairo png, then the text will still have a white outline and won't be a clean solid fill

@@ -1,7 +1,7 @@
 ---
 authors:
 - James L. Maino
-- admin
+- "**Jacinta D. Kong**"
 - Ary A. Hoffmann
 - Madeleine G. Barton
 - Michael R. Kearney. 
