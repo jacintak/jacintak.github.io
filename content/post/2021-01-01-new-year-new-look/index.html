@@ -9,7 +9,7 @@ tags: [website, github, R stats]
 subtitle: ''
 summary: 'Welcome to my revamped website!'
 authors: []
-publishDate: '2020-12-22'
+publishDate: '2021-01-01'
 featured: no
 image:
   caption: '[OpenMoji](https://openmoji.org/about/)'
@@ -41,7 +41,7 @@ projects: []
 <ul>
 <li>In the “Courses” feature the parent page must be called "_index" or it won’t work. :shrug:</li>
 </ul></li>
-<li>Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via <code>bookdown</code> outputs in the YAML doesn’t work and calling <code>toc: true</code> directly in the YAML (follow the guide) doesn’t work either.</li>
+<li>Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via <code>bookdown</code> outputs in the YAML doesn’t work and calling <code>toc: true</code> directly in the YAML (following the guide) doesn’t work either.</li>
 <li><code>bookdown</code> and <code>blogdown</code> don’t play nicely together in the same project either. <code>blogdown</code> will try to render the <code>bookdown</code> pages as a site rather than letting <code>bookdown</code> do its thing and make a nice gitbook.
 <ul>
 <li>To allow this behaviour, you need to make use of the static file builder (See <a href="#gitbook">below</a>)</li>
@@ -68,7 +68,7 @@ projects: []
 <li>There’s something funny going on with the working directories. Running <code>render_book("static/index.rmd")</code> doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.</li>
 </ul></li>
 </ol>
-<p>The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time.</p>
+<p>The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time (unless you “comment it off” in the <code>build.R</code> script.</p>
 <p>I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.</p>
 <p>Here’s what my <code>build.R</code> file contains:</p>
 <pre><code># Make CV PDF
@@ -89,7 +89,7 @@ setwd(old)</code></pre>
 <p>Hugo will not render draft blog posts by default but <code>blogdown</code> will still render the files for your local site and these files get pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.</p>
 <p>One solution to stop <code>blogdown</code> from rendering <code>.rmd</code> files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.</p>
 <p>We can have a “draft” folder under “content” and tell Hugo to ignore it in the <code>config.toml</code> file (ignorefile) but that doesn’t stop <code>blogdown</code> from rendering the file.</p>
-<p>I haven’t found a solution to stop <code>blogdown</code> from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. So I have a folder called “drafts” which contains my drafts. <code>blogdown</code> will still render the files every time they are saved while using <code>serve_site</code> but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my <code>.gitignore</code>.</p>
+<p>I haven’t found a solution to stop <code>blogdown</code> from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”, only folders that match the template. So I have a folder called “drafts” which contains my drafts. <code>blogdown</code> will still render the files every time they are saved while using <code>serve_site</code> but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my <code>.gitignore</code>.</p>
 <p><code>blogdown</code> has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable <code>subdir</code> and with a custom date that is used to name the folder:</p>
 <pre><code>blogdown::new_post(ext = &quot;.Rmd&quot;, title = &quot;test&quot;, subdir = &quot;../drafts/&quot;, date = &quot;2021-01-01&quot;)</code></pre>
 <div id="blogdown-does-theoretically-have-a-means-of-excluding-files" class="section level3">
@@ -100,9 +100,20 @@ setwd(old)</code></pre>
 <p>This function is not present in <code>preview_site</code> which means that the live preview is going to build all your <code>.Rmd</code> files regardless and it will show up on the live preview.</p>
 <p>Either way, your drafts will still get pushed to GitHub unless you specify the files in <code>.gitignore</code> (e.g. <code>**/_*.Rmd</code>) so I wouldn’t say using <code>_</code> in your file names is an easier option.</p>
 <hr />
+</div>
+</div>
+<div id="other-customisations-via-layoutspartials-templates" class="section level2">
+<h2>Other customisations via “layouts/partials” templates</h2>
+<p>Because Hugo copies any folder in the root directory into “docs” which matches the theme template, it will override any files in the “themes” folder that matches the name of the folder in the root directory. This means that you can create custom templates without modifying the original template. Thus, having a folder called “layouts/partials” will override any “partials” templates within the “theme” folder.</p>
+<p>I have added some minor customisations to reflect personal preference:</p>
+<ul>
+<li>Added markdown to the author list in <code>page_metadata_authors.html</code> so that I can customise my name and bold it in the list of authors under publications</li>
+<li>Changed the site footer to include <code>blogdown</code></li>
+<li>Changed <code>page_metadata.html</code> to show both the last modified and published date. Last modified date is default.</li>
+</ul>
+<hr />
 <blockquote>
 <p>I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:</p>
 </blockquote>
-</div>
 </div>
 </div>

@@ -3,7 +3,7 @@ title: "colRoz"
 author:
   - admin
   - Nicholas Wu
-date: 
+date: "2020-01-01"
 external_link: /colRoz/
 image:
   caption: 

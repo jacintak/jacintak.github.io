@@ -41,7 +41,7 @@
 &lt;ul&gt;
 &lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (follow the guide) doesn’t work either.&lt;/li&gt;
+&lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (following the guide) doesn’t work either.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
 &lt;ul&gt;
 &lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See &lt;a href=&#34;#gitbook&#34;&gt;below&lt;/a&gt;)&lt;/li&gt;
@@ -68,7 +68,7 @@
 &lt;li&gt;There’s something funny going on with the working directories. Running &lt;code&gt;render_book(&#34;static/index.rmd&#34;)&lt;/code&gt; doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time.&lt;/p&gt;
+&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time (unless you “comment it off” in the &lt;code&gt;build.R&lt;/code&gt; script.&lt;/p&gt;
 &lt;p&gt;I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.&lt;/p&gt;
 &lt;p&gt;Here’s what my &lt;code&gt;build.R&lt;/code&gt; file contains:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Make CV PDF
@@ -89,7 +89,7 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files get pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
 &lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
 &lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
-&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”. So I have a folder called “drafts” which contains my drafts. &lt;code&gt;blogdown&lt;/code&gt; will still render the files every time they are saved while using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”, only folders that match the template. So I have a folder called “drafts” which contains my drafts. &lt;code&gt;blogdown&lt;/code&gt; will still render the files every time they are saved while using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;blogdown-does-theoretically-have-a-means-of-excluding-files&#34; class=&#34;section level3&#34;&gt;
@@ -100,10 +100,21 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This function is not present in &lt;code&gt;preview_site&lt;/code&gt; which means that the live preview is going to build all your &lt;code&gt;.Rmd&lt;/code&gt; files regardless and it will show up on the live preview.&lt;/p&gt;
 &lt;p&gt;Either way, your drafts will still get pushed to GitHub unless you specify the files in &lt;code&gt;.gitignore&lt;/code&gt; (e.g. &lt;code&gt;**/_*.Rmd&lt;/code&gt;) so I wouldn’t say using &lt;code&gt;_&lt;/code&gt; in your file names is an easier option.&lt;/p&gt;
 &lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-customisations-via-layoutspartials-templates&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Other customisations via “layouts/partials” templates&lt;/h2&gt;
+&lt;p&gt;Because Hugo copies any folder in the root directory into “docs” which matches the theme template, it will override any files in the “themes” folder that matches the name of the folder in the root directory. This means that you can create custom templates without modifying the original template. Thus, having a folder called “layouts/partials” will override any “partials” templates within the “theme” folder.&lt;/p&gt;
+&lt;p&gt;I have added some minor customisations to reflect personal preference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added markdown to the author list in &lt;code&gt;page_metadata_authors.html&lt;/code&gt; so that I can customise my name and bold it in the list of authors under publications&lt;/li&gt;
+&lt;li&gt;Changed the site footer to include &lt;code&gt;blogdown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;page_metadata.html&lt;/code&gt; to show both the last modified and published date. Last modified date is default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -112,7 +123,7 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
     <item>
       <title>Quick guide to R/exams</title>
       <link>https://jacintak.github.io/teaching/rexams/</link>
-      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/rexams/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -342,7 +353,7 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     <item>
       <title>Setup R</title>
       <link>https://jacintak.github.io/teaching/introR/</link>
-      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/introR/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -781,7 +792,7 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     <item>
       <title>Biostatistics tutorials</title>
       <link>https://jacintak.github.io/project/biostats-tutorials/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;

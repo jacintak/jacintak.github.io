@@ -5,12 +5,21 @@
     <link>https://jacintak.github.io/tags/life-cycles/</link>
       <atom:link href="https://jacintak.github.io/tags/life-cycles/index.xml" rel="self" type="application/rss+xml" />
     <description>life cycles</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 13 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>life cycles</title>
       <link>https://jacintak.github.io/tags/life-cycles/</link>
     </image>
+    
+    <item>
+      <title>Predicting ectotherm life cycles</title>
+      <link>https://jacintak.github.io/project/life-cycles/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/life-cycles/</guid>
+      <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes</title>
@@ -29,15 +38,6 @@
       <guid>https://jacintak.github.io/publication/2016-COIS/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Mechanistic models of the impacts of climate change on insects can be seen as very specific hypotheses about the connections between microclimate, ecophysiology and vital rates. These models must adequately capture stage-specific responses, carry-over effects between successive stages, and the evolutionary potential of the functional traits involved in complex insect life-cycles. Here we highlight key considerations for current approaches to mechanistic modelling of insect responses to climate change. We illustrate these considerations within a general mechanistic framework incorporating the thermodynamic linkages between microclimate and heat, water and nutrient exchange throughout the life-cycle under different climate scenarios. We emphasise how such a holistic perspective will provide increasingly robust insights into how insects adapt and respond to changing climates.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Predicting ectotherm life cycles</title>
-      <link>https://jacintak.github.io/project/life-cycles/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/life-cycles/</guid>
-      <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
 </description>
     </item>
     

@@ -1,5 +1,5 @@
 ---
-date:
+date: "2020-01-01"
 external_link:
 image:
   caption: 

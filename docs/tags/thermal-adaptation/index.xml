@@ -5,12 +5,22 @@
     <link>https://jacintak.github.io/tags/thermal-adaptation/</link>
       <atom:link href="https://jacintak.github.io/tags/thermal-adaptation/index.xml" rel="self" type="application/rss+xml" />
     <description>thermal adaptation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>thermal adaptation</title>
       <link>https://jacintak.github.io/tags/thermal-adaptation/</link>
     </image>
+    
+    <item>
+      <title>Thermal dependence of biological rates</title>
+      <link>https://jacintak.github.io/project/temperature-dependence/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
+      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
+&lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism</title>
@@ -62,16 +72,6 @@
 &lt;p&gt;Thermocyclers are a general and transferrable means to scale up current methods of incubating small invertebrates. They permit rapid characterization of high-dimensional physiological responses to natural thermal regimes. When combined with existing approaches in thermal and evolutionary biology, these methods will advance our understanding of, and ability to predict, biological adaptations and responses to environmental changes.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Thermal dependence of biological rates</title>
-      <link>https://jacintak.github.io/project/temperature-dependence/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
-      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
-&lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
 </description>
     </item>
     

@@ -3,8 +3,8 @@ abstract: I will be at the Irish Ecological Association Conference 2021
 address:
 all_day: false
 authors: []
-date: "2021-01-07T13:00:00Z"
-date_end: ""
+date: "2021-01-07T09:00:00Z"
+date_end: "2021-01-08T18:00:00Z"
 event: Irish Ecological Association Conference
 event_url: https://www.irishecologicalassociation-conference.org/
 featured: false

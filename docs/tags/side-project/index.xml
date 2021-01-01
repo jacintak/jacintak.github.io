@@ -5,7 +5,7 @@
     <link>https://jacintak.github.io/tags/side-project/</link>
       <atom:link href="https://jacintak.github.io/tags/side-project/index.xml" rel="self" type="application/rss+xml" />
     <description>side-project</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>side-project</title>
@@ -15,7 +15,7 @@
     <item>
       <title>colRoz - A colour package for the land down under</title>
       <link>https://jacintak.github.io/colRoz/</link>
-      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -355,7 +355,7 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
     <item>
       <title>Biostatistics tutorials</title>
       <link>https://jacintak.github.io/project/biostats-tutorials/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -413,7 +413,7 @@ Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt;
     <item>
       <title>colRoz</title>
       <link>https://jacintak.github.io/project/colRoz/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/colRoz/</guid>
       <description>
 &lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;

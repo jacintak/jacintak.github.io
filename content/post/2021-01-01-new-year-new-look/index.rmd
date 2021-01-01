@@ -9,7 +9,7 @@ tags: [website, github, R stats]
 subtitle: ''
 summary: 'Welcome to my revamped website!'
 authors: []
-publishDate: '`r Sys.Date()`'
+publishDate: '2021-01-01'
 featured: no
 image:
   caption: '[OpenMoji](https://openmoji.org/about/)'
@@ -43,7 +43,7 @@ There are some peculiarities that require things to be done a certain way:
 * A header image/thumbnail can be included in the same folder as the content *but* it must be called "featured" or it won't be recognised. File names are case-sensitive
 * You can have as many folders as you want called whatever but the (r)markdown file of the page must be called "index"
     * In the "Courses" feature the parent page must be called "_index" or it won't work. :shrug:
-* Rmd and the "Courses" feature don't play nicely. Defining a table of contents via `bookdown` outputs in the YAML doesn't work and calling `toc: true` directly in the YAML (follow the guide) doesn't work either.
+* Rmd and the "Courses" feature don't play nicely. Defining a table of contents via `bookdown` outputs in the YAML doesn't work and calling `toc: true` directly in the YAML (following the guide) doesn't work either.
 * `bookdown` and `blogdown` don't play nicely together in the same project either. `blogdown` will try to render the `bookdown` pages as a site rather than letting `bookdown` do its thing and make a nice gitbook. 
     * To allow this behaviour, you need to make use of the static file builder (See [below](#gitbook))
 * Despite the template saying "Upcoming talks" Hugo doesn't render things in the future (incl blog posts). You need `publishDate` in the YAML
@@ -64,7 +64,7 @@ To render rmd files into another output than `blogdown::html_page` you can put t
     * `build_dir` doesn't work for our gitbook example because we want a gitbook that knits with `bookdown::render_book`, otherwise you will get a bunch of HTML files from the standard render function
     * There's something funny going on with the working directories. Running `render_book("static/index.rmd")` doesn't work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I'm not sure where the function is looking as the project working directory is the root directory. 
     
-The above means that all the rmd files for the gitbook also get copied into the "docs" folder. I don't think it's avoidable. It's also s l o w e r to build the site because the gitbook gets rendered every time. 
+The above means that all the rmd files for the gitbook also get copied into the "docs" folder. I don't think it's avoidable. It's also s l o w e r to build the site because the gitbook gets rendered every time (unless you "comment it off" in the `build.R` script. 
     
 I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the "docs" folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.
 
@@ -94,14 +94,15 @@ One solution to stop `blogdown` from rendering `.rmd` files is to keep them in t
 
 We can have a "draft" folder under "content" and tell Hugo to ignore it in the `config.toml` file (ignorefile) but that doesn't stop `blogdown` from rendering the file. 
 
-I haven't found a solution to stop `blogdown` from rendering and Hugo from copying the file but Hugo doesn't add every folder from the root directory to "Public". So I have a folder called "drafts" which contains my drafts. `blogdown` will still render the files every time they are saved while using `serve_site` but they won't interfere with the site itself. When I'm ready to publish them I can copy them to the "content/post" folder. I also added the "drafts" folder to my `.gitignore`.
+I haven't found a solution to stop `blogdown` from rendering and Hugo from copying the file but Hugo doesn't add every folder from the root directory to "Public", only folders that match the template. So I have a folder called "drafts" which contains my drafts. `blogdown` will still render the files every time they are saved while using `serve_site` but they won't interfere with the site itself. When I'm ready to publish them I can copy them to the "content/post" folder. I also added the "drafts" folder to my `.gitignore`.
 
 `blogdown` has a handy function to generate a new blog post. By default it will add the new files to "content/post" but I changed this to write directly to the "drafts" folder via the variable `subdir` and with a custom date that is used to name the folder:
 
 ```
 blogdown::new_post(ext = ".Rmd", title = "test", subdir = "../drafts/", date = "2021-01-01")
 ```
-
+  
+  
 ### `blogdown` does theoretically have a means of excluding files...
 
 In `blogdown::build_site` there is a function (`list_rmds`) that lists files in the "content" folder and excludes files beginning with `_`:
@@ -113,6 +114,18 @@ But you'll notice it doesn't exclude files called `_index` without another `!` i
 This function is not present in `preview_site` which means that the live preview is going to build all your `.Rmd` files regardless and it will show up on the live preview.
 
 Either way, your drafts will still get pushed to GitHub unless you specify the files in `.gitignore` (e.g. `**/_*.Rmd`) so I wouldn't say using `_` in your file names is an easier option.
+
+***
+
+## Other customisations via "layouts/partials" templates
+
+Because Hugo copies any folder in the root directory into "docs" which matches the theme template, it will override any files in the "themes" folder that matches the name of the folder in the root directory. This means that you can create custom templates without modifying the original template. Thus, having a folder called "layouts/partials" will override any "partials" templates within the "theme" folder.
+
+I have added some minor customisations to reflect personal preference:
+
+ * Added markdown to the author list in `page_metadata_authors.html` so that I can customise my name and bold it in the list of authors under publications
+ * Changed the site footer to include `blogdown`
+ * Changed `page_metadata.html` to show both the last modified and published date. Last modified date is default.
 
 ***
 

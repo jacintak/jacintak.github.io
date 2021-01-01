@@ -1,5 +1,5 @@
 ---
-date:
+date: "2021-01-01"
 title: Predicting ectotherm life cycles
 external_link: ""
 image:
