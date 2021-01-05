@@ -6,6 +6,20 @@ opts_chunk$set(echo = F, warning = FALSE, message = FALSE, comment = NA, fig.hei
 library(tidyverse)
 theme_set(theme_classic())
 library(MASS)
+
+# format anova tables
+fixp <- function(x, dig=3){
+  x <- as.data.frame(x)
+  
+  if(substr(names(x)[ncol(x)],1,2) != "Pr")
+    warning("The name of the last column didn't start with Pr. This may indicate that p-values weren't in the last row, and thus, that this function is inappropriate.")
+  x[,ncol(x)] <- round(x[,ncol(x)], dig)
+  for(i in 1:(nrow(x)-1)){
+    if(x[i,ncol(x)] == 0)
+      x[i,ncol(x)] <- paste0("<0.", paste0(rep(0,dig-1), collapse=""), "1")
+  }
+  x
+}
 ```
 ***
 
@@ -279,7 +293,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ```{r tests}
 t.test(Height ~ Sex, survey)
-kable(anova(lm(Height ~ Sex, survey)), digits = 32)
+kable(fixp(anova(lm(Height ~ Sex, survey))), digits = 2)
 ```
 
 A one-way ANOVA is mathematically identical to a t-test

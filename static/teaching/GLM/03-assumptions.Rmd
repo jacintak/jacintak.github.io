@@ -51,8 +51,8 @@ We need to evaluate our model. There are a few things we should consider:
 
 $$ \frac{Var_{\text{explained by the line}}}{Var_{\text{not explained by the line}}} = Ratio$$
 Interpreting ratios:  
-Ratio > 1 = Line explains more than residual  
-Ratio ≤ 1 = Line explains very little (null hypothesis)  
+Ratio $> 1$ = Line explains more than residual  
+Ratio $\leq 1$ = Line explains very little (null hypothesis)  
 
 > We need to know the total amount of variation and all possible sources of variation (like the F-ratio & ANOVA)
 
@@ -114,8 +114,8 @@ $$ \frac{Var_{\text{explained by the line}}}{Var_{\text{not explained by the lin
 We want the number above the line (nominator) to be larger than the number below the line (denominator), otherwise we cannot be confident that our results are different to randomly generated numbers.
 
 Interpreting ratios:  
-Ratio > 1 = Line explains more than residual  
-Ratio ≤ 1 = Line explains very little (null hypothesis)  
+Ratio $> 1$  = Line explains more than residual  
+Ratio $\leq 1$ = Line explains very little (null hypothesis)  
 
 In other words, we want to know how much variation is captured by the model relative to the total variation in our data.
 
@@ -414,7 +414,7 @@ Fixes:
 **Question 6** - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?
 
 Look at this graph - does it show homoscedasticity or heteroscedasticity?
-```{r homo, echo=FALSE, fig.cap = "Bar plot of mean of two groups (A & B). Error bars indicate standard deviation"}
+```{r homo, echo=FALSE, fig.cap = "Bar plot of mean of two groups (A and B). Error bars indicate standard deviation"}
 data <- rbind(data.frame(y = rnorm(50, mean = 50, sd = 5), x = rep("A", 50)),
               data.frame(y = rnorm(50, mean = 50, sd = 20), x = rep("B", 50)))
 summ_data <- rbind(tapply(data$y, data$x, mean),
@@ -525,7 +525,7 @@ If outliers are caused by experimental error or bias, you could justify excludin
 
 ### Outliers in the mammal dataset
 
-```{r outliers, fig.cap= "Looks like humans, water opossums & musk shrew have high influence on the regression"}
+```{r outliers, fig.cap= "Looks like humans, water opossums and musk shrew have high influence on the regression"}
 par(mar = c(4,4,2,0.1))
 plot(lm(log(brain) ~ log(body), mammals) , which=c(5))
 ```
@@ -592,10 +592,11 @@ If the second assumption is not met, you can still fit an “ANCOVA-like” mode
 
 * Always check assumptions
 * Interpret model in a biological context
-    * Biological data is messy: good model can have low R2
+    * Biological data is messy: good model can have low R^2^
     * Outliers aren’t always mistakes
     * Statistical significance $\neq$ biological significance
 * Is the model appropriate for the question?
 * Can my experiment actually test my hypothesis?
 * **_Never_ delete observations to force a better model fit or fit assumptions**
+   * This violates research integrity
 

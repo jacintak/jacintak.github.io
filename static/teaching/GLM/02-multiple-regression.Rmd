@@ -8,6 +8,20 @@ theme_set(theme_classic())
 library(MASS)
 options(ggplot2.continuous.colour="viridis")
 scale_colour_discrete <- function(...)   scale_colour_viridis_d()
+
+# format anova tables
+fixp <- function(x, dig=3){
+  x <- as.data.frame(x)
+  
+  if(substr(names(x)[ncol(x)],1,2) != "Pr")
+    warning("The name of the last column didn't start with Pr. This may indicate that p-values weren't in the last row, and thus, that this function is inappropriate.")
+  x[,ncol(x)] <- round(x[,ncol(x)], dig)
+  for(i in 1:(nrow(x)-1)){
+    if(x[i,ncol(x)] == 0)
+      x[i,ncol(x)] <- paste0("<0.", paste0(rep(0,dig-1), collapse=""), "1")
+  }
+  x
+}
 ```
 ***
 
@@ -318,7 +332,7 @@ Parametrised slope for males:
 > Variance of predictors (SS) is partitioned out from total SS in order it is entered in to R
 
 ```{r anova-table-hand}
-kable(anova(lm_hhand), digits = 32)
+kable(fixp(anova(lm_hhand)), digits = 2)
 ```
 
 ### The ANOVA table for 2 predictors and their interaction
@@ -338,7 +352,7 @@ student height is not dependent of the sex of the student
 
 
 ```{r anova-table-hand-2}
-kable(anova(lm_hhand), digits = 32)
+kable(fixp(anova(lm_hhand)), digits = 2)
 ```
 
 ### The interaction term A:B

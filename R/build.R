@@ -4,8 +4,21 @@ rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_documen
 # make gitbook
 # blogdown::build_dir("static") doesn't work because we want a gitbook that knits with render_book
 # whereas build_dir uses rmakrdown::render() thus giving html files
+
 old <- getwd()
 setwd("static/teaching/GLM/")
 bookdown::clean_book(clean = TRUE)
-bookdown::render_book(input = "index.Rmd", quiet = TRUE)
+
+# self-contained gitbook without equations
+bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE,
+                      output_format = bookdown::gitbook(self_contained = TRUE, split_by = "none", css = "style.css"))
+# PDF
+bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::pdf_book")
+# actual site
+bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::gitbook")
+
 setwd(old)
+
+# An open issue for offering a download
+# cannot render a self contained file using html_book
+# cannot use latex with a self contained gitbook
