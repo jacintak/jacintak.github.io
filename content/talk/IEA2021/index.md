@@ -1,5 +1,5 @@
 ---
-abstract: I will be at the Irish Ecological Association Conference 2021
+abstract: The Irish Ecological Association Conference
 address:
 all_day: false
 authors: []
