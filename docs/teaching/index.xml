@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teachings | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/teaching/</link>
+      <atom:link href="https://jacintak.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <description>Teachings</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <title>Teachings</title>
+      <link>https://jacintak.github.io/teaching/</link>
+    </image>
+    
+    <item>
+      <title>Quick guide to R/exams</title>
+      <link>https://jacintak.github.io/teaching/rexams/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/rexams/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;http://www.r-exams.org&#34;&gt;&lt;code&gt;R/exams&lt;/code&gt;&lt;/a&gt; is an R package that generates a reproducible workflow for designing, producing and marking exams.&lt;br /&gt;
+Here, I provide a short walkthough for generating an online test for Blackboard - see the &lt;a href=&#34;http://www.r-exams.org/tutorials/exams2blackboard/&#34;&gt;R/exams website&lt;/a&gt; for some tutorials.&lt;/p&gt;
+&lt;div id=&#34;installation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installation&lt;/h1&gt;
+&lt;p&gt;Install R/exams via CRAN with &lt;code&gt;install.packages(&#34;exams&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-the-package-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running the package for the first time&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;exams&lt;/code&gt; uses &lt;code&gt;rtools&lt;/code&gt; to create zip files. Make sure the proper &lt;code&gt;rtools&lt;/code&gt; is installed. An error message will appear if &lt;code&gt;rtools&lt;/code&gt; does not have permission to create zip files.&lt;br /&gt;
+To give permission for creating .zip for windows:
+Control Panel &amp;gt; System and Security &amp;gt; System &amp;gt; Advanced System Settings &amp;gt; Environmental Variables &amp;gt; add “C:/RTools/bin”&lt;br /&gt;
+You may also need to install dependent packages like &lt;code&gt;tth&lt;/code&gt; for math notation.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;types-of-questions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Types of questions&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Single correct answer MCQ (schoice)&lt;/li&gt;
+&lt;li&gt;Multiple correct answer MCQ (mchoice)&lt;/li&gt;
+&lt;li&gt;Numeric answer (num)&lt;/li&gt;
+&lt;li&gt;String (string)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cloze is another option but is not supported by blackboard, this permits a combination of the above for the MCQ answer list&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;building-an-exam-question&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Building an exam question&lt;/h1&gt;
+&lt;p&gt;There are several file types that are supported when writing your question but I have stuck with ‘.Rmd’. There are four parts of a question file:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The question&lt;/li&gt;
+&lt;li&gt;The answer list&lt;/li&gt;
+&lt;li&gt;The solution list for giving feedback&lt;/li&gt;
+&lt;li&gt;The meta-information&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Each of these sections are defined by a header tag marked by =====. # does not work as a tag.&lt;/p&gt;
+&lt;div id=&#34;question&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question&lt;/h2&gt;
+&lt;p&gt;The tag for defining the question is:&lt;/p&gt;
+&lt;p&gt;Question&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;The various random number generators in R will be your friend.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sample() # pick n random number(s) from a vector of discrete numbers
+runif() # generate a vector of continuous numbers, can set min and max
+rnorm() # generate a vector of continuous numbers from a normal distribution with a defined mean and standard deviation&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code chunk options are in effect. By default figures will have captions, turn it of with &lt;code&gt;fig.caption = &#34;&#34;&lt;/code&gt;. Other useful figure options are figure sizes. Figure options can also be defined when compiling the exam&lt;/li&gt;
+&lt;li&gt;You can show code with &lt;code&gt;echo  = TRUE&lt;/code&gt;, turn off R formatting with &lt;code&gt;results = &#34;asis&#34;&lt;/code&gt; &amp;amp; hide results with &lt;code&gt;results = &#34;hide&#34;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;LaTeX formatting is fine in markdown and outside code chunks&lt;/li&gt;
+&lt;li&gt;To allow for randomised questions within a question file I had to escape the R code chunk to render the output as html, else the randomised question would be rendered as R output&lt;/li&gt;
+&lt;li&gt;You can generate a file to go with the question using any R write to file function. Include the file in the question as normal for Rmarkdown - [filename](filelink). Leave this as default or &lt;code&gt;exams&lt;/code&gt; will not be able to find the file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-answer-list&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The answer list&lt;/h2&gt;
+&lt;p&gt;The answer subheading is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Answer&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;Bulleted markdown after this tag will be considered the options for an MCQ answer list.&lt;/p&gt;
+&lt;div id=&#34;things-to-note-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;exams&lt;/code&gt; contains several helper functions to make it easy to generate lists of answers.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;answerlist&lt;/code&gt; accepts a vector of answers. It also generates the answer subheading so there is no need to type it in.&lt;/li&gt;
+&lt;li&gt;Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.&lt;br /&gt;
+&lt;code&gt;comment = NA&lt;/code&gt; in the code chunk options will remove the # from the R output.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;There are also helper functions for various things. &lt;code&gt;mchoice2string()&lt;/code&gt; turns the solutions vector above into binary responses for the meta-information section. &lt;code&gt;num_to_choice&lt;/code&gt; generates a MCQ list of numbers for a numeric answer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;You can provide feedback via the solution header, including which answers are correct&lt;/p&gt;
+&lt;p&gt;Solution&lt;br /&gt;
+========&lt;br /&gt;
+Your solution here or correct answer: &lt;code&gt;code for answer&lt;/code&gt; (or &lt;code&gt;answer[]&lt;/code&gt;)&lt;br /&gt;
+Answerlist&lt;br /&gt;
+-———&lt;br /&gt;
+* True&lt;br /&gt;
+* False&lt;br /&gt;
+* etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt; There should be no spaces after the header tag title, i.e. markdown formatting&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-metainformation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question metainformation&lt;/h2&gt;
+&lt;p&gt;This is an important section of the question because it defines the correct answer. Metainformation is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Meta-information&lt;br /&gt;
+================&lt;/p&gt;
+&lt;p&gt;Useful variables are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exname = title of question, becomes name of the pool in blackboard&lt;/li&gt;
+&lt;li&gt;extype = type of question (num/schoice/mchoice)&lt;/li&gt;
+&lt;li&gt;exsolution: order of correct answers in binary (e.g. 01010) for MCQ or R code for numeric output - e.g. &lt;/li&gt;
+&lt;li&gt;extol = the tolerance range for numeric questions&lt;/li&gt;
+&lt;li&gt;exshuffle = Whether to shuffle the answers or not. This can be used to randomly select a subset of answers from an answer list. Provide a number of answers for non-numeric questions (e.g. 4 for 4 answers). &lt;code&gt;TRUE/FALSE&lt;/code&gt; is also accepted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-example-question&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;An example question&lt;/h1&gt;
+&lt;p&gt;This example displays the correct answer and 3 randomly chosen option out of 6 possible answers.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question
+========
+What is your name?
+
+\```{r question, results = &amp;quot;hide&amp;quot;, echo=F}
+# list of possible answer as a character vector
+knights_of_camelot &amp;lt;- c(&amp;quot;Arthur, King of the Britons&amp;quot;, 
+                        &amp;quot;Sir Lancelot the Brave&amp;quot;,
+                        &amp;quot;Sir Robin the Not-Quite-So-Brave-as-Sir-Lancelot&amp;quot;,
+                        &amp;quot;Sir Galahad the Pure&amp;quot;,
+                        &amp;quot;Sir Bedevere the Wise&amp;quot;,
+                        &amp;quot;Patsy&amp;quot;)
+
+# solution to the vector above                        
+solutions &amp;lt;- c(FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)
+
+# explanations (feedback for students)
+explanations &amp;lt;- c(&amp;quot;I didn&amp;#39;t vote for him&amp;quot;,
+        &amp;quot;His favourite colour is blue&amp;quot;,
+        &amp;quot;He doesn&amp;#39;t know the capital of Assyria&amp;quot;,
+        &amp;quot;His favourite colour is blue. No, yel...&amp;quot;,
+        &amp;quot;Knows nothing about swallows&amp;quot;,
+        &amp;quot;Clip Clop&amp;quot;)
+\```
+        
+\```{r answerlist, echo=F, results = &amp;quot;asis&amp;quot;}
+# helper function to format the list of possible answers
+answerlist(knights_of_camelot, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+
+Solution
+========
+\```{r solutionlist, echo = FALSE, results = &amp;quot;asis&amp;quot;}
+answerlist(ifelse(solultions, &amp;quot;True&amp;quot;, &amp;quot;False&amp;quot;), explanations, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+Meta-information
+================
+exname: Bridgekeeper
+extype: schoice
+exsolution: `\r mchoice2string(solutions)`
+exshuffle: 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This renders like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Exam 1
+
+    Question
+
+    What is your name?
+
+        Sir Bedevere the Wise
+        Arthur, King of the Britons
+        Sir Galahad the Pure
+        Sir Lancelot the Brave
+
+    Solution
+        False. Knows nothing about swallows
+        False. I didn&amp;#39;t vote for him
+        False. His favourite colour is blue. No, yel.
+        True. His favourite colour is blue&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also skip the solutions vector and include it in the explanations vector like &lt;code&gt;c(&#34;False. I didn&#39;t vote for him&#34;)&lt;/code&gt;. Of course, the solution does not appear immediately in blackboard but make sure the option for solutions and feedback to appear is checked.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compiling-the-exam&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Compiling the exam&lt;/h1&gt;
+&lt;p&gt;I have written a script to compile the exam.
+The compiling function (&lt;code&gt;exams2blackboard&lt;/code&gt;) requires a &lt;em&gt;list&lt;/em&gt; of file names to generate the exam. Each file represents a question. Versions of a question (&lt;code&gt;n&lt;/code&gt;) generate a pool of questions. The list should not contain subdirectories or files not to be included in the exam. &lt;code&gt;exams2html&lt;/code&gt; is a means of checking a file/list of exam questions renders properly in html (or &lt;code&gt;exams2pdf&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;There are several means of customising the metadata of the exam. Here I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;turned off partial marks - is TRUE by default&lt;/li&gt;
+&lt;li&gt;used custom directories to search for the questions and save the output zip.&lt;/li&gt;
+&lt;li&gt;set 10 copies for each question using the variable &lt;code&gt;n&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the name of the zip file using the variable &lt;code&gt;name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the number of points for each question to 1, default = 10&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;exams&amp;quot;)
+options(device.ask.default = FALSE)
+
+## content and output directory
+mydir &amp;lt;- &amp;quot;C:/Users/kongj/OneDrive - TCDUD.onmicrosoft.com/Teaching/Biostats/Midsem MCQ&amp;quot;
+
+## define exam questions (each item in list is a pool)
+myexam &amp;lt;- list.files(paste0(mydir,&amp;quot;/questions&amp;quot;), pattern = &amp;quot;.Rmd&amp;quot;)
+
+# render single question
+#exams2html(list(&amp;quot;question3.Rmd&amp;quot;), edir = paste0(mydir,&amp;quot;/questions&amp;quot;))
+
+## generate .zip with Blackboard exam with n replicates
+exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = mydir,
+                 edir = paste0(mydir,&amp;quot;/questions&amp;quot;),
+                 eval = list(partial = FALSE, negative = FALSE),
+                 points = 1
+                 )
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things to note&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You can create a mix of questions in the exam by defining it in the list of questions but it is not recommended for generating pools of questions&lt;/li&gt;
+&lt;li&gt;If the exam is complied with no partial marks, then the blackboard exam will have no partial marks even if the option is checked within blackboard&lt;/li&gt;
+&lt;li&gt;You can generate a pool of questions by compiling a single question and uploading that zip file to Blackboard under “Import Pool”. This is useful for creating random block tests in Blackboard if the compiled zip file is not suitable as an test right away&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setup R</title>
+      <link>https://jacintak.github.io/teaching/introR/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#welcome-to-statistics-and-computation-for-biologists&#34;&gt;Welcome to Statistics and Computation for Biologists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-r-and-rstudio&#34;&gt;Installing R and RStudio&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#windows&#34;&gt;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mac&#34;&gt;Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux&#34;&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chromebook&#34;&gt;Chromebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-r&#34;&gt;Why R?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-rstudio&#34;&gt;Why RStudio?&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#rstudio-scripts&#34;&gt;RStudio scripts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#file-housekeeping&#34;&gt;File housekeeping&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#working-directories&#34;&gt;Working directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-script&#34;&gt;Creating a script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#loading-data&#34;&gt;Loading data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#txt&#34;&gt;.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#csv&#34;&gt;.csv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#copying-data&#34;&gt;Copying data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#try-it-yourself&#34;&gt;Try it yourself&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#checking-the-data&#34;&gt;Checking the data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-structure&#34;&gt;Data structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summarising-data&#34;&gt;Summarising data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tips&#34;&gt;Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-help&#34;&gt;Finding help&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#final-checklist&#34;&gt;Final checklist&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#recap-quiz&#34;&gt;Recap quiz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#learnr-tutorials&#34;&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;div id=&#34;welcome-to-statistics-and-computation-for-biologists&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome to Statistics and Computation for Biologists&lt;/h1&gt;
+&lt;p&gt;Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or “how to” which come from textbooks, lectures or resources on the Internet.&lt;/p&gt;
+&lt;p&gt;Second, is learning how to define problems and how to solve them. This is true for statistics &amp;amp; computation. You can practice this in these drop in sessions and in your other modules. For example, R not working? Work out why, what’s wrong and what to change to make it work.&lt;/p&gt;
+&lt;p&gt;In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career.&lt;/p&gt;
+&lt;p&gt;Use the following checklist to make sure you are prepared for this semester:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do you have R and RStudio installed on your computer?&lt;/li&gt;
+&lt;li&gt;Is your R up to date?&lt;/li&gt;
+&lt;li&gt;Do you know how to set up scripts and directories in RStudio?&lt;/li&gt;
+&lt;li&gt;Are your folders organised in a logical and sensible way?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Check that your version and packages are all up to date (For packages - Under the Packages tab, click Update, For RStudio - Under Help menu at the top, click check for updates).&lt;/p&gt;
+&lt;p&gt;Regardless, you should work through this handout to make sure you are comfortable with the basics of R. Use this as a reference throughout semester as we will be revisiting these concepts.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-r-and-rstudio&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Installing R and RStudio&lt;/h1&gt;
+&lt;p&gt;R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. If R is a retro text-based game (the ones where you chose your adventure with just words), then R studio is a graphic based game (like Legend of Zelda). It is possible to use R without RStudio but trust us, RStudio makes everything a lot easier by providing some organisation.&lt;/p&gt;
+&lt;p&gt;You will need to install R AND R studio &lt;strong&gt;in that order&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;CRANsite.png&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here’s a video about installing R &lt;a href=&#34;https://vimeo.com/203516510&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516510&lt;/a&gt; and RStudio &lt;a href=&#34;https://vimeo.com/203516968&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516968&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can follow the instructions below or try the interactive tutorial at &lt;a href=&#34;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&#34; class=&#34;uri&#34;&gt;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here are the instructions for various operating software:&lt;/p&gt;
+&lt;div id=&#34;windows&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Windows&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/windows/base/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R” in the blue box. The version number is not important.&lt;/li&gt;
+&lt;li&gt;Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mac&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mac&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for (Mac) OS X”&lt;/li&gt;
+&lt;li&gt;Save the latest release file (e.g. R-4.0.2.pkg), open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linux&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for Linux”&lt;/li&gt;
+&lt;li&gt;Click your version of Linux&lt;/li&gt;
+&lt;li&gt;Copy and paste the relevant installation code&lt;/li&gt;
+&lt;li&gt;Open R and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Run the relevant code&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See &lt;a href=&#34;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&#34; class=&#34;uri&#34;&gt;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&lt;/a&gt; for a guide&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chromebook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Chromebook&lt;/h2&gt;
+&lt;p&gt;There are a few options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The easiest option is to run Linux on your computer, then you can install R and RStudio. Try the instructions on &lt;a href=&#34;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&#34; class=&#34;uri&#34;&gt;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&lt;/a&gt; or &lt;a href=&#34;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&#34; class=&#34;uri&#34;&gt;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Use RStudio Server&lt;/li&gt;
+&lt;li&gt;Use RStudio Cloud &lt;a href=&#34;https://rstudio.cloud/&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud/&lt;/a&gt; (in beta so it may not work)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why R?&lt;/h1&gt;
+&lt;p&gt;R is just one of &lt;em&gt;many&lt;/em&gt; programming languages but R is specially designed for doing statistics. Hence it is widely taught in statistic classes. There are other statistics programs (even Excel can do basic statistical tests) but these are normally “point-and-click” programs where you click a button and magic happens. The advantage of R is that it is an open source software where you can &lt;em&gt;see&lt;/em&gt; how your data is being manipulated. Which means R is transparent, you can check whether the statistics is done correctly and is easier to see how statistical theory is being applied. It’s no longer magic but &lt;em&gt;science&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-rstudio&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why RStudio?&lt;/h1&gt;
+&lt;p&gt;If you open R itself you’ll see that it’s pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:&lt;br /&gt;
+user -&amp;gt; input -&amp;gt; RStudio -&amp;gt; R -&amp;gt; RStudio -&amp;gt; output -&amp;gt; user&lt;/p&gt;
+&lt;p&gt;If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RStudio-console.png&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Left: The big window is the &lt;strong&gt;console&lt;/strong&gt;. This is the interface with R and is the same as using R on its own. (don’t worry about “terminal”)&lt;/li&gt;
+&lt;li&gt;Top right: This window has three tabs: “environment” - shows you what information is stored in R’s memory, “history” - shows your code history &amp;amp; “connections” - don’t worry about this one.&lt;/li&gt;
+&lt;li&gt;Bottom right: This has several tabs. The most important being “files” - showing you where RStudio is looking at on your computer &amp;amp; “plot” - shows you any plots you make in R.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can customise the layout and colour scheme of RStudio in Options.&lt;br /&gt;
+There are other user interfaces for R but RStudio has a lot of support.&lt;/p&gt;
+&lt;div id=&#34;rstudio-scripts&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;RStudio scripts&lt;/h2&gt;
+&lt;p&gt;The greatest advantage of RStudio is that it allows you to write &lt;strong&gt;scripts&lt;/strong&gt;. These are files ending in &lt;code&gt;.R&lt;/code&gt; that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from &lt;strong&gt;having to type out code over and over again&lt;/strong&gt;. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow &lt;strong&gt;reproducibility&lt;/strong&gt; and helps with problem solving.&lt;/p&gt;
+&lt;p&gt;Let’s demonstrate the power of RStudio and scripts…but first an introduction to directories.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;file-housekeeping&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;File housekeeping&lt;/h1&gt;
+&lt;p&gt;It’s important for your computer files to be &lt;em&gt;organised&lt;/em&gt; so that you can find your files later. Where possible don’t save your files to a “downloads” folder or your “desktop” - these should not be permanent file locations (OK for temporary ones).&lt;/p&gt;
+&lt;p&gt;In computer science, most operating software are organised in to &lt;strong&gt;drives&lt;/strong&gt;, &lt;strong&gt;directories&lt;/strong&gt;, &lt;strong&gt;folders&lt;/strong&gt; &amp;amp; &lt;strong&gt;files&lt;/strong&gt;. Using Windows as example:
+C:/ is a drive. Within the drive there are folders (e.g. Documents). Folders are groups of files (e.g. my_document.doc). Directories are the cataloguing system describing where files and folders are stored. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We recommend that in your Documents folder you should have a folder for this module which contains folders for each of the practicals (5 folders). The practical folders should contain the relevant files for the practical. For example:&lt;br /&gt;
+Documents (folder) -&amp;gt; Biostats (folder) -&amp;gt; Practical 1 (folder) -&amp;gt; Script (file)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets.&lt;/p&gt;
+&lt;p&gt;Directories are really important concepts in computer science. We use directories without realising it every time we use a computer.&lt;/p&gt;
+&lt;div id=&#34;working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Working directories&lt;/h2&gt;
+&lt;p&gt;RStudio works off directories. There is a default directory which shows up on the “Files” tab. This is called the &lt;strong&gt;Working Directory&lt;/strong&gt;. You can change this by default under Tools -&amp;gt; Global Options but you can also change this temporarily under Session -&amp;gt; Set working directory.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;setwd.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is the same as entering &lt;code&gt;setwd(&amp;lt;insert directory address here&amp;gt;)&lt;/code&gt;. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place (see below).&lt;/p&gt;
+&lt;p&gt;You can check what working directory R is using by typing &lt;code&gt;getwd()&lt;/code&gt;. Note that if you run this from the console you might get a different answer because the default working directory of RStudio might be different to the working directory of a script. The working directory of a script is the folder the script is saved in.&lt;/p&gt;
+&lt;p&gt;When we type directory addresses in R we can shorten the address used &lt;em&gt;relative&lt;/em&gt; to the working directory. Otherwise we would have to type in the WHOLE address starting from the disk drive (usually C:/).&lt;/p&gt;
+&lt;p&gt;For example:&lt;br /&gt;
+If my working directory was “C:/My Documents” and I had a file in my documents folder called “file.csv” that I wanted to load into R, then I do not need to type out “C:/My Documents/file.csv” but could use the short version “file.csv” because R automatically fills in the beginning of the address as it checks its working directory. Note directories are not case sensitive.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; my documents (within drive C - the working directory)
+      -&amp;gt; file we want (within my documents)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If my working directory was “G:/Folder” and my file was in “C:/my documents”, then the short version “file.csv” &lt;em&gt;would not work&lt;/em&gt; because R is using the address “G:/folder/file.csv”. And this address does not exist. It’s like writing the working directory first then adding on the short address after.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; my documents (within drive C)
+      -&amp;gt; file we want (within my documents)
+G:
+  -&amp;gt; folder (within drive G - the working directory)&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since addresses are relative, we can also get files stored in sub folders (folders within folders) separated by &lt;code&gt;/&lt;/code&gt;. Note that R can understand &lt;code&gt;/&lt;/code&gt; but does not understand &lt;code&gt;\&lt;/code&gt; for computer reasons we do not need to get into. If you really need to use &lt;code&gt;\&lt;/code&gt; in an address you need to type it twice - e.g. &lt;code&gt;C:\\folder\\file&lt;/code&gt;. Note that if you copied the address of a directory directly from the address bar in Windows Explorer then it will use &lt;code&gt;\&lt;/code&gt; so you need to replace them with &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; my documents (within drive C - the working directory)
+      -&amp;gt; folder (within my documents)
+          -&amp;gt; file (within folder)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Following the above example:&lt;br /&gt;
+If my working directory was “C:/My Documents” and I had a file in a folder within my documents folder, then the full address is “C:/My Documents/folder/file.csv” and short address I could use in R is “folder/file.csv” because R is already looking in “C:/My Documents”. This works for any number of sub-folders within the same working directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; my documents (within drive C - the working directory)
+      -&amp;gt; folder 1(within my documents)
+          -&amp;gt; folder 2 (within folder 1)
+              -&amp;gt; file (within folder 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;E.g. “folder1/folder2/folder3/file.csv” where folder 3 is within folder 2 which is within folder 1 which is within the working directory. But you wouldn’t have that many subfolders right?&lt;/p&gt;
+&lt;p&gt;Now for a more complicated example.
+Imagine we had a folder (parent folder) with two sub-folders A &amp;amp; B and we have set our working directory to folder A like this- &lt;code&gt;setwd(&#34;C:/parent folder/folder A&#34;)&lt;/code&gt;. BUT we wanted to access a file stored in folder B (called file.csv). Like so:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; parent folder (within drive C)
+      -&amp;gt; folder A (within parent - the working directory)
+          -&amp;gt; other files (within folder A)
+      -&amp;gt; folder B (also within parent)
+          -&amp;gt; file we want (within folder B)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The short address “folder B/file.csv” would &lt;strong&gt;NOT&lt;/strong&gt; work because the address R is using is “C:/parent folder/folder A/folder B/file.csv” which does not exist - folder B is not within folder A.&lt;br /&gt;
+Instead we have two options:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;To use the full address “C:/parent folder/folder B/file.csv”&lt;/li&gt;
+&lt;li&gt;To use the relative address and tell R to move up one directory before it starts looking for a file called “file.csv”. In computing, this is denoted &lt;code&gt;..&lt;/code&gt;. So the short address becomes “../folder B/file.csv”. Use &lt;code&gt;..&lt;/code&gt; each time you want to go up a directory level.e.g. “../../../file” goes up three directory levels before looking for the file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That’s about as complicated as it gets for working directories and if you can’t import data into R - &lt;strong&gt;check what the working directory in R is and what the address of the file is&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-a-script&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Creating a script&lt;/h1&gt;
+&lt;p&gt;Scripts are files of code that can be directly run in RStudio (.R files). You can create a new script under File -&amp;gt; New file -&amp;gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.&lt;br /&gt;
+Save it to your working directory and give it an informative name (e.g. “Dropin1”)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;open-script.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s add some code to this script by learning how to import data into R.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Run code from your script rather than directly from the console&lt;/strong&gt;, that way you have a record of what you’ve done and it makes it easy to spot any mistakes you might have made. Put your cursor on the line you want to run then press Ctrl+Enter or click Run.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;Run.png&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;loading-data&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Loading data&lt;/h1&gt;
+&lt;p&gt;To use data stored in other files, the data must be &lt;strong&gt;loaded&lt;/strong&gt; or &lt;strong&gt;read&lt;/strong&gt; into R. The function used to load data into R depends on the file type. Files names or directories are designated as character strings (&lt;code&gt;&#34;&#34;&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The function used to import data depends on the file type. &lt;code&gt;read.delim()&lt;/code&gt; for deliminated data (hence delim) or &lt;code&gt;read.csv()&lt;/code&gt; for csv files are two common ways. &lt;code&gt;read.table()&lt;/code&gt; also works for tables. See &lt;code&gt;help(&#34;read.table&#34;)&lt;/code&gt; for the general inputs. The two most important inputs to be aware of are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;header&lt;/code&gt;: Use &lt;code&gt;header = FALSE&lt;/code&gt; (default) if your data doesn’t have headers, &lt;code&gt;header = TRUE&lt;/code&gt; to force R to recognise headers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sep&lt;/code&gt;: Tells R to recognise how individual observations are separated (hence sep). &lt;code&gt;sep = &#34;&#34;&lt;/code&gt; or &lt;code&gt;sep = &#34; &#34;&lt;/code&gt; if it’s tab separated data (with white spaces between data - &lt;code&gt;&#34;&#34;&lt;/code&gt; is a general indicator for any whitespace, &lt;code&gt;&#34; &#34;&lt;/code&gt; is specifically 1 space) or &lt;code&gt;sep = &#34;,&#34;&lt;/code&gt; for comma separated values. If the data didn’t import properly it could be because the wrong read function or the wrong separator was used - try another one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;txt&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.txt&lt;/h2&gt;
+&lt;p&gt;Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. e.g. 1 2 3 4 5 6 (separated by 1 space). This is loaded using &lt;code&gt;read.delim()&lt;/code&gt;. Try loading the file “small_sleep.txt”:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;small_sleep &amp;lt;- read.delim(&amp;quot;small_sleep.txt&amp;quot;)
+small_sleep
+                  Species   BodyWt TotalSleep
+1         Africanelephant 6654.000        3.3
+2  Africangiantpouchedrat    1.000        8.3
+3               ArcticFox    3.385       12.5
+4    Arcticgroundsquirrel    0.920       16.5
+5           Asianelephant 2547.000        3.9
+6                  Baboon   10.550        9.8
+7             Bigbrownbat    0.023       19.7
+8          Braziliantapir  160.000        6.2
+9                     Cat    3.300       14.5
+10             Chimpanzee   52.160        9.7&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;csv&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.csv&lt;/h2&gt;
+&lt;p&gt;If data is separated by a comma, it’s called a comma separated value file (.csv). e.g. 1,2,3,4,5,6. Note that .txt files can also be comma separated. The function to read csv is &lt;code&gt;read.csv()&lt;/code&gt;. Try loading the file “mammal_sleep.csv”:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mammal_sleep &amp;lt;- read.csv(&amp;quot;mammal_sleep.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;copying-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Copying data&lt;/h2&gt;
+&lt;p&gt;For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;clip.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For PC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(&amp;quot;clipboard&amp;quot;) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For Mac:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(pipe(&amp;quot;pbpaste&amp;quot;)) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Web browsers might display whitespace differently so try a different separator depending on what web browser you are using.&lt;/p&gt;
+&lt;div id=&#34;try-it-yourself&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Try it yourself&lt;/h3&gt;
+&lt;p&gt;For whichever operating system you have, highlight and copy this data and load this data into R using you new R script. Make sure you are using the correct &lt;code&gt;read&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                  Species   BodyWt
+1         Africanelephant 6654.000
+2  Africangiantpouchedrat    1.000
+3               ArcticFox    3.385
+4    Arcticgroundsquirrel    0.920
+5           Asianelephant 2547.000
+6                  Baboon   10.550
+7             Bigbrownbat    0.023
+8          Braziliantapir  160.000
+9                     Cat    3.300
+10             Chimpanzee   52.160&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Species,BodyWt,BrainWt,NonDreaming,Dreaming,TotalSleep,LifeSpan,Gestation,Predation,Exposure,Danger
+Africanelephant,6654,5712,NA,NA,3.3,38.6,645,3,5,3
+Africangiantpouchedrat,1,6.6,6.3,2,8.3,4.5,42,3,1,3
+ArcticFox,3.385,44.5,NA,NA,12.5,14,60,1,1,1
+Arcticgroundsquirrel,0.92,5.7,NA,NA,16.5,NA,25,5,2,3
+Asianelephant,2547,4603,2.1,1.8,3.9,69,624,3,5,4
+Baboon,10.55,179.5,9.1,0.7,9.8,27,180,4,4,4
+Bigbrownbat,0.023,0.3,15.8,3.9,19.7,19,35,1,1,1
+Braziliantapir,160,169,5.2,1,6.2,30.4,392,4,5,4
+Cat,3.3,25.6,10.9,3.6,14.5,28,63,1,2,1&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;checking-the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Checking the data&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For bigger datasets it is easier to view a subset of the data or to use the &lt;code&gt;View()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mammal_sleep, n = 6) # View the first 6 rows (6 is default, can be changed)
+                 Species   BodyWt BrainWt NonDreaming Dreaming TotalSleep
+1        Africanelephant 6654.000  5712.0          NA       NA        3.3
+2 Africangiantpouchedrat    1.000     6.6         6.3      2.0        8.3
+3              ArcticFox    3.385    44.5          NA       NA       12.5
+4   Arcticgroundsquirrel    0.920     5.7          NA       NA       16.5
+5          Asianelephant 2547.000  4603.0         2.1      1.8        3.9
+6                 Baboon   10.550   179.5         9.1      0.7        9.8
+  LifeSpan Gestation Predation Exposure Danger
+1     38.6       645         3        5      3
+2      4.5        42         3        1      3
+3     14.0        60         1        1      1
+4       NA        25         5        2      3
+5     69.0       624         3        5      4
+6     27.0       180         4        4      4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;View(mammal_sleep)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-structure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data structure&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;str()&lt;/code&gt; is a handy function for checking the structure of your dataset. Let’s check the mammal sleep dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mammal_sleep)
+&amp;#39;data.frame&amp;#39;:   62 obs. of  11 variables:
+ $ Species    : chr  &amp;quot;Africanelephant&amp;quot; &amp;quot;Africangiantpouchedrat&amp;quot; &amp;quot;ArcticFox&amp;quot; &amp;quot;Arcticgroundsquirrel&amp;quot; ...
+ $ BodyWt     : num  6654 1 3.38 0.92 2547 ...
+ $ BrainWt    : num  5712 6.6 44.5 5.7 4603 ...
+ $ NonDreaming: num  NA 6.3 NA NA 2.1 9.1 15.8 5.2 10.9 8.3 ...
+ $ Dreaming   : num  NA 2 NA NA 1.8 0.7 3.9 1 3.6 1.4 ...
+ $ TotalSleep : num  3.3 8.3 12.5 16.5 3.9 9.8 19.7 6.2 14.5 9.7 ...
+ $ LifeSpan   : num  38.6 4.5 14 NA 69 27 19 30.4 28 50 ...
+ $ Gestation  : num  645 42 60 25 624 180 35 392 63 230 ...
+ $ Predation  : int  3 3 1 5 3 4 1 4 1 1 ...
+ $ Exposure   : int  5 1 1 2 5 4 1 5 2 1 ...
+ $ Danger     : int  3 3 1 3 4 4 1 4 1 1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;The first line tells us that &lt;code&gt;mammal_sleep&lt;/code&gt; is a data frame. Which is how R stores observations in rows and columns. Other types are lists and matrices. It also tells us there are 62 observations - meaning the number of rows of data - and 11 variables - meaning the number of columns&lt;/li&gt;
+&lt;li&gt;In the first column of &lt;code&gt;str()&lt;/code&gt;, are the names of the columns of the dataset listed with an &lt;code&gt;$&lt;/code&gt; are . So the first column is called &lt;code&gt;Species&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The second column shows what &lt;em&gt;type&lt;/em&gt; of variable the data are: character (&lt;code&gt;chr&lt;/code&gt;) for letters, numeric (&lt;code&gt;num&lt;/code&gt;) for continuous numbers and integer (&lt;code&gt;int&lt;/code&gt;) for discrete numbers. Another type you will encounter are &lt;code&gt;Factors&lt;/code&gt; and &lt;code&gt;levels&lt;/code&gt; - these are categorical variables.&lt;/li&gt;
+&lt;li&gt;The third column shows the first couple of observations in each column&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summarising-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summarising data&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;summary()&lt;/code&gt; shows some summary statistics for the specific variable&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mammal_sleep) # for all columns
+   Species              BodyWt            BrainWt         NonDreaming    
+ Length:62          Min.   :   0.005   Min.   :   0.14   Min.   : 2.100  
+ Class :character   1st Qu.:   0.600   1st Qu.:   4.25   1st Qu.: 6.250  
+ Mode  :character   Median :   3.342   Median :  17.25   Median : 8.350  
+                    Mean   : 198.790   Mean   : 283.13   Mean   : 8.673  
+                    3rd Qu.:  48.202   3rd Qu.: 166.00   3rd Qu.:11.000  
+                    Max.   :6654.000   Max.   :5712.00   Max.   :17.900  
+                                                         NA&amp;#39;s   :14      
+    Dreaming       TotalSleep       LifeSpan         Gestation     
+ Min.   :0.000   Min.   : 2.60   Min.   :  2.000   Min.   : 12.00  
+ 1st Qu.:0.900   1st Qu.: 8.05   1st Qu.:  6.625   1st Qu.: 35.75  
+ Median :1.800   Median :10.45   Median : 15.100   Median : 79.00  
+ Mean   :1.972   Mean   :10.53   Mean   : 19.878   Mean   :142.35  
+ 3rd Qu.:2.550   3rd Qu.:13.20   3rd Qu.: 27.750   3rd Qu.:207.50  
+ Max.   :6.600   Max.   :19.90   Max.   :100.000   Max.   :645.00  
+ NA&amp;#39;s   :12      NA&amp;#39;s   :4       NA&amp;#39;s   :4         NA&amp;#39;s   :4       
+   Predation        Exposure         Danger     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :3.000   Median :2.000   Median :2.000  
+ Mean   :2.871   Mean   :2.419   Mean   :2.613  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000  
+                                                
+summary(mammal_sleep$BodyWt) # summary statistics for body weight
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.005    0.600    3.342  198.790   48.202 6654.000 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tips&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coding is like learning a language. There is grammar, syntax and terminology to learn.&lt;/li&gt;
+&lt;li&gt;The secret to being a coding whiz is practice, practice, practice. Try using R at every opportunity. If you don’t use it, you lose it.&lt;/li&gt;
+&lt;li&gt;It’s OK to google everything. No matter how many years you’ve been using R you will forget something basic.&lt;/li&gt;
+&lt;li&gt;A lot of programming is logic. If you can’t describe what you want to achieve in words, then you can’t code it. Sometimes the solution means changing your way of thinking about a problem.&lt;/li&gt;
+&lt;li&gt;A lot of errors come from spelling or syntax mistakes. It doesn’t mean you don’t know it, check your code carefully for typos. Missing brackets or quotation marks are common mistakes.&lt;/li&gt;
+&lt;li&gt;Often, copying and pasting your error message into google comes up with the solution&lt;/li&gt;
+&lt;li&gt;Trial and error is a big part of programming. If it doesn’t work the first time, tweak it and try it again. Getting a function to work might be as simple as adding or removing one of the defined parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finding-help&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Finding help&lt;/h1&gt;
+&lt;p&gt;All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in &lt;code&gt;help(&amp;lt;insert function name here&amp;gt;)&lt;/code&gt;. If you don’t know your exact query, you can search using &lt;code&gt;??&amp;lt;insert term here&amp;gt;&lt;/code&gt; - e.g. &lt;code&gt;??mean&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Internet is really really great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google.&lt;/p&gt;
+&lt;p&gt;Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by &lt;em&gt;doing&lt;/em&gt;, which means having a go yourself before seeking help from others. Make asking for help your last option. You’ll see on StackExchange people &lt;em&gt;describe&lt;/em&gt; what they want to achieve, what they have done so far, identified what the problem is and provide some reproducible code to help someone else understand their problem. It’s really hard to fix someone’s coding problem without context.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final checklist&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Have you installed R?&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio?&lt;/li&gt;
+&lt;li&gt;Are all your versions and packages up to date?&lt;/li&gt;
+&lt;li&gt;Do you know how to create and save an R script?&lt;/li&gt;
+&lt;li&gt;Do you know how to set your working directory?&lt;/li&gt;
+&lt;li&gt;Can you import data into R?&lt;/li&gt;
+&lt;li&gt;Can you run a line of code?&lt;/li&gt;
+&lt;li&gt;Can you use a function?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;recap-quiz&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Recap quiz&lt;/h2&gt;
+&lt;p&gt;What is the working directory in computing?&lt;/p&gt;
+&lt;pre class=&#34;r fold-hide&#34;&gt;&lt;code&gt;Working directories are the location (folder) on your computer that the program is looking in by default. All file address are relative to the working directory&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What is the difference between the function &lt;code&gt;getwd()&lt;/code&gt; and &lt;code&gt;setwd()&lt;/code&gt;?&lt;/p&gt;
+&lt;pre class=&#34;r fold-hide&#34;&gt;&lt;code&gt;getwd() tells you what R thinks the working directory is, setwd() tells R what you want the working directory to be&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;learnr-tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/h1&gt;
+&lt;p&gt;In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.&lt;/p&gt;
+&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;https://jacintak.github.io/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
