@@ -7,15 +7,14 @@ rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_documen
 
 old <- getwd()
 setwd("static/teaching/GLM/")
-bookdown::clean_book(clean = TRUE)
+# bookdown::clean_book(clean = TRUE)
 
-# self-contained gitbook without equations
-bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE,
-                      output_format = bookdown::gitbook(self_contained = TRUE, split_by = "none", css = "style.css"))
-# PDF
-bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::pdf_book")
-# actual site
-bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::gitbook")
+# 1. self-contained gitbook without equations
+# 2. PDF
+# 3. actual site
+# bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = bookdown::gitbook(self_contained = TRUE, split_by = "none", css = "style.css"))
+# bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::pdf_book")
+# bookdown::render_book(input = "index.Rmd", quiet = TRUE, clean = TRUE, output_format = "bookdown::gitbook")
 
 setwd(old)
 

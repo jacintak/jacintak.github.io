@@ -149,13 +149,13 @@ The University of Queensland Undergraduate Research Conference
 
 2020
 
- * Lecturer & course development: Statistics and computation for biologists (BYU22SC01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery. Module co-ordinator.
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery. Module co-ordinator.
  * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
  * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.
 
 2019
 
- * Lecturer & course development: Statistics and computation for biologists (BYU22SC01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.
  * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
  * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
 
@@ -171,6 +171,10 @@ The University of Queensland Undergraduate Research Conference
 ***
 
 # Conference presentations and invited talks
+
+2021
+
+ * Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland
 
 2019
 
@@ -234,7 +238,7 @@ The University of Queensland Undergraduate Research Conference
 # Professional service and affiliations
 
  * 2015 – Present 	Member: Australian and New Zealand Society for Comparative Physiology and Biochemistry
- * 2019 – Present 	Member: British Ecological Society & Irish Ecological Society
+ * 2019 – Present 	Member: British Ecological Society & Irish Ecological Association
  * 2018 	Member: Royal Society of Victoria
  * 2017 – Present 	Member: Society for Experimental Biology
  * 2015 – 2020 	Member: Australian Entomological Society
@@ -245,21 +249,58 @@ The University of Queensland Undergraduate Research Conference
 
 # Community outreach and communication
 
- * 2020  Profiled on Humans of BioSciences by the School of BioSciences, the University of Melbourne, Australia. [Website](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences) & [Twitter](https://twitter.com/BioSci_UniMelb/status/1339375265961582592). 17th December
- * 2020 	Guest interview with Newstalk radio, Ireland. 14th January.
- * 2019 	Home and Away: Would a Rosella by any other name smell as sweet (online 1 Nov).  
-          Home and Away: Monotreme mistakes (online 22 Nov).  
-          Home and Away: Australian expats (online 12 Dec).  
-          3 part blog series for EcoEvo@TCD http://www.ecoevoblog.com
- * 2018 	Big Ideas in Macrophysiology. Report on the 2018 Animal Biology Satellite Meeting, Florence Italy. Society for Experimental Biology Magazine https://www.sebiology.org/digital-magazine/autumn-2018/#p=18
- * 2016,  2017 	Session Chair, BioSciences Postgrad Symposium, the University of Melbourne, Australia
- * 2017/19 	Victorian Biodiversity Conference Volunteer, Melbourne, Australia
- * 2015/17/18 	The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
- * 2017 	Blog post for Graduate Student Association, University of Melbourne on the biodiversity photo competition
- * 2016 	Novel applications of thermocyclers for characterising invertebrate thermal responses. Video for Methods in Ecology and Evolution. https://youtu.be/uXzEfvR_hoE
- * 2015 	The Real Life of a Research Student. Science Undergraduate Research Journal (SURJ), Issue 2. The University of Queensland, Australia
- * 2015	Jacinta on Zoology & Research. Interview with BITE BACK, Black Dog Institute, Australia. 31st August
- * 2014 	Brisbane Open House Volunteer, Brisbane Open House, Brisbane, Australia
-	Student Chaperone for the International Baccalaureate World Student Conference, the University of Queensland, Australia
- * 2012/14 	Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia
- * 2013 	Science Mentor to Science Undergraduate Students, appointed by the Faculty of Science, the University of Queensland, Australia
+2021
+
+ * Contributor to the Trinity Walton Club, Trinity College Dublin
+ * Mentor for Irish Ecological Association mentoring meeting. 7th January
+ 
+2020
+
+ * Profiled on Humans of BioSciences by the School of BioSciences, the University of Melbourne, Australia. [Website](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences) & [Twitter](https://twitter.com/BioSci_UniMelb/status/1339375265961582592). 17th December
+ * Guest interview with Newstalk radio, Ireland. 14th January
+ 
+2019
+
+ * Mentor for BES Women in Science Mentoring Program
+ * Home and Away: 3 part blog series for [EcoEvo@TCD](http://www.ecoevoblog.com)
+     * Home and Away: Would a Rosella by any other name smell as sweet (online 1 Nov)
+     * Home and Away: Monotreme mistakes (online 22 Nov)
+     * Home and Away: Australian expats (online 12 Dec)
+ * Victorian Biodiversity Conference Volunteer, Melbourne, Australia
+        
+2018 
+        
+ * Big Ideas in Macrophysiology. Report on the 2018 Animal Biology Satellite Meeting, Florence Italy. [Society for Experimental Biology Magazine](https://www.sebiology.org/digital-magazine/autumn-2018/#p=18)
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ 
+2017
+ 
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ * Session Chair, BioSciences Postgrad Symposium, the University of Melbourne, Australia
+ *	Victorian Biodiversity Conference Volunteer, Melbourne, Australia
+ * Blog post for Graduate Student Association, University of Melbourne on the biodiversity photo competition
+ 
+2016
+
+ * Session Chair, BioSciences Postgrad Symposium, the University of Melbourne, Australia
+ *	Novel applications of thermocyclers for characterising invertebrate thermal responses. [Video for Methods in Ecology and Evolution](https://youtu.be/uXzEfvR_hoE)
+ 
+2015
+
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ * The Real Life of a Research Student. Science Undergraduate Research Journal (SURJ), Issue 2. The University of Queensland, Australia
+ * Jacinta on Zoology & Research. Interview with BITE BACK, Black Dog Institute, Australia. 31st August
+ 
+2014
+
+ * Brisbane Open House Volunteer, Brisbane Open House, Brisbane, Australia
+ *	Student Chaperone for the International Baccalaureate World Student Conference, the University of Queensland, Australia
+ * Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia
+ 
+2013
+
+ * Science Mentor to Science Undergraduate Students, appointed by the Faculty of Science, the University of Queensland, Australia
+ 
+2012
+
+ * Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia
