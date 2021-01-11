@@ -1,0 +1,552 @@
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="assumptions" class="section level1">
+<h1>Assumptions</h1>
+<div id="overall-lecture-aims" class="section level2">
+<h2>Overall lecture aims</h2>
+<ul>
+<li>Identify the structure of general linear models</li>
+<li>Describe how linear models are parametrized</li>
+<li>Understand how to use linear models</li>
+<li>Understand how to interpret and evaluate linear models</li>
+</ul>
+<div id="by-the-end-of-this-lecture-you-should" class="section level3">
+<h3>By the end of this lecture you should:</h3>
+<ul>
+<li>Know how the coefficient of determination is calculated and its interpretation</li>
+<li>Understand the assumptions of linear regression</li>
+<li>Be able to evaluate the appropriateness of a linear model to data based on residual plots</li>
+<li>Be able to identify generalised linear models appropriate for data</li>
+<li>Create residual plots in R</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="by-now-you-should-be-comfortable-with-building-and-interpreting-basic-linear-models-in-r" class="section level2">
+<h2>By now you should be comfortable with building and interpreting basic linear models in R</h2>
+<blockquote>
+<p>but how do we know whether our model is a “good” one?</p>
+</blockquote>
+<p>We need to evaluate our model. There are a few things we should consider:</p>
+<ol style="list-style-type: decimal">
+<li>How much variation in the data is explained by the model?</li>
+<li>Are linear models appropriate for our hypotheses?</li>
+</ol>
+<hr />
+</div>
+<div id="what-does-a-linear-model-tell-us" class="section level2">
+<h2>What does a linear model tell us?</h2>
+<ol style="list-style-type: decimal">
+<li>What will a new value of Y be, given a new value of X?</li>
+<li>Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</li>
+<li><strong>How much variation in Y can be explained its linear relationship with X?</strong></li>
+</ol>
+<ul>
+<li>Coefficient of determination (<span class="math inline">\(R^2\)</span>)</li>
+<li>Partitioning variance (F ratio)</li>
+</ul>
+</div>
+<div id="how-much-variation-in-y-can-be-explained-its-linear-relationship-with-x" class="section level2">
+<h2>How much variation in Y can be explained its linear relationship with X?</h2>
+<p><span class="math display">\[ \frac{Var_{\text{explained by the line}}}{Var_{\text{not explained by the line}}} = Ratio\]</span>
+Interpreting ratios:<br />
+Ratio <span class="math inline">\(&gt; 1\)</span> = Line explains more than residual<br />
+Ratio <span class="math inline">\(\leq 1\)</span> = Line explains very little (null hypothesis)</p>
+<blockquote>
+<p>We need to know the total amount of variation and all possible sources of variation (like the F-ratio &amp; ANOVA)</p>
+</blockquote>
+<div id="what-is-or-isnt-explained-by-the-line" class="section level3">
+<h3>What is or isn’t explained by the line?</h3>
+<div id="isnt-sum-of-squares-of-the-error-ssy" class="section level4">
+<h4>Isn’t: Sum of Squares of the Error (SSY)</h4>
+<p>The bit not explained by the null (total variation in the data). Remember, the null is <span class="math inline">\(\bar{y}\)</span> = the mean of Y.</p>
+<p><span class="math display">\[SSY = y_i - \bar{y}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:SSY"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/SSY-1.png" alt="Black line is the mean of Y. Blue lines are the difference between the mean and a single observation = SSY" width="500" />
+<p class="caption">
+Figure 1: Black line is the mean of Y. Blue lines are the difference between the mean and a single observation = SSY
+</p>
+</div>
+</div>
+<div id="isnt-sum-of-squares-of-the-residual-sse" class="section level4">
+<h4>Isn’t: Sum of Squares of the Residual (SSE)</h4>
+<p>The bit not explained by the line</p>
+<p><span class="math display">\[SSE = y_i - \hat{y_i}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:SSE"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/SSE-1.png" alt="Residuals (blue lines) are the difference between the data point and the predicted line (black line)" width="500" />
+<p class="caption">
+Figure 2: Residuals (blue lines) are the difference between the data point and the predicted line (black line)
+</p>
+</div>
+</div>
+<div id="isnt-sum-of-squares-of-the-regression-ssr" class="section level4">
+<h4>Isn’t: Sum of Squares of the Regression (SSR)</h4>
+<p>How well the line estimates the mean of Y</p>
+<p><span class="math display">\[SSR = \hat{y_i} - \bar{y}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:SSR"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/SSR-1.png" alt="Residuals (blue lines) are the difference between the null hypothesis (mean of observations, dashed lines) and the predicted line (black line)" width="500" />
+<p class="caption">
+Figure 3: Residuals (blue lines) are the difference between the null hypothesis (mean of observations, dashed lines) and the predicted line (black line)
+</p>
+</div>
+<blockquote>
+<p>Notice that since SSY is all variation in the data:<br />
+SSY = SSE + SSR</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="so-which-bits-do-we-use-to-evaluate-model-fit" class="section level2">
+<h2>So which bits do we use to evaluate model “fit”?</h2>
+<p><span class="math display">\[ \frac{Var_{\text{explained by the line}}}{Var_{\text{not explained by the line}}} = Ratio\]</span>
+We want the number above the line (nominator) to be larger than the number below the line (denominator), otherwise we cannot be confident that our results are different to randomly generated numbers.</p>
+<p>Interpreting ratios:<br />
+Ratio <span class="math inline">\(&gt; 1\)</span> = Line explains more than residual<br />
+Ratio <span class="math inline">\(\leq 1\)</span> = Line explains very little (null hypothesis)</p>
+<p>In other words, we want to know how much variation is captured by the model relative to the total variation in our data.</p>
+<p><strong>Question 1</strong> - What is the error that tells us how much variation the line is (H1) explaining relative to our null hypothesis (H0)?<br />
+<strong>Question 2</strong> - What is the error that tells us the total variation in our data?</p>
+<p>So, after answering the above, we can evaluate how much variation the model explains by:</p>
+<p><span class="math display">\[\frac{SSR}{SSY} = R^2\]</span></p>
+<p><strong>Question 3</strong> - Why can’t we use SSE as the denominator?</p>
+</div>
+<div id="coefficient-of-determination-r2" class="section level2">
+<h2>Coefficient of determination <span class="math inline">\(R^2\)</span></h2>
+<blockquote>
+<p>This is the proportion of variation that your model (your line) explains</p>
+</blockquote>
+<p>1 = no deviance from line (good)<br />
+0 = strong deviance from line (not good)</p>
+<p>It is related to correlation coefficients (r). Basically, <span class="math inline">\(R^2 = r^2\)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:fit"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/fit-1.png" alt="Which fits better?" width="300" /><img src="docs/teaching/GLM/03-assumptions_files/figure-html/fit-2.png" alt="Which fits better?" width="300" />
+<p class="caption">
+Figure 4: Which fits better?
+</p>
+</div>
+<p>R will calculate <span class="math inline">\(R^2\)</span> for you. Going back the tree height and girth example, the <span class="math inline">\(R^2\)</span> is 0.27 (Multiple R-squared).</p>
+<pre><code>
+Call:
+lm(formula = Height ~ Girth, data = trees)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-12.5816  -2.7686   0.3163   2.4728   9.9456 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  62.0313     4.3833  14.152 1.49e-14 ***
+Girth         1.0544     0.3222   3.272  0.00276 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 5.538 on 29 degrees of freedom
+Multiple R-squared:  0.2697,    Adjusted R-squared:  0.2445 
+F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758</code></pre>
+<blockquote>
+<p>Conclusion: the model (your fitted line) explains 27 % of total variation in data</p>
+</blockquote>
+<p><em>But…</em></p>
+<ul>
+<li>Biological data is messy, thus low <span class="math inline">\(R^2\)</span> may be biologically acceptable</li>
+<li>Low <span class="math inline">\(R^2\)</span> does not always mean a bad model</li>
+<li>Consider multiple regression to explain more variance
+<ul>
+<li>but adding more parameters is not always better. Why?</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="but-there-are-other-things-to-check-that-are-more-important" class="section level2">
+<h2>But there are other things to check that are more important!</h2>
+<blockquote>
+<p>We make assumptions of the error structure in linear regression (<span class="math inline">\(\varepsilon\)</span>)</p>
+</blockquote>
+<p>Remember:<br />
+<span class="math display">\[Y_i = \beta_0 + \beta_1 \times X_i + \varepsilon_i\]</span></p>
+<ul>
+<li>Does not change our estimates of <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span></li>
+<li>Affects our confidence intervals of the estimate and thus hypothesis testing</li>
+<li>Because <span class="math inline">\(\varepsilon_i\)</span> is random, our assumptions also apply to the response variable <span class="math inline">\(y_i\)</span></li>
+</ul>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/meme-1.png" width="240" style="display: block; margin: auto;" />
+<center>
+Did you know you could make memes in R?
+</center>
+<hr />
+</div>
+<div id="assumptions-of-linear-regression" class="section level2">
+<h2>Assumptions of linear regression</h2>
+<p>Linear models assume that the relationship between the response and predictor is <em>linear</em>. In addition to this main condition, there are 4 assumptions of linear regression:</p>
+<ol style="list-style-type: decimal">
+<li>Normality</li>
+<li>Homogeneity of Variance</li>
+<li>Independence</li>
+<li>Fixed X</li>
+</ol>
+<blockquote>
+<p><strong>ALWAYS</strong> check these assumptions every time you fit a model. No exceptions! No excuses!</p>
+</blockquote>
+<div id="residual-plots" class="section level3">
+<h3>Residual plots</h3>
+<p>In R, we can evaluate models from <strong>residual plots</strong>:</p>
+<pre><code>Model &lt;- lm(Y ~ X, data) # build a model
+plot(Model) # show residual plots</code></pre>
+<p>There are 4 plots called. In order:</p>
+<ol style="list-style-type: decimal">
+<li>Residuals vs fitted values
+<ul>
+<li>bits left over vs what the model predicted</li>
+</ul></li>
+<li>Standardised residual quantile-quantile plot
+<ul>
+<li>what is the spread of the residuals?</li>
+</ul></li>
+<li>Scale-Location
+<ul>
+<li>like plot 1 but shown differently</li>
+</ul></li>
+<li>Residuals vs Leverage
+<ul>
+<li>are there any influential data points?</li>
+</ul></li>
+</ol>
+</div>
+<div id="mammal-brain-and-body-size" class="section level3">
+<h3>Mammal brain and body size</h3>
+Let’s look at these assumptions in detail using the relationship between brain mass and body mass for different mammals. The dataset is called <code>mammals</code> in the <code>MASS</code> package.<br />
+
+<div class="figure" style="text-align: center"><span id="fig:mammal-brains"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/mammal-brains-1.png" alt="The relationship between mammal body size and brain size" width="300" />
+<p class="caption">
+Figure 5: The relationship between mammal body size and brain size
+</p>
+</div>
+</div>
+</div>
+<div id="normality" class="section level2">
+<h2>1. Normality</h2>
+<blockquote>
+<p>Population Y values and error terms (<span class="math inline">\(\varepsilon_i\)</span>) are normally distributed for each level of the predictor variable (<span class="math inline">\(x_i\)</span>)</p>
+</blockquote>
+<p>The distribution of the response variable, Y, should be normally distributed (not skewed). We can graphically check this using a histogram of brain size.</p>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/mammal-hist-1.png" width="50%" /><img src="docs/teaching/GLM/03-assumptions_files/figure-html/mammal-hist-2.png" width="50%" /></p>
+<div id="quantile-quantile-plots" class="section level3">
+<h3>Quantile-Quantile plots</h3>
+<ul>
+<li>We can also visualise the spread of data with a quantile-quantile plot. Quantile-Quantile (Q-Q) plots are useful alternatives to visualising distributions to density plots or histograms. They are easier to assess distribution and normality with than histograms.</li>
+<li>The linear line is the expected relationship following a normal distribution.
+<ul>
+<li>Do our points follow the line?</li>
+<li>What does it mean when the points don’t follow the line?</li>
+</ul></li>
+</ul>
+<div id="q-q-plot-of-single-variables" class="section level4">
+<h4>Q-Q plot of single variables</h4>
+<p>We can see whether a single variable has a normal distribution - specifically that the distribution is symmetrical or not skewed.</p>
+<pre><code>qqnorm(chickwts$weight) ## the weight of chicks fed different diets (built in dataset)</code></pre>
+<p>Here, the quantiles of our observations are plotted against the theoretical quantiles if our observations followed a normal distribution.</p>
+<p><strong>Question 4</strong> - What would you expect to see if our observations followed a normal distribution?</p>
+<p>We can add a reference line to the above to help us evaluate how linear the Q-Q plot is. We can make the line red and thicker for fun.</p>
+<pre><code>qqnorm(chickwts$weight) ## the weight of chicks fed different diets (built in dataset)
+qqline(chickwts$weight, col = &quot;red&quot;, lwd = 2)</code></pre>
+<p>Do the observations follow a normal distribution?</p>
+<p>Compare the above with the histogram and density plots</p>
+<pre><code>plot(density(chickwts$weight), col = &quot;purple&quot;) ## density plot, purple for fun
+hist(chickwts$weight, col = &quot;yellow&quot;) ## histogram, yellow for fun</code></pre>
+<p>Would you also conclude that the distribution of chick weights is normal?</p>
+<p>For comparison look at the Q-Q plots of a gamma distribution (distinctly not normal)</p>
+<pre><code>qqnorm(rgamma(100, 3, 5))
+qqline(rgamma(100, 3, 5)) ## You should be able to see the skewness in the data. Compare with hist()</code></pre>
+</div>
+<div id="what-happens-with-data-that-is-not-continuous" class="section level4">
+<h4>What happens with data that is not continuous?</h4>
+<p>Q-Q plots also work with visualising data that is not continuous.</p>
+<pre><code>qqnorm(Loblolly$age) ## the ages of pine trees, can also try rbinom(100, 10, 0.5)
+qqline(Loblolly$age)</code></pre>
+<p><strong>Question 5</strong> - What is the main difference between the Q-Q plots of the continuous and discrete data?</p>
+<p>Why do you think that is?<br />
+You can also see it using <code>hist()</code></p>
+</div>
+<div id="q-q-plots-of-residuals-for-assessing-normality" class="section level4">
+<h4>Q-Q plots of residuals for assessing normality</h4>
+<p>Q-Q plots permit comparison of two probability distributions when one distribution is the expected and the other is the observed distribution, then we can evaluate how well our observations follow our expected distribution. Using Q-Q plots we can assess skewness or identify outliers or influential points.</p>
+<p>Q-Q plots are automatically generated when calling plot on a linear model (<code>lm</code>). It’s the second graph called (defined using which). You can also make one using <code>qqplot()</code></p>
+<pre><code>plot(lm(Height ~ Girth, trees), which = 2)</code></pre>
+<p>Does that look normal to you?</p>
+</div>
+</div>
+<div id="another-use-of-q-q-plots" class="section level3">
+<h3>Another use of Q-Q plots</h3>
+<p>We can also compare the distribution of two variables. If they are distributed equally then they should fall along the straight line</p>
+<pre><code>qqplot(trees$Height, trees$Girth)</code></pre>
+<p>Compare with:</p>
+<pre><code>par(mfrow = c(2,1))
+hist(trees$Height)
+hist(trees$Girth)</code></pre>
+<hr />
+<p>Let’s try this with the <code>mammals</code> dataset</p>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/mammal-quantile-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>The residuals of the model should be also normally distributed</p>
+<div class="figure" style="text-align: center"><span id="fig:standard"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/standard-1.png" alt="Looks like distribution of brain size is skewed to the right. What does this mean biologically?" width="300" />
+<p class="caption">
+Figure 6: Looks like distribution of brain size is skewed to the right. What does this mean biologically?
+</p>
+</div>
+<hr />
+</div>
+<div id="what-happens-when-the-data-is-not-normal" class="section level3">
+<h3>What happens when the data is not normal?</h3>
+<ul>
+<li>Collect more data, increase sample size for each level of <span class="math inline">\(x\)</span>. Could be a sampling bias or sample size is too low</li>
+<li>Use a non-parametric test
+<ul>
+<li>e.g. Spearman’s Rank Correlation</li>
+</ul></li>
+<li>Ignore it (with good reason). Linear regressions are robust to skewness</li>
+<li>Some data are never normal
+<ul>
+<li>e.g. counts - should use Poisson distribution</li>
+<li>Fit another statistical model with more appropriate error structures</li>
+</ul></li>
+<li>Transform the data</li>
+</ul>
+</div>
+<div id="applying-a-transformation" class="section level3">
+<h3>Applying a transformation</h3>
+<ul>
+<li>Some transformations:
+<ul>
+<li>Log or natural log</li>
+<li>Square root or cube root</li>
+</ul></li>
+<li>Note: <code>log(0)</code> or <code>log(-1)</code> is undefined so you could make data positive and greater than 0 before you log transform them.</li>
+<li>More sophisticated transformations not covered in this module</li>
+</ul>
+</div>
+<div id="transforming-brain-size" class="section level3">
+<h3>Transforming brain size</h3>
+<ul>
+<li>Let’s try some transformations on the data</li>
+<li>What is the transformation doing?</li>
+<li>Which would you choose?</li>
+</ul>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/transform-1.png" width="800" style="display: block; margin: auto;" /></p>
+</div>
+<div id="re-run-the-model-with-transformed-data" class="section level3">
+<h3>Re-run the model with transformed data</h3>
+<div class="figure" style="text-align: center"><span id="fig:new-graph"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/new-graph-1.png" alt="That looks better!" width="300" />
+<p class="caption">
+Figure 7: That looks better!
+</p>
+</div>
+<p>If you transform data, then the model estimates refer to the transformed units. Remember to transform them back to their correct units.</p>
+</div>
+</div>
+<div id="homogeneity-of-variance" class="section level2">
+<h2>2. Homogeneity of Variance</h2>
+<blockquote>
+<p>Population Y values and error terms (<span class="math inline">\(\varepsilon_i\)</span>) have the same variance for each level of the predictor variable (<span class="math inline">\(x_i\)</span>)</p>
+</blockquote>
+<ul>
+<li>Related to the assumptions of Normality but more important!</li>
+<li>Look at patterns in standardised residuals:
+<ul>
+<li>Quantile plot</li>
+<li>Relationship with fitted values (predicted Y values from line)</li>
+</ul></li>
+</ul>
+<p>Causes:</p>
+<ul>
+<li>small sample size</li>
+<li>outliers</li>
+<li>non-normally distributed variables</li>
+</ul>
+<p>Fixes:</p>
+<ul>
+<li>Have properly designed experiments<br />
+</li>
+<li>Collect enough data<br />
+</li>
+<li>Deal with it like as normality</li>
+</ul>
+<blockquote>
+<p>Homoscedasticity is the statistical term for homogeneity of variance. The opposite is called <em>Heteroscedasticity</em>.</p>
+</blockquote>
+<p><strong>Question 6</strong> - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?</p>
+Look at this graph - does it show homoscedasticity or heteroscedasticity?
+<div class="figure" style="text-align: center"><span id="fig:homo"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/homo-1.png" alt="Bar plot of mean of two groups (A and B). Error bars indicate standard deviation" width="300" />
+<p class="caption">
+Figure 8: Bar plot of mean of two groups (A and B). Error bars indicate standard deviation
+</p>
+</div>
+<p>Here, you can see that group <code>B</code> has a higher standard deviation than group <code>A</code>. So, we would conclude that there is heteroscedasticity. We do not want heteroscedasticity because it would bias the calculations of variance if we were to do an ANOVA. Remember that ANOVA is a test of variance.</p>
+The same concept applies for scatter plots. Look at this plot - does it show homoscedasticity or heteroscedasticity?
+<div class="figure" style="text-align: center"><span id="fig:scatter"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/scatter-1.png" alt="A scatter plot and a fitted model" width="300" />
+<p class="caption">
+Figure 9: A scatter plot and a fitted model
+</p>
+</div>
+<p>Here, you can see that as the value of <code>x</code> increases so does the scatter around the trend line in <code>y</code>. It is sometimes referred to as a shotgun pattern or cone/triangle pattern. It’s common in time series data because your observations are not independent of each other, the value of one observation is dependent on what happens earlier in time. In other words, your response variable can be modelled based on the standard deviation.</p>
+<p><strong>Question 7</strong> - What would you expect to see in a scatter plot for the assumption of homogeneity of variance to be met?</p>
+<p>You can assess this for a linear model from the (standardised or non-standardised) residual plot vs fitted values. Here’s the residual plot using the above data. Can you see the unequal variance?</p>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/resid2-1.png" width="300" style="display: block; margin: auto;" /><img src="docs/teaching/GLM/03-assumptions_files/figure-html/resid2-2.png" width="300" style="display: block; margin: auto;" /></p>
+<p>One way of dealing with heteroscedasticity is to use weighted least squares regression where the parameters are fitted to a single observation based on its residual to correct for variation in the residuals (that scatter). But that is beyond the scope of this module.</p>
+<div id="should-expect-a-normal-distribution-of-standardised-residuals" class="section level3">
+<h3>Should expect a <strong>normal distribution</strong> of standardised residuals</h3>
+<div class="figure" style="text-align: center"><span id="fig:qqnormresid"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/qqnormresid-1.png" alt="data falls along line = good" width="300" />
+<p class="caption">
+Figure 10: data falls along line = good
+</p>
+</div>
+</div>
+<div id="are-there-trends-in-the-residual-vs-fitted-values" class="section level3">
+<h3>Are there trends in the residual vs fitted values?</h3>
+<p>Expect no relationship between standardised (or non-standardised) residuals and fitted values of model</p>
+<ul>
+<li>straight line = good</li>
+<li>no humps or valleys</li>
+</ul>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/resid-1.png" width="800" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="independence" class="section level2">
+<h2>3. Independence</h2>
+<blockquote>
+<p>Population Y values and error terms (<span class="math inline">\(\varepsilon_i\)</span>) are independent</p>
+</blockquote>
+<ul>
+<li>They do not influence each other (not autocorrelated)</li>
+<li>Often because of inappropriate experimental design
+<ul>
+<li>time series</li>
+<li>pseudo-replication</li>
+<li>repeated measurements</li>
+</ul></li>
+<li>Increases Type I error</li>
+</ul>
+<div id="dealing-with-independence" class="section level3">
+<h3>Dealing with independence</h3>
+<p>Best thing is to choose a different model<br />
+Consider using random effects models or choosing better variables (i.e. good experimental design)</p>
+</div>
+</div>
+<div id="fixed-x" class="section level2">
+<h2>4. Fixed X</h2>
+<blockquote>
+<p>The predictor variable (<span class="math inline">\(x_i\)</span>) is fixed. i.e. a known constant</p>
+</blockquote>
+<p>Called Type I model or fixed effects model</p>
+<ul>
+<li>Often broken in biological stats</li>
+<li>Predictor variables can be random
+<ul>
+<li>Called Type II (random effects model)</li>
+</ul></li>
+<li>Hypothesis testing of Type I applies to Type II</li>
+</ul>
+<hr />
+</div>
+<div id="other-regression-diagnostics" class="section level2">
+<h2>Other regression diagnostics</h2>
+<ul>
+<li>How well does the model fit the data?
+<ul>
+<li>Coefficient of determination <span class="math inline">\(R^2\)</span></li>
+</ul></li>
+<li>Is a simple linear regression appropriate?
+<ul>
+<li>e.g. polynomial or curvilinear model</li>
+</ul></li>
+<li>Are there effects of outliers in the model?</li>
+</ul>
+<div id="outliers-leverage-and-influence" class="section level3">
+<h3>Outliers, leverage and influence</h3>
+<blockquote>
+<p>Outliers are abnormal or unusual observations relative to the rest of the data that can cause biases during analysis</p>
+</blockquote>
+<ul>
+<li>Outliers can be checked before applying a model. How?</li>
+<li>Sometimes caused by experimental error but sometimes significantly different data points are not outliers
+<ul>
+<li>Natural variation</li>
+</ul></li>
+<li>Leverage = how much x influences y</li>
+<li>Influence = how much x influences the slope of the line (Cook’s Distance)</li>
+</ul>
+<p>If outliers are caused by experimental error or bias, you could justify excluding it from data.<br />
+<strong>But <em>never</em> delete observations to force a better model fit</strong></p>
+</div>
+<div id="outliers-in-the-mammal-dataset" class="section level3">
+<h3>Outliers in the mammal dataset</h3>
+<div class="figure" style="text-align: center"><span id="fig:outliers"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/outliers-1.png" alt="Looks like humans, water opossums and musk shrew have high influence on the regression" width="300" />
+<p class="caption">
+Figure 11: Looks like humans, water opossums and musk shrew have high influence on the regression
+</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="putting-it-all-together" class="section level2">
+<h2>Putting it all together</h2>
+<p>These assumptions can be checked by looking at the residual plots. R shows residual plots using the function <code>plot(lm())</code>.</p>
+<p><img src="docs/teaching/GLM/03-assumptions_files/figure-html/residual-plot-1.png" width="800" style="display: block; margin: auto;" /></p>
+<p>Let’s evaluate the residual plot, starting from the top left:</p>
+<ul>
+<li>Are the residuals vs fitted values equal (i.e. a straight line)? If there are humps or valleys, the model may not be appropriate for the data.</li>
+<li>Are the standardised residuals normally distributed? Linear models assume that residuals are normally distributed. If not, your model is inappropriate for your data or your data is skewed in some way.</li>
+<li>Is there a pattern to your <span class="math inline">\(\sqrt{\mbox{Standardised residuals}}\)</span>? Linear models assume equal variance so there should be no pattern in your residuals.</li>
+<li>Are there any outlier data points that have strong leverage in the model? E.g. potential outliers or influential data points.</li>
+</ul>
+<hr />
+</div>
+<div id="ancova" class="section level2">
+<h2>ANCOVA</h2>
+<p>Remember Analysis of Covariance deals with the effect of two predictor variable, a continuous and categorical variable, on a continuous response variable. Like an ANOVA adjusted for the effect of an additional continuous covariate.<br />
+Follows all the assumptions above <em>plus two extra ones</em>:</p>
+<div id="covariate-values-cover-a-similar-range-across-groups" class="section level3">
+<h3>1. Covariate values cover a similar range across groups</h3>
+<p>Data from groups should overlap across the range of the continuous variable</p>
+<div class="figure"><span id="fig:ancova"></span>
+<img src="docs/teaching/GLM/03-assumptions_files/figure-html/ancova-1.png" alt="Which of these violates ANCOVA assumptions?" width="50%" /><img src="docs/teaching/GLM/03-assumptions_files/figure-html/ancova-2.png" alt="Which of these violates ANCOVA assumptions?" width="50%" />
+<p class="caption">
+Figure 12: Which of these violates ANCOVA assumptions?
+</p>
+</div>
+<p>If the first assumption is not met, ANCOVA fails to separate the effects of the two predictors on the response variable.</p>
+<p>Extending regression models beyond the range of data could be <em>extrapolation</em> and lead to incorrect conclusions.</p>
+</div>
+<div id="regression-slopes-are-similar-across-groups" class="section level3">
+<h3>2. Regression slopes are similar across groups</h3>
+<p>Like a fixed or additive linear regression.<br />
+If the second assumption is not met, you can still fit an “ANCOVA-like” model to the data with different slopes for different groups (i.e. a mixed or random model). Then it’s not a true ANCOVA in the classic sense.</p>
+<hr />
+</div>
+</div>
+<div id="take-home-messages" class="section level2">
+<h2>Take home messages</h2>
+<ul>
+<li>Always check assumptions</li>
+<li>Interpret model in a biological context
+<ul>
+<li>Biological data is messy: good model can have low R<sup>2</sup></li>
+<li>Outliers aren’t always mistakes</li>
+<li>Statistical significance <span class="math inline">\(\neq\)</span> biological significance</li>
+</ul></li>
+<li>Is the model appropriate for the question?</li>
+<li>Can my experiment actually test my hypothesis?</li>
+<li><strong><em>Never</em> delete observations to force a better model fit or fit assumptions</strong>
+<ul>
+<li>This violates research integrity</li>
+</ul></li>
+</ul>
+</div>
+</div>
