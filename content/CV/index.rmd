@@ -1,14 +1,9 @@
 ---
 title: "CV"
 subtitle: Jacinta D Kong
-date: "`r format(Sys.Date(), '%d %B %Y')`"
 output:
-  html_document:
-    toc: yes
-    df_print: paged
   blogdown::html_page:
     toc: yes
-  pdf_document: default
 urlcolor: blue
 links:
 - icon: fa-file-pdf
@@ -16,6 +11,9 @@ links:
   name: Download PDF
   url: files/Kong_JD_CV.pdf
 ---
+
+Last updated `r format(Sys.Date(), '%d %B %Y')`
+
 ***
 
 
