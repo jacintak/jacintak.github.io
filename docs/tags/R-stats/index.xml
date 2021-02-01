@@ -5,7 +5,7 @@
     <link>https://jacintak.github.io/tags/R-stats/</link>
       <atom:link href="https://jacintak.github.io/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
     <description>R stats</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>R stats</title>
@@ -15,10 +15,10 @@
     <item>
       <title>Quick guide to R/exams</title>
       <link>https://jacintak.github.io/teaching/rexams/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/rexams/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/teaching/rexams/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;a href=&#34;http://www.r-exams.org&#34;&gt;&lt;code&gt;R/exams&lt;/code&gt;&lt;/a&gt; is an R package that generates a reproducible workflow for designing, producing and marking exams.&lt;br /&gt;
@@ -245,10 +245,10 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     <item>
       <title>Setup R</title>
       <link>https://jacintak.github.io/teaching/introR/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/introR/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/teaching/introR/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -682,12 +682,113 @@ summary(mammal_sleep$BodyWt) # summary statistics for body weight
     </item>
     
     <item>
+      <title>Transparent graphing for dark backgrounds</title>
+      <link>https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but &lt;code&gt;ggplot2&lt;/code&gt; doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in &lt;code&gt;trees&lt;/code&gt; dataset:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tree_graph &amp;lt;- ggplot(data = trees, 
+       mapping = aes(x = Height, 
+                     y = Girth)) + 
+    geom_point(size = 0.5, colour = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, col = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_abline(intercept = 0, slope = 1, col = &amp;quot;white&amp;quot;, lwd = 0.5, lty = 2) + 
+    theme_classic() +
+    theme(plot.background = element_rect(fill = &amp;quot;transparent&amp;quot;, color = NA),
+          panel.background = element_rect(fill = &amp;quot;transparent&amp;quot;),
+          axis.text = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.title = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.line = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;),
+          axis.ticks = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;))
+
+ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot;transparent&amp;quot;, type = &amp;quot;cairo&amp;quot;, width = 10, height = 10, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are a couple of generally useful elements added on purpose:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;geom_smooth&lt;/code&gt; creates an automatically fitted linear model (defined using &lt;code&gt;method = &#34;lm&#34;&lt;/code&gt;). I have turned off plotting the standard errors (on by default) and manually set the colour.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;geom_abline&lt;/code&gt; is your standard straight line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;theme&lt;/code&gt; is where the customisation begins:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;plot.background&lt;/code&gt; &amp;amp; &lt;code&gt;panel.background&lt;/code&gt; are set to transparent&lt;/li&gt;
+&lt;li&gt;The various axis elements are set to the fill colour (a nice &lt;code&gt;viridis&lt;/code&gt; green) and desired text size&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggsave&lt;/code&gt; specifies that the background is transparent and to save it using the Cairo engine (&lt;code&gt;type = &#34;cairo&#34;&lt;/code&gt;). Cairo will create a vector based image so resizing the png isn’t an issue since the small font size is already defined.
+&lt;ul&gt;
+&lt;li&gt;You can also use &lt;code&gt;cairo-png&lt;/code&gt; but the graph height and width options appear to be ignored.&lt;/li&gt;
+&lt;li&gt;If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Biostatistics tutorials</title>
+      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/project/biostats-tutorials/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Set up&lt;/h1&gt;
+&lt;p&gt;We need to set up our computer to start using tutorials in R.&lt;/p&gt;
+&lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
+&lt;ul&gt;
+&lt;li&gt;You can check your R package version using &lt;code&gt;R.version()$version.string&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
+&lt;ul&gt;
+&lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages()&lt;/code&gt; to do so
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; (or &lt;code&gt;devtools&lt;/code&gt;) - needed to install the tutorials&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knitr&lt;/code&gt; - for displaying content&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
+&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
+Use the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).&lt;br /&gt;
+If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running a tutorial&lt;/h1&gt;
+&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
+Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
+&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
+&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>New Year, New Look!</title>
       <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/post/2021-01-01-new-year-new-look/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;welcome-to-my-revamped-website&#34; class=&#34;section level1&#34;&gt;
@@ -785,64 +886,6 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Biostatistics tutorials</title>
-      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
-      <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Set up&lt;/h1&gt;
-&lt;p&gt;We need to set up our computer to start using tutorials in R.&lt;/p&gt;
-&lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
-&lt;ul&gt;
-&lt;li&gt;You can check your R package version using &lt;code&gt;R.version()$version.string&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
-&lt;ul&gt;
-&lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages()&lt;/code&gt; to do so
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; (or &lt;code&gt;devtools&lt;/code&gt;) - needed to install the tutorials&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;knitr&lt;/code&gt; - for displaying content&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
-&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
-Use the following code:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).&lt;br /&gt;
-If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Running a tutorial&lt;/h1&gt;
-&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
-Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
-&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
-&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
-&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

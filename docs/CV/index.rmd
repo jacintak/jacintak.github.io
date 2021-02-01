@@ -1,14 +1,9 @@
 ---
 title: "CV"
 subtitle: Jacinta D Kong
-date: "`r format(Sys.Date(), '%d %B %Y')`"
 output:
-  html_document:
-    toc: yes
-    df_print: paged
   blogdown::html_page:
     toc: yes
-  pdf_document: default
 urlcolor: blue
 links:
 - icon: fa-file-pdf
@@ -16,6 +11,9 @@ links:
   name: Download PDF
   url: files/Kong_JD_CV.pdf
 ---
+
+Last updated `r format(Sys.Date(), '%d %B %Y')`
+
 ***
 
 
@@ -107,6 +105,7 @@ I have peer reviewed for:
  * Journal of Fish Biology
  * Current Zoology
  * Scientific Reports
+ * Conservation Physiology
 
 ***
 
@@ -244,6 +243,12 @@ The University of Queensland Undergraduate Research Conference
  * 2015 – 2020 	Member: Australian Entomological Society
  * 2017 – 2018 	President, BioSciences Postgraduate Society, the University of Melbourne
  * 2016 – 2017 	Vice President, BioSciences Postgraduate Society, the University of Melbourne
+
+***
+
+# Professional development qualifications
+
+ * 26/01/2021 Epigeum Research Integrity Course 
 
 ***
 

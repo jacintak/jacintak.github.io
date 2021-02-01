@@ -5,7 +5,7 @@
     <link>https://jacintak.github.io/teaching/</link>
       <atom:link href="https://jacintak.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>Teachings</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Teachings</title>
@@ -15,10 +15,10 @@
     <item>
       <title>Quick guide to R/exams</title>
       <link>https://jacintak.github.io/teaching/rexams/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/rexams/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/teaching/rexams/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;a href=&#34;http://www.r-exams.org&#34;&gt;&lt;code&gt;R/exams&lt;/code&gt;&lt;/a&gt; is an R package that generates a reproducible workflow for designing, producing and marking exams.&lt;br /&gt;
@@ -245,10 +245,10 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
     <item>
       <title>Setup R</title>
       <link>https://jacintak.github.io/teaching/introR/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/teaching/introR/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/teaching/introR/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
