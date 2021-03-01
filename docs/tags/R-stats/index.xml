@@ -5,12 +5,147 @@
     <link>https://jacintak.github.io/tags/R-stats/</link>
       <atom:link href="https://jacintak.github.io/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
     <description>R stats</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Mar 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>R stats</title>
       <link>https://jacintak.github.io/tags/R-stats/</link>
     </image>
+    
+    <item>
+      <title>Leaving the valley of intermediate competence</title>
+      <link>https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;if-it-aint-broke-dont-fix-it&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;If it ain’t broke, don’t fix it?&lt;/h1&gt;
+&lt;p&gt;So you’ve spent a lot of time learning and practising &lt;code&gt;R&lt;/code&gt; and you’re pretty comfortable with using functions, if else statements and loops like they teach at introductory programming. What more is there to improve?&lt;/p&gt;
+&lt;p&gt;If the answer is no or you subscribe to the quote above, then turn back now. If yes, continue.&lt;/p&gt;
+&lt;p&gt;I think that even if one has the skills to do fundamental programming competently, there’s always room for improvement or something new to learn. Or you know that there’s a better, more efficient, way to do it but something is holding you back. For me, it’s usually the latter.&lt;/p&gt;
+&lt;p&gt;In a milestone of using &lt;code&gt;R&lt;/code&gt; I think I have wrapped my head around replacing for loops with the &lt;code&gt;apply&lt;/code&gt; family, specifically &lt;code&gt;mapply&lt;/code&gt;. The last hurdle in delving into functional programming.&lt;/p&gt;
+&lt;p&gt;I’ve used iterative coding quite a bit over the years and I’ve been using for loops to do so. As I’ve gotten more competent with applying basic concepts (like loops and functions), I’ve been moving towards optimising my code with more advanced &lt;code&gt;R&lt;/code&gt; methods. I started with using more manual functions and sourcing functions from external scripts but I was still relying on loops to apply those functions iteratively.&lt;/p&gt;
+&lt;p&gt;I know loops are inefficient. I’ve waited &lt;em&gt;days&lt;/em&gt; for computationally intensive loops on large datasets to finish. I know that &lt;code&gt;apply&lt;/code&gt; and co. can be more computationally efficient but in your typical learning something new way, they hadn’t really clicked for me…until now.&lt;/p&gt;
+&lt;p&gt;I’ve been trying to use &lt;code&gt;apply&lt;/code&gt; family functions where appropriate for years but I’ve never felt comfortable with using them to use them from the start. So, I default back to loops to save time and frustration.&lt;/p&gt;
+&lt;p&gt;I think the slow uptake is because the syntax is different to the logic of loops that are taught, even if &lt;code&gt;apply&lt;/code&gt;’s logic is better from a computing perspective. The syntax and the logic is also inconsistent within the &lt;code&gt;apply&lt;/code&gt; family; a known disadvantage over similar functions (like &lt;code&gt;purrr::map&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;But let’s focus on a specific case before this becomes a cooking blog: replacing for loops. I’m going to assume that you are competent with manual functions, for loops and lists, and that you want to improve your code. I’m going to focus on lists because they are an efficient way of storing lots of similarly structured data in &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here are two ways to replace a for loop.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-example-loop&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;An example loop&lt;/h1&gt;
+&lt;p&gt;Let’s create an example scenario and data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# some data to use
+loop_data &amp;lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &amp;lt;- seq(0.2, 1, 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;loop_data&lt;/code&gt; is a data frame with two numeric columns (&lt;code&gt;col1&lt;/code&gt; &amp;amp; &lt;code&gt;col2&lt;/code&gt;). We technically won’t use &lt;code&gt;loop_data$col2&lt;/code&gt; but it’s there to create a 5x2 data frame.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;a&lt;/code&gt; is a variable that we need for our function. There are 5 values.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We want to add each element of &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;loop_data$col1&lt;/code&gt; and save that in a new column &lt;code&gt;loop_data$col1a&lt;/code&gt;. We will also add &lt;code&gt;a&lt;/code&gt; as a column in &lt;code&gt;loop_data&lt;/code&gt; just so we can keep track of which value was used to calculate &lt;code&gt;col1a&lt;/code&gt;. So the final output should have 25 rows (5 observations in &lt;code&gt;loop_data&lt;/code&gt; x 5 values of &lt;code&gt;a&lt;/code&gt;) and 4 columns (&lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt;, &lt;code&gt;col1a&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;We will be storing our data in lists in all our scenarios. Note that I create the list to hold the answers (&lt;code&gt;loop_ans&lt;/code&gt;) before the function rather than to append newly calculated answers sequentially to the list within the function. I use the same &lt;code&gt;replicate&lt;/code&gt; function before all the examples. You could also start with an empty list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# data sets stored as a list - must not simplify or it will reduce to a matrix!
+loop_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# A function to add a value a to a data frame x
+loop_function &amp;lt;- function(x, a) {
+  x$col1a &amp;lt;- x$col1 + a # add answer to a new column 
+  x$a &amp;lt;- a # add a to a new column
+  return(x) # give us the updated data frame
+}
+
+# Let&amp;#39;s loop
+for(i in seq_along(a)){
+  loop_ans[[i]] &amp;lt;- loop_function(loop_ans[[i]], a = a[i]) 
+}
+
+# merge to single data frame
+loop_ans &amp;lt;- do.call(rbind, loop_ans)
+
+# view the data
+summary(loop_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2        col1a            a      
+##  Min.   :11   Min.   :20   Min.   :11.2   Min.   :0.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:12.4   1st Qu.:0.4  
+##  Median :13   Median :22   Median :13.6   Median :0.6  
+##  Mean   :13   Mean   :22   Mean   :13.6   Mean   :0.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:14.8   3rd Qu.:0.8  
+##  Max.   :15   Max.   :24   Max.   :16.0   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That’s the loop - should be familiar to you. Merging into a single data frame is optional if you want to keep using lists. Now let’s look at &lt;code&gt;lapply&lt;/code&gt; for a less elegant solution (!).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;lapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. &lt;code&gt;lapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lapply&lt;/code&gt; takes a list as input, does stuff and gives a list as output. Hence, the l in &lt;code&gt;lapply&lt;/code&gt; stands for list. The difference with loops and &lt;code&gt;lapply&lt;/code&gt; is that &lt;code&gt;lapply&lt;/code&gt; can only take one input - your data frame (or element in list). This means that we need to add the corresponding value of &lt;code&gt;a&lt;/code&gt; as a column in each element of &lt;code&gt;lapply&lt;/code&gt; - in other words to do part of what &lt;code&gt;loop_function&lt;/code&gt; did but outside the loop/&lt;code&gt;lapply&lt;/code&gt;. Thus, each data frame in the input list should have three columns: &lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt; &amp;amp; &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Incidentally, we can add the corresponding &lt;code&gt;a&lt;/code&gt; value as a column using &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;cbind&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# the function only accepts one element: x
+lapply_function &amp;lt;- function(x){
+  x$col1a &amp;lt;- x$col1 + x$a
+  return(x)
+}
+
+# Prepare the answer list
+lapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &amp;lt;- mapply(FUN = cbind, lapply_ans, &amp;quot;a&amp;quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &amp;lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &amp;lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you see it’s not as simple as the loop or &lt;code&gt;mapply&lt;/code&gt; and requires &lt;code&gt;mapply&lt;/code&gt; anyway 🤷&lt;br /&gt;
+So we can do better…&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. &lt;code&gt;mapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;The m in &lt;code&gt;mapply&lt;/code&gt; stands for multiple because it takes multiple arguments and applies them to the data. There are some key differences in the structure of the data and the function compared to &lt;code&gt;lapply&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can use the original loop function with two variables!
+&lt;ul&gt;
+&lt;li&gt;The additional variables (&lt;code&gt;a&lt;/code&gt; in this example) are written after the function &lt;code&gt;FUN&lt;/code&gt; is defined in &lt;code&gt;mapply&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;We can also use the original list (&lt;code&gt;loop_data&lt;/code&gt;) without further modification!&lt;/li&gt;
+&lt;li&gt;We need to tell &lt;code&gt;mapply&lt;/code&gt; not to simplify the output into a matrix by default. Note the use of upper case in &lt;code&gt;SIMPLIFY&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Prepare the answer list
+mapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &amp;lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &amp;lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2        col1a            a      
+##  Min.   :11   Min.   :20   Min.   :11.2   Min.   :0.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:12.4   1st Qu.:0.4  
+##  Median :13   Median :22   Median :13.6   Median :0.6  
+##  Mean   :13   Mean   :22   Mean   :13.6   Mean   :0.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:14.8   3rd Qu.:0.8  
+##  Max.   :15   Max.   :24   Max.   :16.0   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What &lt;code&gt;mapply&lt;/code&gt; is doing is using the n&lt;sup&gt;th&lt;/sup&gt; element of &lt;code&gt;a&lt;/code&gt; with the corresponding n&lt;sup&gt;th&lt;/sup&gt; element in the list &lt;code&gt;loop_data&lt;/code&gt;. So the fifth value of &lt;code&gt;a&lt;/code&gt; (1.0) is used in the calculations on the 5th data frame in &lt;code&gt;loop_data&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We’ve replace the for loop with a &lt;code&gt;mapply&lt;/code&gt; function! 👏&lt;br /&gt;
+Here’s to functional programming. Next up is &lt;code&gt;purrr::map&lt;/code&gt;…&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Quick guide to R/exams</title>
