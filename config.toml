@@ -26,16 +26,16 @@ theme = "hugo-academic"
 # Get last modified date for content from Git?
 enableGitInfo = true
 
-# Default language to use (if you setup multilingual support)
-defaultContentLanguage = "en"
-hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
-defaultContentLanguageInSubdir = false
-removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = ["lastmod", ":git", "date", "publishDate"]
+publishDate = ["publishDate", "date"]
+expiryDate = ["expiryDate"]
 
-paginate = 10  # Number of items per page in paginated lists.
-enableEmoji = true
-footnotereturnlinkcontents = "<sup>^</sup>"
-ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "drafts/.*" ]
+# changed default order Hugo looks for dates
+# last updated date uses lastmod YAML date first.
+# If last updated is the same as published date then it is not shown. Only if date is different
+# If lastmod in YAML is empty (ie. lastmod: ''), then git date is used
 
 [outputs]
   home = [ "HTML", "RSS", "JSON", "WebAppManifest" ]

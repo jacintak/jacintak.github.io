@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include species distributions, phenology, microclimates & functional trait variation.
+bio: My research interests include species distributions, phenology, microclimates & mechanistic niche modelling.
 
 education:
   courses:
@@ -19,13 +19,12 @@ email: "kongj@tcd.ie"
 interests:
 - Ecological & evolutionary physiology
 - Microclimate
-- Evolutionary ecology
-- Thermal adaptation
+- Mechanistic niche modelling
 
 name: Jacinta Kong
 organizations:
 - name: Trinity College Dublin
-  url: "https://jacintakong.research.wordpress.com"
+  url: "https://jacintak.github.io"
 role: Teaching and Research Fellow
 social:
 - icon: envelope
@@ -49,8 +48,8 @@ user_groups:
 - Visitors
 ---
 
-I want to know where animals live and how they persist in their environment. Functional traits are a focus of my work because traits are how organisms interact with their environment.
+I want to know where animals live and how they persist in their environment. Traits are a focus of my work because traits are how organisms interact with their environment.
 
-My research follows a general theme of the effect of temperature on ectotherms to understand the ecological and evolutionary processes underlying biological patterns. My interests lie at the intersection between ecology, evolutionary biology and climate adaptation.
+My research follows a general theme of understanding the mechanistic determinants of ecological and evolutionary patterns and the physiological niches of organisms, specifically of ectotherms. My interests lie at the intersection between ecology, evolutionary biology and climate adaptation.
 
-I answer these questions through an integrative combination of field observations, manipulative laboratory experiments and computer modelling in R, grounded within a theoretical framework. 
+I answer these questions through an integrative combination of field observations, manipulative laboratory experiments and computer modelling in R, grounded within a theoretical framework, such as mechanistic niche models. 

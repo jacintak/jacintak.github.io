@@ -39,7 +39,7 @@
 &lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised. File names are case-sensitive&lt;/li&gt;
 &lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
 &lt;ul&gt;
-&lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
+&lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. :shrug:&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (following the guide) doesn’t work either.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
@@ -47,7 +47,7 @@
 &lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See &lt;a href=&#34;#gitbook&#34;&gt;below&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
-&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
+&lt;li&gt;emojis are a nice feature :smile:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
@@ -113,7 +113,7 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
+&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji :cricket:&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;

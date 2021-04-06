@@ -1,5 +1,5 @@
 # Make CV PDF
-# rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = "static/files/", output_file = "Kong_JD_CV.pdf", clean=T, quiet = TRUE)
+ rmarkdown::render('content/cv/index.Rmd', output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = "static/files/", output_file = "Kong_JD_CV.pdf", clean=T, quiet = TRUE)
 
 # make gitbook
 # blogdown::build_dir("static") doesn't work because we want a gitbook that knits with render_book
