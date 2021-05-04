@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jacintak.github.io/categories/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/code/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/categories/code/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/post/2021-05-01-formatting-p-values/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/R-stats/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/tags/crabs/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
   </url>
@@ -18,16 +53,6 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/post/2021-04-01-the-socio-economic-theory-of-animal-abundance/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
   </url>
@@ -38,27 +63,7 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/categories/</loc>
-    <lastmod>2021-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/code/</loc>
-    <lastmod>2021-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/categories/code/</loc>
-    <lastmod>2021-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/</loc>
-    <lastmod>2021-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/R-stats/</loc>
     <lastmod>2021-03-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -219,7 +224,7 @@
   
   <url>
     <loc>https://jacintak.github.io/authors/</loc>
-    <lastmod>2020-12-22T11:20:16+00:00</lastmod>
+    <lastmod>2021-04-06T10:59:46+01:00</lastmod>
   </url>
   
   <url>
@@ -294,7 +299,7 @@
   
   <url>
     <loc>https://jacintak.github.io/authors/admin/</loc>
-    <lastmod>2020-12-14T13:28:03+00:00</lastmod>
+    <lastmod>2021-04-06T10:59:46+01:00</lastmod>
   </url>
   
   <url>
