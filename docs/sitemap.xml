@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jacintak.github.io/categories/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/tags/code/</loc>
     <lastmod>2021-06-01T11:21:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/categories/code/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -28,6 +38,11 @@
   </url>
   
   <url>
+    <loc>https://jacintak.github.io/post/2021-06-01-r-function-loops/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/tags/R-stats/</loc>
     <lastmod>2021-06-01T11:21:46+01:00</lastmod>
   </url>
@@ -40,16 +55,6 @@
   <url>
     <loc>https://jacintak.github.io/tags/teaching/</loc>
     <lastmod>2021-06-01T11:21:46+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/categories/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/categories/code/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>

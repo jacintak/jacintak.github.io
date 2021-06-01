@@ -3,17 +3,12 @@ title: "R Club: Functions & Loops"
 subtitle: 'Interactive functions and loops in R'
 summary: 'A tutorial about interactive functions and loops in R'
 author: admin
-date: "2021-06-01"
-draft: true
-slug: [r-club-function-loops]
+date: '2021-06-01'
+lastmod: '2021-06-01'
 categories: [code]
-tags:
-- teaching
-- R stats
-- code
-- NERD club
-lastmod: ''
+tags: [teaching, R stats, code, NERD club]
 featured: no
+draft: false
 image:
   caption: ''
   focal_point: ''
@@ -238,20 +233,20 @@ lm(formula = Ha.1 ~ HT.1 * lid_used, data = prey_caught)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--0.27824 -0.03329 -0.01297  0.00820  0.79908 
+-0.27245 -0.05371 -0.01596  0.00899  0.84476 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)       0.07883    0.01838   4.288 3.75e-05 ***
-HT.1              0.48697    0.32538   1.497   0.1372    
-lid_usedyes       0.04477    0.02600   1.722   0.0877 .  
-HT.1:lid_usedyes  1.05935    0.46016   2.302   0.0231 *  
+                 Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)       0.07136    0.02262   3.155  0.00204 **
+HT.1              1.00548    0.40029   2.512  0.01338 * 
+lid_usedyes       0.09517    0.03198   2.976  0.00356 **
+HT.1:lid_usedyes -1.11833    0.56609  -1.976  0.05058 . 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.1098 on 116 degrees of freedom
-Multiple R-squared:  0.2654,    Adjusted R-squared:  0.2465 
-F-statistic: 13.97 on 3 and 116 DF,  p-value: 7.729e-08</code></pre>
+Residual standard error: 0.1351 on 116 degrees of freedom
+Multiple R-squared:  0.08913,   Adjusted R-squared:  0.06558 
+F-statistic: 3.784 on 3 and 116 DF,  p-value: 0.01242</code></pre>
 <p>That has saved us from running the code 120 times! Now we can do it in one!</p>
 <hr />
 </div>
