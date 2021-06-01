@@ -3,12 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jacintak.github.io/categories/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+    <loc>https://jacintak.github.io/tags/code/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/tags/code/</loc>
+    <loc>https://jacintak.github.io/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/NERD-club/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/project/NERD-club/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/project/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/R-stats/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/teaching/</loc>
+    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/categories/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -19,21 +54,6 @@
   
   <url>
     <loc>https://jacintak.github.io/post/2021-05-01-formatting-p-values/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/R-stats/</loc>
-    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -103,11 +123,6 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/tags/teaching/</loc>
-    <lastmod>2021-02-01T13:52:24+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/teaching/</loc>
     <lastmod>2021-02-01T13:52:24+00:00</lastmod>
   </url>
@@ -170,11 +185,6 @@
   <url>
     <loc>https://jacintak.github.io/project/life-cycles/</loc>
     <lastmod>2021-01-01T13:10:06+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/project/</loc>
-    <lastmod>2021-02-01T13:52:24+00:00</lastmod>
   </url>
   
   <url>

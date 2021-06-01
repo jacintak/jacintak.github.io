@@ -15,7 +15,6 @@ tags:
 - teaching
 - R stats
 - code
-- side-project
 title: Biostatistics tutorials
 url_code: "https://github.com/jacintak/biostats"
 url_pdf: ""

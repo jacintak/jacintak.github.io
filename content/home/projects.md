@@ -30,6 +30,10 @@ subtitle = ""
     tag = "ectotherms"
       
   [[content.filter_button]]
+    name = "Teaching"
+    tag = "teaching"
+
+  [[content.filter_button]]
     name = "Other"
     tag = "side-project"
   

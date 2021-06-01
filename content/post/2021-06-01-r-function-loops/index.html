@@ -1,0 +1,259 @@
+---
+title: "R Club: Functions & Loops"
+subtitle: 'Interactive functions and loops in R'
+summary: 'A tutorial about interactive functions and loops in R'
+author: admin
+date: "2021-06-01"
+draft: true
+slug: [r-club-function-loops]
+categories: [code]
+tags:
+- teaching
+- R stats
+- code
+- NERD club
+lastmod: ''
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: [NERD-club]
+editor_options: 
+  chunk_output_type: console
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>This tutorial was originally presented to NERD club on 18/11/2020.</p>
+<hr />
+<p>This document contains two examples of functions and an example of how functions can be integrated with loops.</p>
+<blockquote>
+<p>User defined functions take the general form of <code>function(inputs){processing inputs; return(output)}</code></p>
+</blockquote>
+<div id="predator-prey-interactions" class="section level1">
+<h1>Predator-Prey interactions</h1>
+<p>We will use a simulation of predator-prey interactions as an example. Predator-prey interactions simulate how many prey a predator can capture after a specific amount of time and for a given density of prey. We use this example with undergraduate biology students to demonstrate statistical modelling, experimental design and collecting data.</p>
+<p>Normally we would get students to do this laboratory practical in class by picking up counters and putting them in jars while blindfolded. We can also see whether the use of different types of jars affects the efficiency of the predator. This is the experimental design:</p>
+<ul>
+<li>Response variable - Number of prey caught (<code>Ha</code>)</li>
+<li>Total foraging time - 1 minute, a constant (<code>T</code>)</li>
+<li>Predictor variables:
+<ul>
+<li>Prey density - user defined treatments (<code>H</code>)</li>
+<li>Type of jar used - jar with a lid or no lid (<code>yes</code> or <code>no</code>)</li>
+</ul></li>
+</ul>
+<p>Normally the students will collect data to parameterise the functional response. Instead I’ve created a function that will predict new values of prey captured using a functional response formula that is already parameterised.</p>
+<p>Let’s look at the function:</p>
+<hr />
+<div id="an-interactive-function" class="section level2">
+<h2>An interactive function</h2>
+<p>R has some capacity to be interactive. It can ask a user to input variables.
+The function <code>functional_response</code> will return the number of prey captured for a given prey density and type of jar used. The function will ask for these two inputs each time the function is run. Look at the code below and try to understand the different components. Then try running the code yourself with different inputs.</p>
+<pre><code>#### Interactive function
+# Simulation of the predator-prey functional response - DO NOT CHANGE
+# To run: click Source (cmd or ctrl+shift+S) or Run All (ctrl+alt+r)
+# Or source(&quot;&lt;insert file location here&gt;&quot;, echo = FALSE)
+
+functional_response &lt;- function(){
+  
+  # Introduce the simulation to the user - prints a message
+  cat(paste(
+    &quot;&quot;,
+    &quot;You have some counters (prey), a piece of A4 paper &amp; a jar.&quot;,
+    &quot;You spread the counters randomly on the A4 sheet.&quot;,
+    sep=&quot;\n&quot;))
+  
+  # Ask the user for the prey density for the functional response
+  prey_density  &lt;- readline(&quot;How many prey counters are used? &quot;) # ask for prey density
+  
+  # Check the user has inputted a number properly
+  if(!grepl(&quot;^[0-9]+$&quot;, prey_density)){ # check whether the input contains numeric characters between 0-9 using regex (regular expressions)
+    message(&quot;Please enter an integer&quot;) # If the input is not a number, tell them to do it again
+    return(functional_response()) # Return to the beginning of the function and start again
+  }
+  prey_density &lt;- as.integer(prey_density) # If the prey density input is a number, turn it into an interger
+  
+  # Ask the user for the type of jar used
+  cat(paste(
+    &quot;&quot;,
+    &quot;Every second you (the predator) tap the sheet to find and pick up a prey counter while blindfolded.&quot;,
+    &quot;You have 1 minute to put as many prey counters as you can in the jar.&quot;,
+    &quot;There are two types of jars you can use while handling prey.&quot;,
+    &quot;Enter 1 to use a jar with a lid that you have to open and close.&quot;,
+    &quot;Enter 2 to use a jar without a lid.&quot;,
+    &quot;&quot;,
+    &quot;What type of jar is used?&quot;,
+    sep=&quot;\n&quot;))
+  lid_used &lt;- menu(c(&quot;Lid&quot;, &quot;No Lid&quot;))
+  
+  # Calculate the number of prey caught (the functional response) based on the user defined input above
+  if(lid_used != 0){ # Check that the use has chosen the jar used properly (1 or 2)
+    
+    # Use this model if using a jar with a lid
+    if(lid_used == 1){
+      Ha &lt;- (0.2 * prey_density)/(1 + 0.2 * 0.03 * prey_density) 
+    }
+    
+    # Use this model if using a jar without a lid
+    if(lid_used == 2){
+      Ha &lt;- (0.7 * prey_density)/(1 + 0.7 * 0.05 * prey_density) 
+    }
+    
+    # Add in some variation around the predicted value so that users don&#39;t get the exact parameterised functional response
+    Ha &lt;- Ha + sample(seq(-3,3), 1) 
+    
+    # Make sure there are no negative prey items caught!
+    if(Ha &lt; 0){
+      Ha &lt;- 0 # Make prey caught 0 if less than 0
+    }
+    
+    # Make sure the number of prey caught doesn&#39;t exceed the number of prey available!
+    if(Ha &gt; prey_density){
+      Ha &lt;- prey_density # If prey caught is greater than the number of prey available, make it the maximum possible
+    }
+    
+    # Print a message showing the results
+    message(&quot;The number of prey caught is &quot;, floor(Ha), &quot;. Well done!&quot;) 
+  }
+}
+
+# Actually run the function and tell R that it&#39;s interactive 
+if(interactive()) functional_response()</code></pre>
+<p>Note:</p>
+<ul>
+<li>The function doesn’t have any inputs in <code>function()</code> because it will ask the user for them each time</li>
+<li><code>readline</code> is the function to ask for a single user input</li>
+<li><code>menu</code> is the function to ask the user to chose from a number of options
+<ul>
+<li>Here the option is press 1 to use a jar with a lid or press 2 to use a jar without a lid</li>
+</ul></li>
+<li>There are two parameterised functional responses - one for a jar with a lid and one for a jar without a lid</li>
+<li><code>floor</code> is a function to round the number of prey caught to the lowest whole number</li>
+</ul>
+<p>In the practical, students will need to run the above function for 10 prey densities, repeated 3 times, for both jar treatments - so 60 times in total. But we don’t have to do that manually - that is what loops are for!</p>
+<hr />
+</div>
+<div id="functions-and-loops" class="section level2">
+<h2>Functions and loops</h2>
+<p>Here is a non-interactive version of the function above. It doesn’t have the printed messages asking for user input. This time, the function needs 3 inputs as indicated by <code>function(prey_density, lid_used, total_time)</code>: the prey density used, the type of jar used and the total foraging time, respectively.</p>
+<p>Run the code chunk to load the function into the R environment:</p>
+<pre class="r"><code># Functional response function
+functional_response &lt;- function(prey_density, lid_used, total_time){
+  
+  # Check jar type is inputted correctly
+  if (!lid_used %in% c(&quot;yes&quot;, &quot;no&quot;)) {
+    stop(&quot;Lid used is not inputted correctly. Use &#39;yes&#39; or &#39;no&#39; in all lowercase&quot;)
+  }
+  if(lid_used == &quot;yes&quot;){
+    Ha &lt;- (0.2 * prey_density * total_time)/(1 + 0.2 * 0.03 * prey_density)
+  }
+  if(lid_used == &quot;no&quot;){
+    Ha &lt;- (0.7 * prey_density * total_time)/(1 + 0.7 * 0.05 * prey_density)
+  }
+  Ha &lt;- Ha + sample(seq(-3,3), 1)
+  if(Ha &lt; 0){
+    Ha &lt;- 0
+  }
+  if(Ha &gt; prey_density){
+    Ha &lt;- prey_density
+  }
+  # message(&quot;The number of prey caught is &quot;, floor(Ha))
+return(floor(Ha))
+  }</code></pre>
+<p>The function will check that the character vector indicating the type of jar to be used is correct because R is case sensitive. The function will return the number of prey caught <code>Ha</code> as indicated by <code>return(Ha)</code>. The function <code>return</code> specifically tells R to tell us the output, otherwise R will keep it to itself! Only one output is allowed (unless extra steps are taken).
+The rest of the function is the same.</p>
+<hr />
+<div id="using-the-functional-response-function-in-a-loop" class="section level3">
+<h3>Using the functional response function in a loop</h3>
+<p>Now let’s use a loop to do our entire experiment in one go! No manual inputs for us. In fact we can do as many treatments or replicates as we want. Let’s do prey densities between 5 and 100 in increments of 5 and 3 replicates. Since the function inputs are required we can set them up in the environment for the function:</p>
+<pre class="r"><code># Set parameters for the function
+total_time &lt;- 1 # total foraging time in minutes
+no_treatments &lt;- seq(from = 5, to = 100, by = 5) # prey density treatments between 5 and 100
+replications &lt;- 3 # number of replications
+
+# a numeric vector of prey densities for all treatments, jar types and replications 
+prey_density &lt;- rep(rep(no_treatments, replications),2) # repeated twice for each jar type
+
+# a character vector of the jar type
+lid_used &lt;- sort(rep(c(&quot;no&quot;, &quot;yes&quot;), length(prey_density)/2)) # &quot;yes&quot; or &quot;no&quot;</code></pre>
+<p>By setting up the parameters outside the function or loop, we can easily modify the parameters of the function and feed the new values into the loop. This helps us debug and is cleaner and easier to read.</p>
+<p>Now for the actual loop itself. We need to be able to store the output of the looped function.
+Lists are the fastest way to do so in R because R is designed for lists and matrices.</p>
+<pre class="r"><code># Create an empty list called prey_caught to populate 
+prey_caught &lt;- list()
+
+for(i in seq_along(prey_density)){
+  # Run the functional response for the nth observation in the vector prey_density representing all our observations and save it to the list
+  prey_caught[[i]] &lt;- functional_response(prey_density = prey_density[i],
+                                         lid_used = lid_used[i],
+                                         total_time = total_time)
+  
+  # Prepare the list for further analysis
+  prey_caught[[i]] &lt;-  cbind(prey_caught[[i]], prey_density[i]) # add a column for the prey density used to calculate the number of prey caught for that observation (row)
+  prey_caught[[i]] &lt;-  cbind(prey_caught[[i]], 1/prey_caught[[i]]) # add a column for the inverse of the number of prey caught - for statiscally parameterising the functional response
+  prey_caught[[i]][,3] &lt;-  ifelse(prey_caught[[i]][,3] == Inf, 0, prey_caught[[i]][,3]) # Housekeeping - turn undefined values of prey caught (from calculating 1 divided by 0) into 0. If the number of prey caught was 0
+}
+
+# Turn our list into a data frame
+prey_caught &lt;- data.frame(do.call(&quot;rbind&quot;, prey_caught))
+
+# Label the columns
+colnames(prey_caught) &lt;- c(&quot;Ha&quot;, &quot;H&quot;,&quot;Ha.1&quot;, &quot;HT.1&quot;) # &quot;.1 is inversed columns&quot;
+
+# Add type of lid used to our data frame
+prey_caught$lid_used &lt;- lid_used</code></pre>
+<ul>
+<li>Here we are using a <code>for</code> loop with the n<sup>th</sup> observation denoted <code>i</code>. This can be called anything you want but <code>i</code> is from mathematical notation.</li>
+<li><code>seq_along</code> is a useful function for telling which observation you are at for a vector - try it out on its own.</li>
+<li>Lists can only contain one variable type, unlike a data frame, but that’s why they are fast and memory efficient for high performance computing
+<ul>
+<li>If we were to add the jar type (a character vector) to the list within the loop, then all our numeric output will be converted to characters (default R behaviour) - not what we want!</li>
+</ul></li>
+<li><code>do.call</code> is a handy function for lists. It collapses multidimensional lists into one dimension, here appending them by rows (i.e. adding new observations by rows at the end)</li>
+</ul>
+<hr />
+</div>
+<div id="visualising-the-data" class="section level3">
+<h3>Visualising the data</h3>
+<p>Now we can plot our results and conduct our linear regression:</p>
+<pre class="r"><code>library(tidyverse)
+
+prey_caught %&gt;% # Absolute values
+  ggplot(aes(H, Ha, colour = lid_used)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE, fullrange=TRUE) +
+  labs(x = expression(paste(&quot;Prey density  (H)&quot;)),
+       y = expression(paste(&quot;Prey captured  (Ha)&quot;)),
+       colour = &quot;Jar used&quot;) +
+  theme_classic()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-1.png" width="672" /></p>
+<pre class="r"><code># Linear model
+summary(lm(Ha.1 ~ HT.1 * lid_used, prey_caught))</code></pre>
+<pre><code>
+Call:
+lm(formula = Ha.1 ~ HT.1 * lid_used, data = prey_caught)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.27824 -0.03329 -0.01297  0.00820  0.79908 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       0.07883    0.01838   4.288 3.75e-05 ***
+HT.1              0.48697    0.32538   1.497   0.1372    
+lid_usedyes       0.04477    0.02600   1.722   0.0877 .  
+HT.1:lid_usedyes  1.05935    0.46016   2.302   0.0231 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.1098 on 116 degrees of freedom
+Multiple R-squared:  0.2654,    Adjusted R-squared:  0.2465 
+F-statistic: 13.97 on 3 and 116 DF,  p-value: 7.729e-08</code></pre>
+<p>That has saved us from running the code 120 times! Now we can do it in one!</p>
+<hr />
+</div>
+</div>
+</div>
