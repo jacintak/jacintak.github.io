@@ -15,7 +15,7 @@ links:
 - icon: twitter
   icon_pack: fab
   name: Hashtag
-  url: https://twitter.com/hashtag/SEB2021
+  url: https://twitter.com/hashtag/SEBconference
 location: The physiology behind phenotypic plasticity in rapidly changing environments abstract AC4.37
 math: false
 projects:
