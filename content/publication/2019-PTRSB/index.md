@@ -1,8 +1,7 @@
 ---
 abstract: 
 authors:
-- "**admin**"
-- Jason K. Axford
+- admin
 - Ary A. Hoffmann 
 - Michael R. Kearney
 date: "2019-01-31"

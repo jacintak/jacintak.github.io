@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simon A. Morley | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/authors/Simon-A.-Morley/</link>
+      <atom:link href="https://jacintak.github.io/authors/Simon-A.-Morley/index.xml" rel="self" type="application/rss+xml" />
+    <description>Simon A. Morley</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 05 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <title>Simon A. Morley</title>
+      <link>https://jacintak.github.io/authors/Simon-A.-Morley/</link>
+    </image>
+    
+    <item>
+      <title>BES Macro 2021</title>
+      <link>https://jacintak.github.io/talk/BESMacro2021/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/BESMacro2021/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

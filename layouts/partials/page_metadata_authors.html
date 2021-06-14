@@ -11,7 +11,7 @@
     {{- if gt $index 0 }}, {{ end -}}
     <span>
       {{- if and $profile_page $link_authors -}}
-        <a href="{{$profile_page.RelPermalink}}">{{$name}}</a>
+        <a href="{{$profile_page.RelPermalink}}">{{$name|markdownify}}</a>
       {{- else -}}
         {{$name | markdownify}}
       {{- end -}}
