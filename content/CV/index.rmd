@@ -59,6 +59,7 @@ Last updated `r format(Sys.Date(), '%d %B %Y')`
 **Doctor of Philosophy (Science)**  
 The University of Melbourne, Australia  
 *Title:* Predicting ectotherm life cycles under a variable climate: Physiological diversity of matchstick grasshopper eggs and their ecological and evolutionary implications 	 
+Repository access: http://hdl.handle.net/11343/225704  
 1.2015 – completed 14 Aug 2019, conferred 5.10.2020
 
 **Bachelor of Science (Honours Class I, University Medal)**  
@@ -66,7 +67,7 @@ The University of Queensland, Australia
 *Title:* The effect of temperature on the relationship between metabolic rate and mass: Tests of the Metabolic Theory of Ecology 	
 Conferred 6.12.2013
 
-**Bachelor of Science**
+**Bachelor of Science**  
 The University of Queensland, Australia 	
 Conferred 17.12.2012
 
@@ -86,7 +87,7 @@ Conferred 17.12.2012
 [ORCID](https://orcid.org/0000-0002-1085-8612)   
 [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 52  
+Total citations: 53  
 
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
 > * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  
