@@ -5,12 +5,20 @@
     <link>https://jacintak.github.io/tags/postdoc/</link>
       <atom:link href="https://jacintak.github.io/tags/postdoc/index.xml" rel="self" type="application/rss+xml" />
     <description>postdoc</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 07 Jan 2021 09:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 05 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>postdoc</title>
       <link>https://jacintak.github.io/tags/postdoc/</link>
     </image>
+    
+    <item>
+      <title>BES Macro 2021</title>
+      <link>https://jacintak.github.io/talk/BESMacro2021/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/BESMacro2021/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>IEA2021</title>

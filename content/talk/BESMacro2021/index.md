@@ -2,7 +2,7 @@
 abstract: Ectotherm heat limits track biological rates
 address:
 all_day: false
-authors: [admin, Jean-Francois Arnoldi, Andrew Jackson, Amanda Bates, Simon Morley, James Smith & Nicholas Payne]
+authors: [admin, Jean-Francois Arnoldi, Andrew L. Jackson, Amanda E. Bates, Simon A. Morley, James A. Smith & Nicholas L. Payne]
 date: "2021-07-05"
 date_end: "2021-07-07"
 event: British Ecological Society Macroecology Group Meeting
@@ -20,7 +20,7 @@ location: Online
 math: false
 projects:
 - temperature-dependence
-publishDate:
+publishDate: "2021-01-01"
 slides: 
 summary: 
 tags: [postdoc, conference, ectotherms, temperature]
