@@ -1,10 +1,10 @@
 ---
 authors:
-- James L. Maino
+- J. L. Maino
 - "**admin**"
-- Ary A. Hoffmann
-- Madeleine G. Barton
-- Michael R. Kearney. 
+- A. A. Hoffmann
+- M. G. Barton
+- M. R. Kearney. 
 date: "2016-10-11"
 doi: "10.1016/j.cois.2016.07.006"
 featured: false
@@ -27,12 +27,19 @@ tags:
 title: Mechanistic models for predicting insect responses to climate change
 url_code: ""
 url_dataset: ""
-url_pdf: "files/2016-cois-postprint.pdf"
+url_pdf: ""
 url_poster: ""
 url_project: ""
 url_slides: ""
 url_source: ""
 url_video: ""
+
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: files/2016-cois-postprint.pdf
+
 ---
 
 # Abstract

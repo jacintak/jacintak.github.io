@@ -1,24 +1,31 @@
 ---
-title: "colRoz"
+title: "colRoz - A colour package for the land down under"
+date: "2021-06-25"
 author:
   - admin
   - Nicholas Wu
-date: "2020-01-01"
-external_link: /colRoz/
-image:
-  caption: 
-  focal_point: Smart
-  header: false
+external_link:
 links:
+- icon: github
+  icon_pack: fab
+  name: Code
+  url: https://github.com/jacintak/colRoz
 - icon: twitter
   icon_pack: fab
-  name: Follow
+  name: Follow Jacinta
   url: https://twitter.com/jacintakong
+- icon: twitter
+  icon_pack: fab
+  name: Follow Nicholas
+  url: https://twitter.com/NicholasWuNZ
+- icon: wordpress-simple
+  icon_pack: fab
+  name: Blog
+  url: https://jacintakongresearch.wordpress.com/2019/11/09/r-colour-packages/
 slides: 
-summary: A colour package for the land down under
 tags:
 - side-project
-url_code: "https://github.com/jacintak/colRoz"
+url_code: 
 url_pdf: ""
 url_slides: ""
 url_video: ""
@@ -29,5 +36,331 @@ output:
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#list-of-palettes">1. List of palettes</a>
+<ul>
+<li><a href="#understanding-the-structure-of-the-palette">Understanding the structure of the palette</a></li>
+</ul></li>
+<li><a href="#defining-and-using-a-palette">2. Defining and using a palette</a></li>
+<li><a href="#visualise-a-palette">3. Visualise a palette</a></li>
+<li><a href="#palettes">Palettes</a></li>
+<li><a href="#palette-by-categories">Palette by categories</a>
+<ul>
+<li><a href="#birds">Birds</a></li>
+<li><a href="#fish">Fish</a></li>
+<li><a href="#frogs">Frogs</a></li>
+<li><a href="#inverts">Inverts</a></li>
+<li><a href="#landscapes">Landscapes</a></li>
+<li><a href="#lizards">Lizards</a></li>
+<li><a href="#mammals">Mammals</a></li>
+<li><a href="#plants">Plants</a></li>
+<li><a href="#snakes">Snakes</a></li>
+<li><a href="#warramaba-grasshoppers"><em>Warramaba</em> grasshoppers</a></li>
+</ul></li>
+</ul>
+</div>
 
-<p>ColRoz</p>
+<p><code>colRoz</code> is a themed colour palette package by Jacinta Kong &amp; Nicholas Wu.<br />
+The palettes are based on the colour schemes of Australia.</p>
+<p><code>colRoz</code> can:</p>
+<ul>
+<li>Generate a palette of discrete colours of a specified number</li>
+<li>Generate a gradient continuous colours of a specified number</li>
+</ul>
+<p>For this, there are three functions described below. Before that, let’s set up this introduction.</p>
+<hr />
+<div id="installation" class="section level1">
+<h1>Installation</h1>
+<pre><code>devtools::install_github(&quot;jacintak/colRoz&quot;)</code></pre>
+<p><code>colRoz</code> works with base <code>R</code> and <code>ggplot2</code> because it is a palette generator and doesn’t have a built in <code>ggplot</code> palette function.</p>
+<hr />
+</div>
+<div id="list-of-palettes" class="section level1">
+<h1>1. List of palettes</h1>
+<p>The <code>oz_palettes</code> function contains the list of palettes available. Individual palettes are gouped by theme in a list. The <code>oz_palettes</code> variable is a list of these collated lists.</p>
+<pre class="r"><code>names(oz_palettes) # See all palette themes
+ [1] &quot;warramaba&quot;  &quot;lizards&quot;    &quot;landscapes&quot; &quot;birds&quot;      &quot;frogs&quot;     
+ [6] &quot;snakes&quot;     &quot;plants&quot;     &quot;fish&quot;       &quot;inverts&quot;    &quot;mammals&quot;   
+names(oz_palettes$lizards) # See all lizard palettes
+ [1] &quot;c.decresii&quot;    &quot;c.kingii&quot;      &quot;e.leuraensis&quot;  &quot;i.lesueurii&quot;  
+ [5] &quot;l.boydii&quot;      &quot;m.horridus&quot;    &quot;m.horridus2&quot;   &quot;t.nigrolutea&quot; 
+ [9] &quot;v.acanthurus&quot;  &quot;v.pilbarensis&quot; &quot;n.levis&quot;       &quot;s.spinigerus&quot; 
+[13] &quot;e.kingii&quot;     </code></pre>
+<p>We can call a specific list using subsetting rules for lists.</p>
+<pre class="r"><code>oz_palettes[[&quot;warramaba&quot;]][[&quot;whitei&quot;]] # Subset the palette for Warramaba whitei, format: [[theme list]][[palette list]]
+     [,1]      [,2]      [,3]      [,4]      [,5]      [,6]     
+[1,] &quot;#E5A430&quot; &quot;#9C7210&quot; &quot;#D7A8B8&quot; &quot;#BAB24F&quot; &quot;#392821&quot; &quot;#9B391B&quot;
+[2,] &quot;1&quot;       &quot;3&quot;       &quot;6&quot;       &quot;5&quot;       &quot;4&quot;       &quot;2&quot;      
+oz_palettes$warramaba$whitei # does the same as above but using list names
+     [,1]      [,2]      [,3]      [,4]      [,5]      [,6]     
+[1,] &quot;#E5A430&quot; &quot;#9C7210&quot; &quot;#D7A8B8&quot; &quot;#BAB24F&quot; &quot;#392821&quot; &quot;#9B391B&quot;
+[2,] &quot;1&quot;       &quot;3&quot;       &quot;6&quot;       &quot;5&quot;       &quot;4&quot;       &quot;2&quot;      </code></pre>
+<div id="understanding-the-structure-of-the-palette" class="section level2">
+<h2>Understanding the structure of the palette</h2>
+<p>Lists within lists may seem daunting but you’d rarely need to access the palettes individually. It is also easy enough to add your own palettes if you are comfortable with manually editing package functions in R.</p>
+<p>We are happy to accept community contributions. Adding pre-chosen hex codes is easy to do. It may take longer to make a palette if we need to chose hex colours from an image.</p>
+<p>The general structure for a set of palettes is:</p>
+<pre><code>palette &lt;- list(
+pal1 = rbind(c(&lt;hex codes&gt;), c(&lt;order of discrete colours&gt;))
+)</code></pre>
+<p>Two things to note:</p>
+<ul>
+<li>The hex codes are stored as a vector in the first row of the list</li>
+<li>The second row of the list is a vector of the order colours are used when plotting discrete colours</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="defining-and-using-a-palette" class="section level1">
+<h1>2. Defining and using a palette</h1>
+<p>The palettes in this package are set as above. The main function is the palette generator. It acts as a housekeeping function to allow R to interpret the desired palette for plotting. The behaviour of this function depends on whether a discrete or continuous palette is desired and the number of colours requested.</p>
+<p>If a discrete palette of 3 colours is desired, then the function will chose the subset of 3 colours to be included from the full option of colours in a palette. The chosen order of these colours is hard coded in the list of palette.</p>
+<blockquote>
+<p><em>Note</em> there is no need to tell <code>colRoz</code> what theme the palette you want is in. Type in the palette name and <code>colRoz</code> will search the entire <code>oz_palette</code> list</p>
+</blockquote>
+<pre class="r"><code>pal &lt;- colRoz_pal(name = &quot;ngadju&quot;, n = 3, type = &quot;discrete&quot;)
+# a palette of only 3 colours
+
+library(ggplot2)
+ggplot(iris, aes(Petal.Width, Petal.Length , colour=Species)) +
+geom_point() +
+scale_colour_manual(values = pal) +
+theme_classic()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/discrete-1.png" width="672" /></p>
+<p>If a continuous palette is desired, then the function will use the function <code>colorRampPalette</code> in the <code>grDevices</code> package (included in <code>R</code>) to generate a gradient of colours between the first and last colour in the desired palette.</p>
+<p><code>"continuous"</code> palettes are generated by default if the type argument is left blank. In <code>ggplot2</code>, use the function <code>scale_colour_gradientn</code> to set the continuous scale.</p>
+<pre class="r"><code>pal &lt;- colRoz_pal(name = &quot;ngadju&quot;, n = 50, type = &quot;continuous&quot;)
+
+ggplot(iris, aes(Petal.Width, Sepal.Length , colour=Petal.Length)) +
+geom_point() +
+scale_colour_gradientn(colours = pal) +
+theme_classic()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/cont-1.png" width="672" />
+***</p>
+</div>
+<div id="visualise-a-palette" class="section level1">
+<h1>3. Visualise a palette</h1>
+<p>The function to plot the palette is only for graphing. Information is taken about the number of colours to plot from the desired palette and the palette is plotted. The name of the palette is shown.</p>
+<pre class="r"><code>print_palette(colRoz_pal(&quot;c.decresii&quot;))# if empty, all colours are shown</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/print-1.png" width="672" /></p>
+<pre class="r"><code>print_palette(colRoz_pal(&quot;c.decresii&quot;, type = &quot;discrete&quot;, n = 4))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/print-2.png" width="672" /></p>
+<pre class="r"><code>print_palette(colRoz_pal(&quot;c.decresii&quot;, type = &quot;continuous&quot;, n = 30))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/print-3.png" width="672" /></p>
+<hr />
+</div>
+<div id="palettes" class="section level1">
+<h1>Palettes</h1>
+<p><code>colRoz</code> has a number of palettes sorted by categories:</p>
+<ul>
+<li>Birds</li>
+<li>Fish</li>
+<li>Frogs</li>
+<li>Inverts</li>
+<li>Landscapes</li>
+<li>Lizards</li>
+<li>Mammals</li>
+<li>Plants</li>
+<li>Snakes</li>
+<li><em>Warramaba</em> grasshoppers</li>
+</ul>
+<hr />
+</div>
+<div id="palette-by-categories" class="section level1 tabset">
+<h1>Palette by categories</h1>
+<div id="birds" class="section level2">
+<h2>Birds</h2>
+<pre class="r"><code>names(oz_palettes$birds)
+[1] &quot;p.cincta&quot;  &quot;c.azureus&quot; &quot;m.cyaneus&quot; &quot;d.novae&quot;  </code></pre>
+<p><img src="images/p.cincta.png" height="200" /> Black-throated finch. Australia’s 2019 Bird of the Year!</p>
+<p>Azure kingfisher photo by Brenton von Takach<br />
+<img src="images/c.azureus.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJS2kIUUwAAbnrJ?format=jpg" height="200" alt="Azure kingfisher photo by Brenton von Takach" /></p>
+<p>Superb fairywren photo by Jessica McLachlan<br />
+<img src="images/m.cyaneus.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJTPlMeU4AAz2hM?format=jpg" height="200" alt="Superb fairywren photo by Jessica McLachlan" /></p>
+<p>Emu<br />
+<img src="images/d.novae.png" height="200" />
+<img src="https://pbs.twimg.com/media/DByGzv_UMAAQEaf?format=jpg" height="200" alt="Emus" /></p>
+<hr />
+</div>
+<div id="fish" class="section level2">
+<h2>Fish</h2>
+<pre class="r"><code>names(oz_palettes$fish)
+[1] &quot;r.aculeatus&quot;</code></pre>
+<p>Picasso triggerfish photo by Brenton von Takach. Also called humuhumunukunukuapuaa in Hawaiian (see also the Octonauts episode)<br />
+<img src="images/r.aculeatus.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJS2knkUUAUrIOf?format=jpg" height="200" alt="Picasso triggerfish photo by Brenton von Takach" /></p>
+<hr />
+</div>
+<div id="frogs" class="section level2">
+<h2>Frogs</h2>
+<pre class="r"><code>names(oz_palettes$frogs)
+NULL</code></pre>
+<p>There are no frog palettes yet! Send us some and have your name here.</p>
+<hr />
+</div>
+<div id="inverts" class="section level2">
+<h2>Inverts</h2>
+<pre class="r"><code>names(oz_palettes$inverts)
+ [1] &quot;p.mitchelli&quot;    &quot;k.tristis&quot;      &quot;m.oscellata&quot;    &quot;a.conica&quot;      
+ [5] &quot;v.viatica&quot;      &quot;c.brevi&quot;        &quot;a.westwoodi&quot;    &quot;a.plagiata&quot;    
+ [9] &quot;physalia&quot;       &quot;c.australasiae&quot; &quot;k.scurra&quot;       &quot;l.vestiens&quot;    
+[13] &quot;t.australis&quot;   </code></pre>
+<p>Mitchell’s diurnal cockroach photo by Craig White<br />
+<img src="images/p.mitchelli.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJPDtK9U8AAI2Fj?format=jpg" height="200" alt="Mitchell’s diurnal cockroach photo by Craig White" /></p>
+<p>Chameleon grasshopper photo by Kate Umbers<br />
+<img src="images/k.tristis.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJP7PsOVUAAmZ6F?format=jpg" height="200" alt="Chameleon grasshopper photo by Kate Umbers" /></p>
+<p>Gaudy acacia grasshopper<br />
+<img src="images/m.oscellata.png" height="200" />
+<img src="https://pbs.twimg.com/media/DDYNz6eUAAA4aVn?format=jpg" height="200" alt="Gaudy acacia grasshopper" /></p>
+<p>Giant green slant-face<br />
+<img src="images/a.conica.png" height="200" />
+<img src="https://pbs.twimg.com/media/DDYK1S9V0AQG_5o?format=jpg" height="200" alt="Giant green slant-face" /></p>
+<p>Matchstick grasshopper, VIC. See <a href="https://jacintakongresearch.wordpress.com/matchstick-grasshoppers/vandiemenella-grasshoppers/">Vandiemenella grasshoppers</a><br />
+<img src="images/v.viatica.png" height="200" />
+<img src="https://pbs.twimg.com/media/D4t79BqVUAAsk7p?format=jpg" height="200" alt="Matchstick grasshopper" /></p>
+<p>Short-tailed nudibranch, Port Philip Bay, VIC<br />
+<img src="images/c.brevi.png" height="200" />
+<img src="https://pbs.twimg.com/media/DyoaIvSUcAAB4v1?format=jpg" height="200" alt="Short-tailed nudibranch" /></p>
+<p>Tortoise beetle<br />
+<img src="images/a.westwoodi.png" height="200" />
+<img src="https://pbs.twimg.com/media/Dw1KlEEV4AACNUv?format=jpg" height="200" alt="Tortoise beetle" /></p>
+<p>Two-spots tiger moth<br />
+<img src="images/a.plagiata.png" height="200" />
+<img src="https://pbs.twimg.com/media/Dv9eUKSUwAESOXO?format=jpg" height="200" alt="Two-spots tiger moth" /></p>
+<p>Bluebottle. Undescribed species<br />
+<img src="images/physalia.png" height="200" />
+<img src="https://pbs.twimg.com/media/DvtLJTpUYAEFvP6?format=jpg" height="200" alt="Bluebottle" /></p>
+<p>Green grocer cicada<br />
+<img src="images/c.australasiae.png" height="200" />
+<img src="https://pbs.twimg.com/media/Cz9NxjMUsAAIwEO?format=jpg" height="200" alt="Green grocer cicada" /></p>
+<p>Key’s matchstick grasshopper. See more info about <a href="https://camelunimelb.wordpress.com/2019/09/17/a-grave-situation-for-keys-matchstick-grasshopper/"><em>K. scurra</em></a><br />
+<img src="images/k.scurra.png" height="200" />
+<img src="https://pbs.twimg.com/media/DVePWCYU8AEd6ML?format=jpg" height="200" alt="Key’s matchstick grasshopper" /></p>
+<p>Sea cucumber, intertidal VIC<br />
+<img src="images/l.vestiens.png" height="200" />
+<img src="https://pbs.twimg.com/media/DTt5cQ-VoAEUB2l?format=jpg" height="200" alt="Sea cucumber" /></p>
+<p>Biscuit star, Port Phillip Bay, VIC<br />
+<img src="images/t.australis.png" height="200" />
+<img src="https://pbs.twimg.com/media/DAVSdXkV0AAWtTN?format=jpg" height="200" alt="starfish" /></p>
+<hr />
+</div>
+<div id="landscapes" class="section level2">
+<h2>Landscapes</h2>
+<pre class="r"><code>names(oz_palettes$landscapes)
+ [1] &quot;uluru&quot;         &quot;shark_bay&quot;     &quot;sky&quot;           &quot;desert_sunset&quot;
+ [5] &quot;desert_dusk&quot;   &quot;desert_flood&quot;  &quot;salt_lake&quot;     &quot;daintree&quot;     
+ [9] &quot;spinifex&quot;      &quot;nq_stream&quot;     &quot;kimberley&quot;     &quot;capricorn&quot;    </code></pre>
+<p><img src="images/desert_sunset.png" height="200" />
+<img src="https://jacintakongresearch.files.wordpress.com/2016/04/banner8.jpg?resize=438%2C438" height="200" alt="desert sunset" /></p>
+<p><img src="images/shark_bay.png" height="200" />
+<img src="https://pbs.twimg.com/media/CZ31lRQXEAI4uXk?format=jpg" height="200" alt="shark bay" /></p>
+<p>Photo from Jordan Iles<br />
+<img src="images/nq_stream.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJSHoZTUEAA-r0w?format=jpg" height="200" alt="Photo from Jordan Iles" /></p>
+<p><img src="images/capricorn.png" height="200" />
+<img src="https://pbs.twimg.com/media/DQbVslaVwAAJyV1?format=jpg" height="200" alt="Tropic of Capricorn" /></p>
+<p><img src="images/sky.png" height="200" /><br />
+<img src="images/desert_dusk.png" height="200" /><br />
+<img src="images/desert_flood.png" height="200" /><br />
+<img src="images/salt_lake.png" height="200" /><br />
+<img src="images/daintree.png" height="200" /><br />
+<img src="images/kimberley.png" height="200" /><br />
+<img src="images/uluru.png" height="200" /><br />
+<img src="images/spinifex.png" height="200" /></p>
+<hr />
+</div>
+<div id="lizards" class="section level2">
+<h2>Lizards</h2>
+<pre class="r"><code>names(oz_palettes$lizards)
+ [1] &quot;c.decresii&quot;    &quot;c.kingii&quot;      &quot;e.leuraensis&quot;  &quot;i.lesueurii&quot;  
+ [5] &quot;l.boydii&quot;      &quot;m.horridus&quot;    &quot;m.horridus2&quot;   &quot;t.nigrolutea&quot; 
+ [9] &quot;v.acanthurus&quot;  &quot;v.pilbarensis&quot; &quot;n.levis&quot;       &quot;s.spinigerus&quot; 
+[13] &quot;e.kingii&quot;     </code></pre>
+<p>Tawny dragon<br />
+<img src="images/c.decresii.png" height="200" />
+<img src="https://raw.githubusercontent.com/jacintak/colRoz/gh-pages/raw_images/c.decresii.jpg" height="200" alt="Tawny dragon" /></p>
+<p>Blue Mountains water skink<br />
+<img src="images/e.leuraensis.png" height="200" />
+<img src="https://raw.githubusercontent.com/jacintak/colRoz/gh-pages/raw_images/e.leuraensis_P.Soltys.jpg" height="200" alt="Blue Mountains water skink" /></p>
+<p>Thorny devil<br />
+<img src="images/m.horridus.png" height="200" /> <img src="images/m.horridus2.png" height="200" /><br />
+<img src="https://raw.githubusercontent.com/jacintak/colRoz/gh-pages/raw_images/m.horridus_R.Gibbon.jpg" height="200" alt="Thorny devil" /></p>
+<p>Blotched blue-tongued skink<br />
+<img src="images/t.nigrolutea.png" height="200" />
+<img src="https://raw.githubusercontent.com/jacintak/colRoz/gh-pages/raw_images/T.nigrolutea_P.Soltys.jpg" height="200" alt="Blotched blue-tongued skink" /></p>
+<p>South-western spiny tailed gecko<br />
+<img src="images/s.spinigerus.png" height="200" />
+<img src="https://pbs.twimg.com/media/CaChB8NVAAAcFfv?format=jpg" height="200" alt="South-western spiny tailed gecko" /></p>
+<p>King’s skink<br />
+<img src="images/e.kingii.png" height="200" />
+<img src="https://pbs.twimg.com/media/DWPbO5jVAAA4A88?format=jpg" height="200" alt="King’s skink" /></p>
+<p>Three-lined knobtail gecko<br />
+<img src="images/n.levis.png" height="200" />
+<img src="https://pbs.twimg.com/media/EKKspz0XkAE5H4-.jpg" height="200" alt="Three-lined knobtail gecko" /></p>
+<p><img src="images/c.kingii.png" height="200" /> Frilled-neck lizard</p>
+<p><img src="images/i.lesueurii.png" height="200" /> Eastern water dragon</p>
+<p><img src="images/l.boydii.png" height="200" /> Boyd’s forest dragon</p>
+<p><img src="images/v.acanthurus.png" height="200" /> Spiny-tailed monitor</p>
+<p><img src="images/v.pilbarensis.png" height="200" /> Pilbara rock monitor</p>
+<hr />
+</div>
+<div id="mammals" class="section level2">
+<h2>Mammals</h2>
+<pre class="r"><code>names(oz_palettes$mammals)
+[1] &quot;p.breviceps&quot; &quot;thylacine&quot;  </code></pre>
+<p>Sugar glider<br />
+<img src="images/p.breviceps.png" height="200" />
+<img src="https://pbs.twimg.com/media/DkKQD_0V4AA35P6?format=jpg" height="200" alt="Sugar glider" /></p>
+<p>Thylacine (<em>T. cynocephalus</em>)<br />
+<img src="images/thylacine.png" height="200" />
+<img src="https://pbs.twimg.com/media/Cy6PuK7UsAEdY6M?format=jpg" height="200" alt="Thylacine" /></p>
+<hr />
+</div>
+<div id="plants" class="section level2">
+<h2>Plants</h2>
+<pre class="r"><code>names(oz_palettes$plants)
+[1] &quot;n.violacea&quot; &quot;xantho&quot;    </code></pre>
+<p>Blue lily photo by Emma Dalziell<br />
+<img src="images/n.violacea.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJPQuZgU8AAOlsm?format=jpg" height="200" alt="Blue lily photo by Emma Dalziell" /></p>
+<p><em>Xanthorrhoea</em> grasstree photo by Sarah Mulhall<br />
+<img src="images/xantho.png" height="200" />
+<img src="https://pbs.twimg.com/media/EJQBJywUcAEkxDN?format=jpg" height="200" alt="grasstree photo by Sarah Mulhall" /></p>
+<hr />
+</div>
+<div id="snakes" class="section level2">
+<h2>Snakes</h2>
+<pre class="r"><code>names(oz_palettes$snakes)
+[1] &quot;a.ramsayi&quot;</code></pre>
+<p><img src="images/a.ramsayi.png" height="200" /> Woma python</p>
+<hr />
+</div>
+<div id="warramaba-grasshoppers" class="section level2">
+<h2><em>Warramaba</em> grasshoppers</h2>
+<p>These are palettes based on the colours of matchstick grasshoppers in the genus Warramaba.
+You can read more about matchstick grasshoppers on <a href="https://jacintakongresearch.wordpress.com/matchstick-grasshoppers/warramaba/">Jacinta’s website</a>.<br />
+There are other matchstick grasshopper palettes in the <code>inverts</code> palette.</p>
+<pre class="r"><code>names(oz_palettes$warramaba)
+[1] &quot;grandis&quot;      &quot;flavolineata&quot; &quot;whitei&quot;       &quot;picta&quot;        &quot;virgo&quot;       
+[6] &quot;ngadju&quot;      </code></pre>
+<p><img src="images/whitei.png" height="200" />
+<img src="https://pbs.twimg.com/media/DdZBdwdUwAEOGdV?format=jpg" height="200" alt="whitei" /></p>
+<p><img src="images/grandis.png" height="200" />
+<img src="https://pbs.twimg.com/media/C4IX6U_WYAEdRMl?format=jpg" height="200" alt="grandis" /></p>
+<p><img src="images/picta.png" height="200" />
+<img src="https://pbs.twimg.com/media/C4VvvltUoAAnw_q?format=jpg" height="200" alt="picta" /></p>
+<p><img src="images/flavolineata.png" height="200" />
+<img src="https://jacintakongresearch.files.wordpress.com/2019/11/grasshoppers-jpegs20160510154548-2.jpg?resize=438%2C438" height="200" alt="flavolineata" /></p>
+<p><img src="images/ngadju.png" height="200" />
+<img src="https://jacintakongresearch.files.wordpress.com/2015/03/file_000.jpeg" height="200" alt="ngadju" /></p>
+<p><img src="images/virgo.png" height="200" />
+<img src="https://pbs.twimg.com/media/ChI_71tUYAAMu5H?format=jpg" height="200" alt="virgo" /></p>
+<hr />
+</div>
+</div>

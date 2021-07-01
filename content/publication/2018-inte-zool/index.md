@@ -2,10 +2,10 @@
 abstract: 
 
 authors:
-- Michael R. Kearney
-- John Deutscher
+- M. R. Kearney
+- J. Deutscher
 - "**admin**"
-- Ary A. Hoffmann
+- A. A. Hoffmann
 date: "2018-03-13"
 doi: "10.1111/1749-4877.12314"
 featured: false

@@ -2,9 +2,9 @@
 abstract: Ectotherm heat limits track biological rates
 address:
 all_day: false
-authors: [admin, Jean-Francois Arnoldi, Andrew L. Jackson, Amanda E. Bates, Simon A. Morley, James A. Smith & Nicholas L. Payne]
-date: "2021-07-05"
-date_end: "2021-07-07"
+authors: [admin, J.-F. Arnoldi, A. L. Jackson, A. E. Bates, S. A. Morley, J. A. Smith & N. L. Payne]
+date: "2021-07-07T11:00:00"
+date_end: "2021-07-07T12:00:00"
 event: British Ecological Society Macroecology Group Meeting
 event_url: https://www.britishecologicalsociety.org/event/bes-macro-2021/
 featured: false
@@ -30,5 +30,3 @@ url_pdf: ""
 url_slides: ""
 url_video: ""
 ---
-
-

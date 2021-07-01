@@ -2,7 +2,7 @@
 abstract: The Irish Ecological Association Conference
 address:
 all_day: false
-authors: []
+authors: [admin, J.-F. Arnoldi, A. L. Jackson, A. E. Bates, S. A. Morley, J. A. Smith & N. L. Payne]
 date: "2021-01-07T09:00:00Z"
 date_end: "2021-01-08T18:00:00Z"
 event: Irish Ecological Association Conference

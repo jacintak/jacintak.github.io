@@ -1,0 +1,219 @@
+---
+title: "OSM in R" 
+date: "2021-07-01"
+author: admin
+subtitle: "Become an Etsy pro"
+summary: 'Make a map in R using Open Street Map'
+slug: [r-club-OSM]
+categories: [code]
+tags:
+- teaching
+- R stats
+- code
+- NERD club
+publishDate: '2021-07-01'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: [NERD-club]
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>This tutorial was originally presented to NERD club on 4/2/2020.</p>
+<div id="city-maps" class="section level1">
+<h1>City maps</h1>
+<p>Consider yourself a hipster?<br />
+Do the clean lines and natural materials of modern scandi make you feel at home?<br />
+Is your basic coffee order a flat white? :coffee:</p>
+<p>If the answer to all the above is YES, then here’s a present for you!</p>
+<center>
+<img src="https://images-na.ssl-images-amazon.com/images/I/61-dKVczbXL._SL1000_.jpg" title="fig:" width="250" alt="A map of Dublin" />
+</center>
+<p><em>But wait!</em> This poster costs €30 (thereabouts) online!
+<a href="https://www.etsy.com/ie/listing/561937898/dublin-print-dublin-city-map-dublin">See example</a>.<br />
+That’s approximately 9 flat whites you could have had.<br />
+:coffee::coffee::coffee::coffee::coffee::coffee::coffee::coffee::coffee:<br />
+Can you make this in R?, you ask, asking for a friend.</p>
+<p><strong>Fear not</strong>. You can make this yourself in R!</p>
+<hr />
+</div>
+<div id="maps-in-r" class="section level1">
+<h1>Maps in R</h1>
+<p>In this tutorial we will replicate a poster like this. We will need R and powerpoint to put in the final touches. You could do it fully in R but powerpoint will make our lives a bit easier. In summary, it requires a bit of GIS wrangling to code in what you want to display.</p>
+<p>The data is freely available from <a href="https://www.openstreetmap.org">Openstreetmap</a>, for proprietary haters out there. I will refer to it as OSM.</p>
+<p>We will be following <a href="https://ggplot2tutor.com/streetmaps/streetmaps/">this</a> tutorial.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>You will need to install the relevant packages: <code>osmdata</code>, <code>tidyverse</code> and <code>sf</code>.</p>
+<pre><code>#install.packages(&quot;osmdata&quot;, &quot;tidyverse&quot;, &quot;sf&quot;)
+library(osmdata)
+library(tidyverse)</code></pre>
+<p>As you can see this will use tidyverse and I will be using piping. Don’t worry if you are not a master at piping. The code is written.</p>
+<blockquote>
+<p>In a nutshell, instead of function2(function1(X)) to apply function 1 <em>then</em> function 2 to X, you type x %&gt;% function1() %&gt;% function2(). I.E. take X, apply function 1, then apply function 2 to the resulting output. Overall it’s easier to read, hence it’s ‘tidy’.</p>
+</blockquote>
+</div>
+<div id="osm-data" class="section level2">
+<h2>OSM data</h2>
+<p>OSM stores various features you can explore under <code>available_features()</code>. You can see what is under each feature with <code>available_tags("&lt;insert feature name here&gt;")</code>.</p>
+<hr />
+</div>
+</div>
+<div id="get-city-co-ordinates" class="section level1">
+<h1>1. Get city co-ordinates</h1>
+<p>For this example we will make a map of Dublin. First we need the latitude and longitude of Dublin. If you want to modify the extent of your map, this is where you change the co-ordinates.</p>
+<pre><code>city_coords &lt;- getbb(&quot;Dublin Ireland&quot;)
+#city_coords &lt;- c(-6.391,53.2644,-6.114883, 53.416) # to get all the M50</code></pre>
+</div>
+<div id="get-map-features" class="section level1">
+<h1>2. Get map features</h1>
+<div id="roads" class="section level2">
+<h2>Roads</h2>
+<p>We can get roads by querying OSM for the GPS co-ordinates for Dublin and saving it to a variable called <em>roads</em>.</p>
+<pre><code>roads &lt;- city_coords %&gt;% #pipe!
+  opq() %&gt;% # create query for OSM database
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;motorway&quot;, &quot;primary&quot;, 
+                            &quot;secondary&quot;, &quot;tertiary&quot;)) %&gt;%
+  osmdata_sf() # save it as an simple features format
+roads</code></pre>
+</div>
+<div id="streets" class="section level2">
+<h2>Streets</h2>
+<p>We can do the same for streets.</p>
+<pre><code>streets &lt;- city_coords%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;residential&quot;, &quot;living_street&quot;,
+                            &quot;unclassified&quot;,
+                            &quot;service&quot;, &quot;footway&quot;)) %&gt;%
+  osmdata_sf()</code></pre>
+</div>
+<div id="water" class="section level2">
+<h2>Water</h2>
+<p>Can’t forget the Liffey and the canals. Sadly the ocean cannot be mapped.</p>
+<pre><code>water &lt;- city_coords%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;waterway&quot;, value = c(&quot;canal&quot;, &quot;river&quot;)) %&gt;%
+  osmdata_sf()</code></pre>
+</div>
+</div>
+<div id="plotting" class="section level1">
+<h1>3. Plotting</h1>
+<p>Time to call <code>ggplot2</code> and plot our map.</p>
+<pre><code>map &lt;- ggplot() +
+  # roads
+  geom_sf(data = roads$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;grey&quot;, # colour of feature
+          size = 0.8,       # Size on map
+          alpha = 0.8) +    # transparency
+  # streets
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;#ffbe7f&quot;,
+          size = 0.2,
+          alpha = 0.6) +
+  # water
+  geom_sf(data = water$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;steelblue&quot;,
+          size = 0.8,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE) +
+  # remove axes
+  theme_void()
+
+map</code></pre>
+</div>
+<div id="labels" class="section level1">
+<h1>4. Labels</h1>
+<p>At this point it is easier to save the file and add text in powerpoint but if you want to try your hand at ggplot’s annotation features go ahead.</p>
+<p>Here I’ve done one in a dark colour scheme.</p>
+<pre><code>theme_colour &lt;- &quot;#282828&quot; # dark theme
+
+dark_map &lt;- map +
+  labs(caption = &quot;Dublin, Ireland&quot;) +
+  theme(axis.text = element_blank(),
+        plot.margin=unit(c(1,1,1,1),&quot;cm&quot;),
+        panel.grid.major = element_line(colour = theme_colour),
+        panel.grid.minor = element_line(colour = theme_colour),
+        plot.background = element_rect(fill = theme_colour),
+        panel.background = element_rect(fill = theme_colour),
+        plot.caption = element_text(size = 24, colour = &quot;white&quot;, hjust = 0.5, vjust = -2, family = &quot;mono&quot;),
+        panel.border = element_rect(colour = &quot;white&quot;, fill=NA, size=2),
+        axis.ticks = element_blank())
+
+dark_map</code></pre>
+<div id="saving-our-map" class="section level2">
+<h2>Saving our map</h2>
+<pre><code>ggsave(plot = dark_map, filename = &quot;NERD/dark_dublin.pdf&quot;, width = 11, height = 8.5, device = &quot;pdf&quot;, dpi = 300)</code></pre>
+<hr />
+<p>If all of that was too much, there’s an R package for it. <a href="https://github.com/lina2497/Giftmap" class="uri">https://github.com/lina2497/Giftmap</a></p>
+<p>There is also a <a href="https://anvaka.github.io/city-roads/">website</a></p>
+<hr />
+</div>
+</div>
+<div id="extra-details" class="section level1">
+<h1>Extra details</h1>
+<p>Less is more but if you really want to put more features:</p>
+<div id="other-water-bodies" class="section level2">
+<h2>Other water bodies</h2>
+<pre><code>extra_water &lt;- city_coords %&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;natural&quot;, value = c(&quot;water&quot;)) %&gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = extra_water$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &quot;steelblue&quot;,
+          colour = NA,
+          alpha = 0.5) +
+  geom_sf(data = extra_water$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &quot;steelblue&quot;,
+          colour = NA,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)</code></pre>
+</div>
+<div id="parks" class="section level2">
+<h2>Parks</h2>
+<p>Nature reserves including Dublin Bay</p>
+<pre><code>park &lt;- city_coords%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;leisure&quot;, value = c(&quot;park&quot;)) %&gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = park$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &quot;darkgreen&quot;,
+          colour = NA,
+          alpha = 0.3) +
+  geom_sf(data = park$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &quot;darkgreen&quot;,
+          colour = NA,
+          alpha = 0.3) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)</code></pre>
+<hr />
+</div>
+</div>
+<div id="end" class="section level1">
+<h1>End</h1>
+<p>That’s the gist of using OSM in <code>R</code>. You can use the same code to make any map, e.g. for a paper.</p>
+</div>

@@ -1,15 +1,22 @@
 ---
 title: "CV"
-subtitle: Jacinta D Kong
+subtitle: "Jacinta D Kong"
+#date: "`r format(Sys.Date(), '%d %B %Y')`"
 output:
   blogdown::html_page:
     toc: yes
 urlcolor: blue
 links:
-- icon: fa-file-pdf
-  icon_pack: fab
+- icon: file-pdf
+  icon_pack: fas
   name: Download PDF
   url: files/Kong_JD_CV.pdf
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en
+- icon: orcid
+  icon_pack: fab
+  link: https://orcid.org/0000-0002-1085-8612
 ---
 
 Last updated `r format(Sys.Date(), '%d %B %Y')`
@@ -84,8 +91,8 @@ Conferred 17.12.2012
 
 # Research highlights
 
-[ORCID](https://orcid.org/0000-0002-1085-8612)   
-[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
+<i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
+<i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
 Total citations: 53  
 
@@ -138,8 +145,8 @@ The University of Queensland Undergraduate Research Conference
  * **$200 AUD**. 2017 	Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne 
  * **$26 288 AUD**. 2016 	Australian Postgraduate Award, Australian Government 	
  * **$25 849 AUD**. 2015 	Australian Postgraduate Award, Australian Government 	
- * 2014. 	2013 University Medal, the University of Queensland, Australia 	
- * 2010 – 2013 	Dean’s Commendation for Academic Excellence (formerly Dean’s Commendation for High Achievement), the Faculty of Science, the University of Queensland, Australia 	
+ * 2014. 2013 University Medal, the University of Queensland, Australia  
+ * 2010 – 2013. Dean’s Commendation for Academic Excellence (formerly Dean’s Commendation for High Achievement), the Faculty of Science, the University of Queensland, Australia 	
 
 
 ***
@@ -173,7 +180,9 @@ The University of Queensland Undergraduate Research Conference
 
 2021
 
- * Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland
+ * Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland (online)
+ * Ectotherm heat limits track biological rates. British Ecological Society Macroecology Special Interest Group meeting (online)
+ * Thermal adaptation and plasticity of egg development generates latitudinal patterns in insect life cycles under seasonal climates. Society for Experimental Biology Annual Meeting (online)
 
 2019
 

@@ -2,8 +2,8 @@
 abstract: 
 authors:
 - admin
-- Ary A. Hoffmann 
-- Michael R. Kearney
+- A. A. Hoffmann 
+- M. R. Kearney
 date: "2019-01-31"
 doi: "10.1098/rstb.2018.0547"
 featured: false
@@ -26,13 +26,23 @@ tags:
 - life history
 title: Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism
 url_code: ""
-url_dataset: "https://doi.org/10.6084/m9.figshare.c.4491050"
-url_pdf: "files/2019-ptrsb-postprint.pdf"
+url_dataset: ""
+url_pdf: ""
 url_poster: ""
 url_project: ""
 url_slides: ""
 url_source: ""
 url_video: ""
+
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: files/2019-ptrsb-postprint.pdf
+- icon: database
+  icon_pack: fas
+  name: Dataset
+  url: "https://doi.org/10.6084/m9.figshare.c.4491050"
 ---
 
 # Abstract

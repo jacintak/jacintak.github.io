@@ -5,12 +5,218 @@
     <link>https://jacintak.github.io/categories/code/</link>
       <atom:link href="https://jacintak.github.io/categories/code/index.xml" rel="self" type="application/rss+xml" />
     <description>code</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>code</title>
       <link>https://jacintak.github.io/categories/code/</link>
     </image>
+    
+    <item>
+      <title>OSM in R</title>
+      <link>https://jacintak.github.io/post/2021-07-01-OSM-in-R/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-07-01-OSM-in-R/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-07-01-OSM-in-R/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;This tutorial was originally presented to NERD club on 4/2/2020.&lt;/p&gt;
+&lt;div id=&#34;city-maps&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;City maps&lt;/h1&gt;
+&lt;p&gt;Consider yourself a hipster?&lt;br /&gt;
+Do the clean lines and natural materials of modern scandi make you feel at home?&lt;br /&gt;
+Is your basic coffee order a flat white? ☕&lt;/p&gt;
+&lt;p&gt;If the answer to all the above is YES, then here’s a present for you!&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://images-na.ssl-images-amazon.com/images/I/61-dKVczbXL._SL1000_.jpg&#34; title=&#34;fig:&#34; width=&#34;250&#34; alt=&#34;A map of Dublin&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;&lt;em&gt;But wait!&lt;/em&gt; This poster costs €30 (thereabouts) online!
+&lt;a href=&#34;https://www.etsy.com/ie/listing/561937898/dublin-print-dublin-city-map-dublin&#34;&gt;See example&lt;/a&gt;.&lt;br /&gt;
+That’s approximately 9 flat whites you could have had.&lt;br /&gt;
+☕☕☕☕☕☕☕☕☕&lt;br /&gt;
+Can you make this in R?, you ask, asking for a friend.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fear not&lt;/strong&gt;. You can make this yourself in R!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;maps-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Maps in R&lt;/h1&gt;
+&lt;p&gt;In this tutorial we will replicate a poster like this. We will need R and powerpoint to put in the final touches. You could do it fully in R but powerpoint will make our lives a bit easier. In summary, it requires a bit of GIS wrangling to code in what you want to display.&lt;/p&gt;
+&lt;p&gt;The data is freely available from &lt;a href=&#34;https://www.openstreetmap.org&#34;&gt;Openstreetmap&lt;/a&gt;, for proprietary haters out there. I will refer to it as OSM.&lt;/p&gt;
+&lt;p&gt;We will be following &lt;a href=&#34;https://ggplot2tutor.com/streetmaps/streetmaps/&#34;&gt;this&lt;/a&gt; tutorial.&lt;/p&gt;
+&lt;div id=&#34;setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;You will need to install the relevant packages: &lt;code&gt;osmdata&lt;/code&gt;, &lt;code&gt;tidyverse&lt;/code&gt; and &lt;code&gt;sf&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#install.packages(&amp;quot;osmdata&amp;quot;, &amp;quot;tidyverse&amp;quot;, &amp;quot;sf&amp;quot;)
+library(osmdata)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see this will use tidyverse and I will be using piping. Don’t worry if you are not a master at piping. The code is written.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In a nutshell, instead of function2(function1(X)) to apply function 1 &lt;em&gt;then&lt;/em&gt; function 2 to X, you type x %&amp;gt;% function1() %&amp;gt;% function2(). I.E. take X, apply function 1, then apply function 2 to the resulting output. Overall it’s easier to read, hence it’s ‘tidy’.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;osm-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;OSM data&lt;/h2&gt;
+&lt;p&gt;OSM stores various features you can explore under &lt;code&gt;available_features()&lt;/code&gt;. You can see what is under each feature with &lt;code&gt;available_tags(&#34;&amp;lt;insert feature name here&amp;gt;&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-city-co-ordinates&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. Get city co-ordinates&lt;/h1&gt;
+&lt;p&gt;For this example we will make a map of Dublin. First we need the latitude and longitude of Dublin. If you want to modify the extent of your map, this is where you change the co-ordinates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;city_coords &amp;lt;- getbb(&amp;quot;Dublin Ireland&amp;quot;)
+#city_coords &amp;lt;- c(-6.391,53.2644,-6.114883, 53.416) # to get all the M50&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-map-features&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. Get map features&lt;/h1&gt;
+&lt;div id=&#34;roads&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Roads&lt;/h2&gt;
+&lt;p&gt;We can get roads by querying OSM for the GPS co-ordinates for Dublin and saving it to a variable called &lt;em&gt;roads&lt;/em&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;roads &amp;lt;- city_coords %&amp;gt;% #pipe!
+  opq() %&amp;gt;% # create query for OSM database
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;motorway&amp;quot;, &amp;quot;primary&amp;quot;, 
+                            &amp;quot;secondary&amp;quot;, &amp;quot;tertiary&amp;quot;)) %&amp;gt;%
+  osmdata_sf() # save it as an simple features format
+roads&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;streets&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Streets&lt;/h2&gt;
+&lt;p&gt;We can do the same for streets.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;streets &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;residential&amp;quot;, &amp;quot;living_street&amp;quot;,
+                            &amp;quot;unclassified&amp;quot;,
+                            &amp;quot;service&amp;quot;, &amp;quot;footway&amp;quot;)) %&amp;gt;%
+  osmdata_sf()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;water&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Water&lt;/h2&gt;
+&lt;p&gt;Can’t forget the Liffey and the canals. Sadly the ocean cannot be mapped.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;water &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;waterway&amp;quot;, value = c(&amp;quot;canal&amp;quot;, &amp;quot;river&amp;quot;)) %&amp;gt;%
+  osmdata_sf()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Plotting&lt;/h1&gt;
+&lt;p&gt;Time to call &lt;code&gt;ggplot2&lt;/code&gt; and plot our map.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;map &amp;lt;- ggplot() +
+  # roads
+  geom_sf(data = roads$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;grey&amp;quot;, # colour of feature
+          size = 0.8,       # Size on map
+          alpha = 0.8) +    # transparency
+  # streets
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;#ffbe7f&amp;quot;,
+          size = 0.2,
+          alpha = 0.6) +
+  # water
+  geom_sf(data = water$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;steelblue&amp;quot;,
+          size = 0.8,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE) +
+  # remove axes
+  theme_void()
+
+map&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;labels&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Labels&lt;/h1&gt;
+&lt;p&gt;At this point it is easier to save the file and add text in powerpoint but if you want to try your hand at ggplot’s annotation features go ahead.&lt;/p&gt;
+&lt;p&gt;Here I’ve done one in a dark colour scheme.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme_colour &amp;lt;- &amp;quot;#282828&amp;quot; # dark theme
+
+dark_map &amp;lt;- map +
+  labs(caption = &amp;quot;Dublin, Ireland&amp;quot;) +
+  theme(axis.text = element_blank(),
+        plot.margin=unit(c(1,1,1,1),&amp;quot;cm&amp;quot;),
+        panel.grid.major = element_line(colour = theme_colour),
+        panel.grid.minor = element_line(colour = theme_colour),
+        plot.background = element_rect(fill = theme_colour),
+        panel.background = element_rect(fill = theme_colour),
+        plot.caption = element_text(size = 24, colour = &amp;quot;white&amp;quot;, hjust = 0.5, vjust = -2, family = &amp;quot;mono&amp;quot;),
+        panel.border = element_rect(colour = &amp;quot;white&amp;quot;, fill=NA, size=2),
+        axis.ticks = element_blank())
+
+dark_map&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;saving-our-map&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Saving our map&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;ggsave(plot = dark_map, filename = &amp;quot;NERD/dark_dublin.pdf&amp;quot;, width = 11, height = 8.5, device = &amp;quot;pdf&amp;quot;, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;If all of that was too much, there’s an R package for it. &lt;a href=&#34;https://github.com/lina2497/Giftmap&#34; class=&#34;uri&#34;&gt;https://github.com/lina2497/Giftmap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There is also a &lt;a href=&#34;https://anvaka.github.io/city-roads/&#34;&gt;website&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extra-details&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Extra details&lt;/h1&gt;
+&lt;p&gt;Less is more but if you really want to put more features:&lt;/p&gt;
+&lt;div id=&#34;other-water-bodies&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Other water bodies&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;extra_water &amp;lt;- city_coords %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;natural&amp;quot;, value = c(&amp;quot;water&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = extra_water$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;steelblue&amp;quot;,
+          colour = NA,
+          alpha = 0.5) +
+  geom_sf(data = extra_water$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;steelblue&amp;quot;,
+          colour = NA,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parks&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Parks&lt;/h2&gt;
+&lt;p&gt;Nature reserves including Dublin Bay&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;park &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;leisure&amp;quot;, value = c(&amp;quot;park&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = park$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;darkgreen&amp;quot;,
+          colour = NA,
+          alpha = 0.3) +
+  geom_sf(data = park$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;darkgreen&amp;quot;,
+          colour = NA,
+          alpha = 0.3) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;end&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;End&lt;/h1&gt;
+&lt;p&gt;That’s the gist of using OSM in &lt;code&gt;R&lt;/code&gt;. You can use the same code to make any map, e.g. for a paper.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>R Club: Functions &amp; Loops</title>
@@ -301,11 +507,11 @@ F-statistic: 3.784 on 3 and 116 DF,  p-value: 0.01242&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Leaving the valley of intermediate competence</title>
-      <link>https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/</link>
+      <link>https://jacintak.github.io/post/using-mapply/</link>
       <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/</guid>
+      <guid>https://jacintak.github.io/post/using-mapply/</guid>
       <description>
-&lt;script src=&#34;https://jacintak.github.io/post/2021-03-01-replacing-for-loops-with-apply/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://jacintak.github.io/post/using-mapply/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;if-it-aint-broke-dont-fix-it&#34; class=&#34;section level1&#34;&gt;
@@ -397,7 +603,7 @@ summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
 ##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
 ##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
 ##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As you see it’s not as simple as the loop or &lt;code&gt;mapply&lt;/code&gt; and requires &lt;code&gt;mapply&lt;/code&gt; anyway :shrug:&lt;br /&gt;
+&lt;p&gt;As you see it’s not as simple as the loop or &lt;code&gt;mapply&lt;/code&gt; and requires &lt;code&gt;mapply&lt;/code&gt; anyway 🤷&lt;br /&gt;
 So we can do better…&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
@@ -428,7 +634,7 @@ summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
 ##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:14.8   3rd Qu.:0.8  
 ##  Max.   :15   Max.   :24   Max.   :16.0   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What &lt;code&gt;mapply&lt;/code&gt; is doing is using the n&lt;sup&gt;th&lt;/sup&gt; element of &lt;code&gt;a&lt;/code&gt; with the corresponding n&lt;sup&gt;th&lt;/sup&gt; element in the list &lt;code&gt;loop_data&lt;/code&gt;. So the fifth value of &lt;code&gt;a&lt;/code&gt; (1.0) is used in the calculations on the 5th data frame in &lt;code&gt;loop_data&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;We’ve replace the for loop with a &lt;code&gt;mapply&lt;/code&gt; function! :clap:&lt;br /&gt;
+&lt;p&gt;We’ve replace the for loop with a &lt;code&gt;mapply&lt;/code&gt; function! 👏&lt;br /&gt;
 Here’s to functional programming. Next up is &lt;code&gt;purrr::map&lt;/code&gt;…&lt;/p&gt;
 &lt;/div&gt;
 </description>

@@ -2,9 +2,9 @@
 abstract: 
 authors:
 - "**admin**"
-- Jason K. Axford
-- Ary A. Hoffmann 
-- Michael R. Kearney
+- J. K. Axford
+- A. A. Hoffmann 
+- M. R. Kearney
 date: "2016-05-11"
 doi: "10.1111/2041-210X.12589"
 featured: false
@@ -27,12 +27,22 @@ tags:
 title: Novel applications of thermocyclers for phenotyping invertebrate thermal responses
 url_code: ""
 url_dataset: ""
-url_pdf: "files/2016-thermocycler-methods-preprint.pdf"
+url_pdf: ""
 url_poster: ""
 url_project: ""
 url_slides: ""
 url_source: ""
-url_video: "https://www.youtube.com/watch?v=uXzEfvR_hoE"
+url_video: ""
+
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: files/2016-thermocycler-methods-preprint.pdf
+- icon: film
+  icon_pack: fas
+  name: Video
+  url: https://www.youtube.com/watch?v=uXzEfvR_hoE
 ---
 
 # Abstract
