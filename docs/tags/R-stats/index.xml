@@ -5,12 +5,75 @@
     <link>https://jacintak.github.io/tags/R-stats/</link>
       <atom:link href="https://jacintak.github.io/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
     <description>R stats</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>R stats</title>
       <link>https://jacintak.github.io/tags/R-stats/</link>
     </image>
+    
+    <item>
+      <title>How to add a Phylopic icon to your graph in R</title>
+      <link>https://jacintak.github.io/post/2021-08-01-rphylopic/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-08-01-rphylopic/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-08-01-rphylopic/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;phylopic.org&#34;&gt;Phylopic&lt;/a&gt; is an online database of silhouettes of species. Most are freely available, with various copyright licences. It’s a great resource for scientific illustration or making cool presentations.&lt;/p&gt;
+&lt;p&gt;One way I wanted to use Phylopic was to add a silhouette of an animal directly to an &lt;code&gt;R&lt;/code&gt; figure. You could search Phylopic yourself and copy the image id to add the icon to the graph but where’s the fun in that?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rphylopic/readme/README.html&#34;&gt;rphylopic&lt;/a&gt; is an &lt;code&gt;R&lt;/code&gt; package that can search and retrieve icons directly from Phylopic. You can use &lt;code&gt;rphylopic&lt;/code&gt; with &lt;code&gt;ggplot2&lt;/code&gt; or base graphics.&lt;/p&gt;
+&lt;p&gt;The process of searching Phylopic and pulling out the image id is not straightforward, and I didn’t find a step-by-step guide I liked for doing so, so here is a reproducible example using the built in dataset &lt;code&gt;beaver1&lt;/code&gt; - a time series of a beaver’s body temperature.&lt;/p&gt;
+&lt;p&gt;The data looks like this and we want to add a beaver icon to the top left corner:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beaver_plot &amp;lt;- qplot(beaver1$temp,x = seq_along(beaver1$temp), geom = &amp;quot;line&amp;quot;, xlab = &amp;quot;Time&amp;quot;, ylab = &amp;quot;Temperature&amp;quot;)
+beaver_plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/2021-08-01-rphylopic/index_files/figure-html/beaver-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;step-by-step-guide-to-adding-a-phylopic-icon&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Step-by-step guide to adding a Phylopic icon&lt;/h1&gt;
+&lt;div id=&#34;getting-the-right-species&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Getting the right species&lt;/h2&gt;
+&lt;p&gt;You can search Phylopic by species using &lt;code&gt;name_search&lt;/code&gt;. You might get multiple hits because there may be multiple matches in the databases. It’s worth cross-referencing the NameBank ID with the website. The NameBank ID is located at the top right of the webpage. In this case we want the first option - 109179.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(rphylopic)
+beaver &amp;lt;- name_search(text = &amp;quot;Castor canadensis&amp;quot;, options = &amp;quot;namebankID&amp;quot;)[[1]] # find names
+beaver&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extracting-the-id-of-the-icon-you-want&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Extracting the id of the icon you want&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;name_images&lt;/code&gt; to list all the beaver icons available. In this case, there are two versions of the beaver icon we can use - listed as &lt;code&gt;$same[[1]]&lt;/code&gt; and &lt;code&gt;$same[[2]]&lt;/code&gt; with unique &lt;code&gt;uid&lt;/code&gt;. The &lt;code&gt;uid&lt;/code&gt; is the unique id of the icon. Again, it’s handy to check the &lt;code&gt;uid&lt;/code&gt; with the website. You can find the &lt;code&gt;uid&lt;/code&gt; on the website by clicking the actual icon you want to use and copying from the address bar.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_id_all &amp;lt;- name_images(uuid = beaver$uid[1])  # list images
+beaver_id_all&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s use the second icon and extract only that &lt;code&gt;uid&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_id &amp;lt;- name_images(uuid = beaver$uid[1])$same[[2]]$uid  # get individual image id
+beaver_id&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-the-icon-itself&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Getting the icon itself&lt;/h2&gt;
+&lt;p&gt;Now we can get the actual image using &lt;code&gt;image_data&lt;/code&gt;. Each icon is available in different sizes, from a thumbnail (64 px) to large icons (1042 px). We will get a 256 px icon so that the resolution is high enough to avoid pixelation.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_pic &amp;lt;- image_data(beaver_id, size = 256)[[1]] # get actual icon, define size. Don&amp;#39;t run this alone&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adding-the-beaver-icon-to-the-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Adding the beaver icon to the plot&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;add_phylopic&lt;/code&gt; to add the icon to a &lt;code&gt;ggplot2&lt;/code&gt; graph. You need to specify the x and y axis co-ordinates for the graph. Use &lt;code&gt;ysize&lt;/code&gt; to change the size of the icon. Use &lt;code&gt;alpha&lt;/code&gt; to control the transparency. &lt;code&gt;colour&lt;/code&gt; will change the colour.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_plot + add_phylopic(beaver_pic, alpha = 1, x = 10, y = 37.4, ysize = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;featured.png&#34; style=&#34;width:70.0%&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;The final plot&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And that’s it! 🦫&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-uses-of-rphylopic&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Other uses of &lt;code&gt;rphylopic&lt;/code&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;You can add the icon as a background image but I would question why that would be a good idea from a graphic design perspective. To do so, you don’t need to specify any other variables in &lt;code&gt;add_phylopic&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You can also use icons as data points by plotting each icon in place of the regular point within a for loop. You can see an example in the &lt;code&gt;rphylopic&lt;/code&gt; documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>OSM in R</title>

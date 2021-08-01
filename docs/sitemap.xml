@@ -3,6 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jacintak.github.io/categories/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/code/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/categories/code/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/ggplot2/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/post/2021-08-01-rphylopic/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/post/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/R-stats/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/tags/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/authors/admin/</loc>
     <lastmod>2021-07-08T14:05:00+00:00</lastmod>
   </url>
@@ -28,11 +73,6 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/</loc>
-    <lastmod>2021-07-08T14:05:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/tags/life-cycles/</loc>
     <lastmod>2021-07-08T14:05:00+00:00</lastmod>
   </url>
@@ -54,11 +94,6 @@
   
   <url>
     <loc>https://jacintak.github.io/talk/SEB2021/</loc>
-    <lastmod>2021-07-08T14:05:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/</loc>
     <lastmod>2021-07-08T14:05:00+00:00</lastmod>
   </url>
   
@@ -108,37 +143,12 @@
   </url>
   
   <url>
-    <loc>https://jacintak.github.io/categories/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/code/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/categories/code/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jacintak.github.io/tags/NERD-club/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jacintak.github.io/post/2021-07-01-OSM-in-R/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/post/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/tags/R-stats/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url>
   

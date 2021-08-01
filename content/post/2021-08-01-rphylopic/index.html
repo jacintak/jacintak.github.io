@@ -1,0 +1,73 @@
+---
+title: "How to add a Phylopic icon to your graph in R"
+author: admin
+date: '2021-08-01'
+slug: [rphylopic]
+categories: [code]
+tags: [R stats, ggplot2, code]
+subtitle: ''
+summary: 'A step-by-step guide to rphylopic'
+authors: []
+lastmod: ''
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p><a href="phylopic.org">Phylopic</a> is an online database of silhouettes of species. Most are freely available, with various copyright licences. It’s a great resource for scientific illustration or making cool presentations.</p>
+<p>One way I wanted to use Phylopic was to add a silhouette of an animal directly to an <code>R</code> figure. You could search Phylopic yourself and copy the image id to add the icon to the graph but where’s the fun in that?</p>
+<p><a href="https://cran.r-project.org/web/packages/rphylopic/readme/README.html">rphylopic</a> is an <code>R</code> package that can search and retrieve icons directly from Phylopic. You can use <code>rphylopic</code> with <code>ggplot2</code> or base graphics.</p>
+<p>The process of searching Phylopic and pulling out the image id is not straightforward, and I didn’t find a step-by-step guide I liked for doing so, so here is a reproducible example using the built in dataset <code>beaver1</code> - a time series of a beaver’s body temperature.</p>
+<p>The data looks like this and we want to add a beaver icon to the top left corner:</p>
+<pre class="r"><code>beaver_plot &lt;- qplot(beaver1$temp,x = seq_along(beaver1$temp), geom = &quot;line&quot;, xlab = &quot;Time&quot;, ylab = &quot;Temperature&quot;)
+beaver_plot</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/beaver-1.png" width="672" /></p>
+<hr />
+<div id="step-by-step-guide-to-adding-a-phylopic-icon" class="section level1">
+<h1>Step-by-step guide to adding a Phylopic icon</h1>
+<div id="getting-the-right-species" class="section level2">
+<h2>1. Getting the right species</h2>
+<p>You can search Phylopic by species using <code>name_search</code>. You might get multiple hits because there may be multiple matches in the databases. It’s worth cross-referencing the NameBank ID with the website. The NameBank ID is located at the top right of the webpage. In this case we want the first option - 109179.</p>
+<pre><code>library(rphylopic)
+beaver &lt;- name_search(text = &quot;Castor canadensis&quot;, options = &quot;namebankID&quot;)[[1]] # find names
+beaver</code></pre>
+</div>
+<div id="extracting-the-id-of-the-icon-you-want" class="section level2">
+<h2>2. Extracting the id of the icon you want</h2>
+<p>Use <code>name_images</code> to list all the beaver icons available. In this case, there are two versions of the beaver icon we can use - listed as <code>$same[[1]]</code> and <code>$same[[2]]</code> with unique <code>uid</code>. The <code>uid</code> is the unique id of the icon. Again, it’s handy to check the <code>uid</code> with the website. You can find the <code>uid</code> on the website by clicking the actual icon you want to use and copying from the address bar.</p>
+<pre><code>beaver_id_all &lt;- name_images(uuid = beaver$uid[1])  # list images
+beaver_id_all</code></pre>
+<p>Let’s use the second icon and extract only that <code>uid</code>.</p>
+<pre><code>beaver_id &lt;- name_images(uuid = beaver$uid[1])$same[[2]]$uid  # get individual image id
+beaver_id</code></pre>
+</div>
+<div id="getting-the-icon-itself" class="section level2">
+<h2>3. Getting the icon itself</h2>
+<p>Now we can get the actual image using <code>image_data</code>. Each icon is available in different sizes, from a thumbnail (64 px) to large icons (1042 px). We will get a 256 px icon so that the resolution is high enough to avoid pixelation.</p>
+<pre><code>beaver_pic &lt;- image_data(beaver_id, size = 256)[[1]] # get actual icon, define size. Don&#39;t run this alone</code></pre>
+</div>
+<div id="adding-the-beaver-icon-to-the-plot" class="section level2">
+<h2>4. Adding the beaver icon to the plot</h2>
+<p>Use <code>add_phylopic</code> to add the icon to a <code>ggplot2</code> graph. You need to specify the x and y axis co-ordinates for the graph. Use <code>ysize</code> to change the size of the icon. Use <code>alpha</code> to control the transparency. <code>colour</code> will change the colour.</p>
+<pre><code>beaver_plot + add_phylopic(beaver_pic, alpha = 1, x = 10, y = 37.4, ysize = 10)</code></pre>
+<div class="figure">
+<img src="featured.png" style="width:70.0%" alt="" />
+<p class="caption">The final plot</p>
+</div>
+<p>And that’s it! :beaver:</p>
+<hr />
+</div>
+</div>
+<div id="other-uses-of-rphylopic" class="section level1">
+<h1>Other uses of <code>rphylopic</code></h1>
+<ul>
+<li>You can add the icon as a background image but I would question why that would be a good idea from a graphic design perspective. To do so, you don’t need to specify any other variables in <code>add_phylopic</code>.</li>
+<li>You can also use icons as data points by plotting each icon in place of the regular point within a for loop. You can see an example in the <code>rphylopic</code> documentation.</li>
+</ul>
+</div>
