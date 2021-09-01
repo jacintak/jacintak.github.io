@@ -5,12 +5,630 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>Beyond the valley of intermediate competence</title>
+      <link>https://jacintak.github.io/post/purrr/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/purrr/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/purrr/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Earlier this year I &lt;a href=&#34;https://jacintak.github.io/post/using-mapply/&#34;&gt;wrote&lt;/a&gt; about learning to forego for loops for &lt;code&gt;apply&lt;/code&gt; functions in &lt;code&gt;R&lt;/code&gt;. I’m continuing this journey to replace for loops with &lt;code&gt;purrr&lt;/code&gt;. I’ll be honest and say that my main motivation for learning &lt;code&gt;purrr&lt;/code&gt; is the package name 🐱. &lt;code&gt;purrr&lt;/code&gt; is a package that does the same things as &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;lapply&lt;/code&gt;; to apply a function over listed data and also has useful functions for manipulating lists and functional programming.&lt;/p&gt;
+&lt;p&gt;Objectively, the functionality of &lt;code&gt;purrr&lt;/code&gt; is not that different to base functions. There’s an understandable learning curve and resulting benefit when going from for loops to &lt;code&gt;apply&lt;/code&gt; functions, but there’s diminishing return on going from &lt;code&gt;apply&lt;/code&gt; to &lt;code&gt;purrr&lt;/code&gt; unless you fully leverage the shortcuts of &lt;code&gt;tidyverse&lt;/code&gt; syntax (which I have not). The main advantage of &lt;code&gt;purrr&lt;/code&gt; is that it uses the &lt;code&gt;tidyverse&lt;/code&gt; syntax and pipes. Overall, I don’t think there’s a &lt;em&gt;huge&lt;/em&gt; benefit for using &lt;code&gt;purrr&lt;/code&gt; over base, unlike for example the advantages of using &lt;code&gt;ggplot2&lt;/code&gt; over base for graphing, but if your code is already written in &lt;code&gt;tidyverse&lt;/code&gt; then it makes sense to stick to it and have clear and consistent code (if you are used to reading &lt;code&gt;tidyverse&lt;/code&gt; syntax).&lt;/p&gt;
+&lt;p&gt;If you really want to stay on the &lt;code&gt;tidyverse&lt;/code&gt; train you can skip learning &lt;code&gt;apply&lt;/code&gt; and jump straight to &lt;code&gt;purrr&lt;/code&gt; but I’m a fan of using as fewer dependencies as possible and knowing the base &lt;code&gt;R&lt;/code&gt; way. There are lots of detailed tutorials about &lt;code&gt;purrr&lt;/code&gt; and it’s functions, like &lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html&#34;&gt;this one that discusses the differences with base functions&lt;/a&gt; so I recommend checking those out. If you’re already familiar with the &lt;code&gt;tidyverse&lt;/code&gt; syntax then &lt;code&gt;purrr&lt;/code&gt; is no different.&lt;/p&gt;
+&lt;p&gt;Here are some things I’ve learnt about &lt;code&gt;purrr&lt;/code&gt; for applying functions to listed data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;lapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;lapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lapply&lt;/code&gt; takes one argument (data) and applies a function to it. As I found earlier, it’s quite a simple case and doesn’t suit more complex datasets I usually work with. The &lt;code&gt;purrr&lt;/code&gt; equivalent is &lt;code&gt;map&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One of the advantages of &lt;code&gt;purrr&lt;/code&gt; is that it you can specify the format of the output. That is, &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;map&lt;/code&gt; takes a list and produces a list, but &lt;code&gt;map_*&lt;/code&gt; where &lt;code&gt;*&lt;/code&gt; are a range of output types will give that output type. For example, &lt;code&gt;map_chr&lt;/code&gt; will take a list and produce a character vector. This is handy because it skips an intermediate step to transform your resulting list into your desired output format, such as using &lt;code&gt;do.call&lt;/code&gt; to turn a list into a data frame.&lt;/p&gt;
+&lt;div id=&#34;an-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
+&lt;p&gt;Let’s use the same code as the previous post:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# some data to use as a list
+loop_data &amp;lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &amp;lt;- seq(0.2, 1, 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As before, &lt;code&gt;loop_data&lt;/code&gt; is a data frame with two numeric columns (&lt;code&gt;col1&lt;/code&gt; &amp;amp; &lt;code&gt;col2&lt;/code&gt;). We technically won’t use &lt;code&gt;loop_data$col2&lt;/code&gt; but it’s there to create a 5x2 data frame. &lt;code&gt;a&lt;/code&gt; is a variable that we need for our function with 5 values.&lt;/p&gt;
+&lt;p&gt;We want to add each element of &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;loop_data$col1&lt;/code&gt; and save that in a new column &lt;code&gt;loop_data$col1a&lt;/code&gt;. We will also add &lt;code&gt;a&lt;/code&gt; as a column in &lt;code&gt;loop_data&lt;/code&gt; just so we can keep track of which value was used to calculate &lt;code&gt;col1a&lt;/code&gt;. So the final output should have 25 rows (5 observations in &lt;code&gt;loop_data&lt;/code&gt; x 5 values of &lt;code&gt;a&lt;/code&gt;) and 4 columns (&lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt;, &lt;code&gt;col1a&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Now let’s use &lt;code&gt;map&lt;/code&gt; to do the same thing we did with &lt;code&gt;lapply&lt;/code&gt; but using &lt;code&gt;tidyverse&lt;/code&gt; and pipes 🛁&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  expand_grid(., a) %&amp;gt;% # expand to include all crossed combinations
+  group_split(a) %&amp;gt;% # split into lists by the value of a for nested lists
+  map_dfr(., function(x){
+    x$col1a &amp;lt;- x$col1 + x$a
+    return(x)
+    }) %&amp;gt;% # apply the function to the list and return a data frame
+  summary(.) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re not familiar with piping this is what’s happening:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The first line is specifying our list &lt;code&gt;loop_data&lt;/code&gt; to be sent down the pipe (&lt;code&gt;%&amp;gt;%&lt;/code&gt;). Pipes are read sequentially and the output of one line is used as the input of the next line. This intermediate object is indicated by the dot (&lt;code&gt;.&lt;/code&gt;). Sometimes the dot can be left out if the arguments are presented to the function in the expected order but I find it useful to type everything out when learning anyway so that it’s clear what the arguments are. The dot is particularly needed when using base functions within a pipe, as seen in the last line with &lt;code&gt;summary(.)&lt;/code&gt; because these functions are expecting an argument that &lt;code&gt;tidyverse&lt;/code&gt; functions know how to deal with.&lt;/li&gt;
+&lt;li&gt;I use &lt;code&gt;tidyr::expand_grid&lt;/code&gt; to create a data frame of all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. This has a benefit of adding &lt;code&gt;a&lt;/code&gt; as a column.&lt;/li&gt;
+&lt;li&gt;Then I use &lt;code&gt;group_split&lt;/code&gt; to group the crossed data frame based on values of &lt;code&gt;a&lt;/code&gt;. This produces a tibble which are essentially &lt;code&gt;tidyverse&lt;/code&gt; lists. &lt;code&gt;split&lt;/code&gt; is a base equivalent.&lt;/li&gt;
+&lt;li&gt;Then I apply the actual function over the list and specify that I want the output to be a single data frame (the &lt;code&gt;_dfr&lt;/code&gt; suffix). This is the equivalent of doing &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;do.call&lt;/code&gt; in the same function.&lt;/li&gt;
+&lt;li&gt;Finally I use the base &lt;code&gt;R&lt;/code&gt; function &lt;code&gt;summary&lt;/code&gt; to show the summary statistics of the result to check it works. There isn’t a &lt;code&gt;tidyverse&lt;/code&gt; equivalent of &lt;code&gt;summary&lt;/code&gt; so we must use the dot within the function.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The end result is exactly the same as the original &lt;code&gt;lapply&lt;/code&gt; code. Here is the &lt;code&gt;lapply&lt;/code&gt; function from the previous post to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+lapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &amp;lt;- mapply(FUN = cbind, lapply_ans, &amp;quot;a&amp;quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &amp;lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &amp;lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Side note:
+&lt;code&gt;rerun(length(a), loop_data)&lt;/code&gt; behaves exactly the same as &lt;code&gt;replicate(length(a), loop_data, simplify = FALSE)&lt;/code&gt; and is the &lt;code&gt;tidyverse&lt;/code&gt; equivalent (unclear for how long according to the dev notes). Then you’ll need to add &lt;code&gt;a&lt;/code&gt; as a column, matching the order of the tibble and set the column names, e.g. &lt;code&gt;rerun(length(a), loop_data) %&amp;gt;% map2(a, bind_cols) %&amp;gt;% map(a=...3, rename)&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I’ve taken a slightly different approach. I define all possible combinations I want to use in the calculations then creating grouped lists.&lt;/li&gt;
+&lt;li&gt;I specified the function within the pipe rather than named in the global environment like in the original post. It’s better to name the function if you’re using it multiple times but in this post I’m only using it once, so I’ll get away with it.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt; also allows formulas which for simple functions (like adding a constant to all values) will simplify the code and let
+you use anonymous functions. I’m not used to the formula method of writing functions.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Instead of 5 separate lines of code with the base version, in &lt;code&gt;tidyverse&lt;/code&gt; we can do it in a pipe with 4 steps. But you notice that it’s not a huge difference between what the two approaches are doing. Still better than a for loop.
+&lt;ul&gt;
+&lt;li&gt;We skipped &lt;code&gt;do.call&lt;/code&gt; by using &lt;code&gt;map_dfr&lt;/code&gt; directly to return a data frame. I could also use &lt;code&gt;map&lt;/code&gt; and transform the list into a
+data frame separately.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;and-another-thing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;And another thing…&lt;/h2&gt;
+&lt;p&gt;We need to prepare the input data so that it is crossed; which mean replicating our list across all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. &lt;code&gt;expand_grid&lt;/code&gt; or similar as used above could be helpful for this, and the data frame could be split into nested lists for applying the function.&lt;/p&gt;
+&lt;p&gt;To contrast, this will only add matching rows of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt; together rather than all combinations:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(loop_data$col1, a) %&amp;gt;%
+  pmap_dfr(function(x, a) {
+  df &amp;lt;- data.frame(col1 = x,
+                   a = a,
+                   col1a = x + a) # add answer to a new column
+  return(df)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   col1   a col1a
+## 1   11 0.2  11.2
+## 2   12 0.4  12.4
+## 3   13 0.6  13.6
+## 4   14 0.8  14.8
+## 5   15 1.0  16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since &lt;code&gt;map&lt;/code&gt; is the equivalent of &lt;code&gt;lapply&lt;/code&gt;, then it also doesn’t take multiple inputs, which is why we added &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;. So we turn to &lt;code&gt;mapply&lt;/code&gt; and its &lt;code&gt;purrr&lt;/code&gt; equivalent.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;mapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;purrr&lt;/code&gt; equivalent of &lt;code&gt;mapply&lt;/code&gt; is &lt;code&gt;pmap&lt;/code&gt;. Specifically, &lt;code&gt;pmap&lt;/code&gt; allows for any number of arguments for the function. There is another function, &lt;code&gt;map2&lt;/code&gt; that accepts exactly two arguments but &lt;code&gt;pmap&lt;/code&gt; is generalised to allow for more than two. As with &lt;code&gt;map&lt;/code&gt;, there are variants with suffixes that specify what output format you want, such as a data frame (&lt;code&gt;pmap_dfr&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;tidyverse&lt;/code&gt; website goes into the syntax differences between &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;pmap&lt;/code&gt; in more &lt;a href=&#34;https://design.tidyverse.org/cs-mapply-pmap.html&#34;&gt;detail&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s jump to the example using the same &lt;code&gt;loop_function&lt;/code&gt; as the original post.&lt;/p&gt;
+&lt;div id=&#34;pmap&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;pmap&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A function to add a value a to a data frame x
+loop_function &amp;lt;- function(x, a) {
+  x$col1a &amp;lt;- x$col1 + a # add answer to a new column
+  x$a &amp;lt;-  a
+  return(x)
+}
+
+loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% # replicate the list to populate
+  list(a) %&amp;gt;% # define all variables for loop_function within a list
+  pmap_dfr(loop_function) %&amp;gt;% # apply the function to the list and return a data frame
+  map_dfc(summary) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##   col1    col2    col1a   a      
+##   &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt;
+## 1 11      20      11.2    0.2    
+## 2 12      21      12.4    0.4    
+## 3 13      22      13.6    0.6    
+## 4 13      22      13.6    0.6    
+## 5 14      23      14.8    0.8    
+## 6 15      24      16.0    1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we don’t have to add &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;, we can specify &lt;code&gt;a&lt;/code&gt; for the function. &lt;code&gt;pmap&lt;/code&gt; takes a list of arguments for the function, hence we need a list containing both &lt;code&gt;loop_data&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. Don’t make &lt;code&gt;a&lt;/code&gt; list before adding it to the list of function arguments (i.e. double list) because it won’t match the nth &lt;code&gt;a&lt;/code&gt; variable with the nth element in the loop_data list, and match by rows within lists. For variety, I’ve used &lt;code&gt;map_dfc&lt;/code&gt; to call the function &lt;code&gt;summary&lt;/code&gt; on the data, rather than &lt;code&gt;summary(.)&lt;/code&gt;. &lt;code&gt;map_dfc&lt;/code&gt; will apply the function by columns instead of rows and produce a data frame.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;map2&lt;/code&gt; equivalent is more concise than &lt;code&gt;pmap&lt;/code&gt; for this simple example!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% 
+  map2_dfr(a, loop_function)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the original &lt;code&gt;mapply&lt;/code&gt; example to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+mapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &amp;lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &amp;lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also define &lt;code&gt;loop_function&lt;/code&gt; as an anonymous function within &lt;code&gt;pmap&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure the variables are used in the correct order. e.g. &lt;code&gt;loop_data %&amp;gt;% rerun(length(a), .) %&amp;gt;% map_dfr(loop_function, a)&lt;/code&gt; will run because you are passing &lt;code&gt;a&lt;/code&gt; as a variable into &lt;code&gt;loop_function&lt;/code&gt;, but it’s adding &lt;code&gt;a&lt;/code&gt; by row within individual data frame rather than matching the nth element of the list. So it’s effectively replicating the data frame 5 times.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;p&gt;That’s it. There are many ways of doing the same thing with simple examples. Hope it helps you create &lt;code&gt;purrr&lt;/code&gt;fectly sensible code to replace for loops and apply functions to lists.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setup R</title>
+      <link>https://jacintak.github.io/teaching/introR/</link>
+      <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/teaching/introR/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#welcome-to-statistics-and-computation-for-biologists&#34;&gt;Welcome to Statistics and Computation for Biologists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-programming-and-computing&#34;&gt;Why programming and computing?&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#basic-computing-terms&#34;&gt;Basic computing terms&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#drives-folders-files&#34;&gt;Drives, Folders &amp;amp; Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#directories&#34;&gt;Directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-r&#34;&gt;Why R?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-rstudio&#34;&gt;Why RStudio?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-r-and-rstudio&#34;&gt;Installing R and RStudio&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#windows&#34;&gt;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mac&#34;&gt;Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux&#34;&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chromebook&#34;&gt;Chromebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#opening-r-and-rstudio-for-the-first-time&#34;&gt;Opening R and RStudio for the first time&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#updating-r-and-packages&#34;&gt;Updating R and packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-script&#34;&gt;Creating a script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-packages&#34;&gt;Setting up packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#working-directories&#34;&gt;Working directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-working-directories&#34;&gt;Changing working directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#loading-data&#34;&gt;Loading data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#txt&#34;&gt;.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#csv&#34;&gt;.csv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#copying-data&#34;&gt;Copying data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#try-it-yourself&#34;&gt;Try it yourself&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#checking-the-data&#34;&gt;Checking the data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-structure&#34;&gt;Data structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summarising-data&#34;&gt;Summarising data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tips&#34;&gt;Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-help&#34;&gt;Finding help&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#final-checklist&#34;&gt;Final checklist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;div id=&#34;welcome-to-statistics-and-computation-for-biologists&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome to Statistics and Computation for Biologists&lt;/h1&gt;
+&lt;p&gt;Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or “how to” which come from textbooks, lectures or resources on the Internet.&lt;/p&gt;
+&lt;p&gt;Second, is learning how to define problems and how to solve them. You will see this in action throughout your degree. For example, is your R code not working? Work out why, what’s wrong and what to change to make it work.&lt;/p&gt;
+&lt;p&gt;In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career.&lt;/p&gt;
+&lt;p&gt;Use the following checklist to make sure you are prepared for this semester:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do you know how to navigate computer directories and addresses to find files or folders?&lt;/li&gt;
+&lt;li&gt;Do you have R and RStudio installed on your computer?&lt;/li&gt;
+&lt;li&gt;Is R up to date? (version 4.0 or above)&lt;/li&gt;
+&lt;li&gt;Do you know how to set up scripts and directories in RStudio?&lt;/li&gt;
+&lt;li&gt;Do you know how to import and export data into R in various formats?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Check that your version and packages are all up to date (Under the Packages tab, click Update). Even so, you can work through this document if you want to check everything works or you need a refresher.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-programming-and-computing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why programming and computing?&lt;/h1&gt;
+&lt;p&gt;We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it’s a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module. We will be using R which is classified as a high-level programming language - it’s not the same thing as learning how to use Excel.&lt;/p&gt;
+&lt;p&gt;Learning programming is like learning a language - there is grammar and syntax and it takes time and effort to learn and to practice. Don’t expect to pick it up like memorising content from a lecture - take it in small steps.&lt;/p&gt;
+&lt;div id=&#34;basic-computing-terms&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Basic computing terms&lt;/h2&gt;
+&lt;p&gt;We don’t always formally learn computing terminology even if we’ve always been using computers. Here are some general computing concepts we will be using and that we expect you to be familiar with:&lt;/p&gt;
+&lt;div id=&#34;drives-folders-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Drives, Folders &amp;amp; Files&lt;/h3&gt;
+&lt;p&gt;In computer science, most commercial operating software are organised in to &lt;strong&gt;drives&lt;/strong&gt;, &lt;strong&gt;directories&lt;/strong&gt;, &lt;strong&gt;folders&lt;/strong&gt; &amp;amp; &lt;strong&gt;files&lt;/strong&gt;. Using Windows as example:
+C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are groups of files which contain information (e.g. my_document.doc). Here, “.doc” is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.&lt;/p&gt;
+&lt;p&gt;Commercial computers tend to have only one drive but you can have as many folders and files as you want. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C: (the hard drive)
+  -&amp;gt; my documents (within drive C)
+      -&amp;gt; file A (within my documents)
+      -&amp;gt; folder 1 (within my documents)
+          -&amp;gt; folder 2 (within folder 1)
+              -&amp;gt; file B (within folder 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;directories&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Directories&lt;/h3&gt;
+&lt;p&gt;Directories are the cataloguing system describing where files and folders are stored; also called addresses. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location. The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We recommend that you organise your files in a structured way. For example, have a folder for the module and sub-folders for each of the practicals:&lt;br /&gt;
+Documents (folder) -&amp;gt; Biostats (folder) -&amp;gt; Practical 1 (folder) -&amp;gt; Script (file)&lt;br /&gt;
+We don’t recommend using a automatically selected “downloads” folder or your “desktop” because these are not permanent file locations and can be hard to find files later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Notice that the components of the address is separated using a forward slash &lt;code&gt;/&lt;/code&gt;. R can understand &lt;code&gt;/&lt;/code&gt; but does not understand back slash &lt;code&gt;\&lt;/code&gt; because back slashes have a specific meaning in programming. When typing addresses, make sure you use the correct slash.&lt;/p&gt;
+&lt;p&gt;We navigate through our computer’s directories using Explorer in Windows or Finder in MacOS. You can see the address of a directory in the address bar. We will learn how to use directories in RStudio.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why R?&lt;/h2&gt;
+&lt;p&gt;R is just one of &lt;em&gt;many&lt;/em&gt; high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and data handling. Hence R is widely taught in statistic classes. There are other statistics programs but these are normally “point-and-click” programs where you click a button and magic happens. The reasons we use R are that it is an open source software and it is &lt;em&gt;transparent&lt;/em&gt;, meaning you can &lt;em&gt;see&lt;/em&gt; how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. R is also &lt;em&gt;reproducible&lt;/em&gt; because R allows you to document your code in &lt;em&gt;scripts&lt;/em&gt; that you can give another person to replicate your analysis. The traditional option is to learn these calculations by hand and use pre-calculated statistical reference tables but we would only expect that for very simple examples and doing calculations by hand is an arduous task for realistic biological problems.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-rstudio&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why RStudio?&lt;/h2&gt;
+&lt;p&gt;R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. It is possible to use R by itself (you can try it) but RStudio makes everything a lot easier by providing some organisation. You cannot use RStudio without R. An analogy is that R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-r-and-rstudio&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Installing R and RStudio&lt;/h1&gt;
+&lt;p&gt;You will need to install R AND RStudio &lt;strong&gt;in that order&lt;/strong&gt;. You only need to open RStudio when you want to use R - RStudio will open R for you in the background.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;CRANsite.png&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here’s a video about installing R &lt;a href=&#34;https://vimeo.com/203516510&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516510&lt;/a&gt; and RStudio &lt;a href=&#34;https://vimeo.com/203516968&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516968&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can follow the instructions below or try the interactive tutorial at &lt;a href=&#34;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&#34; class=&#34;uri&#34;&gt;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here are the instructions for various operating software:&lt;/p&gt;
+&lt;div id=&#34;windows&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Windows&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/windows/base/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R” in the blue box. The version number is not important.&lt;/li&gt;
+&lt;li&gt;Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mac&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mac&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for (Mac) OS X”&lt;/li&gt;
+&lt;li&gt;Save the latest release file (e.g. R-4.0.2.pkg), open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linux&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for Linux”&lt;/li&gt;
+&lt;li&gt;Click your version of Linux&lt;/li&gt;
+&lt;li&gt;Copy and paste the relevant installation code&lt;/li&gt;
+&lt;li&gt;Open R and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Run the relevant code&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See &lt;a href=&#34;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&#34; class=&#34;uri&#34;&gt;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&lt;/a&gt; for a guide&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chromebook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Chromebook&lt;/h2&gt;
+&lt;p&gt;There are a few options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The easiest option is to run Linux on your computer, then you can install R and RStudio. Try the instructions on &lt;a href=&#34;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&#34; class=&#34;uri&#34;&gt;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&lt;/a&gt; or &lt;a href=&#34;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&#34; class=&#34;uri&#34;&gt;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Use RStudio Server&lt;/li&gt;
+&lt;li&gt;Use RStudio Cloud &lt;a href=&#34;https://rstudio.cloud/&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud/&lt;/a&gt; (in beta so it may not work)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;opening-r-and-rstudio-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Opening R and RStudio for the first time&lt;/h1&gt;
+&lt;p&gt;If you open R itself you’ll see that it’s pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:&lt;br /&gt;
+user -&amp;gt; input -&amp;gt; RStudio -&amp;gt; R -&amp;gt; RStudio -&amp;gt; output -&amp;gt; user&lt;/p&gt;
+&lt;p&gt;If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RStudio-console.png&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Left: The big window is the &lt;strong&gt;console&lt;/strong&gt;. This is the interface with R and is the same as using R on its own. (don’t worry about “terminal”)&lt;/li&gt;
+&lt;li&gt;Top right: This window has three tabs: “environment” - shows you what information is stored in R’s memory, “history” - shows your code history &amp;amp; “connections” - don’t worry about this one.&lt;/li&gt;
+&lt;li&gt;Bottom right: This has several tabs. The most important being “files” - showing you where RStudio is looking at on your computer &amp;amp; “plot” - shows you any plots you make in R.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can customise the layout and colour scheme of RStudio in Options.&lt;br /&gt;
+There are other user interfaces for R but RStudio has a lot of support.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;updating-r-and-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Updating R and packages&lt;/h2&gt;
+&lt;p&gt;The last major update to R was version 4.0. If you have an older version we recommending updating R because many fundamental aspects of the language were changed and are not backwards compatible. You will see which R version is used in the information in the Console when you open RStudio. If your version is older than 4.0, install the latest version as above.&lt;/p&gt;
+&lt;p&gt;R is a statistical environment that consist of &lt;strong&gt;packages&lt;/strong&gt;. Packages are a set of &lt;strong&gt;functions&lt;/strong&gt; that does something to input depending on the underlying code. All your packages are stored in your &lt;strong&gt;library&lt;/strong&gt;. When you download R it comes with a basic set of packages as default which works straight out of the box. This is called &lt;strong&gt;base R&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Once you’ve installed R you should check all your &lt;strong&gt;packages&lt;/strong&gt; are up to date as well. You can update your packages by clicking the Update button under the Packages tab.&lt;/p&gt;
+&lt;p&gt;We can customise and expand the functionality of R by installing more packages, which are made by people and distributed freely. You can download packages from an online repository using the function &lt;code&gt;install.packages(&#34;&amp;lt;insert name of package&amp;gt;&#34;)&lt;/code&gt;. For example, I wrote this document in RStudio using an additional package called &lt;code&gt;rmarkdown&lt;/code&gt; which lets me make HTML, word or PDF files of text, code and figures or tables. We will tell you if you need to install a package but where possible we will be sticking to base R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-a-script&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Creating a script&lt;/h2&gt;
+&lt;p&gt;The greatest advantage of RStudio is that it allows you to write &lt;strong&gt;scripts&lt;/strong&gt;. These are files ending in &lt;code&gt;.R&lt;/code&gt; that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from &lt;strong&gt;having to type out code over and over again&lt;/strong&gt;. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow &lt;strong&gt;reproducibility&lt;/strong&gt; and helps with problem solving.&lt;/p&gt;
+&lt;p&gt;You can create a new script under File -&amp;gt; New file -&amp;gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.&lt;br /&gt;
+Save it and give it an informative name (e.g. “Dropin1.R”)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;open-script.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s add some code to this script by going through the basics of R! Copy and paste code from below into your script.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Run code from your script rather than directly from the console&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A script is a record of what you’ve done and it makes it easy to spot any mistakes you might have made (transparency &amp;amp; reproducibility). Put your cursor on the line you want to run then press Ctrl+Enter or click Run. You can run multiple lines by highlighting the relevant lines. You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Run.png&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setting-up-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Setting up packages&lt;/h2&gt;
+&lt;p&gt;To use a package in R, you need to &lt;strong&gt;call&lt;/strong&gt; it from R’s library using the function &lt;code&gt;library()&lt;/code&gt;. A package we will see later in the module is &lt;code&gt;MASS&lt;/code&gt; which contains datasets you can use at home to practice the statistical tests covered in the lectures.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;library(MASS)&lt;/code&gt; into your script then press Enter. You have just &lt;strong&gt;run&lt;/strong&gt; your first line of code. R will load the package &lt;code&gt;MASS&lt;/code&gt; in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to &lt;code&gt;MASS&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;data()&lt;/code&gt; or &lt;code&gt;data(package = .packages(all.available = TRUE))&lt;/code&gt; to see the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general (e.g. the starwars dataset of Star Wars characters comes with the package &lt;code&gt;tidyverse&lt;/code&gt;). Entering the name of a dataset will display the entire dataset. Try calling one of the &lt;code&gt;MASS&lt;/code&gt; datasets, like &lt;code&gt;Rabbit&lt;/code&gt;. You can see the descriptions of each dataset by calling &lt;code&gt;help(&amp;lt;dataset name&amp;gt;)&lt;/code&gt;, e.g. &lt;code&gt;help(Rabbit)&lt;/code&gt; will tell you it describes the blood pressure of rabbits before and after a drug treatment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Working directories&lt;/h2&gt;
+&lt;p&gt;Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use &lt;strong&gt;working directories&lt;/strong&gt;. Working directories are default directories that programs will look in first. We can then use directory address that are &lt;em&gt;relative&lt;/em&gt; to this default address which shortens addresses.&lt;/p&gt;
+&lt;p&gt;For example, following this directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; documents
+      -&amp;gt; file A 
+      -&amp;gt; folder 1 
+          -&amp;gt; folder 2 
+              -&amp;gt; file B&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the default directory is C:/, then the address for file B is &lt;code&gt;C:/documents/folder1/folder2/fileB&lt;/code&gt;.&lt;br /&gt;
+But if we set folder 1 as the working directory &lt;code&gt;C:/documents/folder1/&lt;/code&gt;, then we can use the relative address for the file: &lt;code&gt;folder2/fileB&lt;/code&gt;. This way we don’t have to type &lt;code&gt;C:/documents/folder1/&lt;/code&gt; every time.&lt;/p&gt;
+&lt;p&gt;Navigating through directories using addresses can be confusing. Another useful command is &lt;code&gt;..&lt;/code&gt; which tells the address to go &lt;em&gt;up&lt;/em&gt; a directory. For example, if folder 2 was the working directory &lt;code&gt;C:/documents/folder1/folder2&lt;/code&gt; and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: &lt;code&gt;../../fileA&lt;/code&gt; which means that the computer is now looking in the &lt;code&gt;documents&lt;/code&gt; folder. In contrast, the relative address for file B is even shorter, &lt;code&gt;fileB&lt;/code&gt;, since folder 2 is already the working directory.&lt;/p&gt;
+&lt;p&gt;RStudio has a default working directory.&lt;br /&gt;
+You can see which working directory is the default directory in RStudio on the “Files” tab. You can also check what working directory R is using by typing &lt;code&gt;getwd()&lt;/code&gt; (GET Working Directory). When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab. &lt;em&gt;This may be one reason RStudio cannot find a file even with a “correct” relative address&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;changing-working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Changing working directories&lt;/h2&gt;
+&lt;p&gt;You can change the default RStudio directory under Tools -&amp;gt; Global Options but on a daily basis, changing the directory temporarily under Session -&amp;gt; Set working directory is more useful.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You will need to know how to change working directories and tell R where to find files through relative addresses because that is how we &lt;strong&gt;import&lt;/strong&gt; and &lt;strong&gt;export&lt;/strong&gt; data to and from R.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;setwd.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The R function to do the same thing is &lt;code&gt;setwd()&lt;/code&gt; (SET Working Directory). e.g. &lt;code&gt;setwd(&amp;lt;insert directory address here&amp;gt;)&lt;/code&gt;. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file). If R cannot find a file, check the address or the working directory is correct&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;loading-data&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Loading data&lt;/h1&gt;
+&lt;p&gt;To use data stored in other files, the data must be &lt;strong&gt;loaded&lt;/strong&gt; or &lt;strong&gt;read&lt;/strong&gt; into R. Imported data &lt;strong&gt;must&lt;/strong&gt; be assigned a name (using &lt;code&gt;&amp;lt;-&lt;/code&gt;) or it won’t be saved to R’s memory. The &lt;code&gt;read&lt;/code&gt; functions are a set of base R function that import data based on how data is saved in the file. In this module we will focus on two types of storing data: tab delimated &amp;amp; comma separated values.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;In tab deliminated data, values are separated by tabs. e.g. 1 2 3 4 5 6 (separated by 1 space). The &lt;code&gt;read&lt;/code&gt; function is &lt;code&gt;read.delim()&lt;/code&gt; for deliminated.&lt;/li&gt;
+&lt;li&gt;In comma separated values data (CSV), values are separated by commas. e.g. 1,2,3,4,5. The &lt;code&gt;read&lt;/code&gt; function is &lt;code&gt;read.csv()&lt;/code&gt; for CSV.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Files names or directories are designated as character strings (&lt;code&gt;&#34;&#34;&lt;/code&gt;). &lt;code&gt;read.table()&lt;/code&gt; also works for tables. See &lt;code&gt;help(&#34;read.table&#34;)&lt;/code&gt; for the general inputs.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;read&lt;/code&gt; functions have two important settings to be aware of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;header&lt;/code&gt;: Use &lt;code&gt;header = FALSE&lt;/code&gt; (default) if your data doesn’t have headers, &lt;code&gt;header = TRUE&lt;/code&gt; to force R to recognise headers - usually the first row of data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sep&lt;/code&gt;: Tells R to recognise how individual observations are separated (hence sep). &lt;code&gt;sep = &#34;&#34;&lt;/code&gt; or &lt;code&gt;sep = &#34; &#34;&lt;/code&gt; if it’s tab separated data (with white spaces between data - &lt;code&gt;&#34;&#34;&lt;/code&gt; is a general indicator for any whitespace, &lt;code&gt;&#34; &#34;&lt;/code&gt; is specifically 1 space) or &lt;code&gt;sep = &#34;,&#34;&lt;/code&gt; for comma separated values. If the data didn’t import properly it could be because the wrong read function or the wrong separator was used - try another one. Most of the time the default will be fine, which means you do not have to manually specify these settings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. We expect you to be able to load data from file or from clipboard during practicals and assessment.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
+&lt;p&gt;Now let’s practice two ways of importing data using &lt;code&gt;read&lt;/code&gt; functions: from a file and from the clipboard. The relevant files are available on Blackboard.&lt;/p&gt;
+&lt;div id=&#34;txt&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.txt&lt;/h2&gt;
+&lt;p&gt;Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. This is loaded using &lt;code&gt;read.delim()&lt;/code&gt;. Try loading the file “small_sleep.txt” to an R element called &lt;code&gt;small_sleep&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;small_sleep &amp;lt;- read.delim(&amp;quot;small_sleep.txt&amp;quot;)
+small_sleep
+                  Species   BodyWt TotalSleep
+1         Africanelephant 6654.000        3.3
+2  Africangiantpouchedrat    1.000        8.3
+3               ArcticFox    3.385       12.5
+4    Arcticgroundsquirrel    0.920       16.5
+5           Asianelephant 2547.000        3.9
+6                  Baboon   10.550        9.8
+7             Bigbrownbat    0.023       19.7
+8          Braziliantapir  160.000        6.2
+9                     Cat    3.300       14.5
+10             Chimpanzee   52.160        9.7&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;csv&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.csv&lt;/h2&gt;
+&lt;p&gt;If data is separated by a comma, it’s called a comma separated value file (.csv). Note that .txt files can also be comma separated. The function to read csv is &lt;code&gt;read.csv()&lt;/code&gt;. Try loading the file “mammal_sleep.csv” to an R element called &lt;code&gt;mammal_sleep&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mammal_sleep &amp;lt;- read.csv(&amp;quot;mammal_sleep.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data collected in Excel can be saved as a .csv file using the Save As option. CSV is preferred in many instances over the default Excel file type because it is less prone to error. This is what we will mostly be using.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;copying-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Copying data&lt;/h2&gt;
+&lt;p&gt;The Clipboard is where your computer saves information that you’ve copied using ctrl/cmd + c.&lt;br /&gt;
+For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. You cannot paste data directly into R. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;clip.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For PC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(&amp;quot;clipboard&amp;quot;) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For Mac:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(pipe(&amp;quot;pbpaste&amp;quot;)) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Web browsers might display tabbed whitespace differently so try a different separator depending on what web browser you are using (see above). If all else fails, copy the data into Excel and save the file (problem solving!).&lt;/p&gt;
+&lt;div id=&#34;try-it-yourself&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Try it yourself&lt;/h3&gt;
+&lt;p&gt;For whichever operating system you have, highlight and copy this data and load this data into R using you new R script. Make sure you are using the correct &lt;code&gt;read&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                  Species   BodyWt
+1         Africanelephant 6654.000
+2  Africangiantpouchedrat    1.000
+3               ArcticFox    3.385
+4    Arcticgroundsquirrel    0.920
+5           Asianelephant 2547.000
+6                  Baboon   10.550
+7             Bigbrownbat    0.023
+8          Braziliantapir  160.000
+9                     Cat    3.300
+10             Chimpanzee   52.160&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Species,BodyWt,BrainWt,NonDreaming,Dreaming,TotalSleep,LifeSpan,Gestation,Predation,Exposure,Danger
+Africanelephant,6654,5712,NA,NA,3.3,38.6,645,3,5,3
+Africangiantpouchedrat,1,6.6,6.3,2,8.3,4.5,42,3,1,3
+ArcticFox,3.385,44.5,NA,NA,12.5,14,60,1,1,1
+Arcticgroundsquirrel,0.92,5.7,NA,NA,16.5,NA,25,5,2,3
+Asianelephant,2547,4603,2.1,1.8,3.9,69,624,3,5,4
+Baboon,10.55,179.5,9.1,0.7,9.8,27,180,4,4,4
+Bigbrownbat,0.023,0.3,15.8,3.9,19.7,19,35,1,1,1
+Braziliantapir,160,169,5.2,1,6.2,30.4,392,4,5,4
+Cat,3.3,25.6,10.9,3.6,14.5,28,63,1,2,1&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;checking-the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Checking the data&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For bigger datasets it is easier to view a subset of the data or to use the &lt;code&gt;View()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mammal_sleep, n = 6) # View the first 6 rows (6 is default, can be changed)
+                 Species   BodyWt BrainWt NonDreaming Dreaming TotalSleep
+1        Africanelephant 6654.000  5712.0          NA       NA        3.3
+2 Africangiantpouchedrat    1.000     6.6         6.3      2.0        8.3
+3              ArcticFox    3.385    44.5          NA       NA       12.5
+4   Arcticgroundsquirrel    0.920     5.7          NA       NA       16.5
+5          Asianelephant 2547.000  4603.0         2.1      1.8        3.9
+6                 Baboon   10.550   179.5         9.1      0.7        9.8
+  LifeSpan Gestation Predation Exposure Danger
+1     38.6       645         3        5      3
+2      4.5        42         3        1      3
+3     14.0        60         1        1      1
+4       NA        25         5        2      3
+5     69.0       624         3        5      4
+6     27.0       180         4        4      4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;View(mammal_sleep)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-structure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data structure&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;str()&lt;/code&gt; is a handy function for checking the structure of your dataset. Let’s check the mammal sleep dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mammal_sleep)
+&amp;#39;data.frame&amp;#39;:   62 obs. of  11 variables:
+ $ Species    : chr  &amp;quot;Africanelephant&amp;quot; &amp;quot;Africangiantpouchedrat&amp;quot; &amp;quot;ArcticFox&amp;quot; &amp;quot;Arcticgroundsquirrel&amp;quot; ...
+ $ BodyWt     : num  6654 1 3.38 0.92 2547 ...
+ $ BrainWt    : num  5712 6.6 44.5 5.7 4603 ...
+ $ NonDreaming: num  NA 6.3 NA NA 2.1 9.1 15.8 5.2 10.9 8.3 ...
+ $ Dreaming   : num  NA 2 NA NA 1.8 0.7 3.9 1 3.6 1.4 ...
+ $ TotalSleep : num  3.3 8.3 12.5 16.5 3.9 9.8 19.7 6.2 14.5 9.7 ...
+ $ LifeSpan   : num  38.6 4.5 14 NA 69 27 19 30.4 28 50 ...
+ $ Gestation  : num  645 42 60 25 624 180 35 392 63 230 ...
+ $ Predation  : int  3 3 1 5 3 4 1 4 1 1 ...
+ $ Exposure   : int  5 1 1 2 5 4 1 5 2 1 ...
+ $ Danger     : int  3 3 1 3 4 4 1 4 1 1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;The first line tells us that &lt;code&gt;mammal_sleep&lt;/code&gt; is a data frame. Which is how R stores observations in rows and columns. Other types are lists and matrices. It also tells us there are 62 observations - meaning the number of rows of data - and 11 variables - meaning the number of columns&lt;/li&gt;
+&lt;li&gt;In the first column of &lt;code&gt;str()&lt;/code&gt;, are the names of the columns of the dataset listed with an &lt;code&gt;$&lt;/code&gt; are . So the first column is called &lt;code&gt;Species&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The second column shows what &lt;em&gt;type&lt;/em&gt; of variable the data are: character (&lt;code&gt;chr&lt;/code&gt;) for letters, numeric (&lt;code&gt;num&lt;/code&gt;) for continuous numbers and integer (&lt;code&gt;int&lt;/code&gt;) for discrete numbers. Another type you will encounter are &lt;code&gt;Factors&lt;/code&gt; and &lt;code&gt;levels&lt;/code&gt; - these are categorical variables.&lt;/li&gt;
+&lt;li&gt;The third column shows the first couple of observations in each column&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summarising-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summarising data&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;summary()&lt;/code&gt; shows some summary statistics for the specific variable&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mammal_sleep) # for all columns
+   Species              BodyWt            BrainWt         NonDreaming    
+ Length:62          Min.   :   0.005   Min.   :   0.14   Min.   : 2.100  
+ Class :character   1st Qu.:   0.600   1st Qu.:   4.25   1st Qu.: 6.250  
+ Mode  :character   Median :   3.342   Median :  17.25   Median : 8.350  
+                    Mean   : 198.790   Mean   : 283.13   Mean   : 8.673  
+                    3rd Qu.:  48.202   3rd Qu.: 166.00   3rd Qu.:11.000  
+                    Max.   :6654.000   Max.   :5712.00   Max.   :17.900  
+                                                         NA&amp;#39;s   :14      
+    Dreaming       TotalSleep       LifeSpan         Gestation     
+ Min.   :0.000   Min.   : 2.60   Min.   :  2.000   Min.   : 12.00  
+ 1st Qu.:0.900   1st Qu.: 8.05   1st Qu.:  6.625   1st Qu.: 35.75  
+ Median :1.800   Median :10.45   Median : 15.100   Median : 79.00  
+ Mean   :1.972   Mean   :10.53   Mean   : 19.878   Mean   :142.35  
+ 3rd Qu.:2.550   3rd Qu.:13.20   3rd Qu.: 27.750   3rd Qu.:207.50  
+ Max.   :6.600   Max.   :19.90   Max.   :100.000   Max.   :645.00  
+ NA&amp;#39;s   :12      NA&amp;#39;s   :4       NA&amp;#39;s   :4         NA&amp;#39;s   :4       
+   Predation        Exposure         Danger     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :3.000   Median :2.000   Median :2.000  
+ Mean   :2.871   Mean   :2.419   Mean   :2.613  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000  
+                                                
+summary(mammal_sleep$BodyWt) # summary statistics for body weight
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.005    0.600    3.342  198.790   48.202 6654.000 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tips&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coding is like learning a language. There is grammar, syntax and terminology to learn.&lt;/li&gt;
+&lt;li&gt;The secret to being a coding whiz is practice, practice, practice. Try using R at every opportunity. If you don’t use it, you lose it.&lt;/li&gt;
+&lt;li&gt;It’s OK to google everything. No matter how many years you’ve been using R you will forget something basic.&lt;/li&gt;
+&lt;li&gt;A lot of programming is logic. If you can’t describe what you want to achieve in words, then you can’t code it. Sometimes the solution means changing your way of thinking about a problem.&lt;/li&gt;
+&lt;li&gt;A lot of errors come from spelling or syntax mistakes. It doesn’t mean you don’t know it, check your code carefully for typos. Missing brackets or quotation marks are common mistakes.&lt;/li&gt;
+&lt;li&gt;Often, copying and pasting your error message into google comes up with the solution&lt;/li&gt;
+&lt;li&gt;Trial and error is a big part of programming. If it doesn’t work the first time, tweak it and try it again. Getting a function to work might be as simple as adding or removing one of the defined parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finding-help&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Finding help&lt;/h1&gt;
+&lt;p&gt;All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in &lt;code&gt;help(&amp;lt;insert function name here&amp;gt;)&lt;/code&gt;. If you don’t know your exact query, you can search using &lt;code&gt;??&amp;lt;insert term here&amp;gt;&lt;/code&gt; - e.g. &lt;code&gt;??mean&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Internet is really really great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google.&lt;/p&gt;
+&lt;p&gt;Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by &lt;em&gt;doing&lt;/em&gt;, which means having a go yourself before seeking help from others. Make asking for help your last option. You’ll see on StackExchange people &lt;em&gt;describe&lt;/em&gt; what they want to achieve, what they have done so far, identified what the problem is and provide some reproducible code to help someone else understand their problem. It’s really hard to fix someone’s coding problem without context.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final checklist&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Have you installed R?&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio?&lt;/li&gt;
+&lt;li&gt;Are all your versions and packages up to date?&lt;/li&gt;
+&lt;li&gt;Do you know how to create and save an R script?&lt;/li&gt;
+&lt;li&gt;Do you know how to set your working directory?&lt;/li&gt;
+&lt;li&gt;Can you import data into R?&lt;/li&gt;
+&lt;li&gt;Can you run a line of code?&lt;/li&gt;
+&lt;li&gt;Can you use a function?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>How to add a Phylopic icon to your graph in R</title>
@@ -1356,445 +1974,6 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
 &lt;li&gt;You can generate a pool of questions by compiling a single question and uploading that zip file to Blackboard under “Import Pool”. This is useful for creating random block tests in Blackboard if the compiled zip file is not suitable as an test right away&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Setup R</title>
-      <link>https://jacintak.github.io/teaching/introR/</link>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/teaching/introR/</guid>
-      <description>
-&lt;script src=&#34;https://jacintak.github.io/teaching/introR/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#welcome-to-statistics-and-computation-for-biologists&#34;&gt;Welcome to Statistics and Computation for Biologists&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#installing-r-and-rstudio&#34;&gt;Installing R and RStudio&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#windows&#34;&gt;Windows&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#mac&#34;&gt;Mac&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#linux&#34;&gt;Linux&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#chromebook&#34;&gt;Chromebook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-r&#34;&gt;Why R?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-rstudio&#34;&gt;Why RStudio?&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#rstudio-scripts&#34;&gt;RStudio scripts&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#file-housekeeping&#34;&gt;File housekeeping&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#working-directories&#34;&gt;Working directories&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-a-script&#34;&gt;Creating a script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#loading-data&#34;&gt;Loading data&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#txt&#34;&gt;.txt&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#csv&#34;&gt;.csv&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#copying-data&#34;&gt;Copying data&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#try-it-yourself&#34;&gt;Try it yourself&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#checking-the-data&#34;&gt;Checking the data&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#data-structure&#34;&gt;Data structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#summarising-data&#34;&gt;Summarising data&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#tips&#34;&gt;Tips&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#finding-help&#34;&gt;Finding help&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#final-checklist&#34;&gt;Final checklist&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#recap-quiz&#34;&gt;Recap quiz&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#learnr-tutorials&#34;&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;div id=&#34;welcome-to-statistics-and-computation-for-biologists&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Welcome to Statistics and Computation for Biologists&lt;/h1&gt;
-&lt;p&gt;Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or “how to” which come from textbooks, lectures or resources on the Internet.&lt;/p&gt;
-&lt;p&gt;Second, is learning how to define problems and how to solve them. This is true for statistics &amp;amp; computation. You can practice this in these drop in sessions and in your other modules. For example, R not working? Work out why, what’s wrong and what to change to make it work.&lt;/p&gt;
-&lt;p&gt;In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career.&lt;/p&gt;
-&lt;p&gt;Use the following checklist to make sure you are prepared for this semester:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Do you have R and RStudio installed on your computer?&lt;/li&gt;
-&lt;li&gt;Is your R up to date?&lt;/li&gt;
-&lt;li&gt;Do you know how to set up scripts and directories in RStudio?&lt;/li&gt;
-&lt;li&gt;Are your folders organised in a logical and sensible way?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Check that your version and packages are all up to date (For packages - Under the Packages tab, click Update, For RStudio - Under Help menu at the top, click check for updates).&lt;/p&gt;
-&lt;p&gt;Regardless, you should work through this handout to make sure you are comfortable with the basics of R. Use this as a reference throughout semester as we will be revisiting these concepts.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;installing-r-and-rstudio&#34; class=&#34;section level1 tabset&#34;&gt;
-&lt;h1&gt;Installing R and RStudio&lt;/h1&gt;
-&lt;p&gt;R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. If R is a retro text-based game (the ones where you chose your adventure with just words), then R studio is a graphic based game (like Legend of Zelda). It is possible to use R without RStudio but trust us, RStudio makes everything a lot easier by providing some organisation.&lt;/p&gt;
-&lt;p&gt;You will need to install R AND R studio &lt;strong&gt;in that order&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;CRANsite.png&#34; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Here’s a video about installing R &lt;a href=&#34;https://vimeo.com/203516510&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516510&lt;/a&gt; and RStudio &lt;a href=&#34;https://vimeo.com/203516968&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516968&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;You can follow the instructions below or try the interactive tutorial at &lt;a href=&#34;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&#34; class=&#34;uri&#34;&gt;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Here are the instructions for various operating software:&lt;/p&gt;
-&lt;div id=&#34;windows&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Windows&lt;/h2&gt;
-&lt;p&gt;For R:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/windows/base/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click “Download R” in the blue box. The version number is not important.&lt;/li&gt;
-&lt;li&gt;Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.&lt;/li&gt;
-&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;For RStudio:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
-&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
-&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;mac&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Mac&lt;/h2&gt;
-&lt;p&gt;For R:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click “Download R for (Mac) OS X”&lt;/li&gt;
-&lt;li&gt;Save the latest release file (e.g. R-4.0.2.pkg), open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible.&lt;/li&gt;
-&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;For RStudio:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
-&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
-&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;linux&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Linux&lt;/h2&gt;
-&lt;p&gt;For R:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click “Download R for Linux”&lt;/li&gt;
-&lt;li&gt;Click your version of Linux&lt;/li&gt;
-&lt;li&gt;Copy and paste the relevant installation code&lt;/li&gt;
-&lt;li&gt;Open R and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;For RStudio:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
-&lt;li&gt;Run the relevant code&lt;/li&gt;
-&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;See &lt;a href=&#34;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&#34; class=&#34;uri&#34;&gt;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&lt;/a&gt; for a guide&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;chromebook&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Chromebook&lt;/h2&gt;
-&lt;p&gt;There are a few options:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The easiest option is to run Linux on your computer, then you can install R and RStudio. Try the instructions on &lt;a href=&#34;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&#34; class=&#34;uri&#34;&gt;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&lt;/a&gt; or &lt;a href=&#34;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&#34; class=&#34;uri&#34;&gt;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Use RStudio Server&lt;/li&gt;
-&lt;li&gt;Use RStudio Cloud &lt;a href=&#34;https://rstudio.cloud/&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud/&lt;/a&gt; (in beta so it may not work)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;why-r&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Why R?&lt;/h1&gt;
-&lt;p&gt;R is just one of &lt;em&gt;many&lt;/em&gt; programming languages but R is specially designed for doing statistics. Hence it is widely taught in statistic classes. There are other statistics programs (even Excel can do basic statistical tests) but these are normally “point-and-click” programs where you click a button and magic happens. The advantage of R is that it is an open source software where you can &lt;em&gt;see&lt;/em&gt; how your data is being manipulated. Which means R is transparent, you can check whether the statistics is done correctly and is easier to see how statistical theory is being applied. It’s no longer magic but &lt;em&gt;science&lt;/em&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;why-rstudio&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Why RStudio?&lt;/h1&gt;
-&lt;p&gt;If you open R itself you’ll see that it’s pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:&lt;br /&gt;
-user -&amp;gt; input -&amp;gt; RStudio -&amp;gt; R -&amp;gt; RStudio -&amp;gt; output -&amp;gt; user&lt;/p&gt;
-&lt;p&gt;If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;RStudio-console.png&#34; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Left: The big window is the &lt;strong&gt;console&lt;/strong&gt;. This is the interface with R and is the same as using R on its own. (don’t worry about “terminal”)&lt;/li&gt;
-&lt;li&gt;Top right: This window has three tabs: “environment” - shows you what information is stored in R’s memory, “history” - shows your code history &amp;amp; “connections” - don’t worry about this one.&lt;/li&gt;
-&lt;li&gt;Bottom right: This has several tabs. The most important being “files” - showing you where RStudio is looking at on your computer &amp;amp; “plot” - shows you any plots you make in R.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can customise the layout and colour scheme of RStudio in Options.&lt;br /&gt;
-There are other user interfaces for R but RStudio has a lot of support.&lt;/p&gt;
-&lt;div id=&#34;rstudio-scripts&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;RStudio scripts&lt;/h2&gt;
-&lt;p&gt;The greatest advantage of RStudio is that it allows you to write &lt;strong&gt;scripts&lt;/strong&gt;. These are files ending in &lt;code&gt;.R&lt;/code&gt; that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from &lt;strong&gt;having to type out code over and over again&lt;/strong&gt;. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow &lt;strong&gt;reproducibility&lt;/strong&gt; and helps with problem solving.&lt;/p&gt;
-&lt;p&gt;Let’s demonstrate the power of RStudio and scripts…but first an introduction to directories.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;file-housekeeping&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;File housekeeping&lt;/h1&gt;
-&lt;p&gt;It’s important for your computer files to be &lt;em&gt;organised&lt;/em&gt; so that you can find your files later. Where possible don’t save your files to a “downloads” folder or your “desktop” - these should not be permanent file locations (OK for temporary ones).&lt;/p&gt;
-&lt;p&gt;In computer science, most operating software are organised in to &lt;strong&gt;drives&lt;/strong&gt;, &lt;strong&gt;directories&lt;/strong&gt;, &lt;strong&gt;folders&lt;/strong&gt; &amp;amp; &lt;strong&gt;files&lt;/strong&gt;. Using Windows as example:
-C:/ is a drive. Within the drive there are folders (e.g. Documents). Folders are groups of files (e.g. my_document.doc). Directories are the cataloguing system describing where files and folders are stored. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;We recommend that in your Documents folder you should have a folder for this module which contains folders for each of the practicals (5 folders). The practical folders should contain the relevant files for the practical. For example:&lt;br /&gt;
-Documents (folder) -&amp;gt; Biostats (folder) -&amp;gt; Practical 1 (folder) -&amp;gt; Script (file)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets.&lt;/p&gt;
-&lt;p&gt;Directories are really important concepts in computer science. We use directories without realising it every time we use a computer.&lt;/p&gt;
-&lt;div id=&#34;working-directories&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Working directories&lt;/h2&gt;
-&lt;p&gt;RStudio works off directories. There is a default directory which shows up on the “Files” tab. This is called the &lt;strong&gt;Working Directory&lt;/strong&gt;. You can change this by default under Tools -&amp;gt; Global Options but you can also change this temporarily under Session -&amp;gt; Set working directory.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;setwd.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;This is the same as entering &lt;code&gt;setwd(&amp;lt;insert directory address here&amp;gt;)&lt;/code&gt;. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place (see below).&lt;/p&gt;
-&lt;p&gt;You can check what working directory R is using by typing &lt;code&gt;getwd()&lt;/code&gt;. Note that if you run this from the console you might get a different answer because the default working directory of RStudio might be different to the working directory of a script. The working directory of a script is the folder the script is saved in.&lt;/p&gt;
-&lt;p&gt;When we type directory addresses in R we can shorten the address used &lt;em&gt;relative&lt;/em&gt; to the working directory. Otherwise we would have to type in the WHOLE address starting from the disk drive (usually C:/).&lt;/p&gt;
-&lt;p&gt;For example:&lt;br /&gt;
-If my working directory was “C:/My Documents” and I had a file in my documents folder called “file.csv” that I wanted to load into R, then I do not need to type out “C:/My Documents/file.csv” but could use the short version “file.csv” because R automatically fills in the beginning of the address as it checks its working directory. Note directories are not case sensitive.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:
-  -&amp;gt; my documents (within drive C - the working directory)
-      -&amp;gt; file we want (within my documents)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If my working directory was “G:/Folder” and my file was in “C:/my documents”, then the short version “file.csv” &lt;em&gt;would not work&lt;/em&gt; because R is using the address “G:/folder/file.csv”. And this address does not exist. It’s like writing the working directory first then adding on the short address after.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:
-  -&amp;gt; my documents (within drive C)
-      -&amp;gt; file we want (within my documents)
-G:
-  -&amp;gt; folder (within drive G - the working directory)&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Since addresses are relative, we can also get files stored in sub folders (folders within folders) separated by &lt;code&gt;/&lt;/code&gt;. Note that R can understand &lt;code&gt;/&lt;/code&gt; but does not understand &lt;code&gt;\&lt;/code&gt; for computer reasons we do not need to get into. If you really need to use &lt;code&gt;\&lt;/code&gt; in an address you need to type it twice - e.g. &lt;code&gt;C:\\folder\\file&lt;/code&gt;. Note that if you copied the address of a directory directly from the address bar in Windows Explorer then it will use &lt;code&gt;\&lt;/code&gt; so you need to replace them with &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:
-  -&amp;gt; my documents (within drive C - the working directory)
-      -&amp;gt; folder (within my documents)
-          -&amp;gt; file (within folder)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Following the above example:&lt;br /&gt;
-If my working directory was “C:/My Documents” and I had a file in a folder within my documents folder, then the full address is “C:/My Documents/folder/file.csv” and short address I could use in R is “folder/file.csv” because R is already looking in “C:/My Documents”. This works for any number of sub-folders within the same working directory.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:
-  -&amp;gt; my documents (within drive C - the working directory)
-      -&amp;gt; folder 1(within my documents)
-          -&amp;gt; folder 2 (within folder 1)
-              -&amp;gt; file (within folder 2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;E.g. “folder1/folder2/folder3/file.csv” where folder 3 is within folder 2 which is within folder 1 which is within the working directory. But you wouldn’t have that many subfolders right?&lt;/p&gt;
-&lt;p&gt;Now for a more complicated example.
-Imagine we had a folder (parent folder) with two sub-folders A &amp;amp; B and we have set our working directory to folder A like this- &lt;code&gt;setwd(&#34;C:/parent folder/folder A&#34;)&lt;/code&gt;. BUT we wanted to access a file stored in folder B (called file.csv). Like so:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:
-  -&amp;gt; parent folder (within drive C)
-      -&amp;gt; folder A (within parent - the working directory)
-          -&amp;gt; other files (within folder A)
-      -&amp;gt; folder B (also within parent)
-          -&amp;gt; file we want (within folder B)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The short address “folder B/file.csv” would &lt;strong&gt;NOT&lt;/strong&gt; work because the address R is using is “C:/parent folder/folder A/folder B/file.csv” which does not exist - folder B is not within folder A.&lt;br /&gt;
-Instead we have two options:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;To use the full address “C:/parent folder/folder B/file.csv”&lt;/li&gt;
-&lt;li&gt;To use the relative address and tell R to move up one directory before it starts looking for a file called “file.csv”. In computing, this is denoted &lt;code&gt;..&lt;/code&gt;. So the short address becomes “../folder B/file.csv”. Use &lt;code&gt;..&lt;/code&gt; each time you want to go up a directory level.e.g. “../../../file” goes up three directory levels before looking for the file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;That’s about as complicated as it gets for working directories and if you can’t import data into R - &lt;strong&gt;check what the working directory in R is and what the address of the file is&lt;/strong&gt;.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;creating-a-script&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Creating a script&lt;/h1&gt;
-&lt;p&gt;Scripts are files of code that can be directly run in RStudio (.R files). You can create a new script under File -&amp;gt; New file -&amp;gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.&lt;br /&gt;
-Save it to your working directory and give it an informative name (e.g. “Dropin1”)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;open-script.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Let’s add some code to this script by learning how to import data into R.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Run code from your script rather than directly from the console&lt;/strong&gt;, that way you have a record of what you’ve done and it makes it easy to spot any mistakes you might have made. Put your cursor on the line you want to run then press Ctrl+Enter or click Run.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;Run.png&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;loading-data&#34; class=&#34;section level1 tabset&#34;&gt;
-&lt;h1&gt;Loading data&lt;/h1&gt;
-&lt;p&gt;To use data stored in other files, the data must be &lt;strong&gt;loaded&lt;/strong&gt; or &lt;strong&gt;read&lt;/strong&gt; into R. The function used to load data into R depends on the file type. Files names or directories are designated as character strings (&lt;code&gt;&#34;&#34;&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;The function used to import data depends on the file type. &lt;code&gt;read.delim()&lt;/code&gt; for deliminated data (hence delim) or &lt;code&gt;read.csv()&lt;/code&gt; for csv files are two common ways. &lt;code&gt;read.table()&lt;/code&gt; also works for tables. See &lt;code&gt;help(&#34;read.table&#34;)&lt;/code&gt; for the general inputs. The two most important inputs to be aware of are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;header&lt;/code&gt;: Use &lt;code&gt;header = FALSE&lt;/code&gt; (default) if your data doesn’t have headers, &lt;code&gt;header = TRUE&lt;/code&gt; to force R to recognise headers&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sep&lt;/code&gt;: Tells R to recognise how individual observations are separated (hence sep). &lt;code&gt;sep = &#34;&#34;&lt;/code&gt; or &lt;code&gt;sep = &#34; &#34;&lt;/code&gt; if it’s tab separated data (with white spaces between data - &lt;code&gt;&#34;&#34;&lt;/code&gt; is a general indicator for any whitespace, &lt;code&gt;&#34; &#34;&lt;/code&gt; is specifically 1 space) or &lt;code&gt;sep = &#34;,&#34;&lt;/code&gt; for comma separated values. If the data didn’t import properly it could be because the wrong read function or the wrong separator was used - try another one.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div id=&#34;txt&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;.txt&lt;/h2&gt;
-&lt;p&gt;Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. e.g. 1 2 3 4 5 6 (separated by 1 space). This is loaded using &lt;code&gt;read.delim()&lt;/code&gt;. Try loading the file “small_sleep.txt”:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;small_sleep &amp;lt;- read.delim(&amp;quot;small_sleep.txt&amp;quot;)
-small_sleep
-                  Species   BodyWt TotalSleep
-1         Africanelephant 6654.000        3.3
-2  Africangiantpouchedrat    1.000        8.3
-3               ArcticFox    3.385       12.5
-4    Arcticgroundsquirrel    0.920       16.5
-5           Asianelephant 2547.000        3.9
-6                  Baboon   10.550        9.8
-7             Bigbrownbat    0.023       19.7
-8          Braziliantapir  160.000        6.2
-9                     Cat    3.300       14.5
-10             Chimpanzee   52.160        9.7&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;csv&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;.csv&lt;/h2&gt;
-&lt;p&gt;If data is separated by a comma, it’s called a comma separated value file (.csv). e.g. 1,2,3,4,5,6. Note that .txt files can also be comma separated. The function to read csv is &lt;code&gt;read.csv()&lt;/code&gt;. Try loading the file “mammal_sleep.csv”:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mammal_sleep &amp;lt;- read.csv(&amp;quot;mammal_sleep.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;copying-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Copying data&lt;/h2&gt;
-&lt;p&gt;For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;clip.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;For PC:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(&amp;quot;clipboard&amp;quot;) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For Mac:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(pipe(&amp;quot;pbpaste&amp;quot;)) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Web browsers might display whitespace differently so try a different separator depending on what web browser you are using.&lt;/p&gt;
-&lt;div id=&#34;try-it-yourself&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Try it yourself&lt;/h3&gt;
-&lt;p&gt;For whichever operating system you have, highlight and copy this data and load this data into R using you new R script. Make sure you are using the correct &lt;code&gt;read&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                  Species   BodyWt
-1         Africanelephant 6654.000
-2  Africangiantpouchedrat    1.000
-3               ArcticFox    3.385
-4    Arcticgroundsquirrel    0.920
-5           Asianelephant 2547.000
-6                  Baboon   10.550
-7             Bigbrownbat    0.023
-8          Braziliantapir  160.000
-9                     Cat    3.300
-10             Chimpanzee   52.160&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Species,BodyWt,BrainWt,NonDreaming,Dreaming,TotalSleep,LifeSpan,Gestation,Predation,Exposure,Danger
-Africanelephant,6654,5712,NA,NA,3.3,38.6,645,3,5,3
-Africangiantpouchedrat,1,6.6,6.3,2,8.3,4.5,42,3,1,3
-ArcticFox,3.385,44.5,NA,NA,12.5,14,60,1,1,1
-Arcticgroundsquirrel,0.92,5.7,NA,NA,16.5,NA,25,5,2,3
-Asianelephant,2547,4603,2.1,1.8,3.9,69,624,3,5,4
-Baboon,10.55,179.5,9.1,0.7,9.8,27,180,4,4,4
-Bigbrownbat,0.023,0.3,15.8,3.9,19.7,19,35,1,1,1
-Braziliantapir,160,169,5.2,1,6.2,30.4,392,4,5,4
-Cat,3.3,25.6,10.9,3.6,14.5,28,63,1,2,1&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;checking-the-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Checking the data&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;For bigger datasets it is easier to view a subset of the data or to use the &lt;code&gt;View()&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mammal_sleep, n = 6) # View the first 6 rows (6 is default, can be changed)
-                 Species   BodyWt BrainWt NonDreaming Dreaming TotalSleep
-1        Africanelephant 6654.000  5712.0          NA       NA        3.3
-2 Africangiantpouchedrat    1.000     6.6         6.3      2.0        8.3
-3              ArcticFox    3.385    44.5          NA       NA       12.5
-4   Arcticgroundsquirrel    0.920     5.7          NA       NA       16.5
-5          Asianelephant 2547.000  4603.0         2.1      1.8        3.9
-6                 Baboon   10.550   179.5         9.1      0.7        9.8
-  LifeSpan Gestation Predation Exposure Danger
-1     38.6       645         3        5      3
-2      4.5        42         3        1      3
-3     14.0        60         1        1      1
-4       NA        25         5        2      3
-5     69.0       624         3        5      4
-6     27.0       180         4        4      4&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;View(mammal_sleep)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;data-structure&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Data structure&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;str()&lt;/code&gt; is a handy function for checking the structure of your dataset. Let’s check the mammal sleep dataset.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mammal_sleep)
-&amp;#39;data.frame&amp;#39;:   62 obs. of  11 variables:
- $ Species    : chr  &amp;quot;Africanelephant&amp;quot; &amp;quot;Africangiantpouchedrat&amp;quot; &amp;quot;ArcticFox&amp;quot; &amp;quot;Arcticgroundsquirrel&amp;quot; ...
- $ BodyWt     : num  6654 1 3.38 0.92 2547 ...
- $ BrainWt    : num  5712 6.6 44.5 5.7 4603 ...
- $ NonDreaming: num  NA 6.3 NA NA 2.1 9.1 15.8 5.2 10.9 8.3 ...
- $ Dreaming   : num  NA 2 NA NA 1.8 0.7 3.9 1 3.6 1.4 ...
- $ TotalSleep : num  3.3 8.3 12.5 16.5 3.9 9.8 19.7 6.2 14.5 9.7 ...
- $ LifeSpan   : num  38.6 4.5 14 NA 69 27 19 30.4 28 50 ...
- $ Gestation  : num  645 42 60 25 624 180 35 392 63 230 ...
- $ Predation  : int  3 3 1 5 3 4 1 4 1 1 ...
- $ Exposure   : int  5 1 1 2 5 4 1 5 2 1 ...
- $ Danger     : int  3 3 1 3 4 4 1 4 1 1 ...&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;The first line tells us that &lt;code&gt;mammal_sleep&lt;/code&gt; is a data frame. Which is how R stores observations in rows and columns. Other types are lists and matrices. It also tells us there are 62 observations - meaning the number of rows of data - and 11 variables - meaning the number of columns&lt;/li&gt;
-&lt;li&gt;In the first column of &lt;code&gt;str()&lt;/code&gt;, are the names of the columns of the dataset listed with an &lt;code&gt;$&lt;/code&gt; are . So the first column is called &lt;code&gt;Species&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;The second column shows what &lt;em&gt;type&lt;/em&gt; of variable the data are: character (&lt;code&gt;chr&lt;/code&gt;) for letters, numeric (&lt;code&gt;num&lt;/code&gt;) for continuous numbers and integer (&lt;code&gt;int&lt;/code&gt;) for discrete numbers. Another type you will encounter are &lt;code&gt;Factors&lt;/code&gt; and &lt;code&gt;levels&lt;/code&gt; - these are categorical variables.&lt;/li&gt;
-&lt;li&gt;The third column shows the first couple of observations in each column&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;summarising-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Summarising data&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;summary()&lt;/code&gt; shows some summary statistics for the specific variable&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mammal_sleep) # for all columns
-   Species              BodyWt            BrainWt         NonDreaming    
- Length:62          Min.   :   0.005   Min.   :   0.14   Min.   : 2.100  
- Class :character   1st Qu.:   0.600   1st Qu.:   4.25   1st Qu.: 6.250  
- Mode  :character   Median :   3.342   Median :  17.25   Median : 8.350  
-                    Mean   : 198.790   Mean   : 283.13   Mean   : 8.673  
-                    3rd Qu.:  48.202   3rd Qu.: 166.00   3rd Qu.:11.000  
-                    Max.   :6654.000   Max.   :5712.00   Max.   :17.900  
-                                                         NA&amp;#39;s   :14      
-    Dreaming       TotalSleep       LifeSpan         Gestation     
- Min.   :0.000   Min.   : 2.60   Min.   :  2.000   Min.   : 12.00  
- 1st Qu.:0.900   1st Qu.: 8.05   1st Qu.:  6.625   1st Qu.: 35.75  
- Median :1.800   Median :10.45   Median : 15.100   Median : 79.00  
- Mean   :1.972   Mean   :10.53   Mean   : 19.878   Mean   :142.35  
- 3rd Qu.:2.550   3rd Qu.:13.20   3rd Qu.: 27.750   3rd Qu.:207.50  
- Max.   :6.600   Max.   :19.90   Max.   :100.000   Max.   :645.00  
- NA&amp;#39;s   :12      NA&amp;#39;s   :4       NA&amp;#39;s   :4         NA&amp;#39;s   :4       
-   Predation        Exposure         Danger     
- Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :3.000   Median :2.000   Median :2.000  
- Mean   :2.871   Mean   :2.419   Mean   :2.613  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
- Max.   :5.000   Max.   :5.000   Max.   :5.000  
-                                                
-summary(mammal_sleep$BodyWt) # summary statistics for body weight
-    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-   0.005    0.600    3.342  198.790   48.202 6654.000 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tips&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Tips&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Coding is like learning a language. There is grammar, syntax and terminology to learn.&lt;/li&gt;
-&lt;li&gt;The secret to being a coding whiz is practice, practice, practice. Try using R at every opportunity. If you don’t use it, you lose it.&lt;/li&gt;
-&lt;li&gt;It’s OK to google everything. No matter how many years you’ve been using R you will forget something basic.&lt;/li&gt;
-&lt;li&gt;A lot of programming is logic. If you can’t describe what you want to achieve in words, then you can’t code it. Sometimes the solution means changing your way of thinking about a problem.&lt;/li&gt;
-&lt;li&gt;A lot of errors come from spelling or syntax mistakes. It doesn’t mean you don’t know it, check your code carefully for typos. Missing brackets or quotation marks are common mistakes.&lt;/li&gt;
-&lt;li&gt;Often, copying and pasting your error message into google comes up with the solution&lt;/li&gt;
-&lt;li&gt;Trial and error is a big part of programming. If it doesn’t work the first time, tweak it and try it again. Getting a function to work might be as simple as adding or removing one of the defined parameters.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;finding-help&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Finding help&lt;/h1&gt;
-&lt;p&gt;All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in &lt;code&gt;help(&amp;lt;insert function name here&amp;gt;)&lt;/code&gt;. If you don’t know your exact query, you can search using &lt;code&gt;??&amp;lt;insert term here&amp;gt;&lt;/code&gt; - e.g. &lt;code&gt;??mean&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The Internet is really really great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google.&lt;/p&gt;
-&lt;p&gt;Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by &lt;em&gt;doing&lt;/em&gt;, which means having a go yourself before seeking help from others. Make asking for help your last option. You’ll see on StackExchange people &lt;em&gt;describe&lt;/em&gt; what they want to achieve, what they have done so far, identified what the problem is and provide some reproducible code to help someone else understand their problem. It’s really hard to fix someone’s coding problem without context.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Final checklist&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Have you installed R?&lt;/li&gt;
-&lt;li&gt;Have you installed RStudio?&lt;/li&gt;
-&lt;li&gt;Are all your versions and packages up to date?&lt;/li&gt;
-&lt;li&gt;Do you know how to create and save an R script?&lt;/li&gt;
-&lt;li&gt;Do you know how to set your working directory?&lt;/li&gt;
-&lt;li&gt;Can you import data into R?&lt;/li&gt;
-&lt;li&gt;Can you run a line of code?&lt;/li&gt;
-&lt;li&gt;Can you use a function?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div id=&#34;recap-quiz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Recap quiz&lt;/h2&gt;
-&lt;p&gt;What is the working directory in computing?&lt;/p&gt;
-&lt;pre class=&#34;r fold-hide&#34;&gt;&lt;code&gt;Working directories are the location (folder) on your computer that the program is looking in by default. All file address are relative to the working directory&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;What is the difference between the function &lt;code&gt;getwd()&lt;/code&gt; and &lt;code&gt;setwd()&lt;/code&gt;?&lt;/p&gt;
-&lt;pre class=&#34;r fold-hide&#34;&gt;&lt;code&gt;getwd() tells you what R thinks the working directory is, setwd() tells R what you want the working directory to be&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;learnr-tutorials&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;code&gt;learnr&lt;/code&gt; tutorials&lt;/h1&gt;
-&lt;p&gt;In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.&lt;/p&gt;
-&lt;p&gt;You can install these tutorials by following the instructions &lt;a href=&#34;https://jacintak.github.io/project/biostats-tutorials&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

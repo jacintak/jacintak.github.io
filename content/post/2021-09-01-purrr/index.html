@@ -1,0 +1,169 @@
+---
+title: "Beyond the valley of intermediate competence"
+subtitle: "Replacing for loops part 2"
+summary: "Learning to use purrr"
+author: admin
+date: '2021-09-01'
+publishDate: '2021-09-01'
+slug: purrr
+categories: [code]
+tags: [code, R stats]
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Earlier this year I <a href="/post/using-mapply/">wrote</a> about learning to forego for loops for <code>apply</code> functions in <code>R</code>. I’m continuing this journey to replace for loops with <code>purrr</code>. I’ll be honest and say that my main motivation for learning <code>purrr</code> is the package name :cat:. <code>purrr</code> is a package that does the same things as <code>mapply</code> and <code>lapply</code>; to apply a function over listed data and also has useful functions for manipulating lists and functional programming.</p>
+<p>Objectively, the functionality of <code>purrr</code> is not that different to base functions. There’s an understandable learning curve and resulting benefit when going from for loops to <code>apply</code> functions, but there’s diminishing return on going from <code>apply</code> to <code>purrr</code> unless you fully leverage the shortcuts of <code>tidyverse</code> syntax (which I have not). The main advantage of <code>purrr</code> is that it uses the <code>tidyverse</code> syntax and pipes. Overall, I don’t think there’s a <em>huge</em> benefit for using <code>purrr</code> over base, unlike for example the advantages of using <code>ggplot2</code> over base for graphing, but if your code is already written in <code>tidyverse</code> then it makes sense to stick to it and have clear and consistent code (if you are used to reading <code>tidyverse</code> syntax).</p>
+<p>If you really want to stay on the <code>tidyverse</code> train you can skip learning <code>apply</code> and jump straight to <code>purrr</code> but I’m a fan of using as fewer dependencies as possible and knowing the base <code>R</code> way. There are lots of detailed tutorials about <code>purrr</code> and it’s functions, like <a href="https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html">this one that discusses the differences with base functions</a> so I recommend checking those out. If you’re already familiar with the <code>tidyverse</code> syntax then <code>purrr</code> is no different.</p>
+<p>Here are some things I’ve learnt about <code>purrr</code> for applying functions to listed data.</p>
+<hr />
+<div id="lapply" class="section level1">
+<h1><code>lapply</code></h1>
+<p><code>lapply</code> takes one argument (data) and applies a function to it. As I found earlier, it’s quite a simple case and doesn’t suit more complex datasets I usually work with. The <code>purrr</code> equivalent is <code>map</code>.</p>
+<p>One of the advantages of <code>purrr</code> is that it you can specify the format of the output. That is, <code>lapply</code> and <code>map</code> takes a list and produces a list, but <code>map_*</code> where <code>*</code> are a range of output types will give that output type. For example, <code>map_chr</code> will take a list and produce a character vector. This is handy because it skips an intermediate step to transform your resulting list into your desired output format, such as using <code>do.call</code> to turn a list into a data frame.</p>
+<div id="an-example" class="section level2">
+<h2>An example</h2>
+<p>Let’s use the same code as the previous post:</p>
+<pre class="r"><code># some data to use as a list
+loop_data &lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &lt;- seq(0.2, 1, 0.2)</code></pre>
+<p>As before, <code>loop_data</code> is a data frame with two numeric columns (<code>col1</code> &amp; <code>col2</code>). We technically won’t use <code>loop_data$col2</code> but it’s there to create a 5x2 data frame. <code>a</code> is a variable that we need for our function with 5 values.</p>
+<p>We want to add each element of <code>a</code> to <code>loop_data$col1</code> and save that in a new column <code>loop_data$col1a</code>. We will also add <code>a</code> as a column in <code>loop_data</code> just so we can keep track of which value was used to calculate <code>col1a</code>. So the final output should have 25 rows (5 observations in <code>loop_data</code> x 5 values of <code>a</code>) and 4 columns (<code>col1</code>, <code>col2</code>, <code>col1a</code>, <code>a</code>).</p>
+<p>Now let’s use <code>map</code> to do the same thing we did with <code>lapply</code> but using <code>tidyverse</code> and pipes :bathtub:</p>
+<pre class="r"><code>loop_data %&gt;% 
+  expand_grid(., a) %&gt;% # expand to include all crossed combinations
+  group_split(a) %&gt;% # split into lists by the value of a for nested lists
+  map_dfr(., function(x){
+    x$col1a &lt;- x$col1 + x$a
+    return(x)
+    }) %&gt;% # apply the function to the list and return a data frame
+  summary(.) # show the summary</code></pre>
+<pre><code>##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0</code></pre>
+<p>If you’re not familiar with piping this is what’s happening:</p>
+<ol style="list-style-type: decimal">
+<li>The first line is specifying our list <code>loop_data</code> to be sent down the pipe (<code>%&gt;%</code>). Pipes are read sequentially and the output of one line is used as the input of the next line. This intermediate object is indicated by the dot (<code>.</code>). Sometimes the dot can be left out if the arguments are presented to the function in the expected order but I find it useful to type everything out when learning anyway so that it’s clear what the arguments are. The dot is particularly needed when using base functions within a pipe, as seen in the last line with <code>summary(.)</code> because these functions are expecting an argument that <code>tidyverse</code> functions know how to deal with.</li>
+<li>I use <code>tidyr::expand_grid</code> to create a data frame of all combinations of <code>col1</code> and <code>a</code>. This has a benefit of adding <code>a</code> as a column.</li>
+<li>Then I use <code>group_split</code> to group the crossed data frame based on values of <code>a</code>. This produces a tibble which are essentially <code>tidyverse</code> lists. <code>split</code> is a base equivalent.</li>
+<li>Then I apply the actual function over the list and specify that I want the output to be a single data frame (the <code>_dfr</code> suffix). This is the equivalent of doing <code>lapply</code> and <code>do.call</code> in the same function.</li>
+<li>Finally I use the base <code>R</code> function <code>summary</code> to show the summary statistics of the result to check it works. There isn’t a <code>tidyverse</code> equivalent of <code>summary</code> so we must use the dot within the function.</li>
+</ol>
+<p>The end result is exactly the same as the original <code>lapply</code> code. Here is the <code>lapply</code> function from the previous post to compare:</p>
+<pre><code># Prepare the answer list
+lapply_ans &lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &lt;- mapply(FUN = cbind, lapply_ans, &quot;a&quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)</code></pre>
+<blockquote>
+<p>Side note:
+<code>rerun(length(a), loop_data)</code> behaves exactly the same as <code>replicate(length(a), loop_data, simplify = FALSE)</code> and is the <code>tidyverse</code> equivalent (unclear for how long according to the dev notes). Then you’ll need to add <code>a</code> as a column, matching the order of the tibble and set the column names, e.g. <code>rerun(length(a), loop_data) %&gt;% map2(a, bind_cols) %&gt;% map(a=...3, rename)</code>.</p>
+</blockquote>
+<p>The differences:</p>
+<ul>
+<li>I’ve taken a slightly different approach. I define all possible combinations I want to use in the calculations then creating grouped lists.</li>
+<li>I specified the function within the pipe rather than named in the global environment like in the original post. It’s better to name the function if you’re using it multiple times but in this post I’m only using it once, so I’ll get away with it.
+<ul>
+<li><code>map</code> also allows formulas which for simple functions (like adding a constant to all values) will simplify the code and let
+you use anonymous functions. I’m not used to the formula method of writing functions.</li>
+</ul></li>
+<li>Instead of 5 separate lines of code with the base version, in <code>tidyverse</code> we can do it in a pipe with 4 steps. But you notice that it’s not a huge difference between what the two approaches are doing. Still better than a for loop.
+<ul>
+<li>We skipped <code>do.call</code> by using <code>map_dfr</code> directly to return a data frame. I could also use <code>map</code> and transform the list into a
+data frame separately.</li>
+</ul></li>
+</ul>
+</div>
+<div id="and-another-thing" class="section level2">
+<h2>And another thing…</h2>
+<p>We need to prepare the input data so that it is crossed; which mean replicating our list across all combinations of <code>col1</code> and <code>a</code>. <code>expand_grid</code> or similar as used above could be helpful for this, and the data frame could be split into nested lists for applying the function.</p>
+<p>To contrast, this will only add matching rows of <code>col1</code> and <code>a</code> together rather than all combinations:</p>
+<pre class="r"><code>list(loop_data$col1, a) %&gt;%
+  pmap_dfr(function(x, a) {
+  df &lt;- data.frame(col1 = x,
+                   a = a,
+                   col1a = x + a) # add answer to a new column
+  return(df)
+})</code></pre>
+<pre><code>##   col1   a col1a
+## 1   11 0.2  11.2
+## 2   12 0.4  12.4
+## 3   13 0.6  13.6
+## 4   14 0.8  14.8
+## 5   15 1.0  16.0</code></pre>
+<p>Since <code>map</code> is the equivalent of <code>lapply</code>, then it also doesn’t take multiple inputs, which is why we added <code>a</code> as a column to <code>loop_data</code>. So we turn to <code>mapply</code> and its <code>purrr</code> equivalent.</p>
+<hr />
+</div>
+</div>
+<div id="mapply" class="section level1">
+<h1><code>mapply</code></h1>
+<p>The <code>purrr</code> equivalent of <code>mapply</code> is <code>pmap</code>. Specifically, <code>pmap</code> allows for any number of arguments for the function. There is another function, <code>map2</code> that accepts exactly two arguments but <code>pmap</code> is generalised to allow for more than two. As with <code>map</code>, there are variants with suffixes that specify what output format you want, such as a data frame (<code>pmap_dfr</code>).</p>
+<p>The <code>tidyverse</code> website goes into the syntax differences between <code>mapply</code> and <code>pmap</code> in more <a href="https://design.tidyverse.org/cs-mapply-pmap.html">detail</a>.</p>
+<p>Let’s jump to the example using the same <code>loop_function</code> as the original post.</p>
+<div id="pmap" class="section level2">
+<h2><code>pmap</code></h2>
+<pre class="r"><code># A function to add a value a to a data frame x
+loop_function &lt;- function(x, a) {
+  x$col1a &lt;- x$col1 + a # add answer to a new column
+  x$a &lt;-  a
+  return(x)
+}
+
+loop_data %&gt;% 
+  rerun(length(a), .) %&gt;% # replicate the list to populate
+  list(a) %&gt;% # define all variables for loop_function within a list
+  pmap_dfr(loop_function) %&gt;% # apply the function to the list and return a data frame
+  map_dfc(summary) # show the summary</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   col1    col2    col1a   a      
+##   &lt;table&gt; &lt;table&gt; &lt;table&gt; &lt;table&gt;
+## 1 11      20      11.2    0.2    
+## 2 12      21      12.4    0.4    
+## 3 13      22      13.6    0.6    
+## 4 13      22      13.6    0.6    
+## 5 14      23      14.8    0.8    
+## 6 15      24      16.0    1.0</code></pre>
+<p>Now we don’t have to add <code>a</code> as a column to <code>loop_data</code>, we can specify <code>a</code> for the function. <code>pmap</code> takes a list of arguments for the function, hence we need a list containing both <code>loop_data</code> and <code>a</code>. Don’t make <code>a</code> list before adding it to the list of function arguments (i.e. double list) because it won’t match the nth <code>a</code> variable with the nth element in the loop_data list, and match by rows within lists. For variety, I’ve used <code>map_dfc</code> to call the function <code>summary</code> on the data, rather than <code>summary(.)</code>. <code>map_dfc</code> will apply the function by columns instead of rows and produce a data frame.</p>
+<p>The <code>map2</code> equivalent is more concise than <code>pmap</code> for this simple example!</p>
+<pre><code>loop_data %&gt;% 
+  rerun(length(a), .) %&gt;% 
+  map2_dfr(a, loop_function)</code></pre>
+<p>Here is the original <code>mapply</code> example to compare:</p>
+<pre><code># Prepare the answer list
+mapply_ans &lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)</code></pre>
+<p>You could also define <code>loop_function</code> as an anonymous function within <code>pmap</code>.</p>
+<blockquote>
+<p>Make sure the variables are used in the correct order. e.g. <code>loop_data %&gt;% rerun(length(a), .) %&gt;% map_dfr(loop_function, a)</code> will run because you are passing <code>a</code> as a variable into <code>loop_function</code>, but it’s adding <code>a</code> by row within individual data frame rather than matching the nth element of the list. So it’s effectively replicating the data frame 5 times.</p>
+</blockquote>
+<hr />
+<p>That’s it. There are many ways of doing the same thing with simple examples. Hope it helps you create <code>purrr</code>fectly sensible code to replace for loops and apply functions to lists.</p>
+</div>
+</div>

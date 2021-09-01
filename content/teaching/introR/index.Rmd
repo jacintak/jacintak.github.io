@@ -21,29 +21,77 @@ knitr::opts_chunk$set(comment=NA, collapse = TRUE)
 
 Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or "how to" which come from textbooks, lectures or resources on the Internet.  
 
-Second, is learning how to define problems and how to solve them. This is true for statistics & computation. You can practice this in these drop in sessions and in your other modules. For example, R not working? Work out why, what's wrong and what to change to make it work.    
+Second, is learning how to define problems and how to solve them. You will see this in action throughout your degree. For example, is your R code not working? Work out why, what's wrong and what to change to make it work.    
 
 In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career. 
 
-
 Use the following checklist to make sure you are prepared for this semester:
 
+* Do you know how to navigate computer directories and addresses to find files or folders?
 * Do you have R and RStudio installed on your computer?
-* Is your R up to date?
+* Is R up to date? (version 4.0 or above)
 * Do you know how to set up scripts and directories in RStudio?
-* Are your folders organised in a logical and sensible way?
+* Do you know how to import and export data into R in various formats?
 
-If you've answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that's great! Check that your version and packages are all up to date (For packages - Under the Packages tab, click Update, For RStudio - Under Help menu at the top, click check for updates).
+If you've answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that's great! Check that your version and packages are all up to date (Under the Packages tab, click Update). Even so, you can work through this document if you want to check everything works or you need a refresher. 
 
-Regardless, you should work through this handout to make sure you are comfortable with the basics of R. Use this as a reference throughout semester as we will be revisiting these concepts.
+***
+
+# Why programming and computing?
+
+We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it's a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module. We will be using R which is classified as a high-level programming language - it's not the same thing as learning how to use Excel. 
+
+Learning programming is like learning a language - there is grammar and syntax and it takes time and effort to learn and to practice. Don't expect to pick it up like memorising content from a lecture - take it in small steps.
+
+## Basic computing terms
+
+We don't always formally learn computing terminology even if we've always been using computers. Here are some general computing concepts we will be using and that we expect you to be familiar with: 
+
+### Drives, Folders & Files
+
+In computer science, most commercial operating software are organised in to **drives**, **directories**, **folders** & **files**. Using Windows as example:
+C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are groups of files which contain information (e.g. my_document.doc). Here, ".doc" is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.
+
+Commercial computers tend to have only one drive but you can have as many folders and files as you want. For example:
+
+```
+C: (the hard drive)
+  -> my documents (within drive C)
+      -> file A (within my documents)
+      -> folder 1 (within my documents)
+          -> folder 2 (within folder 1)
+              -> file B (within folder 2)
+```
+
+### Directories 
+
+Directories are the cataloguing system describing where files and folders are stored; also called addresses. Directories take the form of an address like "C:/documents/folder/file" which tells a program to look in this location. The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive.
+
+> We recommend that you organise your files in a structured way. For example, have a folder for the module and sub-folders for each of the practicals:    
+> Documents (folder) -> Biostats (folder) -> Practical 1 (folder) -> Script (file)  
+> We don't recommend using a automatically selected "downloads" folder or your "desktop" because these are not permanent file locations and can be hard to find files later. 
+
+Notice that the components of the address is separated using a forward slash `/`. R can understand `/` but does not understand back slash `\` because back slashes have a specific meaning in programming. When typing addresses, make sure you use the correct slash.
+
+We navigate through our computer's directories using Explorer in Windows or Finder in MacOS. You can see the address of a directory in the address bar. We will learn how to use directories in RStudio.
+
+***
+
+## Why R?
+
+R is just one of *many* high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and data handling. Hence R is widely taught in statistic classes. There are other statistics programs but these are normally "point-and-click" programs where you click a button and magic happens. The reasons we use R are that it is an open source software and it is *transparent*, meaning you can *see* how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. R is also *reproducible* because R allows you to document your code in *scripts* that you can give another person to replicate your analysis. The traditional option is to learn these calculations by hand and use pre-calculated statistical reference tables but we would only expect that for very simple examples and doing calculations by hand is an arduous task for realistic biological problems. 
+
+***
+
+## Why RStudio?
+
+R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. It is possible to use R by itself (you can try it) but RStudio makes everything a lot easier by providing some organisation. You cannot use RStudio without R. An analogy is that R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward. 
 
 ***
 
 # Installing R and RStudio {.tabset}
 
-R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. If R is a retro text-based game (the ones where you chose your adventure with just words), then R studio is a graphic based game (like Legend of Zelda). It is possible to use R without RStudio but trust us, RStudio makes everything a lot easier by providing some organisation.
-
-You will need to install R AND R studio **in that order**.  
+You will need to install R AND RStudio **in that order**. You only need to open RStudio when you want to use R - RStudio will open R for you in the background.  
 
 ![](CRANsite.png)
 
@@ -118,12 +166,7 @@ Sorry chromebook users, if your chromebook version is very old then it may not b
 
 ***
 
-# Why R?
-
-R is just one of *many* programming languages but R is specially designed for doing statistics. Hence it is widely taught in statistic classes. There are other statistics programs (even Excel can do basic statistical tests) but these are normally "point-and-click" programs where you click a button and magic happens. The advantage of R is that it is an open source software where you can *see* how your data is being manipulated. Which means R is transparent, you can check whether the statistics is done correctly and is easier to see how statistical theory is being applied. It's no longer magic but *science*.
-
-
-# Why RStudio?
+# Opening R and RStudio for the first time
 
 If you open R itself you'll see that it's pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:  
 user -> input -> RStudio -> R -> RStudio -> output -> user  
@@ -139,131 +182,112 @@ If you open RStudio you'll see several windows that organise how information is 
 You can customise the layout and colour scheme of RStudio in Options.  
 There are other user interfaces for R but RStudio has a lot of support.
 
-## RStudio scripts
+***
 
-The greatest advantage of RStudio is that it allows you to write **scripts**. These are files ending in `.R` that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from **having to type out code over and over again**. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow **reproducibility** and helps with problem solving.  
+## Updating R and packages
 
-Let's demonstrate the power of RStudio and scripts...but first an introduction to directories.
+The last major update to R was version 4.0. If you have an older version we recommending updating R because many fundamental aspects of the language were changed and are not backwards compatible. You will see which R version is used in the information in the Console when you open RStudio. If your version is older than 4.0, install the latest version as above.  
+
+R is a statistical environment that consist of **packages**. Packages are a set of **functions** that does something to input depending on the underlying code. All your packages are stored in your **library**. When you download R it comes with a basic set of packages as default which works straight out of the box. This is called **base R**.  
+
+Once you've installed R you should check all your **packages** are up to date as well. You can update your packages by clicking the Update button under the Packages tab.  
+
+We can customise and expand the functionality of R by installing more packages, which are made by people and distributed freely. You can download packages from an online repository using the function `install.packages("<insert name of package>")`. For example, I wrote this document in RStudio using an additional package called `rmarkdown` which lets me make HTML, word or PDF files of text, code and figures or tables. We will tell you if you need to install a package but where possible we will be sticking to base R.
+
 
 ***
 
-# File housekeeping
+***
 
-It's important for your computer files to be *organised* so that you can find your files later. Where possible don't save your files to a "downloads" folder or your "desktop" - these should not be permanent file locations (OK for temporary ones).
+## Creating a script
 
-In computer science, most operating software are organised in to **drives**, **directories**, **folders** & **files**. Using Windows as example:
-C:/ is a drive. Within the drive there are folders (e.g. Documents). Folders are groups of files (e.g. my_document.doc). Directories are the cataloguing system describing where files and folders are stored. Directories take the form of an address like "C:/documents/folder/file" which tells a program to look in this location.
-
-> We recommend that in your Documents folder you should have a folder for this module which contains folders for each of the practicals (5 folders). The practical folders should contain the relevant files for the practical. For example:    
-> Documents (folder) -> Biostats (folder) -> Practical 1 (folder) -> Script (file)  
-
-The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets.   
-
-Directories are really important concepts in computer science. We use directories without realising it every time we use a computer.
-
-## Working directories
-
-RStudio works off directories. There is a default directory which shows up on the "Files" tab. This is called the **Working Directory**. You can change this by default under Tools -> Global Options but you can also change this temporarily under Session -> Set working directory.
-
-![](setwd.png)
-
-This is the same as entering `setwd(<insert directory address here>)`. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place (see below).  
-
-You can check what working directory R is using by typing `getwd()`. Note that if you run this from the console you might get a different answer because the default working directory of RStudio might be different to the working directory of a script. The working directory of a script is the folder the script is saved in.  
-
-When we type directory addresses in R we can shorten the address used *relative* to the working directory. Otherwise we would have to type in the WHOLE address starting from the disk drive (usually C:/).  
-
-For example:  
-If my working directory was "C:/My Documents" and I had a file in my documents folder called "file.csv" that I wanted to load into R, then I do not need to type out "C:/My Documents/file.csv" but could use the short version "file.csv" because R automatically fills in the beginning of the address as it checks its working directory. Note directories are not case sensitive.  
-
-```
-C:
-  -> my documents (within drive C - the working directory)
-      -> file we want (within my documents)
-```
-
-If my working directory was "G:/Folder" and my file was in "C:/my documents", then the short version "file.csv" *would not work* because R is using the address "G:/folder/file.csv". And this address does not exist. It's like writing the working directory first then adding on the short address after.
-
-```
-C:
-  -> my documents (within drive C)
-      -> file we want (within my documents)
-G:
-  -> folder (within drive G - the working directory)
-```
+The greatest advantage of RStudio is that it allows you to write **scripts**. These are files ending in `.R` that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from **having to type out code over and over again**. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow **reproducibility** and helps with problem solving.  
 
 
-> Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn't know where to go to pick up your parcel (file)
-
-Since addresses are relative, we can also get files stored in sub folders (folders within folders) separated by `/`. Note that R can understand `/` but does not understand `\` for computer reasons we do not need to get into. If you really need to use `\` in an address you need to type it twice - e.g. `C:\\folder\\file`. Note that if you copied the address of a directory directly from the address bar in Windows Explorer then it will use `\` so you need to replace them with `/`.
-
-```
-C:
-  -> my documents (within drive C - the working directory)
-      -> folder (within my documents)
-          -> file (within folder)
-```
-
-Following the above example:  
-If my working directory was "C:/My Documents" and I had a file in a folder within my documents folder, then the full address is "C:/My Documents/folder/file.csv" and short address I could use in R is  "folder/file.csv" because R is already looking in "C:/My Documents". This works for any number of sub-folders within the same working directory.
-```
-C:
-  -> my documents (within drive C - the working directory)
-      -> folder 1(within my documents)
-          -> folder 2 (within folder 1)
-              -> file (within folder 2)
-```
-E.g. "folder1/folder2/folder3/file.csv" where folder 3 is within folder 2 which is within folder 1 which is within the working directory. But you wouldn't have that many subfolders right?
-
-Now for a more complicated example. 
-Imagine we had a folder (parent folder) with two sub-folders A & B and we have set our working directory to folder A like this- `setwd("C:/parent folder/folder A")`. BUT we wanted to access a file stored in folder B (called file.csv). Like so:
-
-```
-C:
-  -> parent folder (within drive C)
-      -> folder A (within parent - the working directory)
-          -> other files (within folder A)
-      -> folder B (also within parent)
-          -> file we want (within folder B)
-```
-
-The short address "folder B/file.csv" would **NOT** work because the address R is using is "C:/parent folder/folder A/folder B/file.csv" which does not exist - folder B is not within folder A.  
-Instead we have two options:
-
-1. To use the full address "C:/parent folder/folder B/file.csv"
-2. To use the relative address and tell R to move up one directory before it starts looking for a file called "file.csv". In computing, this is denoted `..`. So the short address becomes "../folder B/file.csv". Use `..` each time you want to go up a directory level.e.g. "../../../file" goes up three directory levels before looking for the file.
-
-That's about as complicated as it gets for working directories and if you can't import data into R - **check what the working directory in R is and what the address of the file is**.
-
-*** 
-
-# Creating a script
-
-Scripts are files of code that can be directly run in RStudio (.R files). You can create a new script under File -> New file -> Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.  
-Save it to your working directory and give it an informative name (e.g. "Dropin1")
+You can create a new script under File -> New file -> Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.  
+Save it and give it an informative name (e.g. "Dropin1.R")
 
 ![](open-script.png)
 
-Let's add some code to this script by learning how to import data into R.
+Let's add some code to this script by going through the basics of R! Copy and paste code from below into your script. 
 
-> **Run code from your script rather than directly from the console**, that way you have a record of what you've done and it makes it easy to spot any mistakes you might have made. Put your cursor on the line you want to run then press Ctrl+Enter or click Run.
+> **Run code from your script rather than directly from the console**.
+
+A script is a record of what you've done and it makes it easy to spot any mistakes you might have made (transparency & reproducibility). Put your cursor on the line you want to run then press Ctrl+Enter or click Run. You can run multiple lines by highlighting the relevant lines. You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R.
 
 ![](Run.png)
 
 ***
 
+## Setting up packages
+
+To use a package in R, you need to **call** it from R's library using the function `library()`. A package we will see later in the module is `MASS` which contains datasets you can use at home to practice the statistical tests covered in the lectures.
+
+Type `library(MASS)` into your script then press Enter. You have just **run** your first line of code. R will load the package `MASS` in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to `MASS`.
+
+Run `data()` or `data(package = .packages(all.available = TRUE))` to see the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general (e.g. the starwars dataset of Star Wars characters comes with the package `tidyverse`). Entering the name of a dataset will display the entire dataset. Try calling one of the `MASS` datasets, like `Rabbit`. You can see the descriptions of each dataset by calling `help(<dataset name>)`, e.g. `help(Rabbit)` will tell you it describes the blood pressure of rabbits before and after a drug treatment.
+
+
+## Working directories
+
+Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use **working directories**. Working directories are default directories that programs will look in first. We can then use directory address that are *relative* to this default address which shortens addresses.
+
+For example, following this directory structure: 
+```
+C:
+  -> documents
+      -> file A 
+      -> folder 1 
+          -> folder 2 
+              -> file B
+```
+If the default directory is C:/, then the address for file B is `C:/documents/folder1/folder2/fileB`.  
+But if we set folder 1 as the working directory `C:/documents/folder1/`, then we can use the relative address for the file: `folder2/fileB`. This way we don't have to type `C:/documents/folder1/` every time.
+
+Navigating through directories using addresses can be confusing. Another useful command is `..` which tells the address to go *up* a directory. For example, if folder 2 was the working directory `C:/documents/folder1/folder2` and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: `../../fileA` which means that the computer is now looking in the `documents` folder. In contrast, the relative address for file B is even shorter, `fileB`, since folder 2 is already the working directory.
+
+RStudio has a default working directory.  
+You can see which working directory is the default directory in RStudio on the "Files" tab. You can also check what working directory R is using by typing `getwd()` (GET Working Directory). When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab. *This may be one reason RStudio cannot find a file even with a "correct" relative address*.
+
+## Changing working directories
+
+You can change the default RStudio directory under Tools -> Global Options but on a daily basis, changing the directory temporarily under Session -> Set working directory is more useful.  
+
+> You will need to know how to change working directories and tell R where to find files through relative addresses because that is how we **import** and **export** data to and from R.
+
+![](setwd.png)
+
+The R function to do the same thing is `setwd()` (SET Working Directory). e.g. `setwd(<insert directory address here>)`. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place. 
+
+> Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn't know where to go to pick up your parcel (file). If R cannot find a file, check the address or the working directory is correct
+
+
+***
+
 # Loading data {.tabset}
 
-To use data stored in other files, the data must be **loaded** or **read** into R. The function used to load data into R depends on the file type. Files names or directories are designated as character strings (`""`).
+To use data stored in other files, the data must be **loaded** or **read** into R. Imported data **must** be assigned a name (using `<-`) or it won't be saved to R's memory. The `read` functions are a set of base R function that import data based on how data is saved in the file. In this module we will focus on two types of storing data: tab delimated & comma separated values.
 
-The function used to import data depends on the file type. `read.delim()` for deliminated data (hence delim) or `read.csv()` for csv files are two common ways. `read.table()` also works for tables. See `help("read.table")` for the general inputs. The two most important inputs to be aware of are:
+1. In tab deliminated data, values are separated by tabs. e.g. 1 2 3 4 5 6 (separated by 1 space). The `read` function is `read.delim()` for deliminated.
+2. In comma separated values data (CSV), values are separated by commas. e.g. 1,2,3,4,5. The `read` function is `read.csv()` for CSV.
 
-* `header`: Use `header = FALSE` (default) if your data doesn't have headers, `header = TRUE` to force R to recognise headers
-* `sep`: Tells R to recognise how individual observations are separated (hence sep). `sep = ""` or `sep = " "` if it's tab separated data (with white spaces between data - `""` is a general indicator for any whitespace, `" "` is specifically 1 space) or `sep = ","` for comma separated values. If the data didn't import properly it could be because the wrong read function or the wrong separator was used - try another one.
+Files names or directories are designated as character strings (`""`). `read.table()` also works for tables. See `help("read.table")` for the general inputs. 
+
+The `read` functions have two important settings to be aware of:
+
+* `header`: Use `header = FALSE` (default) if your data doesn't have headers, `header = TRUE` to force R to recognise headers - usually the first row of data.
+* `sep`: Tells R to recognise how individual observations are separated (hence sep). `sep = ""` or `sep = " "` if it's tab separated data (with white spaces between data - `""` is a general indicator for any whitespace, `" "` is specifically 1 space) or `sep = ","` for comma separated values. If the data didn't import properly it could be because the wrong read function or the wrong separator was used - try another one. Most of the time the default will be fine, which means you do not have to manually specify these settings.
+
+> **Always** check that your data loaded properly. We expect you to be able to load data from file or from clipboard during practicals and assessment.
+
+Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.
+
+Now let's practice two ways of importing data using `read` functions: from a file and from the clipboard. The relevant files are available on Blackboard.
 
 ## .txt
 
-Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. e.g. 1 2 3 4 5 6 (separated by 1 space). This is loaded using `read.delim()`. Try loading the file "small_sleep.txt":
+Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. This is loaded using `read.delim()`. Try loading the file "small_sleep.txt" to an R element called `small_sleep`:
+
 ```{r}
 small_sleep <- read.delim("small_sleep.txt")
 small_sleep
@@ -273,17 +297,20 @@ small_sleep
 
 ## .csv
 
-If data is separated by a comma, it's called a comma separated value file (.csv). e.g. 1,2,3,4,5,6. Note that .txt files can also be comma separated. The function to read csv is `read.csv()`. Try loading the file "mammal_sleep.csv":
+If data is separated by a comma, it's called a comma separated value file (.csv). Note that .txt files can also be comma separated. The function to read csv is `read.csv()`. Try loading the file "mammal_sleep.csv" to an R element called `mammal_sleep`:
 
 ```{r}
 mammal_sleep <- read.csv("mammal_sleep.csv")
 ```
 
+Data collected in Excel can be saved as a .csv file using the Save As option. CSV is preferred in many instances over the default Excel file type because it is less prone to error. This is what we will mostly be using.
+
 ***
 
 ## Copying data
 
-For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.
+The Clipboard is where your computer saves information that you've copied using  ctrl/cmd + c.  
+For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. You cannot paste data directly into R. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.
 
 ![](clip.png)
 
@@ -297,7 +324,7 @@ For Mac:
 myclip_data <- read.csv(pipe("pbpaste")) # also works with read.delim
 ```
 
-Web browsers might display whitespace differently so try a different separator depending on what web browser you are using.
+Web browsers might display tabbed whitespace differently so try a different separator depending on what web browser you are using (see above). If all else fails, copy the data into Excel and save the file (problem solving!).  
 
 ### Try it yourself
 
@@ -387,22 +414,3 @@ Learning to problem solve independently is not something you learn by reading or
 * Can you run a line of code?
 * Can you use a function?
 
-## Recap quiz
-
-What is the working directory in computing?
-```{r, class.source = 'fold-hide', eval = FALSE}
-Working directories are the location (folder) on your computer that the program is looking in by default. All file address are relative to the working directory
-```
-
-What is the difference between the function `getwd()` and `setwd()`?
-```{r, class.source = 'fold-hide', eval = FALSE}
-getwd() tells you what R thinks the working directory is, setwd() tells R what you want the working directory to be
-```
-
-***
-
-# `learnr` tutorials
-
-In addition to the Drop ins, the lectures and the practicals, there are optional tutorials about stats that you can run directly from RStudio in your own time. They are there to supplement your learning.  
-
-You can install these tutorials by following the instructions [here](/project/biostats-tutorials).

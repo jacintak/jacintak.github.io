@@ -1,0 +1,181 @@
+---
+title: "Beyond the valley of intermediate competence"
+subtitle: "Replacing for loops part 2"
+summary: "Learning to use purrr"
+author: admin
+date: '2021-09-01'
+publishDate: '2021-09-01'
+slug: purrr
+categories: [code]
+tags: [code, R stats]
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+```{r setup, include = FALSE, message=FALSE, warning=FALSE}
+library(tidyverse, quietly = TRUE)
+```
+
+
+Earlier this year I [wrote](/post/using-mapply/) about learning to forego for loops for `apply` functions in `R`. I'm continuing this journey to replace for loops with `purrr`. I'll be honest and say that my main motivation for learning `purrr` is the package name :cat:. `purrr` is a package that does the same things as `mapply` and `lapply`; to apply a function over listed data and also has useful functions for manipulating lists and functional programming. 
+
+Objectively, the functionality of `purrr` is not that different to base functions. There's an understandable learning curve and resulting benefit when going from for loops to `apply` functions, but there's diminishing return on going from `apply` to `purrr` unless you fully leverage the shortcuts of `tidyverse` syntax (which I have not). The main advantage of `purrr` is that it uses the `tidyverse` syntax and pipes. Overall, I don't think there's a *huge* benefit for using `purrr` over base, unlike for example the advantages of using `ggplot2` over base for graphing, but if your code is already written in `tidyverse` then it makes sense to stick to it and have clear and consistent code (if you are used to reading `tidyverse` syntax). 
+
+If you really want to stay on the `tidyverse` train you can skip learning `apply` and jump straight to `purrr` but I'm a fan of using as fewer dependencies as possible and knowing the base `R` way. There are lots of detailed tutorials about `purrr` and it's functions, like [this one that discusses the differences with base functions](
+https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html) so I recommend checking those out. If you're already familiar with the `tidyverse` syntax then `purrr` is no different.
+
+Here are some things I've learnt about `purrr` for applying functions to listed data.
+
+***
+
+# `lapply`
+
+`lapply` takes one argument (data) and applies a function to it. As I found earlier, it's quite a simple case and doesn't suit more complex datasets I usually work with. The `purrr` equivalent is `map`.
+
+One of the advantages of `purrr` is that it you can specify the format of the output. That is, `lapply` and `map` takes a list and produces a list, but `map_*` where `*` are a range of output types will give that output type. For example, `map_chr` will take a list and produce a character vector. This is handy because it skips an intermediate step to transform your resulting list into your desired output format, such as using `do.call` to turn a list into a data frame.
+
+## An example
+
+Let's use the same code as the previous post:
+
+```{r data}
+# some data to use as a list
+loop_data <- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a <- seq(0.2, 1, 0.2)
+```
+
+As before, `loop_data` is a data frame with two numeric columns (`col1` & `col2`). We technically won't use `loop_data$col2` but it's there to create a 5x2 data frame. `a` is a variable that we need for our function with 5 values.
+
+We want to add each element of `a` to `loop_data$col1` and save that in a new column `loop_data$col1a`. We will also add `a` as a column in `loop_data` just so we can keep track of which value was used to calculate `col1a`. So the final output should have 25 rows (5 observations in `loop_data` x 5 values of `a`) and 4 columns (`col1`, `col2`, `col1a`, `a`).
+
+Now let's use `map` to do the same thing we did with `lapply` but using `tidyverse` and pipes :bathtub:
+
+```{r map}
+loop_data %>% 
+  expand_grid(., a) %>% # expand to include all crossed combinations
+  group_split(a) %>% # split into lists by the value of a for nested lists
+  map_dfr(., function(x){
+    x$col1a <- x$col1 + x$a
+    return(x)
+    }) %>% # apply the function to the list and return a data frame
+  summary(.) # show the summary
+```
+
+If you're not familiar with piping this is what's happening:
+
+1. The first line is specifying our list `loop_data` to be sent down the pipe (`%>%`). Pipes are read sequentially and the output of one line is used as the input of the next line. This intermediate object is indicated by the dot (`.`). Sometimes the dot can be left out if the arguments are presented to the function in the expected order but I find it useful to type everything out when learning anyway so that it's clear what the arguments are. The dot is particularly needed when using base functions within a pipe, as seen in the last line with `summary(.)` because these functions are expecting an argument that `tidyverse` functions know how to deal with.
+2. I use `tidyr::expand_grid` to create a data frame of all combinations of `col1` and `a`. This has a benefit of adding `a` as a column.
+3. Then I use `group_split` to group the crossed data frame based on values of `a`. This produces a tibble which are essentially `tidyverse` lists. `split` is a base equivalent. 
+4. Then I apply the actual function over the list and specify that I want the output to be a single data frame (the `_dfr` suffix). This is the equivalent of doing `lapply` and `do.call` in the same function.
+5. Finally I use the base `R` function `summary` to show the summary statistics of the result to check it works. There isn't a `tidyverse` equivalent of `summary` so we must use the dot within the function.
+
+The end result is exactly the same as the original `lapply` code. Here is the `lapply` function from the previous post to compare:
+
+```
+# Prepare the answer list
+lapply_ans <- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans <- mapply(FUN = cbind, lapply_ans, "a" = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans <- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans <- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)
+```
+
+> Side note:
+`rerun(length(a), loop_data)` behaves exactly the same as `replicate(length(a), loop_data, simplify = FALSE)` and is the `tidyverse` equivalent (unclear for how long according to the dev notes). Then you'll need to add `a` as a column, matching the order of the tibble and set the column names, e.g. `rerun(length(a), loop_data) %>% map2(a, bind_cols) %>% map(a=...3, rename)`.
+
+The differences:
+
+* I've taken a slightly different approach. I define all possible combinations I want to use in the calculations then creating grouped lists. 
+* I specified the function within the pipe rather than named in the global environment like in the original post. It's better to name the function if you're using it multiple times but in this post I'm only using it once, so I'll get away with it.
+    * `map` also allows formulas which for simple functions (like adding a constant to all values) will simplify the code and let
+    you use anonymous functions. I'm not used to the formula method of writing functions.
+* Instead of 5 separate lines of code with the base version, in `tidyverse` we can do it in a pipe with 4 steps. But you notice that it's not a huge difference between what the two approaches are doing. Still better than a for loop.
+    * We skipped `do.call` by using `map_dfr` directly to return a data frame. I could also use `map` and transform the list into a
+    data frame separately.
+
+## And another thing...
+We need to prepare the input data so that it is crossed; which mean replicating our list across all combinations of `col1` and `a`. `expand_grid` or similar as used above could be helpful for this, and the data frame could be split into nested lists for applying the function.
+
+To contrast, this will only add matching rows of `col1` and `a` together rather than all combinations:
+```{r fail}
+list(loop_data$col1, a) %>%
+  pmap_dfr(function(x, a) {
+  df <- data.frame(col1 = x,
+                   a = a,
+                   col1a = x + a) # add answer to a new column
+  return(df)
+})
+```
+
+
+ Since `map` is the equivalent of `lapply`, then it also doesn't take multiple inputs, which is why we added `a` as a column to `loop_data`. So we turn to `mapply` and its `purrr` equivalent.
+
+***
+
+# `mapply`
+
+The `purrr` equivalent of `mapply` is `pmap`. Specifically, `pmap` allows for any number of arguments for the function. There is another function, `map2` that accepts exactly two arguments but `pmap` is generalised to allow for more than two. As with `map`, there are variants with  suffixes that specify what output format you want, such as a data frame (`pmap_dfr`).
+
+The `tidyverse` website goes into the syntax differences between `mapply` and `pmap` in more [detail](https://design.tidyverse.org/cs-mapply-pmap.html).
+
+Let's jump to the example using the same `loop_function` as the original post.
+
+## `pmap`
+
+```{r pmap}
+# A function to add a value a to a data frame x
+loop_function <- function(x, a) {
+  x$col1a <- x$col1 + a # add answer to a new column
+  x$a <-  a
+  return(x)
+}
+
+loop_data %>% 
+  rerun(length(a), .) %>% # replicate the list to populate
+  list(a) %>% # define all variables for loop_function within a list
+  pmap_dfr(loop_function) %>% # apply the function to the list and return a data frame
+  map_dfc(summary) # show the summary
+```
+
+Now we don't have to add `a` as a column to `loop_data`, we can specify `a` for the function. `pmap` takes a list of arguments for the function, hence we need a list containing both `loop_data` and `a`. Don't make `a` list before adding it to the list of function arguments (i.e. double list) because it won't match the nth `a` variable with the nth element in the loop_data list, and match by rows within lists. For variety, I've used `map_dfc` to call the function `summary` on the data, rather than `summary(.)`. `map_dfc` will apply the function by columns instead of rows and produce a data frame. 
+
+The `map2` equivalent is more concise than `pmap` for this simple example!
+```
+loop_data %>% 
+  rerun(length(a), .) %>% 
+  map2_dfr(a, loop_function)
+```
+
+Here is the original `mapply` example to compare:
+
+```
+# Prepare the answer list
+mapply_ans <- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans <- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans <- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)
+```
+
+You could also define `loop_function` as an anonymous function within `pmap`.
+
+> Make sure the variables are used in the correct order. e.g. `loop_data %>% rerun(length(a), .) %>% map_dfr(loop_function, a)` will run because you are passing `a` as a variable into `loop_function`, but it's adding `a` by row within individual data frame rather than matching the nth element of the list. So it's effectively replicating the data frame 5 times.
+
+***
+
+That's it. There are many ways of doing the same thing with simple examples. Hope it helps you create `purrr`fectly sensible code to replace for loops and apply functions to lists.

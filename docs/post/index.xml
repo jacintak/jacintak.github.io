@@ -5,12 +5,172 @@
     <link>https://jacintak.github.io/post/</link>
       <atom:link href="https://jacintak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Posts</title>
       <link>https://jacintak.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Beyond the valley of intermediate competence</title>
+      <link>https://jacintak.github.io/post/purrr/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/purrr/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/purrr/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Earlier this year I &lt;a href=&#34;https://jacintak.github.io/post/using-mapply/&#34;&gt;wrote&lt;/a&gt; about learning to forego for loops for &lt;code&gt;apply&lt;/code&gt; functions in &lt;code&gt;R&lt;/code&gt;. I’m continuing this journey to replace for loops with &lt;code&gt;purrr&lt;/code&gt;. I’ll be honest and say that my main motivation for learning &lt;code&gt;purrr&lt;/code&gt; is the package name 🐱. &lt;code&gt;purrr&lt;/code&gt; is a package that does the same things as &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;lapply&lt;/code&gt;; to apply a function over listed data and also has useful functions for manipulating lists and functional programming.&lt;/p&gt;
+&lt;p&gt;Objectively, the functionality of &lt;code&gt;purrr&lt;/code&gt; is not that different to base functions. There’s an understandable learning curve and resulting benefit when going from for loops to &lt;code&gt;apply&lt;/code&gt; functions, but there’s diminishing return on going from &lt;code&gt;apply&lt;/code&gt; to &lt;code&gt;purrr&lt;/code&gt; unless you fully leverage the shortcuts of &lt;code&gt;tidyverse&lt;/code&gt; syntax (which I have not). The main advantage of &lt;code&gt;purrr&lt;/code&gt; is that it uses the &lt;code&gt;tidyverse&lt;/code&gt; syntax and pipes. Overall, I don’t think there’s a &lt;em&gt;huge&lt;/em&gt; benefit for using &lt;code&gt;purrr&lt;/code&gt; over base, unlike for example the advantages of using &lt;code&gt;ggplot2&lt;/code&gt; over base for graphing, but if your code is already written in &lt;code&gt;tidyverse&lt;/code&gt; then it makes sense to stick to it and have clear and consistent code (if you are used to reading &lt;code&gt;tidyverse&lt;/code&gt; syntax).&lt;/p&gt;
+&lt;p&gt;If you really want to stay on the &lt;code&gt;tidyverse&lt;/code&gt; train you can skip learning &lt;code&gt;apply&lt;/code&gt; and jump straight to &lt;code&gt;purrr&lt;/code&gt; but I’m a fan of using as fewer dependencies as possible and knowing the base &lt;code&gt;R&lt;/code&gt; way. There are lots of detailed tutorials about &lt;code&gt;purrr&lt;/code&gt; and it’s functions, like &lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html&#34;&gt;this one that discusses the differences with base functions&lt;/a&gt; so I recommend checking those out. If you’re already familiar with the &lt;code&gt;tidyverse&lt;/code&gt; syntax then &lt;code&gt;purrr&lt;/code&gt; is no different.&lt;/p&gt;
+&lt;p&gt;Here are some things I’ve learnt about &lt;code&gt;purrr&lt;/code&gt; for applying functions to listed data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;lapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;lapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lapply&lt;/code&gt; takes one argument (data) and applies a function to it. As I found earlier, it’s quite a simple case and doesn’t suit more complex datasets I usually work with. The &lt;code&gt;purrr&lt;/code&gt; equivalent is &lt;code&gt;map&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One of the advantages of &lt;code&gt;purrr&lt;/code&gt; is that it you can specify the format of the output. That is, &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;map&lt;/code&gt; takes a list and produces a list, but &lt;code&gt;map_*&lt;/code&gt; where &lt;code&gt;*&lt;/code&gt; are a range of output types will give that output type. For example, &lt;code&gt;map_chr&lt;/code&gt; will take a list and produce a character vector. This is handy because it skips an intermediate step to transform your resulting list into your desired output format, such as using &lt;code&gt;do.call&lt;/code&gt; to turn a list into a data frame.&lt;/p&gt;
+&lt;div id=&#34;an-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
+&lt;p&gt;Let’s use the same code as the previous post:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# some data to use as a list
+loop_data &amp;lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &amp;lt;- seq(0.2, 1, 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As before, &lt;code&gt;loop_data&lt;/code&gt; is a data frame with two numeric columns (&lt;code&gt;col1&lt;/code&gt; &amp;amp; &lt;code&gt;col2&lt;/code&gt;). We technically won’t use &lt;code&gt;loop_data$col2&lt;/code&gt; but it’s there to create a 5x2 data frame. &lt;code&gt;a&lt;/code&gt; is a variable that we need for our function with 5 values.&lt;/p&gt;
+&lt;p&gt;We want to add each element of &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;loop_data$col1&lt;/code&gt; and save that in a new column &lt;code&gt;loop_data$col1a&lt;/code&gt;. We will also add &lt;code&gt;a&lt;/code&gt; as a column in &lt;code&gt;loop_data&lt;/code&gt; just so we can keep track of which value was used to calculate &lt;code&gt;col1a&lt;/code&gt;. So the final output should have 25 rows (5 observations in &lt;code&gt;loop_data&lt;/code&gt; x 5 values of &lt;code&gt;a&lt;/code&gt;) and 4 columns (&lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt;, &lt;code&gt;col1a&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Now let’s use &lt;code&gt;map&lt;/code&gt; to do the same thing we did with &lt;code&gt;lapply&lt;/code&gt; but using &lt;code&gt;tidyverse&lt;/code&gt; and pipes 🛁&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  expand_grid(., a) %&amp;gt;% # expand to include all crossed combinations
+  group_split(a) %&amp;gt;% # split into lists by the value of a for nested lists
+  map_dfr(., function(x){
+    x$col1a &amp;lt;- x$col1 + x$a
+    return(x)
+    }) %&amp;gt;% # apply the function to the list and return a data frame
+  summary(.) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re not familiar with piping this is what’s happening:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The first line is specifying our list &lt;code&gt;loop_data&lt;/code&gt; to be sent down the pipe (&lt;code&gt;%&amp;gt;%&lt;/code&gt;). Pipes are read sequentially and the output of one line is used as the input of the next line. This intermediate object is indicated by the dot (&lt;code&gt;.&lt;/code&gt;). Sometimes the dot can be left out if the arguments are presented to the function in the expected order but I find it useful to type everything out when learning anyway so that it’s clear what the arguments are. The dot is particularly needed when using base functions within a pipe, as seen in the last line with &lt;code&gt;summary(.)&lt;/code&gt; because these functions are expecting an argument that &lt;code&gt;tidyverse&lt;/code&gt; functions know how to deal with.&lt;/li&gt;
+&lt;li&gt;I use &lt;code&gt;tidyr::expand_grid&lt;/code&gt; to create a data frame of all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. This has a benefit of adding &lt;code&gt;a&lt;/code&gt; as a column.&lt;/li&gt;
+&lt;li&gt;Then I use &lt;code&gt;group_split&lt;/code&gt; to group the crossed data frame based on values of &lt;code&gt;a&lt;/code&gt;. This produces a tibble which are essentially &lt;code&gt;tidyverse&lt;/code&gt; lists. &lt;code&gt;split&lt;/code&gt; is a base equivalent.&lt;/li&gt;
+&lt;li&gt;Then I apply the actual function over the list and specify that I want the output to be a single data frame (the &lt;code&gt;_dfr&lt;/code&gt; suffix). This is the equivalent of doing &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;do.call&lt;/code&gt; in the same function.&lt;/li&gt;
+&lt;li&gt;Finally I use the base &lt;code&gt;R&lt;/code&gt; function &lt;code&gt;summary&lt;/code&gt; to show the summary statistics of the result to check it works. There isn’t a &lt;code&gt;tidyverse&lt;/code&gt; equivalent of &lt;code&gt;summary&lt;/code&gt; so we must use the dot within the function.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The end result is exactly the same as the original &lt;code&gt;lapply&lt;/code&gt; code. Here is the &lt;code&gt;lapply&lt;/code&gt; function from the previous post to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+lapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &amp;lt;- mapply(FUN = cbind, lapply_ans, &amp;quot;a&amp;quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &amp;lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &amp;lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Side note:
+&lt;code&gt;rerun(length(a), loop_data)&lt;/code&gt; behaves exactly the same as &lt;code&gt;replicate(length(a), loop_data, simplify = FALSE)&lt;/code&gt; and is the &lt;code&gt;tidyverse&lt;/code&gt; equivalent (unclear for how long according to the dev notes). Then you’ll need to add &lt;code&gt;a&lt;/code&gt; as a column, matching the order of the tibble and set the column names, e.g. &lt;code&gt;rerun(length(a), loop_data) %&amp;gt;% map2(a, bind_cols) %&amp;gt;% map(a=...3, rename)&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I’ve taken a slightly different approach. I define all possible combinations I want to use in the calculations then creating grouped lists.&lt;/li&gt;
+&lt;li&gt;I specified the function within the pipe rather than named in the global environment like in the original post. It’s better to name the function if you’re using it multiple times but in this post I’m only using it once, so I’ll get away with it.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt; also allows formulas which for simple functions (like adding a constant to all values) will simplify the code and let
+you use anonymous functions. I’m not used to the formula method of writing functions.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Instead of 5 separate lines of code with the base version, in &lt;code&gt;tidyverse&lt;/code&gt; we can do it in a pipe with 4 steps. But you notice that it’s not a huge difference between what the two approaches are doing. Still better than a for loop.
+&lt;ul&gt;
+&lt;li&gt;We skipped &lt;code&gt;do.call&lt;/code&gt; by using &lt;code&gt;map_dfr&lt;/code&gt; directly to return a data frame. I could also use &lt;code&gt;map&lt;/code&gt; and transform the list into a
+data frame separately.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;and-another-thing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;And another thing…&lt;/h2&gt;
+&lt;p&gt;We need to prepare the input data so that it is crossed; which mean replicating our list across all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. &lt;code&gt;expand_grid&lt;/code&gt; or similar as used above could be helpful for this, and the data frame could be split into nested lists for applying the function.&lt;/p&gt;
+&lt;p&gt;To contrast, this will only add matching rows of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt; together rather than all combinations:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(loop_data$col1, a) %&amp;gt;%
+  pmap_dfr(function(x, a) {
+  df &amp;lt;- data.frame(col1 = x,
+                   a = a,
+                   col1a = x + a) # add answer to a new column
+  return(df)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   col1   a col1a
+## 1   11 0.2  11.2
+## 2   12 0.4  12.4
+## 3   13 0.6  13.6
+## 4   14 0.8  14.8
+## 5   15 1.0  16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since &lt;code&gt;map&lt;/code&gt; is the equivalent of &lt;code&gt;lapply&lt;/code&gt;, then it also doesn’t take multiple inputs, which is why we added &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;. So we turn to &lt;code&gt;mapply&lt;/code&gt; and its &lt;code&gt;purrr&lt;/code&gt; equivalent.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;mapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;purrr&lt;/code&gt; equivalent of &lt;code&gt;mapply&lt;/code&gt; is &lt;code&gt;pmap&lt;/code&gt;. Specifically, &lt;code&gt;pmap&lt;/code&gt; allows for any number of arguments for the function. There is another function, &lt;code&gt;map2&lt;/code&gt; that accepts exactly two arguments but &lt;code&gt;pmap&lt;/code&gt; is generalised to allow for more than two. As with &lt;code&gt;map&lt;/code&gt;, there are variants with suffixes that specify what output format you want, such as a data frame (&lt;code&gt;pmap_dfr&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;tidyverse&lt;/code&gt; website goes into the syntax differences between &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;pmap&lt;/code&gt; in more &lt;a href=&#34;https://design.tidyverse.org/cs-mapply-pmap.html&#34;&gt;detail&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s jump to the example using the same &lt;code&gt;loop_function&lt;/code&gt; as the original post.&lt;/p&gt;
+&lt;div id=&#34;pmap&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;pmap&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A function to add a value a to a data frame x
+loop_function &amp;lt;- function(x, a) {
+  x$col1a &amp;lt;- x$col1 + a # add answer to a new column
+  x$a &amp;lt;-  a
+  return(x)
+}
+
+loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% # replicate the list to populate
+  list(a) %&amp;gt;% # define all variables for loop_function within a list
+  pmap_dfr(loop_function) %&amp;gt;% # apply the function to the list and return a data frame
+  map_dfc(summary) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##   col1    col2    col1a   a      
+##   &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt;
+## 1 11      20      11.2    0.2    
+## 2 12      21      12.4    0.4    
+## 3 13      22      13.6    0.6    
+## 4 13      22      13.6    0.6    
+## 5 14      23      14.8    0.8    
+## 6 15      24      16.0    1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we don’t have to add &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;, we can specify &lt;code&gt;a&lt;/code&gt; for the function. &lt;code&gt;pmap&lt;/code&gt; takes a list of arguments for the function, hence we need a list containing both &lt;code&gt;loop_data&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. Don’t make &lt;code&gt;a&lt;/code&gt; list before adding it to the list of function arguments (i.e. double list) because it won’t match the nth &lt;code&gt;a&lt;/code&gt; variable with the nth element in the loop_data list, and match by rows within lists. For variety, I’ve used &lt;code&gt;map_dfc&lt;/code&gt; to call the function &lt;code&gt;summary&lt;/code&gt; on the data, rather than &lt;code&gt;summary(.)&lt;/code&gt;. &lt;code&gt;map_dfc&lt;/code&gt; will apply the function by columns instead of rows and produce a data frame.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;map2&lt;/code&gt; equivalent is more concise than &lt;code&gt;pmap&lt;/code&gt; for this simple example!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% 
+  map2_dfr(a, loop_function)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the original &lt;code&gt;mapply&lt;/code&gt; example to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+mapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &amp;lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &amp;lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also define &lt;code&gt;loop_function&lt;/code&gt; as an anonymous function within &lt;code&gt;pmap&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure the variables are used in the correct order. e.g. &lt;code&gt;loop_data %&amp;gt;% rerun(length(a), .) %&amp;gt;% map_dfr(loop_function, a)&lt;/code&gt; will run because you are passing &lt;code&gt;a&lt;/code&gt; as a variable into &lt;code&gt;loop_function&lt;/code&gt;, but it’s adding &lt;code&gt;a&lt;/code&gt; by row within individual data frame rather than matching the nth element of the list. So it’s effectively replicating the data frame 5 times.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;p&gt;That’s it. There are many ways of doing the same thing with simple examples. Hope it helps you create &lt;code&gt;purrr&lt;/code&gt;fectly sensible code to replace for loops and apply functions to lists.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>How to add a Phylopic icon to your graph in R</title>
