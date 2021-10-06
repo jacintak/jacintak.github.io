@@ -1,0 +1,184 @@
+---
+title: "An introduction to spatial data in R"
+summary: "A basic workflow with rasters and spatial points"
+author: admin
+date: '2021-10-01'
+publishDate: '2021-10-01'
+slug: spatial-data
+categories: [code]
+tags: [code, R stats]
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: [NERD-club]
+---
+
+NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version can be found on the [Project](project/NERD-club/) page. 
+
+# Introduction
+
+This is going to be an introduction to a simple workflow for spatial data in R using rasters. I will assume you have some basic knowledge about spatial analyses and co-ordinate systems. This is not meant to be a documentation of the full suite of spatial analysis available in R. Some simple ways of plotting data is covered.
+
+Rasters are stored spatial data in a gridded format. 
+
+- Each grid cell contains a single value. E.g. temperature, elevation, species richness
+- Often stored in three dimensions (e.g. latitude, longitude and time).
+- The main `R` package for handling rasters is `raster`. It's a base package.
+
+We will consider a common workflow of associating rasters with spatial point data (e.g. lat and long). 
+I will be sticking to base R throughout.
+
+***
+
+# Introducing rasters
+
+## Loading from file
+
+Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You'll see below that other dependent packages are loaded with `raster` but you won't need to load each one manually`.  
+
+You can load a raster from a local nc file using the function `raster::brick`. The `::` denotes calling a function from a specific package without loading it with `library`. Good for quick and dirty functions you won't use frequently, bad if you are using the package multiple times.
+
+```
+my_raster <- brick("raster_data.nc")
+```
+
+I will cheat and use the built in function in `raster` to query WorldClim for mean annual temperature.
+
+```{r}
+library(raster)
+temp <- getData("worldclim",var="bio",res=10)
+```
+
+## Subsetting rasters
+
+Rasters can be manipulated using base R functions. E.g. addition or subtraction between rasters or layers. Subet rasters by layers using basic square bracket subsetting for lists.
+
+```{r}
+temp <- temp[[1]] # Subset only the first layer - mean annual temperature
+```
+
+Here I have selected mean annual temperature since we do not need the other variables.
+
+## Plot rasters
+ 
+We can use the basic plot function to view the raster data.
+
+```{r, fig.cap= "Average annual temperature"}
+plot(temp)
+```
+
+The default colour scale is horrendous so we will change it to the viridis scale. Here's an example of using `::`. I don't need the entire `viridis` package. This is to make a continuous colour palette of 20 colours. And add a title to the graph.
+
+```{r, fig.cap= "That's better"}
+plot(temp, main = "Mean annual temperature", col = viridis::viridis(n = 20))
+```
+
+There's one last issue to deal with before this data is ready. WorldClim stores temperature data multiplied by 10 for space saving so we need to divide by 10.
+
+## Manipulating rasters
+
+Rasters can be manipulated by base functions. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won't cover that here.
+
+```{r, fig.cap= "That's much much better"}
+temp <- temp/10
+plot(temp, main = "Mean annual temperature", col = viridis::viridis(n = 20))
+```
+
+
+***
+
+# Spatial point data
+
+I usually encounter spatial data in the form of decimal latitude and longitudes representing species occurrences or sampling sites. You may already have these data from your own work but for demonstration purposes I will show how to query an online database to get species distribution points from GBIF. This requires an Internet connection and the R package `rgbif`.
+
+Let's query GBIF occurrence points for an widespread bird: The house sparrow (*Passer domesticus*).
+
+* You need the unique identification key for the species you want. `name_suggest` can help with that so you don't have to manually search GBIF.
+* The data comes as a list with some metadata. `.$data` is the actual occurrence records. The dot `.` is a placeholder meaning it represents an R variable (e.g. a dataframe). This is commonly used in `tidyverse` and piping via `magrittr`. It is also a cheat's way of using base functions within a pipe.
+* Co-ordinates are stored as `decimalLatitude` and `decimalLongitude`. I've removed any missing values.
+
+```{r}
+library(rgbif)
+# get ID key for bird
+bird_key <- name_suggest(q ="Passer domesticus", rank='species')$data$key[1]
+# get occurence points
+bird_points <- occ_search(taxonKey = bird_key) # Get all records, max 500 (see variable limit)
+# exclude metadata
+bird_points <- bird_points$data
+# remove NA latitude or longitude
+bird_points <- bird_points[!is.na(bird_points$decimalLatitude),]
+```
+
+Since I've only searched for one species, the workflow is simple. If I wanted multiple species I would have to use lists and a function like `sapply`. See help file for `occ_search` for an example. Avoid for loops.
+
+## Plot spatial data
+
+Let's look at the global distribution of points. I will use the base `maps` package for a simple, low resolution and unprojected world map in R (not recommended for more professional output). The `maps` package can also be used in `ggplot2` via `borders(database = "world", fill = NA)` or `geom_polygon(data = map_data("world"), aes(x=long, y = lat, group = group), fill = NA, col= 1)`; `coord_map()` may help in these cases.
+
+```{marginfigure}
+For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).
+```
+
+```{r}
+library(maps)
+map("world") # get basic world map
+title(main = "The distribution of house sparrow") # plot title
+points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
+legend(x = -150, y= -50, legend = "occurence", pch = 16, col = 2, bty = "n")
+```
+
+We see that points come mainly from around northern Europe.
+
+***
+
+# Putting it all together
+
+Now we have all the data we need, let's combine the datasets and plot the occurrence data with the temp raster.
+
+```{r, fig.cap= "The distribution of sparrows with mean annual temperature"}
+plot(temp, main = "Mean annual temperature", col = viridis::viridis(n = 20)) # temp
+points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 1) # bird
+```
+
+Let's do some simple extraction of data.
+
+***
+
+## What range of water temperatures do house sparrows live in?
+
+We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is `raster::extract`. The same can be used within `tidyverse` via `mutate`.
+
+```{marginfigure}
+`method = "bilinear"` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.
+```
+
+```{r}
+# Get temp
+temps <- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = "bilinear")
+# Add new column
+bird_temps <- cbind(bird_points, temps) 
+# Remove missing temps
+bird_temps <- bird_temps[!is.na(bird_temps$temps),]
+```
+
+Our final dataset contains `r nrow(bird_temps)` observations.
+
+Missing data at this stage could be from a mismatch between the accuracy of the spatial points and the resolution of the raster. Or plain errors in the spatial coordinates.
+
+Now we can plot the distribution of temperatures:
+
+```{r}
+hist(bird_temps$temps, main = "Temperature distribution of house sparrow")
+```
+
+We can see they live between `r round(min(bird_temps$temps),1)` and `r round(max(bird_temps$temps),1)` &deg;C.
+
+Finally, we can plot the relationship between temperature and latitude:
+
+```{r}
+plot(temps ~ decimalLatitude, bird_temps, pch = 16)
+```
+
+*End*

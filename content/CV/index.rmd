@@ -94,7 +94,7 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 53  
+Total citations: 65  
 
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
 > * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  
@@ -114,6 +114,7 @@ I have peer reviewed for:
  * Scientific Reports
  * Conservation Physiology
  * American Naturalist
+ * Functional Ecology
 
 ***
 
@@ -154,12 +155,18 @@ The University of Queensland Undergraduate Research Conference
 
 # Teaching contributions and course development
 
+2021
+
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Remote delivery. 
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+
 2020
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery. Module co-ordinator.
  * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.
-
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
+ 
 2019
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.

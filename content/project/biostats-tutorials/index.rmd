@@ -39,7 +39,7 @@ Follow this checklist in order to make sure you are set up:
 3. Have you installed the following packages? - if not use `install.packages()` to do so
     * `learnr` - needed to run the tutorials
     * `remotes` (or `devtools`) - needed to install the tutorials
-    * `knitr` - for displaying content
+    * `rmarkdown` - for displaying content
 
 If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History) 
 
@@ -71,7 +71,5 @@ If that doesn't work use this code and the tutorial will open in another window:
 ```
 learnr::run_tutorial("<insert name of the tutorial to run>", package = "biostats.tutorials")
 ```
-
-If neither works, check that the `biostats.tutorials` package installed properly.  
 
 Quit a tutorial by pressing the "Stop" icon.
