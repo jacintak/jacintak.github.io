@@ -1,0 +1,1946 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R stats | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/tags/R-stats/</link>
+      <atom:link href="https://jacintak.github.io/tags/R-stats/index.xml" rel="self" type="application/rss+xml" />
+    <description>R stats</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <title>R stats</title>
+      <link>https://jacintak.github.io/tags/R-stats/</link>
+    </image>
+    
+    <item>
+      <title>An introduction to spatial data in R</title>
+      <link>https://jacintak.github.io/post/spatial-data/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/spatial-data/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/spatial-data/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version can be found on the &lt;a href=&#34;project/NERD-club/&#34;&gt;Project&lt;/a&gt; page.&lt;/p&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This is going to be an introduction to a simple workflow for spatial data in R using rasters. I will assume you have some basic knowledge about spatial analyses and co-ordinate systems. This is not meant to be a documentation of the full suite of spatial analysis available in R. Some simple ways of plotting data is covered.&lt;/p&gt;
+&lt;p&gt;Rasters are stored spatial data in a gridded format.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each grid cell contains a single value. E.g. temperature, elevation, species richness&lt;/li&gt;
+&lt;li&gt;Often stored in three dimensions (e.g. latitude, longitude and time).&lt;/li&gt;
+&lt;li&gt;The main &lt;code&gt;R&lt;/code&gt; package for handling rasters is &lt;code&gt;raster&lt;/code&gt;. It’s a base package.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We will consider a common workflow of associating rasters with spatial point data (e.g. lat and long).
+I will be sticking to base R throughout.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introducing-rasters&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introducing rasters&lt;/h1&gt;
+&lt;div id=&#34;loading-from-file&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Loading from file&lt;/h2&gt;
+&lt;p&gt;Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You’ll see below that other dependent packages are loaded with &lt;code&gt;raster&lt;/code&gt; but you won’t need to load each one manually`.&lt;/p&gt;
+&lt;p&gt;You can load a raster from a local nc file using the function &lt;code&gt;raster::brick&lt;/code&gt;. The &lt;code&gt;::&lt;/code&gt; denotes calling a function from a specific package without loading it with &lt;code&gt;library&lt;/code&gt;. Good for quick and dirty functions you won’t use frequently, bad if you are using the package multiple times.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;my_raster &amp;lt;- brick(&amp;quot;raster_data.nc&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I will cheat and use the built in function in &lt;code&gt;raster&lt;/code&gt; to query WorldClim for mean annual temperature.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(raster)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: sp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- getData(&amp;quot;worldclim&amp;quot;,var=&amp;quot;bio&amp;quot;,res=10)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subsetting-rasters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Subsetting rasters&lt;/h2&gt;
+&lt;p&gt;Rasters can be manipulated using base R functions. E.g. addition or subtraction between rasters or layers. Subet rasters by layers using basic square bracket subsetting for lists.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- temp[[1]] # Subset only the first layer - mean annual temperature&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here I have selected mean annual temperature since we do not need the other variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-rasters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot rasters&lt;/h2&gt;
+&lt;p&gt;We can use the basic plot function to view the raster data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temp)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-3&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-3-1.png&#34; alt=&#34;Average annual temperature&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Average annual temperature
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The default colour scale is horrendous so we will change it to the viridis scale. Here’s an example of using &lt;code&gt;::&lt;/code&gt;. I don’t need the entire &lt;code&gt;viridis&lt;/code&gt; package. This is to make a continuous colour palette of 20 colours. And add a title to the graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temp, main = &amp;quot;Mean annual temperature&amp;quot;, col = viridis::viridis(n = 20))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-4&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-4-1.png&#34; alt=&#34;That&#39;s better&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: That’s better
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There’s one last issue to deal with before this data is ready. WorldClim stores temperature data multiplied by 10 for space saving so we need to divide by 10.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manipulating-rasters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Manipulating rasters&lt;/h2&gt;
+&lt;p&gt;Rasters can be manipulated by base functions. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won’t cover that here.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- temp/10
+plot(temp, main = &amp;quot;Mean annual temperature&amp;quot;, col = viridis::viridis(n = 20))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-5&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-5-1.png&#34; alt=&#34;That&#39;s much much better&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: That’s much much better
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;spatial-point-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Spatial point data&lt;/h1&gt;
+&lt;p&gt;I usually encounter spatial data in the form of decimal latitude and longitudes representing species occurrences or sampling sites. You may already have these data from your own work but for demonstration purposes I will show how to query an online database to get species distribution points from GBIF. This requires an Internet connection and the R package &lt;code&gt;rgbif&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s query GBIF occurrence points for an widespread bird: The house sparrow (&lt;em&gt;Passer domesticus&lt;/em&gt;).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You need the unique identification key for the species you want. &lt;code&gt;name_suggest&lt;/code&gt; can help with that so you don’t have to manually search GBIF.&lt;/li&gt;
+&lt;li&gt;The data comes as a list with some metadata. &lt;code&gt;.$data&lt;/code&gt; is the actual occurrence records. The dot &lt;code&gt;.&lt;/code&gt; is a placeholder meaning it represents an R variable (e.g. a dataframe). This is commonly used in &lt;code&gt;tidyverse&lt;/code&gt; and piping via &lt;code&gt;magrittr&lt;/code&gt;. It is also a cheat’s way of using base functions within a pipe.&lt;/li&gt;
+&lt;li&gt;Co-ordinates are stored as &lt;code&gt;decimalLatitude&lt;/code&gt; and &lt;code&gt;decimalLongitude&lt;/code&gt;. I’ve removed any missing values.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rgbif)
+# get ID key for bird
+bird_key &amp;lt;- name_suggest(q =&amp;quot;Passer domesticus&amp;quot;, rank=&amp;#39;species&amp;#39;)$data$key[1]
+# get occurence points
+bird_points &amp;lt;- occ_search(taxonKey = bird_key) # Get all records, max 500 (see variable limit)
+# exclude metadata
+bird_points &amp;lt;- bird_points$data
+# remove NA latitude or longitude
+bird_points &amp;lt;- bird_points[!is.na(bird_points$decimalLatitude),]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since I’ve only searched for one species, the workflow is simple. If I wanted multiple species I would have to use lists and a function like &lt;code&gt;sapply&lt;/code&gt;. See help file for &lt;code&gt;occ_search&lt;/code&gt; for an example. Avoid for loops.&lt;/p&gt;
+&lt;div id=&#34;plot-spatial-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot spatial data&lt;/h2&gt;
+&lt;p&gt;Let’s look at the global distribution of points. I will use the base &lt;code&gt;maps&lt;/code&gt; package for a simple, low resolution and unprojected world map in R (not recommended for more professional output). The &lt;code&gt;maps&lt;/code&gt; package can also be used in &lt;code&gt;ggplot2&lt;/code&gt; via &lt;code&gt;borders(database = &#34;world&#34;, fill = NA)&lt;/code&gt; or &lt;code&gt;geom_polygon(data = map_data(&#34;world&#34;), aes(x=long, y = lat, group = group), fill = NA, col= 1)&lt;/code&gt;; &lt;code&gt;coord_map()&lt;/code&gt; may help in these cases.&lt;/p&gt;
+&lt;pre class=&#34;marginfigure&#34;&gt;&lt;code&gt;For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(maps)
+map(&amp;quot;world&amp;quot;) # get basic world map
+title(main = &amp;quot;The distribution of house sparrow&amp;quot;) # plot title
+points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
+legend(x = -150, y= -50, legend = &amp;quot;occurence&amp;quot;, pch = 16, col = 2, bty = &amp;quot;n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We see that points come mainly from around northern Europe.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;putting-it-all-together&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Putting it all together&lt;/h1&gt;
+&lt;p&gt;Now we have all the data we need, let’s combine the datasets and plot the occurrence data with the temp raster.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temp, main = &amp;quot;Mean annual temperature&amp;quot;, col = viridis::viridis(n = 20)) # temp
+points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 1) # bird&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-9&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;The distribution of sparrows with mean annual temperature&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4: The distribution of sparrows with mean annual temperature
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Let’s do some simple extraction of data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;what-range-of-water-temperatures-do-house-sparrows-live-in&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What range of water temperatures do house sparrows live in?&lt;/h2&gt;
+&lt;p&gt;We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is &lt;code&gt;raster::extract&lt;/code&gt;. The same can be used within &lt;code&gt;tidyverse&lt;/code&gt; via &lt;code&gt;mutate&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;marginfigure&#34;&gt;&lt;code&gt;`method = &amp;quot;bilinear&amp;quot;` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Get temp
+temps &amp;lt;- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = &amp;quot;bilinear&amp;quot;)
+# Add new column
+bird_temps &amp;lt;- cbind(bird_points, temps) 
+# Remove missing temps
+bird_temps &amp;lt;- bird_temps[!is.na(bird_temps$temps),]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Our final dataset contains 500 observations.&lt;/p&gt;
+&lt;p&gt;Missing data at this stage could be from a mismatch between the accuracy of the spatial points and the resolution of the raster. Or plain errors in the spatial coordinates.&lt;/p&gt;
+&lt;p&gt;Now we can plot the distribution of temperatures:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(bird_temps$temps, main = &amp;quot;Temperature distribution of house sparrow&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can see they live between -2.7 and 11.6 °C.&lt;/p&gt;
+&lt;p&gt;Finally, we can plot the relationship between temperature and latitude:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temps ~ decimalLatitude, bird_temps, pch = 16)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;End&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Beyond the valley of intermediate competence</title>
+      <link>https://jacintak.github.io/post/purrr/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/purrr/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/purrr/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Earlier this year I &lt;a href=&#34;https://jacintak.github.io/post/using-mapply/&#34;&gt;wrote&lt;/a&gt; about learning to forego for loops for &lt;code&gt;apply&lt;/code&gt; functions in &lt;code&gt;R&lt;/code&gt;. I’m continuing this journey to replace for loops with &lt;code&gt;purrr&lt;/code&gt;. I’ll be honest and say that my main motivation for learning &lt;code&gt;purrr&lt;/code&gt; is the package name 🐱. &lt;code&gt;purrr&lt;/code&gt; is a package that does the same things as &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;lapply&lt;/code&gt;; to apply a function over listed data and also has useful functions for manipulating lists and functional programming.&lt;/p&gt;
+&lt;p&gt;Objectively, the functionality of &lt;code&gt;purrr&lt;/code&gt; is not that different to base functions. There’s an understandable learning curve and resulting benefit when going from for loops to &lt;code&gt;apply&lt;/code&gt; functions, but there’s diminishing return on going from &lt;code&gt;apply&lt;/code&gt; to &lt;code&gt;purrr&lt;/code&gt; unless you fully leverage the shortcuts of &lt;code&gt;tidyverse&lt;/code&gt; syntax (which I have not). The main advantage of &lt;code&gt;purrr&lt;/code&gt; is that it uses the &lt;code&gt;tidyverse&lt;/code&gt; syntax and pipes. Overall, I don’t think there’s a &lt;em&gt;huge&lt;/em&gt; benefit for using &lt;code&gt;purrr&lt;/code&gt; over base, unlike for example the advantages of using &lt;code&gt;ggplot2&lt;/code&gt; over base for graphing, but if your code is already written in &lt;code&gt;tidyverse&lt;/code&gt; then it makes sense to stick to it and have clear and consistent code (if you are used to reading &lt;code&gt;tidyverse&lt;/code&gt; syntax).&lt;/p&gt;
+&lt;p&gt;If you really want to stay on the &lt;code&gt;tidyverse&lt;/code&gt; train you can skip learning &lt;code&gt;apply&lt;/code&gt; and jump straight to &lt;code&gt;purrr&lt;/code&gt; but I’m a fan of using as fewer dependencies as possible and knowing the base &lt;code&gt;R&lt;/code&gt; way. There are lots of detailed tutorials about &lt;code&gt;purrr&lt;/code&gt; and it’s functions, like &lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html&#34;&gt;this one that discusses the differences with base functions&lt;/a&gt; so I recommend checking those out. If you’re already familiar with the &lt;code&gt;tidyverse&lt;/code&gt; syntax then &lt;code&gt;purrr&lt;/code&gt; is no different.&lt;/p&gt;
+&lt;p&gt;Here are some things I’ve learnt about &lt;code&gt;purrr&lt;/code&gt; for applying functions to listed data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;lapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;lapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lapply&lt;/code&gt; takes one argument (data) and applies a function to it. As I found earlier, it’s quite a simple case and doesn’t suit more complex datasets I usually work with. The &lt;code&gt;purrr&lt;/code&gt; equivalent is &lt;code&gt;map&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One of the advantages of &lt;code&gt;purrr&lt;/code&gt; is that it you can specify the format of the output. That is, &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;map&lt;/code&gt; takes a list and produces a list, but &lt;code&gt;map_*&lt;/code&gt; where &lt;code&gt;*&lt;/code&gt; are a range of output types will give that output type. For example, &lt;code&gt;map_chr&lt;/code&gt; will take a list and produce a character vector. This is handy because it skips an intermediate step to transform your resulting list into your desired output format, such as using &lt;code&gt;do.call&lt;/code&gt; to turn a list into a data frame.&lt;/p&gt;
+&lt;div id=&#34;an-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
+&lt;p&gt;Let’s use the same code as the previous post:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# some data to use as a list
+loop_data &amp;lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &amp;lt;- seq(0.2, 1, 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As before, &lt;code&gt;loop_data&lt;/code&gt; is a data frame with two numeric columns (&lt;code&gt;col1&lt;/code&gt; &amp;amp; &lt;code&gt;col2&lt;/code&gt;). We technically won’t use &lt;code&gt;loop_data$col2&lt;/code&gt; but it’s there to create a 5x2 data frame. &lt;code&gt;a&lt;/code&gt; is a variable that we need for our function with 5 values.&lt;/p&gt;
+&lt;p&gt;We want to add each element of &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;loop_data$col1&lt;/code&gt; and save that in a new column &lt;code&gt;loop_data$col1a&lt;/code&gt;. We will also add &lt;code&gt;a&lt;/code&gt; as a column in &lt;code&gt;loop_data&lt;/code&gt; just so we can keep track of which value was used to calculate &lt;code&gt;col1a&lt;/code&gt;. So the final output should have 25 rows (5 observations in &lt;code&gt;loop_data&lt;/code&gt; x 5 values of &lt;code&gt;a&lt;/code&gt;) and 4 columns (&lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt;, &lt;code&gt;col1a&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Now let’s use &lt;code&gt;map&lt;/code&gt; to do the same thing we did with &lt;code&gt;lapply&lt;/code&gt; but using &lt;code&gt;tidyverse&lt;/code&gt; and pipes 🛁&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  expand_grid(., a) %&amp;gt;% # expand to include all crossed combinations
+  group_split(a) %&amp;gt;% # split into lists by the value of a for nested lists
+  map_dfr(., function(x){
+    x$col1a &amp;lt;- x$col1 + x$a
+    return(x)
+    }) %&amp;gt;% # apply the function to the list and return a data frame
+  summary(.) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re not familiar with piping this is what’s happening:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The first line is specifying our list &lt;code&gt;loop_data&lt;/code&gt; to be sent down the pipe (&lt;code&gt;%&amp;gt;%&lt;/code&gt;). Pipes are read sequentially and the output of one line is used as the input of the next line. This intermediate object is indicated by the dot (&lt;code&gt;.&lt;/code&gt;). Sometimes the dot can be left out if the arguments are presented to the function in the expected order but I find it useful to type everything out when learning anyway so that it’s clear what the arguments are. The dot is particularly needed when using base functions within a pipe, as seen in the last line with &lt;code&gt;summary(.)&lt;/code&gt; because these functions are expecting an argument that &lt;code&gt;tidyverse&lt;/code&gt; functions know how to deal with.&lt;/li&gt;
+&lt;li&gt;I use &lt;code&gt;tidyr::expand_grid&lt;/code&gt; to create a data frame of all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. This has a benefit of adding &lt;code&gt;a&lt;/code&gt; as a column.&lt;/li&gt;
+&lt;li&gt;Then I use &lt;code&gt;group_split&lt;/code&gt; to group the crossed data frame based on values of &lt;code&gt;a&lt;/code&gt;. This produces a tibble which are essentially &lt;code&gt;tidyverse&lt;/code&gt; lists. &lt;code&gt;split&lt;/code&gt; is a base equivalent.&lt;/li&gt;
+&lt;li&gt;Then I apply the actual function over the list and specify that I want the output to be a single data frame (the &lt;code&gt;_dfr&lt;/code&gt; suffix). This is the equivalent of doing &lt;code&gt;lapply&lt;/code&gt; and &lt;code&gt;do.call&lt;/code&gt; in the same function.&lt;/li&gt;
+&lt;li&gt;Finally I use the base &lt;code&gt;R&lt;/code&gt; function &lt;code&gt;summary&lt;/code&gt; to show the summary statistics of the result to check it works. There isn’t a &lt;code&gt;tidyverse&lt;/code&gt; equivalent of &lt;code&gt;summary&lt;/code&gt; so we must use the dot within the function.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The end result is exactly the same as the original &lt;code&gt;lapply&lt;/code&gt; code. Here is the &lt;code&gt;lapply&lt;/code&gt; function from the previous post to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+lapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &amp;lt;- mapply(FUN = cbind, lapply_ans, &amp;quot;a&amp;quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &amp;lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &amp;lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Side note:
+&lt;code&gt;rerun(length(a), loop_data)&lt;/code&gt; behaves exactly the same as &lt;code&gt;replicate(length(a), loop_data, simplify = FALSE)&lt;/code&gt; and is the &lt;code&gt;tidyverse&lt;/code&gt; equivalent (unclear for how long according to the dev notes). Then you’ll need to add &lt;code&gt;a&lt;/code&gt; as a column, matching the order of the tibble and set the column names, e.g. &lt;code&gt;rerun(length(a), loop_data) %&amp;gt;% map2(a, bind_cols) %&amp;gt;% map(a=...3, rename)&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I’ve taken a slightly different approach. I define all possible combinations I want to use in the calculations then creating grouped lists.&lt;/li&gt;
+&lt;li&gt;I specified the function within the pipe rather than named in the global environment like in the original post. It’s better to name the function if you’re using it multiple times but in this post I’m only using it once, so I’ll get away with it.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt; also allows formulas which for simple functions (like adding a constant to all values) will simplify the code and let
+you use anonymous functions. I’m not used to the formula method of writing functions.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Instead of 5 separate lines of code with the base version, in &lt;code&gt;tidyverse&lt;/code&gt; we can do it in a pipe with 4 steps. But you notice that it’s not a huge difference between what the two approaches are doing. Still better than a for loop.
+&lt;ul&gt;
+&lt;li&gt;We skipped &lt;code&gt;do.call&lt;/code&gt; by using &lt;code&gt;map_dfr&lt;/code&gt; directly to return a data frame. I could also use &lt;code&gt;map&lt;/code&gt; and transform the list into a
+data frame separately.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;and-another-thing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;And another thing…&lt;/h2&gt;
+&lt;p&gt;We need to prepare the input data so that it is crossed; which mean replicating our list across all combinations of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. &lt;code&gt;expand_grid&lt;/code&gt; or similar as used above could be helpful for this, and the data frame could be split into nested lists for applying the function.&lt;/p&gt;
+&lt;p&gt;To contrast, this will only add matching rows of &lt;code&gt;col1&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt; together rather than all combinations:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(loop_data$col1, a) %&amp;gt;%
+  pmap_dfr(function(x, a) {
+  df &amp;lt;- data.frame(col1 = x,
+                   a = a,
+                   col1a = x + a) # add answer to a new column
+  return(df)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   col1   a col1a
+## 1   11 0.2  11.2
+## 2   12 0.4  12.4
+## 3   13 0.6  13.6
+## 4   14 0.8  14.8
+## 5   15 1.0  16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since &lt;code&gt;map&lt;/code&gt; is the equivalent of &lt;code&gt;lapply&lt;/code&gt;, then it also doesn’t take multiple inputs, which is why we added &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;. So we turn to &lt;code&gt;mapply&lt;/code&gt; and its &lt;code&gt;purrr&lt;/code&gt; equivalent.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;mapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;purrr&lt;/code&gt; equivalent of &lt;code&gt;mapply&lt;/code&gt; is &lt;code&gt;pmap&lt;/code&gt;. Specifically, &lt;code&gt;pmap&lt;/code&gt; allows for any number of arguments for the function. There is another function, &lt;code&gt;map2&lt;/code&gt; that accepts exactly two arguments but &lt;code&gt;pmap&lt;/code&gt; is generalised to allow for more than two. As with &lt;code&gt;map&lt;/code&gt;, there are variants with suffixes that specify what output format you want, such as a data frame (&lt;code&gt;pmap_dfr&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;tidyverse&lt;/code&gt; website goes into the syntax differences between &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;pmap&lt;/code&gt; in more &lt;a href=&#34;https://design.tidyverse.org/cs-mapply-pmap.html&#34;&gt;detail&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s jump to the example using the same &lt;code&gt;loop_function&lt;/code&gt; as the original post.&lt;/p&gt;
+&lt;div id=&#34;pmap&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;pmap&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A function to add a value a to a data frame x
+loop_function &amp;lt;- function(x, a) {
+  x$col1a &amp;lt;- x$col1 + a # add answer to a new column
+  x$a &amp;lt;-  a
+  return(x)
+}
+
+loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% # replicate the list to populate
+  list(a) %&amp;gt;% # define all variables for loop_function within a list
+  pmap_dfr(loop_function) %&amp;gt;% # apply the function to the list and return a data frame
+  map_dfc(summary) # show the summary&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##   col1    col2    col1a   a      
+##   &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt; &amp;lt;table&amp;gt;
+## 1 11      20      11.2    0.2    
+## 2 12      21      12.4    0.4    
+## 3 13      22      13.6    0.6    
+## 4 13      22      13.6    0.6    
+## 5 14      23      14.8    0.8    
+## 6 15      24      16.0    1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we don’t have to add &lt;code&gt;a&lt;/code&gt; as a column to &lt;code&gt;loop_data&lt;/code&gt;, we can specify &lt;code&gt;a&lt;/code&gt; for the function. &lt;code&gt;pmap&lt;/code&gt; takes a list of arguments for the function, hence we need a list containing both &lt;code&gt;loop_data&lt;/code&gt; and &lt;code&gt;a&lt;/code&gt;. Don’t make &lt;code&gt;a&lt;/code&gt; list before adding it to the list of function arguments (i.e. double list) because it won’t match the nth &lt;code&gt;a&lt;/code&gt; variable with the nth element in the loop_data list, and match by rows within lists. For variety, I’ve used &lt;code&gt;map_dfc&lt;/code&gt; to call the function &lt;code&gt;summary&lt;/code&gt; on the data, rather than &lt;code&gt;summary(.)&lt;/code&gt;. &lt;code&gt;map_dfc&lt;/code&gt; will apply the function by columns instead of rows and produce a data frame.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;map2&lt;/code&gt; equivalent is more concise than &lt;code&gt;pmap&lt;/code&gt; for this simple example!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;loop_data %&amp;gt;% 
+  rerun(length(a), .) %&amp;gt;% 
+  map2_dfr(a, loop_function)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the original &lt;code&gt;mapply&lt;/code&gt; example to compare:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Prepare the answer list
+mapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &amp;lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &amp;lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also define &lt;code&gt;loop_function&lt;/code&gt; as an anonymous function within &lt;code&gt;pmap&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure the variables are used in the correct order. e.g. &lt;code&gt;loop_data %&amp;gt;% rerun(length(a), .) %&amp;gt;% map_dfr(loop_function, a)&lt;/code&gt; will run because you are passing &lt;code&gt;a&lt;/code&gt; as a variable into &lt;code&gt;loop_function&lt;/code&gt;, but it’s adding &lt;code&gt;a&lt;/code&gt; by row within individual data frame rather than matching the nth element of the list. So it’s effectively replicating the data frame 5 times.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;p&gt;That’s it. There are many ways of doing the same thing with simple examples. Hope it helps you create &lt;code&gt;purrr&lt;/code&gt;fectly sensible code to replace for loops and apply functions to lists.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setup R</title>
+      <link>https://jacintak.github.io/teaching/introR/</link>
+      <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/teaching/introR/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#welcome-to-statistics-and-computation-for-biologists&#34;&gt;Welcome to Statistics and Computation for Biologists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-programming-and-computing&#34;&gt;Why programming and computing?&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#basic-computing-terms&#34;&gt;Basic computing terms&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#drives-folders-files&#34;&gt;Drives, Folders &amp;amp; Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#directories&#34;&gt;Directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-r&#34;&gt;Why R?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-rstudio&#34;&gt;Why RStudio?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-r-and-rstudio&#34;&gt;Installing R and RStudio&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#windows&#34;&gt;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mac&#34;&gt;Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux&#34;&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chromebook&#34;&gt;Chromebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#opening-r-and-rstudio-for-the-first-time&#34;&gt;Opening R and RStudio for the first time&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#updating-r-and-packages&#34;&gt;Updating R and packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-script&#34;&gt;Creating a script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-packages&#34;&gt;Setting up packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#working-directories&#34;&gt;Working directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-working-directories&#34;&gt;Changing working directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#loading-data&#34;&gt;Loading data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#txt&#34;&gt;.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#csv&#34;&gt;.csv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#copying-data&#34;&gt;Copying data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#try-it-yourself&#34;&gt;Try it yourself&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#checking-the-data&#34;&gt;Checking the data&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-structure&#34;&gt;Data structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summarising-data&#34;&gt;Summarising data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tips&#34;&gt;Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-help&#34;&gt;Finding help&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#final-checklist&#34;&gt;Final checklist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;div id=&#34;welcome-to-statistics-and-computation-for-biologists&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome to Statistics and Computation for Biologists&lt;/h1&gt;
+&lt;p&gt;Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or “how to” which come from textbooks, lectures or resources on the Internet.&lt;/p&gt;
+&lt;p&gt;Second, is learning how to define problems and how to solve them. You will see this in action throughout your degree. For example, is your R code not working? Work out why, what’s wrong and what to change to make it work.&lt;/p&gt;
+&lt;p&gt;In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career.&lt;/p&gt;
+&lt;p&gt;Use the following checklist to make sure you are prepared for this semester:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do you know how to navigate computer directories and addresses to find files or folders?&lt;/li&gt;
+&lt;li&gt;Do you have R and RStudio installed on your computer?&lt;/li&gt;
+&lt;li&gt;Is R up to date? (version 4.0 or above)&lt;/li&gt;
+&lt;li&gt;Do you know how to set up scripts and directories in RStudio?&lt;/li&gt;
+&lt;li&gt;Do you know how to import and export data into R in various formats?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Check that your version and packages are all up to date (Under the Packages tab, click Update). Even so, you can work through this document if you want to check everything works or you need a refresher.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-programming-and-computing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why programming and computing?&lt;/h1&gt;
+&lt;p&gt;We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it’s a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module. We will be using R which is classified as a high-level programming language - it’s not the same thing as learning how to use Excel.&lt;/p&gt;
+&lt;p&gt;Learning programming is like learning a language - there is grammar and syntax and it takes time and effort to learn and to practice. Don’t expect to pick it up like memorising content from a lecture - take it in small steps.&lt;/p&gt;
+&lt;div id=&#34;basic-computing-terms&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Basic computing terms&lt;/h2&gt;
+&lt;p&gt;We don’t always formally learn computing terminology even if we’ve always been using computers. Here are some general computing concepts we will be using and that we expect you to be familiar with:&lt;/p&gt;
+&lt;div id=&#34;drives-folders-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Drives, Folders &amp;amp; Files&lt;/h3&gt;
+&lt;p&gt;In computer science, most commercial operating software are organised in to &lt;strong&gt;drives&lt;/strong&gt;, &lt;strong&gt;directories&lt;/strong&gt;, &lt;strong&gt;folders&lt;/strong&gt; &amp;amp; &lt;strong&gt;files&lt;/strong&gt;. Using Windows as example:
+C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are groups of files which contain information (e.g. my_document.doc). Here, “.doc” is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.&lt;/p&gt;
+&lt;p&gt;Commercial computers tend to have only one drive but you can have as many folders and files as you want. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C: (the hard drive)
+  -&amp;gt; my documents (within drive C)
+      -&amp;gt; file A (within my documents)
+      -&amp;gt; folder 1 (within my documents)
+          -&amp;gt; folder 2 (within folder 1)
+              -&amp;gt; file B (within folder 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;directories&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Directories&lt;/h3&gt;
+&lt;p&gt;Directories are the cataloguing system describing where files and folders are stored; also called addresses. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location. The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We recommend that you organise your files in a structured way. For example, have a folder for the module and sub-folders for each of the practicals:&lt;br /&gt;
+Documents (folder) -&amp;gt; Biostats (folder) -&amp;gt; Practical 1 (folder) -&amp;gt; Script (file)&lt;br /&gt;
+We don’t recommend using a automatically selected “downloads” folder or your “desktop” because these are not permanent file locations and can be hard to find files later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Notice that the components of the address is separated using a forward slash &lt;code&gt;/&lt;/code&gt;. R can understand &lt;code&gt;/&lt;/code&gt; but does not understand back slash &lt;code&gt;\&lt;/code&gt; because back slashes have a specific meaning in programming. When typing addresses, make sure you use the correct slash.&lt;/p&gt;
+&lt;p&gt;We navigate through our computer’s directories using Explorer in Windows or Finder in MacOS. You can see the address of a directory in the address bar. We will learn how to use directories in RStudio.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why R?&lt;/h2&gt;
+&lt;p&gt;R is just one of &lt;em&gt;many&lt;/em&gt; high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and data handling. Hence R is widely taught in statistic classes. There are other statistics programs but these are normally “point-and-click” programs where you click a button and magic happens. The reasons we use R are that it is an open source software and it is &lt;em&gt;transparent&lt;/em&gt;, meaning you can &lt;em&gt;see&lt;/em&gt; how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. R is also &lt;em&gt;reproducible&lt;/em&gt; because R allows you to document your code in &lt;em&gt;scripts&lt;/em&gt; that you can give another person to replicate your analysis. The traditional option is to learn these calculations by hand and use pre-calculated statistical reference tables but we would only expect that for very simple examples and doing calculations by hand is an arduous task for realistic biological problems.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-rstudio&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why RStudio?&lt;/h2&gt;
+&lt;p&gt;R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. It is possible to use R by itself (you can try it) but RStudio makes everything a lot easier by providing some organisation. You cannot use RStudio without R. An analogy is that R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-r-and-rstudio&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Installing R and RStudio&lt;/h1&gt;
+&lt;p&gt;You will need to install R AND RStudio &lt;strong&gt;in that order&lt;/strong&gt;. You only need to open RStudio when you want to use R - RStudio will open R for you in the background.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;CRANsite.png&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here’s a video about installing R &lt;a href=&#34;https://vimeo.com/203516510&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516510&lt;/a&gt; and RStudio &lt;a href=&#34;https://vimeo.com/203516968&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516968&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can follow the instructions below or try the interactive tutorial at &lt;a href=&#34;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&#34; class=&#34;uri&#34;&gt;https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here are the instructions for various operating software:&lt;/p&gt;
+&lt;div id=&#34;windows&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Windows&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/windows/base/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R” in the blue box. The version number is not important.&lt;/li&gt;
+&lt;li&gt;Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mac&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mac&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for (Mac) OS X”&lt;/li&gt;
+&lt;li&gt;Save the latest release file (e.g. R-4.0.2.pkg), open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linux&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for Linux”&lt;/li&gt;
+&lt;li&gt;Click your version of Linux&lt;/li&gt;
+&lt;li&gt;Copy and paste the relevant installation code&lt;/li&gt;
+&lt;li&gt;Open R and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Run the relevant code&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See &lt;a href=&#34;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&#34; class=&#34;uri&#34;&gt;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&lt;/a&gt; for a guide&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chromebook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Chromebook&lt;/h2&gt;
+&lt;p&gt;There are a few options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The easiest option is to run Linux on your computer, then you can install R and RStudio. Try the instructions on &lt;a href=&#34;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&#34; class=&#34;uri&#34;&gt;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&lt;/a&gt; or &lt;a href=&#34;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&#34; class=&#34;uri&#34;&gt;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Use RStudio Server&lt;/li&gt;
+&lt;li&gt;Use RStudio Cloud &lt;a href=&#34;https://rstudio.cloud/&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud/&lt;/a&gt; (in beta so it may not work)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;opening-r-and-rstudio-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Opening R and RStudio for the first time&lt;/h1&gt;
+&lt;p&gt;If you open R itself you’ll see that it’s pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:&lt;br /&gt;
+user -&amp;gt; input -&amp;gt; RStudio -&amp;gt; R -&amp;gt; RStudio -&amp;gt; output -&amp;gt; user&lt;/p&gt;
+&lt;p&gt;If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RStudio-console.png&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Left: The big window is the &lt;strong&gt;console&lt;/strong&gt;. This is the interface with R and is the same as using R on its own. (don’t worry about “terminal”)&lt;/li&gt;
+&lt;li&gt;Top right: This window has three tabs: “environment” - shows you what information is stored in R’s memory, “history” - shows your code history &amp;amp; “connections” - don’t worry about this one.&lt;/li&gt;
+&lt;li&gt;Bottom right: This has several tabs. The most important being “files” - showing you where RStudio is looking at on your computer &amp;amp; “plot” - shows you any plots you make in R.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can customise the layout and colour scheme of RStudio in Options.&lt;br /&gt;
+There are other user interfaces for R but RStudio has a lot of support.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;updating-r-and-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Updating R and packages&lt;/h2&gt;
+&lt;p&gt;The last major update to R was version 4.0. If you have an older version we recommending updating R because many fundamental aspects of the language were changed and are not backwards compatible. You will see which R version is used in the information in the Console when you open RStudio. If your version is older than 4.0, install the latest version as above.&lt;/p&gt;
+&lt;p&gt;R is a statistical environment that consist of &lt;strong&gt;packages&lt;/strong&gt;. Packages are a set of &lt;strong&gt;functions&lt;/strong&gt; that does something to input depending on the underlying code. All your packages are stored in your &lt;strong&gt;library&lt;/strong&gt;. When you download R it comes with a basic set of packages as default which works straight out of the box. This is called &lt;strong&gt;base R&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Once you’ve installed R you should check all your &lt;strong&gt;packages&lt;/strong&gt; are up to date as well. You can update your packages by clicking the Update button under the Packages tab.&lt;/p&gt;
+&lt;p&gt;We can customise and expand the functionality of R by installing more packages, which are made by people and distributed freely. You can download packages from an online repository using the function &lt;code&gt;install.packages(&#34;&amp;lt;insert name of package&amp;gt;&#34;)&lt;/code&gt;. For example, I wrote this document in RStudio using an additional package called &lt;code&gt;rmarkdown&lt;/code&gt; which lets me make HTML, word or PDF files of text, code and figures or tables. We will tell you if you need to install a package but where possible we will be sticking to base R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-a-script&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Creating a script&lt;/h2&gt;
+&lt;p&gt;The greatest advantage of RStudio is that it allows you to write &lt;strong&gt;scripts&lt;/strong&gt;. These are files ending in &lt;code&gt;.R&lt;/code&gt; that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from &lt;strong&gt;having to type out code over and over again&lt;/strong&gt;. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow &lt;strong&gt;reproducibility&lt;/strong&gt; and helps with problem solving.&lt;/p&gt;
+&lt;p&gt;You can create a new script under File -&amp;gt; New file -&amp;gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.&lt;br /&gt;
+Save it and give it an informative name (e.g. “Dropin1.R”)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;open-script.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s add some code to this script by going through the basics of R! Copy and paste code from below into your script.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Run code from your script rather than directly from the console&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A script is a record of what you’ve done and it makes it easy to spot any mistakes you might have made (transparency &amp;amp; reproducibility). Put your cursor on the line you want to run then press Ctrl+Enter or click Run. You can run multiple lines by highlighting the relevant lines. You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Run.png&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setting-up-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Setting up packages&lt;/h2&gt;
+&lt;p&gt;To use a package in R, you need to &lt;strong&gt;call&lt;/strong&gt; it from R’s library using the function &lt;code&gt;library()&lt;/code&gt;. A package we will see later in the module is &lt;code&gt;MASS&lt;/code&gt; which contains datasets you can use at home to practice the statistical tests covered in the lectures.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;library(MASS)&lt;/code&gt; into your script then press Enter. You have just &lt;strong&gt;run&lt;/strong&gt; your first line of code. R will load the package &lt;code&gt;MASS&lt;/code&gt; in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to &lt;code&gt;MASS&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;data()&lt;/code&gt; or &lt;code&gt;data(package = .packages(all.available = TRUE))&lt;/code&gt; to see the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general (e.g. the starwars dataset of Star Wars characters comes with the package &lt;code&gt;tidyverse&lt;/code&gt;). Entering the name of a dataset will display the entire dataset. Try calling one of the &lt;code&gt;MASS&lt;/code&gt; datasets, like &lt;code&gt;Rabbit&lt;/code&gt;. You can see the descriptions of each dataset by calling &lt;code&gt;help(&amp;lt;dataset name&amp;gt;)&lt;/code&gt;, e.g. &lt;code&gt;help(Rabbit)&lt;/code&gt; will tell you it describes the blood pressure of rabbits before and after a drug treatment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Working directories&lt;/h2&gt;
+&lt;p&gt;Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use &lt;strong&gt;working directories&lt;/strong&gt;. Working directories are default directories that programs will look in first. We can then use directory address that are &lt;em&gt;relative&lt;/em&gt; to this default address which shortens addresses.&lt;/p&gt;
+&lt;p&gt;For example, following this directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; documents
+      -&amp;gt; file A 
+      -&amp;gt; folder 1 
+          -&amp;gt; folder 2 
+              -&amp;gt; file B&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the default directory is C:/, then the address for file B is &lt;code&gt;C:/documents/folder1/folder2/fileB&lt;/code&gt;.&lt;br /&gt;
+But if we set folder 1 as the working directory &lt;code&gt;C:/documents/folder1/&lt;/code&gt;, then we can use the relative address for the file: &lt;code&gt;folder2/fileB&lt;/code&gt;. This way we don’t have to type &lt;code&gt;C:/documents/folder1/&lt;/code&gt; every time.&lt;/p&gt;
+&lt;p&gt;Navigating through directories using addresses can be confusing. Another useful command is &lt;code&gt;..&lt;/code&gt; which tells the address to go &lt;em&gt;up&lt;/em&gt; a directory. For example, if folder 2 was the working directory &lt;code&gt;C:/documents/folder1/folder2&lt;/code&gt; and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: &lt;code&gt;../../fileA&lt;/code&gt; which means that the computer is now looking in the &lt;code&gt;documents&lt;/code&gt; folder. In contrast, the relative address for file B is even shorter, &lt;code&gt;fileB&lt;/code&gt;, since folder 2 is already the working directory.&lt;/p&gt;
+&lt;p&gt;RStudio has a default working directory.&lt;br /&gt;
+You can see which working directory is the default directory in RStudio on the “Files” tab. You can also check what working directory R is using by typing &lt;code&gt;getwd()&lt;/code&gt; (GET Working Directory). When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab. &lt;em&gt;This may be one reason RStudio cannot find a file even with a “correct” relative address&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;changing-working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Changing working directories&lt;/h2&gt;
+&lt;p&gt;You can change the default RStudio directory under Tools -&amp;gt; Global Options but on a daily basis, changing the directory temporarily under Session -&amp;gt; Set working directory is more useful.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You will need to know how to change working directories and tell R where to find files through relative addresses because that is how we &lt;strong&gt;import&lt;/strong&gt; and &lt;strong&gt;export&lt;/strong&gt; data to and from R.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;setwd.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The R function to do the same thing is &lt;code&gt;setwd()&lt;/code&gt; (SET Working Directory). e.g. &lt;code&gt;setwd(&amp;lt;insert directory address here&amp;gt;)&lt;/code&gt;. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file). If R cannot find a file, check the address or the working directory is correct&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;loading-data&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Loading data&lt;/h1&gt;
+&lt;p&gt;To use data stored in other files, the data must be &lt;strong&gt;loaded&lt;/strong&gt; or &lt;strong&gt;read&lt;/strong&gt; into R. Imported data &lt;strong&gt;must&lt;/strong&gt; be assigned a name (using &lt;code&gt;&amp;lt;-&lt;/code&gt;) or it won’t be saved to R’s memory. The &lt;code&gt;read&lt;/code&gt; functions are a set of base R function that import data based on how data is saved in the file. In this module we will focus on two types of storing data: tab delimated &amp;amp; comma separated values.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;In tab deliminated data, values are separated by tabs. e.g. 1 2 3 4 5 6 (separated by 1 space). The &lt;code&gt;read&lt;/code&gt; function is &lt;code&gt;read.delim()&lt;/code&gt; for deliminated.&lt;/li&gt;
+&lt;li&gt;In comma separated values data (CSV), values are separated by commas. e.g. 1,2,3,4,5. The &lt;code&gt;read&lt;/code&gt; function is &lt;code&gt;read.csv()&lt;/code&gt; for CSV.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Files names or directories are designated as character strings (&lt;code&gt;&#34;&#34;&lt;/code&gt;). &lt;code&gt;read.table()&lt;/code&gt; also works for tables. See &lt;code&gt;help(&#34;read.table&#34;)&lt;/code&gt; for the general inputs.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;read&lt;/code&gt; functions have two important settings to be aware of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;header&lt;/code&gt;: Use &lt;code&gt;header = FALSE&lt;/code&gt; (default) if your data doesn’t have headers, &lt;code&gt;header = TRUE&lt;/code&gt; to force R to recognise headers - usually the first row of data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sep&lt;/code&gt;: Tells R to recognise how individual observations are separated (hence sep). &lt;code&gt;sep = &#34;&#34;&lt;/code&gt; or &lt;code&gt;sep = &#34; &#34;&lt;/code&gt; if it’s tab separated data (with white spaces between data - &lt;code&gt;&#34;&#34;&lt;/code&gt; is a general indicator for any whitespace, &lt;code&gt;&#34; &#34;&lt;/code&gt; is specifically 1 space) or &lt;code&gt;sep = &#34;,&#34;&lt;/code&gt; for comma separated values. If the data didn’t import properly it could be because the wrong read function or the wrong separator was used - try another one. Most of the time the default will be fine, which means you do not have to manually specify these settings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. We expect you to be able to load data from file or from clipboard during practicals and assessment.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
+&lt;p&gt;Now let’s practice two ways of importing data using &lt;code&gt;read&lt;/code&gt; functions: from a file and from the clipboard. The relevant files are available on Blackboard.&lt;/p&gt;
+&lt;div id=&#34;txt&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.txt&lt;/h2&gt;
+&lt;p&gt;Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. This is loaded using &lt;code&gt;read.delim()&lt;/code&gt;. Try loading the file “small_sleep.txt” to an R element called &lt;code&gt;small_sleep&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;small_sleep &amp;lt;- read.delim(&amp;quot;small_sleep.txt&amp;quot;)
+small_sleep
+                  Species   BodyWt TotalSleep
+1         Africanelephant 6654.000        3.3
+2  Africangiantpouchedrat    1.000        8.3
+3               ArcticFox    3.385       12.5
+4    Arcticgroundsquirrel    0.920       16.5
+5           Asianelephant 2547.000        3.9
+6                  Baboon   10.550        9.8
+7             Bigbrownbat    0.023       19.7
+8          Braziliantapir  160.000        6.2
+9                     Cat    3.300       14.5
+10             Chimpanzee   52.160        9.7&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;csv&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;.csv&lt;/h2&gt;
+&lt;p&gt;If data is separated by a comma, it’s called a comma separated value file (.csv). Note that .txt files can also be comma separated. The function to read csv is &lt;code&gt;read.csv()&lt;/code&gt;. Try loading the file “mammal_sleep.csv” to an R element called &lt;code&gt;mammal_sleep&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mammal_sleep &amp;lt;- read.csv(&amp;quot;mammal_sleep.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data collected in Excel can be saved as a .csv file using the Save As option. CSV is preferred in many instances over the default Excel file type because it is less prone to error. This is what we will mostly be using.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;copying-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Copying data&lt;/h2&gt;
+&lt;p&gt;The Clipboard is where your computer saves information that you’ve copied using ctrl/cmd + c.&lt;br /&gt;
+For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. You cannot paste data directly into R. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;clip.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For PC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(&amp;quot;clipboard&amp;quot;) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For Mac:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myclip_data &amp;lt;- read.csv(pipe(&amp;quot;pbpaste&amp;quot;)) # also works with read.delim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Web browsers might display tabbed whitespace differently so try a different separator depending on what web browser you are using (see above). If all else fails, copy the data into Excel and save the file (problem solving!).&lt;/p&gt;
+&lt;div id=&#34;try-it-yourself&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Try it yourself&lt;/h3&gt;
+&lt;p&gt;For whichever operating system you have, highlight and copy this data and load this data into R using you new R script. Make sure you are using the correct &lt;code&gt;read&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;                  Species   BodyWt
+1         Africanelephant 6654.000
+2  Africangiantpouchedrat    1.000
+3               ArcticFox    3.385
+4    Arcticgroundsquirrel    0.920
+5           Asianelephant 2547.000
+6                  Baboon   10.550
+7             Bigbrownbat    0.023
+8          Braziliantapir  160.000
+9                     Cat    3.300
+10             Chimpanzee   52.160&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Species,BodyWt,BrainWt,NonDreaming,Dreaming,TotalSleep,LifeSpan,Gestation,Predation,Exposure,Danger
+Africanelephant,6654,5712,NA,NA,3.3,38.6,645,3,5,3
+Africangiantpouchedrat,1,6.6,6.3,2,8.3,4.5,42,3,1,3
+ArcticFox,3.385,44.5,NA,NA,12.5,14,60,1,1,1
+Arcticgroundsquirrel,0.92,5.7,NA,NA,16.5,NA,25,5,2,3
+Asianelephant,2547,4603,2.1,1.8,3.9,69,624,3,5,4
+Baboon,10.55,179.5,9.1,0.7,9.8,27,180,4,4,4
+Bigbrownbat,0.023,0.3,15.8,3.9,19.7,19,35,1,1,1
+Braziliantapir,160,169,5.2,1,6.2,30.4,392,4,5,4
+Cat,3.3,25.6,10.9,3.6,14.5,28,63,1,2,1&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;checking-the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Checking the data&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; check that your data loaded properly. Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For bigger datasets it is easier to view a subset of the data or to use the &lt;code&gt;View()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mammal_sleep, n = 6) # View the first 6 rows (6 is default, can be changed)
+                 Species   BodyWt BrainWt NonDreaming Dreaming TotalSleep
+1        Africanelephant 6654.000  5712.0          NA       NA        3.3
+2 Africangiantpouchedrat    1.000     6.6         6.3      2.0        8.3
+3              ArcticFox    3.385    44.5          NA       NA       12.5
+4   Arcticgroundsquirrel    0.920     5.7          NA       NA       16.5
+5          Asianelephant 2547.000  4603.0         2.1      1.8        3.9
+6                 Baboon   10.550   179.5         9.1      0.7        9.8
+  LifeSpan Gestation Predation Exposure Danger
+1     38.6       645         3        5      3
+2      4.5        42         3        1      3
+3     14.0        60         1        1      1
+4       NA        25         5        2      3
+5     69.0       624         3        5      4
+6     27.0       180         4        4      4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;View(mammal_sleep)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-structure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data structure&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;str()&lt;/code&gt; is a handy function for checking the structure of your dataset. Let’s check the mammal sleep dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mammal_sleep)
+&amp;#39;data.frame&amp;#39;:   62 obs. of  11 variables:
+ $ Species    : chr  &amp;quot;Africanelephant&amp;quot; &amp;quot;Africangiantpouchedrat&amp;quot; &amp;quot;ArcticFox&amp;quot; &amp;quot;Arcticgroundsquirrel&amp;quot; ...
+ $ BodyWt     : num  6654 1 3.38 0.92 2547 ...
+ $ BrainWt    : num  5712 6.6 44.5 5.7 4603 ...
+ $ NonDreaming: num  NA 6.3 NA NA 2.1 9.1 15.8 5.2 10.9 8.3 ...
+ $ Dreaming   : num  NA 2 NA NA 1.8 0.7 3.9 1 3.6 1.4 ...
+ $ TotalSleep : num  3.3 8.3 12.5 16.5 3.9 9.8 19.7 6.2 14.5 9.7 ...
+ $ LifeSpan   : num  38.6 4.5 14 NA 69 27 19 30.4 28 50 ...
+ $ Gestation  : num  645 42 60 25 624 180 35 392 63 230 ...
+ $ Predation  : int  3 3 1 5 3 4 1 4 1 1 ...
+ $ Exposure   : int  5 1 1 2 5 4 1 5 2 1 ...
+ $ Danger     : int  3 3 1 3 4 4 1 4 1 1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;The first line tells us that &lt;code&gt;mammal_sleep&lt;/code&gt; is a data frame. Which is how R stores observations in rows and columns. Other types are lists and matrices. It also tells us there are 62 observations - meaning the number of rows of data - and 11 variables - meaning the number of columns&lt;/li&gt;
+&lt;li&gt;In the first column of &lt;code&gt;str()&lt;/code&gt;, are the names of the columns of the dataset listed with an &lt;code&gt;$&lt;/code&gt; are . So the first column is called &lt;code&gt;Species&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The second column shows what &lt;em&gt;type&lt;/em&gt; of variable the data are: character (&lt;code&gt;chr&lt;/code&gt;) for letters, numeric (&lt;code&gt;num&lt;/code&gt;) for continuous numbers and integer (&lt;code&gt;int&lt;/code&gt;) for discrete numbers. Another type you will encounter are &lt;code&gt;Factors&lt;/code&gt; and &lt;code&gt;levels&lt;/code&gt; - these are categorical variables.&lt;/li&gt;
+&lt;li&gt;The third column shows the first couple of observations in each column&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summarising-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summarising data&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;summary()&lt;/code&gt; shows some summary statistics for the specific variable&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mammal_sleep) # for all columns
+   Species              BodyWt            BrainWt         NonDreaming    
+ Length:62          Min.   :   0.005   Min.   :   0.14   Min.   : 2.100  
+ Class :character   1st Qu.:   0.600   1st Qu.:   4.25   1st Qu.: 6.250  
+ Mode  :character   Median :   3.342   Median :  17.25   Median : 8.350  
+                    Mean   : 198.790   Mean   : 283.13   Mean   : 8.673  
+                    3rd Qu.:  48.202   3rd Qu.: 166.00   3rd Qu.:11.000  
+                    Max.   :6654.000   Max.   :5712.00   Max.   :17.900  
+                                                         NA&amp;#39;s   :14      
+    Dreaming       TotalSleep       LifeSpan         Gestation     
+ Min.   :0.000   Min.   : 2.60   Min.   :  2.000   Min.   : 12.00  
+ 1st Qu.:0.900   1st Qu.: 8.05   1st Qu.:  6.625   1st Qu.: 35.75  
+ Median :1.800   Median :10.45   Median : 15.100   Median : 79.00  
+ Mean   :1.972   Mean   :10.53   Mean   : 19.878   Mean   :142.35  
+ 3rd Qu.:2.550   3rd Qu.:13.20   3rd Qu.: 27.750   3rd Qu.:207.50  
+ Max.   :6.600   Max.   :19.90   Max.   :100.000   Max.   :645.00  
+ NA&amp;#39;s   :12      NA&amp;#39;s   :4       NA&amp;#39;s   :4         NA&amp;#39;s   :4       
+   Predation        Exposure         Danger     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :3.000   Median :2.000   Median :2.000  
+ Mean   :2.871   Mean   :2.419   Mean   :2.613  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000  
+                                                
+summary(mammal_sleep$BodyWt) # summary statistics for body weight
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.005    0.600    3.342  198.790   48.202 6654.000 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tips&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coding is like learning a language. There is grammar, syntax and terminology to learn.&lt;/li&gt;
+&lt;li&gt;The secret to being a coding whiz is practice, practice, practice. Try using R at every opportunity. If you don’t use it, you lose it.&lt;/li&gt;
+&lt;li&gt;It’s OK to google everything. No matter how many years you’ve been using R you will forget something basic.&lt;/li&gt;
+&lt;li&gt;A lot of programming is logic. If you can’t describe what you want to achieve in words, then you can’t code it. Sometimes the solution means changing your way of thinking about a problem.&lt;/li&gt;
+&lt;li&gt;A lot of errors come from spelling or syntax mistakes. It doesn’t mean you don’t know it, check your code carefully for typos. Missing brackets or quotation marks are common mistakes.&lt;/li&gt;
+&lt;li&gt;Often, copying and pasting your error message into google comes up with the solution&lt;/li&gt;
+&lt;li&gt;Trial and error is a big part of programming. If it doesn’t work the first time, tweak it and try it again. Getting a function to work might be as simple as adding or removing one of the defined parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finding-help&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Finding help&lt;/h1&gt;
+&lt;p&gt;All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in &lt;code&gt;help(&amp;lt;insert function name here&amp;gt;)&lt;/code&gt;. If you don’t know your exact query, you can search using &lt;code&gt;??&amp;lt;insert term here&amp;gt;&lt;/code&gt; - e.g. &lt;code&gt;??mean&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Internet is really really great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google.&lt;/p&gt;
+&lt;p&gt;Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by &lt;em&gt;doing&lt;/em&gt;, which means having a go yourself before seeking help from others. Make asking for help your last option. You’ll see on StackExchange people &lt;em&gt;describe&lt;/em&gt; what they want to achieve, what they have done so far, identified what the problem is and provide some reproducible code to help someone else understand their problem. It’s really hard to fix someone’s coding problem without context.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final checklist&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Have you installed R?&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio?&lt;/li&gt;
+&lt;li&gt;Are all your versions and packages up to date?&lt;/li&gt;
+&lt;li&gt;Do you know how to create and save an R script?&lt;/li&gt;
+&lt;li&gt;Do you know how to set your working directory?&lt;/li&gt;
+&lt;li&gt;Can you import data into R?&lt;/li&gt;
+&lt;li&gt;Can you run a line of code?&lt;/li&gt;
+&lt;li&gt;Can you use a function?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to add a Phylopic icon to your graph in R</title>
+      <link>https://jacintak.github.io/post/2021-08-01-rphylopic/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-08-01-rphylopic/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-08-01-rphylopic/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;phylopic.org&#34;&gt;Phylopic&lt;/a&gt; is an online database of silhouettes of species. Most are freely available, with various copyright licences. It’s a great resource for scientific illustration or making cool presentations.&lt;/p&gt;
+&lt;p&gt;One way I wanted to use Phylopic was to add a silhouette of an animal directly to an &lt;code&gt;R&lt;/code&gt; figure. You could search Phylopic yourself and copy the image id to add the icon to the graph but where’s the fun in that?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rphylopic/readme/README.html&#34;&gt;rphylopic&lt;/a&gt; is an &lt;code&gt;R&lt;/code&gt; package that can search and retrieve icons directly from Phylopic. You can use &lt;code&gt;rphylopic&lt;/code&gt; with &lt;code&gt;ggplot2&lt;/code&gt; or base graphics.&lt;/p&gt;
+&lt;p&gt;The process of searching Phylopic and pulling out the image id is not straightforward, and I didn’t find a step-by-step guide I liked for doing so, so here is a reproducible example using the built in dataset &lt;code&gt;beaver1&lt;/code&gt; - a time series of a beaver’s body temperature.&lt;/p&gt;
+&lt;p&gt;The data looks like this and we want to add a beaver icon to the top left corner:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beaver_plot &amp;lt;- qplot(beaver1$temp,x = seq_along(beaver1$temp), geom = &amp;quot;line&amp;quot;, xlab = &amp;quot;Time&amp;quot;, ylab = &amp;quot;Temperature&amp;quot;)
+beaver_plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/2021-08-01-rphylopic/index_files/figure-html/beaver-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;step-by-step-guide-to-adding-a-phylopic-icon&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Step-by-step guide to adding a Phylopic icon&lt;/h1&gt;
+&lt;div id=&#34;getting-the-right-species&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Getting the right species&lt;/h2&gt;
+&lt;p&gt;You can search Phylopic by species using &lt;code&gt;name_search&lt;/code&gt;. You might get multiple hits because there may be multiple matches in the databases. It’s worth cross-referencing the NameBank ID with the website. The NameBank ID is located at the top right of the webpage. In this case we want the first option - 109179.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(rphylopic)
+beaver &amp;lt;- name_search(text = &amp;quot;Castor canadensis&amp;quot;, options = &amp;quot;namebankID&amp;quot;)[[1]] # find names
+beaver&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extracting-the-id-of-the-icon-you-want&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Extracting the id of the icon you want&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;name_images&lt;/code&gt; to list all the beaver icons available. In this case, there are two versions of the beaver icon we can use - listed as &lt;code&gt;$same[[1]]&lt;/code&gt; and &lt;code&gt;$same[[2]]&lt;/code&gt; with unique &lt;code&gt;uid&lt;/code&gt;. The &lt;code&gt;uid&lt;/code&gt; is the unique id of the icon. Again, it’s handy to check the &lt;code&gt;uid&lt;/code&gt; with the website. You can find the &lt;code&gt;uid&lt;/code&gt; on the website by clicking the actual icon you want to use and copying from the address bar.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_id_all &amp;lt;- name_images(uuid = beaver$uid[1])  # list images
+beaver_id_all&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s use the second icon and extract only that &lt;code&gt;uid&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_id &amp;lt;- name_images(uuid = beaver$uid[1])$same[[2]]$uid  # get individual image id
+beaver_id&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-the-icon-itself&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Getting the icon itself&lt;/h2&gt;
+&lt;p&gt;Now we can get the actual image using &lt;code&gt;image_data&lt;/code&gt;. Each icon is available in different sizes, from a thumbnail (64 px) to large icons (1042 px). We will get a 256 px icon so that the resolution is high enough to avoid pixelation.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_pic &amp;lt;- image_data(beaver_id, size = 256)[[1]] # get actual icon, define size. Don&amp;#39;t run this alone&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adding-the-beaver-icon-to-the-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Adding the beaver icon to the plot&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;add_phylopic&lt;/code&gt; to add the icon to a &lt;code&gt;ggplot2&lt;/code&gt; graph. You need to specify the x and y axis co-ordinates for the graph. Use &lt;code&gt;ysize&lt;/code&gt; to change the size of the icon. Use &lt;code&gt;alpha&lt;/code&gt; to control the transparency. &lt;code&gt;colour&lt;/code&gt; will change the colour.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beaver_plot + add_phylopic(beaver_pic, alpha = 1, x = 10, y = 37.4, ysize = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;featured.png&#34; style=&#34;width:70.0%&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;The final plot&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And that’s it! 🦫&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-uses-of-rphylopic&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Other uses of &lt;code&gt;rphylopic&lt;/code&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;You can add the icon as a background image but I would question why that would be a good idea from a graphic design perspective. To do so, you don’t need to specify any other variables in &lt;code&gt;add_phylopic&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You can also use icons as data points by plotting each icon in place of the regular point within a for loop. You can see an example in the &lt;code&gt;rphylopic&lt;/code&gt; documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OSM in R</title>
+      <link>https://jacintak.github.io/post/2021-07-01-OSM-in-R/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-07-01-OSM-in-R/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-07-01-OSM-in-R/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;This tutorial was originally presented to NERD club on 4/2/2020.&lt;/p&gt;
+&lt;div id=&#34;city-maps&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;City maps&lt;/h1&gt;
+&lt;p&gt;Consider yourself a hipster?&lt;br /&gt;
+Do the clean lines and natural materials of modern scandi make you feel at home?&lt;br /&gt;
+Is your basic coffee order a flat white? ☕&lt;/p&gt;
+&lt;p&gt;If the answer to all the above is YES, then here’s a present for you!&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://images-na.ssl-images-amazon.com/images/I/61-dKVczbXL._SL1000_.jpg&#34; title=&#34;fig:&#34; width=&#34;250&#34; alt=&#34;A map of Dublin&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;&lt;em&gt;But wait!&lt;/em&gt; This poster costs €30 (thereabouts) online!
+&lt;a href=&#34;https://www.etsy.com/ie/listing/561937898/dublin-print-dublin-city-map-dublin&#34;&gt;See example&lt;/a&gt;.&lt;br /&gt;
+That’s approximately 9 flat whites you could have had.&lt;br /&gt;
+☕☕☕☕☕☕☕☕☕&lt;br /&gt;
+Can you make this in R?, you ask, asking for a friend.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fear not&lt;/strong&gt;. You can make this yourself in R!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;maps-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Maps in R&lt;/h1&gt;
+&lt;p&gt;In this tutorial we will replicate a poster like this. We will need R and powerpoint to put in the final touches. You could do it fully in R but powerpoint will make our lives a bit easier. In summary, it requires a bit of GIS wrangling to code in what you want to display.&lt;/p&gt;
+&lt;p&gt;The data is freely available from &lt;a href=&#34;https://www.openstreetmap.org&#34;&gt;Openstreetmap&lt;/a&gt;, for proprietary haters out there. I will refer to it as OSM.&lt;/p&gt;
+&lt;p&gt;We will be following &lt;a href=&#34;https://ggplot2tutor.com/streetmaps/streetmaps/&#34;&gt;this&lt;/a&gt; tutorial.&lt;/p&gt;
+&lt;div id=&#34;setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;You will need to install the relevant packages: &lt;code&gt;osmdata&lt;/code&gt;, &lt;code&gt;tidyverse&lt;/code&gt; and &lt;code&gt;sf&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#install.packages(&amp;quot;osmdata&amp;quot;, &amp;quot;tidyverse&amp;quot;, &amp;quot;sf&amp;quot;)
+library(osmdata)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see this will use tidyverse and I will be using piping. Don’t worry if you are not a master at piping. The code is written.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In a nutshell, instead of function2(function1(X)) to apply function 1 &lt;em&gt;then&lt;/em&gt; function 2 to X, you type x %&amp;gt;% function1() %&amp;gt;% function2(). I.E. take X, apply function 1, then apply function 2 to the resulting output. Overall it’s easier to read, hence it’s ‘tidy’.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;osm-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;OSM data&lt;/h2&gt;
+&lt;p&gt;OSM stores various features you can explore under &lt;code&gt;available_features()&lt;/code&gt;. You can see what is under each feature with &lt;code&gt;available_tags(&#34;&amp;lt;insert feature name here&amp;gt;&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-city-co-ordinates&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. Get city co-ordinates&lt;/h1&gt;
+&lt;p&gt;For this example we will make a map of Dublin. First we need the latitude and longitude of Dublin. If you want to modify the extent of your map, this is where you change the co-ordinates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;city_coords &amp;lt;- getbb(&amp;quot;Dublin Ireland&amp;quot;)
+#city_coords &amp;lt;- c(-6.391,53.2644,-6.114883, 53.416) # to get all the M50&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-map-features&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. Get map features&lt;/h1&gt;
+&lt;div id=&#34;roads&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Roads&lt;/h2&gt;
+&lt;p&gt;We can get roads by querying OSM for the GPS co-ordinates for Dublin and saving it to a variable called &lt;em&gt;roads&lt;/em&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;roads &amp;lt;- city_coords %&amp;gt;% #pipe!
+  opq() %&amp;gt;% # create query for OSM database
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;motorway&amp;quot;, &amp;quot;primary&amp;quot;, 
+                            &amp;quot;secondary&amp;quot;, &amp;quot;tertiary&amp;quot;)) %&amp;gt;%
+  osmdata_sf() # save it as an simple features format
+roads&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;streets&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Streets&lt;/h2&gt;
+&lt;p&gt;We can do the same for streets.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;streets &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;residential&amp;quot;, &amp;quot;living_street&amp;quot;,
+                            &amp;quot;unclassified&amp;quot;,
+                            &amp;quot;service&amp;quot;, &amp;quot;footway&amp;quot;)) %&amp;gt;%
+  osmdata_sf()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;water&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Water&lt;/h2&gt;
+&lt;p&gt;Can’t forget the Liffey and the canals. Sadly the ocean cannot be mapped.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;water &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;waterway&amp;quot;, value = c(&amp;quot;canal&amp;quot;, &amp;quot;river&amp;quot;)) %&amp;gt;%
+  osmdata_sf()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Plotting&lt;/h1&gt;
+&lt;p&gt;Time to call &lt;code&gt;ggplot2&lt;/code&gt; and plot our map.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;map &amp;lt;- ggplot() +
+  # roads
+  geom_sf(data = roads$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;grey&amp;quot;, # colour of feature
+          size = 0.8,       # Size on map
+          alpha = 0.8) +    # transparency
+  # streets
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;#ffbe7f&amp;quot;,
+          size = 0.2,
+          alpha = 0.6) +
+  # water
+  geom_sf(data = water$osm_lines,
+          inherit.aes = FALSE,
+          color = &amp;quot;steelblue&amp;quot;,
+          size = 0.8,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE) +
+  # remove axes
+  theme_void()
+
+map&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;labels&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Labels&lt;/h1&gt;
+&lt;p&gt;At this point it is easier to save the file and add text in powerpoint but if you want to try your hand at ggplot’s annotation features go ahead.&lt;/p&gt;
+&lt;p&gt;Here I’ve done one in a dark colour scheme.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme_colour &amp;lt;- &amp;quot;#282828&amp;quot; # dark theme
+
+dark_map &amp;lt;- map +
+  labs(caption = &amp;quot;Dublin, Ireland&amp;quot;) +
+  theme(axis.text = element_blank(),
+        plot.margin=unit(c(1,1,1,1),&amp;quot;cm&amp;quot;),
+        panel.grid.major = element_line(colour = theme_colour),
+        panel.grid.minor = element_line(colour = theme_colour),
+        plot.background = element_rect(fill = theme_colour),
+        panel.background = element_rect(fill = theme_colour),
+        plot.caption = element_text(size = 24, colour = &amp;quot;white&amp;quot;, hjust = 0.5, vjust = -2, family = &amp;quot;mono&amp;quot;),
+        panel.border = element_rect(colour = &amp;quot;white&amp;quot;, fill=NA, size=2),
+        axis.ticks = element_blank())
+
+dark_map&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;saving-our-map&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Saving our map&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;ggsave(plot = dark_map, filename = &amp;quot;NERD/dark_dublin.pdf&amp;quot;, width = 11, height = 8.5, device = &amp;quot;pdf&amp;quot;, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;If all of that was too much, there’s an R package for it. &lt;a href=&#34;https://github.com/lina2497/Giftmap&#34; class=&#34;uri&#34;&gt;https://github.com/lina2497/Giftmap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There is also a &lt;a href=&#34;https://anvaka.github.io/city-roads/&#34;&gt;website&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extra-details&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Extra details&lt;/h1&gt;
+&lt;p&gt;Less is more but if you really want to put more features:&lt;/p&gt;
+&lt;div id=&#34;other-water-bodies&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Other water bodies&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;extra_water &amp;lt;- city_coords %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;natural&amp;quot;, value = c(&amp;quot;water&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = extra_water$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;steelblue&amp;quot;,
+          colour = NA,
+          alpha = 0.5) +
+  geom_sf(data = extra_water$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;steelblue&amp;quot;,
+          colour = NA,
+          alpha = 0.5) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parks&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Parks&lt;/h2&gt;
+&lt;p&gt;Nature reserves including Dublin Bay&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;park &amp;lt;- city_coords%&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;leisure&amp;quot;, value = c(&amp;quot;park&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+dark_map +
+   geom_sf(data = park$osm_polygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;darkgreen&amp;quot;,
+          colour = NA,
+          alpha = 0.3) +
+  geom_sf(data = park$osm_multipolygons,
+          inherit.aes = FALSE,
+          fill = &amp;quot;darkgreen&amp;quot;,
+          colour = NA,
+          alpha = 0.3) +
+  # extent to display
+  coord_sf(xlim = c(city_coords[1],city_coords[3]),
+           ylim = c(city_coords[2],city_coords[4]),
+           expand = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;end&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;End&lt;/h1&gt;
+&lt;p&gt;That’s the gist of using OSM in &lt;code&gt;R&lt;/code&gt;. You can use the same code to make any map, e.g. for a paper.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NERD club tutorials</title>
+      <link>https://jacintak.github.io/project/NERD-club/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/NERD-club/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/project/NERD-club/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;NERD club is a student-led peer-learning and discussion group for staff and postgraduate students in the Departments of Zoology and Botany at Trinity College Dublin. The group meets weekly for topical discussions about science or academia. There are also sub-groups that are dedicated towards specific topics such as R coding and spatial analysis. These sub-groups are focused towards peer-learning where, postgraduates in particular, are encouraged to share their learning experience and expertise in relevant topics.&lt;/p&gt;
+&lt;p&gt;I have been an active contributor to NERD club and its sub-groups: R club for R programming and Space Lunch for GIS and spatial analysis. This page documents some of the outputs I have produced for peer-learning activities.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tutorials&lt;/h1&gt;
+&lt;div id=&#34;advanced-r-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Advanced R markdown&lt;/h2&gt;
+&lt;p&gt;This is a short presentation showing some of the more advanced features of R Markdown using the &lt;code&gt;R&lt;/code&gt; package &lt;code&gt;bookdown&lt;/code&gt; including: numbered sections, cross-referencing, bibliographies, CSS and making a website with the static HTML builder.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/24March2021_Advanced_R_Markdown.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;interactive-functions-and-loops-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Interactive functions and loops in &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;This &lt;a href=&#34;https://jacintak.github.io/post/2021-06-01-r-function-loops/&#34;&gt;tutorial&lt;/a&gt; describes how to make an &lt;code&gt;R&lt;/code&gt; function that asks the user to input values for the function, and how to run a function within a simple for loop.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;osm-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;OSM in R&lt;/h2&gt;
+&lt;p&gt;This &lt;a href=&#34;https://jacintak.github.io/post/2021-07-01-OSM-in-R/&#34;&gt;tutorial&lt;/a&gt; describes how to interface with Open Street Maps in &lt;code&gt;R&lt;/code&gt; to make a fancy map you can print and give to someone but the same code can be used to make maps for any purpose.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introduction-to-spatial-points-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction to spatial points in R&lt;/h2&gt;
+&lt;p&gt;This is a walkthrough of a basic workflow for working with spatial data and rasters in R. Specifically loading a raster, plotting a raster and extracting information from rasters. I use &lt;code&gt;rgbif&lt;/code&gt; to get species occurrence records from GBIF and extract temperature data from a raster of global temperatures. A blog post version is &lt;a href=&#34;https://jacintak.github.io/post/spatial-data/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;HTML: &lt;a class=&#34;fas fa-file&#34; href=&#34;https://jacintak.github.io/Rasters_SpaceClub_06102021&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Club: Functions &amp; Loops</title>
+      <link>https://jacintak.github.io/post/2021-06-01-r-function-loops/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-06-01-r-function-loops/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-06-01-r-function-loops/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;This tutorial was originally presented to NERD club on 18/11/2020.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;This document contains two examples of functions and an example of how functions can be integrated with loops.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;User defined functions take the general form of &lt;code&gt;function(inputs){processing inputs; return(output)}&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;predator-prey-interactions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Predator-Prey interactions&lt;/h1&gt;
+&lt;p&gt;We will use a simulation of predator-prey interactions as an example. Predator-prey interactions simulate how many prey a predator can capture after a specific amount of time and for a given density of prey. We use this example with undergraduate biology students to demonstrate statistical modelling, experimental design and collecting data.&lt;/p&gt;
+&lt;p&gt;Normally we would get students to do this laboratory practical in class by picking up counters and putting them in jars while blindfolded. We can also see whether the use of different types of jars affects the efficiency of the predator. This is the experimental design:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Response variable - Number of prey caught (&lt;code&gt;Ha&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Total foraging time - 1 minute, a constant (&lt;code&gt;T&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Predictor variables:
+&lt;ul&gt;
+&lt;li&gt;Prey density - user defined treatments (&lt;code&gt;H&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Type of jar used - jar with a lid or no lid (&lt;code&gt;yes&lt;/code&gt; or &lt;code&gt;no&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Normally the students will collect data to parameterise the functional response. Instead I’ve created a function that will predict new values of prey captured using a functional response formula that is already parameterised.&lt;/p&gt;
+&lt;p&gt;Let’s look at the function:&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;an-interactive-function&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An interactive function&lt;/h2&gt;
+&lt;p&gt;R has some capacity to be interactive. It can ask a user to input variables.
+The function &lt;code&gt;functional_response&lt;/code&gt; will return the number of prey captured for a given prey density and type of jar used. The function will ask for these two inputs each time the function is run. Look at the code below and try to understand the different components. Then try running the code yourself with different inputs.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#### Interactive function
+# Simulation of the predator-prey functional response - DO NOT CHANGE
+# To run: click Source (cmd or ctrl+shift+S) or Run All (ctrl+alt+r)
+# Or source(&amp;quot;&amp;lt;insert file location here&amp;gt;&amp;quot;, echo = FALSE)
+
+functional_response &amp;lt;- function(){
+  
+  # Introduce the simulation to the user - prints a message
+  cat(paste(
+    &amp;quot;&amp;quot;,
+    &amp;quot;You have some counters (prey), a piece of A4 paper &amp;amp; a jar.&amp;quot;,
+    &amp;quot;You spread the counters randomly on the A4 sheet.&amp;quot;,
+    sep=&amp;quot;\n&amp;quot;))
+  
+  # Ask the user for the prey density for the functional response
+  prey_density  &amp;lt;- readline(&amp;quot;How many prey counters are used? &amp;quot;) # ask for prey density
+  
+  # Check the user has inputted a number properly
+  if(!grepl(&amp;quot;^[0-9]+$&amp;quot;, prey_density)){ # check whether the input contains numeric characters between 0-9 using regex (regular expressions)
+    message(&amp;quot;Please enter an integer&amp;quot;) # If the input is not a number, tell them to do it again
+    return(functional_response()) # Return to the beginning of the function and start again
+  }
+  prey_density &amp;lt;- as.integer(prey_density) # If the prey density input is a number, turn it into an interger
+  
+  # Ask the user for the type of jar used
+  cat(paste(
+    &amp;quot;&amp;quot;,
+    &amp;quot;Every second you (the predator) tap the sheet to find and pick up a prey counter while blindfolded.&amp;quot;,
+    &amp;quot;You have 1 minute to put as many prey counters as you can in the jar.&amp;quot;,
+    &amp;quot;There are two types of jars you can use while handling prey.&amp;quot;,
+    &amp;quot;Enter 1 to use a jar with a lid that you have to open and close.&amp;quot;,
+    &amp;quot;Enter 2 to use a jar without a lid.&amp;quot;,
+    &amp;quot;&amp;quot;,
+    &amp;quot;What type of jar is used?&amp;quot;,
+    sep=&amp;quot;\n&amp;quot;))
+  lid_used &amp;lt;- menu(c(&amp;quot;Lid&amp;quot;, &amp;quot;No Lid&amp;quot;))
+  
+  # Calculate the number of prey caught (the functional response) based on the user defined input above
+  if(lid_used != 0){ # Check that the use has chosen the jar used properly (1 or 2)
+    
+    # Use this model if using a jar with a lid
+    if(lid_used == 1){
+      Ha &amp;lt;- (0.2 * prey_density)/(1 + 0.2 * 0.03 * prey_density) 
+    }
+    
+    # Use this model if using a jar without a lid
+    if(lid_used == 2){
+      Ha &amp;lt;- (0.7 * prey_density)/(1 + 0.7 * 0.05 * prey_density) 
+    }
+    
+    # Add in some variation around the predicted value so that users don&amp;#39;t get the exact parameterised functional response
+    Ha &amp;lt;- Ha + sample(seq(-3,3), 1) 
+    
+    # Make sure there are no negative prey items caught!
+    if(Ha &amp;lt; 0){
+      Ha &amp;lt;- 0 # Make prey caught 0 if less than 0
+    }
+    
+    # Make sure the number of prey caught doesn&amp;#39;t exceed the number of prey available!
+    if(Ha &amp;gt; prey_density){
+      Ha &amp;lt;- prey_density # If prey caught is greater than the number of prey available, make it the maximum possible
+    }
+    
+    # Print a message showing the results
+    message(&amp;quot;The number of prey caught is &amp;quot;, floor(Ha), &amp;quot;. Well done!&amp;quot;) 
+  }
+}
+
+# Actually run the function and tell R that it&amp;#39;s interactive 
+if(interactive()) functional_response()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The function doesn’t have any inputs in &lt;code&gt;function()&lt;/code&gt; because it will ask the user for them each time&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;readline&lt;/code&gt; is the function to ask for a single user input&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;menu&lt;/code&gt; is the function to ask the user to chose from a number of options
+&lt;ul&gt;
+&lt;li&gt;Here the option is press 1 to use a jar with a lid or press 2 to use a jar without a lid&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;There are two parameterised functional responses - one for a jar with a lid and one for a jar without a lid&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;floor&lt;/code&gt; is a function to round the number of prey caught to the lowest whole number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the practical, students will need to run the above function for 10 prey densities, repeated 3 times, for both jar treatments - so 60 times in total. But we don’t have to do that manually - that is what loops are for!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functions-and-loops&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Functions and loops&lt;/h2&gt;
+&lt;p&gt;Here is a non-interactive version of the function above. It doesn’t have the printed messages asking for user input. This time, the function needs 3 inputs as indicated by &lt;code&gt;function(prey_density, lid_used, total_time)&lt;/code&gt;: the prey density used, the type of jar used and the total foraging time, respectively.&lt;/p&gt;
+&lt;p&gt;Run the code chunk to load the function into the R environment:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Functional response function
+functional_response &amp;lt;- function(prey_density, lid_used, total_time){
+  
+  # Check jar type is inputted correctly
+  if (!lid_used %in% c(&amp;quot;yes&amp;quot;, &amp;quot;no&amp;quot;)) {
+    stop(&amp;quot;Lid used is not inputted correctly. Use &amp;#39;yes&amp;#39; or &amp;#39;no&amp;#39; in all lowercase&amp;quot;)
+  }
+  if(lid_used == &amp;quot;yes&amp;quot;){
+    Ha &amp;lt;- (0.2 * prey_density * total_time)/(1 + 0.2 * 0.03 * prey_density)
+  }
+  if(lid_used == &amp;quot;no&amp;quot;){
+    Ha &amp;lt;- (0.7 * prey_density * total_time)/(1 + 0.7 * 0.05 * prey_density)
+  }
+  Ha &amp;lt;- Ha + sample(seq(-3,3), 1)
+  if(Ha &amp;lt; 0){
+    Ha &amp;lt;- 0
+  }
+  if(Ha &amp;gt; prey_density){
+    Ha &amp;lt;- prey_density
+  }
+  # message(&amp;quot;The number of prey caught is &amp;quot;, floor(Ha))
+return(floor(Ha))
+  }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function will check that the character vector indicating the type of jar to be used is correct because R is case sensitive. The function will return the number of prey caught &lt;code&gt;Ha&lt;/code&gt; as indicated by &lt;code&gt;return(Ha)&lt;/code&gt;. The function &lt;code&gt;return&lt;/code&gt; specifically tells R to tell us the output, otherwise R will keep it to itself! Only one output is allowed (unless extra steps are taken).
+The rest of the function is the same.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;using-the-functional-response-function-in-a-loop&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using the functional response function in a loop&lt;/h3&gt;
+&lt;p&gt;Now let’s use a loop to do our entire experiment in one go! No manual inputs for us. In fact we can do as many treatments or replicates as we want. Let’s do prey densities between 5 and 100 in increments of 5 and 3 replicates. Since the function inputs are required we can set them up in the environment for the function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Set parameters for the function
+total_time &amp;lt;- 1 # total foraging time in minutes
+no_treatments &amp;lt;- seq(from = 5, to = 100, by = 5) # prey density treatments between 5 and 100
+replications &amp;lt;- 3 # number of replications
+
+# a numeric vector of prey densities for all treatments, jar types and replications 
+prey_density &amp;lt;- rep(rep(no_treatments, replications),2) # repeated twice for each jar type
+
+# a character vector of the jar type
+lid_used &amp;lt;- sort(rep(c(&amp;quot;no&amp;quot;, &amp;quot;yes&amp;quot;), length(prey_density)/2)) # &amp;quot;yes&amp;quot; or &amp;quot;no&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By setting up the parameters outside the function or loop, we can easily modify the parameters of the function and feed the new values into the loop. This helps us debug and is cleaner and easier to read.&lt;/p&gt;
+&lt;p&gt;Now for the actual loop itself. We need to be able to store the output of the looped function.
+Lists are the fastest way to do so in R because R is designed for lists and matrices.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Create an empty list called prey_caught to populate 
+prey_caught &amp;lt;- list()
+
+for(i in seq_along(prey_density)){
+  # Run the functional response for the nth observation in the vector prey_density representing all our observations and save it to the list
+  prey_caught[[i]] &amp;lt;- functional_response(prey_density = prey_density[i],
+                                         lid_used = lid_used[i],
+                                         total_time = total_time)
+  
+  # Prepare the list for further analysis
+  prey_caught[[i]] &amp;lt;-  cbind(prey_caught[[i]], prey_density[i]) # add a column for the prey density used to calculate the number of prey caught for that observation (row)
+  prey_caught[[i]] &amp;lt;-  cbind(prey_caught[[i]], 1/prey_caught[[i]]) # add a column for the inverse of the number of prey caught - for statiscally parameterising the functional response
+  prey_caught[[i]][,3] &amp;lt;-  ifelse(prey_caught[[i]][,3] == Inf, 0, prey_caught[[i]][,3]) # Housekeeping - turn undefined values of prey caught (from calculating 1 divided by 0) into 0. If the number of prey caught was 0
+}
+
+# Turn our list into a data frame
+prey_caught &amp;lt;- data.frame(do.call(&amp;quot;rbind&amp;quot;, prey_caught))
+
+# Label the columns
+colnames(prey_caught) &amp;lt;- c(&amp;quot;Ha&amp;quot;, &amp;quot;H&amp;quot;,&amp;quot;Ha.1&amp;quot;, &amp;quot;HT.1&amp;quot;) # &amp;quot;.1 is inversed columns&amp;quot;
+
+# Add type of lid used to our data frame
+prey_caught$lid_used &amp;lt;- lid_used&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Here we are using a &lt;code&gt;for&lt;/code&gt; loop with the n&lt;sup&gt;th&lt;/sup&gt; observation denoted &lt;code&gt;i&lt;/code&gt;. This can be called anything you want but &lt;code&gt;i&lt;/code&gt; is from mathematical notation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;seq_along&lt;/code&gt; is a useful function for telling which observation you are at for a vector - try it out on its own.&lt;/li&gt;
+&lt;li&gt;Lists can only contain one variable type, unlike a data frame, but that’s why they are fast and memory efficient for high performance computing
+&lt;ul&gt;
+&lt;li&gt;If we were to add the jar type (a character vector) to the list within the loop, then all our numeric output will be converted to characters (default R behaviour) - not what we want!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;do.call&lt;/code&gt; is a handy function for lists. It collapses multidimensional lists into one dimension, here appending them by rows (i.e. adding new observations by rows at the end)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualising-the-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualising the data&lt;/h3&gt;
+&lt;p&gt;Now we can plot our results and conduct our linear regression:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+prey_caught %&amp;gt;% # Absolute values
+  ggplot(aes(H, Ha, colour = lid_used)) +
+  geom_point() +
+  geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, fullrange=TRUE) +
+  labs(x = expression(paste(&amp;quot;Prey density  (H)&amp;quot;)),
+       y = expression(paste(&amp;quot;Prey captured  (Ha)&amp;quot;)),
+       colour = &amp;quot;Jar used&amp;quot;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/2021-06-01-r-function-loops/index_files/figure-html/plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Linear model
+summary(lm(Ha.1 ~ HT.1 * lid_used, prey_caught))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+lm(formula = Ha.1 ~ HT.1 * lid_used, data = prey_caught)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.27245 -0.05371 -0.01596  0.00899  0.84476 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&amp;gt;|t|)   
+(Intercept)       0.07136    0.02262   3.155  0.00204 **
+HT.1              1.00548    0.40029   2.512  0.01338 * 
+lid_usedyes       0.09517    0.03198   2.976  0.00356 **
+HT.1:lid_usedyes -1.11833    0.56609  -1.976  0.05058 . 
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+Residual standard error: 0.1351 on 116 degrees of freedom
+Multiple R-squared:  0.08913,   Adjusted R-squared:  0.06558 
+F-statistic: 3.784 on 3 and 116 DF,  p-value: 0.01242&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That has saved us from running the code 120 times! Now we can do it in one!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Formatting P values</title>
+      <link>https://jacintak.github.io/post/2021-05-01-formatting-p-values/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-05-01-formatting-p-values/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-05-01-formatting-p-values/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;This &lt;a href=&#34;https://www.r-bloggers.com/2016/03/correctly-reporting-p-values-in-summary-tables-reported-with-xtable/&#34;&gt;post&lt;/a&gt; on R bloggers describes a handy function for formatting really small P values in ANOVA tables (more than 3 decimal places) with &lt;span class=&#34;math inline&#34;&gt;\(&amp;lt;0.001\)&lt;/span&gt;. I find this easier to read when I need to present a formatted table, e.g. in teaching.&lt;/p&gt;
+&lt;p&gt;The original function doesn’t cover all ways of creating ANOVA tables in &lt;code&gt;R&lt;/code&gt; so I have extended the function to cover more cases. The &lt;code&gt;fixp&lt;/code&gt; function below will work for ANOVA tables (&lt;code&gt;x&lt;/code&gt;) generated by &lt;code&gt;anova(lm(...))&lt;/code&gt; and &lt;code&gt;summary(aov(lm(...)))&lt;/code&gt;, as well as the model coefficients table generated by &lt;code&gt;coef(summary(lm(...)))&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;a-function-to-format-p-values&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A function to format P values&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;fixp &amp;lt;- function(x, dig=3){
+
+# Convert to a data frame
+  if(is.data.frame(x) | is.matrix(x)){
+  x &amp;lt;- as.data.frame(x)
+  } else {
+  x &amp;lt;- as.data.frame(x[[1]])
+  }
+
+# Check column order  
+  if(substr(names(x)[ncol(x)],1,2) != &amp;quot;Pr&amp;quot;){
+    warning(&amp;quot;The name of the last column didn&amp;#39;t start with Pr. This may indicate that p-values weren&amp;#39;t in the last row, and thus, that this function is inappropriate.&amp;quot;)
+    }
+    
+# Round P values to &amp;quot;dig&amp;quot; decimal places, default 3     
+  x[,ncol(x)] &amp;lt;- round(x[,ncol(x)], dig)
+
+#  
+  for(i in 1:nrow(x)){
+    if(x[i,ncol(x)] == 0 &amp;amp; !is.na(x[i,ncol(x)])){
+      x[i,ncol(x)] &amp;lt;- paste0(&amp;quot;&amp;lt;0.&amp;quot;, paste0(rep(0,dig-1), collapse=&amp;quot;&amp;quot;), &amp;quot;1&amp;quot;)
+      }
+  }
+  x
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The main modification to the original function is to expand the conversion of &lt;code&gt;x&lt;/code&gt; to a data frame to accept lists and matrices. &lt;code&gt;summary(aov(lm(...)))&lt;/code&gt; creates an object with class &lt;code&gt;summary.aov&lt;/code&gt; which is a list and the coefficients table is a matrix. Although &lt;code&gt;anova(lm(...))&lt;/code&gt; creates a data frame that will work with the function without a fatal error, the function &lt;code&gt;anova&lt;/code&gt; has its own way of “pretty” printing [to quote the help file] which is not compatible with the character vector in the P value column and thus will show a P value of 1. So forcing to a data frame is necessary. A minor modification is to ignore the NAs in the Residual row created by the data frame which would otherwise give an error.&lt;/p&gt;
+&lt;p&gt;The three decimal places for P values is coded into the function by default and can be changed by the &lt;code&gt;dig&lt;/code&gt; option. For example, &lt;code&gt;dig = 1&lt;/code&gt; will give you &lt;span class=&#34;math inline&#34;&gt;\(&amp;lt;0.1\)&lt;/span&gt;. You can then call your ANOVA table and the &lt;code&gt;fixp&lt;/code&gt; function through &lt;code&gt;knitr::kable()&lt;/code&gt; or your favourite HTML/LaTeX table formatter. e.g. &lt;code&gt;kable(fixp(anova(lm(...))), digits = ...)&lt;/code&gt;. If you don’t want to print NAs, it’s probably better to use the options in your chosen formatting function - e.g. the &lt;code&gt;knitr.kable.NA&lt;/code&gt; option in &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/kable.html&#34;&gt;&lt;code&gt;kable&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Leaving the valley of intermediate competence</title>
+      <link>https://jacintak.github.io/post/using-mapply/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/using-mapply/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/using-mapply/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;if-it-aint-broke-dont-fix-it&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;If it ain’t broke, don’t fix it?&lt;/h1&gt;
+&lt;p&gt;So you’ve spent a lot of time learning and practising &lt;code&gt;R&lt;/code&gt; and you’re pretty comfortable with using functions, if else statements and loops like they teach at introductory programming. What more is there to improve?&lt;/p&gt;
+&lt;p&gt;If the answer is no or you subscribe to the quote above, then turn back now. If yes, continue.&lt;/p&gt;
+&lt;p&gt;I think that even if one has the skills to do fundamental programming competently, there’s always room for improvement or something new to learn. Or you know that there’s a better, more efficient, way to do it but something is holding you back. For me, it’s usually the latter.&lt;/p&gt;
+&lt;p&gt;In a milestone of using &lt;code&gt;R&lt;/code&gt; I think I have wrapped my head around replacing for loops with the &lt;code&gt;apply&lt;/code&gt; family, specifically &lt;code&gt;mapply&lt;/code&gt;. The last hurdle in delving into functional programming.&lt;/p&gt;
+&lt;p&gt;I’ve used iterative coding quite a bit over the years and I’ve been using for loops to do so. As I’ve gotten more competent with applying basic concepts (like loops and functions), I’ve been moving towards optimising my code with more advanced &lt;code&gt;R&lt;/code&gt; methods. I started with using more manual functions and sourcing functions from external scripts but I was still relying on loops to apply those functions iteratively.&lt;/p&gt;
+&lt;p&gt;I know loops are inefficient. I’ve waited &lt;em&gt;days&lt;/em&gt; for computationally intensive loops on large datasets to finish. I know that &lt;code&gt;apply&lt;/code&gt; and co. can be more computationally efficient but in your typical learning something new way, they hadn’t really clicked for me…until now.&lt;/p&gt;
+&lt;p&gt;I’ve been trying to use &lt;code&gt;apply&lt;/code&gt; family functions where appropriate for years but I’ve never felt comfortable with using them to use them from the start. So, I default back to loops to save time and frustration.&lt;/p&gt;
+&lt;p&gt;I think the slow uptake is because the syntax is different to the logic of loops that are taught, even if &lt;code&gt;apply&lt;/code&gt;’s logic is better from a computing perspective. The syntax and the logic is also inconsistent within the &lt;code&gt;apply&lt;/code&gt; family; a known disadvantage over similar functions (like &lt;code&gt;purrr::map&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;But let’s focus on a specific case before this becomes a cooking blog: replacing for loops. I’m going to assume that you are competent with manual functions, for loops and lists, and that you want to improve your code. I’m going to focus on lists because they are an efficient way of storing lots of similarly structured data in &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here are two ways to replace a for loop.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-example-loop&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;An example loop&lt;/h1&gt;
+&lt;p&gt;Let’s create an example scenario and data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# some data to use
+loop_data &amp;lt;- data.frame(col1 = c(11:15), col2 = c(20:24))
+
+# define variable to change
+a &amp;lt;- seq(0.2, 1, 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;loop_data&lt;/code&gt; is a data frame with two numeric columns (&lt;code&gt;col1&lt;/code&gt; &amp;amp; &lt;code&gt;col2&lt;/code&gt;). We technically won’t use &lt;code&gt;loop_data$col2&lt;/code&gt; but it’s there to create a 5x2 data frame.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;a&lt;/code&gt; is a variable that we need for our function. There are 5 values.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We want to add each element of &lt;code&gt;a&lt;/code&gt; to &lt;code&gt;loop_data$col1&lt;/code&gt; and save that in a new column &lt;code&gt;loop_data$col1a&lt;/code&gt;. We will also add &lt;code&gt;a&lt;/code&gt; as a column in &lt;code&gt;loop_data&lt;/code&gt; just so we can keep track of which value was used to calculate &lt;code&gt;col1a&lt;/code&gt;. So the final output should have 25 rows (5 observations in &lt;code&gt;loop_data&lt;/code&gt; x 5 values of &lt;code&gt;a&lt;/code&gt;) and 4 columns (&lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt;, &lt;code&gt;col1a&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;We will be storing our data in lists in all our scenarios. Note that I create the list to hold the answers (&lt;code&gt;loop_ans&lt;/code&gt;) before the function rather than to append newly calculated answers sequentially to the list within the function. I use the same &lt;code&gt;replicate&lt;/code&gt; function before all the examples. You could also start with an empty list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# data sets stored as a list - must not simplify or it will reduce to a matrix!
+loop_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# A function to add a value a to a data frame x
+loop_function &amp;lt;- function(x, a) {
+  x$col1a &amp;lt;- x$col1 + a # add answer to a new column 
+  x$a &amp;lt;- a # add a to a new column
+  return(x) # give us the updated data frame
+}
+
+# Let&amp;#39;s loop
+for(i in seq_along(a)){
+  loop_ans[[i]] &amp;lt;- loop_function(loop_ans[[i]], a = a[i]) 
+}
+
+# merge to single data frame
+loop_ans &amp;lt;- do.call(rbind, loop_ans)
+
+# view the data
+summary(loop_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2        col1a            a      
+##  Min.   :11   Min.   :20   Min.   :11.2   Min.   :0.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:12.4   1st Qu.:0.4  
+##  Median :13   Median :22   Median :13.6   Median :0.6  
+##  Mean   :13   Mean   :22   Mean   :13.6   Mean   :0.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:14.8   3rd Qu.:0.8  
+##  Max.   :15   Max.   :24   Max.   :16.0   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That’s the loop - should be familiar to you. Merging into a single data frame is optional if you want to keep using lists. Now let’s look at &lt;code&gt;lapply&lt;/code&gt; for a less elegant solution (!).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;lapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. &lt;code&gt;lapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lapply&lt;/code&gt; takes a list as input, does stuff and gives a list as output. Hence, the l in &lt;code&gt;lapply&lt;/code&gt; stands for list. The difference with loops and &lt;code&gt;lapply&lt;/code&gt; is that &lt;code&gt;lapply&lt;/code&gt; can only take one input - your data frame (or element in list). This means that we need to add the corresponding value of &lt;code&gt;a&lt;/code&gt; as a column in each element of &lt;code&gt;lapply&lt;/code&gt; - in other words to do part of what &lt;code&gt;loop_function&lt;/code&gt; did but outside the loop/&lt;code&gt;lapply&lt;/code&gt;. Thus, each data frame in the input list should have three columns: &lt;code&gt;col1&lt;/code&gt;, &lt;code&gt;col2&lt;/code&gt; &amp;amp; &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Incidentally, we can add the corresponding &lt;code&gt;a&lt;/code&gt; value as a column using &lt;code&gt;mapply&lt;/code&gt; and &lt;code&gt;cbind&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# the function only accepts one element: x
+lapply_function &amp;lt;- function(x){
+  x$col1a &amp;lt;- x$col1 + x$a
+  return(x)
+}
+
+# Prepare the answer list
+lapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+
+# add a column using mapply
+lapply_ans &amp;lt;- mapply(FUN = cbind, lapply_ans, &amp;quot;a&amp;quot; = a, SIMPLIFY = FALSE)
+
+# apply function
+lapply_ans &amp;lt;- lapply(lapply_ans, FUN = lapply_function)
+
+# merge to single data frame
+lapply_ans &amp;lt;- do.call(rbind, lapply_ans)
+
+# view the data
+summary(lapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2          a           col1a     
+##  Min.   :11   Min.   :20   Min.   :0.2   Min.   :11.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:0.4   1st Qu.:12.4  
+##  Median :13   Median :22   Median :0.6   Median :13.6  
+##  Mean   :13   Mean   :22   Mean   :0.6   Mean   :13.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:0.8   3rd Qu.:14.8  
+##  Max.   :15   Max.   :24   Max.   :1.0   Max.   :16.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you see it’s not as simple as the loop or &lt;code&gt;mapply&lt;/code&gt; and requires &lt;code&gt;mapply&lt;/code&gt; anyway 🤷&lt;br /&gt;
+So we can do better…&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. &lt;code&gt;mapply&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;The m in &lt;code&gt;mapply&lt;/code&gt; stands for multiple because it takes multiple arguments and applies them to the data. There are some key differences in the structure of the data and the function compared to &lt;code&gt;lapply&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can use the original loop function with two variables!
+&lt;ul&gt;
+&lt;li&gt;The additional variables (&lt;code&gt;a&lt;/code&gt; in this example) are written after the function &lt;code&gt;FUN&lt;/code&gt; is defined in &lt;code&gt;mapply&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;We can also use the original list (&lt;code&gt;loop_data&lt;/code&gt;) without further modification!&lt;/li&gt;
+&lt;li&gt;We need to tell &lt;code&gt;mapply&lt;/code&gt; not to simplify the output into a matrix by default. Note the use of upper case in &lt;code&gt;SIMPLIFY&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Prepare the answer list
+mapply_ans &amp;lt;- replicate(length(a), loop_data, simplify = FALSE)
+# mapply function
+mapply_ans &amp;lt;- mapply(mapply_ans, FUN = loop_function, a = a, SIMPLIFY = FALSE)
+# merge to single data frame
+mapply_ans &amp;lt;- do.call(rbind, mapply_ans)
+# view the data
+summary(mapply_ans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       col1         col2        col1a            a      
+##  Min.   :11   Min.   :20   Min.   :11.2   Min.   :0.2  
+##  1st Qu.:12   1st Qu.:21   1st Qu.:12.4   1st Qu.:0.4  
+##  Median :13   Median :22   Median :13.6   Median :0.6  
+##  Mean   :13   Mean   :22   Mean   :13.6   Mean   :0.6  
+##  3rd Qu.:14   3rd Qu.:23   3rd Qu.:14.8   3rd Qu.:0.8  
+##  Max.   :15   Max.   :24   Max.   :16.0   Max.   :1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What &lt;code&gt;mapply&lt;/code&gt; is doing is using the n&lt;sup&gt;th&lt;/sup&gt; element of &lt;code&gt;a&lt;/code&gt; with the corresponding n&lt;sup&gt;th&lt;/sup&gt; element in the list &lt;code&gt;loop_data&lt;/code&gt;. So the fifth value of &lt;code&gt;a&lt;/code&gt; (1.0) is used in the calculations on the 5th data frame in &lt;code&gt;loop_data&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We’ve replace the for loop with a &lt;code&gt;mapply&lt;/code&gt; function! 👏&lt;br /&gt;
+Here’s to functional programming. Next up is &lt;code&gt;purrr::map&lt;/code&gt;…&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Quick guide to R/exams</title>
+      <link>https://jacintak.github.io/teaching/rexams/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/rexams/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/teaching/rexams/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;http://www.r-exams.org&#34;&gt;&lt;code&gt;R/exams&lt;/code&gt;&lt;/a&gt; is an R package that generates a reproducible workflow for designing, producing and marking exams.&lt;br /&gt;
+Here, I provide a short walkthough for generating an online test for Blackboard - see the &lt;a href=&#34;http://www.r-exams.org/tutorials/exams2blackboard/&#34;&gt;R/exams website&lt;/a&gt; for some tutorials.&lt;/p&gt;
+&lt;div id=&#34;installation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installation&lt;/h1&gt;
+&lt;p&gt;Install R/exams via CRAN with &lt;code&gt;install.packages(&#34;exams&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-the-package-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running the package for the first time&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;exams&lt;/code&gt; uses &lt;code&gt;rtools&lt;/code&gt; to create zip files. Make sure the proper &lt;code&gt;rtools&lt;/code&gt; is installed. An error message will appear if &lt;code&gt;rtools&lt;/code&gt; does not have permission to create zip files.&lt;br /&gt;
+To give permission for creating .zip for windows:
+Control Panel &amp;gt; System and Security &amp;gt; System &amp;gt; Advanced System Settings &amp;gt; Environmental Variables &amp;gt; add “C:/RTools/bin”&lt;br /&gt;
+You may also need to install dependent packages like &lt;code&gt;tth&lt;/code&gt; for math notation.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;types-of-questions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Types of questions&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Single correct answer MCQ (schoice)&lt;/li&gt;
+&lt;li&gt;Multiple correct answer MCQ (mchoice)&lt;/li&gt;
+&lt;li&gt;Numeric answer (num)&lt;/li&gt;
+&lt;li&gt;String (string)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cloze is another option but is not supported by blackboard, this permits a combination of the above for the MCQ answer list&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;building-an-exam-question&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Building an exam question&lt;/h1&gt;
+&lt;p&gt;There are several file types that are supported when writing your question but I have stuck with ‘.Rmd’. There are four parts of a question file:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The question&lt;/li&gt;
+&lt;li&gt;The answer list&lt;/li&gt;
+&lt;li&gt;The solution list for giving feedback&lt;/li&gt;
+&lt;li&gt;The meta-information&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Each of these sections are defined by a header tag marked by =====. # does not work as a tag.&lt;/p&gt;
+&lt;div id=&#34;question&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question&lt;/h2&gt;
+&lt;p&gt;The tag for defining the question is:&lt;/p&gt;
+&lt;p&gt;Question&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;The various random number generators in R will be your friend.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sample() # pick n random number(s) from a vector of discrete numbers
+runif() # generate a vector of continuous numbers, can set min and max
+rnorm() # generate a vector of continuous numbers from a normal distribution with a defined mean and standard deviation&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code chunk options are in effect. By default figures will have captions, turn it of with &lt;code&gt;fig.caption = &#34;&#34;&lt;/code&gt;. Other useful figure options are figure sizes. Figure options can also be defined when compiling the exam&lt;/li&gt;
+&lt;li&gt;You can show code with &lt;code&gt;echo  = TRUE&lt;/code&gt;, turn off R formatting with &lt;code&gt;results = &#34;asis&#34;&lt;/code&gt; &amp;amp; hide results with &lt;code&gt;results = &#34;hide&#34;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;LaTeX formatting is fine in markdown and outside code chunks&lt;/li&gt;
+&lt;li&gt;To allow for randomised questions within a question file I had to escape the R code chunk to render the output as html, else the randomised question would be rendered as R output&lt;/li&gt;
+&lt;li&gt;You can generate a file to go with the question using any R write to file function. Include the file in the question as normal for Rmarkdown - [filename](filelink). Leave this as default or &lt;code&gt;exams&lt;/code&gt; will not be able to find the file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-answer-list&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The answer list&lt;/h2&gt;
+&lt;p&gt;The answer subheading is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Answer&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;Bulleted markdown after this tag will be considered the options for an MCQ answer list.&lt;/p&gt;
+&lt;div id=&#34;things-to-note-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;exams&lt;/code&gt; contains several helper functions to make it easy to generate lists of answers.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;answerlist&lt;/code&gt; accepts a vector of answers. It also generates the answer subheading so there is no need to type it in.&lt;/li&gt;
+&lt;li&gt;Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.&lt;br /&gt;
+&lt;code&gt;comment = NA&lt;/code&gt; in the code chunk options will remove the # from the R output.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;There are also helper functions for various things. &lt;code&gt;mchoice2string()&lt;/code&gt; turns the solutions vector above into binary responses for the meta-information section. &lt;code&gt;num_to_choice&lt;/code&gt; generates a MCQ list of numbers for a numeric answer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;You can provide feedback via the solution header, including which answers are correct&lt;/p&gt;
+&lt;p&gt;Solution&lt;br /&gt;
+========&lt;br /&gt;
+Your solution here or correct answer: &lt;code&gt;code for answer&lt;/code&gt; (or &lt;code&gt;answer[]&lt;/code&gt;)&lt;br /&gt;
+Answerlist&lt;br /&gt;
+-———&lt;br /&gt;
+* True&lt;br /&gt;
+* False&lt;br /&gt;
+* etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt; There should be no spaces after the header tag title, i.e. markdown formatting&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-metainformation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question metainformation&lt;/h2&gt;
+&lt;p&gt;This is an important section of the question because it defines the correct answer. Metainformation is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Meta-information&lt;br /&gt;
+================&lt;/p&gt;
+&lt;p&gt;Useful variables are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exname = title of question, becomes name of the pool in blackboard&lt;/li&gt;
+&lt;li&gt;extype = type of question (num/schoice/mchoice)&lt;/li&gt;
+&lt;li&gt;exsolution: order of correct answers in binary (e.g. 01010) for MCQ or R code for numeric output - e.g. &lt;/li&gt;
+&lt;li&gt;extol = the tolerance range for numeric questions&lt;/li&gt;
+&lt;li&gt;exshuffle = Whether to shuffle the answers or not. This can be used to randomly select a subset of answers from an answer list. Provide a number of answers for non-numeric questions (e.g. 4 for 4 answers). &lt;code&gt;TRUE/FALSE&lt;/code&gt; is also accepted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-example-question&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;An example question&lt;/h1&gt;
+&lt;p&gt;This example displays the correct answer and 3 randomly chosen option out of 6 possible answers.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question
+========
+What is your name?
+
+\```{r question, results = &amp;quot;hide&amp;quot;, echo=F}
+# list of possible answer as a character vector
+knights_of_camelot &amp;lt;- c(&amp;quot;Arthur, King of the Britons&amp;quot;, 
+                        &amp;quot;Sir Lancelot the Brave&amp;quot;,
+                        &amp;quot;Sir Robin the Not-Quite-So-Brave-as-Sir-Lancelot&amp;quot;,
+                        &amp;quot;Sir Galahad the Pure&amp;quot;,
+                        &amp;quot;Sir Bedevere the Wise&amp;quot;,
+                        &amp;quot;Patsy&amp;quot;)
+
+# solution to the vector above                        
+solutions &amp;lt;- c(FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)
+
+# explanations (feedback for students)
+explanations &amp;lt;- c(&amp;quot;I didn&amp;#39;t vote for him&amp;quot;,
+        &amp;quot;His favourite colour is blue&amp;quot;,
+        &amp;quot;He doesn&amp;#39;t know the capital of Assyria&amp;quot;,
+        &amp;quot;His favourite colour is blue. No, yel...&amp;quot;,
+        &amp;quot;Knows nothing about swallows&amp;quot;,
+        &amp;quot;Clip Clop&amp;quot;)
+\```
+        
+\```{r answerlist, echo=F, results = &amp;quot;asis&amp;quot;}
+# helper function to format the list of possible answers
+answerlist(knights_of_camelot, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+
+Solution
+========
+\```{r solutionlist, echo = FALSE, results = &amp;quot;asis&amp;quot;}
+answerlist(ifelse(solultions, &amp;quot;True&amp;quot;, &amp;quot;False&amp;quot;), explanations, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+Meta-information
+================
+exname: Bridgekeeper
+extype: schoice
+exsolution: `\r mchoice2string(solutions)`
+exshuffle: 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This renders like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Exam 1
+
+    Question
+
+    What is your name?
+
+        Sir Bedevere the Wise
+        Arthur, King of the Britons
+        Sir Galahad the Pure
+        Sir Lancelot the Brave
+
+    Solution
+        False. Knows nothing about swallows
+        False. I didn&amp;#39;t vote for him
+        False. His favourite colour is blue. No, yel.
+        True. His favourite colour is blue&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also skip the solutions vector and include it in the explanations vector like &lt;code&gt;c(&#34;False. I didn&#39;t vote for him&#34;)&lt;/code&gt;. Of course, the solution does not appear immediately in blackboard but make sure the option for solutions and feedback to appear is checked.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compiling-the-exam&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Compiling the exam&lt;/h1&gt;
+&lt;p&gt;I have written a script to compile the exam.
+The compiling function (&lt;code&gt;exams2blackboard&lt;/code&gt;) requires a &lt;em&gt;list&lt;/em&gt; of file names to generate the exam. Each file represents a question. Versions of a question (&lt;code&gt;n&lt;/code&gt;) generate a pool of questions. The list should not contain subdirectories or files not to be included in the exam. &lt;code&gt;exams2html&lt;/code&gt; is a means of checking a file/list of exam questions renders properly in html (or &lt;code&gt;exams2pdf&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;There are several means of customising the metadata of the exam. Here I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;turned off partial marks - is TRUE by default&lt;/li&gt;
+&lt;li&gt;used custom directories to search for the questions and save the output zip.&lt;/li&gt;
+&lt;li&gt;set 10 copies for each question using the variable &lt;code&gt;n&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the name of the zip file using the variable &lt;code&gt;name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the number of points for each question to 1, default = 10&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;exams&amp;quot;)
+options(device.ask.default = FALSE)
+
+## content and output directory
+mydir &amp;lt;- &amp;quot;C:/Users/kongj/OneDrive - TCDUD.onmicrosoft.com/Teaching/Biostats/Midsem MCQ&amp;quot;
+
+## define exam questions (each item in list is a pool)
+myexam &amp;lt;- list.files(paste0(mydir,&amp;quot;/questions&amp;quot;), pattern = &amp;quot;.Rmd&amp;quot;)
+
+# render single question
+#exams2html(list(&amp;quot;question3.Rmd&amp;quot;), edir = paste0(mydir,&amp;quot;/questions&amp;quot;))
+
+## generate .zip with Blackboard exam with n replicates
+exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = mydir,
+                 edir = paste0(mydir,&amp;quot;/questions&amp;quot;),
+                 eval = list(partial = FALSE, negative = FALSE),
+                 points = 1
+                 )
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things to note&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You can create a mix of questions in the exam by defining it in the list of questions but it is not recommended for generating pools of questions&lt;/li&gt;
+&lt;li&gt;If the exam is complied with no partial marks, then the blackboard exam will have no partial marks even if the option is checked within blackboard&lt;/li&gt;
+&lt;li&gt;You can generate a pool of questions by compiling a single question and uploading that zip file to Blackboard under “Import Pool”. This is useful for creating random block tests in Blackboard if the compiled zip file is not suitable as an test right away&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Transparent graphing for dark backgrounds</title>
+      <link>https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-02-01-transparent-graphing-for-dark-backgrounds/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;I’m not usually a dark background person but I’m open to the dark side. I wanted to make a solid coloured graph with a transparent background that would show up nicely but &lt;code&gt;ggplot2&lt;/code&gt; doesn’t have a set theme for that. A clean solid fill and transparency requires some specific customisation so here is a reproducible example for you using the built-in &lt;code&gt;trees&lt;/code&gt; dataset:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tree_graph &amp;lt;- ggplot(data = trees, 
+       mapping = aes(x = Height, 
+                     y = Girth)) + 
+    geom_point(size = 0.5, colour = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE, col = &amp;quot;#B8DE29FF&amp;quot;) + 
+    geom_abline(intercept = 0, slope = 1, col = &amp;quot;white&amp;quot;, lwd = 0.5, lty = 2) + 
+    theme_classic() +
+    theme(plot.background = element_rect(fill = &amp;quot;transparent&amp;quot;, color = NA),
+          panel.background = element_rect(fill = &amp;quot;transparent&amp;quot;),
+          axis.text = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.title = element_text(colour = &amp;quot;#B8DE29FF&amp;quot;, size = 8),
+          axis.line = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;),
+          axis.ticks = element_line(colour = &amp;quot;#B8DE29FF&amp;quot;))
+
+ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot;transparent&amp;quot;, type = &amp;quot;cairo&amp;quot;, width = 10, height = 10, dpi = 300)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are a couple of generally useful elements added on purpose:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;geom_smooth&lt;/code&gt; creates an automatically fitted linear model (defined using &lt;code&gt;method = &#34;lm&#34;&lt;/code&gt;). I have turned off plotting the standard errors (on by default) and manually set the colour.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;geom_abline&lt;/code&gt; is your standard straight line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;theme&lt;/code&gt; is where the customisation begins:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;plot.background&lt;/code&gt; &amp;amp; &lt;code&gt;panel.background&lt;/code&gt; are set to transparent&lt;/li&gt;
+&lt;li&gt;The various axis elements are set to the fill colour (a nice &lt;code&gt;viridis&lt;/code&gt; green) and desired text size&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggsave&lt;/code&gt; specifies that the background is transparent and to save it using the Cairo engine (&lt;code&gt;type = &#34;cairo&#34;&lt;/code&gt;). Cairo will create a vector based image so resizing the png isn’t an issue since the small font size is already defined.
+&lt;ul&gt;
+&lt;li&gt;You can also use &lt;code&gt;cairo-png&lt;/code&gt; but the graph height and width options appear to be ignored.&lt;/li&gt;
+&lt;li&gt;If you don’t save it as a Cairo png, then the text will still have a white outline and won’t be a clean solid fill&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Biostatistics tutorials</title>
+      <link>https://jacintak.github.io/project/biostats-tutorials/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/project/biostats-tutorials/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Set up&lt;/h1&gt;
+&lt;p&gt;We need to set up our computer to start using tutorials in R.&lt;/p&gt;
+&lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
+&lt;ul&gt;
+&lt;li&gt;You can check your R package version using &lt;code&gt;R.version()$version.string&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
+&lt;ul&gt;
+&lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages()&lt;/code&gt; to do so
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; (or &lt;code&gt;devtools&lt;/code&gt;) - needed to install the tutorials&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knitr&lt;/code&gt; - for displaying content&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
+&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
+Use the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).&lt;br /&gt;
+If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running a tutorial&lt;/h1&gt;
+&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
+Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
+&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
+&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New Year, New Look!</title>
+      <link>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-01-01-new-year-new-look/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-01-01-new-year-new-look/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;welcome-to-my-revamped-website&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Welcome to my revamped website!&lt;/h1&gt;
+&lt;p&gt;After banging my head against &lt;code&gt;blogdown&lt;/code&gt; and Hugo on and off for several months (years), I think I understand enough about it to refresh my site. This has been my weekend coding hobby. It’s taken so long that the under-workings of Hugo and the Academic theme used here have changed in the meantime.&lt;/p&gt;
+&lt;p&gt;Setting up a site is simple enough if you follow the instructions online. The template builds a skeleton of the website and all you need to do is replace the placeholder text with your information. Simple right?&lt;/p&gt;
+&lt;p&gt;Not quite. The underlying file structure takes some getting used to and you’ll have to trust the magic as your site gets compiled. But once you pass that hurdle, the system is quite powerful and the results are neat.&lt;/p&gt;
+&lt;p&gt;There are many features to take advantage of. My interest was in having one site for code documentation and blogging as I was not satisfied with having a “regular” website (WordPress) with a blog and my code documentation separately on GitHub Pages.&lt;/p&gt;
+&lt;p&gt;My code documentation was also messing up my GitHub. I’m not a big fan of having documentation (e.g. a static website) lumped together with package files. I also didn’t like having an orphan branch for my documentation (no winners here). I can take advantage of the features of Hugo to move my static sites off their respective repositories and into one central one. It’s better this way as some of the static pages weren’t even relevant to the rest of the repo.&lt;/p&gt;
+&lt;p&gt;There are some features that are missing/not easily implemented compared to WordPress that I will miss. You can’t comment (without third party systems) or “follow” people, you can’t schedule posts and you can’t track views unless you set up Google Analytics or similar. The workflow is a bit tedious for fixing minor things (like spelling mistakes).&lt;/p&gt;
+&lt;p&gt;I will keep blog posts on the &lt;a href=&#34;https://jacintakongresearch.wordpress.com&#34;&gt;WordPress site&lt;/a&gt; as an archive. I have linked to relevant blog posts in this site.&lt;/p&gt;
+&lt;p&gt;There are some peculiarities that require things to be done a certain way:&lt;/p&gt;
+&lt;div id=&#34;things-i-noted&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things I noted&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I changed the name of the “Public” folder to “docs” so that my site can be built from the “docs” folder on GitHub. This seems the simplest way to organise this. The alternative is to have the “Public” folder on a different branch.&lt;/li&gt;
+&lt;li&gt;Sometimes it’s a challenge to troubleshoot why things aren’t working they way you want. E.g. I couldn’t work out why the country wouldn’t show up in the document when including an address in YAML&lt;/li&gt;
+&lt;li&gt;A header image/thumbnail can be included in the same folder as the content &lt;em&gt;but&lt;/em&gt; it must be called “featured” or it won’t be recognised. File names are case-sensitive&lt;/li&gt;
+&lt;li&gt;You can have as many folders as you want called whatever but the (r)markdown file of the page must be called “index”
+&lt;ul&gt;
+&lt;li&gt;In the “Courses” feature the parent page must be called &#34;_index&#34; or it won’t work. 🤷&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rmd and the “Courses” feature don’t play nicely. Defining a table of contents via &lt;code&gt;bookdown&lt;/code&gt; outputs in the YAML doesn’t work and calling &lt;code&gt;toc: true&lt;/code&gt; directly in the YAML (following the guide) doesn’t work either.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bookdown&lt;/code&gt; and &lt;code&gt;blogdown&lt;/code&gt; don’t play nicely together in the same project either. &lt;code&gt;blogdown&lt;/code&gt; will try to render the &lt;code&gt;bookdown&lt;/code&gt; pages as a site rather than letting &lt;code&gt;bookdown&lt;/code&gt; do its thing and make a nice gitbook.
+&lt;ul&gt;
+&lt;li&gt;To allow this behaviour, you need to make use of the static file builder (See &lt;a href=&#34;#gitbook&#34;&gt;below&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Despite the template saying “Upcoming talks” Hugo doesn’t render things in the future (incl blog posts). You need &lt;code&gt;publishDate&lt;/code&gt; in the YAML&lt;/li&gt;
+&lt;li&gt;emojis are a nice feature 😄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gitbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using the static folder to render a gitbook&lt;/h2&gt;
+&lt;p&gt;To render rmd files into another output than &lt;code&gt;blogdown::html_page&lt;/code&gt; you can put the rmd in the “static” folder then write a script that compiles the site in a specific order. To permit a gitbook page within the site:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Save the &lt;code&gt;bookdown&lt;/code&gt; files in the “static” folder
+&lt;ul&gt;
+&lt;li&gt;It doesn’t work with files in the “content” folder, these will get the usual treatment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a folder called “R” in the root directory&lt;/li&gt;
+&lt;li&gt;Create an R script called “build.R” in the “R” folder&lt;/li&gt;
+&lt;li&gt;Add the render functions you need.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blogdown::build_dir(&#34;static&#34;)&lt;/code&gt; is a wrapper for plain &lt;code&gt;rmarkdown::render()&lt;/code&gt; as is so it works best with simple files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;build_dir&lt;/code&gt; doesn’t work for our gitbook example because we want a gitbook that knits with &lt;code&gt;bookdown::render_book&lt;/code&gt;, otherwise you will get a bunch of HTML files from the standard render function&lt;/li&gt;
+&lt;li&gt;There’s something funny going on with the working directories. Running &lt;code&gt;render_book(&#34;static/index.rmd&#34;)&lt;/code&gt; doesn’t work, neither does the full address. Instead I had to change the working directory for the function to find the right files. I’m not sure where the function is looking as the project working directory is the root directory.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above means that all the rmd files for the gitbook also get copied into the “docs” folder. I don’t think it’s avoidable. It’s also s l o w e r to build the site because the gitbook gets rendered every time (unless you “comment it off” in the &lt;code&gt;build.R&lt;/code&gt; script.&lt;/p&gt;
+&lt;p&gt;I also have a line to render my CV rmd into a PDF saved into the static folder. That PDF is then copied to the “docs” folder so I have an updated CV without needing to manually create one every time I update the original rmd. I think this is pretty handy.&lt;/p&gt;
+&lt;p&gt;Here’s what my &lt;code&gt;build.R&lt;/code&gt; file contains:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Make CV PDF
+rmarkdown::render(&amp;#39;content/cv/index.Rmd&amp;#39;, output_format = rmarkdown::pdf_document(keep_tex = FALSE), output_dir = &amp;quot;static/files/&amp;quot;, output_file = &amp;quot;Kong_JD_CV.pdf&amp;quot;)
+
+# make gitbook
+# blogdown::build_dir(&amp;quot;static&amp;quot;) doesn&amp;#39;t work because we want a gitbook that knits with render_book
+# whereas build_dir uses rmakrdown::render() thus giving html files
+old &amp;lt;- getwd()
+setwd(&amp;quot;static/teaching/GLM/&amp;quot;)
+bookdown::clean_book(clean = TRUE)
+bookdown::render_book(input = &amp;quot;index.Rmd&amp;quot;)
+setwd(old)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;having-a-drafts-folder&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Having a drafts folder&lt;/h2&gt;
+&lt;p&gt;Hugo will not render draft blog posts by default but &lt;code&gt;blogdown&lt;/code&gt; will still render the files for your local site and these files get pushed to GitHub. If you don’t want your repo to contain spoilers, then you need to separate your draft posts from the published posts.&lt;/p&gt;
+&lt;p&gt;One solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering &lt;code&gt;.rmd&lt;/code&gt; files is to keep them in the “static” folder but Hugo will copy these files to the “public” (or “docs” folder in my case). I could not find an option to tell Hugo to ignore some files in the “static” folder. This does not solve our spoiler problem.&lt;/p&gt;
+&lt;p&gt;We can have a “draft” folder under “content” and tell Hugo to ignore it in the &lt;code&gt;config.toml&lt;/code&gt; file (ignorefile) but that doesn’t stop &lt;code&gt;blogdown&lt;/code&gt; from rendering the file.&lt;/p&gt;
+&lt;p&gt;I haven’t found a solution to stop &lt;code&gt;blogdown&lt;/code&gt; from rendering and Hugo from copying the file but Hugo doesn’t add every folder from the root directory to “Public”, only folders that match the template. So I have a folder called “drafts” which contains my drafts. &lt;code&gt;blogdown&lt;/code&gt; will still render the files every time they are saved while using &lt;code&gt;serve_site&lt;/code&gt; but they won’t interfere with the site itself. When I’m ready to publish them I can copy them to the “content/post” folder. I also added the “drafts” folder to my &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt; has a handy function to generate a new blog post. By default it will add the new files to “content/post” but I changed this to write directly to the “drafts” folder via the variable &lt;code&gt;subdir&lt;/code&gt; and with a custom date that is used to name the folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;quot;.Rmd&amp;quot;, title = &amp;quot;test&amp;quot;, subdir = &amp;quot;../drafts/&amp;quot;, date = &amp;quot;2021-01-01&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;blogdown-does-theoretically-have-a-means-of-excluding-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;code&gt;blogdown&lt;/code&gt; does theoretically have a means of excluding files…&lt;/h3&gt;
+&lt;p&gt;In &lt;code&gt;blogdown::build_site&lt;/code&gt; there is a function (&lt;code&gt;list_rmds&lt;/code&gt;) that lists files in the “content” folder and excludes files beginning with &lt;code&gt;_&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;files = files[!grepl(&amp;quot;^_&amp;quot;, basename(files)) | grepl(&amp;quot;^_index[.]&amp;quot;, basename(files))]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But you’ll notice it doesn’t exclude files called &lt;code&gt;_index&lt;/code&gt; without another &lt;code&gt;!&lt;/code&gt; in front of &lt;code&gt;grepl&lt;/code&gt;. For example, if I have an file called &lt;code&gt;_drafts.Rmd&lt;/code&gt;, then &lt;code&gt;build_site&lt;/code&gt; will ignore it. But if I have a file called &lt;code&gt;_index.Rmd&lt;/code&gt;, then &lt;code&gt;build_site&lt;/code&gt; will render it. I don’t know what the behaviour of this is supposed to be so I’m not sure if it is a mistake.&lt;/p&gt;
+&lt;p&gt;This function is not present in &lt;code&gt;preview_site&lt;/code&gt; which means that the live preview is going to build all your &lt;code&gt;.Rmd&lt;/code&gt; files regardless and it will show up on the live preview.&lt;/p&gt;
+&lt;p&gt;Either way, your drafts will still get pushed to GitHub unless you specify the files in &lt;code&gt;.gitignore&lt;/code&gt; (e.g. &lt;code&gt;**/_*.Rmd&lt;/code&gt;) so I wouldn’t say using &lt;code&gt;_&lt;/code&gt; in your file names is an easier option.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-customisations-via-layoutspartials-templates&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Other customisations via “layouts/partials” templates&lt;/h2&gt;
+&lt;p&gt;Because Hugo copies any folder in the root directory into “docs” which matches the theme template, it will override any files in the “themes” folder that matches the name of the folder in the root directory. This means that you can create custom templates without modifying the original template. Thus, having a folder called “layouts/partials” will override any “partials” templates within the “theme” folder.&lt;/p&gt;
+&lt;p&gt;I have added some minor customisations to reflect personal preference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added markdown to the author list in &lt;code&gt;page_metadata_authors.html&lt;/code&gt; so that I can customise my name and bold it in the list of authors under publications&lt;/li&gt;
+&lt;li&gt;Changed the site footer to include &lt;code&gt;blogdown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Changed &lt;code&gt;page_metadata.html&lt;/code&gt; to show both the last modified and published date. Last modified date is default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I’m not saying goodbye to the grasshoppers so my flavicon is a grasshopper emoji 🦗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

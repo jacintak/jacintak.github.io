@@ -1,0 +1,40 @@
+---
+title: NERD club tutorials
+date: "2021-06-01"
+external_link:
+image:
+  caption: 
+  focal_point: Smart
+links: 
+slides: 
+summary: My contributions to the Zoology & Botany NERD Club at Trinity College Dublin
+tags:
+- teaching
+- R stats
+- code
+- NERD club
+---
+
+NERD club is a student-led peer-learning and discussion group for staff and postgraduate students in the Departments of Zoology and Botany at Trinity College Dublin. The group meets weekly for topical discussions about science or academia. There are also sub-groups that are dedicated towards specific topics such as R coding and spatial analysis. These sub-groups are focused towards peer-learning where, postgraduates in particular, are encouraged to share their learning experience and expertise in relevant topics. 
+
+I have been an active contributor to NERD club and its sub-groups: R club for R programming and Space Lunch for GIS and spatial analysis. This page documents some of the outputs I have produced for peer-learning activities.
+
+***
+
+# Tutorials
+
+## Advanced R markdown
+This is a short presentation showing some of the more advanced features of R Markdown using the `R` package `bookdown` including: numbered sections, cross-referencing, bibliographies, CSS and making a website with the static HTML builder.
+
+PDF: <a class="fas fa-file-pdf" href="/files/24March2021_Advanced_R_Markdown.pdf"></a>
+
+## Interactive functions and loops in `R`
+This [tutorial](/post/2021-06-01-r-function-loops/) describes how to make an `R` function that asks the user to input values for the function, and how to run a function within a simple for loop.
+
+## OSM in R
+This [tutorial](/post/2021-07-01-OSM-in-R/) describes how to interface with Open Street Maps in `R` to make a fancy map you can print and give to someone but the same code can be used to make maps for any purpose.
+
+## Introduction to spatial points in R
+This is a walkthrough of a basic workflow for working with spatial data and rasters in R. Specifically loading a raster, plotting a raster and extracting information from rasters. I use `rgbif` to get species occurrence records from GBIF and extract temperature data from a raster of global temperatures. A blog post version is [here](/post/spatial-data/).
+
+HTML: <a class="fas fa-file" href="/Rasters_SpaceClub_06102021"></a>

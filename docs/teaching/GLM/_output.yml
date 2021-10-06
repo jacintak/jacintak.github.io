@@ -1,0 +1,12 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: chapter
+  config:
+    download: [["Statistical-Modelling.html", "HTML (no LaTeX)"], ["Statistical-Modelling.pdf", "PDF"]]
+    toc:
+      collapse: subsection
+      before: |
+        <li><a href="https://jacintak.github.io/">Jacinta's Website</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+bookdown::pdf_book: default

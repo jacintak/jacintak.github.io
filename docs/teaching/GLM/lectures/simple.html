@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Simple linear models | Statistical Modelling</title>
+  <meta name="description" content="An introduction to linear regression" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Simple linear models | Statistical Modelling" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://jacintak.github.io/teaching/GLM" />
+  
+  <meta property="og:description" content="An introduction to linear regression" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Simple linear models | Statistical Modelling" />
+  
+  <meta name="twitter:description" content="An introduction to linear regression" />
+  
+
+<meta name="author" content="Jacinta Kong" />
+
+
+<meta name="date" content="2021-01-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="multiple.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://jacintak.github.io/">Jacinta's Website</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#try-it-yourself"><i class="fa fa-check"></i><b>1.1</b> Try it yourself</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#revision-questions"><i class="fa fa-check"></i><b>1.2</b> Revision questions</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#downloading-notes"><i class="fa fa-check"></i><b>1.3</b> Downloading notes</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#other-resources"><i class="fa fa-check"></i><b>1.4</b> Other resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>2</b> Simple linear models</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="simple.html"><a href="simple.html#overall-lecture-aims"><i class="fa fa-check"></i><b>2.1</b> Overall lecture aims</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="simple.html"><a href="simple.html#by-the-end-of-this-lecture-you-should"><i class="fa fa-check"></i><b>2.1.1</b> By the end of this lecture you should:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="simple.html"><a href="simple.html#height-and-girth-of-trees"><i class="fa fa-check"></i><b>2.2</b> Height and girth of trees</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="simple.html"><a href="simple.html#but-this-isnt-the-best-way"><i class="fa fa-check"></i><b>2.2.1</b> <strong>But</strong> this isn’t the best way</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="simple.html"><a href="simple.html#linear-regression"><i class="fa fa-check"></i><b>2.3</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="simple.html"><a href="simple.html#what-does-linear-mean"><i class="fa fa-check"></i><b>2.3.1</b> What does linear mean?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="simple.html"><a href="simple.html#why-do-we-use-a-linear-model"><i class="fa fa-check"></i><b>2.3.2</b> Why do we use a linear model?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="simple.html"><a href="simple.html#structure-of-a-general-linear-model"><i class="fa fa-check"></i><b>2.4</b> Structure of a general linear model</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="simple.html"><a href="simple.html#variables-of-a-linear-model"><i class="fa fa-check"></i><b>2.4.1</b> Variables of a linear model</a></li>
+<li class="chapter" data-level="2.4.2" data-path="simple.html"><a href="simple.html#parameters-of-a-linear-model"><i class="fa fa-check"></i><b>2.4.2</b> Parameters of a linear model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="simple.html"><a href="simple.html#ordinary-least-squares-regression"><i class="fa fa-check"></i><b>2.5</b> Ordinary least squares regression</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="simple.html"><a href="simple.html#finding-the-intercept"><i class="fa fa-check"></i><b>2.5.1</b> Finding the intercept</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="simple.html"><a href="simple.html#halfway-there-revision-time"><i class="fa fa-check"></i><b>2.6</b> Halfway there! Revision time!</a></li>
+<li class="chapter" data-level="2.7" data-path="simple.html"><a href="simple.html#what-does-a-linear-model-tell-us"><i class="fa fa-check"></i><b>2.7</b> What does a linear model tell us?</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="simple.html"><a href="simple.html#back-to-trees"><i class="fa fa-check"></i><b>2.7.1</b> Back to trees</a></li>
+<li class="chapter" data-level="2.7.2" data-path="simple.html"><a href="simple.html#calculating-a-new-value-of-y"><i class="fa fa-check"></i><b>2.7.2</b> Calculating a new value of Y</a></li>
+<li class="chapter" data-level="2.7.3" data-path="simple.html"><a href="simple.html#does-the-population-slope-beta_1-differ-to-0"><i class="fa fa-check"></i><b>2.7.3</b> Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="simple.html"><a href="simple.html#probability-distribution-functions-pdf"><i class="fa fa-check"></i><b>2.8</b> Probability distribution functions (PDF)</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="simple.html"><a href="simple.html#linear-models-in-the-gaussian-family"><i class="fa fa-check"></i><b>2.8.1</b> Linear models in the Gaussian family</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="simple.html"><a href="simple.html#revision-time"><i class="fa fa-check"></i><b>2.9</b> Revision time!</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multiple.html"><a href="multiple.html"><i class="fa fa-check"></i><b>3</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="multiple.html"><a href="multiple.html#overall-lecture-aims-1"><i class="fa fa-check"></i><b>3.1</b> Overall lecture aims</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="multiple.html"><a href="multiple.html#by-the-end-of-this-lecture-you-should-1"><i class="fa fa-check"></i><b>3.1.1</b> By the end of this lecture you should:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multiple.html"><a href="multiple.html#previously-we-parametrised-slopes-and-intercepts-of-simple-linear-models"><i class="fa fa-check"></i><b>3.2</b> Previously, we parametrised slopes and intercepts of simple linear models</a></li>
+<li class="chapter" data-level="3.3" data-path="multiple.html"><a href="multiple.html#parameters-of-a-linear-model-can-be-random-or-fixed"><i class="fa fa-check"></i><b>3.3</b> Parameters of a linear model can be <strong>random</strong> or <strong>fixed</strong></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="multiple.html"><a href="multiple.html#fixed-slopes-linear-model"><i class="fa fa-check"></i><b>3.3.1</b> Fixed slopes linear model</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multiple.html"><a href="multiple.html#random-slopes-linear-model"><i class="fa fa-check"></i><b>3.3.2</b> Random slopes linear model</a></li>
+<li class="chapter" data-level="3.3.3" data-path="multiple.html"><a href="multiple.html#distinguishing-between-fixed-or-random-is-important"><i class="fa fa-check"></i><b>3.3.3</b> Distinguishing between Fixed or random is important</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multiple.html"><a href="multiple.html#t-tests-simple-linear-models-anova"><i class="fa fa-check"></i><b>3.4</b> t-tests, simple linear models, ANOVA</a></li>
+<li class="chapter" data-level="3.5" data-path="multiple.html"><a href="multiple.html#fixed-one-way-anova-with-2-or-more-levels"><i class="fa fa-check"></i><b>3.5</b> Fixed one-way ANOVA with 2 or more levels</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="multiple.html"><a href="multiple.html#pulse-rate-and-exercise"><i class="fa fa-check"></i><b>3.5.1</b> Pulse rate and exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="multiple.html"><a href="multiple.html#the-anova-table"><i class="fa fa-check"></i><b>3.6</b> The ANOVA table</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="multiple.html"><a href="multiple.html#calculating-group-means"><i class="fa fa-check"></i><b>3.6.1</b> Calculating group means</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="multiple.html"><a href="multiple.html#anova-and-hypothesis-testing"><i class="fa fa-check"></i><b>3.7</b> ANOVA and hypothesis testing</a></li>
+<li class="chapter" data-level="3.8" data-path="multiple.html"><a href="multiple.html#recap-time"><i class="fa fa-check"></i><b>3.8</b> Recap time!</a></li>
+<li class="chapter" data-level="3.9" data-path="multiple.html"><a href="multiple.html#multiple-regression"><i class="fa fa-check"></i><b>3.9</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="multiple.html"><a href="multiple.html#height-and-hand-width"><i class="fa fa-check"></i><b>3.9.1</b> Height and hand width</a></li>
+<li class="chapter" data-level="3.9.2" data-path="multiple.html"><a href="multiple.html#fixed-slopes-additive-model"><i class="fa fa-check"></i><b>3.9.2</b> Fixed slopes (additive model)</a></li>
+<li class="chapter" data-level="3.9.3" data-path="multiple.html"><a href="multiple.html#random-slopes-interactive-model"><i class="fa fa-check"></i><b>3.9.3</b> Random slopes (interactive model)</a></li>
+<li class="chapter" data-level="3.9.4" data-path="multiple.html"><a href="multiple.html#the-multiple-regression-anova-table"><i class="fa fa-check"></i><b>3.9.4</b> The multiple regression ANOVA table</a></li>
+<li class="chapter" data-level="3.9.5" data-path="multiple.html"><a href="multiple.html#the-anova-table-for-2-predictors-and-their-interaction"><i class="fa fa-check"></i><b>3.9.5</b> The ANOVA table for 2 predictors and their interaction</a></li>
+<li class="chapter" data-level="3.9.6" data-path="multiple.html"><a href="multiple.html#interpreting-the-anova-table"><i class="fa fa-check"></i><b>3.9.6</b> Interpreting the ANOVA table</a></li>
+<li class="chapter" data-level="3.9.7" data-path="multiple.html"><a href="multiple.html#the-interaction-term-ab"><i class="fa fa-check"></i><b>3.9.7</b> The interaction term A:B</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="multiple.html"><a href="multiple.html#the-fundamentals-of-linear-regression"><i class="fa fa-check"></i><b>3.10</b> The fundamentals of Linear regression</a></li>
+<li class="chapter" data-level="3.11" data-path="multiple.html"><a href="multiple.html#recap-time-1"><i class="fa fa-check"></i><b>3.11</b> Recap time!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="assumptions.html"><a href="assumptions.html"><i class="fa fa-check"></i><b>4</b> Assumptions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="assumptions.html"><a href="assumptions.html#overall-lecture-aims-2"><i class="fa fa-check"></i><b>4.1</b> Overall lecture aims</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="assumptions.html"><a href="assumptions.html#by-the-end-of-this-lecture-you-should-2"><i class="fa fa-check"></i><b>4.1.1</b> By the end of this lecture you should:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="assumptions.html"><a href="assumptions.html#by-now-you-should-be-comfortable-with-building-and-interpreting-basic-linear-models-in-r"><i class="fa fa-check"></i><b>4.2</b> By now you should be comfortable with building and interpreting basic linear models in R</a></li>
+<li class="chapter" data-level="4.3" data-path="assumptions.html"><a href="assumptions.html#what-does-a-linear-model-tell-us-1"><i class="fa fa-check"></i><b>4.3</b> What does a linear model tell us?</a></li>
+<li class="chapter" data-level="4.4" data-path="assumptions.html"><a href="assumptions.html#how-much-variation-in-y-can-be-explained-its-linear-relationship-with-x"><i class="fa fa-check"></i><b>4.4</b> How much variation in Y can be explained its linear relationship with X?</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="assumptions.html"><a href="assumptions.html#what-is-or-isnt-explained-by-the-line"><i class="fa fa-check"></i><b>4.4.1</b> What is or isn’t explained by the line?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="assumptions.html"><a href="assumptions.html#so-which-bits-do-we-use-to-evaluate-model-fit"><i class="fa fa-check"></i><b>4.5</b> So which bits do we use to evaluate model “fit”?</a></li>
+<li class="chapter" data-level="4.6" data-path="assumptions.html"><a href="assumptions.html#coefficient-of-determination-r2"><i class="fa fa-check"></i><b>4.6</b> Coefficient of determination <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="4.7" data-path="assumptions.html"><a href="assumptions.html#but-there-are-other-things-to-check-that-are-more-important"><i class="fa fa-check"></i><b>4.7</b> But there are other things to check that are more important!</a></li>
+<li class="chapter" data-level="4.8" data-path="assumptions.html"><a href="assumptions.html#assumptions-of-linear-regression"><i class="fa fa-check"></i><b>4.8</b> Assumptions of linear regression</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="assumptions.html"><a href="assumptions.html#residual-plots"><i class="fa fa-check"></i><b>4.8.1</b> Residual plots</a></li>
+<li class="chapter" data-level="4.8.2" data-path="assumptions.html"><a href="assumptions.html#mammal-brain-and-body-size"><i class="fa fa-check"></i><b>4.8.2</b> Mammal brain and body size</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="assumptions.html"><a href="assumptions.html#normality"><i class="fa fa-check"></i><b>4.9</b> 1. Normality</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="assumptions.html"><a href="assumptions.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>4.9.1</b> Quantile-Quantile plots</a></li>
+<li class="chapter" data-level="4.9.2" data-path="assumptions.html"><a href="assumptions.html#another-use-of-q-q-plots"><i class="fa fa-check"></i><b>4.9.2</b> Another use of Q-Q plots</a></li>
+<li class="chapter" data-level="4.9.3" data-path="assumptions.html"><a href="assumptions.html#what-happens-when-the-data-is-not-normal"><i class="fa fa-check"></i><b>4.9.3</b> What happens when the data is not normal?</a></li>
+<li class="chapter" data-level="4.9.4" data-path="assumptions.html"><a href="assumptions.html#applying-a-transformation"><i class="fa fa-check"></i><b>4.9.4</b> Applying a transformation</a></li>
+<li class="chapter" data-level="4.9.5" data-path="assumptions.html"><a href="assumptions.html#transforming-brain-size"><i class="fa fa-check"></i><b>4.9.5</b> Transforming brain size</a></li>
+<li class="chapter" data-level="4.9.6" data-path="assumptions.html"><a href="assumptions.html#re-run-the-model-with-transformed-data"><i class="fa fa-check"></i><b>4.9.6</b> Re-run the model with transformed data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="assumptions.html"><a href="assumptions.html#homogeneity-of-variance"><i class="fa fa-check"></i><b>4.10</b> 2. Homogeneity of Variance</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="assumptions.html"><a href="assumptions.html#should-expect-a-normal-distribution-of-standardised-residuals"><i class="fa fa-check"></i><b>4.10.1</b> Should expect a <strong>normal distribution</strong> of standardised residuals</a></li>
+<li class="chapter" data-level="4.10.2" data-path="assumptions.html"><a href="assumptions.html#are-there-trends-in-the-residual-vs-fitted-values"><i class="fa fa-check"></i><b>4.10.2</b> Are there trends in the residual vs fitted values?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="assumptions.html"><a href="assumptions.html#independence"><i class="fa fa-check"></i><b>4.11</b> 3. Independence</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="assumptions.html"><a href="assumptions.html#dealing-with-independence"><i class="fa fa-check"></i><b>4.11.1</b> Dealing with independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="assumptions.html"><a href="assumptions.html#fixed-x"><i class="fa fa-check"></i><b>4.12</b> 4. Fixed X</a></li>
+<li class="chapter" data-level="4.13" data-path="assumptions.html"><a href="assumptions.html#other-regression-diagnostics"><i class="fa fa-check"></i><b>4.13</b> Other regression diagnostics</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="assumptions.html"><a href="assumptions.html#outliers-leverage-and-influence"><i class="fa fa-check"></i><b>4.13.1</b> Outliers, leverage and influence</a></li>
+<li class="chapter" data-level="4.13.2" data-path="assumptions.html"><a href="assumptions.html#outliers-in-the-mammal-dataset"><i class="fa fa-check"></i><b>4.13.2</b> Outliers in the mammal dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="assumptions.html"><a href="assumptions.html#putting-it-all-together"><i class="fa fa-check"></i><b>4.14</b> Putting it all together</a></li>
+<li class="chapter" data-level="4.15" data-path="assumptions.html"><a href="assumptions.html#ancova"><i class="fa fa-check"></i><b>4.15</b> ANCOVA</a>
+<ul>
+<li class="chapter" data-level="4.15.1" data-path="assumptions.html"><a href="assumptions.html#covariate-values-cover-a-similar-range-across-groups"><i class="fa fa-check"></i><b>4.15.1</b> 1. Covariate values cover a similar range across groups</a></li>
+<li class="chapter" data-level="4.15.2" data-path="assumptions.html"><a href="assumptions.html#regression-slopes-are-similar-across-groups"><i class="fa fa-check"></i><b>4.15.2</b> 2. Regression slopes are similar across groups</a></li>
+</ul></li>
+<li class="chapter" data-level="4.16" data-path="assumptions.html"><a href="assumptions.html#take-home-messages"><i class="fa fa-check"></i><b>4.16</b> Take home messages</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="GLM.html"><a href="GLM.html"><i class="fa fa-check"></i><b>5</b> Generalised linear models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="GLM.html"><a href="GLM.html#overall-lecture-aims-3"><i class="fa fa-check"></i><b>5.1</b> Overall lecture aims</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="GLM.html"><a href="GLM.html#by-the-end-of-this-lecture-you-should-3"><i class="fa fa-check"></i><b>5.1.1</b> By the end of this lecture you should:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="GLM.html"><a href="GLM.html#some-data-are-never-normal"><i class="fa fa-check"></i><b>5.2</b> Some data are never normal</a></li>
+<li class="chapter" data-level="5.3" data-path="GLM.html"><a href="GLM.html#poisson-regression"><i class="fa fa-check"></i><b>5.3</b> Poisson regression</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="GLM.html"><a href="GLM.html#number-of-oystercatchers-wetland-birds-in-south-africa"><i class="fa fa-check"></i><b>5.3.1</b> Number of Oystercatchers (wetland birds) in South Africa</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="GLM.html"><a href="GLM.html#binomial-logistic-regression"><i class="fa fa-check"></i><b>5.4</b> Binomial (logistic) regression</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="GLM.html"><a href="GLM.html#melanoma-tumor-thickness-and-survival"><i class="fa fa-check"></i><b>5.4.1</b> Melanoma tumor thickness and survival</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#chapter-2"><i class="fa fa-check"></i><b>6.1</b> Chapter 2</a></li>
+<li class="chapter" data-level="6.2" data-path="answers.html"><a href="answers.html#chapter-3"><i class="fa fa-check"></i><b>6.2</b> Chapter 3</a></li>
+<li class="chapter" data-level="6.3" data-path="answers.html"><a href="answers.html#chapter-4"><i class="fa fa-check"></i><b>6.3</b> Chapter 4</a></li>
+<li class="chapter" data-level="6.4" data-path="answers.html"><a href="answers.html#chapter-5"><i class="fa fa-check"></i><b>6.4</b> Chapter 5</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Modelling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="simple" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Simple linear models</h1>
+<hr />
+<div id="overall-lecture-aims" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Overall lecture aims</h2>
+<ul>
+<li>Identify the structure of general linear models</li>
+<li>Describe how linear models are parametrized</li>
+<li>Understand how to use linear models</li>
+<li>Understand how to interpret and evaluate linear models</li>
+</ul>
+<p>Recommended reading:
+Chapter 5.5 Getting Started with R</p>
+<div id="by-the-end-of-this-lecture-you-should" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> By the end of this lecture you should:</h3>
+<ul>
+<li>Describe the structure of a general linear model</li>
+<li>Understand how a simple linear model is parametrised</li>
+<li>Understand what the parameters of a linear model represent</li>
+<li>Parametrise a simple linear model from given information</li>
+<li>Interpret a simple linear model in a graphical format</li>
+</ul>
+<p>In R:</p>
+<ul>
+<li>Use built-in R datasets and R libraries</li>
+<li>Conduct a simple linear model</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="height-and-girth-of-trees" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Height and girth of trees</h2>
+<p>Imagine we measured the height and girth of trees to test the hypothesis that thicker trees are taller.</p>
+<p><img src="01-regression-fundamentals_files/figure-html/linear-model-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>How should test our hypothesis? We could assign trees to categories like “thick” or “thin” trees and do a t-test. What does our t-test say?</p>
+<p><img src="01-regression-fundamentals_files/figure-html/t-test-1.png" width="300" style="display: block; margin: auto;" /></p>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Height by Thickness
+t = 1.6339, df = 28.168, p-value = 0.1134
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.9240387  8.2181563
+sample estimates:
+mean in group Thick  mean in group Thin 
+           78.00000            74.35294 </code></pre>
+<div id="but-this-isnt-the-best-way" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> <strong>But</strong> this isn’t the best way</h3>
+<ul>
+<li>How did we define “thick” or “thin”?</li>
+<li>We lost information using groups - tree girth is not categorical data, it’s continuous</li>
+<li>This increases unexplained variance = <em>bad!</em></li>
+<li>When might you want to group data?</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="linear-regression" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Linear regression</h2>
+<blockquote>
+<p>models the linear relationship between 2 continuous variables</p>
+</blockquote>
+<ul>
+<li>Continuous response variable (Y)</li>
+<li>Continuous predictor variable (X)</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:regression-model"></span>
+<img src="01-regression-fundamentals_files/figure-html/regression-model-1.png" alt="Fit a line" width="400" />
+<p class="caption">
+Figure 2.1: Fit a line
+</p>
+</div>
+<div id="what-does-linear-mean" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> What does linear mean?</h3>
+<ul>
+<li>By definition, all predictor parameters should not be divided by each other</li>
+<li>No parameter is an exponent</li>
+<li>No parameter is multiplied or divided by another</li>
+</ul>
+<p>Not a linear model:<br />
+<span class="math inline">\(H_a = \frac{a \times H \times T}{1 + a \times H \times T}\)</span> e.g. Holling’s Type II predation equation<br />
+<span class="math inline">\(y = \frac{\beta_1 x}{\beta_2 x}\)</span> e.g. enzyme rate of reactions</p>
+</div>
+<div id="why-do-we-use-a-linear-model" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Why do we use a linear model?</h3>
+<ul>
+<li>Quantify a relationship
+<ul>
+<li>E.g. relationship between drug concentration and time</li>
+</ul></li>
+<li>Predict what will happen
+<ul>
+<li>E.g. growth at different time points</li>
+</ul></li>
+<li>Explain as much about the response variable as possible</li>
+<li>Partition variation
+<ul>
+<li>E.g. Phenotypic variation = genetic variation + environmental variation</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="structure-of-a-general-linear-model" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Structure of a general linear model</h2>
+<blockquote>
+<p><span class="math display">\[Y = intercept + slope \times X\]</span></p>
+</blockquote>
+<p><img src="01-regression-fundamentals_files/figure-html/general-linear-model-1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>Intercepts and slopes can be mathematically represented by any symbol or letter but conventionally the equation is written as:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 \times x_i + \varepsilon_i\]</span></p>
+<p>Where <span class="math inline">\(i\)</span> refers to individual data points.</p>
+<div id="variables-of-a-linear-model" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Variables of a linear model</h3>
+<p>Variables are <span class="math inline">\(y_i\)</span> and <span class="math inline">\(x_i\)</span><br />
+<span class="math inline">\(y_i\)</span> = response variable, what you are interested in, e.g. height<br />
+<span class="math inline">\(x_i\)</span> = predictor variable, what you are manipulating, e.g. girth</p>
+</div>
+<div id="parameters-of-a-linear-model" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Parameters of a linear model</h3>
+<p>Parameters are what we don’t know and we need to work out (<em>parametrise</em>). They are <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.<br />
+<span class="math inline">\(\beta_0\)</span> = population intercept, value of y when x is 0, constant<br />
+<span class="math inline">\(\beta_1\)</span> = population slope, unit change in y with a unit change in x<br />
+<span class="math inline">\(\varepsilon_i\)</span> = the residual of the model (how much the line gets wrong for each data point or what is left over), also called <strong>random error</strong></p>
+<hr />
+</div>
+</div>
+<div id="ordinary-least-squares-regression" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Ordinary least squares regression</h2>
+<p>Ordinary least squares regression (OLS) is the technique used to parametrise the linear model by finding the ‘best fitting’ line.</p>
+<blockquote>
+<p>The aim is to make the sum of the squared residuals, <span class="math inline">\(\sum{\varepsilon_i^2}\)</span>, as small as possible</p>
+</blockquote>
+<p>Meaning calculating the difference between each point and the line, squaring that difference and adding it all up (Figure <a href="simple.html#fig:residuals">2.2</a>).<br />
+Residuals are squared to make all values positive - remember points can fall above and below the best fit line.</p>
+<div class="figure" style="text-align: center"><span id="fig:residuals"></span>
+<img src="01-regression-fundamentals_files/figure-html/residuals-1.png" alt="Residuals (blue lines) are the difference between the data point and the predicted line (black line)" width="500" />
+<p class="caption">
+Figure 2.2: Residuals (blue lines) are the difference between the data point and the predicted line (black line)
+</p>
+</div>
+<div id="finding-the-intercept" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Finding the intercept</h3>
+<ul>
+<li>Why not extrapolate to 0?</li>
+<li>We know <span class="math inline">\(\bar{y}\)</span> and <span class="math inline">\(\bar{x}\)</span> - the means of x and y</li>
+<li>We can rearrange the linear equation to <span class="math inline">\(\beta_0 = \bar{y} - \beta_1 \bar{x}\)</span> where <span class="math inline">\(\beta_1\)</span> is the estimated slope</li>
+<li>But <code>R</code> will do all this for you!</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="halfway-there-revision-time" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Halfway there! Revision time!</h2>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol style="list-style-type: decimal">
+<li>What types of variables are used in simple linear regression?</li>
+<li>What is the method for parameterising linear models called?</li>
+<li>What is random error in linear regression?</li>
+</ol>
+<hr />
+</div>
+<div id="what-does-a-linear-model-tell-us" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> What does a linear model tell us?</h2>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>What will Y be, given a new value of X?</li>
+<li>Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</li>
+</ol>
+</blockquote>
+<div id="back-to-trees" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Back to trees</h3>
+<p>The function <code>lm()</code> in <code>R</code> stands for linear model. It will do the OLS calculations for us. The function takes data in the form <code>lm(Y ~ X, data)</code>. Use <code>summary()</code> on your <code>lm</code> to get more information.</p>
+<pre><code>
+Call:
+lm(formula = Height ~ Girth, data = trees)
+
+Coefficients:
+(Intercept)        Girth  
+     62.031        1.054  </code></pre>
+<p>Here the <code>(Intercept)</code> is the value of the intercept, <span class="math inline">\(\beta_0\)</span> and <code>Girth</code> is the slope of the model, <span class="math inline">\(\beta_1\)</span>.<br />
+We then put these numbers in our linear model equation to get the <strong>parametrised linear model</strong></p>
+<p><span class="math inline">\(Y = \beta_0 + \beta_1 \times X\)</span><br />
+becomes <span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times Girth\)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:tree-plot-2"></span>
+<img src="01-regression-fundamentals_files/figure-html/tree-plot-2-1.png" alt="Does the above equation match this line?" width="300" />
+<p class="caption">
+Figure 2.3: Does the above equation match this line?
+</p>
+</div>
+</div>
+<div id="calculating-a-new-value-of-y" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Calculating a new value of Y</h3>
+<p>We can use the parametrised equation to work out the height of a tree for any value of girth. If a tree is 10cm thick, what is its predicted height?</p>
+<p><span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times Girth\)</span>
+<span class="math inline">\(Height =\)</span> 62.031 + 1.054 <span class="math inline">\(\times 10\)</span><br />
+<span class="math inline">\(Height =\)</span> 72.571 cm</p>
+</div>
+<div id="does-the-population-slope-beta_1-differ-to-0" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Does the population slope <span class="math inline">\(\beta_1\)</span> differ to 0?</h3>
+<p>Typically we are more interested in the value of the slope than the intercept. We want to know if the slope of the fitted line is statistically different to 0 because that represents our hypotheses:</p>
+<blockquote>
+<p>Null hypothesis (in orange, Figure <a href="simple.html#fig:tree-slopes">2.4</a>):
+<span class="math display">\[H_0: \beta_1 = 0\]</span>
+Alternative hypothesis (Figure <a href="simple.html#fig:regression-slopes">2.5</a>):
+<span class="math display">\[H_1: \beta_1 \neq 0\]</span></p>
+</blockquote>
+<div class="figure" style="text-align: center"><span id="fig:tree-slopes"></span>
+<img src="01-regression-fundamentals_files/figure-html/tree-slopes-1.png" alt="Hypotheses of linear models" width="300" />
+<p class="caption">
+Figure 2.4: Hypotheses of linear models
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:regression-slopes"></span>
+<img src="01-regression-fundamentals_files/figure-html/regression-slopes-1.png" alt="Regression lines can have positive (blue) or negative (red) slopes, either are H1" width="300" />
+<p class="caption">
+Figure 2.5: Regression lines can have positive (blue) or negative (red) slopes, either are H1
+</p>
+</div>
+<div id="testing-linear-model-parameters-in-r" class="section level4" number="2.7.3.1">
+<h4><span class="header-section-number">2.7.3.1</span> Testing linear model parameters in R</h4>
+<p>R will conduct a statistical test on the model parameters for us. You can see it using <code>summary(lm())</code></p>
+<pre><code>
+Call:
+lm(formula = Height ~ Girth, data = trees)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-12.5816  -2.7686   0.3163   2.4728   9.9456 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  62.0313     4.3833  14.152 1.49e-14 ***
+Girth         1.0544     0.3222   3.272  0.00276 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 5.538 on 29 degrees of freedom
+Multiple R-squared:  0.2697,    Adjusted R-squared:  0.2445 
+F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758</code></pre>
+<ul>
+<li>The P values above test whether our slope is significantly different to 0</li>
+<li>Tested like a single parameter t-test (why?)
+<ul>
+<li>What are the degrees of freedom?</li>
+</ul></li>
+</ul>
+<p><strong>Based on the R output above, does our estimated slope for Girth differ to 0 and what can we conclude about our hypothesis?</strong></p>
+</div>
+</div>
+</div>
+<div id="probability-distribution-functions-pdf" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Probability distribution functions (PDF)</h2>
+<blockquote>
+<p>Linear models need a descriptor of how response variables (or errors) should be distributed</p>
+</blockquote>
+<p><strong>Probability distributions</strong></p>
+<ul>
+<li>E.g. Gaussian/normal distribution</li>
+<li>Grouped by “family”</li>
+<li>Other types exist – same principles apply, called generalised linear models (GLM). GLMs are touched on in Chapter <a href="GLM.html#GLM">5</a></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:normal"></span>
+<img src="01-regression-fundamentals_files/figure-html/normal-1.png" alt="a normal distribution with mean = 0 and sd  = 1" width="300" />
+<p class="caption">
+Figure 2.6: a normal distribution with mean = 0 and sd = 1
+</p>
+</div>
+<div id="linear-models-in-the-gaussian-family" class="section level3" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Linear models in the Gaussian family</h3>
+<blockquote>
+<p>Same principles, different names</p>
+</blockquote>
+<ul>
+<li>Linear regression
+<ul>
+<li>continuous response</li>
+<li>one or more continuous predictors</li>
+</ul></li>
+<li>Analysis of Variance (ANOVA)
+<ul>
+<li>continuous response</li>
+<li>categorical predictors</li>
+</ul></li>
+<li>Analysis of Covariance (ANCOVA)
+<ul>
+<li>continuous response</li>
+<li>A mix of continuous and categorical predictors</li>
+<li>Special case with special assumptions</li>
+</ul></li>
+</ul>
+<div id="you-have-seen-these-statistical-tests-in-previous-lectures" class="section level4" number="2.8.1.1">
+<h4><span class="header-section-number">2.8.1.1</span> You have seen these statistical tests in previous lectures</h4>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Height by Sex
+t = -12.924, df = 192.7, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.14454 -11.13420
+sample estimates:
+mean in group Female   mean in group Male 
+            165.6867             178.8260 </code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="left">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sex</td>
+<td align="right">1</td>
+<td align="right">8974.12</td>
+<td align="right">8974.12</td>
+<td align="right">165.11</td>
+<td align="left">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">206</td>
+<td align="right">11196.29</td>
+<td align="right">54.35</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>A one-way ANOVA is mathematically identical to a t-test</p>
+<blockquote>
+<p>In this module, don’t focus on memorising what kind of test fits what kinds of data</p>
+</blockquote>
+<p>They are all variants on general linear models anyway…</p>
+<ul>
+<li>We are interested in <strong>slopes</strong> and (to a lesser extent) intercepts</li>
+<li>Understand how these models relate to your <em>hypotheses &amp; experimental design</em></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="revision-time" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> Revision time!</h2>
+<p>Test your understanding so far by answering the questions below.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>What is the function in R to conduct a linear regression?</li>
+<li>How do you find a predicted value of a response for a given predictor value using a parameterised linear model?</li>
+<li>What is the probability distribution function of linear regression?</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["Statistical-Modelling.html", "HTML (no LaTeX)"], ["Statistical-Modelling.pdf", "PDF"]],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
