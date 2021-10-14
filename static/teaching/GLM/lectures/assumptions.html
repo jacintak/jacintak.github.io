@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Assumptions | Statistical Modelling</title>
   <meta name="description" content="An introduction to linear regression" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Assumptions | Statistical Modelling" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jacinta Kong" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="multiple.html"/>
 <link rel="next" href="GLM.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,13 +51,15 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -116,6 +119,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -211,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9.6" data-path="multiple.html"><a href="multiple.html#interpreting-the-anova-table"><i class="fa fa-check"></i><b>3.9.6</b> Interpreting the ANOVA table</a></li>
 <li class="chapter" data-level="3.9.7" data-path="multiple.html"><a href="multiple.html#the-interaction-term-ab"><i class="fa fa-check"></i><b>3.9.7</b> The interaction term A:B</a></li>
 </ul></li>
-<li class="chapter" data-level="3.10" data-path="multiple.html"><a href="multiple.html#the-fundamentals-of-linear-regression"><i class="fa fa-check"></i><b>3.10</b> The fundamentals of Linear regression</a></li>
+<li class="chapter" data-level="3.10" data-path="multiple.html"><a href="multiple.html#the-fundamentals-of-linear-regression"><i class="fa fa-check"></i><b>3.10</b> The fundamentals of linear regression</a></li>
 <li class="chapter" data-level="3.11" data-path="multiple.html"><a href="multiple.html#recap-time-1"><i class="fa fa-check"></i><b>3.11</b> Recap time!</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="assumptions.html"><a href="assumptions.html"><i class="fa fa-check"></i><b>4</b> Assumptions</a>
@@ -370,7 +374,7 @@ Ratio <span class="math inline">\(\leq 1\)</span> = Line explains very little (n
 <h4><span class="header-section-number">4.4.1.1</span> Isn’t: Sum of Squares of the Error (SSY)</h4>
 <p>The bit not explained by the null (total variation in the data). Remember, the null is <span class="math inline">\(\bar{y}\)</span> = the mean of Y.</p>
 <p><span class="math display">\[SSY = y_i - \bar{y}\]</span></p>
-<div class="figure" style="text-align: center"><span id="fig:SSY"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SSY"></span>
 <img src="03-assumptions_files/figure-html/SSY-1.png" alt="Black line is the mean of Y. Blue lines are the difference between the mean and a single observation = SSY" width="500" />
 <p class="caption">
 Figure 4.1: Black line is the mean of Y. Blue lines are the difference between the mean and a single observation = SSY
@@ -381,7 +385,7 @@ Figure 4.1: Black line is the mean of Y. Blue lines are the difference between t
 <h4><span class="header-section-number">4.4.1.2</span> Isn’t: Sum of Squares of the Residual (SSE)</h4>
 <p>The bit not explained by the line</p>
 <p><span class="math display">\[SSE = y_i - \hat{y_i}\]</span></p>
-<div class="figure" style="text-align: center"><span id="fig:SSE"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SSE"></span>
 <img src="03-assumptions_files/figure-html/SSE-1.png" alt="Residuals (blue lines) are the difference between the data point and the predicted line (black line)" width="500" />
 <p class="caption">
 Figure 4.2: Residuals (blue lines) are the difference between the data point and the predicted line (black line)
@@ -392,7 +396,7 @@ Figure 4.2: Residuals (blue lines) are the difference between the data point and
 <h4><span class="header-section-number">4.4.1.3</span> Isn’t: Sum of Squares of the Regression (SSR)</h4>
 <p>How well the line estimates the mean of Y</p>
 <p><span class="math display">\[SSR = \hat{y_i} - \bar{y}\]</span></p>
-<div class="figure" style="text-align: center"><span id="fig:SSR"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:SSR"></span>
 <img src="03-assumptions_files/figure-html/SSR-1.png" alt="Residuals (blue lines) are the difference between the null hypothesis (mean of observations, dashed lines) and the predicted line (black line)" width="500" />
 <p class="caption">
 Figure 4.3: Residuals (blue lines) are the difference between the null hypothesis (mean of observations, dashed lines) and the predicted line (black line)
@@ -427,7 +431,7 @@ Ratio <span class="math inline">\(\leq 1\)</span> = Line explains very little (n
 <p>1 = no deviance from line (good)<br />
 0 = strong deviance from line (not good)</p>
 <p>It is related to correlation coefficients (r). Basically, <span class="math inline">\(R^2 = r^2\)</span></p>
-<div class="figure" style="text-align: center"><span id="fig:fit"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fit"></span>
 <img src="03-assumptions_files/figure-html/fit-1.png" alt="Which fits better?" width="300" /><img src="03-assumptions_files/figure-html/fit-2.png" alt="Which fits better?" width="300" />
 <p class="caption">
 Figure 4.4: Which fits better?
@@ -525,7 +529,7 @@ plot(Model) # show residual plots</code></pre>
 <h3><span class="header-section-number">4.8.2</span> Mammal brain and body size</h3>
 Let’s look at these assumptions in detail using the relationship between brain mass and body mass for different mammals. The dataset is called <code>mammals</code> in the <code>MASS</code> package.<br />
 
-<div class="figure" style="text-align: center"><span id="fig:mammal-brains"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mammal-brains"></span>
 <img src="03-assumptions_files/figure-html/mammal-brains-1.png" alt="The relationship between mammal body size and brain size" width="300" />
 <p class="caption">
 Figure 4.5: The relationship between mammal body size and brain size
@@ -597,7 +601,7 @@ hist(trees$Girth)</code></pre>
 <p>Let’s try this with the <code>mammals</code> dataset</p>
 <p><img src="03-assumptions_files/figure-html/mammal-quantile-1.png" width="300" style="display: block; margin: auto;" /></p>
 <p>The residuals of the model should be also normally distributed</p>
-<div class="figure" style="text-align: center"><span id="fig:standard"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:standard"></span>
 <img src="03-assumptions_files/figure-html/standard-1.png" alt="Looks like distribution of brain size is skewed to the right. What does this mean biologically?" width="300" />
 <p class="caption">
 Figure 4.6: Looks like distribution of brain size is skewed to the right. What does this mean biologically?
@@ -645,7 +649,7 @@ Figure 4.6: Looks like distribution of brain size is skewed to the right. What d
 </div>
 <div id="re-run-the-model-with-transformed-data" class="section level3" number="4.9.6">
 <h3><span class="header-section-number">4.9.6</span> Re-run the model with transformed data</h3>
-<div class="figure" style="text-align: center"><span id="fig:new-graph"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:new-graph"></span>
 <img src="03-assumptions_files/figure-html/new-graph-1.png" alt="That looks better!" width="300" />
 <p class="caption">
 Figure 4.7: That looks better!
@@ -686,7 +690,7 @@ Figure 4.7: That looks better!
 </blockquote>
 <p><strong>Question 6</strong> - What would you expect to see in a bar plot showing means and standard deviation for the assumption of homogeneity of variance to be met?</p>
 Look at this graph - does it show homoscedasticity or heteroscedasticity?
-<div class="figure" style="text-align: center"><span id="fig:homo"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:homo"></span>
 <img src="03-assumptions_files/figure-html/homo-1.png" alt="Bar plot of mean of two groups (A and B). Error bars indicate standard deviation" width="300" />
 <p class="caption">
 Figure 4.8: Bar plot of mean of two groups (A and B). Error bars indicate standard deviation
@@ -694,7 +698,7 @@ Figure 4.8: Bar plot of mean of two groups (A and B). Error bars indicate standa
 </div>
 <p>Here, you can see that group <code>B</code> has a higher standard deviation than group <code>A</code>. So, we would conclude that there is heteroscedasticity. We do not want heteroscedasticity because it would bias the calculations of variance if we were to do an ANOVA. Remember that ANOVA is a test of variance.</p>
 The same concept applies for scatter plots. Look at this plot - does it show homoscedasticity or heteroscedasticity?
-<div class="figure" style="text-align: center"><span id="fig:scatter"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scatter"></span>
 <img src="03-assumptions_files/figure-html/scatter-1.png" alt="A scatter plot and a fitted model" width="300" />
 <p class="caption">
 Figure 4.9: A scatter plot and a fitted model
@@ -707,7 +711,7 @@ Figure 4.9: A scatter plot and a fitted model
 <p>One way of dealing with heteroscedasticity is to use weighted least squares regression where the parameters are fitted to a single observation based on its residual to correct for variation in the residuals (that scatter). But that is beyond the scope of this module.</p>
 <div id="should-expect-a-normal-distribution-of-standardised-residuals" class="section level3" number="4.10.1">
 <h3><span class="header-section-number">4.10.1</span> Should expect a <strong>normal distribution</strong> of standardised residuals</h3>
-<div class="figure" style="text-align: center"><span id="fig:qqnormresid"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:qqnormresid"></span>
 <img src="03-assumptions_files/figure-html/qqnormresid-1.png" alt="data falls along line = good" width="300" />
 <p class="caption">
 Figure 4.10: data falls along line = good
@@ -793,7 +797,7 @@ Consider using random effects models or choosing better variables (i.e. good ex
 </div>
 <div id="outliers-in-the-mammal-dataset" class="section level3" number="4.13.2">
 <h3><span class="header-section-number">4.13.2</span> Outliers in the mammal dataset</h3>
-<div class="figure" style="text-align: center"><span id="fig:outliers"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:outliers"></span>
 <img src="03-assumptions_files/figure-html/outliers-1.png" alt="Looks like humans, water opossums and musk shrew have high influence on the regression" width="300" />
 <p class="caption">
 Figure 4.11: Looks like humans, water opossums and musk shrew have high influence on the regression
@@ -822,7 +826,7 @@ Follows all the assumptions above <em>plus two extra ones</em>:</p>
 <div id="covariate-values-cover-a-similar-range-across-groups" class="section level3" number="4.15.1">
 <h3><span class="header-section-number">4.15.1</span> 1. Covariate values cover a similar range across groups</h3>
 <p>Data from groups should overlap across the range of the continuous variable</p>
-<div class="figure"><span id="fig:ancova"></span>
+<div class="figure"><span style="display:block;" id="fig:ancova"></span>
 <img src="03-assumptions_files/figure-html/ancova-1.png" alt="Which of these violates ANCOVA assumptions?" width="50%" /><img src="03-assumptions_files/figure-html/ancova-2.png" alt="Which of these violates ANCOVA assumptions?" width="50%" />
 <p class="caption">
 Figure 4.12: Which of these violates ANCOVA assumptions?
@@ -868,7 +872,6 @@ If the second assumption is not met, you can still fit an “ANCOVA-like” mode
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -887,6 +890,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -907,6 +911,10 @@ gitbook.start({
 "text": null
 },
 "download": [["Statistical-Modelling.html", "HTML (no LaTeX)"], ["Statistical-Modelling.pdf", "PDF"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

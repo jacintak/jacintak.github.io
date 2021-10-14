@@ -44,7 +44,7 @@ How should test our hypothesis? We could assign trees to categories like "thick"
 
 data:  Height by Thickness
 t = 1.6339, df = 28.168, p-value = 0.1134
-alternative hypothesis: true difference in means is not equal to 0
+alternative hypothesis: true difference in means between group Thick and group Thin is not equal to 0
 95 percent confidence interval:
  -0.9240387  8.2181563
 sample estimates:
@@ -287,7 +287,7 @@ F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758
 
 data:  Height by Sex
 t = -12.924, df = 192.7, p-value < 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
+alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
 95 percent confidence interval:
  -15.14454 -11.13420
 sample estimates:

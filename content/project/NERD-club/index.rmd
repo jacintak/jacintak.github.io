@@ -38,3 +38,8 @@ This [tutorial](/post/2021-07-01-OSM-in-R/) describes how to interface with Open
 This is a walkthrough of a basic workflow for working with spatial data and rasters in R. Specifically loading a raster, plotting a raster and extracting information from rasters. I use `rgbif` to get species occurrence records from GBIF and extract temperature data from a raster of global temperatures. A blog post version is [here](/post/spatial-data/).
 
 HTML: <a class="fas fa-file" href="/Rasters_SpaceClub_06102021"></a>
+
+## Fundamental linear regression in `R`
+This is a short presentation showing some of the basic features of linear regression in `R` using `lm` including: ANOVA tables, `summary` and residual plots.
+
+PDF: <a class="fas fa-file-pdf" href="/files/20Oct2021_linear_models.pdf"></a>

@@ -1,7 +1,6 @@
 ---
 title: "CV"
-subtitle: "Jacinta D Kong"
-#date: "`r format(Sys.Date(), '%d %B %Y')`"
+subtitle: Jacinta D Kong
 output:
   blogdown::html_page:
     toc: yes
@@ -82,7 +81,7 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-* **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547)
+* **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 7
 * Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314)
 * Maino JL, **Kong JD**, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: [10.1016/j.cois.2016.07.006](https://doi.org/10.1016/j.cois.2016.07.006)
 * **Kong JD**, Axford JK, Hoffmann AA, Kearney MR. (2016) Novel applications of thermocyclers for phenotyping invertebrate thermal responses. Methods in Ecology and Evolution. 7(10): 1201 – 1208. 2016. DOI: [10.1111/2041-210X.12589](https://doi.org/10.1111/2041-210X.12589)
@@ -94,11 +93,11 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 65  
+Total citations: 68  
 
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
 > * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  
-> * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see 2 above]. Altmetric score: 6
+> * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see above]. Altmetric score: 6
 
 I have peer reviewed for:
 
@@ -123,64 +122,65 @@ I have peer reviewed for:
 **TOTAL: $13 750 AUD** :australia:
 
  * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
-Equity Trustees Charitable Foundation & the Ecological Society of Australia 	
+Equity Trustees Charitable Foundation & the Ecological Society of Australia
  * **$300 AUD**. 12.2018 	2nd runner up student presentation  
- Australian and New Zealand Society for Comparative Physiology and Biochemistry, Australia 	
+ Australian and New Zealand Society for Comparative Physiology and Biochemistry, Australia
  * **$500 AUD**. 8.2018 	Student Travel Grant  
-Australian Entomological Society, Australia 
+Australian Entomological Society, Australia
  * **$1 500 AUD**. 2018 	Science Abroad Travelling Scholarship  
-Faculty of Science, the University of Melbourne, Australia 
+Faculty of Science, the University of Melbourne, Australia
  * **$950 AUD**. 2018 	FH Drummond Travel Award  
-School of BioSciences, the University of Melbourne, Australia 	
+School of BioSciences, the University of Melbourne, Australia
  * **$1 500 AUD**. 2018 	School of BioSciences Travelling Scholarship  
-School of BioSciences, the University of Melbourne, Australia 	
+School of BioSciences, the University of Melbourne, Australia
  * **$6 000 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
-Equity Trustees Charitable Foundation 
+Equity Trustees Charitable Foundation
  * **$500 AUD**. 6.2018 	Three Minute Thesis (3MT) People’s Choice Winner  
-The University of Queensland Undergraduate Research Conference 	
+The University of Queensland Undergraduate Research Conference
 
 
 ## Other Awards and Scholarships
 
- * **$13 541 AUD**. 2018 	Research Training Program Scholarship, Australian Government 	
- * **$26 682 AUD**. 2017 	Research Training Program Scholarship, Australian Government 	
- * **$200 AUD**. 2017 	Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne 
- * **$26 288 AUD**. 2016 	Australian Postgraduate Award, Australian Government 	
- * **$25 849 AUD**. 2015 	Australian Postgraduate Award, Australian Government 	
- * 2014. 2013 University Medal, the University of Queensland, Australia  
- * 2010 – 2013. Dean’s Commendation for Academic Excellence (formerly Dean’s Commendation for High Achievement), the Faculty of Science, the University of Queensland, Australia 	
-
+ * **$13 541 AUD**. 2018 	Research Training Program Scholarship, Australian Government
+ * **$26 682 AUD**. 2017 	Research Training Program Scholarship, Australian Government
+ * **$200 AUD**. 2017 	Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne
+ * **$26 288 AUD**. 2016 	Australian Postgraduate Award, Australian Government
+ * **$25 849 AUD**. 2015 	Australian Postgraduate Award, Australian Government
+ * 2014 University Medal 2013, the University of Queensland, Australia
+ * 2010 – 2013 Dean’s Commendation for Academic Excellence (formerly Dean’s Commendation for High Achievement), the Faculty of Science, the University of Queensland, Australia
 
 ***
 
 # Teaching contributions and course development
 
+Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
+
 2021
 
- * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Remote delivery. 
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Hybrid delivery: remote lectures & in-person practicals.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Hybrid delivery: remote and in-person lectures & remote and in-person practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
 
 2020
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery. Module co-ordinator.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
  
 2019
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
 
 2017
-
- * Guest lecturer: 2rd year Comparative Animal Physiology, Uni Melbourne
- * Course development: 2nd year Biostatistics, Uni Melbourne. Evaluated course context and provided feedback.
+ 
+ * Guest lecturer: 2nd year Comparative Animal Physiology, University of Melbourne
+ * Course development: 2nd year Biostatistics, University of Melbourne. Evaluated course context and provided feedback.
 
 2016
 
- * Guest lecturer: 2rd year Comparative Animal Physiology, Uni Melbourne
+ * Guest lecturer: 2nd year Comparative Animal Physiology, University of Melbourne
  
 ***
 
@@ -194,42 +194,30 @@ The University of Queensland Undergraduate Research Conference
 
 2019
 
- * Detangling the complex problem of climate adaptation of insects living in a seasonal world
- * Victorian Biodiversity Conference, University of Melbourne, VIC, Australia
- * Local adaptation of thermal responses generates voltinism patterns of matchstick grasshoppers, Warramaba (Orthoptera: Morabidae), along a latitudinal gradient
- * British Ecological Society Annual Meeting, Belfast, N. Ireland, UK
+ * Detangling the complex problem of climate adaptation of insects living in a seasonal world. Victorian Biodiversity Conference, University of Melbourne, VIC, Australia
+ * Local adaptation of thermal responses generates voltinism patterns of matchstick grasshoppers, *Warramaba* (Orthoptera: Morabidae), along a latitudinal gradient. British Ecological Society Annual Meeting, Belfast, N. Ireland, UK
 
 2018
 
- * Selection against overwintering shapes thermal performance curves for development
- * Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Monash University, VIC, Australia
- * Environmental and developmental drivers at the egg stage generate divergent life cycles in wingless arid zone grasshoppers (Orthoptera: Warramaba).
- * Australian Entomological Society Conference, Alice Springs, N.T., Australia
- * The egg stage drives life cycle adaptation to climate in the widely distributed matchstick grasshoppers (Vandiemenella and Warramaba, Orthoptera: Morabidae)
- * ‘The height, breadth and depth of physiological diversity: variation across latitudinal, altitudinal and depth gradients’ Animal Biology Satellite Meeting, Florence, Italy, Society for Experimental Biology
- * Microclimate-driven mechanistic models to examine clinal adaptation at the egg stage in a parthenogenetic grasshopper
- * Society for Experimental Biology Annual Conference, Florence, Italy
+ * Selection against overwintering shapes thermal performance curves for development. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Monash University, VIC, Australia
+ * Environmental and developmental drivers at the egg stage generate divergent life cycles in wingless arid zone grasshoppers (Orthoptera: *Warramaba*). Australian Entomological Society Conference, Alice Springs, N.T., Australia
+ * The egg stage drives life cycle adaptation to climate in the widely distributed matchstick grasshoppers (*Vandiemenella* and *Warramaba*, Orthoptera: Morabidae). ‘The height, breadth and depth of physiological diversity: variation across latitudinal, altitudinal and depth gradients’ Animal Biology Satellite Meeting, Florence, Italy, Society for Experimental Biology
+ * Microclimate-driven mechanistic models to examine clinal adaptation at the egg stage in a parthenogenetic grasshopper. Society for Experimental Biology Annual Conference, Florence, Italy
 
 2017
 
- * Does variation in egg developmental responses to temperature generate divergent life-cycles in a genus of flightless grasshoppers (Warramaba spp.)?
- * School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
- * Egg development drives life cycles in Warramaba spp. grasshoppers
- * Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Daintree Rainforest Observatory, QLD, Australia
- * Mechanistic models for understanding and predicting insect responses to climate change
- * Australian Entomological Society Conference, Terrigal, N.S.W., Australia
+ * Does variation in egg developmental responses to temperature generate divergent life-cycles in a genus of flightless grasshoppers (*Warramaba* spp.)? School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
+ * Egg development drives life cycles in *Warramaba* spp. grasshoppers. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Daintree Rainforest Observatory, QLD, Australia
+ * Mechanistic models for understanding and predicting insect responses to climate change. Australian Entomological Society Conference, Terrigal, N.S.W., Australia
 
 2016
 
- * Predicting insect egg development under variable climates
- * School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
- * Predicting egg development in the parthenogenetic grasshopper Warramaba virgo (Orthoptera: Morabidae)
- * Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Western Sydney University, N.S.W., Australia
+ * Predicting insect egg development under variable climates. School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
+ * Predicting egg development in the parthenogenetic grasshopper *Warramaba virgo* (Orthoptera: Morabidae). Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Western Sydney University, N.S.W., Australia
 
 2015
 
- * Novel applications of thermocyclers for high-throughput phenotyping of invertebrate thermal response
- * Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Fowler’s Gap, N.S.W., Australia
+ * Novel applications of thermocyclers for high-throughput phenotyping of invertebrate thermal response. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Fowler’s Gap, N.S.W., Australia
 
 2013
 
@@ -246,7 +234,7 @@ The University of Queensland Undergraduate Research Conference
 
 2011
 
- * Female-biased dispersal in the Eastern Water Dragon (Physignathus lesueurii lesueurii)
+ * Female-biased dispersal in the Eastern Water Dragon (*Physignathus lesueurii lesueurii*)
  * Advanced Study Program in Science Student Conference, the University of Queensland, Australia
 
 ***
@@ -266,7 +254,8 @@ The University of Queensland Undergraduate Research Conference
 
 # Professional development qualifications
 
- * 26/01/2021 Epigeum Research Integrity Course 
+ * 26/01/2021 Epigeum Research Integrity Course
+ * 19/03/2021 Dynamic Energy Budget Course
 
 ***
 

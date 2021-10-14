@@ -39,7 +39,7 @@ I will be sticking to base R throughout.&lt;/p&gt;
 &lt;h1&gt;Introducing rasters&lt;/h1&gt;
 &lt;div id=&#34;loading-from-file&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Loading from file&lt;/h2&gt;
-&lt;p&gt;Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You’ll see below that other dependent packages are loaded with &lt;code&gt;raster&lt;/code&gt; but you won’t need to load each one manually`.&lt;/p&gt;
+&lt;p&gt;Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You’ll see below that other dependent packages are loaded with &lt;code&gt;raster&lt;/code&gt; but you won’t need to load each one manually.&lt;/p&gt;
 &lt;p&gt;You can load a raster from a local nc file using the function &lt;code&gt;raster::brick&lt;/code&gt;. The &lt;code&gt;::&lt;/code&gt; denotes calling a function from a specific package without loading it with &lt;code&gt;library&lt;/code&gt;. Good for quick and dirty functions you won’t use frequently, bad if you are using the package multiple times.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;my_raster &amp;lt;- brick(&amp;quot;raster_data.nc&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I will cheat and use the built in function in &lt;code&gt;raster&lt;/code&gt; to query WorldClim for mean annual temperature.&lt;/p&gt;
@@ -49,7 +49,7 @@ I will be sticking to base R throughout.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;subsetting-rasters&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Subsetting rasters&lt;/h2&gt;
-&lt;p&gt;Rasters can be manipulated using base R functions. E.g. addition or subtraction between rasters or layers. Subet rasters by layers using basic square bracket subsetting for lists.&lt;/p&gt;
+&lt;p&gt;Subset rasters by layers using basic square bracket subsetting for lists.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- temp[[1]] # Subset only the first layer - mean annual temperature&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here I have selected mean annual temperature since we do not need the other variables.&lt;/p&gt;
 &lt;/div&gt;
@@ -75,7 +75,7 @@ Figure 2: That’s better
 &lt;/div&gt;
 &lt;div id=&#34;manipulating-rasters&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Manipulating rasters&lt;/h2&gt;
-&lt;p&gt;Rasters can be manipulated by base functions. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won’t cover that here.&lt;/p&gt;
+&lt;p&gt;Rasters can be manipulated by base functions. E.g. addition or subtraction between rasters or layers. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won’t cover that here.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- temp/10
 plot(temp, main = &amp;quot;Mean annual temperature&amp;quot;, col = viridis::viridis(n = 20))&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-5&#34;&gt;&lt;/span&gt;
@@ -109,14 +109,14 @@ bird_points &amp;lt;- bird_points[!is.na(bird_points$decimalLatitude),]&lt;/code
 &lt;div id=&#34;plot-spatial-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plot spatial data&lt;/h2&gt;
 &lt;p&gt;Let’s look at the global distribution of points. I will use the base &lt;code&gt;maps&lt;/code&gt; package for a simple, low resolution and unprojected world map in R (not recommended for more professional output). The &lt;code&gt;maps&lt;/code&gt; package can also be used in &lt;code&gt;ggplot2&lt;/code&gt; via &lt;code&gt;borders(database = &#34;world&#34;, fill = NA)&lt;/code&gt; or &lt;code&gt;geom_polygon(data = map_data(&#34;world&#34;), aes(x=long, y = lat, group = group), fill = NA, col= 1)&lt;/code&gt;; &lt;code&gt;coord_map()&lt;/code&gt; may help in these cases.&lt;/p&gt;
-&lt;pre class=&#34;marginfigure&#34;&gt;&lt;code&gt;For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(maps)
 map(&amp;quot;world&amp;quot;) # get basic world map
 title(main = &amp;quot;The distribution of house sparrow&amp;quot;) # plot title
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
 legend(x = -150, y= -50, legend = &amp;quot;occurence&amp;quot;, pch = 16, col = 2, bty = &amp;quot;n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We see that points come mainly from around northern Europe.&lt;/p&gt;
+&lt;p&gt;For more advanced mapping in R check out &lt;code&gt;ggmaps&lt;/code&gt;, which can interface with Open Street Maps (free) and Google Maps (for a fee), and &lt;code&gt;osmdata&lt;/code&gt;, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or &lt;a href=&#34;https://jacintak.github.io/post/2021-07-01-OSM-in-R/&#34;&gt;online&lt;/a&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -125,33 +125,33 @@ legend(x = -150, y= -50, legend = &amp;quot;occurence&amp;quot;, pch = 16, col =
 &lt;p&gt;Now we have all the data we need, let’s combine the datasets and plot the occurrence data with the temp raster.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temp, main = &amp;quot;Mean annual temperature&amp;quot;, col = viridis::viridis(n = 20)) # temp
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 1) # bird&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-9&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;The distribution of sparrows with mean annual temperature&#34; width=&#34;672&#34; /&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:unnamed-chunk-8&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-8-1.png&#34; alt=&#34;The distribution of sparrows with mean annual temperature&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: The distribution of sparrows with mean annual temperature
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Let’s do some simple extraction of data.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;div id=&#34;what-range-of-water-temperatures-do-house-sparrows-live-in&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What range of water temperatures do house sparrows live in?&lt;/h2&gt;
+&lt;div id=&#34;what-range-of-temperatures-do-house-sparrows-live-in&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What range of temperatures do house sparrows live in?&lt;/h2&gt;
 &lt;p&gt;We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is &lt;code&gt;raster::extract&lt;/code&gt;. The same can be used within &lt;code&gt;tidyverse&lt;/code&gt; via &lt;code&gt;mutate&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;marginfigure&#34;&gt;&lt;code&gt;`method = &amp;quot;bilinear&amp;quot;` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Get temp
 temps &amp;lt;- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = &amp;quot;bilinear&amp;quot;)
 # Add new column
 bird_temps &amp;lt;- cbind(bird_points, temps) 
 # Remove missing temps
 bird_temps &amp;lt;- bird_temps[!is.na(bird_temps$temps),]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;method = &#34;bilinear&#34;&lt;/code&gt; tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of &lt;code&gt;buffer&lt;/code&gt; which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a &lt;code&gt;NA&lt;/code&gt; value. The default is to query the exact coordinate.&lt;/p&gt;
 &lt;p&gt;Our final dataset contains 500 observations.&lt;/p&gt;
 &lt;p&gt;Missing data at this stage could be from a mismatch between the accuracy of the spatial points and the resolution of the raster. Or plain errors in the spatial coordinates.&lt;/p&gt;
 &lt;p&gt;Now we can plot the distribution of temperatures:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(bird_temps$temps, main = &amp;quot;Temperature distribution of house sparrow&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(bird_temps$temps, main = &amp;quot;Temperature distribution of house sparrows&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can see they live between -2.7 and 11.6 °C.&lt;/p&gt;
 &lt;p&gt;Finally, we can plot the relationship between temperature and latitude:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temps ~ decimalLatitude, bird_temps, pch = 16)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;End&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

@@ -11,7 +11,7 @@ featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: [NERD-club]
 ---
 
@@ -36,7 +36,7 @@ I will be sticking to base R throughout.</p>
 <h1>Introducing rasters</h1>
 <div id="loading-from-file" class="section level2">
 <h2>Loading from file</h2>
-<p>Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You’ll see below that other dependent packages are loaded with <code>raster</code> but you won’t need to load each one manually`.</p>
+<p>Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You’ll see below that other dependent packages are loaded with <code>raster</code> but you won’t need to load each one manually.</p>
 <p>You can load a raster from a local nc file using the function <code>raster::brick</code>. The <code>::</code> denotes calling a function from a specific package without loading it with <code>library</code>. Good for quick and dirty functions you won’t use frequently, bad if you are using the package multiple times.</p>
 <pre><code>my_raster &lt;- brick(&quot;raster_data.nc&quot;)</code></pre>
 <p>I will cheat and use the built in function in <code>raster</code> to query WorldClim for mean annual temperature.</p>
@@ -46,7 +46,7 @@ I will be sticking to base R throughout.</p>
 </div>
 <div id="subsetting-rasters" class="section level2">
 <h2>Subsetting rasters</h2>
-<p>Rasters can be manipulated using base R functions. E.g. addition or subtraction between rasters or layers. Subet rasters by layers using basic square bracket subsetting for lists.</p>
+<p>Subset rasters by layers using basic square bracket subsetting for lists.</p>
 <pre class="r"><code>temp &lt;- temp[[1]] # Subset only the first layer - mean annual temperature</code></pre>
 <p>Here I have selected mean annual temperature since we do not need the other variables.</p>
 </div>
@@ -72,7 +72,7 @@ Figure 2: That’s better
 </div>
 <div id="manipulating-rasters" class="section level2">
 <h2>Manipulating rasters</h2>
-<p>Rasters can be manipulated by base functions. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won’t cover that here.</p>
+<p>Rasters can be manipulated by base functions. E.g. addition or subtraction between rasters or layers. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won’t cover that here.</p>
 <pre class="r"><code>temp &lt;- temp/10
 plot(temp, main = &quot;Mean annual temperature&quot;, col = viridis::viridis(n = 20))</code></pre>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
@@ -106,14 +106,14 @@ bird_points &lt;- bird_points[!is.na(bird_points$decimalLatitude),]</code></pre>
 <div id="plot-spatial-data" class="section level2">
 <h2>Plot spatial data</h2>
 <p>Let’s look at the global distribution of points. I will use the base <code>maps</code> package for a simple, low resolution and unprojected world map in R (not recommended for more professional output). The <code>maps</code> package can also be used in <code>ggplot2</code> via <code>borders(database = "world", fill = NA)</code> or <code>geom_polygon(data = map_data("world"), aes(x=long, y = lat, group = group), fill = NA, col= 1)</code>; <code>coord_map()</code> may help in these cases.</p>
-<pre class="marginfigure"><code>For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).</code></pre>
 <pre class="r"><code>library(maps)
 map(&quot;world&quot;) # get basic world map
 title(main = &quot;The distribution of house sparrow&quot;) # plot title
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
 legend(x = -150, y= -50, legend = &quot;occurence&quot;, pch = 16, col = 2, bty = &quot;n&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>We see that points come mainly from around northern Europe.</p>
+<p>For more advanced mapping in R check out <code>ggmaps</code>, which can interface with Open Street Maps (free) and Google Maps (for a fee), and <code>osmdata</code>, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or <a href="https://jacintak.github.io/post/2021-07-01-OSM-in-R/">online</a>.</p>
 <hr />
 </div>
 </div>
@@ -122,33 +122,33 @@ legend(x = -150, y= -50, legend = &quot;occurence&quot;, pch = 16, col = 2, bty 
 <p>Now we have all the data we need, let’s combine the datasets and plot the occurrence data with the temp raster.</p>
 <pre class="r"><code>plot(temp, main = &quot;Mean annual temperature&quot;, col = viridis::viridis(n = 20)) # temp
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 1) # bird</code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" alt="The distribution of sparrows with mean annual temperature" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="The distribution of sparrows with mean annual temperature" width="672" />
 <p class="caption">
 Figure 4: The distribution of sparrows with mean annual temperature
 </p>
 </div>
 <p>Let’s do some simple extraction of data.</p>
 <hr />
-<div id="what-range-of-water-temperatures-do-house-sparrows-live-in" class="section level2">
-<h2>What range of water temperatures do house sparrows live in?</h2>
+<div id="what-range-of-temperatures-do-house-sparrows-live-in" class="section level2">
+<h2>What range of temperatures do house sparrows live in?</h2>
 <p>We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is <code>raster::extract</code>. The same can be used within <code>tidyverse</code> via <code>mutate</code>.</p>
-<pre class="marginfigure"><code>`method = &quot;bilinear&quot;` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.</code></pre>
 <pre class="r"><code># Get temp
 temps &lt;- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = &quot;bilinear&quot;)
 # Add new column
 bird_temps &lt;- cbind(bird_points, temps) 
 # Remove missing temps
 bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
+<p><code>method = "bilinear"</code> tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of <code>buffer</code> which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a <code>NA</code> value. The default is to query the exact coordinate.</p>
 <p>Our final dataset contains 500 observations.</p>
 <p>Missing data at this stage could be from a mismatch between the accuracy of the spatial points and the resolution of the raster. Or plain errors in the spatial coordinates.</p>
 <p>Now we can plot the distribution of temperatures:</p>
-<pre class="r"><code>hist(bird_temps$temps, main = &quot;Temperature distribution of house sparrow&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>hist(bird_temps$temps, main = &quot;Temperature distribution of house sparrows&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>We can see they live between -2.7 and 11.6 °C.</p>
 <p>Finally, we can plot the relationship between temperature and latitude:</p>
 <pre class="r"><code>plot(temps ~ decimalLatitude, bird_temps, pch = 16)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p><em>End</em></p>
 </div>
 </div>

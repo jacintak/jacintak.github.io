@@ -363,7 +363,7 @@ student height is not dependent of the sex of the student
 
 ***
 
-## The fundamentals of Linear regression
+## The fundamentals of linear regression
 
 That's the basics of linear regression!  
 They are widely used in biological statistics so you'll likely come across them when reading scientific studies.  

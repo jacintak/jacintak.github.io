@@ -11,7 +11,7 @@ featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: [NERD-club]
 ---
 
@@ -36,7 +36,7 @@ I will be sticking to base R throughout.
 
 ## Loading from file
 
-Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You'll see below that other dependent packages are loaded with `raster` but you won't need to load each one manually`.  
+Rasters can be acquired from a range of sources, such as government agencies. There are also R packages to interface directly with online databases but for another time. Often they are saved as an nc file (network Common Data Form) that is imported as a raster with layers and assigned a spatial projection. You'll see below that other dependent packages are loaded with `raster` but you won't need to load each one manually.  
 
 You can load a raster from a local nc file using the function `raster::brick`. The `::` denotes calling a function from a specific package without loading it with `library`. Good for quick and dirty functions you won't use frequently, bad if you are using the package multiple times.
 
@@ -53,7 +53,7 @@ temp <- getData("worldclim",var="bio",res=10)
 
 ## Subsetting rasters
 
-Rasters can be manipulated using base R functions. E.g. addition or subtraction between rasters or layers. Subet rasters by layers using basic square bracket subsetting for lists.
+Subset rasters by layers using basic square bracket subsetting for lists.
 
 ```{r}
 temp <- temp[[1]] # Subset only the first layer - mean annual temperature
@@ -79,13 +79,12 @@ There's one last issue to deal with before this data is ready. WorldClim stores 
 
 ## Manipulating rasters
 
-Rasters can be manipulated by base functions. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won't cover that here.
+Rasters can be manipulated by base functions. E.g. addition or subtraction between rasters or layers. There are many other functions for analysing rasters and doing spatial analysis (e.g. interpolation) but we won't cover that here.
 
 ```{r, fig.cap= "That's much much better"}
 temp <- temp/10
 plot(temp, main = "Mean annual temperature", col = viridis::viridis(n = 20))
 ```
-
 
 ***
 
@@ -117,10 +116,6 @@ Since I've only searched for one species, the workflow is simple. If I wanted mu
 
 Let's look at the global distribution of points. I will use the base `maps` package for a simple, low resolution and unprojected world map in R (not recommended for more professional output). The `maps` package can also be used in `ggplot2` via `borders(database = "world", fill = NA)` or `geom_polygon(data = map_data("world"), aes(x=long, y = lat, group = group), fill = NA, col= 1)`; `coord_map()` may help in these cases.
 
-```{marginfigure}
-For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).
-```
-
 ```{r}
 library(maps)
 map("world") # get basic world map
@@ -130,6 +125,8 @@ legend(x = -150, y= -50, legend = "occurence", pch = 16, col = 2, bty = "n")
 ```
 
 We see that points come mainly from around northern Europe.
+
+For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).
 
 ***
 
@@ -146,13 +143,9 @@ Let's do some simple extraction of data.
 
 ***
 
-## What range of water temperatures do house sparrows live in?
+## What range of temperatures do house sparrows live in?
 
 We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is `raster::extract`. The same can be used within `tidyverse` via `mutate`.
-
-```{marginfigure}
-`method = "bilinear"` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.
-```
 
 ```{r}
 # Get temp
@@ -163,6 +156,8 @@ bird_temps <- cbind(bird_points, temps)
 bird_temps <- bird_temps[!is.na(bird_temps$temps),]
 ```
 
+`method = "bilinear"` tells the function to interpolate the average of the nearest 4 cells around the spatial point. This is like a mini version of `buffer` which will interpolate values within a buffer around a point. If spatial accuracy is not paramount (like here where we have a global scale raster), then this method might reduce the chance of extracting a `NA` value. The default is to query the exact coordinate.
+
 Our final dataset contains `r nrow(bird_temps)` observations.
 
 Missing data at this stage could be from a mismatch between the accuracy of the spatial points and the resolution of the raster. Or plain errors in the spatial coordinates.
@@ -170,7 +165,7 @@ Missing data at this stage could be from a mismatch between the accuracy of the 
 Now we can plot the distribution of temperatures:
 
 ```{r}
-hist(bird_temps$temps, main = "Temperature distribution of house sparrow")
+hist(bird_temps$temps, main = "Temperature distribution of house sparrows")
 ```
 
 We can see they live between `r round(min(bird_temps$temps),1)` and `r round(max(bird_temps$temps),1)` &deg;C.
