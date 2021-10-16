@@ -15,7 +15,7 @@ image:
 projects: [NERD-club]
 ---
 
-NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version can be found on the [Project](project/NERD-club/) page. 
+NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version, which uses a marine example, can be found on the [Project](project/NERD-club/) page. 
 
 # Introduction
 
@@ -25,7 +25,7 @@ Rasters are stored spatial data in a gridded format.
 
 - Each grid cell contains a single value. E.g. temperature, elevation, species richness
 - Often stored in three dimensions (e.g. latitude, longitude and time).
-- The main `R` package for handling rasters is `raster`. It's a base package.
+- The main `R` package for handling rasters is `raster`.
 
 We will consider a common workflow of associating rasters with spatial point data (e.g. lat and long). 
 I will be sticking to base R throughout.
@@ -96,13 +96,14 @@ Let's query GBIF occurrence points for an widespread bird: The house sparrow (*P
 
 * You need the unique identification key for the species you want. `name_suggest` can help with that so you don't have to manually search GBIF.
 * The data comes as a list with some metadata. `.$data` is the actual occurrence records. The dot `.` is a placeholder meaning it represents an R variable (e.g. a dataframe). This is commonly used in `tidyverse` and piping via `magrittr`. It is also a cheat's way of using base functions within a pipe.
-* Co-ordinates are stored as `decimalLatitude` and `decimalLongitude`. I've removed any missing values.
+* Co-ordinates are stored as `decimalLatitude` and `decimalLongitude`. I've removed any missing values manually but `occ_search` has a variable called `hasCoordinate` to return records with lat/long data.
+* `rgbif` gets a max 500 records each time by default (`limit`). Use `page` to denote which record number to start at.
 
 ```{r}
 library(rgbif)
 # get ID key for bird
 bird_key <- name_suggest(q ="Passer domesticus", rank='species')$data$key[1]
-# get occurence points
+# get occurrence points
 bird_points <- occ_search(taxonKey = bird_key) # Get all records, max 500 (see variable limit)
 # exclude metadata
 bird_points <- bird_points$data
@@ -124,7 +125,7 @@ points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plo
 legend(x = -150, y= -50, legend = "occurence", pch = 16, col = 2, bty = "n")
 ```
 
-We see that points come mainly from around northern Europe.
+We see that the 500 points from GBIF come mainly from around northern Europe. Here is a good point to check for sampling bias of points or any potential erroneous points - I will ignore this step for this demonstration.
 
 For more advanced mapping in R check out `ggmaps`, which can interface with Open Street Maps (free) and Google Maps (for a fee), and `osmdata`, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or [online](https://jacintak.github.io/post/2021-07-01-OSM-in-R/).
 
@@ -145,7 +146,7 @@ Let's do some simple extraction of data.
 
 ## What range of temperatures do house sparrows live in?
 
-We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is `raster::extract`. The same can be used within `tidyverse` via `mutate`.
+We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is `raster::extract`. The same can be used within `tidyverse::mutate`.
 
 ```{r}
 # Get temp
@@ -168,7 +169,7 @@ Now we can plot the distribution of temperatures:
 hist(bird_temps$temps, main = "Temperature distribution of house sparrows")
 ```
 
-We can see they live between `r round(min(bird_temps$temps),1)` and `r round(max(bird_temps$temps),1)` &deg;C.
+We can see they live between `r round(min(bird_temps$temps),1)` and `r round(max(bird_temps$temps),1)` &deg;C, which here reflects the fact that all the points were sampled from northern Europe.
 
 Finally, we can plot the relationship between temperature and latitude:
 
