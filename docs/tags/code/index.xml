@@ -5,12 +5,120 @@
     <link>https://jacintak.github.io/tags/code/</link>
       <atom:link href="https://jacintak.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
     <description>code</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>code</title>
       <link>https://jacintak.github.io/tags/code/</link>
     </image>
+    
+    <item>
+      <title>Gifs keep on giving</title>
+      <link>https://jacintak.github.io/post/2021-11-01-gifs-in-r/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/2021-11-01-gifs-in-r/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/post/2021-11-01-gifs-in-r/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+I love gifs.&lt;br /&gt;
+
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://media.giphy.com/media/FMhaQAQyv0xwc/giphy.gif&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Gifs are great for showing how data changes over time or just for putting something engaging in a presentation. When I was working on modelling insect phenology I wanted to create a gif of how insects hatch throughout the year across Australia for my presentations. Making gifs in R has improved a little since then so here’s a quick guide to making gifs. I won’t cover interactive plots (e.g. &lt;code&gt;plotly&lt;/code&gt;).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;looping-through-images&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Looping through images&lt;/h1&gt;
+&lt;p&gt;Basically this involves making lots of png images then looping through them. The package is &lt;code&gt;animation&lt;/code&gt; which depends on ImageMagick so you will need to install ImageMagick first. I’ve found it handy for sequentially showings layers of a raster (e.g. where each layer is data over time).&lt;/p&gt;
+&lt;p&gt;Make sure to install legacy functions when installing ImageMagick (e.g. convert). You may need to tell R where to find ImageMagick using &lt;code&gt;ani.options(convert = &#39;C:/ImageMagick-7.0.9-Q16/convert.exe&#39;)&lt;/code&gt; for where ever ImageMagick was installed.&lt;/p&gt;
+&lt;p&gt;Let’s pretend we have a raster of soil temperature for one day where each layer (n = 24) is an hour of a day (&lt;code&gt;soil_temp&lt;/code&gt;), like a raster from &lt;a href=&#34;https://onlinelibrary.wiley.com/doi/10.1111/aec.12689&#34;&gt;microclimOz&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We need to create our loop, then we can use &lt;code&gt;animation::saveGIF&lt;/code&gt; to save our image.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(animation)
+library(raster)
+pal &amp;lt;- terrain.colors(10, rev = TRUE)
+bre &amp;lt;- round(seq(min(minValue(soil_temp))-1,max(maxValue(soil_temp))+1,length.out=10))
+saveGIF({
+for(i in 1:24){plot(soil_temp[[i]], main = i, col = pal, breaks = bre)}
+}, movie.name = &amp;quot;soil_temp.gif&amp;quot;, clean=T, convert = &amp;quot;convert&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;soil_temp.gif&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To make sure the colour scale is consistent throughout the loop:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I’ve defined a fixed colour scale (&lt;code&gt;pal&lt;/code&gt;) using the base palette &lt;code&gt;terrain.colours&lt;/code&gt; and reversed the scale so that higher temperatures are green. Note that the terrain colour palette isn’t great for colour blindness.&lt;/li&gt;
+&lt;li&gt;I’ve created my own colour scale (&lt;code&gt;bre&lt;/code&gt;) by manually defining the breaks in the colour scale based on the minimum and maximum temperatures in the entire raster dataset. Plus some wiggle room on either side.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If I didn’t manually define the colour scale, then each image in the gif will use its own automatically generated scale and the colours will be inconsistent.&lt;/p&gt;
+&lt;p&gt;Note the use of curly brackets to call an independent line of &lt;code&gt;R&lt;/code&gt; code within code (the loop within &lt;code&gt;saveGIF&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The benefit of &lt;code&gt;animation&lt;/code&gt; is that it works with any type of image in R and is basically a wrapper for ImageMagick, unlike &lt;code&gt;gganimate&lt;/code&gt;. You could also use ImageMagick in the command line.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gradually-showing-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Gradually showing data&lt;/h1&gt;
+&lt;p&gt;This is easily done using &lt;code&gt;ggplot2&lt;/code&gt; and &lt;code&gt;gganimate&lt;/code&gt;. ImageMagick isn’t needed (a different engine is used) but this method is limited to &lt;code&gt;ggplot&lt;/code&gt; objects.&lt;/p&gt;
+&lt;p&gt;I have some &lt;a href=&#34;https://jacintakongresearch.wordpress.com/2020/10/17/measuring-the-mammalian-diving-reflex-with-apple-watch/&#34;&gt;heart rate data demonstrating the mammalian diving reflex&lt;/a&gt; that I will use as an example. I imported the data from my Apple Watch into R that you can read about at the link. Then, I made a gif for my lectures using &lt;code&gt;gganimate&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(gganimate) # loading just gganimate will also load ggplot2 for you
+library(tidyverse)
+
+hr_plot &amp;lt;- heart_rate %&amp;gt;%
+          filter(time &amp;gt; &amp;quot;2020-10-17 11:00:34&amp;quot; &amp;amp; time &amp;lt; &amp;quot;2020-10-17 11:13:00&amp;quot;) %&amp;gt;% 
+  ggplot(aes(time, value)) +
+  # Dive 1
+  annotate(&amp;quot;rect&amp;quot;, fill = &amp;quot;lightgrey&amp;quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&amp;quot;2020-10-17 11:05:00&amp;quot;), xmax = as.POSIXct(&amp;quot;2020-10-17 11:05:30&amp;quot;),
+           ymin = -Inf, ymax = Inf) +
+  # Dive 2
+  annotate(&amp;quot;rect&amp;quot;, fill = &amp;quot;lightgrey&amp;quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&amp;quot;2020-10-17 11:07:12&amp;quot;), xmax = as.POSIXct(&amp;quot;2020-10-17 11:07:50&amp;quot;),
+           ymin = -Inf, ymax = Inf) +
+  geom_point(aes(group = seq_along(time))) +
+  geom_line() +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;Dives&amp;quot;, x = as.POSIXct(&amp;quot;2020-10-17 11:10&amp;quot;), y = 75) +
+  annotate(&amp;quot;rect&amp;quot;, fill = &amp;quot;lightgrey&amp;quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&amp;quot;2020-10-17 11:10:40&amp;quot;), xmax = as.POSIXct(&amp;quot;2020-10-17 11:11:10&amp;quot;),
+           ymin = 73, ymax = 77) +
+  theme_classic() +
+  labs(x = &amp;quot;Time&amp;quot;, y = expression(&amp;quot;Heart rate &amp;quot;(&amp;quot;Beats min&amp;quot;^-1))) +
+  scale_x_datetime() + # time is already a POSIXct format
+  ylim(c(50, 125)) +
+  transition_reveal(time) +
+  enter_fade()
+
+animate(plot = hr_plot,
+  nframes = 100,
+  fps = 10,
+  end_pause = 10,
+  height = 600, width =600, res = 100)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I’ve split this into two parts. Lets break this down:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Make the heart rate graph (&lt;code&gt;hr_plot&lt;/code&gt;). My heart rate data is saved in a variable called &lt;code&gt;heart_rate&lt;/code&gt;.
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;I have trimmed the data (&lt;code&gt;dplyr::filter&lt;/code&gt;) then plotted heart rate over time (lines and points).&lt;/li&gt;
+&lt;li&gt;I have annotated the graph with grey rectangles (&lt;code&gt;annotate(&#34;rect&#34;)&lt;/code&gt;) to indicate diving periods.&lt;/li&gt;
+&lt;li&gt;I created a legend using &lt;code&gt;annotate&lt;/code&gt; for text and another little grey rectangle.&lt;/li&gt;
+&lt;li&gt;Used &lt;code&gt;expression&lt;/code&gt; for scientific notation in my axis labels.&lt;/li&gt;
+&lt;li&gt;Formatted the x axis as a date time axis (&lt;code&gt;scale_x_datetime&lt;/code&gt;). Not critical here.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transition_reveal&lt;/code&gt; and &lt;code&gt;enter_fade&lt;/code&gt; are &lt;code&gt;gganimate&lt;/code&gt; functions that describe how the data is revealed. Here I’m saying reveal along the x axis. This may take some time to render when you call the plot.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;animate&lt;/code&gt; is the main function to create the animation.
+&lt;ul&gt;
+&lt;li&gt;I defined the number of frames, the speed (frames per second), how long to pause the gif at the last frame, and the dimensions.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;anim_save&lt;/code&gt; to save your gif.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+Here’s proof I am a mammal:
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;featured.gif&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;There are other types of transitions included in &lt;code&gt;gganimate&lt;/code&gt;. There is a handy &lt;a href=&#34;https://www.rstudio.com/resources/cheatsheets/&#34;&gt;cheatsheet&lt;/a&gt; too.&lt;/p&gt;
+&lt;hr /&gt;
+Happy animating!&lt;br /&gt;
+
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://media.giphy.com/media/1CrejqXxVZs9q/giphy.gif&#34; /&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>An introduction to spatial data in R</title>

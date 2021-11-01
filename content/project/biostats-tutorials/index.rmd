@@ -33,7 +33,7 @@ We need to set up our computer to start using tutorials in R.
 Follow this checklist in order to make sure you are set up:
 
 1. Have you installed R version 4.0 or above? - if not, install/update R
-    * You can check your R package version using `R.version()$version.string`
+    * You can check your R package version using `R.Version()$version.string`
 2. Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
     * You can check your RStudio version using `RStudio.Version()$version`
 3. Have you installed the following packages? - if not use `install.packages()` to do so
@@ -41,7 +41,7 @@ Follow this checklist in order to make sure you are set up:
     * `remotes` (or `devtools`) - needed to install the tutorials
     * `rmarkdown` - for displaying content
 
-If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History) 
+If everything works then you should see a Tutorials tab in one of your RStudio windows. There may already be tutorials listed there.
 
 ***
 
@@ -51,10 +51,12 @@ Now we need to install the tutorial. The tutorials are stored in a Package avail
 Use the following code:
 
 ```
-remotes::install_github("jacintak/biostats", dependencies = TRUE)
+remotes::install_github("jacintak/biostats", dependencies = TRUE, build_vignettes = TRUE)
 ```
 
-If you are asked to install any other packages, choose yes but don't do any compiling (press no if asked).  
+If you are asked to install any other packages, choose yes.  
+If you are asked to update any packages, press `1` for updating all of them.  
+If you are asked to install packages from source (i.e. in a pop-up window) press no.  
 If the package installed properly, you should automatically see the tutorials in the Tutorial tab.
 
 ***
@@ -66,7 +68,7 @@ Make sure it's a tutorial from the `biostats.tutorials` package.
 
 If you click run tutorial, the tutorial will show up in the tab. You can click the "Show in new window" icon to open it in another window. Press the "Home" icon to return to the Tutorials tab.  
 
-If that doesn't work use this code and the tutorial will open in another window:
+If that doesn't work use this code and the tutorial will open in another window or your browser:
 
 ```
 learnr::run_tutorial("<insert name of the tutorial to run>", package = "biostats.tutorials")

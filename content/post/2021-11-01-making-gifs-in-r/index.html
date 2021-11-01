@@ -1,0 +1,121 @@
+---
+title: Gifs keep on giving
+author: admin
+date: '2021-11-01'
+slug: 2021-11-01-gifs-in-r
+categories: [code]
+tags: [R stats, code]
+subtitle: 'Two ways of making gifs in R using {animation} and {gganimate}'
+summary: 'Two ways of making gifs in R using {animation} and {gganimate}'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+editor_options: 
+  chunk_output_type: console
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+I love gifs.<br />
+
+<p align="center">
+<img src="https://media.giphy.com/media/FMhaQAQyv0xwc/giphy.gif" />
+</p>
+<p>Gifs are great for showing how data changes over time or just for putting something engaging in a presentation. When I was working on modelling insect phenology I wanted to create a gif of how insects hatch throughout the year across Australia for my presentations. Making gifs in R has improved a little since then so here’s a quick guide to making gifs. I won’t cover interactive plots (e.g. <code>plotly</code>).</p>
+<hr />
+<div id="looping-through-images" class="section level1">
+<h1>Looping through images</h1>
+<p>Basically this involves making lots of png images then looping through them. The package is <code>animation</code> which depends on ImageMagick so you will need to install ImageMagick first. I’ve found it handy for sequentially showings layers of a raster (e.g. where each layer is data over time).</p>
+<p>Make sure to install legacy functions when installing ImageMagick (e.g. convert). You may need to tell R where to find ImageMagick using <code>ani.options(convert = 'C:/ImageMagick-7.0.9-Q16/convert.exe')</code> for where ever ImageMagick was installed.</p>
+<p>Let’s pretend we have a raster of soil temperature for one day where each layer (n = 24) is an hour of a day (<code>soil_temp</code>), like a raster from <a href="https://onlinelibrary.wiley.com/doi/10.1111/aec.12689">microclimOz</a>.</p>
+<p>We need to create our loop, then we can use <code>animation::saveGIF</code> to save our image.</p>
+<pre><code>library(animation)
+library(raster)
+pal &lt;- terrain.colors(10, rev = TRUE)
+bre &lt;- round(seq(min(minValue(soil_temp))-1,max(maxValue(soil_temp))+1,length.out=10))
+saveGIF({
+for(i in 1:24){plot(soil_temp[[i]], main = i, col = pal, breaks = bre)}
+}, movie.name = &quot;soil_temp.gif&quot;, clean=T, convert = &quot;convert&quot;)</code></pre>
+<p><img src="soil_temp.gif" /></p>
+<p>To make sure the colour scale is consistent throughout the loop:</p>
+<ul>
+<li>I’ve defined a fixed colour scale (<code>pal</code>) using the base palette <code>terrain.colours</code> and reversed the scale so that higher temperatures are green. Note that the terrain colour palette isn’t great for colour blindness.</li>
+<li>I’ve created my own colour scale (<code>bre</code>) by manually defining the breaks in the colour scale based on the minimum and maximum temperatures in the entire raster dataset. Plus some wiggle room on either side.</li>
+</ul>
+<p>If I didn’t manually define the colour scale, then each image in the gif will use its own automatically generated scale and the colours will be inconsistent.</p>
+<p>Note the use of curly brackets to call an independent line of <code>R</code> code within code (the loop within <code>saveGIF</code>).</p>
+<p>The benefit of <code>animation</code> is that it works with any type of image in R and is basically a wrapper for ImageMagick, unlike <code>gganimate</code>. You could also use ImageMagick in the command line.</p>
+<hr />
+</div>
+<div id="gradually-showing-data" class="section level1">
+<h1>Gradually showing data</h1>
+<p>This is easily done using <code>ggplot2</code> and <code>gganimate</code>. ImageMagick isn’t needed (a different engine is used) but this method is limited to <code>ggplot</code> objects.</p>
+<p>I have some <a href="https://jacintakongresearch.wordpress.com/2020/10/17/measuring-the-mammalian-diving-reflex-with-apple-watch/">heart rate data demonstrating the mammalian diving reflex</a> that I will use as an example. I imported the data from my Apple Watch into R that you can read about at the link. Then, I made a gif for my lectures using <code>gganimate</code>:</p>
+<pre><code>library(gganimate) # loading just gganimate will also load ggplot2 for you
+library(tidyverse)
+
+hr_plot &lt;- heart_rate %&gt;%
+          filter(time &gt; &quot;2020-10-17 11:00:34&quot; &amp; time &lt; &quot;2020-10-17 11:13:00&quot;) %&gt;% 
+  ggplot(aes(time, value)) +
+  # Dive 1
+  annotate(&quot;rect&quot;, fill = &quot;lightgrey&quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&quot;2020-10-17 11:05:00&quot;), xmax = as.POSIXct(&quot;2020-10-17 11:05:30&quot;),
+           ymin = -Inf, ymax = Inf) +
+  # Dive 2
+  annotate(&quot;rect&quot;, fill = &quot;lightgrey&quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&quot;2020-10-17 11:07:12&quot;), xmax = as.POSIXct(&quot;2020-10-17 11:07:50&quot;),
+           ymin = -Inf, ymax = Inf) +
+  geom_point(aes(group = seq_along(time))) +
+  geom_line() +
+  annotate(&quot;text&quot;, label = &quot;Dives&quot;, x = as.POSIXct(&quot;2020-10-17 11:10&quot;), y = 75) +
+  annotate(&quot;rect&quot;, fill = &quot;lightgrey&quot;, alpha = 0.7, 
+           xmin = as.POSIXct(&quot;2020-10-17 11:10:40&quot;), xmax = as.POSIXct(&quot;2020-10-17 11:11:10&quot;),
+           ymin = 73, ymax = 77) +
+  theme_classic() +
+  labs(x = &quot;Time&quot;, y = expression(&quot;Heart rate &quot;(&quot;Beats min&quot;^-1))) +
+  scale_x_datetime() + # time is already a POSIXct format
+  ylim(c(50, 125)) +
+  transition_reveal(time) +
+  enter_fade()
+
+animate(plot = hr_plot,
+  nframes = 100,
+  fps = 10,
+  end_pause = 10,
+  height = 600, width =600, res = 100)</code></pre>
+<p>I’ve split this into two parts. Lets break this down:</p>
+<ol style="list-style-type: decimal">
+<li>Make the heart rate graph (<code>hr_plot</code>). My heart rate data is saved in a variable called <code>heart_rate</code>.
+<ol style="list-style-type: lower-alpha">
+<li>I have trimmed the data (<code>dplyr::filter</code>) then plotted heart rate over time (lines and points).</li>
+<li>I have annotated the graph with grey rectangles (<code>annotate("rect")</code>) to indicate diving periods.</li>
+<li>I created a legend using <code>annotate</code> for text and another little grey rectangle.</li>
+<li>Used <code>expression</code> for scientific notation in my axis labels.</li>
+<li>Formatted the x axis as a date time axis (<code>scale_x_datetime</code>). Not critical here.</li>
+<li><code>transition_reveal</code> and <code>enter_fade</code> are <code>gganimate</code> functions that describe how the data is revealed. Here I’m saying reveal along the x axis. This may take some time to render when you call the plot.</li>
+</ol></li>
+<li><code>animate</code> is the main function to create the animation.
+<ul>
+<li>I defined the number of frames, the speed (frames per second), how long to pause the gif at the last frame, and the dimensions.</li>
+<li>Use <code>anim_save</code> to save your gif.</li>
+</ul></li>
+</ol>
+Here’s proof I am a mammal:
+<p align="center">
+<img src="featured.gif" />
+</p>
+<p>There are other types of transitions included in <code>gganimate</code>. There is a handy <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> too.</p>
+<hr />
+Happy animating!<br />
+
+<p align="center">
+<img src="https://media.giphy.com/media/1CrejqXxVZs9q/giphy.gif" />
+</p>
+</div>
