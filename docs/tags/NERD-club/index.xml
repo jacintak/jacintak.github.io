@@ -250,6 +250,21 @@ dark_map +
 &lt;p&gt;This is a walkthrough of a basic workflow for working with spatial data and rasters in R. Specifically loading a raster, plotting a raster and extracting information from rasters. I use &lt;code&gt;rgbif&lt;/code&gt; to get species occurrence records from GBIF and extract temperature data from a raster of global temperatures. A blog post version is &lt;a href=&#34;https://jacintak.github.io/post/spatial-data/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;HTML: &lt;a class=&#34;fas fa-file&#34; href=&#34;https://jacintak.github.io/Rasters_SpaceClub_06102021&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
+&lt;div id=&#34;fundamental-linear-regression-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fundamental linear regression in &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;This is a short presentation showing some of the basic features of linear regression in &lt;code&gt;R&lt;/code&gt; using &lt;code&gt;lm&lt;/code&gt; including: ANOVA tables, &lt;code&gt;summary&lt;/code&gt; and residual plots.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/20Oct2021_linear_models.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-selection-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model selection in &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;An introduction to model parsimony and basic ways of selecting linear models and predictor variables.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/16Feb2022_Model_Selection.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fundamental-linear-regression-assumptions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fundamental linear regression assumptions&lt;/h2&gt;
+&lt;p&gt;A run through the fundamental assumptions linear regression in &lt;code&gt;R&lt;/code&gt; using &lt;code&gt;lm&lt;/code&gt; based on residual plots.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/16Mar2021_Stats_Assumptions.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

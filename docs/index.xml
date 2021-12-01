@@ -5,12 +5,93 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>Statistical Modelling Practicals</title>
+      <link>https://jacintak.github.io/project/statistical-modelling/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/statistical-modelling/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/project/statistical-modelling/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;StatsModels&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot.&lt;/p&gt;
+&lt;p&gt;The aim of the practicals is to introduce statistical modelling. It uses functional responses (i.e. Type II models, Holling’s disc equation) as background information.&lt;/p&gt;
+&lt;p&gt;There are two parts to the practical:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Introduction to statistical modelling
+&lt;ul&gt;
+&lt;li&gt;Constructing a Type II model&lt;/li&gt;
+&lt;li&gt;Designing an experiment&lt;/li&gt;
+&lt;li&gt;Collecting data&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Data analysis using statistical models in &lt;code&gt;R&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Importing data&lt;/li&gt;
+&lt;li&gt;Manipulating data&lt;/li&gt;
+&lt;li&gt;Conducting multiple linear regression&lt;/li&gt;
+&lt;li&gt;Visualising data&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 requires students collect data by replicating Holling’s disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using both additive and interactive multiple linear regression. Simple linear regressions (with one predictor variable) are not covered for time constraints.&lt;/p&gt;
+&lt;div id=&#34;remote-version&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Remote version&lt;/h2&gt;
+&lt;p&gt;It is possible to adapt this in-person practical to a remote version by getting students to collect data using a Scratch simulation of a Type II functional response. I have a Scratch model of one.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Set up&lt;/h1&gt;
+&lt;p&gt;We need to set up our computer to download the practical in R.&lt;/p&gt;
+&lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
+&lt;ul&gt;
+&lt;li&gt;You can check your R package version using &lt;code&gt;R.Version()$version.string&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
+&lt;ul&gt;
+&lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages(&#34;&amp;lt;name of package&amp;gt;&#34;)&lt;/code&gt; to do so
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; - needed to install the tutorials&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows. There may already be tutorials listed there.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
+&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
+Use the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE, build_vignettes = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you are asked to install any other packages, choose yes.&lt;br /&gt;
+If you are asked to update any packages, press &lt;code&gt;1&lt;/code&gt; for updating all of them.&lt;br /&gt;
+If you are asked to install packages from source (i.e. in a pop-up window) press no.&lt;br /&gt;
+If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running a tutorial&lt;/h1&gt;
+&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
+Make sure it’s a tutorial from the &lt;code&gt;StatsModels&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
+&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window or your browser:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;StatsModels&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Gifs keep on giving</title>
@@ -1541,6 +1622,21 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
 &lt;p&gt;This is a walkthrough of a basic workflow for working with spatial data and rasters in R. Specifically loading a raster, plotting a raster and extracting information from rasters. I use &lt;code&gt;rgbif&lt;/code&gt; to get species occurrence records from GBIF and extract temperature data from a raster of global temperatures. A blog post version is &lt;a href=&#34;https://jacintak.github.io/post/spatial-data/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;HTML: &lt;a class=&#34;fas fa-file&#34; href=&#34;https://jacintak.github.io/Rasters_SpaceClub_06102021&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
+&lt;div id=&#34;fundamental-linear-regression-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fundamental linear regression in &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;This is a short presentation showing some of the basic features of linear regression in &lt;code&gt;R&lt;/code&gt; using &lt;code&gt;lm&lt;/code&gt; including: ANOVA tables, &lt;code&gt;summary&lt;/code&gt; and residual plots.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/20Oct2021_linear_models.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-selection-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model selection in &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;An introduction to model parsimony and basic ways of selecting linear models and predictor variables.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/16Feb2022_Model_Selection.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fundamental-linear-regression-assumptions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fundamental linear regression assumptions&lt;/h2&gt;
+&lt;p&gt;A run through the fundamental assumptions linear regression in &lt;code&gt;R&lt;/code&gt; using &lt;code&gt;lm&lt;/code&gt; based on residual plots.&lt;/p&gt;
+&lt;p&gt;PDF: &lt;a class=&#34;fas fa-file-pdf&#34; href=&#34;https://jacintak.github.io/files/16Mar2021_Stats_Assumptions.pdf&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -2410,49 +2506,8 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Set up&lt;/h1&gt;
-&lt;p&gt;We need to set up our computer to start using tutorials in R.&lt;/p&gt;
-&lt;p&gt;Follow this checklist in order to make sure you are set up:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Have you installed R version 4.0 or above? - if not, install/update R
-&lt;ul&gt;
-&lt;li&gt;You can check your R package version using &lt;code&gt;R.version()$version.string&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
-&lt;ul&gt;
-&lt;li&gt;You can check your RStudio version using &lt;code&gt;RStudio.Version()$version&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Have you installed the following packages? - if not use &lt;code&gt;install.packages()&lt;/code&gt; to do so
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;learnr&lt;/code&gt; - needed to run the tutorials&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;remotes&lt;/code&gt; (or &lt;code&gt;devtools&lt;/code&gt;) - needed to install the tutorials&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;knitr&lt;/code&gt; - for displaying content&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If everything works then you should see a Tutorials tab in one of your RStudio windows (perhaps next to Environment and History)&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;installing-the-tutorials&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Installing the tutorials&lt;/h1&gt;
-&lt;p&gt;Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.&lt;br /&gt;
-Use the following code:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;jacintak/biostats&amp;quot;, dependencies = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you are asked to install any other packages, choose yes but don’t do any compiling (press no if asked).&lt;br /&gt;
-If the package installed properly, you should automatically see the tutorials in the Tutorial tab.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;div id=&#34;running-a-tutorial&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Running a tutorial&lt;/h1&gt;
-&lt;p&gt;You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.&lt;br /&gt;
-Make sure it’s a tutorial from the &lt;code&gt;biostats.tutorials&lt;/code&gt; package.&lt;/p&gt;
-&lt;p&gt;If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.&lt;/p&gt;
-&lt;p&gt;If that doesn’t work use this code and the tutorial will open in another window:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;learnr::run_tutorial(&amp;quot;&amp;lt;insert name of the tutorial to run&amp;gt;&amp;quot;, package = &amp;quot;biostats.tutorials&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If neither works, check that the &lt;code&gt;biostats.tutorials&lt;/code&gt; package installed properly.&lt;/p&gt;
-&lt;p&gt;Quit a tutorial by pressing the “Stop” icon.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt; at an undergraduate level.&lt;/p&gt;
+&lt;p&gt;The package is still in development so stay tuned for updates. You can checkout various tutorials about using R for NERD club (postgraduates and staff) at Trinity College Dublin &lt;a href=&#34;https://jacintak.github.io/project/NERD-club/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

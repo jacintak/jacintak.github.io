@@ -1,0 +1,89 @@
+---
+title: Statistical Modelling Practicals
+date: "2021-12-01"
+external_link:
+image:
+  caption: 
+  focal_point: Smart
+links: 
+summary: Learning statitical modelling with functional responses
+tags:
+- teaching
+- R stats
+- code
+url_code: "https://github.com/jacintak/biostats"
+
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><code>StatsModels</code> is an <code>R</code> package of <code>learnr</code> tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot.</p>
+<p>The aim of the practicals is to introduce statistical modelling. It uses functional responses (i.e. Type II models, Holling’s disc equation) as background information.</p>
+<p>There are two parts to the practical:</p>
+<ol style="list-style-type: decimal">
+<li>Introduction to statistical modelling
+<ul>
+<li>Constructing a Type II model</li>
+<li>Designing an experiment</li>
+<li>Collecting data</li>
+</ul></li>
+<li>Data analysis using statistical models in <code>R</code>
+<ul>
+<li>Importing data</li>
+<li>Manipulating data</li>
+<li>Conducting multiple linear regression</li>
+<li>Visualising data</li>
+</ul></li>
+</ol>
+<p>Part 1 requires students collect data by replicating Holling’s disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using both additive and interactive multiple linear regression. Simple linear regressions (with one predictor variable) are not covered for time constraints.</p>
+<div id="remote-version" class="section level2">
+<h2>Remote version</h2>
+<p>It is possible to adapt this in-person practical to a remote version by getting students to collect data using a Scratch simulation of a Type II functional response. I have a Scratch model of one.</p>
+<hr />
+</div>
+</div>
+<div id="set-up" class="section level1">
+<h1>Set up</h1>
+<p>We need to set up our computer to download the practical in R.</p>
+<p>Follow this checklist in order to make sure you are set up:</p>
+<ol style="list-style-type: decimal">
+<li>Have you installed R version 4.0 or above? - if not, install/update R
+<ul>
+<li>You can check your R package version using <code>R.Version()$version.string</code></li>
+</ul></li>
+<li>Have you installed RStudio version 1.0.136 or above? - if not install/update RStudio
+<ul>
+<li>You can check your RStudio version using <code>RStudio.Version()$version</code></li>
+</ul></li>
+<li>Have you installed the following packages? - if not use <code>install.packages("&lt;name of package&gt;")</code> to do so
+<ul>
+<li><code>learnr</code> - needed to run the tutorials</li>
+<li><code>remotes</code> - needed to install the tutorials</li>
+</ul></li>
+</ol>
+<p>If everything works then you should see a Tutorials tab in one of your RStudio windows. There may already be tutorials listed there.</p>
+<hr />
+</div>
+<div id="installing-the-tutorials" class="section level1">
+<h1>Installing the tutorials</h1>
+<p>Now we need to install the tutorial. The tutorials are stored in a Package available on GitHub. You will only have to install the package once at the beginning.<br />
+Use the following code:</p>
+<pre><code>remotes::install_github(&quot;jacintak/biostats&quot;, dependencies = TRUE, build_vignettes = TRUE)</code></pre>
+<p>If you are asked to install any other packages, choose yes.<br />
+If you are asked to update any packages, press <code>1</code> for updating all of them.<br />
+If you are asked to install packages from source (i.e. in a pop-up window) press no.<br />
+If the package installed properly, you should automatically see the tutorials in the Tutorial tab.</p>
+<hr />
+</div>
+<div id="running-a-tutorial" class="section level1">
+<h1>Running a tutorial</h1>
+<p>You should be able to run a tutorial from the Tutorial tab when you open RStudio without needing to do anything.<br />
+Make sure it’s a tutorial from the <code>StatsModels</code> package.</p>
+<p>If you click run tutorial, the tutorial will show up in the tab. You can click the “Show in new window” icon to open it in another window. Press the “Home” icon to return to the Tutorials tab.</p>
+<p>If that doesn’t work use this code and the tutorial will open in another window or your browser:</p>
+<pre><code>learnr::run_tutorial(&quot;&lt;insert name of the tutorial to run&gt;&quot;, package = &quot;StatsModels&quot;)</code></pre>
+<p>Quit a tutorial by pressing the “Stop” icon.</p>
+</div>

@@ -43,3 +43,13 @@ HTML: <a class="fas fa-file" href="/Rasters_SpaceClub_06102021"></a>
 This is a short presentation showing some of the basic features of linear regression in `R` using `lm` including: ANOVA tables, `summary` and residual plots.
 
 PDF: <a class="fas fa-file-pdf" href="/files/20Oct2021_linear_models.pdf"></a>
+
+## Model selection in `R`
+An introduction to model parsimony and basic ways of selecting linear models and predictor variables.  
+
+PDF: <a class="fas fa-file-pdf" href="/files/16Feb2022_Model_Selection.pdf"></a>
+
+## Fundamental linear regression assumptions
+A run through the fundamental assumptions linear regression in `R` using `lm` based on residual plots.
+
+PDF: <a class="fas fa-file-pdf" href="/files/16Mar2021_Stats_Assumptions.pdf"></a>

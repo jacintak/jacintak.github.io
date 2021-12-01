@@ -58,7 +58,7 @@ date_format = "Jan 2006"
   description = "Predicting ectothem life cycles: Physiological diversity of egg development and its ecological implications"
 
 [[experience]]
-  title = "BSc(Hons I) in Zoology"
+  title = "BSc(Hons I) in Zoology (University Medal)"
   company = "University of Queensland"
   company_url = ""
   location = "University of Queensland, Australia"

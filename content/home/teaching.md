@@ -35,8 +35,9 @@ I teach into third year Zoology and second year Biostatistics.
 
 * [Setting up R & RStudio](/teaching/introR)
 * Statistical modelling [notes](/teaching/GLM/lectures)
+* Practicals on statistical modelling using functional responses. Made in `learnr` - see [Project page](/project/statistical-modelling).
 
 ## Other
 
 * Guide to [R/exams](/teaching/rexams)
-* `learnr` tutorials about biostats - see [Projects](/project/biostats-tutorials).
+* `learnr` tutorials for introductory biostats - see [Project page](/project/biostats-tutorials).
