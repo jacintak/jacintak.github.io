@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://jacintak.github.io/teaching/introR/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jacintak.github.io/project/statistical-modelling/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url>
@@ -34,6 +39,11 @@
   
   <url>
     <loc>https://jacintak.github.io/tags/teaching/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacintak.github.io/teaching/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -65,16 +75,6 @@
   <url>
     <loc>https://jacintak.github.io/post/purrr/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/teaching/introR/</loc>
-    <lastmod>2021-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacintak.github.io/teaching/</loc>
-    <lastmod>2021-08-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
