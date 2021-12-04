@@ -1,0 +1,55 @@
+---
+title: December update
+author: admin
+date: '2021-12-01'
+categories:
+tags: 
+ - teaching
+ - R stats
+ - code
+ - conference
+ - github
+summary: 'Made it to the end of the year.'
+---
+
+# End of the year!
+
+The work-from-home go-in-to-work and back again switching meant I didn't have time to write the post I originally intended. But this month I've made some updates around the site plus some general end of year housekeeping here on GitHub.
+
+***
+
+# Research
+
+It's been a busy year including many firsts or personal records. I "attended" three conferences, wrote my first independent collaborative paper, submitted many papers, got many rejections, applied for jobs and reviewed many papers. I was pleasantly surprised to see my research mentioned in people's conference presentations. Thank you for reading!
+
+***
+
+# Teaching
+
+I've updated the teaching materials on the site. 
+
+Over the course of the year, I've turned various tutorials I ran for NERD club into blog posts on this site and collated them on a [Project page](/project/NERD-club) with their original presentations. I'm glad that some people have found them useful.
+
+At the moment I'm not sure what I want to do with the [GLM course notes](/teaching/GLM/lectures/index.html) on the site. With an update, they may be useful to some, but I revamped my lectures this year, so these notes don't follow the lectures. I'm still not sure what the best balance of teaching stats is. Too many additional resources seem overwhelming to students especially with remote learning so this year I went for the less is more approach. At the very least, creating the resource was a good opportunity to try out `bookdown` and figure out how to integrate it within a `blogdown` site.
+
+I've updated an [Introduction to R](/teaching/introR/index.html) with how to change the default library address because I noticed that the user library folder created in Documents was syncing to OneDrive for many students using Windows 10. This is a feature of using a Microsoft account but it means there are then issues between R accessing the user library and OneDrive syncing the folder. This becomes a prominent issue if you are running a session that depends on many packages.
+
+This feature is frustrating because I don't expect students to need to delve into Control Panel and change their computer settings. I don't expect them to *know* how to do it and it only adds to their stress when they get package related errors during class. Does the younger generation even know what the Control Panel is and how to modify it? It defeats the point of Windows becoming more user friendly. In terms of user friendliness, it would be great if changing the default package folder was an option through the RStudio GUI.
+
+These issues came about because I wanted to try delivering practicals through `learnr`. On paper, interactive tutorials are great and they are well integrated within the RStudio environment through the Tutorial pane. In practice, it complicates the process for the students because now they have to install all the dependencies - and there are a lot of them! Which is an additional learning curve of computer housekeeping. This is also not the kind of debugging I expect the demonstrators to know. The remote delivery makes troubleshooting difficult.
+
+Though `learnr` has been around for a few years, it's still in active development and there are some issues or features that cause headaches during class. Unfortunately, debugging these error messages is not straightforward and the general fix is to reinstall the package again. Two issues I've come across that are known, open issues on GitHub:
+
+ * Trailing garbage error. Some students cannot open a tutorial a second time, or even a first time. The error is inconsistent across students which makes it hard to infer why it's happening.
+ * Skipping coding exercises by pressing run code (even with no input). This defeats the point of not allowing skipping. 
+     * There is a great temptation among students to rush through and skip exercises to get to the "important bits" (it's all important) or to jump to any in-class assessment and work in reverse (i.e. reading the assessment question then skim reading the relevant section without working through the theory first). Maybe this is a consequence of remote teaching and open book assessment that this cohort is now used to. Forcing students to slow down and engage with the material in order is one solution.
+     
+I've made the `learnr` practicals available on GitHub and given it a [project page](/project/statistical-modelling). It's a set of practicals about learning statistical modelling through the context of functional responses (predator-prey interactions). Students collect data in the first practical and analyse the data in the second. I made a Type II functional response model in Scratch for remote students to participate in data collection.
+
+I moved the original `learnr` tutorials about R to their own GitHub repository and [project page](/project/biostats-tutorials). I'm not sure what to do with this too. My original intention was to provide it as an additional resource to students. Currently, I have revamped the tutorials based on material I've presented to NERD club.
+
+Overall, I'm satisfied with how `learnr` worked in a large classroom. The loading error is annoying but mostly because of the remote delivery and it only affects a minor proportion of students. 
+
+***
+
+Here's to hoping for more adventures in the new year.

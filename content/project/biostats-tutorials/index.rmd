@@ -16,7 +16,7 @@ tags:
 - teaching
 - R stats
 - code
-url_code: "https://github.com/jacintak/"
+url_code: "https://github.com/jacintak/biostats.tutorials"
 ---
 
 # Introduction
