@@ -81,6 +81,7 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
+* Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, **Kong JD**, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology. 225: jeb243295. DOI: [10.1242/jeb.243295](https://doi.org/10.1242/jeb.243295). Altmetric score: 4
 * **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 7
 * Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314)
 * Maino JL, **Kong JD**, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: [10.1016/j.cois.2016.07.006](https://doi.org/10.1016/j.cois.2016.07.006)
@@ -93,7 +94,7 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 68  
+Total citations: 76  
 
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
 > * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  

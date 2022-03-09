@@ -19,6 +19,7 @@ email: "kongj@tcd.ie"
 interests:
 - Ecological & evolutionary physiology
 - Microclimate
+- Life history
 - Mechanistic niche modelling
 
 name: Jacinta Kong
@@ -48,8 +49,6 @@ user_groups:
 - Visitors
 ---
 
-I want to know where animals live and how they persist in their environment. Traits are a focus of my work because traits are how organisms interact with their environment.
+I am a Teaching and Research Fellow in the Department of Zoology at Trinity College Dublin. I want to know where animals live and how they persist in their environment. My interests lie at the intersection between ecology, evolutionary biology and experimental biology. 
 
-My research follows a general theme of understanding the mechanistic determinants of ecological and evolutionary patterns and the physiological niches of organisms, specifically of ectotherms. My interests lie at the intersection between ecology, evolutionary biology and climate adaptation.
-
-I answer these questions through an integrative combination of field observations, manipulative laboratory experiments and computer modelling in R, grounded within a theoretical framework, such as mechanistic niche models. 
+My research centers on characterising diversity in traits and understanding the consequences for abundances and distributions of species. I answer these questions through an integrative combination of field and natural history observations, manipulative laboratory experiments and quantitative analysis and modelling, grounded within conceptual frameworks. 

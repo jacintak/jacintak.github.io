@@ -5,12 +5,22 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Mar 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>Best practices for building and curating databases for comparative analyses</title>
+      <link>https://jacintak.github.io/publication/2022-JEB/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2022-JEB/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Comparative analyses have a long history of macro-ecological and -evolutionary approaches to understand structure, function, mechanism, and constraint. As the pace of science accelerates, there is ever-increasing access to diverse types of data and open-access databases that are enabling and inspiring new research. Whether conducting a species-level trait-based analysis or a formal meta-analysis of study effect sizes, comparative approaches share a common reliance on reliable, carefully-curated databases. Unlike many scientific endeavors, building a database is a process that many researchers undertake infrequently and in which we are not formally trained. This commentary provides an introduction to building databases for comparative analyses and highlights challenges and solutions that the authors of the commentary have faced in their own experiences. We focus on four major tips: 1) carefully strategizing the literature search; 2) structuring databases for multiple use; 3) establishing version control within (and beyond) your study; and 4) the importance of making databases accessible. We highlight how one’s approach to these tasks often depends on the goal of the study and the nature of the data. Finally, we assert that the curation of single-question databases has several disadvantages: it limits the possibility of using databases for multiple purposes and decreases efficiency owing to independent researchers repeatedly sifting through large volumes of raw information. We argue that curating databases that are broader than one research question can provide a large return on investment, and that research fields could increase efficiency if community curation of databases was established.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>December update</title>
@@ -2968,6 +2978,8 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
+&lt;p&gt;My past and ongoing research focuses on disentangling the effects of microclimatic variation and inter- and intra-specific variation in physiological traits on life history phenotypes and phenology. 
+The relative effects of environmental and individual variation on phenology.&lt;/p&gt;
 </description>
     </item>
     
@@ -2976,8 +2988,10 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
       <link>https://jacintak.github.io/project/temperature-dependence/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
-      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation. I am determining how the relationship between rates and temperatures affects processes beyond the individual and on macro scales.&lt;/p&gt;
-&lt;p&gt;This is an SFI funded position with Nicholas Payne&lt;/p&gt;
+      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation yet many temperature-dependent traits show great diversity within and among species with direct consequences for how organisms respond to a warming climate.&lt;/p&gt;
+&lt;p&gt;To understand the effect of the temperature-dependence of biological rates shapes trends in physiological trait diversity, my colleages and I take a comparative approach on a macroecological scale using the non-linear relationship between biological rates and temperature as a null hypothesis.&lt;/p&gt;
+&lt;p&gt;We find that much variation in widely characterised critical temperature limits in ectotherms can be explained by the non-linear relationship between biological rates and temperature, acclimation temperature, and rates of heating. Theses results suggest that rising temperatures are not as detrimental to ectotherms as previously suggested and that ectotherms have unappreciated capabilities of responding to thermal variability, at least based on laboratory derived measures of thermal tolerance.&lt;/p&gt;
+&lt;p&gt;This is an Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
 </description>
     </item>
     
@@ -3074,7 +3088,7 @@ setwd(old)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 14 October 2021&lt;/p&gt;
+&lt;p&gt;Last updated 02 February 2022&lt;/p&gt;
 &lt;hr /&gt;
 &lt;div id=&#34;research-and-teaching-appointments&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Research and teaching appointments&lt;/h1&gt;
@@ -3133,6 +3147,7 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;div id=&#34;refereed-journal-articles&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Refereed journal articles&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, &lt;strong&gt;Kong JD&lt;/strong&gt;, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: &lt;a href=&#34;https://doi.org/10.1098/rstb.2018.0547&#34;&gt;10.1098/rstb.2018.0547&lt;/a&gt;. Altmetric score: 7&lt;/li&gt;
 &lt;li&gt;Kearney MR, Deutscher J, &lt;strong&gt;Kong JD&lt;/strong&gt;, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: &lt;a href=&#34;https://doi.org/10.1111/1749-4877.12314&#34;&gt;10.1111/1749-4877.12314&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Maino JL, &lt;strong&gt;Kong JD&lt;/strong&gt;, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cois.2016.07.006&#34;&gt;10.1016/j.cois.2016.07.006&lt;/a&gt;&lt;/li&gt;
