@@ -81,6 +81,7 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
+* Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 78
 * Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, **Kong JD**, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology. 225: jeb243295. DOI: [10.1242/jeb.243295](https://doi.org/10.1242/jeb.243295). Altmetric score: 4
 * **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 7
 * Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314)
@@ -96,6 +97,7 @@ Conferred 17.12.2012
 H-index: 4 (GS)  
 Total citations: 76  
 
+> * High attention paper in Science in the top 5% of all research outputs scored by Altmetric: 7 News outlets, 1 blog, 28 tweeters 
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
 > * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  
 > * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see above]. Altmetric score: 6
@@ -156,7 +158,7 @@ The University of Queensland Undergraduate Research Conference
 
 Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
-2021
+2021 & 2022
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Hybrid delivery: remote and in-person lectures & remote and in-person practicals.
  * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Hybrid delivery: remote lectures & in-person practicals.

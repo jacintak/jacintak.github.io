@@ -5,12 +5,27 @@
     <link>https://jacintak.github.io/publication/</link>
       <atom:link href="https://jacintak.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Publications</title>
       <link>https://jacintak.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Parthenogenesis without costs in a grasshopper with hybrid origins</title>
+      <link>https://jacintak.github.io/publication/2022-Science/</link>
+      <pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2022-Science/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;The rarity of parthenogenetic species is typically attributed to the reduced genetic variability that accompanies the absence of sex, yet natural parthenogens can be surprisingly successful. Ecological success is often proposed to derive from hybridization through enhanced genetic diversity from repetitive origins or enhanced phenotypic breadth from heterosis. Here, we tested and rejected both hypotheses in a classic parthenogen, the diploid grasshopper Warramaba virgo. Genetic data revealed a single hybrid mating origin at least 0.25 million years ago, and comparative analyses of 14 physiological and life history traits showed no evidence for altered fitness relative to its sexual progenitors. Our findings imply that the rarity of parthenogenesis is due to constraints on origin rather than to rapid extinction.&lt;/p&gt;
+&lt;h1 id=&#34;media-articles&#34;&gt;Media articles&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.unimelb.edu.au/newsroom/news/2022/june/males-need-not-apply-research-on-grasshopper-species-unravels-the-benefits-of-giving-up-sex&#34;&gt;University of Melbourne Pursuit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://theconversation.com/this-australian-grasshopper-gave-up-sex-250-000-years-ago-and-its-doing-fine-184241&#34;&gt;The Conversation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Best practices for building and curating databases for comparative analyses</title>
