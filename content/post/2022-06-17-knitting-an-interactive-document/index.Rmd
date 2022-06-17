@@ -1,0 +1,145 @@
+---
+title: Knitting an interactive document
+author: admin
+date: '2022-06-17'
+slug: knitting-an-interactive-document
+categories: [code]
+tags: [R stats, code]
+subtitle: ''
+summary: 'Using interactive functions with an Rmarkdown document'
+authors: []
+lastmod: '2022-06-17T16:36:19+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+# Interactive functions don't work with `knitr`
+
+R has a neat interactive feature. You can write a script or a function that asks the user for input, like a number or a string, that can be used as a variable. I [wrote](/post/2021-06-01-r-function-loops/) about how this feature works in an interactive function last year. Interactive functions are neat for demonstrating how variables work in functions but aren't practical for most uses. 
+
+One practical use for an interactive function I had recently was in a function to import multiple data files downloaded from a data logger. In this case, I wrote a generic function for importing the data because the structure of the data from the data logger (temperature, time, etc.) was consistent. Pretty standard stuff but the function asks the user where the files were located on the local drive. All files in the directory would be cleaned up and imported as a named list. 
+
+Now you could say that the interactive aspect is unnecessary and you would be right. But where would the fun in that be?
+
+The importing function was saved as an R script (`.R`) and called in a Rmarkdown file using `source()` but there is a problem with this workflow. You can run an interactive session within an Rmarkdown file in a regular R session but you cannot knit it. By default, Rmarkdown does not permit an interactive R session while knitting. And that defeats the point of using Rmarkdown.
+
+Fortunately, there is a workaround to get `knitr` to ask for the directory when knitting. We need to make some modifications to the YAML, setup chunk, and the importing function.
+
+***
+
+# YAML
+
+You might have seen the option to "Knit with Parameters" in the Knit menu in RStudio. Parameters are additional variables that are called when knitting. We can use parameters to tell `knitr` where to look for the files we are importing.
+
+Here's a generic YAML with a parameter (`params`) called `folder` and the directory of the files we want (`data/subfolder`). Note, no quotation marks in the address. The parameter `folder` is used like a regular variable in R when knitting. 
+
+```
+---
+title: "Title"
+output:
+  html_document:
+    df_print: paged
+params:
+  folder: data/subfolder
+---
+```
+
+In this example, the files we want are located in a folder called `data` and a sub-folder called `subfolder` within our RStudio directory. The address can be where ever you want and it could be a full address or a relative address. I'm using addresses relative to the working directory, specifically the project directory because I'm working within a project. You'll see why this is important below.
+
+***
+
+# Setting up directories
+
+I like to use subdirectories within an RStudio project. For example, I will have a separate folder for scripts, files, figures and any other outputs within my RStudio project folder. However, this is not the default behaviour of `knitr` and causes some directory issues because `knitr` uses the source file directory (i.e. "/project/scripts/" folder because that's where my Rmd file is saved) rather than the project directory (i.e. "/project/").
+
+So if I had the importing function (`import_data.R`) in the scripts sub-folder, then:
+
+```
+# Does not work when knitting, works in session
+source("scripts/import_data.R")
+
+# Works when knitting, does not work in session
+source("import_data.R")
+
+```
+
+I would rather have the first option but there are other workarounds for this issue.   
+
+You can tell `knitr` to use the project directory when knitting in the `setup` chunk via:
+
+```
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+`opts_knit` sets the options for knitting and `find_rstudio_root_file()` is a helper function to get the root directory of the RStudio project (provided you are in one).
+
+***
+
+# The interactive function
+
+Here's a generic interactive function that will import all CSV files within a user-defined folder as a list called `imported_files`.
+
+```
+import_files <- function(){
+  # Ask the user for the folder address
+  folder_address <- ifelse(interactive() == TRUE,
+                           readline("Enter relative folder address to working directory without quotation marks: "),
+                           params$folder)
+                           
+  # Complete relative address
+  folder_address <- paste(getwd(), folder_address, sep = "/")
+
+  # Get file names
+  add.files <- list.files(folder_address, pattern=".csv", recursive = FALSE, full.names = TRUE)
+  
+  # Check the user has entered address properly
+  if(identical(add.files, character(0))){ 
+    message(paste("Address", folder_address, "has no files. Please try again.")) 
+    return(import_files()) # Return to the beginning of the function and start again
+  }
+  
+  # Import file
+  get.files <- lapply(add.files, read.csv)
+  
+  return(get.files)
+  }
+
+# Return as list
+imported_files <- import_files()
+```
+
+The important feature of the interactive function that makes it play nicely with `knitr` is the `ifelse` statement when asking for the folder our CSVs are saved in (`folder_address`). 
+
+In a regular R session that is interactive, the function will ask for the address (via `readline`) but when knitting (thus when `interactive()` is `FALSE`) the folder address is the address defined in the `folder` parameter (called via `params$folder`). 
+
+This is where the knitting parameters we defined earlier comes in. So when knitting the input is `data/subfolder`. 
+
+The main reason I use relative addresses is so that I don't have to type out the full address. I recreate the full address from the working directory so that there is less ambiguity in the address.
+
+Then, I have an `if` statement for checking the address and user input. An error message will popup if the address does not have any CSV files (checked using `identical`). It will print the address so you can check for typos.
+
+Finally, the `lapply` function will load the CSVs as a list.
+
+************
+
+# Knitting
+
+You need to use the "Knit with Parameters" option rather than the default Knit button (or a manual `render`). I'm focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you've set in the YAML. In this case it's what goes in `folder`. The window will say what you've set for `folder` by default (`data/subfolder`) which is easy for you, or you could change it.
+
+> Is this really useful? Probably not, but we do it because we can!
+
+***
+
+# Other things
+
+Theoretically, `opts_knit` can be set within your `.Rprofile` but I haven't gotten it to work the way I want it to. `options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())` will set the correct directory but the global `.Rprofile` is not called each time the project is knitted. You could have a project specific `.Rprofile` to your project root directory.
+
+Parameters can be called anything and you can have any number of parameters. They only work when knitting. They don't work in a regular session.
+
+You can remove the last line of the importing function (`imported_files <- import_files()`) if you'd rather load the function into your Global Environment.
+

@@ -5,12 +5,114 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>Knitting an interactive document</title>
+      <link>https://jacintak.github.io/post/knitting-an-interactive-document/</link>
+      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/knitting-an-interactive-document/</guid>
+      <description>
+
+
+&lt;div id=&#34;interactive-functions-dont-work-with-knitr&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Interactive functions don’t work with &lt;code&gt;knitr&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;R has a neat interactive feature. You can write a script or a function that asks the user for input, like a number or a string, that can be used as a variable. I &lt;a href=&#34;https://jacintak.github.io/post/2021-06-01-r-function-loops/&#34;&gt;wrote&lt;/a&gt; about how this feature works in an interactive function last year. Interactive functions are neat for demonstrating how variables work in functions but aren’t practical for most uses.&lt;/p&gt;
+&lt;p&gt;One practical use for an interactive function I had recently was in a function to import multiple data files downloaded from a data logger. In this case, I wrote a generic function for importing the data because the structure of the data from the data logger (temperature, time, etc.) was consistent. Pretty standard stuff but the function asks the user where the files were located on the local drive. All files in the directory would be cleaned up and imported as a named list.&lt;/p&gt;
+&lt;p&gt;Now you could say that the interactive aspect is unnecessary and you would be right. But where would the fun in that be?&lt;/p&gt;
+&lt;p&gt;The importing function was saved as an R script (&lt;code&gt;.R&lt;/code&gt;) and called in a Rmarkdown file using &lt;code&gt;source()&lt;/code&gt; but there is a problem with this workflow. You can run an interactive session within an Rmarkdown file in a regular R session but you cannot knit it. By default, Rmarkdown does not permit an interactive R session while knitting. And that defeats the point of using Rmarkdown.&lt;/p&gt;
+&lt;p&gt;Fortunately, there is a workaround to get &lt;code&gt;knitr&lt;/code&gt; to ask for the directory when knitting. We need to make some modifications to the YAML, setup chunk, and the importing function.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;yaml&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;YAML&lt;/h1&gt;
+&lt;p&gt;You might have seen the option to “Knit with Parameters” in the Knit menu in RStudio. Parameters are additional variables that are called when knitting. We can use parameters to tell &lt;code&gt;knitr&lt;/code&gt; where to look for the files we are importing.&lt;/p&gt;
+&lt;p&gt;Here’s a generic YAML with a parameter (&lt;code&gt;params&lt;/code&gt;) called &lt;code&gt;folder&lt;/code&gt; and the directory of the files we want (&lt;code&gt;data/subfolder&lt;/code&gt;). Note, no quotation marks in the address. The parameter &lt;code&gt;folder&lt;/code&gt; is used like a regular variable in R when knitting.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Title&amp;quot;
+output:
+  html_document:
+    df_print: paged
+params:
+  folder: data/subfolder
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this example, the files we want are located in a folder called &lt;code&gt;data&lt;/code&gt; and a sub-folder called &lt;code&gt;subfolder&lt;/code&gt; within our RStudio directory. The address can be where ever you want and it could be a full address or a relative address. I’m using addresses relative to the working directory, specifically the project directory because I’m working within a project. You’ll see why this is important below.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setting-up-directories&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Setting up directories&lt;/h1&gt;
+&lt;p&gt;I like to use subdirectories within an RStudio project. For example, I will have a separate folder for scripts, files, figures and any other outputs within my RStudio project folder. However, this is not the default behaviour of &lt;code&gt;knitr&lt;/code&gt; and causes some directory issues because &lt;code&gt;knitr&lt;/code&gt; uses the source file directory (i.e. “/project/scripts/” folder because that’s where my Rmd file is saved) rather than the project directory (i.e. “/project/”).&lt;/p&gt;
+&lt;p&gt;So if I had the importing function (&lt;code&gt;import_data.R&lt;/code&gt;) in the scripts sub-folder, then:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Does not work when knitting, works in session
+source(&amp;quot;scripts/import_data.R&amp;quot;)
+
+# Works when knitting, does not work in session
+source(&amp;quot;import_data.R&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I would rather have the first option but there are other workarounds for this issue.&lt;/p&gt;
+&lt;p&gt;You can tell &lt;code&gt;knitr&lt;/code&gt; to use the project directory when knitting in the &lt;code&gt;setup&lt;/code&gt; chunk via:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;opts_knit&lt;/code&gt; sets the options for knitting and &lt;code&gt;find_rstudio_root_file()&lt;/code&gt; is a helper function to get the root directory of the RStudio project (provided you are in one).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-interactive-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The interactive function&lt;/h1&gt;
+&lt;p&gt;Here’s a generic interactive function that will import all CSV files within a user-defined folder as a list called &lt;code&gt;imported_files&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import_files &amp;lt;- function(){
+  # Ask the user for the folder address
+  folder_address &amp;lt;- ifelse(interactive() == TRUE,
+                           readline(&amp;quot;Enter relative folder address to working directory without quotation marks: &amp;quot;),
+                           params$folder)
+                           
+  # Complete relative address
+  folder_address &amp;lt;- paste(getwd(), folder_address, sep = &amp;quot;/&amp;quot;)
+
+  # Get file names
+  add.files &amp;lt;- list.files(folder_address, pattern=&amp;quot;.csv&amp;quot;, recursive = FALSE, full.names = TRUE)
+  
+  # Check the user has entered address properly
+  if(identical(add.files, character(0))){ 
+    message(paste(&amp;quot;Address&amp;quot;, folder_address, &amp;quot;has no files. Please try again.&amp;quot;)) 
+    return(import_files()) # Return to the beginning of the function and start again
+  }
+  
+  # Import file
+  get.files &amp;lt;- lapply(add.files, read.csv)
+  
+  return(get.files)
+  }
+
+# Return as list
+imported_files &amp;lt;- import_files()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The important feature of the interactive function that makes it play nicely with &lt;code&gt;knitr&lt;/code&gt; is the &lt;code&gt;ifelse&lt;/code&gt; statement when asking for the folder our CSVs are saved in (&lt;code&gt;folder_address&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;In a regular R session that is interactive, the function will ask for the address (via &lt;code&gt;readline&lt;/code&gt;) but when knitting (thus when &lt;code&gt;interactive()&lt;/code&gt; is &lt;code&gt;FALSE&lt;/code&gt;) the folder address is the address defined in the &lt;code&gt;folder&lt;/code&gt; parameter (called via &lt;code&gt;params$folder&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;This is where the knitting parameters we defined earlier comes in. So when knitting the input is &lt;code&gt;data/subfolder&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The main reason I use relative addresses is so that I don’t have to type out the full address. I recreate the full address from the working directory so that there is less ambiguity in the address.&lt;/p&gt;
+&lt;p&gt;Then, I have an &lt;code&gt;if&lt;/code&gt; statement for checking the address and user input. An error message will popup if the address does not have any CSV files (checked using &lt;code&gt;identical&lt;/code&gt;). It will print the address so you can check for typos.&lt;/p&gt;
+&lt;p&gt;Finally, the &lt;code&gt;lapply&lt;/code&gt; function will load the CSVs as a list.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;knitting&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Knitting&lt;/h1&gt;
+&lt;p&gt;You need to use the “Knit with Parameters” option rather than the default Knit button (or a manual &lt;code&gt;render&lt;/code&gt;). I’m focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you’ve set in the YAML. In this case it’s what goes in &lt;code&gt;folder&lt;/code&gt;. The window will say what you’ve set for &lt;code&gt;folder&lt;/code&gt; by default (&lt;code&gt;data/subfolder&lt;/code&gt;) which is easy for you, or you could change it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is this really useful? Probably not, but we do it because we can!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-things&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Other things&lt;/h1&gt;
+&lt;p&gt;Theoretically, &lt;code&gt;opts_knit&lt;/code&gt; can be set within your &lt;code&gt;.Rprofile&lt;/code&gt; but I haven’t gotten it to work the way I want it to. &lt;code&gt;options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())&lt;/code&gt; will set the correct directory but the global &lt;code&gt;.Rprofile&lt;/code&gt; is not called each time the project is knitted. You could have a project specific &lt;code&gt;.Rprofile&lt;/code&gt; to your project root directory.&lt;/p&gt;
+&lt;p&gt;Parameters can be called anything and you can have any number of parameters. They only work when knitting. They don’t work in a regular session.&lt;/p&gt;
+&lt;p&gt;You can remove the last line of the importing function (&lt;code&gt;imported_files &amp;lt;- import_files()&lt;/code&gt;) if you’d rather load the function into your Global Environment.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Parthenogenesis without costs in a grasshopper with hybrid origins</title>
