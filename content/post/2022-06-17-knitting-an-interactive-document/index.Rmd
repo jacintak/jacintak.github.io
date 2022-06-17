@@ -8,7 +8,6 @@ tags: [R stats, code]
 subtitle: ''
 summary: 'Using interactive functions with an Rmarkdown document'
 authors: []
-lastmod: '2022-06-17T16:36:19+01:00'
 featured: no
 image:
   caption: ''
@@ -76,7 +75,7 @@ You can tell `knitr` to use the project directory when knitting in the `setup` c
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
-`opts_knit` sets the options for knitting and `find_rstudio_root_file()` is a helper function to get the root directory of the RStudio project (provided you are in one).
+`opts_knit` sets the options for knitting and `find_rstudio_root_file()` is a helper function to get the root directory of the RStudio project (provided you are in one). This is instead of `setwd()`.
 
 ***
 
@@ -131,13 +130,35 @@ Finally, the `lapply` function will load the CSVs as a list.
 
 You need to use the "Knit with Parameters" option rather than the default Knit button (or a manual `render`). I'm focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you've set in the YAML. In this case it's what goes in `folder`. The window will say what you've set for `folder` by default (`data/subfolder`) which is easy for you, or you could change it.
 
-> Is this really useful? Probably not, but we do it because we can!
+> Is this really useful? Probably not and it wouldn't be as reproducible, but we can do it because we can!
 
 ***
 
-# Other things
+# Setting knitr options globally
 
-Theoretically, `opts_knit` can be set within your `.Rprofile` but I haven't gotten it to work the way I want it to. `options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())` will set the correct directory but the global `.Rprofile` is not called each time the project is knitted. You could have a project specific `.Rprofile` to your project root directory.
+You can set `opts_knit` within your `.Rprofile` as a global option using `options(knitr.package.root.dir = <address>)` so that the root directory of your project is where your `*.Rproj` file is by default:
+
+```
+# Always use project directory as root directory
+if(class(try(rprojroot::find_rstudio_root_file(), silent = T)) != "try-error"){
+options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())}
+```
+
+This `if` statement in your `.Rprofile` file will check if there is an Rproject file (`*.Rproj`) using `rprojroot::find_rstudio_root_file()`.
+
+The function `try` is used in debugging to catch any error messages. `silent = TRUE` will suppress showing these error messages. 
+
+If you are not working in a project, then `find_rstudio_root_file()` will generate an error message. So, we can check if we have generated an error message (`class` should be a `"try-error"`). If there is an error message, we are not working in a project and we do not change any options (`options(knitr.package.root.dir` should be `NULL`). 
+
+If there is no error message, then `find_rstudio_root_file()` has found an `*.Rproj` file and will change the root directory to that location.
+
+> Again, setting `.Rprofile` defaults creates dependencies in your code which may be convenient for you but not reproducible to others.
+
+***
+
+# Other points
+
+You could also have a project specific `.Rprofile` to your project root directory.
 
 Parameters can be called anything and you can have any number of parameters. They only work when knitting. They don't work in a regular session.
 
