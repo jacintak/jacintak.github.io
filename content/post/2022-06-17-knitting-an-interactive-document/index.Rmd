@@ -67,7 +67,7 @@ source("import_data.R")
 
 ```
 
-I would rather have the first option but there are other workarounds for this issue.   
+I would rather have the first option only because it makes more sense given my directory structure but this is a personal choice.   
 
 You can tell `knitr` to use the project directory when knitting in the `setup` chunk via:
 
@@ -118,9 +118,9 @@ In a regular R session that is interactive, the function will ask for the addres
 
 This is where the knitting parameters we defined earlier comes in. So when knitting the input is `data/subfolder`. 
 
-The main reason I use relative addresses is so that I don't have to type out the full address. I recreate the full address from the working directory so that there is less ambiguity in the address.
+The main reason I use relative addresses is so that I don't have to type out the full address. I recreate the full address from the working directory so that there is no ambiguity in the address.
 
-Then, I have an `if` statement for checking the address and user input. An error message will popup if the address does not have any CSV files (checked using `identical`). It will print the address so you can check for typos.
+Then, I have an `if` statement for checking the address and user input. An error message will appear if the address does not have any CSV files (checked using `identical`). It will print the address so you can check for typos.
 
 Finally, the `lapply` function will load the CSVs as a list.
 
@@ -128,7 +128,7 @@ Finally, the `lapply` function will load the CSVs as a list.
 
 # Knitting
 
-You need to use the "Knit with Parameters" option rather than the default Knit button (or a manual `render`). I'm focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you've set in the YAML. In this case it's what goes in `folder`. The window will say what you've set for `folder` by default (`data/subfolder`) which is easy for you, or you could change it.
+You need to use the "Knit with Parameters" option rather than the default Knit button (or a manual `render`). I'm focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you've set in the YAML. Here, it's asking what's the input for `folder`. The window will say what you've set for `folder` by default (`data/subfolder`) or you can change it in the popup.
 
 > Is this really useful? Probably not and it wouldn't be as reproducible, but we can do it because we can!
 
@@ -136,21 +136,21 @@ You need to use the "Knit with Parameters" option rather than the default Knit b
 
 # Setting knitr options globally
 
-You can set `opts_knit` within your `.Rprofile` as a global option using `options(knitr.package.root.dir = <address>)` so that the root directory of your project is where your `*.Rproj` file is by default:
+You can set `opts_knit` within your `.Rprofile` as a global option using `options(knitr.package.root.dir = <address>)` so that the root directory of your project is where your `.Rproj` file is by default:
 
 ```
 # Always use project directory as root directory
-if(class(try(rprojroot::find_rstudio_root_file(), silent = T)) != "try-error"){
+if(class(try(rprojroot::find_rstudio_root_file(), silent = TRUE)) != "try-error"){
 options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())}
 ```
 
-This `if` statement in your `.Rprofile` file will check if there is an Rproject file (`*.Rproj`) using `rprojroot::find_rstudio_root_file()`.
+This `if` statement in your `.Rprofile` file will check if there is an Rproject file (`.Rproj`) using `rprojroot::find_rstudio_root_file()`.
 
 The function `try` is used in debugging to catch any error messages. `silent = TRUE` will suppress showing these error messages. 
 
 If you are not working in a project, then `find_rstudio_root_file()` will generate an error message. So, we can check if we have generated an error message (`class` should be a `"try-error"`). If there is an error message, we are not working in a project and we do not change any options (`options(knitr.package.root.dir` should be `NULL`). 
 
-If there is no error message, then `find_rstudio_root_file()` has found an `*.Rproj` file and will change the root directory to that location.
+If there is no error message, then `find_rstudio_root_file()` has found an `.Rproj` file and will change the root directory to that location.
 
 > Again, setting `.Rprofile` defaults creates dependencies in your code which may be convenient for you but not reproducible to others.
 

@@ -569,7 +569,7 @@ source(&quot;scripts/import_data.R&quot;)
 # Works when knitting, does not work in session
 source(&quot;import_data.R&quot;)
 </code></pre>
-<p>I would rather have the first option but there are other workarounds for this issue.</p>
+<p>I would rather have the first option only because it makes more sense given my directory structure but this is a personal choice.</p>
 <p>You can tell <code>knitr</code> to use the project directory when knitting in the <code>setup</code> chunk via:</p>
 <pre><code>knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
 <p><code>opts_knit</code> sets the options for knitting and <code>find_rstudio_root_file()</code> is a helper function to get the root directory of the RStudio project (provided you are in one). This is instead of <code>setwd()</code>.</p>
@@ -607,14 +607,14 @@ imported_files &lt;- import_files()</code></pre>
 <p>The important feature of the interactive function that makes it play nicely with <code>knitr</code> is the <code>ifelse</code> statement when asking for the folder our CSVs are saved in (<code>folder_address</code>).</p>
 <p>In a regular R session that is interactive, the function will ask for the address (via <code>readline</code>) but when knitting (thus when <code>interactive()</code> is <code>FALSE</code>) the folder address is the address defined in the <code>folder</code> parameter (called via <code>params$folder</code>).</p>
 <p>This is where the knitting parameters we defined earlier comes in. So when knitting the input is <code>data/subfolder</code>.</p>
-<p>The main reason I use relative addresses is so that I don’t have to type out the full address. I recreate the full address from the working directory so that there is less ambiguity in the address.</p>
-<p>Then, I have an <code>if</code> statement for checking the address and user input. An error message will popup if the address does not have any CSV files (checked using <code>identical</code>). It will print the address so you can check for typos.</p>
+<p>The main reason I use relative addresses is so that I don’t have to type out the full address. I recreate the full address from the working directory so that there is no ambiguity in the address.</p>
+<p>Then, I have an <code>if</code> statement for checking the address and user input. An error message will appear if the address does not have any CSV files (checked using <code>identical</code>). It will print the address so you can check for typos.</p>
 <p>Finally, the <code>lapply</code> function will load the CSVs as a list.</p>
 <hr />
 </div>
 <div id="knitting" class="section level1">
 <h1>Knitting</h1>
-<p>You need to use the “Knit with Parameters” option rather than the default Knit button (or a manual <code>render</code>). I’m focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you’ve set in the YAML. In this case it’s what goes in <code>folder</code>. The window will say what you’ve set for <code>folder</code> by default (<code>data/subfolder</code>) which is easy for you, or you could change it.</p>
+<p>You need to use the “Knit with Parameters” option rather than the default Knit button (or a manual <code>render</code>). I’m focussing on HTML here. When you knit, a window will pop up asking you what to input for each parameter you’ve set in the YAML. Here, it’s asking what’s the input for <code>folder</code>. The window will say what you’ve set for <code>folder</code> by default (<code>data/subfolder</code>) or you can change it in the popup.</p>
 <blockquote>
 <p>Is this really useful? Probably not and it wouldn’t be as reproducible, but we can do it because we can!</p>
 </blockquote>
@@ -622,14 +622,14 @@ imported_files &lt;- import_files()</code></pre>
 </div>
 <div id="setting-knitr-options-globally" class="section level1">
 <h1>Setting knitr options globally</h1>
-<p>You can set <code>opts_knit</code> within your <code>.Rprofile</code> as a global option using <code>options(knitr.package.root.dir = &lt;address&gt;)</code> so that the root directory of your project is where your <code>*.Rproj</code> file is by default:</p>
+<p>You can set <code>opts_knit</code> within your <code>.Rprofile</code> as a global option using <code>options(knitr.package.root.dir = &lt;address&gt;)</code> so that the root directory of your project is where your <code>.Rproj</code> file is by default:</p>
 <pre><code># Always use project directory as root directory
-if(class(try(rprojroot::find_rstudio_root_file(), silent = T)) != &quot;try-error&quot;){
+if(class(try(rprojroot::find_rstudio_root_file(), silent = TRUE)) != &quot;try-error&quot;){
 options(knitr.package.root.dir = rprojroot::find_rstudio_root_file())}</code></pre>
-<p>This <code>if</code> statement in your <code>.Rprofile</code> file will check if there is an Rproject file (<code>*.Rproj</code>) using <code>rprojroot::find_rstudio_root_file()</code>.</p>
+<p>This <code>if</code> statement in your <code>.Rprofile</code> file will check if there is an Rproject file (<code>.Rproj</code>) using <code>rprojroot::find_rstudio_root_file()</code>.</p>
 <p>The function <code>try</code> is used in debugging to catch any error messages. <code>silent = TRUE</code> will suppress showing these error messages.</p>
 <p>If you are not working in a project, then <code>find_rstudio_root_file()</code> will generate an error message. So, we can check if we have generated an error message (<code>class</code> should be a <code>"try-error"</code>). If there is an error message, we are not working in a project and we do not change any options (<code>options(knitr.package.root.dir</code> should be <code>NULL</code>).</p>
-<p>If there is no error message, then <code>find_rstudio_root_file()</code> has found an <code>*.Rproj</code> file and will change the root directory to that location.</p>
+<p>If there is no error message, then <code>find_rstudio_root_file()</code> has found an <code>.Rproj</code> file and will change the root directory to that location.</p>
 <blockquote>
 <p>Again, setting <code>.Rprofile</code> defaults creates dependencies in your code which may be convenient for you but not reproducible to others.</p>
 </blockquote>
