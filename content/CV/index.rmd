@@ -81,12 +81,19 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-* Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 78
-* Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, **Kong JD**, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology. 225: jeb243295. DOI: [10.1242/jeb.243295](https://doi.org/10.1242/jeb.243295). Altmetric score: 4
-* **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 7
-* Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314)
-* Maino JL, **Kong JD**, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: [10.1016/j.cois.2016.07.006](https://doi.org/10.1016/j.cois.2016.07.006)
-* **Kong JD**, Axford JK, Hoffmann AA, Kearney MR. (2016) Novel applications of thermocyclers for phenotyping invertebrate thermal responses. Methods in Ecology and Evolution. 7(10): 1201 – 1208. 2016. DOI: [10.1111/2041-210X.12589](https://doi.org/10.1111/2041-210X.12589)
+* Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. *Accepted article*. ^+^ Joint first author. 
+
+* Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 204
+
+* Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, **Kong JD**, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology. 225: jeb243295. DOI: [10.1242/jeb.243295](https://doi.org/10.1242/jeb.243295). Altmetric score: 12
+
+* **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 8
+
+* Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314).  Altmetric score: 2
+
+* Maino JL, **Kong JD**, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: [10.1016/j.cois.2016.07.006](https://doi.org/10.1016/j.cois.2016.07.006).  Altmetric score: 6
+
+* **Kong JD**, Axford JK, Hoffmann AA, Kearney MR. (2016) Novel applications of thermocyclers for phenotyping invertebrate thermal responses. Methods in Ecology and Evolution. 7(10): 1201 – 1208. 2016. DOI: [10.1111/2041-210X.12589](https://doi.org/10.1111/2041-210X.12589). Altmetric score: 20
 
 ***
 
@@ -95,11 +102,11 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 76  
+Total citations: 82  
 
-> * High attention paper in Science in the top 5% of all research outputs scored by Altmetric: 7 News outlets, 1 blog, 28 tweeters 
+> * High attention paper in Science in the top 5% of all research outputs scored by Altmetric: 19 News outlets, 1 blog, 84 tweeters. Altmetric score: 204
 > * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
-> * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see 1 above]. Altmetric score: 21  
+> * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see above]. Altmetric score: 21  
 > * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see above]. Altmetric score: 6
 
 I have peer reviewed for:
@@ -158,15 +165,21 @@ The University of Queensland Undergraduate Research Conference
 
 Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
-2021 & 2022
+2022
+
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+
+2021
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Hybrid delivery: remote and in-person lectures & remote and in-person practicals.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
  * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
 
 2020
 
- * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery. Module co-ordinator.
+ * Lecturer (Module co-ordinator) & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery.
  * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
  * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
  
@@ -257,12 +270,16 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 # Professional development qualifications
 
- * 26/01/2021 Epigeum Research Integrity Course
- * 19/03/2021 Dynamic Energy Budget Course
+ * 26 Jan 2021 Epigeum Research Integrity Course
+ * 19 Mar 2021 Dynamic Energy Budget Course
 
 ***
 
 # Community outreach and communication
+
+2022
+
+ * **Kong JD**, Chown SL, Hoffmann AA and Kearney MR. (2022) Reply to Adamo: No Signs of Pathogen Susceptibility in Warramaba virgo. Science. eLetter. DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). 
 
 2021
 
