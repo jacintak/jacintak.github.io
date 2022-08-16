@@ -1,32 +1,38 @@
 ---
 title: Statistical Modelling Practicals
-date: "2021-12-01"
+date: "2022-08-16"
 external_link:
 image:
   caption: 
   focal_point: Smart
-links: 
 summary: Learning statitical modelling with functional responses
 tags:
 - teaching
 - R stats
 - code
 url_code: "https://github.com/jacintak/biostats"
-
+links:
+- icon: file
+  icon_pack: fas
+  name: Part 1 handout
+  url: teaching/StatsModelsPrac1/index.html
+- icon: file
+  icon_pack: fas
+  name: Part 2 handout
+  url: teaching/StatsModelsPrac2/index.html
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p><code>StatsModels</code> is an <code>R</code> package of <code>learnr</code> tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot.</p>
+<p><code>StatsModels</code> is an <code>R</code> package of <code>learnr</code> tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot with an estimated completion time of 2.5 hours.</p>
 <p>The aim of the practicals is to introduce statistical modelling. It uses functional responses (i.e. Type II models, Holling’s disc equation) as background information.</p>
 <p>There are two parts to the practical:</p>
 <ol style="list-style-type: decimal">
 <li>Introduction to statistical modelling
 <ul>
-<li>Constructing a Type II model</li>
+<li>Constructing a Type II functional response</li>
 <li>Designing an experiment</li>
 <li>Collecting data</li>
 </ul></li>
@@ -34,11 +40,11 @@ url_code: "https://github.com/jacintak/biostats"
 <ul>
 <li>Importing data</li>
 <li>Manipulating data</li>
-<li>Conducting multiple linear regression</li>
+<li>Conducting multiple linear regression (additive)</li>
 <li>Visualising data</li>
 </ul></li>
 </ol>
-<p>Part 1 requires students collect data by replicating Holling’s disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using both additive and interactive multiple linear regression. Simple linear regressions (with one predictor variable) are not covered for time constraints.</p>
+<p>Part 1 requires students collect data by replicating Holling’s disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using additive multiple linear regression. Simple linear regressions (with one predictor variable) or multiplicative regression are not covered because of time constraints.</p>
 <div id="remote-version" class="section level2">
 <h2>Remote version</h2>
 <p>It is possible to adapt this in-person practical to a remote version by getting students to collect data using a Scratch simulation of a Type II functional response. I have a Scratch model of one.</p>
@@ -74,7 +80,7 @@ Use the following code:</p>
 <pre><code>remotes::install_github(&quot;jacintak/biostats&quot;, dependencies = TRUE, build_vignettes = TRUE)</code></pre>
 <p>If you are asked to install any other packages, choose yes.<br />
 If you are asked to update any packages, press <code>1</code> for updating all of them.<br />
-If you are asked to install packages from source (i.e. in a pop-up window) press no.<br />
+If you are asked to install packages from source (i.e. in a pop-up window), press no.<br />
 If the package installed properly, you should automatically see the tutorials in the Tutorial tab.</p>
 <hr />
 </div>

@@ -1,6 +1,6 @@
 ---
 title: 'Setup R'
-date: "2021-12-01"
+date: "2022-08-16"
 summary: Download and set up R and RStudio
 tags:
 - teaching
@@ -11,134 +11,91 @@ output:
     toc: true
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#welcome-to-statistics-and-computation-for-biologists">Welcome to Statistics and Computation for Biologists</a>
+<li><a href="#why-programming-and-computing" id="toc-why-programming-and-computing">1. Why programming and computing?</a>
 <ul>
-<li><a href="#structure-of-drop-ins">Structure of drop ins</a></li>
-<li><a href="#todays-drop-in">Today’s drop in</a></li>
-</ul></li>
-<li><a href="#why-programming-and-computing">1. Why programming and computing?</a>
+<li><a href="#basic-computing-terms" id="toc-basic-computing-terms">Basic computing terms</a>
 <ul>
-<li><a href="#basic-computing-terms">Basic computing terms</a>
+<li><a href="#drives-folders-files" id="toc-drives-folders-files">Drives, Folders &amp; Files</a></li>
+<li><a href="#directories" id="toc-directories">Directories</a></li>
+</ul></li>
+<li><a href="#why-r" id="toc-why-r">Why R?</a></li>
+<li><a href="#why-rstudio" id="toc-why-rstudio">Why RStudio?</a></li>
+</ul></li>
+<li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio">2. Installing R and RStudio</a>
 <ul>
-<li><a href="#drives-folders-files">Drives, Folders &amp; Files</a></li>
-<li><a href="#directories">Directories</a></li>
+<li><a href="#windows" id="toc-windows">Windows</a></li>
+<li><a href="#mac" id="toc-mac">Mac</a></li>
+<li><a href="#linux" id="toc-linux">Linux</a></li>
+<li><a href="#chromebook" id="toc-chromebook">Chromebook</a></li>
 </ul></li>
-<li><a href="#why-r">Why R?</a></li>
-<li><a href="#why-rstudio">Why RStudio?</a></li>
-</ul></li>
-<li><a href="#installing-r-and-rstudio">2. Installing R and RStudio</a>
+<li><a href="#opening-rstudio-for-the-first-time" id="toc-opening-rstudio-for-the-first-time">3. Opening RStudio for the first time</a></li>
+<li><a href="#r-structure-and-terminology" id="toc-r-structure-and-terminology">4. R structure and terminology</a>
 <ul>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#mac">Mac</a></li>
-<li><a href="#linux">Linux</a></li>
-<li><a href="#chromebook">Chromebook</a></li>
-</ul></li>
-<li><a href="#opening-r-and-rstudio-for-the-first-time">3. Opening R and RStudio for the first time</a>
+<li><a href="#installing-more-packages" id="toc-installing-more-packages">Installing more packages</a>
 <ul>
-<li><a href="#updating-r-and-base-packages">Updating R and base packages</a></li>
-<li><a href="#creating-a-script">Creating a script</a></li>
-<li><a href="#setting-up-packages">Setting up packages</a></li>
-<li><a href="#installing-packages">Installing packages</a></li>
+<li><a href="#the-packages-folder-your-library" id="toc-the-packages-folder-your-library">The packages folder (your library)</a></li>
 </ul></li>
-<li><a href="#r-structure-terminology">4. R structure &amp; terminology</a>
+</ul></li>
+<li><a href="#my-first-script" id="toc-my-first-script">5. My first script</a>
 <ul>
-<li><a href="#variables">Variables</a></li>
-<li><a href="#arrays">Arrays</a></li>
-<li><a href="#data-frames">Data frames</a></li>
-<li><a href="#other-data-manipulation">Other data manipulation</a></li>
-<li><a href="#rounding">Rounding</a></li>
-<li><a href="#factors">Factors</a></li>
-<li><a href="#commenting">Commenting</a></li>
+<li><a href="#loading-packages" id="toc-loading-packages">Loading packages</a></li>
+<li><a href="#commenting" id="toc-commenting">Commenting</a></li>
 </ul></li>
-<li><a href="#working-directories-in-r">5. Working directories in R</a>
+<li><a href="#working-directories-in-r" id="toc-working-directories-in-r">6. Working directories in R</a>
 <ul>
-<li><a href="#changing-working-directories">Changing working directories</a></li>
+<li><a href="#changing-working-directories" id="toc-changing-working-directories">Changing working directories</a></li>
 </ul></li>
-<li><a href="#loading-data">6. Loading data</a>
+<li><a href="#rubber-ducks" id="toc-rubber-ducks">Rubber ducks</a>
 <ul>
-<li><a href="#txt">.txt</a></li>
-<li><a href="#csv">.csv</a></li>
-<li><a href="#clipboard">Clipboard</a></li>
+<li><a href="#finding-help" id="toc-finding-help">Finding help</a></li>
 </ul></li>
-<li><a href="#checking-the-data">7. Checking the data</a>
-<ul>
-<li><a href="#data-structure">Data structure</a></li>
-<li><a href="#viewing-data">Viewing data</a></li>
-<li><a href="#summarising-data">Summarising data</a></li>
-<li><a href="#missing-data">Missing data</a></li>
-</ul></li>
-<li><a href="#exporting-data">8. Exporting data</a></li>
-<li><a href="#plotting">9. Plotting</a>
-<ul>
-<li><a href="#exporting-a-figure">Exporting a figure</a></li>
-</ul></li>
-<li><a href="#problem-solving">Problem solving</a>
-<ul>
-<li><a href="#tips">Tips</a></li>
-<li><a href="#finding-help">Finding help</a></li>
-</ul></li>
-<li><a href="#final-checklist">Final checklist</a></li>
+<li><a href="#final-checklist" id="toc-final-checklist">Final checklist</a></li>
 </ul>
 </div>
 
-<div id="welcome-to-statistics-and-computation-for-biologists" class="section level1">
-<h1>Welcome to Statistics and Computation for Biologists</h1>
-<p>Training to become a scientist can be broken down into two parts. First, there is content to learn - these are technical details or “how to” which come from textbooks, lectures or resources on the Internet.</p>
-<p>Second, is learning how to define problems and how to solve them. You will see this in action throughout your degree. For example, is your R code not working? Work out why, what’s wrong and what to change to make it work.</p>
-<p>In this module we aim to give you the tools and knowledge to solve your own data science problems. These skills will be important in your later studies or even your career.</p>
-<div id="structure-of-drop-ins" class="section level2">
-<h2>Structure of drop ins</h2>
+<p>Have a look at this checklist:</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Fundamental skills checklist
+</h3>
+</div>
+<div class="panel-body">
 <ul>
-<li>There is no fixed structure for drop ins. Ask us to clarify, explain, show, trouble-shoot etc. but it is up to you do direct your own learning under supervision in these sessions</li>
-<li>Not obligatory – there to help you either get up to speed with material already covered or if we have the time and capacity to take you beyond what you have covered, if you would like to be challenged</li>
-<li>Respect our facility to teach and your colleagues’ capacity to learn by not distracting</li>
-<li>No additional assessable material will be introduced in Drop-ins – their function is to consolidate your learning</li>
+<li>Do you know how to navigate computer directories and get addresses of files or folders?</li>
+<li>Do you have R and RStudio installed and up to date on your computer?</li>
+<li>Do you know what an R package is and how to install them?</li>
+<li>Do you know how to set up working directories and use scripts in RStudio?</li>
 </ul>
+</div>
+</div>
+<p>If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Make sure everything is up to date. You can refer back to this document in the future.</p>
 <hr />
-</div>
-<div id="todays-drop-in" class="section level2">
-<h2>Today’s drop in</h2>
-<p>This worksheet is a HTML file - you can save it to your computer like any file and open it using a web browser like Firefox or Chrome.<br />
-There are two aims for this drop in worksheet:</p>
-<blockquote>
-<ol style="list-style-type: decimal">
-<li>To make sure you are prepared for the practicals which start next week. We want to make sure the practical will run as smoothly as possible as it may not be easy to problem solve issues remotely - worst case scenario you will have to fix it yourself.</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2" style="list-style-type: decimal">
-<li>Introduce fundamental concepts in computing and using R that you will need in this module - you can refer back to this in the future</li>
-</ol>
-</blockquote>
-<p>We will be covering the following checklist:</p>
-<ul>
-<li>Do you know how to navigate computer directories and addresses to find files or folders?</li>
-<li>Do you have R and RStudio installed on your computer?</li>
-<li>Is R up to date? (version 4.0 or above)</li>
-<li>Do you know how to set up scripts and directories in RStudio?</li>
-<li>Do you know how to import and export data into R in various formats?</li>
-</ul>
-<p>If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Check that your version and packages are all up to date (Under the Packages tab, click Update). Even so, you can work through this document if you want to check everything works or you need a refresher.</p>
-<p>There are some test-yourself questions in each section.</p>
-<hr />
-</div>
-</div>
 <div id="why-programming-and-computing" class="section level1">
 <h1>1. Why programming and computing?</h1>
-<p>We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it’s a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module. We will be using R which is classified as a high-level programming language - it’s not the same thing as learning how to use Excel.</p>
-<p>Learning programming is like learning a language - there is grammar and syntax and it takes time and effort to learn and to practice. Don’t expect to pick it up like memorising content from a lecture - take it in small steps.</p>
+<p>We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it’s a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module.</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
+</div>
+<div class="panel-body">
+Learning programming is like learning a language - there is grammar and syntax. It takes time and effort to learn and to practice. Don’t expect to pick it up immediately - take it in small steps and practice as much as you can.
+</div>
+</div>
 <div id="basic-computing-terms" class="section level2">
 <h2>Basic computing terms</h2>
 <p>We don’t always formally learn computing terminology even if we’ve always been using computers. Here are some general computing concepts we will be using and that we expect you to be familiar with:</p>
 <div id="drives-folders-files" class="section level3">
 <h3>Drives, Folders &amp; Files</h3>
-<p>In computer science, most commercial operating software are organised in to <strong>drives</strong>, <strong>directories</strong>, <strong>folders</strong> &amp; <strong>files</strong>. Using Windows as example:
-C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are groups of files which contain information (e.g. my_document.doc). Here, “.doc” is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.</p>
-<p>Commercial computers tend to have only one drive but you can have as many folders and files as you want. For example:</p>
+<p>In computer science, most commercial operating software are organised in to <strong>drives</strong>, <strong>directories</strong>, <strong>folders</strong> &amp; <strong>files</strong>.</p>
+<p>Using Windows as example (Macs are similar):
+C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are lists of files which contain information (e.g. my_document.doc). Here, “.doc” is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.</p>
+<p>Basic commercial computers tend to have only one drive but you can have as many drives, folders and files as you want. For example:</p>
 <pre><code>C: (the hard drive)
   -&gt; my documents (within drive C)
       -&gt; file A (within my documents)
@@ -148,48 +105,108 @@ C:/ is a drive (a hard drive). Within the drive, information is sorted in folder
 </div>
 <div id="directories" class="section level3">
 <h3>Directories</h3>
-<p>Directories are the cataloguing system describing where files and folders are stored; also called addresses. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location. The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive.</p>
-<blockquote>
-<p>We recommend that you organise your files in a structured way. For example, have a folder for the module and sub-folders for each of the practicals:<br />
+<p>Directories are the cataloguing system describing where files and folders are stored; also called <strong>addresses</strong>. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location.</p>
+<p>The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive. Case sensitivity means a computer reads capitalised letters (ABC) differently to lowercase letters (abc).</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>We recommend that you organise your files in a structured way. This will make importing data into R easier. For example, have a folder for the module and sub-folders for each of the practicals:<br />
 Documents (folder) -&gt; Biostats (folder) -&gt; Practical 1 (folder) -&gt; Script (file)<br />
-We don’t recommend using a automatically selected “downloads” folder or your “desktop” because these are not permanent file locations and can be hard to find files later.</p>
-</blockquote>
+</li>
+<li>We don’t recommend using a automatically selected “downloads” folder or your “desktop” because these are not permanent file locations and it can be hard to find files in a messy folder.
+</div>
+</div></li>
+</ul>
 <p>Notice that the components of the address is separated using a forward slash <code>/</code>. R can understand <code>/</code> but does not understand back slash <code>\</code> because back slashes have a specific meaning in programming. When typing addresses, make sure you use the correct slash.</p>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">
+Danger!
+</h3>
+</div>
+<div class="panel-body">
+<p>Computers are only as smart as the humans that use them.</p>
+<p>If your code is not working there is most likely a spelling mistake or a typographic error. These human errors are easy to miss but equally easy to fix!</p>
+<p>There is a difference between <code>"</code>straight<code>"</code> or “curly”, ‘single’ or “double” quotation marks! R does not recognise curly quotation marks so beware when pasting code from elsewhere.</p>
+</div>
+</div>
 <p>We navigate through our computer’s directories using Explorer in Windows or Finder in MacOS. You can see the address of a directory in the address bar. We will learn how to use directories in RStudio.</p>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the file extension in the following address? <code>C:/users/admin/monday/dropin/worksheet.pdf</code></p>
-<pre class="r fold-hide"><code>.pdf which stands for portable document format</code></pre>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Expectations
+</h3>
+</div>
+<div class="panel-body">
+<p>We expect you to be able to manage your own computer organisation. E.g. know how to open a file, save files in a specific file type and know where you saved files!</p>
+<p>We will ask you to load data from files using addresses so knowing where you saved the file is essential.</p>
+</div>
+</div>
 <hr />
 </div>
 </div>
 <div id="why-r" class="section level2">
 <h2>Why R?</h2>
-<p>R is just one of <em>many</em> high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and data handling. Hence R is widely taught in statistic classes. There are other statistics programs but these are normally “point-and-click” programs where you click a button and magic happens.</p>
-<p>R is an open source software and it is <em>transparent</em>, meaning you can <em>see</em> how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. R is also <em>reproducible</em> because R allows you to document your code in <em>scripts</em> that you can give another person to replicate your analysis.</p>
-<p>The traditional option to learning statistics is to learn these calculations by hand and use pre-calculated statistical reference tables but we would only expect that for very simple examples and doing calculations by hand is an arduous task for realistic biological problems.</p>
+<p>R is just one of <em>many</em> high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and handling data. Hence R is widely taught in statistic classes.</p>
+<blockquote>
+<p>Knowing R is not the same skill as knowing Excel.<br />
+R is far more powerful for doing data science.</p>
+</blockquote>
+<p>R is an open source software and it is <strong>transparent</strong>, meaning you can <em>see</em> how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. This is not always possible to see in commercial statistical software or Excel.</p>
+<p>R is also <strong>reproducible</strong> because R allows you to document your code in <strong>scripts</strong> that you can give another person to replicate your analysis.</p>
+<p>The traditional option to learning statistics is to do these calculations by hand with pre-calculated statistical reference tables but doing calculations by hand is an arduous task for realistic biological problems.</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
+</div>
+<div class="panel-body">
+One way to practice R is to use it preferentially whenever you can, even in other modules. For example, use R to make graphs for your assignments instead of Excel. Or to calculate simple statistics.
+</div>
+</div>
+<p>Beyond what we will cover in this module, R can be used to write documents (like this one), interactive apps, websites, or presentations. The possibilities are endless.</p>
 <hr />
 </div>
 <div id="why-rstudio" class="section level2">
 <h2>Why RStudio?</h2>
-<p>R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. It is possible to use R by itself (you can try it) but RStudio makes everything a lot easier by providing some organisation. You cannot use RStudio without R. An analogy is that R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward.</p>
+<p>R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. There are other user interfaces for R but RStudio has lots of support.</p>
+<p>RStudio acts as a mediator between you and R:<br />
+user -&gt; input -&gt; RStudio -&gt; R -&gt; RStudio -&gt; output -&gt; user</p>
+<p>It is possible to use R by itself (you may prefer it) but RStudio makes everything a lot easier by providing some organisation and allows you to write <strong>scripts</strong>.</p>
 <hr />
 </div>
 </div>
 <div id="installing-r-and-rstudio" class="section level1 tabset">
 <h1>2. Installing R and RStudio</h1>
-<p>You will need to install R AND RStudio <strong>in that order</strong>. You only need to open RStudio when you want to use R - RStudio will open R for you in the background.</p>
-<p><img src="CRANsite.png" /></p>
-<blockquote>
-<p>Here’s a video about installing R <a href="https://vimeo.com/203516510" class="uri">https://vimeo.com/203516510</a> and RStudio <a href="https://vimeo.com/203516968" class="uri">https://vimeo.com/203516968</a></p>
-</blockquote>
-<p>You can follow the instructions below or try the interactive tutorial at <a href="https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome" class="uri">https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome</a></p>
-<p>Here are the instructions for various operating software (click the relevant tab):</p>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">
+Danger!
+</h3>
+</div>
+<div class="panel-body">
+<p>You need to install R then RStudio <strong>in that order</strong>! RStudio cannot work without R but R can work without RStudio.</p>
+<p>An analogy: R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward.</p>
+</div>
+</div>
+<div class="figure">
+<img src="CRANsite.png" alt="" />
+<p class="caption">Install R from CRAN. <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
+</div>
+<p>If you prefer instructional videos, here’s a video about installing R <a href="https://vimeo.com/203516510" class="uri">https://vimeo.com/203516510</a> and RStudio <a href="https://vimeo.com/203516968" class="uri">https://vimeo.com/203516968</a></p>
+<p>Here are the instructions for various operating software:</p>
 <div id="windows" class="section level2">
 <h2>Windows</h2>
 <p>For R:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></li>
-<li>Click “Download R” in the blue box. The version number is not important.</li>
+<li>Click “Download R” in the blue box for the latest version.</li>
 <li>Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.</li>
 <li>Open it and check it installed properly</li>
 </ol>
@@ -250,61 +267,64 @@ What is the file extension in the following address? <code>C:/users/admin/monday
 </ul>
 <p>Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.</p>
 <hr />
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What do you think happens if you open RStudio without downloading R first?</p>
-<pre class="r fold-hide"><code>RStudio won&#39;t work because it is looking for a program called R that doesn&#39;t exist</code></pre>
-<hr />
 </div>
 </div>
-<div id="opening-r-and-rstudio-for-the-first-time" class="section level1">
-<h1>3. Opening R and RStudio for the first time</h1>
-<p>If you open R itself you’ll see that it’s pretty bare bones. Most annoyingly you have to remember what information is stored in its memory. RStudio is a intermediate program that acts as a mediator between you and R:<br />
-user -&gt; input -&gt; RStudio -&gt; R -&gt; RStudio -&gt; output -&gt; user</p>
+<div id="opening-rstudio-for-the-first-time" class="section level1">
+<h1>3. Opening RStudio for the first time</h1>
 <p>If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:</p>
-<p><img src="RStudio-console.png" width="100%" /></p>
+<div class="figure">
+<img src="RStudio-console.png" alt="" />
+<p class="caption">The default RStudio layout can be customised.</p>
+</div>
 <ul>
-<li>Left: The big window is the <strong>console</strong>. This is the interface with R and is the same as using R on its own. (don’t worry about “terminal”)</li>
-<li>Top right: This window has three tabs: “environment” - shows you what information is stored in R’s memory, “history” - shows your code history &amp; “connections” - don’t worry about this one.</li>
-<li>Bottom right: This has several tabs. The most important being “files” - showing you where RStudio is looking at on your computer &amp; “plot” - shows you any plots you make in R.</li>
+<li>Left: The big window is the <strong>Console</strong>. This is the interface with R and is the same as using R on its own. (don’t worry about “Terminal”)</li>
+<li>Top right: This window has three tabs: “Environment” - shows you what information is stored in R’s memory, “History” - shows your code history &amp; “Connections” - don’t worry about this one, it’s for connection to database servers.</li>
+<li>Bottom right: This has several tabs. The most important being “Files” - showing you where RStudio is looking at on your computer &amp; “Plots” - shows you any plots you make in R.</li>
 </ul>
-<p>You can customise the layout and colour scheme of RStudio in Options.<br />
-There are other user interfaces for R but RStudio has a lot of support and is commonly used.</p>
+<p>When you open a <strong>Script</strong>, it will appear as a panel in the top left.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Expectations
+</h3>
+</div>
+<div class="panel-body">
+<p>We expect you to be familiar with the RStudio layout and using R within it.</p>
+</div>
+</div>
+<p>You can customise the layout, colour scheme, font and font size of RStudio in Options.<br />
+Shortcuts and hotkeys will make your life easier. You can see a list of them under Help. There are only minor differences between Windows and Mac shortcuts (e.g. using Cmd instead of Ctrl).</p>
+<hr />
+</div>
+<div id="r-structure-and-terminology" class="section level1">
+<h1>4. R structure and terminology</h1>
+<p>There are a number of terms you’ll come across when using R. Here are some basic ones:</p>
+<p>R is a statistical environment that consist of <strong>packages</strong>. Packages are sets of <strong>functions</strong> that do something to input depending on the instructions described in the function. All your packages are stored in your <strong>library</strong> (a folder on your computer). When you download R it comes with a basic set of packages as default (<strong>base packages</strong>). Some of these <strong>base packages</strong> are loaded every time you open R.</p>
 <blockquote>
-<p>We expect you to be familiar with the RStudio layout. There are a number of shortcuts and hotkeys as well. There are only minor differences between Windows and Mac shortcuts (e.g. using Cmd instead of Ctrl)</p>
+<p>R is CaSe SenSitiVe. Meaning that <code>library()</code> is different to <code>Library()</code>.</p>
 </blockquote>
-<hr />
-<div id="updating-r-and-base-packages" class="section level2">
-<h2>Updating R and base packages</h2>
-<p>The last major update to R was version 4.0. If you have an older version we recommending updating R because many fundamental aspects of the language were changed and are not backwards compatible. You will see which R version is used in the information in the Console when you open RStudio. If your version is older than 4.0, install the latest version as above.</p>
-<p>R is a statistical environment that consist of <strong>packages</strong>. Packages are a set of <strong>functions</strong> that does something to input depending on the underlying code. All your packages are stored in your <strong>library</strong>. When you download R it comes with a basic set of packages as default which works straight out of the box. This is called <strong>base R</strong>.</p>
-<p>Once you’ve installed R you should check all your <strong>packages</strong> are up to date as well. You can update your packages by clicking the Update button under the Packages tab.</p>
-<hr />
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
 </div>
-<div id="creating-a-script" class="section level2">
-<h2>Creating a script</h2>
-<p>The greatest advantage of RStudio is that it allows you to write <strong>scripts</strong>. These are files ending in <code>.R</code> that are created and opened by RStudio. R itself cannot open, read or create scripts. Scripts are text documents of code that you can save on your computer and open later. They provide a guide to what you want to enter to R and saves you from <strong>having to type out code over and over again</strong>. Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click. Importantly, scripts allow <strong>reproducibility</strong> and helps with problem solving.</p>
-<p>You can create a new script under File -&gt; New file -&gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.<br />
-Save it and give it an informative name (e.g. “Dropin1.R”)</p>
-<p><img src="open-script.png" width="100%" /></p>
-<p>Let’s add some code to this script by going through the basics of R! Copy and paste code from below into your script.</p>
-<blockquote>
-<p><strong>Run code from your script rather than directly from the console</strong>.</p>
-</blockquote>
-<p>A script is a record of what you’ve done and it makes it easy to spot any mistakes you might have made (transparency &amp; reproducibility). Put your cursor on the line you want to run then press Ctrl+Enter or click Run. You can run multiple lines by highlighting the relevant lines. You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R.</p>
-<p><img src="Run.png" width="100%" /></p>
+<div class="panel-body">
+Keep your R, RStudio and packages up to date. These things are continuously updated by the community. You can update your packages by clicking the Update button under the Packages tab.
+</div>
+</div>
 <hr />
-</div>
-<div id="setting-up-packages" class="section level2">
-<h2>Setting up packages</h2>
-<p>To use a package in R, you need to <strong>call</strong> it from R’s library using the function <code>library()</code>. A package we will see later in the module is <code>MASS</code> which contains datasets you can use at home to practice the statistical tests covered in the lectures.</p>
-<p>Type <code>library(MASS)</code> into your script then press Enter. You have just <strong>run</strong> your first line of code. R will load the package <code>MASS</code> in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to <code>MASS</code>.</p>
-<p>Run <code>data()</code> or <code>data(package = .packages(all.available = TRUE))</code> to see the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general (e.g. the starwars dataset of Star Wars characters comes with the package <code>tidyverse</code>). Entering the name of a dataset will display the entire dataset. Try calling one of the <code>MASS</code> datasets, like <code>Rabbit</code>. You can see the descriptions of each dataset by calling <code>help(&lt;dataset name&gt;)</code>, e.g. <code>help(Rabbit)</code> will tell you it describes the blood pressure of rabbits before and after a drug treatment.</p>
-</div>
-<div id="installing-packages" class="section level2">
-<h2>Installing packages</h2>
-<p>We can customise and expand the functionality of R by installing more packages, which are made by people and distributed freely. You can download packages from an online repository using the function <code>install.packages("&lt;insert name of package&gt;")</code>.</p>
-<p>For example, I wrote this document in RStudio using an additional package called <code>rmarkdown</code> which lets me make HTML, word or PDF files of text, code and figures or tables. We will tell you if you need to install a package but where possible we will be sticking to base R.</p>
-<p>But we should check that your packages folder is set up properly - especially if you use Windows 10 and sync with OneDrive. Packages should ideally be downloaded to your local computer and not saved on the cloud (e.g. through OneDrive). The constant syncing slows down communication and creates issues between the cloud and R and RStudio. You can see where your packages are saved using <code>.libPaths()</code> in your console - meaning Library Paths, the address of your package libraries.</p>
+<div id="installing-more-packages" class="section level2">
+<h2>Installing more packages</h2>
+<p>We can customise and expand the functionality of R by installing more packages, which are made by the community and distributed freely. The function to download packages from the Internet is:</p>
+<pre><code>install.packages(&quot;&lt;insert name of package&gt;&quot;) # installs a package</code></pre>
+<p>For example, <code>install.packages("learnr")</code>. Note how non-curly quotation marks are used. Some packages have more functions to do more advanced computing, some contain datasets you can practice with.</p>
+<div id="the-packages-folder-your-library" class="section level3">
+<h3>The packages folder (your library)</h3>
+<p>Additional packages are saved to a folder on your computer. We should check that your packages folder is set up properly - especially if you use Windows 10 and sync with OneDrive.</p>
+<p><strong>This is not a problem for Mac users or Windows users that are not logged in to a Microsoft account (check it anyway, in case).</strong></p>
+<p>Packages should ideally be downloaded to your local computer and not saved on the cloud (e.g. through OneDrive).</p>
+<p>The constant syncing slows down communication and creates issues between the cloud and R and RStudio. You can see where your packages are saved using <code>.libPaths()</code> in your console - meaning Library Paths, the address of your package libraries.</p>
 <p>There should be two addresses:</p>
 <ul>
 <li>One in your Program Files or wherever your computer installed R. E.g. <code>"C:/Program Files/R/R-4.1.1/library"</code> - this is where all the base R packages are installed (the default packages that come with R)</li>
@@ -324,178 +344,125 @@ Save it and give it an informative name (e.g. “Dropin1.R”)</p>
 <li>Click OK twice to exit</li>
 <li>Type <code>.libPaths()</code> in R to check that your personal library folder is now listed in <code>R</code></li>
 </ol>
+<p>Changing default settings in the Control Panel is pretty advanced computing - we don’t expect you to know this. Don’t be afraid to ask for help.</p>
 <hr />
 </div>
 </div>
-<div id="r-structure-terminology" class="section level1">
-<h1>4. R structure &amp; terminology</h1>
-<p>At it’s most basic R is a fancy calculator.</p>
-<div id="variables" class="section level2">
-<h2>Variables</h2>
-<p>Information is stored in R’s memory as <strong>variables</strong>. These can be <strong>numbers</strong> (e.g. 1, 2, 3) or <strong>strings</strong> (called characters, e.g. <code>"hello"</code>). Strings are identified by quotation marks (<code>"</code> or <code>'</code>). RStudio helpfully colour codes these different types. You can also change the colour scheme of RStudio.</p>
-<pre><code>2+2</code></pre>
-<p>If it works you should see the answer: 4</p>
-<p><em>Make sure to remember to press enter. Entering in the code doesn’t execute it.</em></p>
-<p>Usually information is <strong>assigned a name</strong> which we use to call later. This information is now a <strong>named variable</strong>. We assign information to a variable using a left pointing arrow <code>&lt;-</code>:</p>
-<pre><code>a &lt;- 2+2 # assign 2+2 to the variable called a</code></pre>
-<p>Now the named variable a is stored in R’s short-term memory (called RAM - random access memory - in computing terms; also a good album by Daft Punk). This is different to long-term memory like files saved on your computer. When you close R, RAM is cleared - like your browser history when you use private mode!</p>
-<p>If you enter <code>a</code> in the console it will give you the answer to <code>2+2</code> that we told it. Under the “Environment” tab, it should list <code>a</code>.</p>
-<blockquote>
-<p><strong>Names are case sensitive and can be a combination of (most) symbols, letters and numbers (but no spaces).</strong></p>
-</blockquote>
-<p>Variables help with simplifying our code by calling from memory. If we have another variable <code>b</code> we can add <code>a</code> and <code>b</code>.</p>
-<pre><code>b &lt;- 10
-a + b</code></pre>
-<p>What is the answer to the above code? <strong>Click code to show the answer</strong></p>
-<pre class="r fold-hide"><code>14</code></pre>
-<p>We can assign strings to variables too.</p>
-<pre><code>c &lt;- &quot;hello&quot;
-c</code></pre>
-<p><strong>Variables should be informative and meaningful</strong></p>
-<p>Calculations of variables don’t work on strings. You can’t add strings together. Trying <code>c + a</code> should give an error.</p>
 </div>
-<div id="arrays" class="section level2">
-<h2>Arrays</h2>
-<p>Variables can store multiple pieces of information in an <strong>array</strong>. Strings and numbers cannot be mixed in the same array - they must all be the same type of data. <code>c</code> stands for concatenate (meaning link together) with your data within brackets separated by commas (spaces are optional but makes it easier to read code). We can use <code>class()</code> to see what type of variable our data are: “character” for strings, “numeric” for numbers.</p>
-<pre><code>string_array &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
-string_array
-class(string_array)
-
-number_array &lt;- c(1, 2, 3)
-number_array
-class(number_array)
-
-class(c(&quot;red&quot;, 1, &quot;green&quot;, 4)) # mixing strings and numbers will default to character</code></pre>
-<p>If you manipulate the number array it will apply the calculation to all numbers.
-<code>*</code> is multiply. <code>/</code> is divide:</p>
-<pre><code>number_array * 2
-number_array / 10</code></pre>
-<p>You can add arrays together as long as they have the same <strong>length</strong> (number of data). <code>length()</code> tells you how many observations are in the variable. <code>seq()</code> is a function to generate a sequence of numbers - here 3 evenly spaced numbers between 10 and 20:</p>
-<pre><code>length(number_array)
-number_array2 &lt;- seq(10, 20, length.out = 3)
-number_array2
-
-number_array + number_array2</code></pre>
+<div id="my-first-script" class="section level1">
+<h1>5. My first script</h1>
+<p>The greatest advantage of RStudio is that it allows you to write <strong>scripts</strong>. These are files ending in <code>.R</code> that are created and opened by RStudio. R itself cannot open, read or create scripts.</p>
+<p>Scripts are text documents of code that you can save on your computer and open later. Scripts are instructions to give to R, but can also serve as a record of what you’ve done (<strong>transparency</strong> &amp; <strong>reproducibility</strong>).</p>
+<p>Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click.</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
 </div>
-<div id="data-frames" class="section level2">
-<h2>Data frames</h2>
-<p>Often data is stored in multiple arrays which we can combine together to form <strong>columns</strong> and <strong>rows</strong>. This becomes a <strong>data frame</strong>. The columns have <strong>names</strong> or column headers that you can check or assign names using <code>names()</code>.</p>
-<pre><code>our_data &lt;- data.frame(colo = string_array, numbr = number_array2)
-our_data
-names(our_data) # original headers
-names(our_data) &lt;- c(&quot;colour&quot;, &quot;number&quot;) # give new names
-names(our_data) # updated headers</code></pre>
-<p>We can view some meta-information of our data in a few ways:</p>
-<pre><code>ncol(our_data) # the number of columns
-nrow(our_data) # the number of rows
-class(our_data) # type of variable</code></pre>
-<p>Now that there’s a mix of numbers and strings we cannot manipulate our data frame as a whole. Instead we need to specify which variable we want within the data frame. We use <code>$</code> to specify which column to look at by its column name:</p>
-<pre><code>our_data$number
-our_data$number * 2</code></pre>
-<p>The dollar sign introduces a fundamental syntax in R for extracting information:</p>
-<p><code>data_frame_name$variable_name</code></p>
-<p>The bit before the $ is the name of the data frame stored in R’s memory.<br />
-The bit after the $ is the name of the variable within the data frame that we want.</p>
-<blockquote>
-<p>Using <code>$</code> is really important to understand because it is how we tell R what information we want from it’s memory. We will see this again and again and is one of the most common coding mistakes if your code doesn’t work. e.g. misspelled variable names or data frame names.</p>
-</blockquote>
-<p>We can also specify a single cell in our data frame by referring to the column and row number in square brackets. <strong>R checks rows first then columns</strong>:</p>
-<pre><code>our_data
-our_data[1,2] # First row, second column
-our_data[2,1] # Second row, first column</code></pre>
-<p>Omitting a number shows all values in the row or column.</p>
-<pre><code>our_data[,2] # second column - same as our_data$number
-our_data[2,] # Second row</code></pre>
+<div class="panel-body">
+<p>We <strong>strongly recommend</strong> running code from your script rather than directly from the console because a script will be easier to proof-read and troubleshoot.</p>
+Scripts provide a guide to what you want to enter to R and saves you from having to type out code over and over again.
 </div>
-<div id="other-data-manipulation" class="section level2">
-<h2>Other data manipulation</h2>
-<p>R also has a few built in functions for various calculations. Here are some examples:</p>
-<pre><code>log10(our_data$number) # log10 transformation
-log(our_data$number) # natural log transformation
-exp(our_data$number) # exponential
-10^(our_data$number) # Power of 10
-mean(our_data$number) # calculate the mean</code></pre>
 </div>
-<div id="rounding" class="section level2">
-<h2>Rounding</h2>
-<p>The function to round numbers by decimal places in R is <code>round(x, digits = &lt;decimal places&gt;)</code> where <code>x</code> is your number of interest. The function to round to significant digits is <code>signif(x, digits = &lt;significant places&gt;)</code>.</p>
-<p>Although we are usually taught to round up a value ending in <code>.5</code> to the nearest whole number, the standard in many computers is to round to the nearest <strong>even number</strong>.</p>
-<p>For example, <code>24.25</code> will be rounded by R to <code>24.2</code> instead of <code>24.3</code> when rounding to 1 decimal place. Try it - <code>round(24.25, 1)</code>, whereas <code>round(24.35, 1)</code> will round to <code>24.4</code>.</p>
+<p>You can create a new script under File -&gt; New file -&gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.</p>
+<div class="figure">
+<img src="open-script.png" alt="" />
+<p class="caption">Run your code from scripts, rather than the console. It is easier to spot and fix mistakes!</p>
 </div>
-<div id="factors" class="section level2">
-<h2>Factors</h2>
-<p>Sometime we need our character strings to represent categorical groups. That’s where <strong>factors</strong> come in. They are a special data class of variable consisting of groups with sub-categories (called <strong>levels</strong>). We can turn character strings into factors and vice versa by using <code>as.character()</code> or <code>as.factor()</code> and saving the output as a new variable. Let’s turn our string array into a factor:</p>
-<pre><code>string_factor &lt;- as.factor(string_array)
-# Now we can see it is a factor and our colours have become levels (the sub-categories).
-class(string_factor)
-levels(string_factor) # Note levels are in alphabetical order by default
-string_factor &lt;- as.character(string_factor)
-class(string_factor) # Now it&#39;s back to a character</code></pre>
-<p>Factors are important, particularly when doing statistical hypothesis testing because it dictates the <em>order</em> in which R handles the data, otherwise R will default to ordering in alphabetical order.</p>
-<p>So to summarise:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Type of data</th>
-<th>Example</th>
-<th>R class</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>numeric</td>
-<td>1,2,3</td>
-<td>numeric (num)</td>
-</tr>
-<tr class="even">
-<td>strings</td>
-<td>“I”, “like”, “R”</td>
-<td>character (chr)</td>
-</tr>
-<tr class="odd">
-<td>categorical (ordinal or nominal)</td>
-<td>“group A”, “group B”</td>
-<td>factor with levels</td>
-</tr>
-</tbody>
-</table>
-<p>We can reorder the levels of a factor:</p>
-<pre><code>string_factor &lt;- factor(string_array, levels = c(&quot;green&quot;, &quot;blue&quot;, &quot;red&quot;))
-string_factor # Now you see that green is the first level
-string_factor &lt;- relevel(string_factor, &quot;red&quot;)
-string_factor # Relevel shifts the order of factors to make the specified one first - now red is first</code></pre>
-<p>We can be more specific about the order too. Above those were nominal categories but we can also use ordinal categories by including <code>ordered = TRUE</code>.</p>
-<pre><code>ordinal_factor &lt;- factor(c(&quot;low&quot;, &quot;med&quot;, &quot;high&quot;), ordered = TRUE, levels = c(&quot;low&quot;, &quot;med&quot;, &quot;high&quot;))
-ordinal_factor</code></pre>
-<p>R will treat these ordered factor levels differently to unordered factor levels but the difference is not important for what we will do in this module and unordered factors levels in the order we want will be fine.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Activity
+</h3>
+</div>
+<div class="panel-body">
+<p>Open your first script. Save it with a meaningful name.</p>
+<p>The numbers along the left hand side of the script refer to <strong>line numbers</strong>. It helps when referring to a specific function or code snippet to others.</p>
+<p>Let’s add your first functions to your R script!</p>
+</div>
+</div>
+<hr />
+<div id="loading-packages" class="section level2">
+<h2>Loading packages</h2>
+<p>One of the first things you may need in an R script is to load the packages you will use.
+Some base R packages are automatically loaded.</p>
+<p>To use a package in R, you need to <strong>call</strong> it from R’s library. The function to load a package is:</p>
+<pre><code>library(&lt;insert name of package&gt;) # loads a package</code></pre>
+<p>A package we will see later in the module is <code>MASS</code> which contains datasets you can use at home to practice the statistical tests covered in the lectures. <code>MASS</code> is a base R package but is not automatically loaded.</p>
+<p>Running <code>data()</code> or <code>data(package = .packages(all.available = TRUE))</code> will show the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general.</p>
+<p>Once a package is loaded, entering the name of a dataset will display the entire dataset.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Activity
+</h3>
+</div>
+<div class="panel-body">
+<p>Type <code>library(MASS)</code> into your script.</p>
+<ul>
+<li>Put your cursor on the line you want to run then press Ctrl+Enter or click Run</li>
+<li>You can run multiple lines by highlighting the relevant lines</li>
+<li>You do not need to highlight a single line to run it</li>
+<li>You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R</li>
+</ul>
+<div class="figure">
+<img src="Run.png" alt="" />
+<p class="caption">Shortcuts will make your life easier.</p>
+</div>
+<hr />
+<p>Run the <code>library(MASS)</code> code. You have just <strong>run</strong> your first <strong>line of code</strong>.</p>
+</div>
+</div>
+<p>R will load the package <code>MASS</code> in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to <code>MASS</code>.</p>
+<p>Try calling one of the <code>MASS</code> datasets, like <code>Rabbit</code>, to view the entire dataset. To call a dataset, type in the name and run the code.</p>
+<p>You can see the descriptions of each dataset by calling <code>help(&lt;dataset name&gt;)</code>, e.g. <code>help(Rabbit)</code> will tell you it describes the blood pressure of rabbits before and after a drug treatment.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Activity
+</h3>
+</div>
+<div class="panel-body">
+<p>We will use the package <code>learnr</code> later in the module.</p>
+<p>This code will install the package but there is <em>one mistake</em> - fix the mistake and install the package: <code>install.packages(learnr)</code></p>
+<p>Install any other packages you are asked to. If it worked you should see something under the Tutorial tab (next to Files, Plots etc.) in RStudio.</p>
+<p>When you’ve installed the package, modify your code to install the package <code>remotes</code>. You now should have installed two packages.</p>
+</div>
+</div>
 <hr />
 </div>
 <div id="commenting" class="section level2">
 <h2>Commenting</h2>
-<p>The <code>#</code> (hash/pound) sign indicates comments. Anything after this symbol is not run in R. Commenting is for writing notes or telling the user what is going on - see examples in this document. This becomes really important if you are sharing your code with someone else, including your future self.</p>
+<p>The <code>#</code> (hash/pound) sign indicates comments. Anything after this symbol is not run in R. Commenting is for writing notes or telling the user what is going on.</p>
 <pre><code># this is a comment</code></pre>
-<hr />
-<blockquote>
-<p>You will be working with all these types of data and ways of manupipulating data in R in the practicals and for your assessment</p>
-</blockquote>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What does <code>#</code> mean in R code?</p>
-<pre class="r fold-hide"><code># creates a comment to accompany code. Any text after # is not executed (run)</code></pre>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the function to load a package at the start of a script?</p>
-<pre class="r fold-hide"><code>library() is the function to load a package</code></pre>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the output if you ran the following lines of code?</p>
-<pre><code>cat &lt;- 10
-dog &lt;- 20
-cat + dog</code></pre>
-<pre class="r fold-hide"><code>30</code></pre>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">
+Best Practice
+</h3>
+</div>
+<div class="panel-body">
+Comment often and in detail. Someone should be able to understand what you did and why. Including your future self.
+</div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Activity
+</h3>
+</div>
+<div class="panel-body">
+<p>Add at least one comment to your R script describing what your script is doing.</p>
+</div>
+</div>
 <hr />
 </div>
 </div>
 <div id="working-directories-in-r" class="section level1">
-<h1>5. Working directories in R</h1>
-<p>Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use <strong>working directories</strong>. Working directories are default directories that programs will look in first. We can then use directory addresses that are <em>relative</em> to this default address which shortens addresses.</p>
+<h1>6. Working directories in R</h1>
+<p>Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use <strong>working directories</strong>.</p>
+<p>The working directory in R is the default directory R will look in first. We can then use directory addresses that are <strong>relative</strong> to this default address to call files.</p>
 <p>For example, following this directory structure:</p>
 <pre><code>C:
   -&gt; documents
@@ -505,256 +472,93 @@ cat + dog</code></pre>
               -&gt; file B</code></pre>
 <p>If the default directory is C:/, then the address for file B is <code>C:/documents/folder1/folder2/fileB</code>.<br />
 But if we set folder 1 as the working directory <code>C:/documents/folder1/</code>, then we can use the relative address for the file: <code>folder2/fileB</code>. This way we don’t have to type <code>C:/documents/folder1/</code> every time.</p>
-<p>Navigating through directories using addresses can be confusing. Another useful command is <code>..</code> which tells the address to go <em>up</em> a directory. For example, if folder 2 was the working directory <code>C:/documents/folder1/folder2</code> and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: <code>../../fileA</code> which means that the computer is now looking in the <code>documents</code> folder. In contrast, the relative address for file B is even shorter, <code>fileB</code>, since folder 2 is already the working directory.</p>
+<p>Navigating through directories using addresses can be confusing.<br />
+Another useful command is <code>..</code> which tells the address to go <em>up</em> a directory. For example, if folder 2 was the working directory <code>C:/documents/folder1/folder2</code> and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: <code>../../fileA</code> which means that the computer is now looking in the <code>documents</code> folder. In contrast, the relative address for file B is even shorter, <code>fileB</code>, since folder 2 is already the working directory.</p>
 <p>RStudio has a default working directory.<br />
-You can see which working directory is the default directory in RStudio on the “Files” tab. You can also check what working directory R is using by typing <code>getwd()</code> (GET Working Directory). When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab. <em>This may be one reason RStudio cannot find a file even with a “correct” relative address</em>.</p>
+You can see which working directory is the default directory in RStudio on the “Files” tab. The code to see the working directory in R is:</p>
+<pre><code>getwd() # GET Working Directory. There is nothing in the brackets</code></pre>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">
+Danger!
+</h3>
+</div>
+<div class="panel-body">
+<p>When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab.</p>
+<p><strong>This may be one reason RStudio cannot find a file even with a “correct” relative address and why it’s important to know which working directory your computer is using</strong>.</p>
+<p>Carefully check that the file address is correct! And that you know where the file is on your computer!</p>
+<p>You may need to change the working directory.</p>
+</div>
+</div>
+<hr />
 <div id="changing-working-directories" class="section level2">
 <h2>Changing working directories</h2>
 <p>You can change the default RStudio directory under Tools -&gt; Global Options but on a daily basis, changing the directory temporarily under Session -&gt; Set working directory is more useful.</p>
-<blockquote>
-<p>You will need to know how to change working directories and tell R where to find files through relative addresses because that is how we <strong>import</strong> and <strong>export</strong> data to and from R.</p>
-</blockquote>
-<p><img src="setwd.png" width="100%" /></p>
-<p>The R function to do the same thing is <code>setwd()</code> (SET Working Directory). e.g. <code>setwd(&lt;insert directory address here&gt;)</code>. It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place.</p>
-<blockquote>
-<p>Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file). If R cannot find a file, check the address or the working directory is correct</p>
-</blockquote>
-<hr />
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the working directory in computing?</p>
-<pre class="r fold-hide"><code>Working directories are the location (folder) on your computer that the program is looking in by default. All file address are relative to the working directory</code></pre>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the difference between the function <code>getwd()</code> and <code>setwd()</code>?</p>
-<pre class="r fold-hide"><code>getwd() tells you what R thinks the working directory is, setwd() tells R what you want the working directory to be</code></pre>
-<hr />
+<div class="figure">
+<img src="setwd.png" alt="" />
+<p class="caption">Setting the working directory using the drop down menu.</p>
+</div>
+<p>The R function to change your working directory is:</p>
+<pre><code>setwd(&quot;&lt;insert directory address here&gt;&quot;) # SET Working Directory</code></pre>
+<p>For example, <code>setwd("~/")</code> will change your working directory to your default directory (called Root in computing terms). It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place.</p>
+<div class="figure">
+<img src="setwd2.png" alt="" />
+<p class="caption">Setting the working directory using R code is better for writing scripts.</p>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Expectations
+</h3>
+</div>
+<div class="panel-body">
+<p>We expect you to know how to change working directories and tell R where to find files through relative addresses because that is how we <strong>import</strong> and <strong>export</strong> data to and from R.<br />
+Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file).<br />
+If R cannot find a file, check the address or the working directory is correct.</p>
 </div>
 </div>
-<div id="loading-data" class="section level1 tabset">
-<h1>6. Loading data</h1>
-<p>To use data stored in other files, the data must be <strong>loaded</strong> or <strong>read</strong> into R. Imported data <strong>must</strong> be assigned a name (using <code>&lt;-</code>) or it won’t be saved to R’s memory. The <code>read</code> functions are a set of base R function that import data based on how data is saved in the file. In this module we will focus on two types of storing data: tab delimated &amp; comma separated values.</p>
-<ol style="list-style-type: decimal">
-<li>In tab deliminated data, values are separated by tabs. e.g. 1 2 3 4 5 6 (separated by 1 space). The <code>read</code> function is <code>read.delim()</code> for deliminated.</li>
-<li>In comma separated values data (CSV), values are separated by commas. e.g. 1,2,3,4,5. The <code>read</code> function is <code>read.csv()</code> for CSV.</li>
-</ol>
-<p>Files names or directories are designated as character strings (<code>""</code>). <code>read.table()</code> also works for tables. See <code>help("read.table")</code> for the general inputs.</p>
-<p>The <code>read</code> functions have two important settings to be aware of:</p>
-<ul>
-<li><code>header</code>: Use <code>header = FALSE</code> (default) if your data doesn’t have headers, <code>header = TRUE</code> to force R to recognise headers - usually the first row of data.</li>
-<li><code>sep</code>: Tells R to recognise how individual observations are separated (hence sep). <code>sep = ""</code> or <code>sep = " "</code> if it’s tab separated data (with white spaces between data - <code>""</code> is a general indicator for any whitespace, <code>" "</code> is specifically 1 space) or <code>sep = ","</code> for comma separated values. If the data didn’t import properly it could be because the wrong read function or the wrong separator was used - try another one. Most of the time the default will be fine, which means you do not have to manually specify these settings.</li>
-</ul>
-<p>Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. There are always simple solutions to these problems (e.g. a small typo) and you should be able to fix them.</p>
-<p>Now let’s practice two ways of importing data using <code>read</code> functions: from a file and from the clipboard. The relevant files are available on Blackboard.</p>
-<blockquote>
-<p>Remember to set your working directory to tell R where to look for files. Otherwise R will look in the default directory and won’t be able to find the file. Alternatively, if you are using the full address, make sure you are using the correct address of the file when importing data.</p>
-</blockquote>
-<div id="txt" class="section level2">
-<h2>.txt</h2>
-<p>Text files (.txt) tend to be delimited, meaning information is separated by a space of fixed width. This is loaded using <code>read.delim()</code>. Try loading the file “small_sleep.txt” to an R element called <code>small_sleep</code>:</p>
-<pre><code>small_sleep &lt;- read.delim(&quot;small_sleep.txt&quot;) # load the data - note the use of &lt;- to assign a name
-small_sleep # show the data</code></pre>
-<hr />
-</div>
-<div id="csv" class="section level2">
-<h2>.csv</h2>
-<p>If data is separated by a comma, it’s called a comma separated value file (.csv). Note that .txt files can also be comma separated. The function to read csv is <code>read.csv()</code>. Try loading the file “mammal_sleep.csv” to an R element called <code>mammal_sleep</code>:</p>
-<pre class="r"><code>mammal_sleep &lt;- read.csv(&quot;mammal_sleep.csv&quot;)</code></pre>
-<p>Data collected in Excel can be saved as a .csv file using the Save As option. CSV is preferred in many instances over the default Excel file type because it is less prone to error. This is what we will mostly be using.</p>
-<hr />
-</div>
-<div id="clipboard" class="section level2">
-<h2>Clipboard</h2>
-<p>The Clipboard is where your computer saves information that you’ve copied using ctrl/cmd + c.<br />
-For quick and dirty data entry, or for copying code from the Internet, you can load data from the clipboard after highlighting data and copying it. You cannot paste data directly into R. But it is always better to save a data file as a .csv file and importing into R so you always have a copy of the raw data you used.</p>
-<p><img src="clip.png" width="100%" /></p>
-<p>For PC:</p>
-<pre><code>myclip_data &lt;- read.delim(&quot;clipboard&quot;) # also works with read.csv</code></pre>
-<p>For Mac:</p>
-<pre><code>myclip_data &lt;- read.delim(pipe(&quot;pbpaste&quot;)) # also works with read.csv</code></pre>
-<p>Web browsers might display tabbed whitespace differently so try a different separator depending on what web browser you are using (see above). If all else fails, copy the data into Excel and save the file (problem solving!).<br />
-Practice copying this data into a data frame called <code>mammal_clip</code> in R from the Clipboard using the <code>read.delim</code> function:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Species</th>
-<th align="right">BodyWt</th>
-<th align="right">BrainWt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Africanelephant</td>
-<td align="right">6654.000</td>
-<td align="right">5712.0</td>
-</tr>
-<tr class="even">
-<td align="left">Africangiantpouchedrat</td>
-<td align="right">1.000</td>
-<td align="right">6.6</td>
-</tr>
-<tr class="odd">
-<td align="left">ArcticFox</td>
-<td align="right">3.385</td>
-<td align="right">44.5</td>
-</tr>
-<tr class="even">
-<td align="left">Arcticgroundsquirrel</td>
-<td align="right">0.920</td>
-<td align="right">5.7</td>
-</tr>
-<tr class="odd">
-<td align="left">Asianelephant</td>
-<td align="right">2547.000</td>
-<td align="right">4603.0</td>
-</tr>
-<tr class="even">
-<td align="left">Baboon</td>
-<td align="right">10.550</td>
-<td align="right">179.5</td>
-</tr>
-</tbody>
-</table>
 <hr />
 </div>
 </div>
-<div id="checking-the-data" class="section level1">
-<h1>7. Checking the data</h1>
-<blockquote>
-<p><strong>Always</strong> check that your data loaded properly. We expect you to be able to load data from file or from clipboard during practicals and assessment.</p>
-</blockquote>
-<p>Sometimes strings are loaded as factors instead of characters or vice versa. Sometimes the columns are not recognised because the separator character is incorrect. Sometimes R confuses the column names as the first line of data. All of theses are common and basic mistakes with easy fixes you should be able to deal with</p>
-<div id="data-structure" class="section level2">
-<h2>Data structure</h2>
-<p><code>str()</code> is a handy function for checking the structure of your dataset. Let’s check the mammal sleep dataset.</p>
-<pre class="r"><code>str(mammal_sleep)
-&#39;data.frame&#39;:   62 obs. of  11 variables:
- $ Species    : chr  &quot;Africanelephant&quot; &quot;Africangiantpouchedrat&quot; &quot;ArcticFox&quot; &quot;Arcticgroundsquirrel&quot; ...
- $ BodyWt     : num  6654 1 3.38 0.92 2547 ...
- $ BrainWt    : num  5712 6.6 44.5 5.7 4603 ...
- $ NonDreaming: num  NA 6.3 NA NA 2.1 9.1 15.8 5.2 10.9 8.3 ...
- $ Dreaming   : num  NA 2 NA NA 1.8 0.7 3.9 1 3.6 1.4 ...
- $ TotalSleep : num  3.3 8.3 12.5 16.5 3.9 9.8 19.7 6.2 14.5 9.7 ...
- $ LifeSpan   : num  38.6 4.5 14 NA 69 27 19 30.4 28 50 ...
- $ Gestation  : num  645 42 60 25 624 180 35 392 63 230 ...
- $ Predation  : int  3 3 1 5 3 4 1 4 1 1 ...
- $ Exposure   : int  5 1 1 2 5 4 1 5 2 1 ...
- $ Danger     : int  3 3 1 3 4 4 1 4 1 1 ...</code></pre>
-<ul>
-<li>The first line tells us that <code>mammal_sleep</code> is a data frame. Which is how R stores observations in rows and columns. Other types are lists and matrices. It also tells us there are 62 observations - meaning the number of rows of data - and 11 variables - meaning the number of columns</li>
-<li>In the first column of <code>str()</code>, are the names of the columns of the dataset listed with an <code>$</code> are . So the first column is called <code>Species</code></li>
-<li>The second column shows what <em>type</em> of variable the data are: character (<code>chr</code>) for letters, numeric (<code>num</code>) for continuous numbers and integer (<code>int</code>) for discrete numbers. Another type you will encounter are <code>Factors</code> and <code>levels</code> - these are categorical variables.</li>
-<li>The third column shows the first couple of observations in each column</li>
-</ul>
-</div>
-<div id="viewing-data" class="section level2">
-<h2>Viewing data</h2>
-<p>The function <code>head()</code> shows the top few rows of data. It shows 6 rows by default but you can set the number of rows to show.</p>
-<p>You can also see the entire dataset using <code>View()</code> (note the capital V) but this will be clunky for very large datasets.</p>
-<pre><code>head(mammal_sleep, n = 10) # View the first 10 rows (6 is default, can be changed)
-View(mammal_sleep)</code></pre>
-</div>
-<div id="summarising-data" class="section level2">
-<h2>Summarising data</h2>
-<p><code>summary()</code> shows some summary statistics for the specific variable. You can check these with individually calculated values. e.g. <code>mean(mammal_sleep$BodyWt)</code>.</p>
-<pre><code>summary(mammal_sleep) # for all columns
-summary(mammal_sleep$BodyWt) # summary statistics for body weight</code></pre>
-</div>
-<div id="missing-data" class="section level2">
-<h2>Missing data</h2>
-<p>Missing data is denoted in R as <code>NA</code>. We can see in the <code>str()</code> output for <code>mammal_sleep</code> that there are some missing values. How you deal with missing data depends on how you are handling or analysing the data.</p>
-<hr />
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-Why would this function to copy data into R from the clipboard not work in Mac (assuming the data has already been copied)?<br />
-<code>read.delim(pipe("pbpaste"))</code></p>
-<pre class="r fold-hide"><code>The data has not been assigned a variable name thus is not saved to the computer memory so you cannot use the data. i.e. data &lt;- read.delim(pipe(&quot;pbpaste&quot;)) so the information is saved as a variable called data</code></pre>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What summary statistic do you think <code>1st Qu</code> and <code>3rd Qu</code> refer to in <code>summary()</code>?</p>
-<pre class="r fold-hide"><code>1st and 3rd Quantiles</code></pre>
-<hr />
-</div>
-</div>
-<div id="exporting-data" class="section level1">
-<h1>8. Exporting data</h1>
-<p>To export, data needs to be <strong>written</strong> to file. You can export data as .txt or .csv easily using the <code>write</code> functions <code>write.table()</code> or <code>write.csv()</code>. csv can be opened by excel. The function needs to know the name of the data frame you want to export and where to save the file. The export address needs a file name and the relevant file extension (.csv or .txt):</p>
-<pre><code>write.csv(data frame name, &quot;&lt;insert destination folder&gt;/file name.csv&quot;)</code></pre>
-<p><strong>Question.</strong> Click <code>code</code> to show the answer.<br />
-What is the complete function to write the <code>mammal_clip</code> dataset as a csv?</p>
-<pre class="r fold-hide"><code>write.csv(mammal_clip, &quot;folder/file.csv&quot;)</code></pre>
-<p>Now practice exporting your imported data.</p>
-<hr />
-</div>
-<div id="plotting" class="section level1">
-<h1>9. Plotting</h1>
-<p>The base R function to make a plot is <code>plot(y axis ~ x axis, data = data frame)</code>. You can customise all components of the graph - try looking up how to change the point style by typing <code>??pch</code> in console and there are lots of resources online.</p>
-<pre class="r"><code>plot(TotalSleep ~ LifeSpan, mammal_sleep)</code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" alt="Relationship between the total hours of sleep and life span in mammals" width="672" />
-<p class="caption">
-Figure 1: Relationship between the total hours of sleep and life span in mammals
-</p>
-</div>
-<p>If you want a challenge, try replicating this figure using the <code>mammal_sleep</code> dataset:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" alt="Relationship between log10(body weight) and life span in mammals" width="672" />
-<p class="caption">
-Figure 2: Relationship between log10(body weight) and life span in mammals
-</p>
-</div>
-<p>You need to:</p>
-<ul>
-<li>log10 transform body weight</li>
-<li>change the x axis labels</li>
-<li>change the y axis labels</li>
-<li>change the point style</li>
-<li>change the point colour</li>
-</ul>
-<p>This figure is a step more suitable for scientific reports than the first one because it has more informative axis labels.</p>
-<div id="exporting-a-figure" class="section level2">
-<h2>Exporting a figure</h2>
-<p>You can copy a figure to clipboard or save the image from RStudio from the Export menu in the Plots window.</p>
-<p>To export an image using R code you need to tell R to expect a plot, plot the graph, then tell R that you’ve finished plotting - e.g. for a jpeg:</p>
-<pre><code>jpeg(&quot;plot.jpeg&quot;) # Tell R you want to save a jpeg and where
-plot(TotalSleep ~ LifeSpan, mammal_sleep) # plot a graph
-dev.off() # Tell R you&#39;ve finished making the figure and to export the plot</code></pre>
-<hr />
-<blockquote>
-<p>That’s the basics of R relvant to this module. We will be using these concepts throughout the practicals and the assessment so it’s really important you can do these skills independently and confidently. You can refer back to this worksheet as a reference.</p>
-</blockquote>
-<p>You should now have an R script with these basic functions saved somewhere safe on your computer.</p>
-<hr />
-</div>
-</div>
-<div id="problem-solving" class="section level1">
-<h1>Problem solving</h1>
+<div id="rubber-ducks" class="section level1">
+<h1>Rubber ducks</h1>
 <p>Problem solving is an important skill. If your code is not working then it’s likely that you’ve made an error somewhere - and that’s OK! It’s all part of learning how to program and there’s no shame in not getting it right the first time. The first thing is to retrace your steps and identify whether you’ve missed a step or misspelled something.</p>
 <p>Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by <em>doing</em>, which means having a go yourself before seeking help from others. Make a habit of asking for help as your last option because for the assessment you will need to use R and troubleshoot independently.</p>
 <p>If you can’t identify the problem, then you need to be able to describe your problem to another person. The other person needs enough information and context to understand what you hope to achieve and what you’ve done so far to suggest a solution. Sometimes the solution isn’t immediately obvious so it may require some trial and error - and that’s all part of the process too! It’s really hard to fix someone’s coding problem without context.</p>
 <p>Talking through your problem is called rubber ducking in computer science - talking through your thought process to a rubber duck may help you realise the solution.</p>
-<div id="tips" class="section level2">
-<h2>Tips</h2>
-<ul>
-<li>Coding is like learning a language. There is grammar, syntax and terminology to learn.</li>
-<li>The secret to being a coding whiz is practice, practice, practice. Try using R at every opportunity. If you don’t use it, you lose it.</li>
-<li>It’s OK to google everything. No matter how many years you’ve been using R you will forget something basic. We don’t expect you to remember everything by rote.</li>
-<li>A lot of programming is logic. If you can’t describe what you want to achieve in words, then you can’t code it. Sometimes the solution means changing your way of thinking about a problem.</li>
-<li>A lot of errors come from spelling or syntax mistakes. It doesn’t mean you don’t know it, check your code carefully for typos. Missing brackets or quotation marks are common mistakes. Or not setting your working directory properly, or looking in the wrong directory. Or not using the correct variable names.</li>
-<li>Often, copying and pasting your error message into google comes up with the solution</li>
-<li>Trial and error is a big part of programming. If it doesn’t work the first time, tweak it and try it again. Getting a function to work might be as simple as adding or removing one of the defined parameters.</li>
-</ul>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Expectations
+</h3>
+</div>
+<div class="panel-body">
+<p>We expect you to be able to troubleshoot common programming problems on your own. Working things out yourself is also an essential skill, generally.</p>
+<p>99% of all errors are incorrect addresses (working directory not set properly), missing characters, wrong quotation marks, or missing a step in the instructions. Typographic errors and spelling mistakes will be the first things we will check.</p>
+<p>We don’t want you to treat R and coding as a black box (i.e. something you don’t understand how it works). Don’t expect to be given code that works, that defeats the point of learning programming – We want you to be able to write your own code and do data analysis in R independently by the end of this module for any scenario.</p>
+</div>
 </div>
 <div id="finding-help" class="section level2">
 <h2>Finding help</h2>
 <p>All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in <code>help(&lt;insert function name here&gt;)</code>. If you don’t know your exact query, you can search using <code>??&lt;insert term here&gt;</code> - e.g. <code>??mean</code>.</p>
-<p>The Internet is really really great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google.</p>
+<p>The Internet is also great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google - meaning you need to know what outcome you want.</p>
 <hr />
 </div>
 </div>
 <div id="final-checklist" class="section level1">
 <h1>Final checklist</h1>
+<p>You should now have R and RStudio installed on your computer, installed some packages and updated your R settings if needed.</p>
+<p>You are now ready for the rest of the module.</p>
 <ul>
 <li>Do you know how to navigate computer directories and addresses to find files or folders?</li>
-<li>Do you have R and RStudio installed on your computer?</li>
-<li>Is R up to date? (version 4.0 or above)</li>
 <li>Do you know how to set up scripts and directories in RStudio?</li>
-<li>Do you know how to import and export data into R in various formats?</li>
+</ul>
+<p>We’ve introduced some basic computing concepts: scripts, directories and commenting.</p>
+<p>We’ve also introduced some fundamental R functions. You will need these in the future:</p>
+<ul>
+<li><code>install.packages</code></li>
+<li><code>library</code></li>
+<li><code>getwd</code></li>
+<li><code>setwd</code></li>
 </ul>
 </div>

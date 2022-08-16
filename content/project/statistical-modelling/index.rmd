@@ -1,45 +1,52 @@
 ---
 title: Statistical Modelling Practicals
-date: "2021-12-01"
+date: "2022-08-16"
 external_link:
 image:
   caption: 
   focal_point: Smart
-links: 
 summary: Learning statitical modelling with functional responses
 tags:
 - teaching
 - R stats
 - code
 url_code: "https://github.com/jacintak/biostats"
-
+links:
+- icon: file
+  icon_pack: fas
+  name: Part 1 handout
+  url: teaching/StatsModelsPrac1/index.html
+- icon: file
+  icon_pack: fas
+  name: Part 2 handout
+  url: teaching/StatsModelsPrac2/index.html
 ---
 
 # Introduction
 
-`StatsModels` is an `R` package of `learnr` tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot.
+`StatsModels` is an `R` package of `learnr` tutorials comprising two practicals on statistical modelling made for BUY22S01 Statistics and Computation at Trinity College Dublin. The package is distributed via GitHub. Each practical is for a 3 hour slot with an estimated completion time of 2.5 hours.
 
 The aim of the practicals is to introduce statistical modelling. It uses functional responses (i.e. Type II models, Holling's disc equation) as background information. 
 
 There are two parts to the practical:
 
  1. Introduction to statistical modelling
-     * Constructing a Type II model
+     * Constructing a Type II functional response
      * Designing an experiment
      * Collecting data
  2. Data analysis using statistical models in `R`
      * Importing data
      * Manipulating data
-     * Conducting multiple linear regression
+     * Conducting multiple linear regression (additive)
      * Visualising data
      
-Part 1 requires students collect data by replicating Holling's disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using both additive and interactive multiple linear regression. Simple linear regressions (with one predictor variable) are not covered for time constraints.
+Part 1 requires students collect data by replicating Holling's disc experiment with two predictor variables: prey density and jar type (lid/ no lid). This practical focuses on Type II models. Part 2 analyses the data using additive multiple linear regression. Simple linear regressions (with one predictor variable) or multiplicative regression are not covered because of time constraints.
 
 ## Remote version
 
 It is possible to adapt this in-person practical to a remote version by getting students to collect data using a Scratch simulation of a Type II functional response. I have a Scratch model of one.
 
-***
+*****
 
 # Set up
 
@@ -70,7 +77,7 @@ remotes::install_github("jacintak/biostats", dependencies = TRUE, build_vignette
 
 If you are asked to install any other packages, choose yes.  
 If you are asked to update any packages, press `1` for updating all of them.  
-If you are asked to install packages from source (i.e. in a pop-up window) press no.  
+If you are asked to install packages from source (i.e. in a pop-up window), press no.  
 If the package installed properly, you should automatically see the tutorials in the Tutorial tab.
 
 ***
