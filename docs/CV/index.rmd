@@ -1,0 +1,339 @@
+---
+title: "CV"
+subtitle: Jacinta D Kong
+output:
+  blogdown::html_page:
+    toc: yes
+urlcolor: blue
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: Download PDF
+  url: files/Kong_JD_CV.pdf
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en
+- icon: orcid
+  icon_pack: fab
+  link: https://orcid.org/0000-0002-1085-8612
+---
+
+Last updated `r format(Sys.Date(), '%d %B %Y')`
+
+***
+
+
+# Research and teaching appointments
+
+ * Teaching and Research Fellow  
+   Department of Zoology, School of Natural Sciences.  
+   Trinity College Dublin, Dublin, Ireland 	
+   5.2019 – Present
+ * Research Assistant  
+   Intraspecific variation in mechanistic species distribution modelling,  
+   The University of Melbourne, Australia 	
+   5.2018 – 12.2018
+ * Comparative Animal Physiology tutor (Second Year undergraduate)   
+   School of BioSciences, the University of Melbourne, Australia 	
+   2017– 2018
+ * Ecology in Changing Environments tutor (Third Year undergraduate)  
+   School of BioSciences, the University of Melbourne, Australia 	
+   2016– 2018
+ * Comparative Animal Physiology residential tutor,  
+   University College, the University of Melbourne, Australia 	
+   2017– 2018
+ * First Year Chemistry residential tutor  
+   St John’s College, the University of Queensland Australia 	
+   8.2014 – 10.2014
+ * First Year Biology tutor (Science Learning Centre tutor),  
+   the Faculty of Science, the University of Queensland, Australia 	
+   2012
+ * Peer Assisted Study Session leader: first year statistics  
+   The Peer Assisted Study Session office and the School of Mathematics and Physics, the University of Queensland Australia 	
+   8.2012 – 10.2012
+ * Peer Assisted Study Session leader: first year ecology  
+   The Peer Assisted Study Session office, the University of Queensland Australia 	
+   2011 – 2012
+ * Volunteer laboratory technician. Animal husbandry.  
+   White Evolutionary Physiology Laboratory, the University of Queensland 	
+   3.2012 – 10.2012
+
+***
+
+# Qualifications
+
+**Doctor of Philosophy (Science)**  
+The University of Melbourne, Australia  
+*Title:* Predicting ectotherm life cycles under a variable climate: Physiological diversity of matchstick grasshopper eggs and their ecological and evolutionary implications 	 
+Repository access: http://hdl.handle.net/11343/225704  
+1.2015 – completed 14 Aug 2019, conferred 5.10.2020
+
+**Bachelor of Science (Honours Class I, University Medal)**  
+The University of Queensland, Australia  
+*Title:* The effect of temperature on the relationship between metabolic rate and mass: Tests of the Metabolic Theory of Ecology 	
+Conferred 6.12.2013
+
+**Bachelor of Science**  
+The University of Queensland, Australia 	
+Conferred 17.12.2012
+
+***
+
+# Refereed journal articles
+
+* Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. *Accepted article*. ^+^ Joint first author. 
+
+* Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 204
+
+* Schwanz LE, Gunderson A, Iglesias-Carrasco M, Johnson MA, **Kong JD**, Riley J, Wu NC. (2022) Best practices for building and curating databases for comparative analyses. Journal for Experimental Biology. 225: jeb243295. DOI: [10.1242/jeb.243295](https://doi.org/10.1242/jeb.243295). Altmetric score: 12
+
+* **Kong JD**, Hoffmann AA, Kearney MR. (2019) Linking thermal adaptation and life-history theory explains latitudinal patterns of voltinism. Philosophical Transactions of the Royal Society B: Biological Sciences. 374(1778). DOI: [10.1098/rstb.2018.0547](https://doi.org/10.1098/rstb.2018.0547). Altmetric score: 8
+
+* Kearney MR, Deutscher J, **Kong JD**, Hoffmann AA. (2018) Summer egg diapause in a matchstick grasshopper synchronises the life cycle and buffers thermal extremes. Integrative Zoology. 13(4): 437–449. DOI: [10.1111/1749-4877.12314](https://doi.org/10.1111/1749-4877.12314).  Altmetric score: 2
+
+* Maino JL, **Kong JD**, Hoffmann AA, Barton MG, Kearney MR. (2016) Mechanistic models for predicting insect responses to climate change. Current Opinion in Insect Science. 17: 81 – 86. DOI: [10.1016/j.cois.2016.07.006](https://doi.org/10.1016/j.cois.2016.07.006).  Altmetric score: 6
+
+* **Kong JD**, Axford JK, Hoffmann AA, Kearney MR. (2016) Novel applications of thermocyclers for phenotyping invertebrate thermal responses. Methods in Ecology and Evolution. 7(10): 1201 – 1208. 2016. DOI: [10.1111/2041-210X.12589](https://doi.org/10.1111/2041-210X.12589). Altmetric score: 20
+
+***
+
+# Research highlights
+
+<i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
+<i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
+H-index: 4 (GS)  
+Total citations: 82  
+
+> * High attention paper in Science in the top 5% of all research outputs scored by Altmetric: 19 News outlets, 1 blog, 84 tweeters. Altmetric score: 204
+> * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
+> * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see above]. Altmetric score: 21  
+> * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see above]. Altmetric score: 6
+
+I have peer reviewed for:
+
+ * Global Change Biology
+ * Entomologia Experimentalis et Applicata
+ * Methods in Ecology and Evolution
+ * Nature Ecology and Evolution
+ * Ecological Entomology
+ * The Canadian Entomologist
+ * Environmental Entomology
+ * Journal of Fish Biology
+ * Current Zoology
+ * Scientific Reports
+ * Conservation Physiology
+ * American Naturalist
+ * Functional Ecology
+
+***
+
+# Research grants or awards
+
+**TOTAL: $13 750 AUD** :australia:
+
+ * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
+Equity Trustees Charitable Foundation & the Ecological Society of Australia
+ * **$300 AUD**. 12.2018 	2nd runner up student presentation  
+ Australian and New Zealand Society for Comparative Physiology and Biochemistry, Australia
+ * **$500 AUD**. 8.2018 	Student Travel Grant  
+Australian Entomological Society, Australia
+ * **$1 500 AUD**. 2018 	Science Abroad Travelling Scholarship  
+Faculty of Science, the University of Melbourne, Australia
+ * **$950 AUD**. 2018 	FH Drummond Travel Award  
+School of BioSciences, the University of Melbourne, Australia
+ * **$1 500 AUD**. 2018 	School of BioSciences Travelling Scholarship  
+School of BioSciences, the University of Melbourne, Australia
+ * **$6 000 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
+Equity Trustees Charitable Foundation
+ * **$500 AUD**. 6.2018 	Three Minute Thesis (3MT) People’s Choice Winner  
+The University of Queensland Undergraduate Research Conference
+
+
+## Other Awards and Scholarships
+
+ * **$13 541 AUD**. 2018 	Research Training Program Scholarship, Australian Government
+ * **$26 682 AUD**. 2017 	Research Training Program Scholarship, Australian Government
+ * **$200 AUD**. 2017 	Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne
+ * **$26 288 AUD**. 2016 	Australian Postgraduate Award, Australian Government
+ * **$25 849 AUD**. 2015 	Australian Postgraduate Award, Australian Government
+ * 2014 University Medal 2013, the University of Queensland, Australia
+ * 2010 – 2013 Dean’s Commendation for Academic Excellence (formerly Dean’s Commendation for High Achievement), the Faculty of Science, the University of Queensland, Australia
+
+***
+
+# Teaching contributions and course development
+
+Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
+
+2022
+
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+
+2021
+
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Hybrid delivery: remote and in-person lectures & remote and in-person practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+
+2020
+
+ * Lecturer (Module co-ordinator) & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
+ 
+2019
+
+ * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.
+ * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
+ * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
+
+2017
+ 
+ * Guest lecturer: 2nd year Comparative Animal Physiology, University of Melbourne
+ * Course development: 2nd year Biostatistics, University of Melbourne. Evaluated course context and provided feedback.
+
+2016
+
+ * Guest lecturer: 2nd year Comparative Animal Physiology, University of Melbourne
+ 
+***
+
+# Conference presentations and invited talks
+
+2021
+
+ * Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland (online)
+ * Ectotherm heat limits track biological rates. British Ecological Society Macroecology Special Interest Group meeting (online)
+ * Thermal adaptation and plasticity of egg development generates latitudinal patterns in insect life cycles under seasonal climates. Society for Experimental Biology Annual Meeting (online)
+
+2019
+
+ * Detangling the complex problem of climate adaptation of insects living in a seasonal world. Victorian Biodiversity Conference, University of Melbourne, VIC, Australia
+ * Local adaptation of thermal responses generates voltinism patterns of matchstick grasshoppers, *Warramaba* (Orthoptera: Morabidae), along a latitudinal gradient. British Ecological Society Annual Meeting, Belfast, N. Ireland, UK
+
+2018
+
+ * Selection against overwintering shapes thermal performance curves for development. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Monash University, VIC, Australia
+ * Environmental and developmental drivers at the egg stage generate divergent life cycles in wingless arid zone grasshoppers (Orthoptera: *Warramaba*). Australian Entomological Society Conference, Alice Springs, N.T., Australia
+ * The egg stage drives life cycle adaptation to climate in the widely distributed matchstick grasshoppers (*Vandiemenella* and *Warramaba*, Orthoptera: Morabidae). ‘The height, breadth and depth of physiological diversity: variation across latitudinal, altitudinal and depth gradients’ Animal Biology Satellite Meeting, Florence, Italy, Society for Experimental Biology
+ * Microclimate-driven mechanistic models to examine clinal adaptation at the egg stage in a parthenogenetic grasshopper. Society for Experimental Biology Annual Conference, Florence, Italy
+
+2017
+
+ * Does variation in egg developmental responses to temperature generate divergent life-cycles in a genus of flightless grasshoppers (*Warramaba* spp.)? School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
+ * Egg development drives life cycles in *Warramaba* spp. grasshoppers. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Daintree Rainforest Observatory, QLD, Australia
+ * Mechanistic models for understanding and predicting insect responses to climate change. Australian Entomological Society Conference, Terrigal, N.S.W., Australia
+
+2016
+
+ * Predicting insect egg development under variable climates. School of BioSciences Postgraduate Symposium, the University of Melbourne, Parkville, Australia
+ * Predicting egg development in the parthenogenetic grasshopper *Warramaba virgo* (Orthoptera: Morabidae). Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Western Sydney University, N.S.W., Australia
+
+2015
+
+ * Novel applications of thermocyclers for high-throughput phenotyping of invertebrate thermal response. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, Fowler’s Gap, N.S.W., Australia
+
+2013
+
+ * Every Breath You Take Links Metabolism and Ecology
+ * Three Minute Thesis, Undergraduate Research Conference, the University of Queensland, Australia The University of Queensland
+ * Every Breath You Take Links Metabolism and Ecology. Summer Research Introduction Session 2013, invited by the Office of Undergraduate Education, the University of Queensland, Australia
+ * Flying foxes and you: Exploring the exposure of society to so-called “rats with wings”
+ * Bachelor of Science Welcome Day, invited by the Faculty of Science, the University of Queensland, Australia
+
+2012
+
+ * Flying foxes and you: Exploring the exposure of society to so-called “rats with wings”
+ * Advanced Study Program in Science Student Conference, the University of Queensland, Australia
+
+2011
+
+ * Female-biased dispersal in the Eastern Water Dragon (*Physignathus lesueurii lesueurii*)
+ * Advanced Study Program in Science Student Conference, the University of Queensland, Australia
+
+***
+
+# Professional service and affiliations
+
+ * 2015 – Present 	Member: Australian and New Zealand Society for Comparative Physiology and Biochemistry (ANZSCPB)
+ * 2019 – Present 	Member: British Ecological Society (BES) & Irish Ecological Association (IEA)
+ * 2018 	Member: Royal Society of Victoria (RSV)
+ * 2017 – Present 	Member: Society for Experimental Biology (SEB)
+ * 2015 – 2020 	Member: Australian Entomological Society (AES)
+ * 2019 – 2020 	Member: European Society for Evolutionary Biology (ESEB)
+ * 2017 – 2018 	President, BioSciences Postgraduate Society, the University of Melbourne
+ * 2016 – 2017 	Vice President, BioSciences Postgraduate Society, the University of Melbourne
+
+***
+
+# Professional development qualifications
+
+ * 26 Jan 2021 Epigeum Research Integrity Course
+ * 19 Mar 2021 Dynamic Energy Budget Course
+
+***
+
+# Community outreach and communication
+
+2022
+
+ * **Kong JD**, Chown SL, Hoffmann AA and Kearney MR. (2022) Reply to Adamo: No Signs of Pathogen Susceptibility in Warramaba virgo. Science. eLetter. DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). 
+
+2021
+
+ * Contributor to the Trinity Walton Club STEM@Universi-TY program, Trinity College Dublin
+ * Mentor for Irish Ecological Association mentoring meeting. 7th January
+ * The Socio-Economic Theory of Animal Abundance. April Fools blog post for [EcoEvo@TCD](http://www.ecoevoblog.com/2021/04/01/the-socio-economic-theory-of-animal-abundance/). 1st April
+ 
+2020
+
+ * Profiled on Humans of BioSciences by the School of BioSciences, the University of Melbourne, Australia. [Website](https://biosciences.unimelb.edu.au/news/hbos/jacinta-kong-humans-of-biosciences) & [Twitter](https://twitter.com/BioSci_UniMelb/status/1339375265961582592). 17th December
+ * Guest interview with Newstalk radio, Ireland. 14th January
+ 
+2019
+
+ * Mentor for BES Women in Science Mentoring Program
+ * Home and Away: 3 part blog series for [EcoEvo@TCD](http://www.ecoevoblog.com)
+     * Home and Away: Would a Rosella by any other name smell as sweet (online 1 Nov)
+     * Home and Away: Monotreme mistakes (online 22 Nov)
+     * Home and Away: Australian expats (online 12 Dec)
+ * Victorian Biodiversity Conference Volunteer, Melbourne, Australia
+        
+2018 
+        
+ * Big Ideas in Macrophysiology. Report on the 2018 Animal Biology Satellite Meeting, Florence Italy. [Society for Experimental Biology Magazine](https://www.sebiology.org/digital-magazine/autumn-2018/#p=18)
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ 
+2017
+ 
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ * Session Chair, BioSciences Postgrad Symposium, the University of Melbourne, Australia
+ *	Victorian Biodiversity Conference Volunteer, Melbourne, Australia
+ * Blog post for Graduate Student Association, University of Melbourne on the biodiversity photo competition
+ 
+2016
+
+ * Session Chair, BioSciences Postgrad Symposium, the University of Melbourne, Australia
+ *	Novel applications of thermocyclers for characterising invertebrate thermal responses. [Video for Methods in Ecology and Evolution](https://youtu.be/uXzEfvR_hoE)
+ 
+2015
+
+ * The University of Melbourne Open Day Volunteer, the University of Melbourne, Melbourne, Australia
+ * The Real Life of a Research Student. Science Undergraduate Research Journal (SURJ), Issue 2. The University of Queensland, Australia
+ * Jacinta on Zoology & Research. Interview with BITE BACK, Black Dog Institute, Australia. 31st August. [Link likely broken](http://www.biteback.org.au/blogs/bite-back-team-blog/jacinta-on-zoology-research/)
+ 
+2014
+
+ * Brisbane Open House Volunteer, Brisbane Open House, Brisbane, Australia
+ *	Student Chaperone for the International Baccalaureate World Student Conference, the University of Queensland, Australia
+ * Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia
+ 
+2013
+
+ * Science Mentor to Science Undergraduate Students, appointed by the Faculty of Science, the University of Queensland, Australia
+ 
+2012
+
+ * Moreton Bay Research Station Open Day Assistant, Moreton Bay Research Station, Brisbane, Australia

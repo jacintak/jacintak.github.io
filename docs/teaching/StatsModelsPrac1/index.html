@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.2">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jacinta Kong">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Static handout of Part 1 of Statistical Modelling practical">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://jacintak.github.io/teaching/StatsModelsPrac1/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://jacintak.github.io/teaching/StatsModelsPrac1/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@jacintakong">
+  <meta property="twitter:creator" content="@jacintakong">
+  
+  <meta property="og:site_name" content="Jacinta&#39;s Website">
+  <meta property="og:url" content="https://jacintak.github.io/teaching/StatsModelsPrac1/">
+  <meta property="og:title" content="Statistical modelling Part 1 | Jacinta&#39;s Website">
+  <meta property="og:description" content="Static handout of Part 1 of Statistical Modelling practical"><meta property="og:image" content="https://jacintak.github.io/img/icon-512.png">
+  <meta property="twitter:image" content="https://jacintak.github.io/img/icon-512.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-08-16T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2022-08-16T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Statistical modelling Part 1 | Jacinta&#39;s Website</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    
+    
+      <a class="navbar-brand" href="/">Jacinta&#39;s Website</a>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/CV/"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Statistical modelling Part 1</h1>
+
+  
+
+  
+    
+
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+    
+      
+    
+    Published 16 Aug 2022
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/statistical-modelling/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This is a static version of the <code>learnr</code> tutorials for the Statistical Modelling practicals.</p>
+<p>Welcome! In two practicals and in three lectures we will be looking at statistical modelling.</p>
+<p>We have progressed beyond the realm of doing stats by hand and basic statistical tests like t-tests are <strong>not appropriate</strong> for the types of data we will look at or the hypotheses we test. R will be the tool we will use.</p>
+<p>In these sessions, we will focus on the practical aspects of <strong>applying</strong> statistics (implementation &amp; interpretation) with real data – not on the theory or mathematical proofs – in fact, nearly all the relevant theory has been introduced to you in previous lectures.</p>
+<p>The practicals and lectures will feed off each other and these will also build upon the previous lectures and practicals. All concepts in this practical are assessable and relevant to the lectures. <strong>I expect you to be up to date with the module material</strong>.</p>
+<p>The demonstrators are available if you have questions about the concepts or have technical issues with running the practical. Please talk to them, they get lonely. They will be checking in and making sure you are keeping to time.</p>
+<hr />
+<div id="what-is-statistical-modelling" class="section level2">
+<h2>What is statistical modelling?</h2>
+<p>Recall from the lectures:</p>
+<blockquote>
+<p>Statistical models are logical mathematical or statistical descriptions of what we believe to be important in a biological system.</p>
+</blockquote>
+<p>We use models to:</p>
+<ul>
+<li>Make sense of a complex and messy real world and its data
+<ul>
+<li>Formulate new theories</li>
+</ul></li>
+<li>Test our understanding of a biological system
+<ul>
+<li>Formulate hypotheses</li>
+<li>Make predictions</li>
+</ul></li>
+<li>Make evidence-based decisions
+<ul>
+<li>Run simulations – “what if…?”, what happens if we change something?</li>
+</ul></li>
+</ul>
+<p>If our model doesn’t match what we observe from empirical data, that’s OK! We can refine our model (our hypothesis) to better match what we observe. <strong>That’s the Scientific Method.</strong></p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Remember!
+</h3>
+</div>
+<div class="panel-body">
+Science isn’t about “proving” a hypothesis or being “right” – we find <strong>“support”</strong> for a hypothesis and it’s when we “fail” or are wrong that progress happens.
+</div>
+</div>
+<blockquote>
+<p>To paraphrase: all models are wrong but some can be useful</p>
+</blockquote>
+<hr />
+</div>
+<div id="types-of-models" class="section level2">
+<h2>Types of models</h2>
+<p>Models can be characterised in several ways depending on what they describe:</p>
+<ul>
+<li><strong>Theoretic models</strong> describe processes – explored here</li>
+<li><strong>Empirical models</strong> describe data – explored in lectures and in the next practical</li>
+</ul>
+<p>Some biological systems can be described both ways.</p>
+<p>Models can be placed on a spectrum of simple to complex, and specific to general.</p>
+<p>Models can also be described based on their precision, realism and generality. But these trade-off – No one model can perfectly capture all these qualities.</p>
+<p><em>All types</em> of models are based on assumptions or require information about the biological system. Models describe a biological system with some limitations.</p>
+<blockquote>
+<p>The best model to use depends on the intended question.</p>
+</blockquote>
+<hr />
+</div>
+<div id="variables-vs-parameters" class="section level2">
+<h2>Variables vs parameters</h2>
+<p>Distinguishing between variables and parameters is important in statistics, particularly for modelling.</p>
+<p><strong>Variables</strong><br />
+These are quantities that change with each iteration of a statistical model. E.g. the predictor (independent) variable and the response (dependent) variable.</p>
+<p><strong>Parameters</strong><br />
+These are quantities that do not change with each iteration of a statistical model. They are often a constant and often represent the assumptions about our biological system we make to model it. If we change the fundamental assumptions of the model, then the <em>value</em> of the parameter may change. Often the value of the parameter is <strong>unknown</strong> to us and need to be <strong>parametrised</strong> from empirical data.</p>
+<p>A variable could switch to being a parameter or vice versa depending on the experimental design and hypothesis tested, which in turn determines the statistical model. These decisions should be made when planning an experiment, not during or afterwards.</p>
+<p>We will go through the process of parametrising in the next practical and in the lectures.</p>
+<hr />
+</div>
+<div id="practical-information" class="section level2">
+<h2>Practical information</h2>
+<p>In these practicals we will look at a theoretic model of a predator-prey interaction.</p>
+<blockquote>
+<p>The aim is to understand how statistical models can be applied to biological data.</p>
+</blockquote>
+<p>The majority of this practical will focus on the practicalities of designing experiments and collecting data, which we covered earlier in the module.</p>
+<p>I recommend taking your time with these practical and the concepts because they are fundamental to biological statistics you are likely to encounter again (plus are highly relevant to your final report). There is no need to rush.</p>
+<hr />
+<div id="learning-objectives" class="section level3">
+<h3>Learning objectives</h3>
+<p>This practical is split into three parts with distinct learning objectives (recommended time to spend):</p>
+<p><strong>Part A: Building a theoretic model (20 mins)</strong></p>
+<ul>
+<li>Know how a biological process can be described by a statistical model</li>
+<li>Understand how statistical models are applied to answer real world biological questions</li>
+</ul>
+<p><strong>Part B: Designing an experiment (20 mins)</strong></p>
+<ul>
+<li>Apply your knowledge about experimental design and hypothesis formulation to a biological problem in practice</li>
+</ul>
+<p>Don’t spend too long on Parts A and B, move through them and the CA quickly. Part C is the most important part and will take the most time.</p>
+<p><strong>Part C: Collecting data (<strong>2 hours</strong>)</strong><br />
+This is the main activity of the practical.</p>
+<ul>
+<li>Know how to organise a spreadsheet and fill in a spreadsheet with data following the principles of tidy data</li>
+</ul>
+<p>You will be uploading your data to Blackboard. In the next practical we will be analysing the aggregated &amp; anonymised class data set and using that to answer CA questions.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Continuous Assessment
+</h3>
+</div>
+<div class="panel-body">
+<p>I recommend finishing the CA <em>before</em> Part C. The CA is worth 10% and is due at the end of the prac. There is a total of 10 marks.</p>
+The CA aims to assess your understanding of the concepts in this practical and your ability to apply the concepts in practice.
+</div>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="part-a-theoretic-models" class="section level1">
+<h1>Part A: Theoretic models</h1>
+<p>In the previous practical you looked at a killer T cell digesting a pathogen. This infection response is a biological process and is analogous to a predator (e.g. a lion) hunting a prey (e.g. zebra), or a robot (a “predator”) cleaning up an oil spill (its “prey”).</p>
+<p>You started to compose a Scratch model. Although the Scratch model comprises of pictures and code blocks, under the hood these blocks represent computer code, and more abstractly a mathematical processes. Thus, the Scratch model is an implementation of a statistical model of a biological system – the infection response.</p>
+<p>This model was simple – too simple to be realistic. The killer T cell captured any and all pathogens touching it whereas in reality, a killer T cell may only target a few pathogens at a time or sequentially. This is also true for animal predators who hunt. Most predators need time to catch and process their food before their next meal.</p>
+<p>We can conceptualise a more realistic representation of an infection response, or more abstractly a predator-prey interaction. By breaking down what we observe to be important about the infection response into variables and assumptions, we can build our own theoretic model (describing a process) of an predator-prey interaction from scratch.</p>
+<hr />
+<div id="what-is-a-predator-prey-interaction" class="section level2">
+<h2>What is a predator-prey interaction?</h2>
+<p>In a predator-prey interaction we have two <strong>variables</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Predator</li>
+<li>Prey</li>
+</ol>
+<p>If we think about what we consider to be important in a predator-prey interaction, searching for and handing prey two mutually exclusive aspects. We can then make the following statements, or assumptions, about the predator-prey interaction:</p>
+<ul>
+<li>A predator randomly searches for prey</li>
+<li>A predator can only “search” a fixed area per unit time (search rate)</li>
+<li>A predator can only eat one prey at a time – it must “process” (i.e. digest) the prey before it can begin searching for the next one (handling time)
+<ul>
+<li>Handling time and searching activity are mutually exclusive</li>
+</ul></li>
+<li>Prey randomly move around independently of the predator (e.g. it does not slow down or speed up when the prey is near)</li>
+<li>Both the predator and the prey move at the same speed and at a constant speed</li>
+<li>Both the predator and the prey only move within a fixed area (e.g. their habitat), they cannot leave.</li>
+<li>The numbers of predators and prey are fixed at the start of the experiment (i.e. they do not replicate while the model is running, prey numbers can only decrease, predator numbers stay the same)</li>
+<li>Each predator-prey interaction lasts a fixed amount of time (total time)</li>
+</ul>
+<p>These same statements can be applied to an infection response or to any analogous scenario – merely replace “predator” and “prey” with the relevant terms.</p>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+Would you agree with the above statements? Or are they too simplistic of a complex biological system?
+</div>
+</div>
+<p>If you thought our model is too simplistic, you are probably right <em>but</em> in modelling philosophy some degree of simplification or abstraction is perfectly acceptable because <em>models are only representations of reality</em>, they are not meant to copy the real world right down to the minutiae.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="panel-title">
+Thus, one application of models is to consider them as hypotheses of biological systems – what we think are important components of the system.
+</div>
+</div>
+</div>
+<hr />
+</div>
+<div id="functional-responses" class="section level2">
+<h2>Functional responses</h2>
+<p>Infection responses, predator-prey interactions… they can be generally classified as <strong>functional responses</strong>. Luckily for us, there are already well known analytical (mathematical) models of functional response that we can use.</p>
+<p>There are multiple types of functional responses (labelled with Roman numerals: I — IV). Each of these models represents a <em>different hypothesis</em> about functional responses and mathematically describes a <em>different relationship</em> between our two variables (e.g. the killer T cell and the pathogen, or a predator and its prey). You can read more about functional responses by running <code>vignette("functional_responses")</code>.</p>
+<p>The assumptions we make above are based on a <strong>Type II functional response model</strong> and is the one most appropriate for a predator-prey interaction scenario. You can read about the full derivation by running <code>vignette("TypeII_models")</code>.</p>
+<p>The Type II functional response model is a good example of a general model – it has been used to describe animal predators eating prey (e.g. Holling’s disc equations) or enzymes catalysing reactions (e.g. Michaelis-Menten equation). We can also use it to describe the immune response of the previous practical.</p>
+<p>It doesn’t matter what the mathematical symbols represent biologically, maths is a universal language that describes the underlying biological process. Here, we are applying it to an general predator-prey scenario involving students and plastic counters.</p>
+<hr />
+</div>
+<div id="a-type-ii-functional-response" class="section level2">
+<h2>A Type II functional response</h2>
+<div class="figure">
+<img src="https://jacintak.github.io/teaching/StatsModelsPrac1/index_files/figure-html/funct_resp-1.png" alt="Type II functional response of a predator-prey interaction" width="672" />
+<p class="caption">
+(#fig:funct_resp)Type II functional response of a predator-prey interaction
+</p>
+</div>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+How would you describe the Type II relationship in words in a results section of a lab report?
+</div>
+</div>
+<p>Maybe something like:<br />
+“The number of prey eaten rapidly increases at low prey densities and gradually plateaus to a maximum number of prey eaten at higher prey densities.”</p>
+<p>The mathematical model of the figure above is:</p>
+<p><span class="math display">\[H_a=\ \frac{a\times H\times T_{total}}{1+a\times H\times T_h}\]</span></p>
+<p>You should read the full derivation in the documentation file to see how we’ve turned our earlier assumptions into mathematical expressions – run <code>vignette("TypeIImodels")</code> in Console or via the Packages tab (click StatsModels -&gt; User guides).</p>
+<p>Let’s go through what the letters and numbers mean and how they link to our model assumptions.</p>
+<ul>
+<li><span class="math inline">\(H\)</span> is the number of prey within a fixed area (prey density, number per area). This is our predictor variable. We decide what values to use before our experiment</li>
+<li><span class="math inline">\(a\)</span> is the search rate or attack rate. It is the search area per unit time of a prey. This is a parameter that we do not know and that we calculate from our data.</li>
+<li><span class="math inline">\(H_a\)</span> is the number of prey captured. We record this at the end of our experiment as our response variable.</li>
+<li><span class="math inline">\(T_{total}\)</span> is the total time a predator spent hunting prey (time). This is a constant parameter that we decide before we start the experiment based on our assumptions.</li>
+<li><span class="math inline">\(T_h\)</span> is the time a predator spends digesting a single prey (time per prey). This is a parameter that we do not know and that we calculate from our data. In functional response models, this is called handling time.</li>
+</ul>
+<p>You’ll see that we know the value of some of these parameters already and some we need to calculate from our data.</p>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+Variables or parameters? Which is which in our model? What information do we know already and what do we need to find out? And how would you find it out?
+</div>
+</div>
+<hr />
+</div>
+<div id="finding-our-unknown-parameters" class="section level2">
+<h2>Finding our unknown parameters</h2>
+<p>How do we estimate these unknown parameters from our data (e.g from the figure above)?</p>
+<p>Actually, the hyperbolic nature of the Type II makes it challenging to extract this information – and certainly beyond the expectations of this module. <em>But</em> we can use mathemagics to turn this hyperbolic relationship into a straight line by a process called <em>linearising</em>. And straight lines are easier to manipulate or interpret – something we expect you to be able to do in this module.</p>
+<p>The linearised Type II equation is:
+<span class="math display">\[\frac{1}{H_a}=\ \frac{1}{a}\times\frac{1}{H\times T_{total}}+\frac{T_h}{T_{total}}\]</span>
+The full derivation is accessible in <code>vignette("TypeIImodels")</code>, we won’t go though how this is derived here, but you <em>do</em> need to understand this equation:</p>
+<ul>
+<li><span class="math inline">\(\frac{1}{H_a}\)</span> is the inverse of our response variable – the number of prey eaten</li>
+<li><span class="math inline">\(\frac{1}{a}\)</span> is the inverse of our unknown search rate parameter</li>
+<li><span class="math inline">\(\frac{1}{H \times T_{total}}\)</span> is the inverse of our predictor variable (prey density) and the total predator-prey interaction time</li>
+<li><span class="math inline">\(\frac{T_h}{T_{total}}\)</span> is our unknown handling time divided by the total predator-prey interaction time</li>
+</ul>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+Does the overall structure of the equation look familiar to you? (maybe from high school maths)
+</div>
+</div>
+The graph looks like this:
+<div class="figure"><span style="display:block;" id="fig:tyepe2line"></span>
+<img src="https://jacintak.github.io/teaching/StatsModelsPrac1/index_files/figure-html/tyepe2line-1.png" alt="Linearised type II functional response of a predator-prey interaction" width="672" />
+<p class="caption">
+Figure 1: Linearised type II functional response of a predator-prey interaction
+</p>
+</div>
+<p>The linearised function has the general form <span class="math inline">\(y = \beta_1 x + \beta_0\)</span> which is a straight line. <span class="math inline">\(y\)</span> is the response variable, <span class="math inline">\(x\)</span> is the predictor variable, <span class="math inline">\(\beta_1\)</span> is the slope or gradient of the line, and <span class="math inline">\(\beta_0\)</span> is the intercept of the line. We will see this notation again in the lectures.</p>
+<p>This linear form allows us to estimate the coefficients for the linear equation where y = <span class="math inline">\(\frac{1}{H_a}\)</span> and x = <span class="math inline">\(\frac{1}{H\times T_{total}}\)</span>.</p>
+<p>From the linearised Type II equation we can see that:<br />
+<span class="math display">\[Slope=\ \frac{1}{a}\]</span><br />
+<span class="math display">\[Intercept=\ \frac{T_h}{T_{total}}\]</span></p>
+<p>We can calculate the slope and intercept from regression and then do some algebra to find <span class="math inline">\(a\)</span> and <span class="math inline">\(T_h\)</span>:<br />
+<span class="math display">\[a=\frac{1}{slope}\]</span>
+and
+<span class="math display">\[T_h = T_{total} \times intercept\]</span></p>
+<p>Now we have our model, we need to <strong>parameterise</strong> it and find the values of our unknown parameters.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+For the rest of the practical we will look at the question:
+</h3>
+</div>
+<div class="panel-body">
+What are the values of our unknown parameters, handling time and search rate?
+</div>
+</div>
+<p>Unlike the previous practical, we are going to investigate this question by conducting a real experiment but it is possible to build an equivalent simulation in Scratch.</p>
+<hr />
+<p>That’s the end of Part A. Check in with your demonstrator. Take a break. Stand up. Shake your limbs. Breathe.</p>
+<p>You’re doing great!</p>
+<hr />
+</div>
+</div>
+<div id="part-b-designing-an-experiment" class="section level1">
+<h1>Part B: Designing an experiment</h1>
+<div id="the-predator-prey-experiment" class="section level2">
+<h2>The predator-prey experiment</h2>
+<p>You have been provided some plastic counters, a stopwatch, a piece of paper and a jar with a lid. You are the predator and the counters are your prey. The piece of paper is your arena and the jar is for collecting prey that you have captured.</p>
+<p>You will be working in pairs – one of you will be the predator, the other will be the observer (keeping track of the time, recording the data). You will need a computer between you for entering and uploading data.</p>
+<p>The protocol is simple:</p>
+<ol style="list-style-type: decimal">
+<li>Spread out the desired number of counters on the A4 sheet randomly. Do not move counters around once landed</li>
+<li>The predator will close their eyes and use their index finger to randomly tap around the arena at a constant search rate called out by the observer. The observer has a stop-watch and tells the predator when to tap.</li>
+<li>If the predator touches a counter, they need pick it up and “processes” it. The prey caught must be placed in the provided jar.
+<ul>
+<li><strong>The predator cannot hold the jar while searching for your prey because prey handling and prey search are mutually exclusive processes.</strong></li>
+<li>The predator must pick up the jar, unscrew the lid, drop in the counter, close the lid fully and place the jar back down on the table – all with their eyes closed</li>
+</ul></li>
+<li>You can replicate using a different “predator” (student) to take turns but you should use the same predator across all prey densities.</li>
+</ol>
+<blockquote>
+<p><strong>The goal is to pick up as many counters as possible within a fixed time period.</strong></p>
+</blockquote>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+<p>Why should we not touch the counters after we have placed them on the paper?</p>
+<p>Why can’t we hold the jar while looking for prey?</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="identifying-treatments" class="section level2">
+<h2>Identifying treatments</h2>
+<p>Experiments consist of variables that are <em>controlled</em> or <em>manipulated</em>. The manipulated variables are usually predictor variables. Controlled variables are other influential variables that may affect the response variable in ways that might mask or accentuate the effect of the predictor variable on the response variable. We control as many possible variables as possible to make sure what we observe is the true effect of the predictor variable of interest.</p>
+<ul>
+<li>If we cannot control a variable, the least we can do is record it as a co-variate and apply more complex stats to account for the additional variable.<br />
+</li>
+<li>If we don’t keep a comprehensive record, then we risk the co-varying variable <strong>confounding</strong> the true effect of the predictor variable, adding uncontrolled variation (decreasing the chance of getting a significant P value) and increasing the risk of Type I or II error.</li>
+</ul>
+<p>We change the prey densities with each run of the experiment because it is the predictor variable. The different values of prey density is our <strong>treatment</strong>.</p>
+<p>How many prey densities should you use?</p>
+<blockquote>
+<p>Generally, the more treatments, the better your data may capture some true biological relationship.</p>
+</blockquote>
+<p>But more treatments means more work, time and effort! You need at least two treatments (two observations) to fit a straight line to data but there is no hard or fast rule for deciding these things.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="panel-title">
+<p><strong>For the purpose of this practical, we will decide on 5 treatments of prey density. You are free to choose any 5 numbers from a range of 1 to 100.</strong></p>
+</div>
+</div>
+</div>
+<p>We will collate the entire class’ data so you don’t have to choose the same numbers. We aim for consistency and balance when designing experiments, so your treatments should be equally spaced out. For example, with equal increments.</p>
+<hr />
+</div>
+<div id="replication-replication-replication" class="section level2">
+<h2>Replication, replication, replication</h2>
+<p>Replication is really important to increase the accuracy and precision of our data and make sure our results are not due to random chance.</p>
+<blockquote>
+<p>Generally, the more replication the better!</p>
+</blockquote>
+<p>Again, the trade-off is more work, time, effort or computing power. It also reduces the chances of making a type 1 or type 2 error.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="panel-title">
+<p><strong>For the purpose of this practical, we will use 3 replicates of prey density.</strong></p>
+</div>
+</div>
+</div>
+<p>Three is usually a minimum number of replications. In a real-world scientific study, you may see higher replications.</p>
+<p>A replication of 3 means that we need to repeat our experiment three times for every value of the treatment. Each replication should be independent of the others. Otherwise you risk <em>pseudoreplication</em> – not replicating when you think you are.</p>
+<hr />
+</div>
+<div id="identifying-constant-parameters" class="section level2">
+<h2>Identifying constant parameters</h2>
+<p>In our experiment we have 1 predator tapping at a constant rate.</p>
+<p>Our tapping rate <strong>is not the same</strong> as our unknown parameter search rate (also called area of discovery or attack rate).</p>
+<p>Total foraging time is another pre-determined constant.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="panel-title">
+<p><strong>We will use a tapping rate of 1 tap per second. Your assistant will need to call out when to tap for the predator.</strong></p>
+<p><strong>For simplicity, we will use a value of 1 minute only so that we can divide by 1 and it makes our maths easier.</strong></p>
+</div>
+</div>
+</div>
+<p>The number of predators, tapping rate and total time are all <em>parameters</em> and they are <em>constant</em> in a single experiment. These are constants that does not change – doing so would violate the assumptions of our model, change the experimental design and hypotheses tested, nd turn these parameters into variables.</p>
+<p>Changing these but keeping our hypotheses the same would be introducing additional variation into our data and increase the chance of making a type 2 error. Thus, sometimes parameters become variables; it all depends on the aim of the study.</p>
+<p>Although these constant parameters are unknown to us, we want to know their values to use the analytical model but we need empirical data to fit to our analytical model. We will estimate these values using statistical models next practical to complete the equation:</p>
+<p><span class="math display">\[H_a=\ \frac{a\times H\times T_{total}}{1+a\times H\times T_h}\]</span></p>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">
+Remember!
+</h3>
+</div>
+<div class="panel-body">
+Keep it simple! A more complex statistical analysis cannot fix issues arising from a badly designed experiment.
+</div>
+</div>
+<hr />
+</div>
+<div id="hypotheses" class="section level2">
+<h2>Hypotheses</h2>
+<p>The final but most important thing before we can start collecting data is to formulate our hypotheses.</p>
+<blockquote>
+<p>Another use of statistical models is to explore different scenarios that represent different hypotheses.</p>
+</blockquote>
+<p>What happens if our predator was more efficient? What would you change about the experiment to achieve this? How would this aim affect <span class="math inline">\(H_a\)</span> and the estimates of <span class="math inline">\(a\)</span> and <span class="math inline">\(T_h\)</span>?</p>
+<p>For example, vaccines provide a chance for the immune system to “learn” how to eat prey (e.g. viruses). After this experience, immune systems become more efficient at destroying prey.</p>
+<p>We will simulate a different predator behaviour by repeating our counter and jar experiment but this time, the jar does not have a lid so the predator does not need to open and close the lid when they are handing the counters. We will call this new variable <strong>foraging strategy</strong>.</p>
+<p>These two experiments are <em>independent</em>. If we want to compare the foraging properties between the two predators, we need to run the experiment again <strong>keeping everything the same but changing only the variable of interest</strong>.</p>
+<hr />
+<div id="the-null-hypothesis-h0" class="section level3">
+<h3>The null hypothesis (H0)</h3>
+<p>Remember our research questions is: What are the values of our unknown parameters, handling time and search rate?</p>
+<p>We know from our model that we expect a positive linear relationship between the inverse of prey captured and the inverse of prey density multiplied by total foraging time.</p>
+<p>We have a second question with the addition of foraging strategy: Does foraging strategy affect handling time and search rate?</p>
+<p>We can write a null hypothesis (H0) about the effect of foraging strategy on our model parameters:</p>
+<blockquote>
+<p>H0: There is no difference in the number of prey eaten with prey density, and in handling time and search rate between foraging strategies</p>
+</blockquote>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Remember!
+</h3>
+</div>
+<div class="panel-body">
+The alternative hypothesis is the outcome we would expect if there was an effect of the predictor on the response variable. The null hypothesis is what we expect when there is no effect (hence, null). Most of the time we want there to be an effect (what we hope is correct about a biological system).
+</div>
+</div>
+<div id="the-alternative-hypothesis-h1" class="section level4">
+<h4>The alternative hypothesis (H1)</h4>
+<p>Here’s the most basic alternative hypothesis we can formulate</p>
+<blockquote>
+<p>H1: There is a difference in the number of prey eaten with prey density, and in handling time and search rate between foraging strategies</p>
+</blockquote>
+<p>Notice, it’s just the opposite of the null hypothesis.</p>
+<p>It’s often more interesting to formulate a more specific alternative hypothesis than just the opposite of the null hypothesis if we expect there’s a <em>direction</em> to the effect of the new predictor variable on the response variable. Which we do in this practical.</p>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+<p>Formulate a more specific hypothesis we can use as an alternative hypothesis.</p>
+<p>Hint: What are we aiming to do with this experiment? What sort of detail should be included?</p>
+</div>
+</div>
+<p>It’s better to be specific in your hypothesis if it is plausible in your biological system. For example, if we are testing whether a vaccine induces an immune response, the resulting immune response can only be positive – a negative immune response (i.e. becoming more susceptible to disease) is implausible (and unfortunate).</p>
+<p>Thus, a simplistic hypothesis would not provide an informative or helpful conclusion if we were testing a new vaccine. If the vaccine made people <em>more susceptible</em> to disease, we would still accept our alternative hypothesis and reject the null hypothesis even if the <em>direction</em> of the effect was the opposite to our idealised outcome (improved immunity).</p>
+<p>If you are less certain about your predicted outcomes you could be less specific if you wanted to (e.g. “There is a linear relationship between prey density and number of prey eaten” means the hypothesised relationship could be positive <em>or</em> negative).</p>
+<div class="panel panel-warning">
+<div class="panel-heading">
+<h3 class="panel-title">
+Choose wisely!
+</h3>
+</div>
+<div class="panel-body">
+<p>The wording of your hypothesis will dictate the best experimental design and statistical analysis to test your hypothesis! Think carefully about the details.</p>
+<p>Keep your hypothesis as simple as possible to investigate what you are interested in, in your biological system. A more complex hypothesis means a more complex statistical analysis is needed.</p>
+</div>
+</div>
+<p>There are no limits to how many hypotheses you have. You could have three hypotheses, a null and two alternatives describing different possible outcomes.</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Remember!
+</h3>
+</div>
+<div class="panel-body">
+As scientists we never try to “prove” or “disprove” hypotheses. We aim to gather evidence and see whether the evidence <strong>supports</strong> our hypothesis.
+</div>
+</div>
+<p>Conducting a simple statistical analysis on a complex hypothesis and experimental design means that there is variation in your data that is not accounted for and could be affecting your response variable – it increases the chances of making a type II error (the meaningful biological relationship is hidden under statistical noise).</p>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<div class="panel-title">
+<p><strong>When in doubt, keep it simple.</strong></p>
+</div>
+</div>
+</div>
+<hr />
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Details matter!
+</h3>
+</div>
+<div class="panel-body">
+<p>Thinking ahead, you should also be careful how you describe the relationship between multiple predictor variables in your hypothesis. Predictor variables can be <strong>independent</strong> or they can <strong>affect</strong> each other’s influence on the response variable.</p>
+<p>Consider these sentences with two predictor variables that describe the same relationship with Y, but different relationships between X1 and X2:</p>
+<ul>
+<li>Y decreases with X1 and X2 but the relationship does not differ between X1 and X2</li>
+<li>Y decreases with X1 and X2 and the relationship differs between X1 and X2</li>
+</ul>
+These could be a set of hypotheses. How would you expect the graphs of these relationships to look like?
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">
+Discussion
+</h3>
+</div>
+<div class="panel-body">
+<p>Which of the statistical tests you’ve already learnt would you use to analyse the data if foraging strategy was the only predictor variable? (no prey density)</p>
+What about if prey density was the only predictor variable? (no foraging strategy)
+</div>
+</div>
+<p>That’s the end of Part B. We have designed an experiment and identified our hypotheses.</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+<div class="panel-title">
+Take a break. Check in with your demonstrator. Stand up. Shake your limbs. Breathe.
+</div>
+</div>
+</div>
+<p>Keep it up!</p>
+<hr />
+</div>
+</div>
+<div id="part-c-collecting-data" class="section level1">
+<h1>Part C: Collecting data</h1>
+<p>Planning about collecting data <em>before</em> collecting any data will save you a lot of headache if you realise halfway through that you’ve made a mistake and have to start over, or that there is a better, more efficient way of organising your data. Planning is everything.</p>
+<p>Scientists often work in teams, which means that several people might collect data. This means that every person must collect data in a consistent way so that all the data can be aggregated. It also means that what information to collect and how it is stored or shared needs to be agreed on before anyone starts. One might also need to consider any laws or regulations for how data is collected (e.g. research ethics, privacy laws).</p>
+<p>Having a standardised data sheet and way of data entry is key to maintain consistency and minimise data loss.</p>
+<div id="tidy-data" class="section level3">
+<h3>Tidy data</h3>
+<p>Tidy data is set of principles for organising data sheets and filling in data. It is designed in a way to make data analysis easier and reduces the amount of work required to <em>prepare</em> your data for analysis.</p>
+<p>In short:</p>
+<ul>
+<li>Every column is a variable</li>
+<li>Every row is an observation</li>
+<li>No empty cells</li>
+</ul>
+<p>You can read more about tidy data <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">here</a>.</p>
+<blockquote>
+<p>To paraphrase another quote:<br />
+All data has a place and all data is in its place</p>
+</blockquote>
+</div>
+<div id="long-vs-wide-data" class="section level2">
+<h2>Long vs Wide data</h2>
+<p>There are two general ways of presenting data in a spreadsheet (or as tabbed data):</p>
+<ul>
+<li>Long – Variables are presented in one column, the corresponding value is presented in a second column. This format can be hard to interpret</li>
+<li>Wide – Each variable is a separate column (many columns) and each row is a single observation. This is the way we are collecting data in class (see above criteria)</li>
+</ul>
+<blockquote>
+<p>As a general rule, aim to add rows (observations) not columns and columns should be independent of each other.</p>
+</blockquote>
+<p>Certain types of data analysis require a wide or long format. Sometimes we need to convert the data structure from wide to long or vice versa. We won’t be needing to do this in this module because we are taking care with designing our data sheet to make it easier to analyse our data with minimal post-collection data manipulation.</p>
+</div>
+<div id="filling-in-a-data-sheet" class="section level2">
+<h2>Filling in a data sheet</h2>
+<p>To help you, there is a data sheet template on blackboard you can fill in.</p>
+<p>Here are the rules we want you to apply here (these are not global standards and may vary elsewhere):</p>
+<ul>
+<li>CaSe coNsistEncy in all text
+<ul>
+<li>All words including column headers should be in lower case, no spaces</li>
+</ul></li>
+<li>Column headers should be informative
+<ul>
+<li><code>pathogen_density</code> or <code>total_time</code> is good (even the mathematical notation like <code>H</code> or <code>Th</code> because it is standardised)</li>
+<li><code>col1</code> or <code>pd</code> is bad – not easy to understand (e.g. acronyms not everyone uses)</li>
+<li>The column headers in the template are pre-filled. You do not need to change them.</li>
+</ul></li>
+<li><strong>No empty cells</strong>
+<ul>
+<li>All cells should have a value. Put <code>NA</code> if there is no value</li>
+<li>Every cell is a single value</li>
+</ul></li>
+<li>Do not mix alphanumeric characters (e.g. l3773r5 &amp; numb3r5)
+<ul>
+<li>Numeric columns should only contain numbers (0-9), no letters. Character strings should only contain letters (a-z), no numbers</li>
+<li>Avoid special characters (e.g. (), ~, &amp;, / etc.)</li>
+</ul></li>
+<li>No spaces (called whitespace in computing)
+<ul>
+<li>No spaces between words. Use _ instead. E.g. <code>no_spaces</code></li>
+<li>No spaces before or after words</li>
+<li>This rule doesn’t apply to generic text fields for taking notes, comments or observations. It applies to treatments of a variable if they are described by strings, e.g. <code>no_fertiliser</code>, <code>yes_fertiliser</code></li>
+</ul></li>
+<li>Data is stored in rows and columns in a tidy format</li>
+<li>All data is presented together
+<ul>
+<li>Not in multiple sheets – use a separate file if you must.</li>
+</ul></li>
+<li>Data is raw
+<ul>
+<li>Meaning it is not manipulated or processed after being recorded. We will do any data processing in R later</li>
+<li>This is also important to maintain transparency in our workflow</li>
+<li>All data is presented, not summarised. E.g. as means</li>
+</ul></li>
+<li>Data is presented in a portable csv format
+<ul>
+<li>Not everyone has access to Excel. What if someone uses Google Sheets? “.xlsx” files are for Excel.</li>
+<li>“.csv” comma separated files are portable across platforms, use less memory and are easy for a computer to read – <strong>save your data as csv</strong></li>
+</ul></li>
+<li>Are all the necessary columns/information included and in the right order?
+<ul>
+<li>Do not change the headers of the template</li>
+</ul></li>
+</ul>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">
+Info!
+</h3>
+</div>
+<div class="panel-body">
+<p>These guidelines are how R reads data from a spreadsheet. Thus, following these best practices will prevent errors when importing data into R.</p>
+<p>We want you to follow these rules <em>exactly</em> because we will collate your datasheets across the class.</p>
+</div>
+</div>
+<hr />
+<div id="database-lingo" class="section level3">
+<h3>Database lingo</h3>
+<p>When data is imported into a computer, the computer will classify it according to the type of data. Here are some common data types:</p>
+<ul>
+<li>numeric – fields or cells that only contain numbers</li>
+<li>string – strings of characters, i.e. text. Can be letters and numbers. Called <code>character</code> in R</li>
+<li>date – for dates</li>
+<li>logical – for logical statements, e.g. TRUE/FALSE</li>
+</ul>
+<p>These are the main data classes characterised by R. There may be other types in other programs (e.g. Access, SQL). In computer science, variables (i.e. columns) in R are called fields, so “predator density” and “total time” are fields.</p>
+<hr />
+</div>
+</div>
+<div id="do-your-experiment-collect-your-data" class="section level2">
+<h2>Do your experiment &amp; collect your data</h2>
+<p>See the table below for an example of column headers with no spaces and all cells with a single value. These are the information you need to provide in your data sheet and the type of data they are:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="29%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>column_information</th>
+<th>information_type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>student_number</td>
+<td>numeric</td>
+<td>your student number</td>
+</tr>
+<tr class="even">
+<td>total_time</td>
+<td>numeric</td>
+<td>in minutes</td>
+</tr>
+<tr class="odd">
+<td>prey_density</td>
+<td>numeric</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>replicate</td>
+<td>numeric</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td>prey_eaten</td>
+<td>numeric</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>foraging_strategy</td>
+<td>character</td>
+<td><code>no_lid</code> for no lid or <code>yes_lid</code> for a jar with a lid</td>
+</tr>
+</tbody>
+</table>
+<p>These headers are pre-filled for you in the correct order on the template. You do not need to change anything. The order of columns has to exactly match the order in the table.</p>
+<div class="panel panel-warning">
+<div class="panel-heading">
+<h3 class="panel-title">
+Warning!
+</h3>
+</div>
+<div class="panel-body">
+<p>R is a computer program so you need to be specific about how you present information to it. For example, you may think having your treatments in individual tables separated by empty rows is sensible and logical but those empty cells mean missing data to a computer – so the computer thinks you haven’t filled in the data properly!</p>
+A space counts as a character so <code>"cat"</code>, <code>"cat "</code> and <code>" cat"</code> would be read as three distinct inputs. This kind of human error can mess up your analysis but is very common.
+</div>
+</div>
+<blockquote>
+<p>Save your data regularly!</p>
+</blockquote>
+<hr />
+</div>
+<div id="data-cleaning" class="section level2">
+<h2>Data cleaning</h2>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">
+Danger!
+</h3>
+</div>
+<div class="panel-body">
+<p>Information that isn’t structured properly will have errors when imported into R. This is why we must always check that data imported properly every time we load data.</p>
+This data will need to be <strong>cleaned</strong> before it can be analysed. So putting in the effort and attention to detail now will save future you a lot of avoidable stress!
+</div>
+</div>
+<p>In data science, data usually needs to be processed before we can use it. The data needs to be checked and validated. Are all the fields entered correctly?</p>
+<p>Attention to detail is important in case it introduces mistakes in our data that may bias our analyses! How much do you trust your fellow students to have followed the previous instructions to the letter?</p>
+<p>Checking and correcting data is called <strong>cleaning</strong>. We take raw data and clean it up. Sometimes data cannot be fixed (e.g. errors of unknown origin), then the conservative approach is to exclude the observation which is a shame if lots of time and effort (or money) went in to collecting it. Cleaning often takes longer than the actual analysis! It is a real pain! &gt;:(</p>
+<p>In the real world, human-collected data is almost never clean because humans are not robots. In previous years, as high as 95% of submissions for this practical failed the data entry guidelines above. Can you do better?</p>
+<hr />
+</div>
+<div id="uploading-your-dataset-to-blackboard" class="section level2">
+<h2>Uploading your dataset to Blackboard</h2>
+<p>Save your data sheet <strong>as a csv file</strong> (click “Save As” and select csv file type). No other file types are accepted. Your file name should be each of your student numbers and practical session separated by <code>_</code>. e.g. <code>54321_12345_AM.csv</code> for the morning session.</p>
+<p>Upload your csv file to the assignment link provided on Blackboard. <strong>Only one person in the group needs to upload a file</strong>.</p>
+<hr />
+</div>
+</div>
+<div id="final-checklist" class="section level1">
+<h1>Final checklist</h1>
+<p>Use the following check list to make sure you have done everything you need for this practical.</p>
+<ul>
+<li>Does your data sheet fully conform to the guidelines above?</li>
+<li>Uploaded your dataset to Blackboard?
+<ul>
+<li>Correct file type?</li>
+<li>Correct file name?</li>
+</ul></li>
+<li>Done the CA questions?</li>
+</ul>
+<div class="panel panel-success">
+<div class="panel-heading">
+<div class="panel-title">
+<p>That’s a wrap! Well done for making it to the end. Check in with your demonstrator.</p>
+Take a break. Stand up. Dance. Breathe.
+</div>
+</div>
+</div>
+<hr />
+<p>To sum up, we:</p>
+<ul>
+<li>Composed a theoretic model of a predator-prey interaction with known and unknown parameters. The model describes a set of hypotheses based on assumptions we have made about the predator-prey interaction</li>
+<li>Identified a biological question and hypothesis</li>
+<li>Designed an experiment with adequate treatments and replication</li>
+<li>Conducted an experiment and recorded data</li>
+<li>Filled in a spreadsheet with data following the principles of tidy data</li>
+</ul>
+<p>All of these steps are part of the scientific method and are relevant to your final assessment.</p>
+<p>If everyone follows the instructions, then all your datasets will be comparable and we can combine everyone’s data into one giant (anonymised) dataset. Meaning more data to play with than if you had done it by yourself. The idea is that with a large enough sample size (an entire module of students) we can get a good coverage of numbers between 1 and 100 for prey density values.</p>
+<p>In the next practical we will be analysing the aggregated &amp; anonymised class data set. We will use another type of statistical models (a linear regression) to statistically describe the data we collect and test the hypotheses of our functional response model.</p>
+<hr />
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/teaching/">teaching</a>
+  
+  <a class="badge badge-light" href="/tags/R-stats/">R stats</a>
+  
+  <a class="badge badge-light" href="/tags/code/">code</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://jacintak.github.io/teaching/StatsModelsPrac1/&amp;text=Statistical%20modelling%20Part%201" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://jacintak.github.io/teaching/StatsModelsPrac1/&amp;t=Statistical%20modelling%20Part%201" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Statistical%20modelling%20Part%201&amp;body=https://jacintak.github.io/teaching/StatsModelsPrac1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Statistical%20modelling%20Part%201%20https://jacintak.github.io/teaching/StatsModelsPrac1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar.jpg_hu3485d9da5728a67f0e405792ef3b9866_160517_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://jacintak.github.io/">Jacinta Kong</a></h5>
+      <h6 class="card-subtitle">Teaching and Research Fellow</h6>
+      <p class="card-text">My research interests include species distributions, phenology, microclimates &amp; mechanistic niche modelling.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/kongj@tcd.ie" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/jacintakong" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=637pv-sAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/jacintak" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-1085-8612" target="_blank" rel="noopener">
+        <i class="fab fa-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/teaching/introR/">Setup R</a></li>
+      
+      <li><a href="/project/statistical-modelling/">Statistical Modelling Practicals</a></li>
+      
+      <li><a href="/teaching/StatsModelsPrac2/">Statistical modelling Part 2</a></li>
+      
+      <li><a href="/post/2021-12-01-december-update/">December update</a></li>
+      
+      <li><a href="/post/2021-07-01-OSM-in-R/">OSM in R</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.bcfae8267aba63cc55af53a503896bd9.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    
+
+<footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by 
+    <a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown</a> and the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2394 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teachings | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/teaching/</link>
+      <atom:link href="https://jacintak.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <description>Teachings</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <title>Teachings</title>
+      <link>https://jacintak.github.io/teaching/</link>
+    </image>
+    
+    <item>
+      <title>Setup R</title>
+      <link>https://jacintak.github.io/teaching/introR/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/introR/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#why-programming-and-computing&#34; id=&#34;toc-why-programming-and-computing&#34;&gt;1. Why programming and computing?&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#basic-computing-terms&#34; id=&#34;toc-basic-computing-terms&#34;&gt;Basic computing terms&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#drives-folders-files&#34; id=&#34;toc-drives-folders-files&#34;&gt;Drives, Folders &amp;amp; Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#directories&#34; id=&#34;toc-directories&#34;&gt;Directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-r&#34; id=&#34;toc-why-r&#34;&gt;Why R?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-rstudio&#34; id=&#34;toc-why-rstudio&#34;&gt;Why RStudio?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-r-and-rstudio&#34; id=&#34;toc-installing-r-and-rstudio&#34;&gt;2. Installing R and RStudio&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#windows&#34; id=&#34;toc-windows&#34;&gt;Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mac&#34; id=&#34;toc-mac&#34;&gt;Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#linux&#34; id=&#34;toc-linux&#34;&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chromebook&#34; id=&#34;toc-chromebook&#34;&gt;Chromebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#opening-rstudio-for-the-first-time&#34; id=&#34;toc-opening-rstudio-for-the-first-time&#34;&gt;3. Opening RStudio for the first time&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r-structure-and-terminology&#34; id=&#34;toc-r-structure-and-terminology&#34;&gt;4. R structure and terminology&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-more-packages&#34; id=&#34;toc-installing-more-packages&#34;&gt;Installing more packages&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#the-packages-folder-your-library&#34; id=&#34;toc-the-packages-folder-your-library&#34;&gt;The packages folder (your library)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#my-first-script&#34; id=&#34;toc-my-first-script&#34;&gt;5. My first script&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#loading-packages&#34; id=&#34;toc-loading-packages&#34;&gt;Loading packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#commenting&#34; id=&#34;toc-commenting&#34;&gt;Commenting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#working-directories-in-r&#34; id=&#34;toc-working-directories-in-r&#34;&gt;6. Working directories in R&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-working-directories&#34; id=&#34;toc-changing-working-directories&#34;&gt;Changing working directories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rubber-ducks&#34; id=&#34;toc-rubber-ducks&#34;&gt;Rubber ducks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-help&#34; id=&#34;toc-finding-help&#34;&gt;Finding help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#final-checklist&#34; id=&#34;toc-final-checklist&#34;&gt;Final checklist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Have a look at this checklist:&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Fundamental skills checklist
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;Do you know how to navigate computer directories and get addresses of files or folders?&lt;/li&gt;
+&lt;li&gt;Do you have R and RStudio installed and up to date on your computer?&lt;/li&gt;
+&lt;li&gt;Do you know what an R package is and how to install them?&lt;/li&gt;
+&lt;li&gt;Do you know how to set up working directories and use scripts in RStudio?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If you’ve answered no to any of the above questions, then continue on. Some of you may already have R and RStudio installed from previous modules - that’s great! Make sure everything is up to date. You can refer back to this document in the future.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;why-programming-and-computing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. Why programming and computing?&lt;/h1&gt;
+&lt;p&gt;We care about teaching you programming and computing skills because they are important skills in the current workforce and are not to be taken for granted. Programming is not just code, it’s a way of thinking and requires problem solving skills that are applicable to other scenarios. You can apply these skills to a range of problems or examples beyond what we will cover in this module.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Learning programming is like learning a language - there is grammar and syntax. It takes time and effort to learn and to practice. Don’t expect to pick it up immediately - take it in small steps and practice as much as you can.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;basic-computing-terms&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Basic computing terms&lt;/h2&gt;
+&lt;p&gt;We don’t always formally learn computing terminology even if we’ve always been using computers. Here are some general computing concepts we will be using and that we expect you to be familiar with:&lt;/p&gt;
+&lt;div id=&#34;drives-folders-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Drives, Folders &amp;amp; Files&lt;/h3&gt;
+&lt;p&gt;In computer science, most commercial operating software are organised in to &lt;strong&gt;drives&lt;/strong&gt;, &lt;strong&gt;directories&lt;/strong&gt;, &lt;strong&gt;folders&lt;/strong&gt; &amp;amp; &lt;strong&gt;files&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Using Windows as example (Macs are similar):
+C:/ is a drive (a hard drive). Within the drive, information is sorted in folders (e.g. Documents). Within folders are lists of files which contain information (e.g. my_document.doc). Here, “.doc” is the file extension that tells the computer what kind of file it is and what program to use to read the information (a Word document). Folders within folders are sometimes called sub-folders.&lt;/p&gt;
+&lt;p&gt;Basic commercial computers tend to have only one drive but you can have as many drives, folders and files as you want. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C: (the hard drive)
+  -&amp;gt; my documents (within drive C)
+      -&amp;gt; file A (within my documents)
+      -&amp;gt; folder 1 (within my documents)
+          -&amp;gt; folder 2 (within folder 1)
+              -&amp;gt; file B (within folder 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;directories&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Directories&lt;/h3&gt;
+&lt;p&gt;Directories are the cataloguing system describing where files and folders are stored; also called &lt;strong&gt;addresses&lt;/strong&gt;. Directories take the form of an address like “C:/documents/folder/file” which tells a program to look in this location.&lt;/p&gt;
+&lt;p&gt;The concept of folders and files comes from the days before computers where information was written on paper and stored in filing cabinets. Directories are not case sensitive. Case sensitivity means a computer reads capitalised letters (ABC) differently to lowercase letters (abc).&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;We recommend that you organise your files in a structured way. This will make importing data into R easier. For example, have a folder for the module and sub-folders for each of the practicals:&lt;br /&gt;
+Documents (folder) -&amp;gt; Biostats (folder) -&amp;gt; Practical 1 (folder) -&amp;gt; Script (file)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;We don’t recommend using a automatically selected “downloads” folder or your “desktop” because these are not permanent file locations and it can be hard to find files in a messy folder.
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Notice that the components of the address is separated using a forward slash &lt;code&gt;/&lt;/code&gt;. R can understand &lt;code&gt;/&lt;/code&gt; but does not understand back slash &lt;code&gt;\&lt;/code&gt; because back slashes have a specific meaning in programming. When typing addresses, make sure you use the correct slash.&lt;/p&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Computers are only as smart as the humans that use them.&lt;/p&gt;
+&lt;p&gt;If your code is not working there is most likely a spelling mistake or a typographic error. These human errors are easy to miss but equally easy to fix!&lt;/p&gt;
+&lt;p&gt;There is a difference between &lt;code&gt;&#34;&lt;/code&gt;straight&lt;code&gt;&#34;&lt;/code&gt; or “curly”, ‘single’ or “double” quotation marks! R does not recognise curly quotation marks so beware when pasting code from elsewhere.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We navigate through our computer’s directories using Explorer in Windows or Finder in MacOS. You can see the address of a directory in the address bar. We will learn how to use directories in RStudio.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Expectations
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We expect you to be able to manage your own computer organisation. E.g. know how to open a file, save files in a specific file type and know where you saved files!&lt;/p&gt;
+&lt;p&gt;We will ask you to load data from files using addresses so knowing where you saved the file is essential.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why R?&lt;/h2&gt;
+&lt;p&gt;R is just one of &lt;em&gt;many&lt;/em&gt; high-level programming languages used professionally (e.g. C++, Java, Python) but R is specially designed for doing statistics and handling data. Hence R is widely taught in statistic classes.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Knowing R is not the same skill as knowing Excel.&lt;br /&gt;
+R is far more powerful for doing data science.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;R is an open source software and it is &lt;strong&gt;transparent&lt;/strong&gt;, meaning you can &lt;em&gt;see&lt;/em&gt; how your data is being manipulated. Transparency allows us to check whether the statistics is done correctly and is easier to see how statistical theory is being applied. This is not always possible to see in commercial statistical software or Excel.&lt;/p&gt;
+&lt;p&gt;R is also &lt;strong&gt;reproducible&lt;/strong&gt; because R allows you to document your code in &lt;strong&gt;scripts&lt;/strong&gt; that you can give another person to replicate your analysis.&lt;/p&gt;
+&lt;p&gt;The traditional option to learning statistics is to do these calculations by hand with pre-calculated statistical reference tables but doing calculations by hand is an arduous task for realistic biological problems.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+One way to practice R is to use it preferentially whenever you can, even in other modules. For example, use R to make graphs for your assignments instead of Excel. Or to calculate simple statistics.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Beyond what we will cover in this module, R can be used to write documents (like this one), interactive apps, websites, or presentations. The possibilities are endless.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-rstudio&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why RStudio?&lt;/h2&gt;
+&lt;p&gt;R and RStudio are different software. R is a computer programming language and statistical environment. RStudio is a user interface which has some useful features that makes using R easier. There are other user interfaces for R but RStudio has lots of support.&lt;/p&gt;
+&lt;p&gt;RStudio acts as a mediator between you and R:&lt;br /&gt;
+user -&amp;gt; input -&amp;gt; RStudio -&amp;gt; R -&amp;gt; RStudio -&amp;gt; output -&amp;gt; user&lt;/p&gt;
+&lt;p&gt;It is possible to use R by itself (you may prefer it) but RStudio makes everything a lot easier by providing some organisation and allows you to write &lt;strong&gt;scripts&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-r-and-rstudio&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;2. Installing R and RStudio&lt;/h1&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;You need to install R then RStudio &lt;strong&gt;in that order&lt;/strong&gt;! RStudio cannot work without R but R can work without RStudio.&lt;/p&gt;
+&lt;p&gt;An analogy: R is the engine of a car and RStudio is the steering wheel - you control the wheel but the engine is what makes the car go forward.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;CRANsite.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Install R from CRAN. &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If you prefer instructional videos, here’s a video about installing R &lt;a href=&#34;https://vimeo.com/203516510&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516510&lt;/a&gt; and RStudio &lt;a href=&#34;https://vimeo.com/203516968&#34; class=&#34;uri&#34;&gt;https://vimeo.com/203516968&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here are the instructions for various operating software:&lt;/p&gt;
+&lt;div id=&#34;windows&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Windows&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/bin/windows/base/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R” in the blue box for the latest version.&lt;/li&gt;
+&lt;li&gt;Save the file, open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible like the Programs folder in the C:/ drive.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mac&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mac&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for (Mac) OS X”&lt;/li&gt;
+&lt;li&gt;Save the latest release file (e.g. R-4.0.2.pkg), open it and follow the instructions. You can leave everything as the default option. Make sure you’ve installed the program somewhere sensible.&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Install the program somewhere sensible&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linux&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;For R:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “Download R for Linux”&lt;/li&gt;
+&lt;li&gt;Click your version of Linux&lt;/li&gt;
+&lt;li&gt;Copy and paste the relevant installation code&lt;/li&gt;
+&lt;li&gt;Open R and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For RStudio:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/products/rstudio/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click download for &lt;strong&gt;RStudio Desktop Open Source Licence&lt;/strong&gt;. The FREE option.&lt;/li&gt;
+&lt;li&gt;Run the relevant code&lt;/li&gt;
+&lt;li&gt;Open it and check it installed properly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See &lt;a href=&#34;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&#34; class=&#34;uri&#34;&gt;https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux&lt;/a&gt; for a guide&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chromebook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Chromebook&lt;/h2&gt;
+&lt;p&gt;There are a few options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The easiest option is to run Linux on your computer, then you can install R and RStudio. Try the instructions on &lt;a href=&#34;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&#34; class=&#34;uri&#34;&gt;https://blog.sellorm.com/2018/12/20/installing-r-and-rstudio-on-a-chromebook/&lt;/a&gt; or &lt;a href=&#34;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&#34; class=&#34;uri&#34;&gt;https://github.com/jennybc/operation-chromebook#links-re-r-and-rstudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Use RStudio Server&lt;/li&gt;
+&lt;li&gt;Use RStudio Cloud &lt;a href=&#34;https://rstudio.cloud/&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud/&lt;/a&gt; (in beta so it may not work)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry chromebook users, if your chromebook version is very old then it may not be possible to install R.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;opening-rstudio-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Opening RStudio for the first time&lt;/h1&gt;
+&lt;p&gt;If you open RStudio you’ll see several windows that organise how information is passed to R and how output from R is presented:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;RStudio-console.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;The default RStudio layout can be customised.&lt;/p&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Left: The big window is the &lt;strong&gt;Console&lt;/strong&gt;. This is the interface with R and is the same as using R on its own. (don’t worry about “Terminal”)&lt;/li&gt;
+&lt;li&gt;Top right: This window has three tabs: “Environment” - shows you what information is stored in R’s memory, “History” - shows your code history &amp;amp; “Connections” - don’t worry about this one, it’s for connection to database servers.&lt;/li&gt;
+&lt;li&gt;Bottom right: This has several tabs. The most important being “Files” - showing you where RStudio is looking at on your computer &amp;amp; “Plots” - shows you any plots you make in R.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When you open a &lt;strong&gt;Script&lt;/strong&gt;, it will appear as a panel in the top left.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Expectations
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We expect you to be familiar with the RStudio layout and using R within it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can customise the layout, colour scheme, font and font size of RStudio in Options.&lt;br /&gt;
+Shortcuts and hotkeys will make your life easier. You can see a list of them under Help. There are only minor differences between Windows and Mac shortcuts (e.g. using Cmd instead of Ctrl).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-structure-and-terminology&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. R structure and terminology&lt;/h1&gt;
+&lt;p&gt;There are a number of terms you’ll come across when using R. Here are some basic ones:&lt;/p&gt;
+&lt;p&gt;R is a statistical environment that consist of &lt;strong&gt;packages&lt;/strong&gt;. Packages are sets of &lt;strong&gt;functions&lt;/strong&gt; that do something to input depending on the instructions described in the function. All your packages are stored in your &lt;strong&gt;library&lt;/strong&gt; (a folder on your computer). When you download R it comes with a basic set of packages as default (&lt;strong&gt;base packages&lt;/strong&gt;). Some of these &lt;strong&gt;base packages&lt;/strong&gt; are loaded every time you open R.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;R is CaSe SenSitiVe. Meaning that &lt;code&gt;library()&lt;/code&gt; is different to &lt;code&gt;Library()&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Keep your R, RStudio and packages up to date. These things are continuously updated by the community. You can update your packages by clicking the Update button under the Packages tab.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;installing-more-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Installing more packages&lt;/h2&gt;
+&lt;p&gt;We can customise and expand the functionality of R by installing more packages, which are made by the community and distributed freely. The function to download packages from the Internet is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;&amp;lt;insert name of package&amp;gt;&amp;quot;) # installs a package&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For example, &lt;code&gt;install.packages(&#34;learnr&#34;)&lt;/code&gt;. Note how non-curly quotation marks are used. Some packages have more functions to do more advanced computing, some contain datasets you can practice with.&lt;/p&gt;
+&lt;div id=&#34;the-packages-folder-your-library&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The packages folder (your library)&lt;/h3&gt;
+&lt;p&gt;Additional packages are saved to a folder on your computer. We should check that your packages folder is set up properly - especially if you use Windows 10 and sync with OneDrive.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This is not a problem for Mac users or Windows users that are not logged in to a Microsoft account (check it anyway, in case).&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Packages should ideally be downloaded to your local computer and not saved on the cloud (e.g. through OneDrive).&lt;/p&gt;
+&lt;p&gt;The constant syncing slows down communication and creates issues between the cloud and R and RStudio. You can see where your packages are saved using &lt;code&gt;.libPaths()&lt;/code&gt; in your console - meaning Library Paths, the address of your package libraries.&lt;/p&gt;
+&lt;p&gt;There should be two addresses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One in your Program Files or wherever your computer installed R. E.g. &lt;code&gt;&#34;C:/Program Files/R/R-4.1.1/library&#34;&lt;/code&gt; - this is where all the base R packages are installed (the default packages that come with R)&lt;/li&gt;
+&lt;li&gt;One somewhere else on your computer - this is your personal library. When you install new packages from the Internet, they will be saved here.
+&lt;ul&gt;
+&lt;li&gt;If the second address is on your local computer (e.g. Documents) and not in the cloud then you don’t have to do anything. E.g. &lt;code&gt;&#34;C:/Users/XXXX/Documents/R/win-library/4.1&#34;&lt;/code&gt; is fine&lt;/li&gt;
+&lt;li&gt;If the address has OneDrive in the address, then we need to fix that - follow the steps below. E.g. &lt;code&gt;&#34;C:/Users/XXXX/OneDrive/Documents/R/win-library/4.1&#34;&lt;/code&gt; is problematic&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;To change the address of your personal library in Windows 10&lt;/strong&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Create an empty folder in your Documents folder called &lt;code&gt;R&lt;/code&gt;. Make sure it is not syncing with the cloud. E.g. with the address &lt;code&gt;C:\Users\XXXX\Documents\R&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Click Start (Windows icon). Type in “environmental variables” [without quotations], you should see “Edit environment variables for your account” in the search results - click that&lt;/li&gt;
+&lt;li&gt;Under User variables (the top window) click New&lt;/li&gt;
+&lt;li&gt;In the Variable name field type &lt;code&gt;R_LIBS_USER&lt;/code&gt; - exactly like that in all caps&lt;/li&gt;
+&lt;li&gt;In the Variable value field enter the address of the package folder (where you made it in step 1) - make sure to use backslash &lt;code&gt;\&lt;/code&gt; not forward slash &lt;code&gt;/&lt;/code&gt;. E.g. &lt;code&gt;C:\Users\XXXX\Documents\R&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Click OK twice to exit&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;.libPaths()&lt;/code&gt; in R to check that your personal library folder is now listed in &lt;code&gt;R&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Changing default settings in the Control Panel is pretty advanced computing - we don’t expect you to know this. Don’t be afraid to ask for help.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;my-first-script&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;5. My first script&lt;/h1&gt;
+&lt;p&gt;The greatest advantage of RStudio is that it allows you to write &lt;strong&gt;scripts&lt;/strong&gt;. These are files ending in &lt;code&gt;.R&lt;/code&gt; that are created and opened by RStudio. R itself cannot open, read or create scripts.&lt;/p&gt;
+&lt;p&gt;Scripts are text documents of code that you can save on your computer and open later. Scripts are instructions to give to R, but can also serve as a record of what you’ve done (&lt;strong&gt;transparency&lt;/strong&gt; &amp;amp; &lt;strong&gt;reproducibility&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Before RStudio, we had to save our code in notepad or similar then copy and paste it into R (believe me it was a pain). Now we can do the same but in one click.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We &lt;strong&gt;strongly recommend&lt;/strong&gt; running code from your script rather than directly from the console because a script will be easier to proof-read and troubleshoot.&lt;/p&gt;
+Scripts provide a guide to what you want to enter to R and saves you from having to type out code over and over again.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can create a new script under File -&amp;gt; New file -&amp;gt; Script (Ctrl+Shift+N) or click the white square with a green and white plus sign in the top left corner.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;open-script.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Run your code from scripts, rather than the console. It is easier to spot and fix mistakes!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Activity
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Open your first script. Save it with a meaningful name.&lt;/p&gt;
+&lt;p&gt;The numbers along the left hand side of the script refer to &lt;strong&gt;line numbers&lt;/strong&gt;. It helps when referring to a specific function or code snippet to others.&lt;/p&gt;
+&lt;p&gt;Let’s add your first functions to your R script!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;loading-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Loading packages&lt;/h2&gt;
+&lt;p&gt;One of the first things you may need in an R script is to load the packages you will use.
+Some base R packages are automatically loaded.&lt;/p&gt;
+&lt;p&gt;To use a package in R, you need to &lt;strong&gt;call&lt;/strong&gt; it from R’s library. The function to load a package is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(&amp;lt;insert name of package&amp;gt;) # loads a package&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A package we will see later in the module is &lt;code&gt;MASS&lt;/code&gt; which contains datasets you can use at home to practice the statistical tests covered in the lectures. &lt;code&gt;MASS&lt;/code&gt; is a base R package but is not automatically loaded.&lt;/p&gt;
+&lt;p&gt;Running &lt;code&gt;data()&lt;/code&gt; or &lt;code&gt;data(package = .packages(all.available = TRUE))&lt;/code&gt; will show the list of available built-in datasets. Some of these will be relevant to biological sciences, others are more general.&lt;/p&gt;
+&lt;p&gt;Once a package is loaded, entering the name of a dataset will display the entire dataset.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Activity
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Type &lt;code&gt;library(MASS)&lt;/code&gt; into your script.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Put your cursor on the line you want to run then press Ctrl+Enter or click Run&lt;/li&gt;
+&lt;li&gt;You can run multiple lines by highlighting the relevant lines&lt;/li&gt;
+&lt;li&gt;You do not need to highlight a single line to run it&lt;/li&gt;
+&lt;li&gt;You can run the entire script from beginning to end using the shortcut Ctrl+Alt+R&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;Run.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Shortcuts will make your life easier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;Run the &lt;code&gt;library(MASS)&lt;/code&gt; code. You have just &lt;strong&gt;run&lt;/strong&gt; your first &lt;strong&gt;line of code&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;R will load the package &lt;code&gt;MASS&lt;/code&gt; in the background. You can check this in RStudio under the Packages tab where there will now be a tick in the box next to &lt;code&gt;MASS&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Try calling one of the &lt;code&gt;MASS&lt;/code&gt; datasets, like &lt;code&gt;Rabbit&lt;/code&gt;, to view the entire dataset. To call a dataset, type in the name and run the code.&lt;/p&gt;
+&lt;p&gt;You can see the descriptions of each dataset by calling &lt;code&gt;help(&amp;lt;dataset name&amp;gt;)&lt;/code&gt;, e.g. &lt;code&gt;help(Rabbit)&lt;/code&gt; will tell you it describes the blood pressure of rabbits before and after a drug treatment.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Activity
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We will use the package &lt;code&gt;learnr&lt;/code&gt; later in the module.&lt;/p&gt;
+&lt;p&gt;This code will install the package but there is &lt;em&gt;one mistake&lt;/em&gt; - fix the mistake and install the package: &lt;code&gt;install.packages(learnr)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Install any other packages you are asked to. If it worked you should see something under the Tutorial tab (next to Files, Plots etc.) in RStudio.&lt;/p&gt;
+&lt;p&gt;When you’ve installed the package, modify your code to install the package &lt;code&gt;remotes&lt;/code&gt;. You now should have installed two packages.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;commenting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Commenting&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;#&lt;/code&gt; (hash/pound) sign indicates comments. Anything after this symbol is not run in R. Commenting is for writing notes or telling the user what is going on.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# this is a comment&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Best Practice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Comment often and in detail. Someone should be able to understand what you did and why. Including your future self.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Activity
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Add at least one comment to your R script describing what your script is doing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;working-directories-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;6. Working directories in R&lt;/h1&gt;
+&lt;p&gt;Remember directories? Typing out whole addresses starting from the hard drive is annoying. There is a short cut if we use &lt;strong&gt;working directories&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The working directory in R is the default directory R will look in first. We can then use directory addresses that are &lt;strong&gt;relative&lt;/strong&gt; to this default address to call files.&lt;/p&gt;
+&lt;p&gt;For example, following this directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:
+  -&amp;gt; documents
+      -&amp;gt; file A 
+      -&amp;gt; folder 1 
+          -&amp;gt; folder 2 
+              -&amp;gt; file B&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the default directory is C:/, then the address for file B is &lt;code&gt;C:/documents/folder1/folder2/fileB&lt;/code&gt;.&lt;br /&gt;
+But if we set folder 1 as the working directory &lt;code&gt;C:/documents/folder1/&lt;/code&gt;, then we can use the relative address for the file: &lt;code&gt;folder2/fileB&lt;/code&gt;. This way we don’t have to type &lt;code&gt;C:/documents/folder1/&lt;/code&gt; every time.&lt;/p&gt;
+&lt;p&gt;Navigating through directories using addresses can be confusing.&lt;br /&gt;
+Another useful command is &lt;code&gt;..&lt;/code&gt; which tells the address to go &lt;em&gt;up&lt;/em&gt; a directory. For example, if folder 2 was the working directory &lt;code&gt;C:/documents/folder1/folder2&lt;/code&gt; and we wanted to access file A, then we need to tell the computer to go up two directories. The relative address for the file is: &lt;code&gt;../../fileA&lt;/code&gt; which means that the computer is now looking in the &lt;code&gt;documents&lt;/code&gt; folder. In contrast, the relative address for file B is even shorter, &lt;code&gt;fileB&lt;/code&gt;, since folder 2 is already the working directory.&lt;/p&gt;
+&lt;p&gt;RStudio has a default working directory.&lt;br /&gt;
+You can see which working directory is the default directory in RStudio on the “Files” tab. The code to see the working directory in R is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getwd() # GET Working Directory. There is nothing in the brackets&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;When you run code directly from the Console, it will use the RStudio working directory. The working directory of a script by default is the directory the script is saved in - this may be different to the default working directory in the Files tab.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This may be one reason RStudio cannot find a file even with a “correct” relative address and why it’s important to know which working directory your computer is using&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Carefully check that the file address is correct! And that you know where the file is on your computer!&lt;/p&gt;
+&lt;p&gt;You may need to change the working directory.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;changing-working-directories&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Changing working directories&lt;/h2&gt;
+&lt;p&gt;You can change the default RStudio directory under Tools -&amp;gt; Global Options but on a daily basis, changing the directory temporarily under Session -&amp;gt; Set working directory is more useful.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;setwd.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Setting the working directory using the drop down menu.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The R function to change your working directory is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setwd(&amp;quot;&amp;lt;insert directory address here&amp;gt;&amp;quot;) # SET Working Directory&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For example, &lt;code&gt;setwd(&#34;~/&#34;)&lt;/code&gt; will change your working directory to your default directory (called Root in computing terms). It is good practice to keep similar files in the same folder. Otherwise you will need to specify the full address when you call a file that exists in another folder and it can get confusing if your files are all over the place.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;setwd2.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Setting the working directory using R code is better for writing scripts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Expectations
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We expect you to know how to change working directories and tell R where to find files through relative addresses because that is how we &lt;strong&gt;import&lt;/strong&gt; and &lt;strong&gt;export&lt;/strong&gt; data to and from R.&lt;br /&gt;
+Think of directories and addresses like postal addresses - if your address is incorrect the postman (R) wouldn’t know where to go to pick up your parcel (file).&lt;br /&gt;
+If R cannot find a file, check the address or the working directory is correct.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rubber-ducks&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Rubber ducks&lt;/h1&gt;
+&lt;p&gt;Problem solving is an important skill. If your code is not working then it’s likely that you’ve made an error somewhere - and that’s OK! It’s all part of learning how to program and there’s no shame in not getting it right the first time. The first thing is to retrace your steps and identify whether you’ve missed a step or misspelled something.&lt;/p&gt;
+&lt;p&gt;Learning to problem solve independently is not something you learn by reading or something you can be taught. It is a skill you have to learn by &lt;em&gt;doing&lt;/em&gt;, which means having a go yourself before seeking help from others. Make a habit of asking for help as your last option because for the assessment you will need to use R and troubleshoot independently.&lt;/p&gt;
+&lt;p&gt;If you can’t identify the problem, then you need to be able to describe your problem to another person. The other person needs enough information and context to understand what you hope to achieve and what you’ve done so far to suggest a solution. Sometimes the solution isn’t immediately obvious so it may require some trial and error - and that’s all part of the process too! It’s really hard to fix someone’s coding problem without context.&lt;/p&gt;
+&lt;p&gt;Talking through your problem is called rubber ducking in computer science - talking through your thought process to a rubber duck may help you realise the solution.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Expectations
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;We expect you to be able to troubleshoot common programming problems on your own. Working things out yourself is also an essential skill, generally.&lt;/p&gt;
+&lt;p&gt;99% of all errors are incorrect addresses (working directory not set properly), missing characters, wrong quotation marks, or missing a step in the instructions. Typographic errors and spelling mistakes will be the first things we will check.&lt;/p&gt;
+&lt;p&gt;We don’t want you to treat R and coding as a black box (i.e. something you don’t understand how it works). Don’t expect to be given code that works, that defeats the point of learning programming – We want you to be able to write your own code and do data analysis in R independently by the end of this module for any scenario.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finding-help&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Finding help&lt;/h2&gt;
+&lt;p&gt;All R code comes with help files. You can access them from the “Help” tab in RStudio. If you want help on a specific function, then you can type in &lt;code&gt;help(&amp;lt;insert function name here&amp;gt;)&lt;/code&gt;. If you don’t know your exact query, you can search using &lt;code&gt;??&amp;lt;insert term here&amp;gt;&lt;/code&gt; - e.g. &lt;code&gt;??mean&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Internet is also great for R help. Websites like StackExchange are help forums for programming. Most likely your question has already been answered on StackExchange. The trick is knowing what to type into Google - meaning you need to know what outcome you want.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final checklist&lt;/h1&gt;
+&lt;p&gt;You should now have R and RStudio installed on your computer, installed some packages and updated your R settings if needed.&lt;/p&gt;
+&lt;p&gt;You are now ready for the rest of the module.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do you know how to navigate computer directories and addresses to find files or folders?&lt;/li&gt;
+&lt;li&gt;Do you know how to set up scripts and directories in RStudio?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We’ve introduced some basic computing concepts: scripts, directories and commenting.&lt;/p&gt;
+&lt;p&gt;We’ve also introduced some fundamental R functions. You will need these in the future:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;install.packages&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;library&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getwd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setwd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Statistical modelling Part 1</title>
+      <link>https://jacintak.github.io/teaching/StatsModelsPrac1/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/StatsModelsPrac1/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This is a static version of the &lt;code&gt;learnr&lt;/code&gt; tutorials for the Statistical Modelling practicals.&lt;/p&gt;
+&lt;p&gt;Welcome! In two practicals and in three lectures we will be looking at statistical modelling.&lt;/p&gt;
+&lt;p&gt;We have progressed beyond the realm of doing stats by hand and basic statistical tests like t-tests are &lt;strong&gt;not appropriate&lt;/strong&gt; for the types of data we will look at or the hypotheses we test. R will be the tool we will use.&lt;/p&gt;
+&lt;p&gt;In these sessions, we will focus on the practical aspects of &lt;strong&gt;applying&lt;/strong&gt; statistics (implementation &amp;amp; interpretation) with real data – not on the theory or mathematical proofs – in fact, nearly all the relevant theory has been introduced to you in previous lectures.&lt;/p&gt;
+&lt;p&gt;The practicals and lectures will feed off each other and these will also build upon the previous lectures and practicals. All concepts in this practical are assessable and relevant to the lectures. &lt;strong&gt;I expect you to be up to date with the module material&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The demonstrators are available if you have questions about the concepts or have technical issues with running the practical. Please talk to them, they get lonely. They will be checking in and making sure you are keeping to time.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;what-is-statistical-modelling&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What is statistical modelling?&lt;/h2&gt;
+&lt;p&gt;Recall from the lectures:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Statistical models are logical mathematical or statistical descriptions of what we believe to be important in a biological system.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We use models to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sense of a complex and messy real world and its data
+&lt;ul&gt;
+&lt;li&gt;Formulate new theories&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Test our understanding of a biological system
+&lt;ul&gt;
+&lt;li&gt;Formulate hypotheses&lt;/li&gt;
+&lt;li&gt;Make predictions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make evidence-based decisions
+&lt;ul&gt;
+&lt;li&gt;Run simulations – “what if…?”, what happens if we change something?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If our model doesn’t match what we observe from empirical data, that’s OK! We can refine our model (our hypothesis) to better match what we observe. &lt;strong&gt;That’s the Scientific Method.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Science isn’t about “proving” a hypothesis or being “right” – we find &lt;strong&gt;“support”&lt;/strong&gt; for a hypothesis and it’s when we “fail” or are wrong that progress happens.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;To paraphrase: all models are wrong but some can be useful&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;types-of-models&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Types of models&lt;/h2&gt;
+&lt;p&gt;Models can be characterised in several ways depending on what they describe:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Theoretic models&lt;/strong&gt; describe processes – explored here&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Empirical models&lt;/strong&gt; describe data – explored in lectures and in the next practical&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some biological systems can be described both ways.&lt;/p&gt;
+&lt;p&gt;Models can be placed on a spectrum of simple to complex, and specific to general.&lt;/p&gt;
+&lt;p&gt;Models can also be described based on their precision, realism and generality. But these trade-off – No one model can perfectly capture all these qualities.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;All types&lt;/em&gt; of models are based on assumptions or require information about the biological system. Models describe a biological system with some limitations.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The best model to use depends on the intended question.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;variables-vs-parameters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Variables vs parameters&lt;/h2&gt;
+&lt;p&gt;Distinguishing between variables and parameters is important in statistics, particularly for modelling.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Variables&lt;/strong&gt;&lt;br /&gt;
+These are quantities that change with each iteration of a statistical model. E.g. the predictor (independent) variable and the response (dependent) variable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;br /&gt;
+These are quantities that do not change with each iteration of a statistical model. They are often a constant and often represent the assumptions about our biological system we make to model it. If we change the fundamental assumptions of the model, then the &lt;em&gt;value&lt;/em&gt; of the parameter may change. Often the value of the parameter is &lt;strong&gt;unknown&lt;/strong&gt; to us and need to be &lt;strong&gt;parametrised&lt;/strong&gt; from empirical data.&lt;/p&gt;
+&lt;p&gt;A variable could switch to being a parameter or vice versa depending on the experimental design and hypothesis tested, which in turn determines the statistical model. These decisions should be made when planning an experiment, not during or afterwards.&lt;/p&gt;
+&lt;p&gt;We will go through the process of parametrising in the next practical and in the lectures.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practical-information&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Practical information&lt;/h2&gt;
+&lt;p&gt;In these practicals we will look at a theoretic model of a predator-prey interaction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The aim is to understand how statistical models can be applied to biological data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The majority of this practical will focus on the practicalities of designing experiments and collecting data, which we covered earlier in the module.&lt;/p&gt;
+&lt;p&gt;I recommend taking your time with these practical and the concepts because they are fundamental to biological statistics you are likely to encounter again (plus are highly relevant to your final report). There is no need to rush.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;learning-objectives&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Learning objectives&lt;/h3&gt;
+&lt;p&gt;This practical is split into three parts with distinct learning objectives (recommended time to spend):&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part A: Building a theoretic model (20 mins)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Know how a biological process can be described by a statistical model&lt;/li&gt;
+&lt;li&gt;Understand how statistical models are applied to answer real world biological questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Part B: Designing an experiment (20 mins)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply your knowledge about experimental design and hypothesis formulation to a biological problem in practice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Don’t spend too long on Parts A and B, move through them and the CA quickly. Part C is the most important part and will take the most time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part C: Collecting data (&lt;strong&gt;2 hours&lt;/strong&gt;)&lt;/strong&gt;&lt;br /&gt;
+This is the main activity of the practical.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Know how to organise a spreadsheet and fill in a spreadsheet with data following the principles of tidy data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You will be uploading your data to Blackboard. In the next practical we will be analysing the aggregated &amp;amp; anonymised class data set and using that to answer CA questions.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Continuous Assessment
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;I recommend finishing the CA &lt;em&gt;before&lt;/em&gt; Part C. The CA is worth 10% and is due at the end of the prac. There is a total of 10 marks.&lt;/p&gt;
+The CA aims to assess your understanding of the concepts in this practical and your ability to apply the concepts in practice.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-a-theoretic-models&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Part A: Theoretic models&lt;/h1&gt;
+&lt;p&gt;In the previous practical you looked at a killer T cell digesting a pathogen. This infection response is a biological process and is analogous to a predator (e.g. a lion) hunting a prey (e.g. zebra), or a robot (a “predator”) cleaning up an oil spill (its “prey”).&lt;/p&gt;
+&lt;p&gt;You started to compose a Scratch model. Although the Scratch model comprises of pictures and code blocks, under the hood these blocks represent computer code, and more abstractly a mathematical processes. Thus, the Scratch model is an implementation of a statistical model of a biological system – the infection response.&lt;/p&gt;
+&lt;p&gt;This model was simple – too simple to be realistic. The killer T cell captured any and all pathogens touching it whereas in reality, a killer T cell may only target a few pathogens at a time or sequentially. This is also true for animal predators who hunt. Most predators need time to catch and process their food before their next meal.&lt;/p&gt;
+&lt;p&gt;We can conceptualise a more realistic representation of an infection response, or more abstractly a predator-prey interaction. By breaking down what we observe to be important about the infection response into variables and assumptions, we can build our own theoretic model (describing a process) of an predator-prey interaction from scratch.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;what-is-a-predator-prey-interaction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What is a predator-prey interaction?&lt;/h2&gt;
+&lt;p&gt;In a predator-prey interaction we have two &lt;strong&gt;variables&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Predator&lt;/li&gt;
+&lt;li&gt;Prey&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If we think about what we consider to be important in a predator-prey interaction, searching for and handing prey two mutually exclusive aspects. We can then make the following statements, or assumptions, about the predator-prey interaction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A predator randomly searches for prey&lt;/li&gt;
+&lt;li&gt;A predator can only “search” a fixed area per unit time (search rate)&lt;/li&gt;
+&lt;li&gt;A predator can only eat one prey at a time – it must “process” (i.e. digest) the prey before it can begin searching for the next one (handling time)
+&lt;ul&gt;
+&lt;li&gt;Handling time and searching activity are mutually exclusive&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Prey randomly move around independently of the predator (e.g. it does not slow down or speed up when the prey is near)&lt;/li&gt;
+&lt;li&gt;Both the predator and the prey move at the same speed and at a constant speed&lt;/li&gt;
+&lt;li&gt;Both the predator and the prey only move within a fixed area (e.g. their habitat), they cannot leave.&lt;/li&gt;
+&lt;li&gt;The numbers of predators and prey are fixed at the start of the experiment (i.e. they do not replicate while the model is running, prey numbers can only decrease, predator numbers stay the same)&lt;/li&gt;
+&lt;li&gt;Each predator-prey interaction lasts a fixed amount of time (total time)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These same statements can be applied to an infection response or to any analogous scenario – merely replace “predator” and “prey” with the relevant terms.&lt;/p&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Would you agree with the above statements? Or are they too simplistic of a complex biological system?
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If you thought our model is too simplistic, you are probably right &lt;em&gt;but&lt;/em&gt; in modelling philosophy some degree of simplification or abstraction is perfectly acceptable because &lt;em&gt;models are only representations of reality&lt;/em&gt;, they are not meant to copy the real world right down to the minutiae.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+Thus, one application of models is to consider them as hypotheses of biological systems – what we think are important components of the system.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functional-responses&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Functional responses&lt;/h2&gt;
+&lt;p&gt;Infection responses, predator-prey interactions… they can be generally classified as &lt;strong&gt;functional responses&lt;/strong&gt;. Luckily for us, there are already well known analytical (mathematical) models of functional response that we can use.&lt;/p&gt;
+&lt;p&gt;There are multiple types of functional responses (labelled with Roman numerals: I — IV). Each of these models represents a &lt;em&gt;different hypothesis&lt;/em&gt; about functional responses and mathematically describes a &lt;em&gt;different relationship&lt;/em&gt; between our two variables (e.g. the killer T cell and the pathogen, or a predator and its prey). You can read more about functional responses by running &lt;code&gt;vignette(&#34;functional_responses&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The assumptions we make above are based on a &lt;strong&gt;Type II functional response model&lt;/strong&gt; and is the one most appropriate for a predator-prey interaction scenario. You can read about the full derivation by running &lt;code&gt;vignette(&#34;TypeII_models&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Type II functional response model is a good example of a general model – it has been used to describe animal predators eating prey (e.g. Holling’s disc equations) or enzymes catalysing reactions (e.g. Michaelis-Menten equation). We can also use it to describe the immune response of the previous practical.&lt;/p&gt;
+&lt;p&gt;It doesn’t matter what the mathematical symbols represent biologically, maths is a universal language that describes the underlying biological process. Here, we are applying it to an general predator-prey scenario involving students and plastic counters.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-type-ii-functional-response&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A Type II functional response&lt;/h2&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac1/index_files/figure-html/funct_resp-1.png&#34; alt=&#34;Type II functional response of a predator-prey interaction&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+(#fig:funct_resp)Type II functional response of a predator-prey interaction
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+How would you describe the Type II relationship in words in a results section of a lab report?
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Maybe something like:&lt;br /&gt;
+“The number of prey eaten rapidly increases at low prey densities and gradually plateaus to a maximum number of prey eaten at higher prey densities.”&lt;/p&gt;
+&lt;p&gt;The mathematical model of the figure above is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_a=\ \frac{a\times H\times T_{total}}{1+a\times H\times T_h}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You should read the full derivation in the documentation file to see how we’ve turned our earlier assumptions into mathematical expressions – run &lt;code&gt;vignette(&#34;TypeIImodels&#34;)&lt;/code&gt; in Console or via the Packages tab (click StatsModels -&amp;gt; User guides).&lt;/p&gt;
+&lt;p&gt;Let’s go through what the letters and numbers mean and how they link to our model assumptions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(H\)&lt;/span&gt; is the number of prey within a fixed area (prey density, number per area). This is our predictor variable. We decide what values to use before our experiment&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; is the search rate or attack rate. It is the search area per unit time of a prey. This is a parameter that we do not know and that we calculate from our data.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_a\)&lt;/span&gt; is the number of prey captured. We record this at the end of our experiment as our response variable.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(T_{total}\)&lt;/span&gt; is the total time a predator spent hunting prey (time). This is a constant parameter that we decide before we start the experiment based on our assumptions.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt; is the time a predator spends digesting a single prey (time per prey). This is a parameter that we do not know and that we calculate from our data. In functional response models, this is called handling time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You’ll see that we know the value of some of these parameters already and some we need to calculate from our data.&lt;/p&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Variables or parameters? Which is which in our model? What information do we know already and what do we need to find out? And how would you find it out?
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finding-our-unknown-parameters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Finding our unknown parameters&lt;/h2&gt;
+&lt;p&gt;How do we estimate these unknown parameters from our data (e.g from the figure above)?&lt;/p&gt;
+&lt;p&gt;Actually, the hyperbolic nature of the Type II makes it challenging to extract this information – and certainly beyond the expectations of this module. &lt;em&gt;But&lt;/em&gt; we can use mathemagics to turn this hyperbolic relationship into a straight line by a process called &lt;em&gt;linearising&lt;/em&gt;. And straight lines are easier to manipulate or interpret – something we expect you to be able to do in this module.&lt;/p&gt;
+&lt;p&gt;The linearised Type II equation is:
+&lt;span class=&#34;math display&#34;&gt;\[\frac{1}{H_a}=\ \frac{1}{a}\times\frac{1}{H\times T_{total}}+\frac{T_h}{T_{total}}\]&lt;/span&gt;
+The full derivation is accessible in &lt;code&gt;vignette(&#34;TypeIImodels&#34;)&lt;/code&gt;, we won’t go though how this is derived here, but you &lt;em&gt;do&lt;/em&gt; need to understand this equation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H_a}\)&lt;/span&gt; is the inverse of our response variable – the number of prey eaten&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{a}\)&lt;/span&gt; is the inverse of our unknown search rate parameter&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H \times T_{total}}\)&lt;/span&gt; is the inverse of our predictor variable (prey density) and the total predator-prey interaction time&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\frac{T_h}{T_{total}}\)&lt;/span&gt; is our unknown handling time divided by the total predator-prey interaction time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Does the overall structure of the equation look familiar to you? (maybe from high school maths)
+&lt;/div&gt;
+&lt;/div&gt;
+The graph looks like this:
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:tyepe2line&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac1/index_files/figure-html/tyepe2line-1.png&#34; alt=&#34;Linearised type II functional response of a predator-prey interaction&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Linearised type II functional response of a predator-prey interaction
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The linearised function has the general form &lt;span class=&#34;math inline&#34;&gt;\(y = \beta_1 x + \beta_0\)&lt;/span&gt; which is a straight line. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is the response variable, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the predictor variable, &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is the slope or gradient of the line, and &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; is the intercept of the line. We will see this notation again in the lectures.&lt;/p&gt;
+&lt;p&gt;This linear form allows us to estimate the coefficients for the linear equation where y = &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H_a}\)&lt;/span&gt; and x = &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H\times T_{total}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;From the linearised Type II equation we can see that:&lt;br /&gt;
+&lt;span class=&#34;math display&#34;&gt;\[Slope=\ \frac{1}{a}\]&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;math display&#34;&gt;\[Intercept=\ \frac{T_h}{T_{total}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We can calculate the slope and intercept from regression and then do some algebra to find &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;:&lt;br /&gt;
+&lt;span class=&#34;math display&#34;&gt;\[a=\frac{1}{slope}\]&lt;/span&gt;
+and
+&lt;span class=&#34;math display&#34;&gt;\[T_h = T_{total} \times intercept\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Now we have our model, we need to &lt;strong&gt;parameterise&lt;/strong&gt; it and find the values of our unknown parameters.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+For the rest of the practical we will look at the question:
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+What are the values of our unknown parameters, handling time and search rate?
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Unlike the previous practical, we are going to investigate this question by conducting a real experiment but it is possible to build an equivalent simulation in Scratch.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;That’s the end of Part A. Check in with your demonstrator. Take a break. Stand up. Shake your limbs. Breathe.&lt;/p&gt;
+&lt;p&gt;You’re doing great!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-designing-an-experiment&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Part B: Designing an experiment&lt;/h1&gt;
+&lt;div id=&#34;the-predator-prey-experiment&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The predator-prey experiment&lt;/h2&gt;
+&lt;p&gt;You have been provided some plastic counters, a stopwatch, a piece of paper and a jar with a lid. You are the predator and the counters are your prey. The piece of paper is your arena and the jar is for collecting prey that you have captured.&lt;/p&gt;
+&lt;p&gt;You will be working in pairs – one of you will be the predator, the other will be the observer (keeping track of the time, recording the data). You will need a computer between you for entering and uploading data.&lt;/p&gt;
+&lt;p&gt;The protocol is simple:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Spread out the desired number of counters on the A4 sheet randomly. Do not move counters around once landed&lt;/li&gt;
+&lt;li&gt;The predator will close their eyes and use their index finger to randomly tap around the arena at a constant search rate called out by the observer. The observer has a stop-watch and tells the predator when to tap.&lt;/li&gt;
+&lt;li&gt;If the predator touches a counter, they need pick it up and “processes” it. The prey caught must be placed in the provided jar.
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The predator cannot hold the jar while searching for your prey because prey handling and prey search are mutually exclusive processes.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;The predator must pick up the jar, unscrew the lid, drop in the counter, close the lid fully and place the jar back down on the table – all with their eyes closed&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;You can replicate using a different “predator” (student) to take turns but you should use the same predator across all prey densities.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;The goal is to pick up as many counters as possible within a fixed time period.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Why should we not touch the counters after we have placed them on the paper?&lt;/p&gt;
+&lt;p&gt;Why can’t we hold the jar while looking for prey?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;identifying-treatments&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Identifying treatments&lt;/h2&gt;
+&lt;p&gt;Experiments consist of variables that are &lt;em&gt;controlled&lt;/em&gt; or &lt;em&gt;manipulated&lt;/em&gt;. The manipulated variables are usually predictor variables. Controlled variables are other influential variables that may affect the response variable in ways that might mask or accentuate the effect of the predictor variable on the response variable. We control as many possible variables as possible to make sure what we observe is the true effect of the predictor variable of interest.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If we cannot control a variable, the least we can do is record it as a co-variate and apply more complex stats to account for the additional variable.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;If we don’t keep a comprehensive record, then we risk the co-varying variable &lt;strong&gt;confounding&lt;/strong&gt; the true effect of the predictor variable, adding uncontrolled variation (decreasing the chance of getting a significant P value) and increasing the risk of Type I or II error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We change the prey densities with each run of the experiment because it is the predictor variable. The different values of prey density is our &lt;strong&gt;treatment&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;How many prey densities should you use?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Generally, the more treatments, the better your data may capture some true biological relationship.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;But more treatments means more work, time and effort! You need at least two treatments (two observations) to fit a straight line to data but there is no hard or fast rule for deciding these things.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;&lt;strong&gt;For the purpose of this practical, we will decide on 5 treatments of prey density. You are free to choose any 5 numbers from a range of 1 to 100.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We will collate the entire class’ data so you don’t have to choose the same numbers. We aim for consistency and balance when designing experiments, so your treatments should be equally spaced out. For example, with equal increments.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;replication-replication-replication&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Replication, replication, replication&lt;/h2&gt;
+&lt;p&gt;Replication is really important to increase the accuracy and precision of our data and make sure our results are not due to random chance.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Generally, the more replication the better!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Again, the trade-off is more work, time, effort or computing power. It also reduces the chances of making a type 1 or type 2 error.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;&lt;strong&gt;For the purpose of this practical, we will use 3 replicates of prey density.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Three is usually a minimum number of replications. In a real-world scientific study, you may see higher replications.&lt;/p&gt;
+&lt;p&gt;A replication of 3 means that we need to repeat our experiment three times for every value of the treatment. Each replication should be independent of the others. Otherwise you risk &lt;em&gt;pseudoreplication&lt;/em&gt; – not replicating when you think you are.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;identifying-constant-parameters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Identifying constant parameters&lt;/h2&gt;
+&lt;p&gt;In our experiment we have 1 predator tapping at a constant rate.&lt;/p&gt;
+&lt;p&gt;Our tapping rate &lt;strong&gt;is not the same&lt;/strong&gt; as our unknown parameter search rate (also called area of discovery or attack rate).&lt;/p&gt;
+&lt;p&gt;Total foraging time is another pre-determined constant.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;&lt;strong&gt;We will use a tapping rate of 1 tap per second. Your assistant will need to call out when to tap for the predator.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For simplicity, we will use a value of 1 minute only so that we can divide by 1 and it makes our maths easier.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The number of predators, tapping rate and total time are all &lt;em&gt;parameters&lt;/em&gt; and they are &lt;em&gt;constant&lt;/em&gt; in a single experiment. These are constants that does not change – doing so would violate the assumptions of our model, change the experimental design and hypotheses tested, nd turn these parameters into variables.&lt;/p&gt;
+&lt;p&gt;Changing these but keeping our hypotheses the same would be introducing additional variation into our data and increase the chance of making a type 2 error. Thus, sometimes parameters become variables; it all depends on the aim of the study.&lt;/p&gt;
+&lt;p&gt;Although these constant parameters are unknown to us, we want to know their values to use the analytical model but we need empirical data to fit to our analytical model. We will estimate these values using statistical models next practical to complete the equation:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_a=\ \frac{a\times H\times T_{total}}{1+a\times H\times T_h}\]&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Keep it simple! A more complex statistical analysis cannot fix issues arising from a badly designed experiment.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hypotheses&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hypotheses&lt;/h2&gt;
+&lt;p&gt;The final but most important thing before we can start collecting data is to formulate our hypotheses.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Another use of statistical models is to explore different scenarios that represent different hypotheses.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What happens if our predator was more efficient? What would you change about the experiment to achieve this? How would this aim affect &lt;span class=&#34;math inline&#34;&gt;\(H_a\)&lt;/span&gt; and the estimates of &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;?&lt;/p&gt;
+&lt;p&gt;For example, vaccines provide a chance for the immune system to “learn” how to eat prey (e.g. viruses). After this experience, immune systems become more efficient at destroying prey.&lt;/p&gt;
+&lt;p&gt;We will simulate a different predator behaviour by repeating our counter and jar experiment but this time, the jar does not have a lid so the predator does not need to open and close the lid when they are handing the counters. We will call this new variable &lt;strong&gt;foraging strategy&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;These two experiments are &lt;em&gt;independent&lt;/em&gt;. If we want to compare the foraging properties between the two predators, we need to run the experiment again &lt;strong&gt;keeping everything the same but changing only the variable of interest&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;the-null-hypothesis-h0&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The null hypothesis (H0)&lt;/h3&gt;
+&lt;p&gt;Remember our research questions is: What are the values of our unknown parameters, handling time and search rate?&lt;/p&gt;
+&lt;p&gt;We know from our model that we expect a positive linear relationship between the inverse of prey captured and the inverse of prey density multiplied by total foraging time.&lt;/p&gt;
+&lt;p&gt;We have a second question with the addition of foraging strategy: Does foraging strategy affect handling time and search rate?&lt;/p&gt;
+&lt;p&gt;We can write a null hypothesis (H0) about the effect of foraging strategy on our model parameters:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;H0: There is no difference in the number of prey eaten with prey density, and in handling time and search rate between foraging strategies&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+The alternative hypothesis is the outcome we would expect if there was an effect of the predictor on the response variable. The null hypothesis is what we expect when there is no effect (hence, null). Most of the time we want there to be an effect (what we hope is correct about a biological system).
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-alternative-hypothesis-h1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The alternative hypothesis (H1)&lt;/h4&gt;
+&lt;p&gt;Here’s the most basic alternative hypothesis we can formulate&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;H1: There is a difference in the number of prey eaten with prey density, and in handling time and search rate between foraging strategies&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Notice, it’s just the opposite of the null hypothesis.&lt;/p&gt;
+&lt;p&gt;It’s often more interesting to formulate a more specific alternative hypothesis than just the opposite of the null hypothesis if we expect there’s a &lt;em&gt;direction&lt;/em&gt; to the effect of the new predictor variable on the response variable. Which we do in this practical.&lt;/p&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Formulate a more specific hypothesis we can use as an alternative hypothesis.&lt;/p&gt;
+&lt;p&gt;Hint: What are we aiming to do with this experiment? What sort of detail should be included?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;It’s better to be specific in your hypothesis if it is plausible in your biological system. For example, if we are testing whether a vaccine induces an immune response, the resulting immune response can only be positive – a negative immune response (i.e. becoming more susceptible to disease) is implausible (and unfortunate).&lt;/p&gt;
+&lt;p&gt;Thus, a simplistic hypothesis would not provide an informative or helpful conclusion if we were testing a new vaccine. If the vaccine made people &lt;em&gt;more susceptible&lt;/em&gt; to disease, we would still accept our alternative hypothesis and reject the null hypothesis even if the &lt;em&gt;direction&lt;/em&gt; of the effect was the opposite to our idealised outcome (improved immunity).&lt;/p&gt;
+&lt;p&gt;If you are less certain about your predicted outcomes you could be less specific if you wanted to (e.g. “There is a linear relationship between prey density and number of prey eaten” means the hypothesised relationship could be positive &lt;em&gt;or&lt;/em&gt; negative).&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Choose wisely!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;The wording of your hypothesis will dictate the best experimental design and statistical analysis to test your hypothesis! Think carefully about the details.&lt;/p&gt;
+&lt;p&gt;Keep your hypothesis as simple as possible to investigate what you are interested in, in your biological system. A more complex hypothesis means a more complex statistical analysis is needed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There are no limits to how many hypotheses you have. You could have three hypotheses, a null and two alternatives describing different possible outcomes.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+As scientists we never try to “prove” or “disprove” hypotheses. We aim to gather evidence and see whether the evidence &lt;strong&gt;supports&lt;/strong&gt; our hypothesis.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Conducting a simple statistical analysis on a complex hypothesis and experimental design means that there is variation in your data that is not accounted for and could be affecting your response variable – it increases the chances of making a type II error (the meaningful biological relationship is hidden under statistical noise).&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;&lt;strong&gt;When in doubt, keep it simple.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Details matter!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Thinking ahead, you should also be careful how you describe the relationship between multiple predictor variables in your hypothesis. Predictor variables can be &lt;strong&gt;independent&lt;/strong&gt; or they can &lt;strong&gt;affect&lt;/strong&gt; each other’s influence on the response variable.&lt;/p&gt;
+&lt;p&gt;Consider these sentences with two predictor variables that describe the same relationship with Y, but different relationships between X1 and X2:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Y decreases with X1 and X2 but the relationship does not differ between X1 and X2&lt;/li&gt;
+&lt;li&gt;Y decreases with X1 and X2 and the relationship differs between X1 and X2&lt;/li&gt;
+&lt;/ul&gt;
+These could be a set of hypotheses. How would you expect the graphs of these relationships to look like?
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Which of the statistical tests you’ve already learnt would you use to analyse the data if foraging strategy was the only predictor variable? (no prey density)&lt;/p&gt;
+What about if prey density was the only predictor variable? (no foraging strategy)
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That’s the end of Part B. We have designed an experiment and identified our hypotheses.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+Take a break. Check in with your demonstrator. Stand up. Shake your limbs. Breathe.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep it up!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-collecting-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Part C: Collecting data&lt;/h1&gt;
+&lt;p&gt;Planning about collecting data &lt;em&gt;before&lt;/em&gt; collecting any data will save you a lot of headache if you realise halfway through that you’ve made a mistake and have to start over, or that there is a better, more efficient way of organising your data. Planning is everything.&lt;/p&gt;
+&lt;p&gt;Scientists often work in teams, which means that several people might collect data. This means that every person must collect data in a consistent way so that all the data can be aggregated. It also means that what information to collect and how it is stored or shared needs to be agreed on before anyone starts. One might also need to consider any laws or regulations for how data is collected (e.g. research ethics, privacy laws).&lt;/p&gt;
+&lt;p&gt;Having a standardised data sheet and way of data entry is key to maintain consistency and minimise data loss.&lt;/p&gt;
+&lt;div id=&#34;tidy-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tidy data&lt;/h3&gt;
+&lt;p&gt;Tidy data is set of principles for organising data sheets and filling in data. It is designed in a way to make data analysis easier and reduces the amount of work required to &lt;em&gt;prepare&lt;/em&gt; your data for analysis.&lt;/p&gt;
+&lt;p&gt;In short:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every column is a variable&lt;/li&gt;
+&lt;li&gt;Every row is an observation&lt;/li&gt;
+&lt;li&gt;No empty cells&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can read more about tidy data &lt;a href=&#34;https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;To paraphrase another quote:&lt;br /&gt;
+All data has a place and all data is in its place&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;long-vs-wide-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Long vs Wide data&lt;/h2&gt;
+&lt;p&gt;There are two general ways of presenting data in a spreadsheet (or as tabbed data):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Long – Variables are presented in one column, the corresponding value is presented in a second column. This format can be hard to interpret&lt;/li&gt;
+&lt;li&gt;Wide – Each variable is a separate column (many columns) and each row is a single observation. This is the way we are collecting data in class (see above criteria)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As a general rule, aim to add rows (observations) not columns and columns should be independent of each other.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Certain types of data analysis require a wide or long format. Sometimes we need to convert the data structure from wide to long or vice versa. We won’t be needing to do this in this module because we are taking care with designing our data sheet to make it easier to analyse our data with minimal post-collection data manipulation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;filling-in-a-data-sheet&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Filling in a data sheet&lt;/h2&gt;
+&lt;p&gt;To help you, there is a data sheet template on blackboard you can fill in.&lt;/p&gt;
+&lt;p&gt;Here are the rules we want you to apply here (these are not global standards and may vary elsewhere):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CaSe coNsistEncy in all text
+&lt;ul&gt;
+&lt;li&gt;All words including column headers should be in lower case, no spaces&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Column headers should be informative
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pathogen_density&lt;/code&gt; or &lt;code&gt;total_time&lt;/code&gt; is good (even the mathematical notation like &lt;code&gt;H&lt;/code&gt; or &lt;code&gt;Th&lt;/code&gt; because it is standardised)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;col1&lt;/code&gt; or &lt;code&gt;pd&lt;/code&gt; is bad – not easy to understand (e.g. acronyms not everyone uses)&lt;/li&gt;
+&lt;li&gt;The column headers in the template are pre-filled. You do not need to change them.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No empty cells&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;All cells should have a value. Put &lt;code&gt;NA&lt;/code&gt; if there is no value&lt;/li&gt;
+&lt;li&gt;Every cell is a single value&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Do not mix alphanumeric characters (e.g. l3773r5 &amp;amp; numb3r5)
+&lt;ul&gt;
+&lt;li&gt;Numeric columns should only contain numbers (0-9), no letters. Character strings should only contain letters (a-z), no numbers&lt;/li&gt;
+&lt;li&gt;Avoid special characters (e.g. (), ~, &amp;amp;, / etc.)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;No spaces (called whitespace in computing)
+&lt;ul&gt;
+&lt;li&gt;No spaces between words. Use _ instead. E.g. &lt;code&gt;no_spaces&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;No spaces before or after words&lt;/li&gt;
+&lt;li&gt;This rule doesn’t apply to generic text fields for taking notes, comments or observations. It applies to treatments of a variable if they are described by strings, e.g. &lt;code&gt;no_fertiliser&lt;/code&gt;, &lt;code&gt;yes_fertiliser&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Data is stored in rows and columns in a tidy format&lt;/li&gt;
+&lt;li&gt;All data is presented together
+&lt;ul&gt;
+&lt;li&gt;Not in multiple sheets – use a separate file if you must.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Data is raw
+&lt;ul&gt;
+&lt;li&gt;Meaning it is not manipulated or processed after being recorded. We will do any data processing in R later&lt;/li&gt;
+&lt;li&gt;This is also important to maintain transparency in our workflow&lt;/li&gt;
+&lt;li&gt;All data is presented, not summarised. E.g. as means&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Data is presented in a portable csv format
+&lt;ul&gt;
+&lt;li&gt;Not everyone has access to Excel. What if someone uses Google Sheets? “.xlsx” files are for Excel.&lt;/li&gt;
+&lt;li&gt;“.csv” comma separated files are portable across platforms, use less memory and are easy for a computer to read – &lt;strong&gt;save your data as csv&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Are all the necessary columns/information included and in the right order?
+&lt;ul&gt;
+&lt;li&gt;Do not change the headers of the template&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;These guidelines are how R reads data from a spreadsheet. Thus, following these best practices will prevent errors when importing data into R.&lt;/p&gt;
+&lt;p&gt;We want you to follow these rules &lt;em&gt;exactly&lt;/em&gt; because we will collate your datasheets across the class.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;database-lingo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Database lingo&lt;/h3&gt;
+&lt;p&gt;When data is imported into a computer, the computer will classify it according to the type of data. Here are some common data types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;numeric – fields or cells that only contain numbers&lt;/li&gt;
+&lt;li&gt;string – strings of characters, i.e. text. Can be letters and numbers. Called &lt;code&gt;character&lt;/code&gt; in R&lt;/li&gt;
+&lt;li&gt;date – for dates&lt;/li&gt;
+&lt;li&gt;logical – for logical statements, e.g. TRUE/FALSE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are the main data classes characterised by R. There may be other types in other programs (e.g. Access, SQL). In computer science, variables (i.e. columns) in R are called fields, so “predator density” and “total time” are fields.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;do-your-experiment-collect-your-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Do your experiment &amp;amp; collect your data&lt;/h2&gt;
+&lt;p&gt;See the table below for an example of column headers with no spaces and all cells with a single value. These are the information you need to provide in your data sheet and the type of data they are:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;50%&#34; /&gt;
+&lt;col width=&#34;29%&#34; /&gt;
+&lt;col width=&#34;20%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;column_information&lt;/th&gt;
+&lt;th&gt;information_type&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;student_number&lt;/td&gt;
+&lt;td&gt;numeric&lt;/td&gt;
+&lt;td&gt;your student number&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;total_time&lt;/td&gt;
+&lt;td&gt;numeric&lt;/td&gt;
+&lt;td&gt;in minutes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;prey_density&lt;/td&gt;
+&lt;td&gt;numeric&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;replicate&lt;/td&gt;
+&lt;td&gt;numeric&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;prey_eaten&lt;/td&gt;
+&lt;td&gt;numeric&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;foraging_strategy&lt;/td&gt;
+&lt;td&gt;character&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;no_lid&lt;/code&gt; for no lid or &lt;code&gt;yes_lid&lt;/code&gt; for a jar with a lid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;These headers are pre-filled for you in the correct order on the template. You do not need to change anything. The order of columns has to exactly match the order in the table.&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Warning!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;R is a computer program so you need to be specific about how you present information to it. For example, you may think having your treatments in individual tables separated by empty rows is sensible and logical but those empty cells mean missing data to a computer – so the computer thinks you haven’t filled in the data properly!&lt;/p&gt;
+A space counts as a character so &lt;code&gt;&#34;cat&#34;&lt;/code&gt;, &lt;code&gt;&#34;cat &#34;&lt;/code&gt; and &lt;code&gt;&#34; cat&#34;&lt;/code&gt; would be read as three distinct inputs. This kind of human error can mess up your analysis but is very common.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Save your data regularly!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data cleaning&lt;/h2&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Information that isn’t structured properly will have errors when imported into R. This is why we must always check that data imported properly every time we load data.&lt;/p&gt;
+This data will need to be &lt;strong&gt;cleaned&lt;/strong&gt; before it can be analysed. So putting in the effort and attention to detail now will save future you a lot of avoidable stress!
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In data science, data usually needs to be processed before we can use it. The data needs to be checked and validated. Are all the fields entered correctly?&lt;/p&gt;
+&lt;p&gt;Attention to detail is important in case it introduces mistakes in our data that may bias our analyses! How much do you trust your fellow students to have followed the previous instructions to the letter?&lt;/p&gt;
+&lt;p&gt;Checking and correcting data is called &lt;strong&gt;cleaning&lt;/strong&gt;. We take raw data and clean it up. Sometimes data cannot be fixed (e.g. errors of unknown origin), then the conservative approach is to exclude the observation which is a shame if lots of time and effort (or money) went in to collecting it. Cleaning often takes longer than the actual analysis! It is a real pain! &amp;gt;:(&lt;/p&gt;
+&lt;p&gt;In the real world, human-collected data is almost never clean because humans are not robots. In previous years, as high as 95% of submissions for this practical failed the data entry guidelines above. Can you do better?&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;uploading-your-dataset-to-blackboard&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Uploading your dataset to Blackboard&lt;/h2&gt;
+&lt;p&gt;Save your data sheet &lt;strong&gt;as a csv file&lt;/strong&gt; (click “Save As” and select csv file type). No other file types are accepted. Your file name should be each of your student numbers and practical session separated by &lt;code&gt;_&lt;/code&gt;. e.g. &lt;code&gt;54321_12345_AM.csv&lt;/code&gt; for the morning session.&lt;/p&gt;
+&lt;p&gt;Upload your csv file to the assignment link provided on Blackboard. &lt;strong&gt;Only one person in the group needs to upload a file&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final checklist&lt;/h1&gt;
+&lt;p&gt;Use the following check list to make sure you have done everything you need for this practical.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Does your data sheet fully conform to the guidelines above?&lt;/li&gt;
+&lt;li&gt;Uploaded your dataset to Blackboard?
+&lt;ul&gt;
+&lt;li&gt;Correct file type?&lt;/li&gt;
+&lt;li&gt;Correct file name?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Done the CA questions?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;That’s a wrap! Well done for making it to the end. Check in with your demonstrator.&lt;/p&gt;
+Take a break. Stand up. Dance. Breathe.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;To sum up, we:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Composed a theoretic model of a predator-prey interaction with known and unknown parameters. The model describes a set of hypotheses based on assumptions we have made about the predator-prey interaction&lt;/li&gt;
+&lt;li&gt;Identified a biological question and hypothesis&lt;/li&gt;
+&lt;li&gt;Designed an experiment with adequate treatments and replication&lt;/li&gt;
+&lt;li&gt;Conducted an experiment and recorded data&lt;/li&gt;
+&lt;li&gt;Filled in a spreadsheet with data following the principles of tidy data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of these steps are part of the scientific method and are relevant to your final assessment.&lt;/p&gt;
+&lt;p&gt;If everyone follows the instructions, then all your datasets will be comparable and we can combine everyone’s data into one giant (anonymised) dataset. Meaning more data to play with than if you had done it by yourself. The idea is that with a large enough sample size (an entire module of students) we can get a good coverage of numbers between 1 and 100 for prey density values.&lt;/p&gt;
+&lt;p&gt;In the next practical we will be analysing the aggregated &amp;amp; anonymised class data set. We will use another type of statistical models (a linear regression) to statistically describe the data we collect and test the hypotheses of our functional response model.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Statistical modelling Part 2</title>
+      <link>https://jacintak.github.io/teaching/StatsModelsPrac2/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/StatsModelsPrac2/</guid>
+      <description>
+
+
+&lt;p&gt;This is a static version of the &lt;code&gt;learnr&lt;/code&gt; tutorials for the Statistical Modelling practicals.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;practical-outline&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Practical outline&lt;/h1&gt;
+&lt;p&gt;Welcome to Part 2! We will continue where we left off in Part 1 and progress through a &lt;strong&gt;workflow&lt;/strong&gt; of conducting an experiment and analysing data.&lt;/p&gt;
+&lt;p&gt;We will explore &lt;em&gt;two&lt;/em&gt; types of statistical modelling – using linear regression (empiric model) to &lt;strong&gt;parameterise&lt;/strong&gt; our function response model (theoretic model).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Learning objectives:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Know how to parameterised a linear regression in R with biological data&lt;/li&gt;
+&lt;li&gt;Know how to use linear models to predict new values&lt;/li&gt;
+&lt;li&gt;Know how to interpret linear regression output to test hypotheses&lt;/li&gt;
+&lt;li&gt;Know what to include in a results paragraph&lt;/li&gt;
+&lt;li&gt;Know how to make a graph in R with appropriate labels and caption&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We have covered all of these concepts in the lectures or previous practicals. This prac will reinforce and revise these concepts and allows you to practice them under supervision of the demonstrators.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+I recommend taking your time and making sure you understand the content and are up to date with the module. This practical synthesises and integrates &lt;em&gt;everything&lt;/em&gt; up to this point. There is no new material here.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There are two activities:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;A step by step recap of the lecture content and the practicalities of linear regression in R using an example dataset. Work through the coding exercises and answer the questions &lt;em&gt;in order&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Testing your understanding of the content by applying what you’ve learnt from the example to the data you collected last practical. This is the assessment.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Don’t forget to answer the CA questions in a separate link. There are prompts that will tell you when to answer the questions. The demonstrators aren’t allowed to help you answer the CA directly but they can help you understand the theory parts so that you can answer the CA.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-problem-solve&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How to problem solve&lt;/h1&gt;
+&lt;p&gt;We don’t expect you to be expert programmers but we &lt;em&gt;do&lt;/em&gt; expect you to be able and willing to figure things out yourself (problem solving).&lt;/p&gt;
+&lt;p&gt;In programming, it’s &lt;em&gt;really easy&lt;/em&gt; to make mistakes that breaks code. That is no means a reflection on you or your ability to code/learn.&lt;/p&gt;
+&lt;p&gt;If your code is not working take a moment to &lt;strong&gt;breathe&lt;/strong&gt;. Then check for common, minor errors such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spelling mistakes&lt;/li&gt;
+&lt;li&gt;Wrong dataset name&lt;/li&gt;
+&lt;li&gt;Wrong variable (column) name&lt;/li&gt;
+&lt;li&gt;Missing or wrong quotation mark&lt;/li&gt;
+&lt;li&gt;Missing bracket&lt;/li&gt;
+&lt;li&gt;Inconsistent cases (e.g. Uppercase)&lt;/li&gt;
+&lt;li&gt;Missed a step&lt;/li&gt;
+&lt;li&gt;Invalid syntax (e.g. spaces)&lt;/li&gt;
+&lt;li&gt;Duplicates of the same function with multiple errors – keep your scripts tidy!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These reading/typing mistakes are the majority of encountered errors. They are not a big deal and are easily corrected.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;div class=&#34;panel-title&#34;&gt;
+&lt;p&gt;You can &lt;strong&gt;and should&lt;/strong&gt; easily fix the above mistakes yourself!&lt;br /&gt;
+We want you to know how to work problems out independently.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;be-clear-about-your-problem&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Be clear about your problem&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Programming requires a clear idea of what you want to achieve.&lt;br /&gt;
+You need to do the thinking for the computer.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of the hardest thing about troubleshooting someone else’s programming is that we cannot read your mind. When describing your problem, be comprehensive &amp;amp; give context. The more information you provide, the more information and context people have to help you.&lt;/p&gt;
+&lt;p&gt;If something isn’t working, can you articulate what you aim to do? What you expect to see if it worked? What you did leading up to this point? And what you think is happening to cause the error?&lt;/p&gt;
+&lt;p&gt;This is called the &lt;strong&gt;rubber duck method&lt;/strong&gt; – like you are explaining your problems to a rubber duck. Notice, it’s exactly like the Scientific Method.&lt;/p&gt;
+&lt;p&gt;If there’s an error message, read it. Error messages are the computer telling you what’s wrong. Try googling the entire error message to see what other people have said. The entire error message is necessary for context, not just the last bit.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Some general advice
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Programming is &lt;strong&gt;trial and error&lt;/strong&gt;. You shouldn’t expect to get it on the first try. And that’s OK – it’s part of the process.&lt;/p&gt;
+&lt;p&gt;You’ll often find it’s because you haven’t proof-read your code carefully enough for the mistakes above.&lt;/p&gt;
+&lt;p&gt;Practice the basics before you progress to harder stuff or answer the assessment. Take good notes.&lt;/p&gt;
+&lt;p&gt;Learning is about the process and about your growth, not the end result or your grade. Apply your knowledge to new scenarios.&lt;/p&gt;
+&lt;p&gt;Don’t over-think it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;two-pitfalls-to-avoid&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Two pitfalls to avoid&lt;/h2&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Do not take the code here for granted.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The point of learning computation and programming is to not treat software like a black box where you cannot see inside and you don’t know where the output came from or what they mean.&lt;/p&gt;
+&lt;p&gt;Every dataset is different, so code you copy from someone else is not guaranteed to work with your dataset first time. For example, you may be using different column names.&lt;/p&gt;
+&lt;p&gt;Think about what the code means and what it’s doing so you can make sure it’s appropriate and correct.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Do not skip questions or exercises to answer your assessment on the fly.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;All the activities and quiz questions will give you the knowledge to do the assessment – do these first. Don’t do the assessment questions at the same time as the practical exercises.&lt;/p&gt;
+&lt;p&gt;Don’t stress yourself by attempting the assessment unprepared. Demonstrators are not allowed to help you answer the assessment questions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functional-responses-recap&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Functional responses recap&lt;/h1&gt;
+&lt;p&gt;Remember, in the previous practical we asked the question “How does prey density and foraging strategy affect the number of prey captured in a predator-prey scenario?”.&lt;/p&gt;
+&lt;p&gt;We have three variables of interest in our experimental design:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;prey_captured&lt;/code&gt;: The response variable, continuous numeric variable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prey_density&lt;/code&gt;: The first predictor variable, continuous numeric variable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;foraging_strategy&lt;/code&gt;: The second predictor variable, categorical variable with two sub-groups: &lt;code&gt;no_lid&lt;/code&gt; and &lt;code&gt;yes_lid&lt;/code&gt; for whether the jar had a lid or not.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We derived a mathematical expression of a predator-prey interaction (Type II model) called a functional response by turning our assumptions about a predator prey interaction into mathematical equations. You can refresh your memory from &lt;code&gt;vignette(&#34;functional_responses&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The Type II model looks like this:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/funct_resp-1.png&#34; alt=&#34;Type II functional response of an predator-prey response&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+(#fig:funct_resp)Type II functional response of an predator-prey response
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The equation of the model is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_a=\ \frac{a\times H\times T_{total}}{1+a\times H\times T_h}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The model is not linear.&lt;/p&gt;
+&lt;p&gt;The aim of the practical was to &lt;strong&gt;find the unknown values of search rate, &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and handling time, &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;&lt;/strong&gt; and we hypothesised that these values will change depending on the type of jar used (foraging strategy).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The process of estimating the value of unknown parameters in a statistical model is called &lt;strong&gt;parameterising&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Non-linear methods of parameterising these equations are beyond the scope of this module. But we can use algebra to make this equation linear and therefore we can use linear regression to get an estimate for the unknown parameters (see &lt;code&gt;vignette(&#34;TypeII_models&#34;)&lt;/code&gt; to refresh your memory).&lt;/p&gt;
+&lt;p&gt;We then get a model:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{1}{H_a}=\ \frac{1}{a}\times\frac{1}{H\times T_{total}}+\frac{T_h}{T_{total}}\]&lt;/span&gt;
+This model has the form &lt;span class=&#34;math inline&#34;&gt;\(Y = \beta_0 + \beta_1 X\)&lt;/span&gt; of a general linear model.&lt;/p&gt;
+The graph looks like this:
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:tyepe2line&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/tyepe2line-1.png&#34; alt=&#34;Linearised type II functional response of an predator-prey response&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Linearised type II functional response of an predator-prey response
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Now we can fit a linear model and find the values of search rate (&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;) and handling time (&lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;) from the slope and intercept of the linear regression.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ \beta_1 = \frac{1}{a}\]&lt;/span&gt;
+and
+&lt;span class=&#34;math display&#34;&gt;\[ \beta_0 = \frac{T_h}{T_{total}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;which-linear-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Which linear model?&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simple-or-multiple-regression&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Simple or multiple regression?&lt;/h2&gt;
+&lt;p&gt;In the lectures, we saw that the structure of the appropriate linear model to fit depends on the characteristics of the data, the experimental design and the hypothesis. We looked at cases with one predictor variable (simple regression) and with two predictor variables (multiple regression).&lt;/p&gt;
+&lt;p&gt;If we did a simple linear regression with one predictor variable, we would have ignored foraging strategy meaning we have &lt;strong&gt;pooled&lt;/strong&gt; observations for foraging strategy.&lt;/p&gt;
+&lt;p&gt;By pooling foraging strategy, any variation in the data generated by foraging strategy is &lt;strong&gt;unaccounted for&lt;/strong&gt;. Unaccounted variation may increase our chance of making a Type I or II error because foraging strategy &lt;strong&gt;confounds&lt;/strong&gt; the effect of prey density.&lt;/p&gt;
+&lt;p&gt;Phrased differently, the effect of prey density on numbers of prey captured is &lt;strong&gt;masked&lt;/strong&gt; by the effect of foraging strategy. Thus, in this case, using a simple linear regression on a dataset with two or more predictor variables is not the best course of action for explaining as much variation in the data as we can.&lt;/p&gt;
+&lt;p&gt;If we want to see whether using a lid has an effect on our predator-prey interaction response, we need to include the variable in our linear model &lt;em&gt;as well as our original predictor variable, prey density&lt;/em&gt;. We need a multiple linear regression model.&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Plan ahead!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Confounding variation from doing a test that is too simple for the experimental design can drastically change the conclusion of the analysis! See &lt;strong&gt;Simpson’s paradox&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;additive-or-multiplicative-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Additive or multiplicative model?&lt;/h2&gt;
+&lt;p&gt;There are also two types of multiple regression: additive and interactive/multiplicative.&lt;/p&gt;
+&lt;p&gt;We could fit an interactive model to our data if we were more interested in finding a mathematical description of our data that &lt;strong&gt;explains the most variation in prey captured using the simplest model possible&lt;/strong&gt; (model parsimony). So using multiplicative models are instead a statistical representation of the data, rather than a theoretic model.&lt;/p&gt;
+&lt;p&gt;Both are types of statistical models and valid in their own right but in this case an interaction doesn’t match the goals of constructing a theoretic model of predator-prey interactions from fundamental observations.&lt;/p&gt;
+&lt;p&gt;Foraging strategy determines the amount of prey captured but does not affect the number of prey present. And prey density determines the number of prey captured but does not influence the foraging strategy. This is based on our assumptions about the predator-prey interaction – the predator does not change foraging behaviour.&lt;/p&gt;
+&lt;p&gt;If the predator changed their foraging behaviour then there would be an interaction between the two predictor variables. This could be realistic. For example, animal predators might use different foraging strategies under different prey densities or they may switch to another strategy when prey density reaches a certain threshold. In fact, this is a Type III functional response.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hypotheses&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Hypotheses&lt;/h2&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;The wording of the hypothesis will dictate the appropriate linear model, statistical test, and our expectations about the graph.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Following the Type II model, the number of prey captured will increase with prey density until there are too many prey for a predator to handle and the number of prey captured will plateau.&lt;/p&gt;
+&lt;p&gt;Following the linearised Type II model, we expect a positive relationship between the two predictors.&lt;/p&gt;
+&lt;p&gt;We also had predictions about how foraging strategy affected the parameters of the Type II model – handling time and search rate (or attack rate).&lt;/p&gt;
+&lt;p&gt;Our hypotheses are:&lt;/p&gt;
+&lt;p&gt;H0: The number of prey captured increases with prey density but does not differ between foraging strategies&lt;br /&gt;
+H1: The number of prey captured increases with prey density and is higher with the more efficient foraging strategies (shorter handling time) but the search rate does not vary&lt;/p&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;How would your data look like to support these hypotheses?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;additive-linear-models&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Additive linear models&lt;/h1&gt;
+&lt;p&gt;As we saw in the lectures, the theory behind all linear regressions is the same no matter how many predictor variables or interactions you have.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Variance in &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is partitioned sequentially and in alphabetical order (unless otherwise asked to) in R&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To practice fitting linear regression in R, we will use the dataset &lt;code&gt;crabs&lt;/code&gt; – see &lt;code&gt;help(crabs)&lt;/code&gt; for more information. You can also check the data using &lt;code&gt;str(crabs)&lt;/code&gt;. This dataset is provided in R in the package &lt;code&gt;MASS&lt;/code&gt;. I have already loaded the data for you within the tutorial so you don’t need to do it but you will need to load it via &lt;code&gt;library(MASS)&lt;/code&gt; if you want to try code in a script. What happens in the interactive tutorial is independent of R’s Environment.&lt;/p&gt;
+&lt;p&gt;There are three variables we will look at (carapace is the zoological term for shell):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CL&lt;/code&gt;: Carapace length (mm) – our response variable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CW&lt;/code&gt;: Carapace width (mm) – our predictor variable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sp&lt;/code&gt;: Colour morph (&lt;code&gt;B&lt;/code&gt; or &lt;code&gt;O&lt;/code&gt; for blue or orange crabs)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+The code we use here can be applied to any dataset. You can try it in your own time. For example, &lt;code&gt;airquality&lt;/code&gt; has environmental data or the Penguins &lt;a href=&#34;https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95&#34;&gt;dataset&lt;/a&gt; about penguins can be downloaded as a package.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We can ask the question “Does the relationship between shell length and width differ between colour morphs?”. We can also phrase this as “Does the relationship between shell length and width depend on the colour of the crab?”.&lt;/p&gt;
+&lt;p&gt;Compared to a simple linear regression with one predictor variable (e.g. &lt;code&gt;CW&lt;/code&gt;), this is a more &lt;strong&gt;complex question&lt;/strong&gt; needing a more complex experimental design (two predictor variables) and thus a more &lt;strong&gt;complex statistical analysis&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Multiple regression allows us to ask “Does including information about our predictor variables improve our ability to detect/understand trends in our response variable?”
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;“Bigger” crabs are expected to be larger in width and length so we expect a positive relationship between these variables. Whether this relationship is &lt;em&gt;also&lt;/em&gt; dependent on the colour of the crab is what we can find out!&lt;/p&gt;
+&lt;p&gt;We don’t hypothesise colour morphs to influence carapace width, i.e. crabs don’t change colour as they get bigger, so an additive model fits with our understanding of the biological system (assuming the growth rate of both colours are the same).&lt;/p&gt;
+&lt;p&gt;It always helps to see a graph of the data:
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/crab-graph-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;the-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The model&lt;/h2&gt;
+&lt;p&gt;Mathematically, an additive model is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \varepsilon\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Where &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; is our first predictor variable and &lt;span class=&#34;math inline&#34;&gt;\(X_2\)&lt;/span&gt; is our second predictor variable.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; are the regression coefficients (also called terms) describing the variation in &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; attributed to each source of variation. The additive model has three terms that are unknown to us: &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta_2\)&lt;/span&gt;. R’s job is to find the values of these coefficients from empirical data.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\varepsilon\)&lt;/span&gt; is the random error (residual error) not accounted for by the model – it’s always part of the equation but it’s often ignored, much like &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; in integration.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In additive models, the effect of one predictor on the response variable is &lt;strong&gt;additive&lt;/strong&gt; or &lt;strong&gt;independent&lt;/strong&gt; of the other.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is &lt;strong&gt;no interaction&lt;/strong&gt; between the predictor variables colour or shell width (i.e. &lt;span class=&#34;math inline&#34;&gt;\(\beta_3 = 0\)&lt;/span&gt;). Thus the two fitted lines have the same slope (&lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;) – hence they are sometimes called &lt;em&gt;fixed slopes&lt;/em&gt; models. The model is described as a “&lt;strong&gt;reduced&lt;/strong&gt;” model because it does not contains all possible terms – all predictor variables and all possible combinations of their interactions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Interactive models are considered “&lt;strong&gt;full&lt;/strong&gt;” models if they contain all interactions in a fully crossed design.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To estimate the &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; coefficients, the ordinary least squares regression splits the dataset into its predictor variables and fits a model to each component – this is called &lt;strong&gt;partial regression&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The goal is to assign as much variation in the data as possible to each predictor variable. This process requires a baseline variable that sets the contrast for assigning variation (i.e. what &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; represents).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dummy variables&lt;/strong&gt; are used with a &lt;strong&gt;categorical predictor&lt;/strong&gt; to set the baseline for the ordinary least squares regression. Since Blue is alphabetically before Orange, Blue is the baseline contrast used in the partial regression process and assigned the dummy variable 0 in &lt;code&gt;crabs&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Thus for a blue crab, the dummy variable is 0:&lt;br /&gt;
+&lt;span class=&#34;math display&#34;&gt;\[CL = \beta_0 + \beta_1 CW + \beta_2 sp \times 0 + \varepsilon\]&lt;/span&gt;
+simplifies to &lt;span class=&#34;math inline&#34;&gt;\(CL = \beta_0 + \beta_1 CW\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;An orange crab gets a dummy variable of 1, thus:
+&lt;span class=&#34;math display&#34;&gt;\[CL = \beta_0 + \beta_1 CW + \beta_2 sp \times 1 + \varepsilon\]&lt;/span&gt;
+becomes &lt;span class=&#34;math inline&#34;&gt;\(CL = (\beta_0 + \beta_2) + \beta_1 CW\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In effect, we are fitting &lt;em&gt;two&lt;/em&gt; lines to this data – one for each sub-category of colour. The technical term for each of these lines is a &lt;strong&gt;partial regression line&lt;/strong&gt;. We can generalise these regression lines as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ shell \space length  = \beta_{0_{colour}} + \beta_{1} shell \space width + \varepsilon\]&lt;/span&gt;
+Now the intercept parameter (&lt;span class=&#34;math inline&#34;&gt;\(\beta_{0_{colour}}\)&lt;/span&gt;) specifies that it is dependent on the colour of the crab as we showed above:
+&lt;span class=&#34;math display&#34;&gt;\[\beta_{0_{Blue}} = \beta_0\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\beta_{0_{Orange}} = \beta_0 + \beta_2\]&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;characters-or-factors&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Characters or factors?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Categorical data is are called &lt;strong&gt;factors&lt;/strong&gt; and the sub-groups are called &lt;strong&gt;levels&lt;/strong&gt; in R&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Because R needs to attribute variation to every sub-group, the order of the subgroups is relevant. R shows you the &lt;strong&gt;difference&lt;/strong&gt; between levels of a factor (&lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;). The default order is in &lt;strong&gt;alphabetical order&lt;/strong&gt; of the levels.&lt;/p&gt;
+&lt;p&gt;This is relevant to the experimental design too. It may be helpful to think of the first level of a treatment and the first intercept (&lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt;) and slope estimate (&lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;) as the control of your experiment because R uses these coefficients as the &lt;strong&gt;baseline&lt;/strong&gt; for hypothesis tests.&lt;/p&gt;
+&lt;p&gt;For example, the jar without a lid treatment is coded as &lt;code&gt;no_lid&lt;/code&gt; and the jar with a lid treatment is coded as &lt;code&gt;yes_lid&lt;/code&gt;. We can also think of jar with a lid as our experimental control (a less efficient predator) and the jar without a lid as our experimental treatment (a more efficient predator). Our “control” group (&lt;code&gt;yes_lid&lt;/code&gt;) is alphabetically after &lt;code&gt;no_lid&lt;/code&gt;, so we have the reverse scenario.&lt;/p&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;The order will affect how R parameterises our model. And thus will change the interpretation of the output! But not always the conclusion.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;By default, foraging strategy is classified as a &lt;strong&gt;character&lt;/strong&gt; vector because it is a field with strings (letters). Characters do not identify sub-groups thus there is no structure to this variable – they are simply a vector of strings.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Both characters and factors are ways R stores categorical data, the difference being that factors have a specific order.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;To fit a linear regression, R converts the &lt;code&gt;foraging_strategy&lt;/code&gt; variable from a character vector to a factor and the order of levels is assigned alphabetically. R will use &lt;code&gt;no_lid&lt;/code&gt; as the baseline contrast for &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;. We just need to keep the order in mind when parameterising.&lt;/p&gt;
+&lt;p&gt;We will not do anything about this for now – in this case, it doesn’t change our conclusions.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;If you needed to change the order of the sub-groups you will need to change the variable to a factor (&lt;code&gt;as.factor&lt;/code&gt;) and define the order of levels using &lt;code&gt;levels&lt;/code&gt;:&lt;br /&gt;
+&lt;code&gt;data$var &amp;lt;- as.factor(data$var, levels = c(&#34;level1&#34;, &#34;level2&#34;)&lt;/code&gt;.&lt;/p&gt;
+If we did this, then the regression uses &lt;code&gt;yes_lid&lt;/code&gt; as the baseline (&lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;) and the dummy variables are reversed but the parameterised model is the same.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fitting-the-model-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fitting the model in R&lt;/h2&gt;
+&lt;p&gt;An additive linear regression in R with two predictor variables follows the general formula:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lm(Y ~ X1 + X2, data)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;X1&lt;/code&gt; &amp;amp; &lt;code&gt;X2&lt;/code&gt; are the two predictor variables&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;+&lt;/code&gt; indicates the relationship between the two predictors: a plus sign for an &lt;strong&gt;additive&lt;/strong&gt; relationship&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lm&lt;/code&gt; stands for linear model&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Y&lt;/code&gt; is our response variable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data&lt;/code&gt; is the name of our dataset&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;~&lt;/code&gt; indicates a relationship between our response and predictor variables&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In &lt;code&gt;crabs&lt;/code&gt;, our response variable is &lt;code&gt;CL&lt;/code&gt; and our predictor variables are &lt;code&gt;CW&lt;/code&gt; and &lt;code&gt;sp&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Did you get some output when you ran the model?&lt;br /&gt;
+It should tell us two things:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Call is the formula used. It should be the same as the linear model code&lt;/li&gt;
+&lt;li&gt;Coefficients are the estimated coefficients of the model. There should be three coefficients called &lt;code&gt;(Intercept)&lt;/code&gt;, &lt;code&gt;CW&lt;/code&gt; &amp;amp; &lt;code&gt;spO&lt;/code&gt;. From left to right they are: &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta_2\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We can already substitute the estimated &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; coefficients into the full expression of the linear model &lt;span class=&#34;math inline&#34;&gt;\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \varepsilon\)&lt;/span&gt; for the crabs dataset as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = -0.67 + 0.88 CW + 1.09 sp + \varepsilon\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;But let’s look at the coefficients in more detail starting with the first two coefficients. The interpretation for these coefficients is the same as simple linear regression. There’s the intercept &lt;code&gt;(Intercept)&lt;/code&gt; (&lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt;) and there’s the slope &lt;code&gt;CW&lt;/code&gt; (&lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;).&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Coefficients are named based on what variation in &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; they contribute to. So the slope coefficient is called &lt;code&gt;CW&lt;/code&gt; because it how much shell length changes with shell width.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Remember we are expecting &lt;em&gt;two&lt;/em&gt; lines in our model – one for blue crabs and one for orange crabs.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parameterising-our-partial-regression-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Parameterising our partial regression model&lt;/h2&gt;
+&lt;p&gt;Because the first two coefficients are for blue crabs, we already have our equation for blue crabs with &lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt;.&lt;br /&gt;
+Parametrised equation for blue crabs:&lt;br /&gt;
+&lt;em&gt;blue crab shell length&lt;/em&gt; = -0.7 + 0.9 &lt;em&gt;shell width&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Halfway there! Now for the orange crabs!&lt;/p&gt;
+&lt;p&gt;Since we expect the slope of the regression for orange crabs is the same as blue crabs, we already know the value of &lt;span class=&#34;math inline&#34;&gt;\(\beta_{1}\)&lt;/span&gt; is 0.9. But we need to manually calculate the intercept for orange crabs.&lt;/p&gt;
+&lt;p&gt;The estimate for &lt;code&gt;spO&lt;/code&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\beta_2\)&lt;/span&gt;, which is the &lt;strong&gt;difference in the intercept between orange crabs and blue crabs&lt;/strong&gt;. Or the additional variation in shell length attributed to colour, while pooling for shell width.&lt;/p&gt;
+&lt;p&gt;To calculate the intercept for orange crabs we need to add the estimated coefficient of the intercept for blue crabs (&lt;span class=&#34;math inline&#34;&gt;\(\beta_0\)&lt;/span&gt;) with the difference (&lt;span class=&#34;math inline&#34;&gt;\(\beta_2\)&lt;/span&gt;): &lt;span class=&#34;math inline&#34;&gt;\(\beta_{0_{Orange}} = \beta_0 + \beta_2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Now that you know how to parameterise the linear regression for orange crabs:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Intercept)          CW         spO 
+       -0.7         0.9         1.1 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should be able to parameterise the linear model for orange crabs.&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;R shows the difference between parameter estimates so you need to calculate the correct values. They are the partial regression coefficients that show the change in the response variable with one predictor variable &lt;strong&gt;while holding all other predictor variables constant&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;For example, using the mean value of orange crabs to estimate coefficients of blue crabs and vice versa, because the mean value of each of these groups represents the null hypothesis.&lt;/p&gt;
+In other words, if we were to accept the null hypothesis that there is no relationship between shell width and colour on shell length, then the slope of the line should be 0 and the intercept of the line should be the sample mean of shell length (ignoring shell width and colours).
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;predicting-new-values&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Predicting new values&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One application of statistical models is to make predictions about outcomes under new conditions&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can calculate the value of the response variable from any given value of the predictor variable.&lt;/p&gt;
+&lt;p&gt;For example, we can use the parametrised equation of our model &lt;span class=&#34;math inline&#34;&gt;\(CL = -0.7 + 0.9 CW + 1.1 sp\)&lt;/span&gt; and the dummy variables 0 for Blue crabs or 1 for Orange crabs to work out the length of a crab for any value of shell width.&lt;/p&gt;
+&lt;p&gt;If a blue crab is 10 mm wide, what is its predicted shell length?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We are told the value of shell width (10 mm)&lt;/li&gt;
+&lt;li&gt;We know the parameterised linear model:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = -0.7 + 0.9 CW + 1.1 sp\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can substitute the value of 10 for CW:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = -0.7 + 0.9 \times 10 + 1.1 sp\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We know the dummy variable for blue crabs is 0 because it is the baseline level (assigned alphabetically) so we can substitute that into sp:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = -0.7 + 9 + 1.1 \times 0\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;and solve for length:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = -0.7 + 9\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CL = 8.3 mm\]&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Or we can use our two partial regression models to predict the shell length of blue or orange crabs.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Blue crab shell length&lt;/em&gt; = -0.7 + 0.9 &lt;em&gt;shell width&lt;/em&gt;&lt;br /&gt;
+&lt;em&gt;Orange crab shell length&lt;/em&gt; = 0.4 + 0.9 &lt;em&gt;shell width&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You should now be able to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use the model to predict the carapace length of a blue or orange crab for a given carapace width.&lt;/li&gt;
+&lt;li&gt;Use the model to calculate the difference in carapace length between blue and orange crabs for a given carapace width.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;evaluating-hypotheses&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Evaluating hypotheses&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Remember that statistical models may represent hypotheses&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here are the hypotheses:&lt;/p&gt;
+&lt;p&gt;H0: Carapace length increases with carapace width but does not differ between colour morphs&lt;br /&gt;
+H1: Carapace length increases with carapace width and differs between colour morphs but the rate of size increases does not vary between colours&lt;/p&gt;
+&lt;p&gt;We can test these hypotheses using the linear regression. It’s important to understand these hypotheses graphically. Look at the following graphs:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/hypo-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Question&lt;/strong&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Which of the graphs above represents the null hypothesis about crab size?&lt;/li&gt;
+&lt;li&gt;Which of the graphs above represents the alternative hypothesis about crab size?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notice how the slopes of all the lines are the same. We expected this based on the additive model maths.&lt;/p&gt;
+&lt;p&gt;We want to know if the lines have different &lt;em&gt;intercepts to each other&lt;/em&gt;. Phrased differently, we need to test whether &lt;strong&gt;the difference in the intercept is different to 0&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We could have more hypotheses that also test whether there &lt;em&gt;is&lt;/em&gt; a positive relationship in the data or not (i.e. is the slope = 0?) but the specific wording of our hypotheses above do not do so.&lt;/p&gt;
+&lt;p&gt;We don’t just need to know the difference, we need to statistically test this; whether an estimated/observed value of a sample is significantly different to a known population value. You’ve learnt about this kind of test already.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Question&lt;/strong&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Can you remember which coefficient in the additive model will test this hypothesis?&lt;/li&gt;
+&lt;li&gt;Which of the statistical tests you’ve already learnt in this module would test whether our observed slope is significantly different to 0?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Statistical significance is not the same thing as biological significance.&lt;/p&gt;
+A relationship between two purely randomly generated numbers can be statistically significant but have no biological meaning. A biologically meaningful relationship can be statistically non-significant.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;R automatically tests the following hypotheses as part of &lt;code&gt;lm&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;H0: The difference is equal to 0&lt;br /&gt;
+H1: The difference is not equal to 0&lt;/p&gt;
+&lt;p&gt;To see more information about our linear regression we need to ask to see the &lt;code&gt;summary&lt;/code&gt; of our linear regression by placing our &lt;code&gt;lm&lt;/code&gt; function within &lt;code&gt;summary(lm())&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;When you run &lt;code&gt;summary&lt;/code&gt; you get a lot of information. Let’s break it down from top to bottom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Call is the formula used to do the regression&lt;/li&gt;
+&lt;li&gt;Residuals are the residuals of the ordinary least squares regression&lt;/li&gt;
+&lt;li&gt;Coefficients are the estimated coefficients we saw earlier &lt;em&gt;plus&lt;/em&gt; the standard error of these estimates, a t-value from a &lt;strong&gt;one sample t-test&lt;/strong&gt; testing whether the estimated coefficient is significantly different to 0 and the P value of this t-test&lt;/li&gt;
+&lt;li&gt;Some additional information about the regression at the bottom which we can ignore for now&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;From the output you should be able to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Identify the correct t-statistic&lt;/li&gt;
+&lt;li&gt;Make an inference about the one-sample t-test&lt;/li&gt;
+&lt;li&gt;Accept or reject your null hypothesis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;The one sample t-test is done on each coefficient. The hypotheses are the same. The test can also be phrased as “Does the coefficient explain a significant amount of additional variation in &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;?”.&lt;/p&gt;
+For example, if we ran a multiplicative model with a &lt;span class=&#34;math inline&#34;&gt;\(\beta_3\)&lt;/span&gt; term, then the t-test will determine whether there is an interaction or not. If the t-test was not significant, then the interaction does not explain more variation and an additive model without an interaction is more appropriate. This is an example of model selection.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;putting-results-into-sentences&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Putting results into sentences&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Statistical analyses need to be interpreted into full sentences, within a results section&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Always place your statistical analysis into the wider context of your hypotheses and aims. Demonstrate your understanding by justifying your choices and interpreting the output.&lt;/p&gt;
+&lt;p&gt;ANOVA tables should be nicely formatted in a proper table with the correct column names. Don’t copy directly from R as is.&lt;/p&gt;
+&lt;p&gt;When reporting summary statistics, describe an average with a measure of spread. You need to give a sense of the distribution of points so means on their own are not that informative. Include the range or standard error or standard deviation. E.g. “Mean carapace length was &lt;span class=&#34;math inline&#34;&gt;\(32.1 \pm 0.5\)&lt;/span&gt; (mean &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt; standard error)”.&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Be comprehensive!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;R output &lt;strong&gt;should not&lt;/strong&gt; be presented as a figure or screenshots. Do not copy and paste directly into a report – this output is meaningless to a reader because they do not know your data or your workflow like you do.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P values should never be reported on their own&lt;/strong&gt; – they are also meaningless without the test statistic and degrees of freedom used to calculate them. P value of what?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;A results sentence needs at a &lt;em&gt;minimum&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The main result&lt;/li&gt;
+&lt;li&gt;The name of the statistical test&lt;/li&gt;
+&lt;li&gt;The test statistic and degrees of freedom
+&lt;ul&gt;
+&lt;li&gt;Df can be written as a subscript to the test statistic (e.g. &lt;span class=&#34;math inline&#34;&gt;\(t_{14}\)&lt;/span&gt;) or reported as df = 14&lt;/li&gt;
+&lt;li&gt;F statistic need the degrees of freedom for the within &amp;amp; among error. E.g. &lt;span class=&#34;math inline&#34;&gt;\(F_{1,25}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The P value
+&lt;ul&gt;
+&lt;li&gt;Really small or large P values can be summarised. E.g. P &amp;lt; 0.001. Don’t write out many decimal places&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Reference to any relevant figures or tables&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All the above information is given to you in &lt;code&gt;summary&lt;/code&gt; or the ANOVA table. The degrees of freedom of a linear regression are found at the bottom of &lt;code&gt;summary&lt;/code&gt; (&lt;code&gt;Residual standard error&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;A sentence does not need to include &lt;em&gt;significant&lt;/em&gt; in the wording. Statistical significance or not is already implied by the wording of the sentence and the inclusion of the P value. The term can also be ambiguous in meaning.&lt;/p&gt;
+&lt;div class=&#34;panel panel-danger&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Danger!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;There are many ways that P values can be biased or manipulated to give small or large values.&lt;/p&gt;
+&lt;p&gt;People’s obsession over getting significant P values has driven a rise of unethical statistical practices (called P hacking or P fishing) which we do not want you as scientists in training to fall into the habit of.&lt;/p&gt;
+The point of statistical testing is to understand trends in data. Not to get a significant P value. Null or non-significant results are valid results.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Check any published scientific paper to see how they’ve reported their results. Or any guide to scientific writing.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practice-exploring-a-type-ii-functional-response&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Practice: Exploring a Type II functional response&lt;/h2&gt;
+&lt;p&gt;Remember we had some unknown parameters in our predator-prey functional response model? The search rate, &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;, and the handling time, &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;. We need to find the value of those parameters from the slope and the intercept of our linearised Type II dataset – exactly like we did for the &lt;code&gt;crabs&lt;/code&gt; example. We can use the &lt;code&gt;lm&lt;/code&gt; function on our predator-prey model data to parameterise our model.&lt;/p&gt;
+&lt;p&gt;Before we can do our &lt;code&gt;lm&lt;/code&gt; in R we need to import the data and linearise the data.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Step 1: Importing data&lt;/strong&gt;&lt;br /&gt;
+First, we need to import the data in to R. This should be familiar to you from before.&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Warning!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Don’t use the code chunks in this tutorial to import data, it won’t work. Make your own script (File -&amp;gt; New Script, or Ctrl(Cmd) + Shift + N).&lt;/p&gt;
+&lt;p&gt;Don’t write your code directly in the console either – you won’t have a good record of what you’ve done and it is harder to troubleshoot. You may want to use the code here to help you with your final report or future projects.&lt;/p&gt;
+If you copy the code in this tutorial, make sure to &lt;strong&gt;modify it as appropriate for your data&lt;/strong&gt;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The examples here use mathematical notation as the variable names here but the class dataset uses the names from Part 1. You should know which notation matches with what variable description.&lt;/p&gt;
+&lt;p&gt;The class dataset is provided as a comma separated values file (&lt;code&gt;.csv&lt;/code&gt;). The function to import a csv file is &lt;code&gt;read.csv&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class_data &amp;lt;- read.csv(&amp;quot;directory/folder/class_data.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This imports the spreadsheet into an R object called &lt;code&gt;class_data&lt;/code&gt; but you can use whatever name you want. You need to replace the file address within the quotation marks with where ever you saved your file on your computer. File housekeeping is important!&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Make sure you adapt code to match your dataset. Don’t take code for granted!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Step 2: Linearising data&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We need to make our data linear to fit a linear model to it! Let’s first take the inverse of our response variable &lt;span class=&#34;math inline&#34;&gt;\(H_a\)&lt;/span&gt; to get &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H_a}\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class_data$Ha.1 &amp;lt;- 1/class_data$Ha&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This line of code calculates the inverse of &lt;code&gt;Ha&lt;/code&gt;, that is, 1 divided (&lt;code&gt;/&lt;/code&gt;) by the number of prey captured (&lt;code&gt;Ha&lt;/code&gt;), then saves that number to a new column in our dataset called &lt;code&gt;Ha.1&lt;/code&gt;. Note the use of no spaces.&lt;/p&gt;
+&lt;p&gt;Your column names can be whatever is meaningful to you. E.g. you don’t &lt;em&gt;have&lt;/em&gt; to call your new column &lt;code&gt;Ha.1&lt;/code&gt; but remember what you called it.&lt;/p&gt;
+&lt;p&gt;When manipulating data like this, it’s best practice to add new columns to the data, rather than overwrite the original column. That way, if you make a mistake it’s easier to see what went wrong and you won’t have to start from the beginning!&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Remember!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;&lt;code&gt;data$column&lt;/code&gt; is the general structure to select a column in R. The dataset name and the column names in your code &lt;strong&gt;must exactly match&lt;/strong&gt; your data name and columns. R is case sensitive.&lt;/p&gt;
+&lt;p&gt;Make sure you’re not making basic errors like using the wrong column name. Remember, problem solving is fundamental to coding.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now let’s linearise the predictor variable (&lt;code&gt;H&lt;/code&gt;) to get &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H\times T_{total}}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class_data$HT.1 &amp;lt;- 1/(class_data$H * class_data$T_total)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Because we use a value of 1 minute for &lt;span class=&#34;math inline&#34;&gt;\(T_{total}\)&lt;/span&gt;, we are essentially dividing 1 by only prey density (&lt;span class=&#34;math inline&#34;&gt;\(H\)&lt;/span&gt;). Told you a value of 1 would make our maths easier!&lt;/p&gt;
+&lt;div class=&#34;panel panel-warning&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Watch out!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Since we have done some division, it’s a good time to check for any undefined values in case we divided by 0.&lt;/p&gt;
+&lt;p&gt;In R undefined values are denoted as infinities (&lt;code&gt;Inf&lt;/code&gt;). You can check how many infinities there are using &lt;code&gt;table(is.infinite(class_data$Ha.1))&lt;/code&gt; – this will check whether each cell has undefined values (&lt;code&gt;is.infinite&lt;/code&gt;) and give you logical &lt;code&gt;TRUE&lt;/code&gt;/&lt;code&gt;FALSE&lt;/code&gt; output, then tabulate the logic statements to count the number of &lt;code&gt;TRUE&lt;/code&gt;/&lt;code&gt;FALSE&lt;/code&gt; occurrences in the column &lt;code&gt;Ha.1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We can replace the infinities with zeroes using &lt;code&gt;class_data$Ha.1 &amp;lt;- ifelse(class_data$Ha.1 == Inf, 0, class_data$Ha.1)&lt;/code&gt;&lt;/p&gt;
+You might recognise the if else statement and understand what’s happening from previous lectures: &lt;strong&gt;if&lt;/strong&gt; there is an undefined value, &lt;strong&gt;then&lt;/strong&gt; replace that value with 0, &lt;strong&gt;else&lt;/strong&gt; leave the value as is. We don’t discard these observations because a value of 0 has biological meaning.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We now have all the correct columns to parameterise our functional response.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Step 3: Construct an additive linear model for your data&lt;/strong&gt;&lt;br /&gt;
+If &lt;code&gt;lm&lt;/code&gt; is the function to do a linear regression, &lt;code&gt;Ha.1&lt;/code&gt; is the name of our response variable, &lt;code&gt;HT.1&lt;/code&gt; is the name of the first predictor variable, &lt;code&gt;foraging_strategy&lt;/code&gt; is the name of the second predictor variable, and the name of our dataset is &lt;code&gt;class_data&lt;/code&gt;, you should be able to write the code for the linearised type II functional response (or replacing the respective components with the column name and dataset names you are using).&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Hint
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;The workflow is exactly as we did for &lt;code&gt;crabs&lt;/code&gt; – so you’ve practised it already! Remember that R partitions variation sequentially and in alphabetical order for factors.&lt;/p&gt;
+&lt;p&gt;If you didn’t understand the previous material or you got some questions incorrect or you skipped bits, I recommend finishing them before progressing. Demonstrators cannot help you answer the assessment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Linear regressions are always done on the entire data, not on averages. i.e. you wouldn’t use the average of your replicates for each treatment for the underlying data. Data must be raw (unprocessed).&lt;/p&gt;
+To fit a line to data, ordinary least squares regression depends on quantifying &lt;strong&gt;variation&lt;/strong&gt; of observations around the mean (think back to how sampled data from a population is distributed). Averaging data removes that variation and thus there is less information for R to use (fewer degrees of freedom).
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We won’t plot our regression lines just yet but you should be able to interpret the R output as a graph by looking at the coefficient values. We will construct a graph later!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Step 4: Parameterising &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The final step is to get our unknown values of &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt; for each type of foraging strategy from our linear regression. Since we know our partial regression takes the form &lt;span class=&#34;math inline&#34;&gt;\(Y = \beta_{0_{foraging \space strategy}} + \beta_1 X_1\)&lt;/span&gt; with separate intercepts for each sub-group of &lt;code&gt;foraging_strategy&lt;/code&gt; and the same slope for both groups, and we know the linearised type II model is &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{H_a}=\ \frac{1}{a}\times\frac{1}{H\times T_{total}}+\frac{T_h}{T_{total}}\)&lt;/span&gt;, then you should have all the information to parameterise the type II model and derive values for &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(T_h\)&lt;/span&gt; from the linear regression output for both foraging strategies.&lt;/p&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+It’s time to answer the CA!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;You have all the information you need to answer the CA.&lt;br /&gt;
+Make sure you’ve completed all the exercise up to this point.&lt;/p&gt;
+Remember to save and submit your answers.&lt;br /&gt;
+That’s the end of the assessment but not the end of the practical.&lt;br /&gt;
+Keep going. You’re doing great!
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualising-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Visualising data&lt;/h1&gt;
+&lt;p&gt;Visualising data is very important for understanding our data and for communicating our data to others. For example, in a written report.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;plot&lt;/code&gt; is the general plot function. Box-plots (&lt;code&gt;boxplot&lt;/code&gt;) and bar plots (&lt;code&gt;barplot&lt;/code&gt;) have their own plotting commands. You can add error bars using &lt;code&gt;arrows&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;theory&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Theory&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The general formula to plot a scatter graph is &lt;code&gt;plot(response ~ predictor, data)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If our data is categorised (e.g. &lt;code&gt;sp&lt;/code&gt; in &lt;code&gt;crabs&lt;/code&gt; has &lt;code&gt;B&lt;/code&gt; or &lt;code&gt;O&lt;/code&gt;), then we need to plot our points for each group separately. We can do this by calling a plot with no points using &lt;code&gt;plot(response ~ predictor, data, type = &#34;n&#34;)&lt;/code&gt; where &lt;code&gt;&#34;n&#34;&lt;/code&gt; tells R not to plot anything. Then we add points manually with &lt;code&gt;points(response ~ predictor, data[data$group == &#34;subsetA&#34;,])&lt;/code&gt; for each sub-category.&lt;/p&gt;
+&lt;p&gt;We need to subset our data (like we did in previous pracs) so that R only plots the sub-categories of data.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Using the crabs dataset, plot crab shell length (response) against crab shell width (predictor) for &lt;strong&gt;only blue crabs&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If you are correct, your graph should match the one below:
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/crabsol-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Now add the orange crabs to plot all the data – You have to start the code from the beginning.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Uh oh! We cannot distinguish between the colours of crabs! Time to learn more R to add more features to the graph.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;colours&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Colours&lt;/h2&gt;
+&lt;p&gt;Colour is important when presenting data. Are the colours meaningful? Are they necessary? Can they be clearly distinguished? Are they appropriate for screens, for printing, or accessible for colour-blind people?&lt;/p&gt;
+&lt;div class=&#34;panel panel-primary&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Info!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Red-Green colour blindness is the most common form of colour blindness. A simple guideline is to avoid using red and green together where ever possible. Blue and orange are better contrasting colours (that’s why they are common colour schemes for movie posters).
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Colour in R is defined by &lt;code&gt;col&lt;/code&gt;. So in a graph if I wanted to change the colour of the points from black (default) to red then I can either call &lt;code&gt;col = &#34;red&#34;&lt;/code&gt; or &lt;code&gt;col = 2&lt;/code&gt; as an argument within the &lt;code&gt;points()&lt;/code&gt; function, because red is the second colour in the default R colour palette (black is 1). There are lots of colours to choose from (Google it for a full list). R also accepts hexidecimal RGB colour codes for custom colours (e.g. black is #000000).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Change the colour of the points to their relevant colour (blue or orange)&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;shapes&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Shapes&lt;/h2&gt;
+&lt;p&gt;Shapes are important because it makes the points stand out. It can also be used to distinguish between groups of data on the same graph. Sometimes it’s necessary to change colour &lt;em&gt;and&lt;/em&gt; shape to make it easier to distinguish between groups – redundancy is acceptable and encouraged in graphical design.&lt;/p&gt;
+&lt;p&gt;The shape of the points are coded &lt;code&gt;pch = &amp;lt;number&amp;gt;&lt;/code&gt; as an argument within &lt;code&gt;plot()&lt;/code&gt; or &lt;code&gt;points()&lt;/code&gt;. There are lots of options designated a number from 1 to 25. (Google “R pch” for the full list). 1 is the default open circle. A filled circle is 16.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Change the shape of the points from open to filled circles.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You can combine all the code above to change the colour, shape and axes labels.&lt;/p&gt;
+&lt;p&gt;This graph is fine but if we were to put this in a professional scientific paper or report there are a few missing elements and we may want to customise the aesthetics for a prettier graph.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;axes-labels&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Axes labels&lt;/h2&gt;
+&lt;p&gt;The R code to change the labels on a graph are &lt;code&gt;xlab&lt;/code&gt; and &lt;code&gt;ylab&lt;/code&gt; for the x axis and y axis, respectively. These are called within the &lt;code&gt;plot()&lt;/code&gt; function like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;plot(response ~ predictor, data, xlab = &amp;quot;label&amp;quot;, ylab = &amp;quot;label&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Change the x axis label of our &lt;code&gt;crabs&lt;/code&gt; plot to “Width” instead.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In practice, we want our figures to be informative and be understandable independently of the main text. This means having informative labels and including units.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;There are &lt;strong&gt;two mistakes&lt;/strong&gt; in the following code to change the axis labels to “Width” or “Length” AND include units (mm) in both the x and y axis. Fix it and run the code&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-lines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Regression lines&lt;/h2&gt;
+&lt;p&gt;Once we’ve done the hard work to do a linear regression, it’s nice to add it to our graph so we can see how it fits to the data. A linear regression is always a linear line (straight line) so we can use the code to plot a straight line.&lt;/p&gt;
+&lt;p&gt;The formula to plot a straight line is &lt;code&gt;abline(intercept, slope)&lt;/code&gt; because it plots a line from a to b. The intercept is the first value, the slope is the second value. You need to plot the data first before adding additional lines.&lt;/p&gt;
+&lt;p&gt;Here are the coefficients for a simple linear model for the crabs showing the intercept and slope respectively:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Intercept)          CW 
+       -0.7         0.9 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Complete the &lt;code&gt;abline()&lt;/code&gt; formula to plot our regression line then press run.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The same code is used to plot either regression line for a multiplicative regression – you just need to use the slope and intercept values you want!&lt;/p&gt;
+&lt;p&gt;You can also change the colour, type and width of the line as arguments within &lt;code&gt;abline()&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lwd = &amp;lt;number&amp;gt;&lt;/code&gt; is line width. The default is 1. Values greater than 1 are a thicker line.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lty = &amp;lt;number&amp;gt;&lt;/code&gt; is line type. The default solid line is 1. Different types of dashed or dotted lines are numbers 2 to 6.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-final-graphing-test&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A final graphing test&lt;/h2&gt;
+&lt;p&gt;Let’s integrate everything we’ve learnt today and plot the graph of our additive linear model with the correct regression lines.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:final-graph&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://jacintak.github.io/teaching/StatsModelsPrac2/index_files/figure-html/final-graph-1.png&#34; alt=&#34;A complete graph for a scientific report&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: A complete graph for a scientific report
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Here are the coefficients for the additive linear model:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Intercept)          CW         spO 
+       -0.7         0.9         1.1 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Change the basic crabs graph to match the graph above – this graph is suitable for a scientific report&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-variables-in-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Other variables in &lt;code&gt;plot&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Borders&lt;/strong&gt;&lt;br /&gt;
+A border around the plot is plotted by default. This is dictated by the default &lt;code&gt;bty = &#34;o&#34;&lt;/code&gt;. You can remove the border entirely with &lt;code&gt;bty = &#34;n&#34;&lt;/code&gt; and you can plot only the bottom and right border (axes) with &lt;code&gt;bty = &#34;l&#34;&lt;/code&gt; – that’s a lowercase L, not a number 1. Borders also apply to legends.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Legends&lt;/strong&gt;&lt;br /&gt;
+Figure legends can be added using &lt;code&gt;legend&lt;/code&gt;. Check out the help file for details because you need to set:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Where to put the legend&lt;/li&gt;
+&lt;li&gt;The text of the legend&lt;/li&gt;
+&lt;li&gt;The colours&lt;/li&gt;
+&lt;li&gt;The lines or points used&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;&lt;br /&gt;
+Figure titles can be set using &lt;code&gt;main = &#34;&amp;lt;title&amp;gt;&#34;&lt;/code&gt;. There are other ways of captioning figures too, like subtitles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lines&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;type&lt;/code&gt; tells R what kind of plot you want. R plots points (&lt;code&gt;type = &#34;p&#34;&lt;/code&gt;) by default but can also plot lines (&lt;code&gt;type = &#34;l&#34;&lt;/code&gt;), [lowercase L]. You can plot a combination with &lt;code&gt;type = &#34;b&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lines&lt;/code&gt; is the equivalent to &lt;code&gt;points&lt;/code&gt; for plotting individual lines.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;captions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Captions&lt;/h2&gt;
+&lt;p&gt;The last thing every scientific graph needs is a caption. The caption needs to describe the graph and explain every aspect of the graph to the reader &lt;em&gt;independently&lt;/em&gt; of the main text.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What is the overall relationship?&lt;/li&gt;
+&lt;li&gt;What is on the x axis? What is on the y axis?&lt;/li&gt;
+&lt;li&gt;What is the sample size?&lt;/li&gt;
+&lt;li&gt;What do the colours, lines or points represent?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Often a single sentence saying “Figure 1. A graph of the response against the predictor” is not enough information in a professional report.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;saving-your-graph&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Saving your graph&lt;/h2&gt;
+&lt;p&gt;One way to save your graph is to click “Export” in the Plots window.&lt;/p&gt;
+&lt;p&gt;The other way is to use code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;png(&amp;quot;figure.png&amp;quot;)
+plot(Y~X, data)
+dev.off()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are three steps:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;png&lt;/code&gt; tells R to prepare a png file where you want the graph to be saved. jpeg and pdf are also accepted formats.&lt;/li&gt;
+&lt;li&gt;Plot the graph&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dev.off&lt;/code&gt; tells R you are finished plotting the graph and R will write the file to disk&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;practice-graphing-results-with-a-caption&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Practice: Graphing results with a caption&lt;/h2&gt;
+&lt;div class=&#34;panel panel-info&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Discussion
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+Use your new found knowledge of making graphs in R to make a plot of our results from our predator-prey interaction response including appropriate axes labels with units. The aesthetics are up to you. Write a caption as well.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can show your figure to your demonstrator for feedback.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;end&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;End&lt;/h1&gt;
+&lt;p&gt;That’s the end. Take a break. Stand up. Shake your limbs. Breathe.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;We’ve covered a lot of practical skills that you can use in your final report, in the future and in your other modules. Just as you should build upon what you’ve learnt in previous modules in this one.&lt;/p&gt;
+&lt;p&gt;Here’s a summary of what we’ve done:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Imported data into R&lt;/li&gt;
+&lt;li&gt;Manipulated data in R, including cleaning&lt;/li&gt;
+&lt;li&gt;Parameterised a linear regression in R with biological data&lt;/li&gt;
+&lt;li&gt;Made predictions with linear models&lt;/li&gt;
+&lt;li&gt;Interpreted linear regression output to test hypotheses&lt;/li&gt;
+&lt;li&gt;Wrote a results paragraph&lt;/li&gt;
+&lt;li&gt;Made a graph in R with appropriate labels and caption&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;panel panel-success&#34;&gt;
+&lt;div class=&#34;panel-heading&#34;&gt;
+&lt;h3 class=&#34;panel-title&#34;&gt;
+Success!
+&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&#34;panel-body&#34;&gt;
+&lt;p&gt;Over the course of the last practical and this one, we have done a crash course in the Scientific Method from formulating a hypothesis from a biological system (infection or predator/prey response) to evaluating hypotheses and every thing in between.&lt;/p&gt;
+We have followed a &lt;strong&gt;workflow&lt;/strong&gt; of data handling analysis that you can apply to any data.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Quick guide to R/exams</title>
+      <link>https://jacintak.github.io/teaching/rexams/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/teaching/rexams/</guid>
+      <description>
+&lt;script src=&#34;https://jacintak.github.io/teaching/rexams/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;http://www.r-exams.org&#34;&gt;&lt;code&gt;R/exams&lt;/code&gt;&lt;/a&gt; is an R package that generates a reproducible workflow for designing, producing and marking exams.&lt;br /&gt;
+Here, I provide a short walkthough for generating an online test for Blackboard - see the &lt;a href=&#34;http://www.r-exams.org/tutorials/exams2blackboard/&#34;&gt;R/exams website&lt;/a&gt; for some tutorials.&lt;/p&gt;
+&lt;div id=&#34;installation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Installation&lt;/h1&gt;
+&lt;p&gt;Install R/exams via CRAN with &lt;code&gt;install.packages(&#34;exams&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-the-package-for-the-first-time&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Running the package for the first time&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;exams&lt;/code&gt; uses &lt;code&gt;rtools&lt;/code&gt; to create zip files. Make sure the proper &lt;code&gt;rtools&lt;/code&gt; is installed. An error message will appear if &lt;code&gt;rtools&lt;/code&gt; does not have permission to create zip files.&lt;br /&gt;
+To give permission for creating .zip for windows:
+Control Panel &amp;gt; System and Security &amp;gt; System &amp;gt; Advanced System Settings &amp;gt; Environmental Variables &amp;gt; add “C:/RTools/bin”&lt;br /&gt;
+You may also need to install dependent packages like &lt;code&gt;tth&lt;/code&gt; for math notation.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;types-of-questions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Types of questions&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Single correct answer MCQ (schoice)&lt;/li&gt;
+&lt;li&gt;Multiple correct answer MCQ (mchoice)&lt;/li&gt;
+&lt;li&gt;Numeric answer (num)&lt;/li&gt;
+&lt;li&gt;String (string)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cloze is another option but is not supported by blackboard, this permits a combination of the above for the MCQ answer list&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;building-an-exam-question&#34; class=&#34;section level1 tabset&#34;&gt;
+&lt;h1&gt;Building an exam question&lt;/h1&gt;
+&lt;p&gt;There are several file types that are supported when writing your question but I have stuck with ‘.Rmd’. There are four parts of a question file:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The question&lt;/li&gt;
+&lt;li&gt;The answer list&lt;/li&gt;
+&lt;li&gt;The solution list for giving feedback&lt;/li&gt;
+&lt;li&gt;The meta-information&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Each of these sections are defined by a header tag marked by =====. # does not work as a tag.&lt;/p&gt;
+&lt;div id=&#34;question&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question&lt;/h2&gt;
+&lt;p&gt;The tag for defining the question is:&lt;/p&gt;
+&lt;p&gt;Question&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;The various random number generators in R will be your friend.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sample() # pick n random number(s) from a vector of discrete numbers
+runif() # generate a vector of continuous numbers, can set min and max
+rnorm() # generate a vector of continuous numbers from a normal distribution with a defined mean and standard deviation&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Code chunk options are in effect. By default figures will have captions, turn it of with &lt;code&gt;fig.caption = &#34;&#34;&lt;/code&gt;. Other useful figure options are figure sizes. Figure options can also be defined when compiling the exam&lt;/li&gt;
+&lt;li&gt;You can show code with &lt;code&gt;echo  = TRUE&lt;/code&gt;, turn off R formatting with &lt;code&gt;results = &#34;asis&#34;&lt;/code&gt; &amp;amp; hide results with &lt;code&gt;results = &#34;hide&#34;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;LaTeX formatting is fine in markdown and outside code chunks&lt;/li&gt;
+&lt;li&gt;To allow for randomised questions within a question file I had to escape the R code chunk to render the output as html, else the randomised question would be rendered as R output&lt;/li&gt;
+&lt;li&gt;You can generate a file to go with the question using any R write to file function. Include the file in the question as normal for Rmarkdown - [filename](filelink). Leave this as default or &lt;code&gt;exams&lt;/code&gt; will not be able to find the file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-answer-list&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The answer list&lt;/h2&gt;
+&lt;p&gt;The answer subheading is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Answer&lt;br /&gt;
+========&lt;/p&gt;
+&lt;p&gt;Bulleted markdown after this tag will be considered the options for an MCQ answer list.&lt;/p&gt;
+&lt;div id=&#34;things-to-note-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Things to note&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;exams&lt;/code&gt; contains several helper functions to make it easy to generate lists of answers.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;answerlist&lt;/code&gt; accepts a vector of answers. It also generates the answer subheading so there is no need to type it in.&lt;/li&gt;
+&lt;li&gt;Recommend using html in case LaTeX does not render properly, particularly when called as a string in an R code chunk.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Do not randomise the answer list here, use the metadata, else an incorrect answer will be assigned to be the correct one.&lt;br /&gt;
+&lt;code&gt;comment = NA&lt;/code&gt; in the code chunk options will remove the # from the R output.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;There are also helper functions for various things. &lt;code&gt;mchoice2string()&lt;/code&gt; turns the solutions vector above into binary responses for the meta-information section. &lt;code&gt;num_to_choice&lt;/code&gt; generates a MCQ list of numbers for a numeric answer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;You can provide feedback via the solution header, including which answers are correct&lt;/p&gt;
+&lt;p&gt;Solution&lt;br /&gt;
+========&lt;br /&gt;
+Your solution here or correct answer: &lt;code&gt;code for answer&lt;/code&gt; (or &lt;code&gt;answer[]&lt;/code&gt;)&lt;br /&gt;
+Answerlist&lt;br /&gt;
+-———&lt;br /&gt;
+* True&lt;br /&gt;
+* False&lt;br /&gt;
+* etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt; There should be no spaces after the header tag title, i.e. markdown formatting&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-metainformation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question metainformation&lt;/h2&gt;
+&lt;p&gt;This is an important section of the question because it defines the correct answer. Metainformation is defined by the tag:&lt;/p&gt;
+&lt;p&gt;Meta-information&lt;br /&gt;
+================&lt;/p&gt;
+&lt;p&gt;Useful variables are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exname = title of question, becomes name of the pool in blackboard&lt;/li&gt;
+&lt;li&gt;extype = type of question (num/schoice/mchoice)&lt;/li&gt;
+&lt;li&gt;exsolution: order of correct answers in binary (e.g. 01010) for MCQ or R code for numeric output - e.g. &lt;/li&gt;
+&lt;li&gt;extol = the tolerance range for numeric questions&lt;/li&gt;
+&lt;li&gt;exshuffle = Whether to shuffle the answers or not. This can be used to randomly select a subset of answers from an answer list. Provide a number of answers for non-numeric questions (e.g. 4 for 4 answers). &lt;code&gt;TRUE/FALSE&lt;/code&gt; is also accepted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-example-question&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;An example question&lt;/h1&gt;
+&lt;p&gt;This example displays the correct answer and 3 randomly chosen option out of 6 possible answers.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question
+========
+What is your name?
+
+\```{r question, results = &amp;quot;hide&amp;quot;, echo=F}
+# list of possible answer as a character vector
+knights_of_camelot &amp;lt;- c(&amp;quot;Arthur, King of the Britons&amp;quot;, 
+                        &amp;quot;Sir Lancelot the Brave&amp;quot;,
+                        &amp;quot;Sir Robin the Not-Quite-So-Brave-as-Sir-Lancelot&amp;quot;,
+                        &amp;quot;Sir Galahad the Pure&amp;quot;,
+                        &amp;quot;Sir Bedevere the Wise&amp;quot;,
+                        &amp;quot;Patsy&amp;quot;)
+
+# solution to the vector above                        
+solutions &amp;lt;- c(FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)
+
+# explanations (feedback for students)
+explanations &amp;lt;- c(&amp;quot;I didn&amp;#39;t vote for him&amp;quot;,
+        &amp;quot;His favourite colour is blue&amp;quot;,
+        &amp;quot;He doesn&amp;#39;t know the capital of Assyria&amp;quot;,
+        &amp;quot;His favourite colour is blue. No, yel...&amp;quot;,
+        &amp;quot;Knows nothing about swallows&amp;quot;,
+        &amp;quot;Clip Clop&amp;quot;)
+\```
+        
+\```{r answerlist, echo=F, results = &amp;quot;asis&amp;quot;}
+# helper function to format the list of possible answers
+answerlist(knights_of_camelot, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+
+Solution
+========
+\```{r solutionlist, echo = FALSE, results = &amp;quot;asis&amp;quot;}
+answerlist(ifelse(solultions, &amp;quot;True&amp;quot;, &amp;quot;False&amp;quot;), explanations, markup = &amp;quot;markdown&amp;quot;)
+\```
+
+Meta-information
+================
+exname: Bridgekeeper
+extype: schoice
+exsolution: `\r mchoice2string(solutions)`
+exshuffle: 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This renders like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Exam 1
+
+    Question
+
+    What is your name?
+
+        Sir Bedevere the Wise
+        Arthur, King of the Britons
+        Sir Galahad the Pure
+        Sir Lancelot the Brave
+
+    Solution
+        False. Knows nothing about swallows
+        False. I didn&amp;#39;t vote for him
+        False. His favourite colour is blue. No, yel.
+        True. His favourite colour is blue&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could also skip the solutions vector and include it in the explanations vector like &lt;code&gt;c(&#34;False. I didn&#39;t vote for him&#34;)&lt;/code&gt;. Of course, the solution does not appear immediately in blackboard but make sure the option for solutions and feedback to appear is checked.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compiling-the-exam&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Compiling the exam&lt;/h1&gt;
+&lt;p&gt;I have written a script to compile the exam.
+The compiling function (&lt;code&gt;exams2blackboard&lt;/code&gt;) requires a &lt;em&gt;list&lt;/em&gt; of file names to generate the exam. Each file represents a question. Versions of a question (&lt;code&gt;n&lt;/code&gt;) generate a pool of questions. The list should not contain subdirectories or files not to be included in the exam. &lt;code&gt;exams2html&lt;/code&gt; is a means of checking a file/list of exam questions renders properly in html (or &lt;code&gt;exams2pdf&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;There are several means of customising the metadata of the exam. Here I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;turned off partial marks - is TRUE by default&lt;/li&gt;
+&lt;li&gt;used custom directories to search for the questions and save the output zip.&lt;/li&gt;
+&lt;li&gt;set 10 copies for each question using the variable &lt;code&gt;n&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the name of the zip file using the variable &lt;code&gt;name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the number of points for each question to 1, default = 10&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;exams&amp;quot;)
+options(device.ask.default = FALSE)
+
+## content and output directory
+mydir &amp;lt;- &amp;quot;C:/Users/kongj/OneDrive - TCDUD.onmicrosoft.com/Teaching/Biostats/Midsem MCQ&amp;quot;
+
+## define exam questions (each item in list is a pool)
+myexam &amp;lt;- list.files(paste0(mydir,&amp;quot;/questions&amp;quot;), pattern = &amp;quot;.Rmd&amp;quot;)
+
+# render single question
+#exams2html(list(&amp;quot;question3.Rmd&amp;quot;), edir = paste0(mydir,&amp;quot;/questions&amp;quot;))
+
+## generate .zip with Blackboard exam with n replicates
+exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = mydir,
+                 edir = paste0(mydir,&amp;quot;/questions&amp;quot;),
+                 eval = list(partial = FALSE, negative = FALSE),
+                 points = 1
+                 )
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;things-to-note-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things to note&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You can create a mix of questions in the exam by defining it in the list of questions but it is not recommended for generating pools of questions&lt;/li&gt;
+&lt;li&gt;If the exam is complied with no partial marks, then the blackboard exam will have no partial marks even if the option is checked within blackboard&lt;/li&gt;
+&lt;li&gt;You can generate a pool of questions by compiling a single question and uploading that zip file to Blackboard under “Import Pool”. This is useful for creating random block tests in Blackboard if the compiled zip file is not suitable as an test right away&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
