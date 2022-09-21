@@ -22,7 +22,6 @@ Last updated `r format(Sys.Date(), '%d %B %Y')`
 
 ***
 
-
 # Research and teaching appointments
 
  * Teaching and Research Fellow  
@@ -81,7 +80,7 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-* Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. *Accepted article*. ^+^ Joint first author. 
+* Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: [10.1098/rsos.211869](https://doi.org/10.1098/rsos.211869). ^+^Joint first author. 
 
 * Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 204
 
