@@ -1,6 +1,6 @@
 ---
 title: "Statistical modelling Part 1"
-date: "2022-08-16"
+date: "2022-10-30"
 summary: Static handout of Part 1 of Statistical Modelling practical
 projects: [statistical-modelling]
 tags:
@@ -9,6 +9,7 @@ tags:
 - code
 output:
   blogdown::html_page
+# based off 3.3.2
 ---
 
 # Introduction
@@ -198,7 +199,7 @@ Infection responses, predator-prey interactions... they can be generally classif
 
 There are multiple types of functional responses (labelled with Roman numerals: I --- IV). Each of these models represents a *different hypothesis* about functional responses and mathematically describes a *different relationship* between our two variables (e.g. the killer T cell and the pathogen, or a predator and its prey). You can read more about functional responses by running `vignette("functional_responses")`.
 
-The assumptions we make above are based on a **Type II functional response model** and is the one most appropriate for a predator-prey interaction scenario. You can read about the full derivation by running `vignette("TypeII_models")`. 
+The assumptions we make above are based on a **Type II functional response model**, which is common in biology. You can read about the full derivation by running `vignette("TypeII_models")`.
 
 The Type II functional response model is a good example of a general model -- it has been used to describe animal predators eating prey (e.g. Holling's disc equations) or enzymes catalysing reactions (e.g. Michaelis-Menten equation). We can also use it to describe the immune response of the previous practical.
 
@@ -413,7 +414,7 @@ Total foraging time is another pre-determined constant.
 <div class="panel-title">
 **We will use a tapping rate of 1 tap per second. Your assistant will need to call out when to tap for the predator.**
 
-**For simplicity, we will use a value of 1 minute only so that we can divide by 1 and it makes our maths easier.**
+**We will use a value of 1 minute for total foraging time because we can divide by 1 and it makes our maths easier.**
 </div>
 </div>
 </div>
@@ -450,7 +451,12 @@ We will simulate a different predator behaviour by repeating our counter and jar
 
 These two experiments are *independent*. If we want to compare the foraging properties between the two predators, we need to run the experiment again **keeping everything the same but changing only the variable of interest**.
 
-****
+Foraging strategy becomes a **second predictor variable** that has two possibilities:
+
+ 1. Jar with a lid; the original protocol simulating a less experienced predator. We will call this `yes_lid`
+ 2. Jar without a lid; the second experiment simulating a more experienced predator. We will call this `no_lid`
+
+***
 
 ### The null hypothesis (H0)
 

@@ -1,14 +1,14 @@
 ---
 authors:
 - admin
-bio: My research interests include species distributions, phenology, microclimates & mechanistic niche modelling.
+bio: My research interests include species distributions, phenology & climate adaptation of ectotherms.
 
 education:
   courses:
-  - course: PhD in Ecophysiology
+  - course: PhD in Ecophysiology (Zoology)
     institution: University of Melbourne, Australia
     year: 2020
-  - course: BSc(Hons I) in Zoology
+  - course: BSc(Hons I, University Medal) in Zoology
     institution: University of Queensland, Australia
     year: 2013
   - course: BSc in Ecology & Zoology
@@ -20,7 +20,7 @@ interests:
 - Ecological & evolutionary physiology
 - Microclimate
 - Life history
-- Mechanistic niche modelling
+- Mechanistic niche modelling of distribution & phenology
 
 name: Jacinta Kong
 organizations:

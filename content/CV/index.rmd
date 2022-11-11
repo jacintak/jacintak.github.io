@@ -101,12 +101,15 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i>[ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i>[Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en)  
 H-index: 4 (GS)  
-Total citations: 82  
+Total citations: 96  
 
-> * High attention paper in Science in the top 5% of all research outputs scored by Altmetric: 19 News outlets, 1 blog, 84 tweeters. Altmetric score: 204
-> * Ecology/evolution studies in some of the best journals in their respective disciplines, including Methods in Ecology and Evolution and Philosophical Transactions of the Royal Society B  
-> * Methods in Ecology and Evolution video explaining the use of thermocyclers as efficient incubators [see above]. Altmetric score: 21  
-> * Influential paper on the use of mechanistic species distribution modelling for predicting ectotherm responses to climate change in Current Opinion in Insect Science [see above]. Altmetric score: 6
+ * High attention papers in the top 5% of all research outputs scored by Altmetric: 
+    * **Science**: 20 News outlets, 1 blog, 86 tweeters. Altmetric score: 212
+    * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61
+ * Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
+    * **Journal of Experimental Biology**. Altmetric score: 12
+    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 20
+    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 43
 
 I have peer reviewed for:
 
@@ -167,26 +170,27 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 2022
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). In-person lectures & practicals.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU33004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
+ * Contributing staff: Marine Biology (ZOU33000). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Resident field course based in Killary Fjord, Ireland. 
 
 2021
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). Hybrid delivery: remote and in-person lectures & remote and in-person practicals.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
+ * Lecturer & course development: Animal Diversity II (ZOU33004). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. Hybrid delivery: remote lectures & in-person practicals.
 
 2020
 
  * Lecturer (Module co-ordinator) & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams. Adapted for remote delivery.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
+ * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Module co-coordinator. Adapted for remote delivery.
+ * Lecturer & course development: Animal Diversity II (ZOU33004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Adapted for remote delivery.  
  
 2019
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate. Trinity College Dublin. Developed course lectures and practical material, implemented reproducible workflow for online exams.
- * Lecturer & course development: Animal Diversity I (ZOU330003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
- * Lecturer & course development: Animal Diversity II (ZOU330004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
+ * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material. Acting module co-coordinator.
+ * Lecturer & course development: Animal Diversity II (ZOU33004). 3rd year undergraduate. Trinity College Dublin. Developed course lectures and practical material.
 
 2017
  
@@ -200,6 +204,11 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 ***
 
 # Conference presentations and invited talks
+
+2022  
+
+ * Can we improve our ability to understand ectotherm thermal tolerance? Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October. Tvärminne Zoological Station, Finland. 
+  * Can we improve our ability to identify climate vulnerability in ectotherm life cycles? British Ecological Society Annual Meeting, Edinburgh, UK
 
 2021
 
@@ -278,11 +287,12 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 2022
 
- * **Kong JD**, Chown SL, Hoffmann AA and Kearney MR. (2022) Reply to Adamo: No Signs of Pathogen Susceptibility in Warramaba virgo. Science. eLetter. DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). 
+ * **Kong JD**, Chown SL, Hoffmann AA and Kearney MR. (2022) Reply to Adamo: No Signs of Pathogen Susceptibility in Warramaba virgo. Science. eLetter. DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072).
+ * Conference Organiser. Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October. Tvärminne Zoological Station, Finland. 
 
 2021
 
- * Contributor to the Trinity Walton Club STEM@Universi-TY program, Trinity College Dublin
+ * Contributor to the Trinity Walton Club STEM@Universi-TY program, Trinity College Dublin (2021-present)
  * Mentor for Irish Ecological Association mentoring meeting. 7th January
  * The Socio-Economic Theory of Animal Abundance. April Fools blog post for [EcoEvo@TCD](http://www.ecoevoblog.com/2021/04/01/the-socio-economic-theory-of-animal-abundance/). 1st April
  

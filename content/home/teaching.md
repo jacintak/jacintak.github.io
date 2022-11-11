@@ -24,7 +24,7 @@ design:
     text_color_light: true
 ---
   
-I teach into third year Zoology and second year Biostatistics. 
+At Trinity College Dublin, I teach Animal Diversity I (ZOU33003, third year, ~35 students, 5 credits), Animal Diversity II (ZOU33004, third year, ~35 students, 5 credits), and Statistics and Computation (BYU22S01, second year, ~250 students, 5 credits). My teaching integrates hands-on experiences through practicals with lectures.  
 
 ## Blog posts
 

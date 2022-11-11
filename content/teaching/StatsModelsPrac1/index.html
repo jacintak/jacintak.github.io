@@ -1,6 +1,6 @@
 ---
 title: "Statistical modelling Part 1"
-date: "2022-08-16"
+date: "2022-10-30"
 summary: Static handout of Part 1 of Statistical Modelling practical
 projects: [statistical-modelling]
 tags:
@@ -9,6 +9,7 @@ tags:
 - code
 output:
   blogdown::html_page
+# based off 3.3.2
 ---
 
 
@@ -183,7 +184,7 @@ Thus, one application of models is to consider them as hypotheses of biological 
 <h2>Functional responses</h2>
 <p>Infection responses, predator-prey interactions… they can be generally classified as <strong>functional responses</strong>. Luckily for us, there are already well known analytical (mathematical) models of functional response that we can use.</p>
 <p>There are multiple types of functional responses (labelled with Roman numerals: I — IV). Each of these models represents a <em>different hypothesis</em> about functional responses and mathematically describes a <em>different relationship</em> between our two variables (e.g. the killer T cell and the pathogen, or a predator and its prey). You can read more about functional responses by running <code>vignette("functional_responses")</code>.</p>
-<p>The assumptions we make above are based on a <strong>Type II functional response model</strong> and is the one most appropriate for a predator-prey interaction scenario. You can read about the full derivation by running <code>vignette("TypeII_models")</code>.</p>
+<p>The assumptions we make above are based on a <strong>Type II functional response model</strong>, which is common in biology. You can read about the full derivation by running <code>vignette("TypeII_models")</code>.</p>
 <p>The Type II functional response model is a good example of a general model – it has been used to describe animal predators eating prey (e.g. Holling’s disc equations) or enzymes catalysing reactions (e.g. Michaelis-Menten equation). We can also use it to describe the immune response of the previous practical.</p>
 <p>It doesn’t matter what the mathematical symbols represent biologically, maths is a universal language that describes the underlying biological process. Here, we are applying it to an general predator-prey scenario involving students and plastic counters.</p>
 <hr />
@@ -373,7 +374,7 @@ Discussion
 <div class="panel-heading">
 <div class="panel-title">
 <p><strong>We will use a tapping rate of 1 tap per second. Your assistant will need to call out when to tap for the predator.</strong></p>
-<p><strong>For simplicity, we will use a value of 1 minute only so that we can divide by 1 and it makes our maths easier.</strong></p>
+<p><strong>We will use a value of 1 minute for total foraging time because we can divide by 1 and it makes our maths easier.</strong></p>
 </div>
 </div>
 </div>
@@ -403,6 +404,11 @@ Keep it simple! A more complex statistical analysis cannot fix issues arising fr
 <p>For example, vaccines provide a chance for the immune system to “learn” how to eat prey (e.g. viruses). After this experience, immune systems become more efficient at destroying prey.</p>
 <p>We will simulate a different predator behaviour by repeating our counter and jar experiment but this time, the jar does not have a lid so the predator does not need to open and close the lid when they are handing the counters. We will call this new variable <strong>foraging strategy</strong>.</p>
 <p>These two experiments are <em>independent</em>. If we want to compare the foraging properties between the two predators, we need to run the experiment again <strong>keeping everything the same but changing only the variable of interest</strong>.</p>
+<p>Foraging strategy becomes a <strong>second predictor variable</strong> that has two possibilities:</p>
+<ol style="list-style-type: decimal">
+<li>Jar with a lid; the original protocol simulating a less experienced predator. We will call this <code>yes_lid</code></li>
+<li>Jar without a lid; the second experiment simulating a more experienced predator. We will call this <code>no_lid</code></li>
+</ol>
 <hr />
 <div id="the-null-hypothesis-h0" class="section level3">
 <h3>The null hypothesis (H0)</h3>
