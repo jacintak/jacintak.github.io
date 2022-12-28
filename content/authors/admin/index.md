@@ -8,13 +8,13 @@ education:
   - course: PhD in Ecophysiology (Zoology)
     institution: University of Melbourne, Australia
     year: 2020
-  - course: BSc(Hons I, University Medal) in Zoology
+  - course: BSc (Hons I, University Medal) in Zoology
     institution: University of Queensland, Australia
     year: 2013
   - course: BSc in Ecology & Zoology
     institution: University of Queensland, Australia
     year: 2012
-email: "kongj@tcd.ie"
+email: "JacintaKong@cunet.carleton.ca"
 
 interests:
 - Ecological & evolutionary physiology
@@ -24,13 +24,13 @@ interests:
 
 name: Jacinta Kong
 organizations:
-- name: Trinity College Dublin
+- name: Carleton University
   url: "https://jacintak.github.io"
-role: Teaching and Research Fellow
+role: Postdoctoral Researcher
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'kongj@tcd.ie'
+  link: 'mailto:JacintaKong@cunet.carleton.ca'
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/jacintakong
@@ -49,6 +49,6 @@ user_groups:
 - Visitors
 ---
 
-I am a Teaching and Research Fellow in the Department of Zoology at Trinity College Dublin. I want to know where animals live and how they persist in their environment. My interests lie at the intersection between ecology, evolutionary biology and experimental biology. 
+I want to know where animals live and how they persist in their environment. My interests lie at the intersection between ecology, evolutionary biology and experimental biology. 
 
-My research centers on characterising diversity in traits and understanding the consequences for abundances and distributions of species. I answer these questions through an integrative combination of field and natural history observations, manipulative laboratory experiments and quantitative analysis and modelling, grounded within conceptual frameworks. 
+My research centers on characterising diversity in traits and understanding the consequences of this diversity for abundances and distributions of species. I answer these questions through an integrative combination of field and natural history observations, manipulative laboratory experiments, and quantitative analysis and modelling, grounded within conceptual frameworks. 

@@ -23,6 +23,9 @@ I have been an active contributor to NERD club and its sub-groups: R club for R 
 
 # Tutorials
 
+## Introduction to `blogdown`
+A short workshop giving an introduction to the `blogdown` workflow.
+
 ## Advanced R markdown
 This is a short presentation showing some of the more advanced features of R Markdown using the `R` package `bookdown` including: numbered sections, cross-referencing, bibliographies, CSS and making a website with the static HTML builder.
 

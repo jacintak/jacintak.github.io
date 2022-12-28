@@ -682,7 +682,6 @@ See the table below for an example of column headers with no spaces and all cell
 
 | column_information            	| information_type 	| description 	|
 |-------------------------------	|------------------	|-------------	|
-| student_number                	| numeric          	    | your student number	|
 | total_time 	                    | numeric          	| in minutes	|
 | prey_density              	| numeric          	| NA          	|
 | replicate                     	| numeric          	| NA          	|

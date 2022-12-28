@@ -5,12 +5,31 @@
     <link>https://jacintak.github.io/tags/comparative-analysis/</link>
       <atom:link href="https://jacintak.github.io/tags/comparative-analysis/index.xml" rel="self" type="application/rss+xml" />
     <description>comparative analysis</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 19 Dec 2022 17:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>comparative analysis</title>
       <link>https://jacintak.github.io/tags/comparative-analysis/</link>
     </image>
+    
+    <item>
+      <title>BES 2022</title>
+      <link>https://jacintak.github.io/talk/BES2022/</link>
+      <pubDate>Mon, 19 Dec 2022 17:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/BES2022/</guid>
+      <description>&lt;p&gt;Thermal tolerances, such as critical temperatures, are important indices for understanding an organism’s vulnerability to changing environmental temperature. Differences in thermal tolerance over ontogeny may generate a ‘thermal bottleneck’ that sets the climate vulnerability for organisms with complex life cycles. However, a species’ microhabitat preference and methodological differences among studies can generate confounding variation in thermal tolerance that may mask trends in large-scale comparative studies and may hinder our ability to assess climate change vulnerability within and among species. Here, we evaluated two approaches to resolving ontogenetic and environmental drivers of thermal tolerance and methodological variation: mathematical standardisation of thermal tolerance and classifying microhabitat preferences. Using phylogenetically informed, multi-level models with a global dataset of upper critical temperatures from 438 Anuran species, we found ontogenetic trends in thermal tolerance were similar across microhabitat preferences and standardising critical temperatures against common methodological variation had little impact on our conclusions. Our results suggested thermal bottlenecks are not strongly present in Anurans but instead, implied strong developmental or genetic conservatism of thermal tolerance within families and ecotypes. We discussed considerations for resolving confounding variation to interpret thermal tolerance at a macrophysiological scale.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates</title>
+      <link>https://jacintak.github.io/publication/2022-biorxiv/</link>
+      <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2022-biorxiv/</guid>
+      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;The capacity of ectotherms to adjust their thermal tolerance limits through evolution or acclimation seems relatively modest and highly variable, and we lack satisfying explanations for both findings given a limited understanding of what ultimately determines an organism’s thermal tolerance. Here, we test if the amount of heating an ectotherm tolerates throughout a heating event until organismal failure scales with temperature’s non-linear influence on biological rates. To account for the non-linear influence of temperature on biological rates on heating tolerance, we rescaled the duration of heating events of 316 ectothermic taxa acclimated to different temperatures and describe the biological rate-corrected heating duration. This rescaling reveals that the capacity of an organism to resist a heating event is in fact remarkably constant across any acclimation temperature, enabling high-precision estimates of how organismal thermal tolerance limits vary under different thermal regimes. We also find that faster heating consistently reduces biological rate-corrected heating durations, which helps further explain why thermal tolerance limits seem so variable on absolute temperature scales. Existing paradigms are that heating tolerances and thermal tolerance limits reflect incomplete metabolic compensatory responses, are constrained by evolutionary conservatism, or index failure of systems such as membrane function; our data provide a different perspective and show that an organism’s thermal tolerance emerges from the interaction between the non-linear thermal dependence of biological rates and heating durations, which is an approximately-fixed property of a species.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Best practices for building and curating databases for comparative analyses</title>
@@ -19,6 +38,26 @@
       <guid>https://jacintak.github.io/publication/2022-JEB/</guid>
       <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
 &lt;p&gt;Comparative analyses have a long history of macro-ecological and -evolutionary approaches to understand structure, function, mechanism, and constraint. As the pace of science accelerates, there is ever-increasing access to diverse types of data and open-access databases that are enabling and inspiring new research. Whether conducting a species-level trait-based analysis or a formal meta-analysis of study effect sizes, comparative approaches share a common reliance on reliable, carefully-curated databases. Unlike many scientific endeavors, building a database is a process that many researchers undertake infrequently and in which we are not formally trained. This commentary provides an introduction to building databases for comparative analyses and highlights challenges and solutions that the authors of the commentary have faced in their own experiences. We focus on four major tips: 1) carefully strategizing the literature search; 2) structuring databases for multiple use; 3) establishing version control within (and beyond) your study; and 4) the importance of making databases accessible. We highlight how one’s approach to these tasks often depends on the goal of the study and the nature of the data. Finally, we assert that the curation of single-question databases has several disadvantages: it limits the possibility of using databases for multiple purposes and decreases efficiency owing to independent researchers repeatedly sifting through large volumes of raw information. We argue that curating databases that are broader than one research question can provide a large return on investment, and that research fields could increase efficiency if community curation of databases was established.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>BES Macro 2021</title>
+      <link>https://jacintak.github.io/talk/BESMacro2021/</link>
+      <pubDate>Wed, 07 Jul 2021 11:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/BESMacro2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thermal dependence of biological rates</title>
+      <link>https://jacintak.github.io/project/temperature-dependence/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/temperature-dependence/</guid>
+      <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation yet many temperature-dependent traits show great diversity within and among species with direct consequences for how organisms respond to a warming climate.&lt;/p&gt;
+&lt;p&gt;To understand the effect of the temperature-dependence of biological rates shapes trends in physiological trait diversity, my colleages and I take a comparative approach on a macroecological scale using the non-linear relationship between biological rates and temperature as a null hypothesis.&lt;/p&gt;
+&lt;p&gt;We find that much variation in widely characterised critical temperature limits in ectotherms can be explained by the non-linear relationship between biological rates and temperature, acclimation temperature, and rates of heating. Theses results suggest that rising temperatures are not as detrimental to ectotherms as previously suggested and that ectotherms have unappreciated capabilities of responding to thermal variability, at least based on laboratory derived measures of thermal tolerance.&lt;/p&gt;
+&lt;p&gt;This is an Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
 </description>
     </item>
     

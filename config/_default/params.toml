@@ -85,12 +85,12 @@ edit_page = {repo_url = "https://github.com/jacintak/jacintak.github.io", conten
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "kongj@tcd.ie"
+email = "JacintaKong@cunet.carleton.ca"
 phone = ""
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "Department of Zoology", city = "Trinity College Dublin", region = "Dublin", postcode = "Dublin 2", country = "Ireland", country_code = "IE"}
+address = {street = "", city = "Carleton University", region = "Ottawa", postcode = "", country = "Canada", country_code = "CA"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.

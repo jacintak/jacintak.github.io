@@ -437,7 +437,6 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/NERD-club/</guid>
       <description>
-&lt;script src=&#34;https://jacintak.github.io/project/NERD-club/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;NERD club is a student-led peer-learning and discussion group for staff and postgraduate students in the Departments of Zoology and Botany at Trinity College Dublin. The group meets weekly for topical discussions about science or academia. There are also sub-groups that are dedicated towards specific topics such as R coding and spatial analysis. These sub-groups are focused towards peer-learning where, postgraduates in particular, are encouraged to share their learning experience and expertise in relevant topics.&lt;/p&gt;
@@ -445,6 +444,10 @@ There are other matchstick grasshopper palettes in the &lt;code&gt;inverts&lt;/c
 &lt;hr /&gt;
 &lt;div id=&#34;tutorials&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Tutorials&lt;/h1&gt;
+&lt;div id=&#34;introduction-to-blogdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction to &lt;code&gt;blogdown&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;A short workshop giving an introduction to the &lt;code&gt;blogdown&lt;/code&gt; workflow.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;advanced-r-markdown&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Advanced R markdown&lt;/h2&gt;
 &lt;p&gt;This is a short presentation showing some of the more advanced features of R Markdown using the &lt;code&gt;R&lt;/code&gt; package &lt;code&gt;bookdown&lt;/code&gt; including: numbered sections, cross-referencing, bibliographies, CSS and making a website with the static HTML builder.&lt;/p&gt;
@@ -616,7 +619,7 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
-&lt;p&gt;My past and ongoing research focuses on disentangling the effects of microclimatic variation and inter- and intra-specific variation in physiological traits on life history phenotypes and phenology. 
+&lt;p&gt;My past and ongoing research focuses on disentangling the effects of microclimatic variation and inter- and intra-specific variation in physiological traits on life history phenotypes and phenology.
 The relative effects of environmental and individual variation on phenology.&lt;/p&gt;
 </description>
     </item>

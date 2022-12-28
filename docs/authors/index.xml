@@ -5,12 +5,22 @@
     <link>https://jacintak.github.io/authors/</link>
       <atom:link href="https://jacintak.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 19 Dec 2022 17:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Authors</title>
       <link>https://jacintak.github.io/authors/</link>
     </image>
+    
+    <item>
+      <title></title>
+      <link>https://jacintak.github.io/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/authors/admin/</guid>
+      <description>&lt;p&gt;I want to know where animals live and how they persist in their environment. My interests lie at the intersection between ecology, evolutionary biology and experimental biology.&lt;/p&gt;
+&lt;p&gt;My research centers on characterising diversity in traits and understanding the consequences of this diversity for abundances and distributions of species. I answer these questions through an integrative combination of field and natural history observations, manipulative laboratory experiments, and quantitative analysis and modelling, grounded within conceptual frameworks.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

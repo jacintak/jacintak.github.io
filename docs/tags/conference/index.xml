@@ -5,12 +5,21 @@
     <link>https://jacintak.github.io/tags/conference/</link>
       <atom:link href="https://jacintak.github.io/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     <description>conference</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 19 Dec 2022 17:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>conference</title>
       <link>https://jacintak.github.io/tags/conference/</link>
     </image>
+    
+    <item>
+      <title>BES 2022</title>
+      <link>https://jacintak.github.io/talk/BES2022/</link>
+      <pubDate>Mon, 19 Dec 2022 17:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/BES2022/</guid>
+      <description>&lt;p&gt;Thermal tolerances, such as critical temperatures, are important indices for understanding an organism’s vulnerability to changing environmental temperature. Differences in thermal tolerance over ontogeny may generate a ‘thermal bottleneck’ that sets the climate vulnerability for organisms with complex life cycles. However, a species’ microhabitat preference and methodological differences among studies can generate confounding variation in thermal tolerance that may mask trends in large-scale comparative studies and may hinder our ability to assess climate change vulnerability within and among species. Here, we evaluated two approaches to resolving ontogenetic and environmental drivers of thermal tolerance and methodological variation: mathematical standardisation of thermal tolerance and classifying microhabitat preferences. Using phylogenetically informed, multi-level models with a global dataset of upper critical temperatures from 438 Anuran species, we found ontogenetic trends in thermal tolerance were similar across microhabitat preferences and standardising critical temperatures against common methodological variation had little impact on our conclusions. Our results suggested thermal bottlenecks are not strongly present in Anurans but instead, implied strong developmental or genetic conservatism of thermal tolerance within families and ecotypes. We discussed considerations for resolving confounding variation to interpret thermal tolerance at a macrophysiological scale.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>December update</title>

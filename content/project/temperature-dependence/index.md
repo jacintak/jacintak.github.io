@@ -14,6 +14,7 @@ summary: Temperature affects biological processes on many levels of biological o
 tags:
 - ectotherms
 - thermal adaptation
+- comparative analysis
 title: Thermal dependence of biological rates
 url_code: ""
 url_pdf: ""

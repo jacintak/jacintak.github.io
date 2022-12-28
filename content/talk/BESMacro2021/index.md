@@ -23,7 +23,7 @@ projects:
 publishDate: "2021-01-01"
 slides: 
 summary: 
-tags: [postdoc, conference, ectotherms, temperature]
+tags: [postdoc, conference, ectotherms, temperature, comparative analysis]
 title: BES Macro 2021
 url_code: ""
 url_pdf: ""

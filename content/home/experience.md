@@ -40,12 +40,21 @@ date_format = "Jan 2006"
 
 
 [[experience]]
+  title = "Postdoctoral Researcher"
+  company = "Carleton University"
+  company_url = ""
+  location = "Canada"
+  date_start = "2023-01-16"
+  date_end = ""
+  description = "NSERC-Mitacs funded position"
+  
+[[experience]]
   title = "Teaching and Research Fellow"
   company = "Trinity College Dublin, The University of Dublin"
   company_url = ""
   location = "Ireland"
   date_start = "2019-05-14"
-  date_end = ""
+  date_end = "2023-01-14"
   description = "Investigating the implications of the relationship between temperature and biological rates for the thermal adaptation of ectotherms and macrophysiological patterns"
 
 [[experience]]
