@@ -5,7 +5,7 @@ authors:
 - J.-F. Arnoldi
 - A. L. Jackson
 - A. E. Bates
-- S. A. Morley, 
+- S. A. Morley
 - J. A. Smith
 - N. L. Payne
 date: "2022"
