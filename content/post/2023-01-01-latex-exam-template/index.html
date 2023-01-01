@@ -1,0 +1,105 @@
+---
+title: LaTeX exam templates with R & Rmarkdown
+author: admin
+date: '2023-01-01'
+slug: latex-exam-template
+categories: [code]
+tags:
+- teaching
+- R stats
+- code
+subtitle: ''
+summary: ''
+authors: []
+lastmod: 
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: [biostats-tutorials]
+---
+
+
+
+<div id="latex-the-final-fontier" class="section level1">
+<h1>LaTeX: The final fontier</h1>
+<p>Happy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the <code>rmarkdown</code> environment so I wanted to familiarize myself with its more advanced typesetting features.</p>
+<p>If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).</p>
+<blockquote>
+<p>tl;dr I made an <code>rmarkdown</code> template for an exam paper using LaTeX. It supports R code chunks and shows or hides the answers.</p>
+</blockquote>
+<div id="accessing-the-template" class="section level2">
+<h2>Accessing the template</h2>
+<p>You need to be able to create PDFs with <code>rmarkdown</code> (pandoc and LaTeX). <code>rmarkdown</code> templates need to be housed within a package.</p>
+<ul>
+<li>If you don’t want to create your own R package, the template can be downloaded ready to use via the package <code>biostats.tutorials</code> on my <a href="https://github.com/jacintak/biostats-tutorials">GitHub</a></li>
+<li>You can get the files to add to your own package from the <a href="https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830">gist</a></li>
+</ul>
+</div>
+<div id="latex-exam" class="section level2">
+<h2>LaTeX {exam}</h2>
+<p>LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or adding marks. It’s pretty straightforward to get a basic template set up by following the documentation.</p>
+<p>This is fine if you are working purely in LaTeX and a TeX editor. <strong>But</strong> it doesn’t work with R. R would be pretty important if for example you wanted a data analysis type exam.</p>
+<p>Of course, you could typeset an exam in <code>rmarkdown</code> with a more generic document class but you miss out on the more specific functions.</p>
+<hr />
+</div>
+</div>
+<div id="rmarkdown-latex" class="section level1">
+<h1>Rmarkdown &amp; LaTeX</h1>
+<p>There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with <code>rmarkdown.</code> Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code and with optional answers.</p>
+<div id="rnw" class="section level2">
+<h2>1. Rnw</h2>
+<p>An Rnw (Sweave) file is a LaTeX file that supports R code. Meaning rather than a document written in markdown with code chunks and some LaTeX, you have a document written in LaTeX with code chunks and no markdown. Knitting proceeds as normal - be sure to change your setting from Sweave to knitr for Rnw files in your global settings.</p>
+<p>I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX if not your strong point.</p>
+</div>
+<div id="tex-template" class="section level2">
+<h2>2. TeX template</h2>
+<p>Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and utilising LaTeX to the best of its ability but involving Pandoc makes the behind-the-scenes workflow more complex. And I don’t know anything about TeX templates.</p>
+<p>The bookdown handbook recommends to start from the original Pandoc LaTeX template but I could not get the template to work out of the box from GitHub. Something about not knowing what to do with plots.</p>
+<p>Once you have the template you can call it in the YAML like:</p>
+<pre><code>output:
+  pdf_document:
+    template: template.tex</code></pre>
+<p>There are lots of exam templates out there that don’t necessarily use {exam}, which may work.</p>
+</div>
+<div id="preambles" class="section level2">
+<h2>3. Preambles</h2>
+<p>In the end I found using preambles was the best compromise. You can include TeX files in YAML like:</p>
+<pre><code>output:
+  pdf_document:
+    includes:
+      before_body: cover.tex
+      in_header: preamble.tex</code></pre>
+<p>This method allowed most of the functions and aesthetics of {exam}, like a cover page and a header and footer. These TeX snippets don’t override the template but they are not dynamic and cannot be linked to YAML variables. For example, you cannot use the title of your document as set in the YAML in the header. You could via $ operators in a TeX template.</p>
+<p>The benefits are that you can package your files as an <code>rmarkdown</code> template and you can write in markdown, which is easier for me. The main drawback is that you cannot use code highlighting because there is an issue with a LaTeX package called <code>framed</code>. I couldn’t find a workaround that worked for me (See this <a href="https://tex.stackexchange.com/questions/71177/command-already-defined">StackExchange</a>). If you want to use <code>echo = TRUE</code> as a chunk option then you need to set <code>highlight: NULL</code> in YAML:</p>
+<pre><code>output:
+  pdf_document:
+    highlight: NULL
+    includes:
+      before_body: cover.tex
+      in_header: preamble.tex</code></pre>
+<hr />
+</div>
+</div>
+<div id="workflow" class="section level1">
+<h1>Workflow</h1>
+<p>The template involves three files. See the <a href="https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830">gist</a>.</p>
+<div id="skeleton.rmd" class="section level2">
+<h2>1. skeleton.Rmd</h2>
+<p>This is the main template. <code>usethis::use_rmarkdown_template()</code> will generate the correct folder structure and empty files for you. The template contains two example questions for how a question could be laid out but the heavy lifting is done automatically by document class {exam}, as called in the YAML. Remove <code>classoption: answers</code> to hide the answers when knitting.</p>
+</div>
+<div id="cover.tex" class="section level2">
+<h2>2. cover.tex</h2>
+<p>This creates a cover page containing generic instructions, the class and exam name as set in the YAML, and space for students to write their name and student number. This is like TeX that goes before <code>\begin{document}</code>. This file is all aesthetics. The document works without it.</p>
+</div>
+<div id="preamble.tex" class="section level2">
+<h2>3. preamble.tex</h2>
+<p>This is the more important TeX file because there are some pecularities with how Pandoc and LaTeX talk to each other. First, we can avoid using <code>\begin{}</code> or <code>\end{}</code> commands by redefining them (See this <a href="https://stackoverflow.com/questions/57791708/how-to-show-solutions-using-latex-exam-class-in-rmarkdown-file">StackOverflow</a>). The three main ones used in {exam} are for questions, questions with multiple parts, and solutions. Second, Pandoc does not know how to deal with all {exam} functions so you need to help it a little (See this <a href="https://github.com/jgm/pandoc/issues/4023">GitHub issue</a>). We need to tell it how to understand we want a question with multiple parts like a) and b).</p>
+<hr />
+</div>
+</div>
+<div id="end-notes" class="section level1">
+<h1>End notes</h1>
+<p>After all that I still know nothing about how Pandoc or LaTeX works.</p>
+</div>

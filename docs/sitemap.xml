@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jacintak.github.io/categories/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/code/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/categories/code/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/post/latex-exam-template/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/post/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/R-stats/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/teaching/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jacintak.github.io/authors/admin/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
@@ -23,9 +50,6 @@
     <loc>https://jacintak.github.io/tags/ectotherms/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/authors/N.-C.-Wu/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
@@ -33,9 +57,6 @@
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/talk/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/temperature/</loc>
@@ -71,16 +92,7 @@
     <loc>https://jacintak.github.io/authors/S.-A.-Morley/</loc>
     <lastmod>2022-12-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/code/</loc>
-    <lastmod>2022-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/R-stats/</loc>
-    <lastmod>2022-10-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/teaching/StatsModelsPrac1/</loc>
-    <lastmod>2022-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/teaching/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/teaching/</loc>
@@ -98,16 +110,7 @@
     <loc>https://jacintak.github.io/project/statistical-modelling/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/categories/</loc>
-    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/categories/code/</loc>
-    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/post/knitting-an-interactive-document/</loc>
-    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/post/</loc>
     <lastmod>2022-06-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/publication_types/2/</loc>
