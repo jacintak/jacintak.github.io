@@ -31,13 +31,23 @@ tags:
 - comparative analysis
 title: Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates
 url_code: "https//github.com/rescaled_heating_tolerance"
-url_dataset: "https://doi.org/10.5281/zenodo.7387928"
-url_pdf: "https://doi.org/10.1101/2022.12.06.519315"
+url_dataset: 
+url_pdf: 
 url_poster: ""
 url_project: ""
 url_slides: ""
 url_source: ""
 url_video: ""
+
+links:
+- icon: file-pdf
+  icon_pack: fas
+  name: PDF
+  url: "https://doi.org/10.1101/2022.12.06.519315"
+- icon: database
+  icon_pack: fas
+  name: Dataset
+  url: "https://doi.org/10.5281/zenodo.7387928"
 ---
 
 # Abstract

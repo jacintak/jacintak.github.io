@@ -23,43 +23,42 @@
 &lt;div id=&#34;latex-the-final-fontier&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;LaTeX: The final fontier&lt;/h1&gt;
 &lt;p&gt;Happy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the &lt;code&gt;rmarkdown&lt;/code&gt; environment so I wanted to familiarize myself with its more advanced typesetting features.&lt;/p&gt;
-&lt;p&gt;If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).&lt;/p&gt;
+&lt;p&gt;If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended) to play with.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;tl;dr I made an &lt;code&gt;rmarkdown&lt;/code&gt; template for an exam paper using LaTeX. It supports R code chunks and shows or hides the answers.&lt;/p&gt;
+&lt;p&gt;tl;dr I made an &lt;code&gt;rmarkdown&lt;/code&gt; template for an exam paper using LaTeX {exam}. It supports R code chunks and shows or hides the answers.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div id=&#34;accessing-the-template&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Accessing the template&lt;/h2&gt;
 &lt;p&gt;You need to be able to create PDFs with &lt;code&gt;rmarkdown&lt;/code&gt; (pandoc and LaTeX). &lt;code&gt;rmarkdown&lt;/code&gt; templates need to be housed within a package.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;If you don’t want to create your own R package, the template can be downloaded ready to use via the package &lt;code&gt;biostats.tutorials&lt;/code&gt; on my &lt;a href=&#34;https://github.com/jacintak/biostats-tutorials&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;You can get the files to add to your own package from the &lt;a href=&#34;https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830&#34;&gt;gist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;You can get the files to add to your own package from the &lt;a href=&#34;https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830&#34;&gt;Gist&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;When you have the templates installed, you should be able to see them listed when you create a an R markdown document from template.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latex-exam&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;LaTeX {exam}&lt;/h2&gt;
-&lt;p&gt;LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or adding marks. It’s pretty straightforward to get a basic template set up by following the documentation.&lt;/p&gt;
-&lt;p&gt;This is fine if you are working purely in LaTeX and a TeX editor. &lt;strong&gt;But&lt;/strong&gt; it doesn’t work with R. R would be pretty important if for example you wanted a data analysis type exam.&lt;/p&gt;
-&lt;p&gt;Of course, you could typeset an exam in &lt;code&gt;rmarkdown&lt;/code&gt; with a more generic document class but you miss out on the more specific functions.&lt;/p&gt;
+&lt;p&gt;LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or showing mark allocations. It’s pretty straightforward to get a basic template set up by following the documentation.&lt;/p&gt;
+&lt;p&gt;This option is fine if you are working purely in LaTeX and a TeX editor. &lt;strong&gt;But&lt;/strong&gt; it doesn’t work with R. R would be pretty important if for example you wanted to integrate R output. Of course, you could typeset an exam in &lt;code&gt;rmarkdown&lt;/code&gt; with a more generic document class but you miss out on the more specific functions.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;rmarkdown-latex&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Rmarkdown &amp;amp; LaTeX&lt;/h1&gt;
-&lt;p&gt;There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with &lt;code&gt;rmarkdown.&lt;/code&gt; Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code and with optional answers.&lt;/p&gt;
+&lt;p&gt;There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with &lt;code&gt;rmarkdown&lt;/code&gt;. Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code that’s able to also show the answers.&lt;/p&gt;
 &lt;div id=&#34;rnw&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;1. Rnw&lt;/h2&gt;
 &lt;p&gt;An Rnw (Sweave) file is a LaTeX file that supports R code. Meaning rather than a document written in markdown with code chunks and some LaTeX, you have a document written in LaTeX with code chunks and no markdown. Knitting proceeds as normal - be sure to change your setting from Sweave to knitr for Rnw files in your global settings.&lt;/p&gt;
-&lt;p&gt;I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX if not your strong point.&lt;/p&gt;
+&lt;p&gt;I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX is not your strong suit.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tex-template&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;2. TeX template&lt;/h2&gt;
-&lt;p&gt;Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and utilising LaTeX to the best of its ability but involving Pandoc makes the behind-the-scenes workflow more complex. And I don’t know anything about TeX templates.&lt;/p&gt;
+&lt;p&gt;Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and using LaTeX to the best of its ability. But involving Pandoc makes the behind-the-scenes workflow more complex, such as specifying to LaTeX how Pandoc creates bulleted lists. And I don’t know anything about TeX templates.&lt;/p&gt;
 &lt;p&gt;The bookdown handbook recommends to start from the original Pandoc LaTeX template but I could not get the template to work out of the box from GitHub. Something about not knowing what to do with plots.&lt;/p&gt;
-&lt;p&gt;Once you have the template you can call it in the YAML like:&lt;/p&gt;
+&lt;p&gt;There are lots of templates out there that don’t necessarily use {exam} that you could use. Once you have the template you can call it in the YAML like:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;output:
   pdf_document:
     template: template.tex&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There are lots of exam templates out there that don’t necessarily use {exam}, which may work.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;preambles&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;3. Preambles&lt;/h2&gt;
@@ -335,10 +334,9 @@ Happy animating!&lt;br /&gt;
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/post/spatial-data/</guid>
       <description>
-&lt;script src=&#34;https://jacintak.github.io/post/spatial-data/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version can be found on the &lt;a href=&#34;project/NERD-club/&#34;&gt;Project&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version, which uses a marine example, can be found on the &lt;a href=&#34;project/NERD-club/&#34;&gt;Project&lt;/a&gt; page.&lt;/p&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This is going to be an introduction to a simple workflow for spatial data in R using rasters. I will assume you have some basic knowledge about spatial analyses and co-ordinate systems. This is not meant to be a documentation of the full suite of spatial analysis available in R. Some simple ways of plotting data is covered.&lt;/p&gt;
@@ -346,7 +344,7 @@ Happy animating!&lt;br /&gt;
 &lt;ul&gt;
 &lt;li&gt;Each grid cell contains a single value. E.g. temperature, elevation, species richness&lt;/li&gt;
 &lt;li&gt;Often stored in three dimensions (e.g. latitude, longitude and time).&lt;/li&gt;
-&lt;li&gt;The main &lt;code&gt;R&lt;/code&gt; package for handling rasters is &lt;code&gt;raster&lt;/code&gt;. It’s a base package.&lt;/li&gt;
+&lt;li&gt;The main &lt;code&gt;R&lt;/code&gt; package for handling rasters is &lt;code&gt;raster&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We will consider a common workflow of associating rasters with spatial point data (e.g. lat and long).
 I will be sticking to base R throughout.&lt;/p&gt;
@@ -363,6 +361,8 @@ I will be sticking to base R throughout.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(raster)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: sp&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp &amp;lt;- getData(&amp;quot;worldclim&amp;quot;,var=&amp;quot;bio&amp;quot;,res=10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in getData(&amp;quot;worldclim&amp;quot;, var = &amp;quot;bio&amp;quot;, res = 10): getData will be removed in a future version of raster
+## . Please use the geodata package instead&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;subsetting-rasters&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Subsetting rasters&lt;/h2&gt;
@@ -411,12 +411,13 @@ Figure 3: That’s much much better
 &lt;ul&gt;
 &lt;li&gt;You need the unique identification key for the species you want. &lt;code&gt;name_suggest&lt;/code&gt; can help with that so you don’t have to manually search GBIF.&lt;/li&gt;
 &lt;li&gt;The data comes as a list with some metadata. &lt;code&gt;.$data&lt;/code&gt; is the actual occurrence records. The dot &lt;code&gt;.&lt;/code&gt; is a placeholder meaning it represents an R variable (e.g. a dataframe). This is commonly used in &lt;code&gt;tidyverse&lt;/code&gt; and piping via &lt;code&gt;magrittr&lt;/code&gt;. It is also a cheat’s way of using base functions within a pipe.&lt;/li&gt;
-&lt;li&gt;Co-ordinates are stored as &lt;code&gt;decimalLatitude&lt;/code&gt; and &lt;code&gt;decimalLongitude&lt;/code&gt;. I’ve removed any missing values.&lt;/li&gt;
+&lt;li&gt;Co-ordinates are stored as &lt;code&gt;decimalLatitude&lt;/code&gt; and &lt;code&gt;decimalLongitude&lt;/code&gt;. I’ve removed any missing values manually but &lt;code&gt;occ_search&lt;/code&gt; has a variable called &lt;code&gt;hasCoordinate&lt;/code&gt; to return records with lat/long data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rgbif&lt;/code&gt; gets a max 500 records each time by default (&lt;code&gt;limit&lt;/code&gt;). Use &lt;code&gt;page&lt;/code&gt; to denote which record number to start at.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rgbif)
 # get ID key for bird
 bird_key &amp;lt;- name_suggest(q =&amp;quot;Passer domesticus&amp;quot;, rank=&amp;#39;species&amp;#39;)$data$key[1]
-# get occurence points
+# get occurrence points
 bird_points &amp;lt;- occ_search(taxonKey = bird_key) # Get all records, max 500 (see variable limit)
 # exclude metadata
 bird_points &amp;lt;- bird_points$data
@@ -432,7 +433,7 @@ title(main = &amp;quot;The distribution of house sparrow&amp;quot;) # plot title
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
 legend(x = -150, y= -50, legend = &amp;quot;occurence&amp;quot;, pch = 16, col = 2, bty = &amp;quot;n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;We see that points come mainly from around northern Europe.&lt;/p&gt;
+&lt;p&gt;We see that the 500 points from GBIF come mainly from around northern Europe. Here is a good point to check for sampling bias of points or any potential erroneous points - I will ignore this step for this demonstration.&lt;/p&gt;
 &lt;p&gt;For more advanced mapping in R check out &lt;code&gt;ggmaps&lt;/code&gt;, which can interface with Open Street Maps (free) and Google Maps (for a fee), and &lt;code&gt;osmdata&lt;/code&gt;, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or &lt;a href=&#34;https://jacintak.github.io/post/2021-07-01-OSM-in-R/&#34;&gt;online&lt;/a&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
@@ -452,7 +453,7 @@ Figure 4: The distribution of sparrows with mean annual temperature
 &lt;hr /&gt;
 &lt;div id=&#34;what-range-of-temperatures-do-house-sparrows-live-in&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What range of temperatures do house sparrows live in?&lt;/h2&gt;
-&lt;p&gt;We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is &lt;code&gt;raster::extract&lt;/code&gt;. The same can be used within &lt;code&gt;tidyverse&lt;/code&gt; via &lt;code&gt;mutate&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is &lt;code&gt;raster::extract&lt;/code&gt;. The same can be used within &lt;code&gt;tidyverse::mutate&lt;/code&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Get temp
 temps &amp;lt;- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = &amp;quot;bilinear&amp;quot;)
 # Add new column
@@ -465,7 +466,7 @@ bird_temps &amp;lt;- bird_temps[!is.na(bird_temps$temps),]&lt;/code&gt;&lt;/pre&
 &lt;p&gt;Now we can plot the distribution of temperatures:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(bird_temps$temps, main = &amp;quot;Temperature distribution of house sparrows&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;We can see they live between -2.7 and 11.6 °C.&lt;/p&gt;
+&lt;p&gt;We can see they live between -2.7 and 8.2 °C, which here reflects the fact that all the points were sampled from northern Europe.&lt;/p&gt;
 &lt;p&gt;Finally, we can plot the relationship between temperature and latitude:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(temps ~ decimalLatitude, bird_temps, pch = 16)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;

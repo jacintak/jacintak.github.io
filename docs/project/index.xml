@@ -602,13 +602,14 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
       <description>
-&lt;script src=&#34;https://jacintak.github.io/project/biostats-tutorials/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt; at an undergraduate level.&lt;/p&gt;
-&lt;p&gt;The package is still in development so stay tuned for updates. You can checkout various tutorials about using R for NERD club (postgraduates and staff) at Trinity College Dublin &lt;a href=&#34;https://jacintak.github.io/project/NERD-club/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The package is still in development so stay tuned for updates.&lt;/p&gt;
+&lt;p&gt;You can check out a &lt;code&gt;learnr&lt;/code&gt; package for practicals on statistical modelling and functional responses &lt;a href=&#34;https://jacintak.github.io/project/statistical-modelling/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can check out various tutorials about using R for NERD club (postgraduates and staff) at Trinity College Dublin &lt;a href=&#34;https://jacintak.github.io/project/NERD-club/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -619,7 +620,7 @@ If there are other useful datasets or links not listed here, let me know!&lt;/p&
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/life-cycles/</guid>
       <description>&lt;p&gt;Move. Adapt. Die. Ectotherms have adapted their entire life cycle to the rhythm of the seasons. The egg stage is a critical part of insect life cycles that must resist or tolerate environmental fluctuations. How immobile eggs do so and how these mechanisms change in their function or importance over geographical gradients is a complex story.&lt;/p&gt;
-&lt;p&gt;My past and ongoing research focuses on disentangling the effects of microclimatic variation and inter- and intra-specific variation in physiological traits on life history phenotypes and phenology.
+&lt;p&gt;My past and ongoing research focuses on disentangling the effects of microclimatic variation and inter- and intra-specific variation in physiological traits on life history phenotypes and phenology. 
 The relative effects of environmental and individual variation on phenology.&lt;/p&gt;
 </description>
     </item>

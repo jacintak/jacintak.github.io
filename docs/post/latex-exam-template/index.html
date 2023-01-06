@@ -28,9 +28,7 @@
   
     
   
-  <meta name="description" content="LaTeX: The final fontierHappy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the rmarkdown environment so I wanted to familiarize myself with its more advanced typesetting features.
-If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).
-tl;dr I made an rmarkdown template for an exam paper using LaTeX.">
+  <meta name="description" content="Make an exam paper (with optional solutions) in R Studio with R code and LaTeX {exam}">
 
   
   <link rel="alternate" hreflang="en-us" href="https://jacintak.github.io/post/latex-exam-template/">
@@ -117,9 +115,7 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX.">
   <meta property="og:site_name" content="Jacinta&#39;s Website">
   <meta property="og:url" content="https://jacintak.github.io/post/latex-exam-template/">
   <meta property="og:title" content="LaTeX exam templates with R &amp; Rmarkdown | Jacinta&#39;s Website">
-  <meta property="og:description" content="LaTeX: The final fontierHappy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the rmarkdown environment so I wanted to familiarize myself with its more advanced typesetting features.
-If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).
-tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta property="og:image" content="https://jacintak.github.io/post/latex-exam-template/featured.jpg">
+  <meta property="og:description" content="Make an exam paper (with optional solutions) in R Studio with R code and LaTeX {exam}"><meta property="og:image" content="https://jacintak.github.io/post/latex-exam-template/featured.jpg">
   <meta property="twitter:image" content="https://jacintak.github.io/post/latex-exam-template/featured.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -175,7 +171,7 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
       "url": "https://jacintak.github.io/img/icon-512.png"
     }
   },
-  "description": "LaTeX: The final fontier\rHappy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the rmarkdown environment so I wanted to familiarize myself with its more advanced typesetting features.\nIf you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).\ntl;dr I made an rmarkdown template for an exam paper using LaTeX."
+  "description": "Make an exam paper (with optional solutions) in R Studio with R code and LaTeX {exam}"
 }
 </script>
 
@@ -600,43 +596,42 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
 <div id="latex-the-final-fontier" class="section level1">
 <h1>LaTeX: The final fontier</h1>
 <p>Happy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the <code>rmarkdown</code> environment so I wanted to familiarize myself with its more advanced typesetting features.</p>
-<p>If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).</p>
+<p>If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended) to play with.</p>
 <blockquote>
-<p>tl;dr I made an <code>rmarkdown</code> template for an exam paper using LaTeX. It supports R code chunks and shows or hides the answers.</p>
+<p>tl;dr I made an <code>rmarkdown</code> template for an exam paper using LaTeX {exam}. It supports R code chunks and shows or hides the answers.</p>
 </blockquote>
 <div id="accessing-the-template" class="section level2">
 <h2>Accessing the template</h2>
 <p>You need to be able to create PDFs with <code>rmarkdown</code> (pandoc and LaTeX). <code>rmarkdown</code> templates need to be housed within a package.</p>
 <ul>
 <li>If you don’t want to create your own R package, the template can be downloaded ready to use via the package <code>biostats.tutorials</code> on my <a href="https://github.com/jacintak/biostats-tutorials">GitHub</a></li>
-<li>You can get the files to add to your own package from the <a href="https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830">gist</a></li>
+<li>You can get the files to add to your own package from the <a href="https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830">Gist</a></li>
 </ul>
+<p>When you have the templates installed, you should be able to see them listed when you create a an R markdown document from template.</p>
 </div>
 <div id="latex-exam" class="section level2">
 <h2>LaTeX {exam}</h2>
-<p>LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or adding marks. It’s pretty straightforward to get a basic template set up by following the documentation.</p>
-<p>This is fine if you are working purely in LaTeX and a TeX editor. <strong>But</strong> it doesn’t work with R. R would be pretty important if for example you wanted a data analysis type exam.</p>
-<p>Of course, you could typeset an exam in <code>rmarkdown</code> with a more generic document class but you miss out on the more specific functions.</p>
+<p>LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or showing mark allocations. It’s pretty straightforward to get a basic template set up by following the documentation.</p>
+<p>This option is fine if you are working purely in LaTeX and a TeX editor. <strong>But</strong> it doesn’t work with R. R would be pretty important if for example you wanted to integrate R output. Of course, you could typeset an exam in <code>rmarkdown</code> with a more generic document class but you miss out on the more specific functions.</p>
 <hr />
 </div>
 </div>
 <div id="rmarkdown-latex" class="section level1">
 <h1>Rmarkdown &amp; LaTeX</h1>
-<p>There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with <code>rmarkdown.</code> Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code and with optional answers.</p>
+<p>There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with <code>rmarkdown</code>. Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code that’s able to also show the answers.</p>
 <div id="rnw" class="section level2">
 <h2>1. Rnw</h2>
 <p>An Rnw (Sweave) file is a LaTeX file that supports R code. Meaning rather than a document written in markdown with code chunks and some LaTeX, you have a document written in LaTeX with code chunks and no markdown. Knitting proceeds as normal - be sure to change your setting from Sweave to knitr for Rnw files in your global settings.</p>
-<p>I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX if not your strong point.</p>
+<p>I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX is not your strong suit.</p>
 </div>
 <div id="tex-template" class="section level2">
 <h2>2. TeX template</h2>
-<p>Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and utilising LaTeX to the best of its ability but involving Pandoc makes the behind-the-scenes workflow more complex. And I don’t know anything about TeX templates.</p>
+<p>Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and using LaTeX to the best of its ability. But involving Pandoc makes the behind-the-scenes workflow more complex, such as specifying to LaTeX how Pandoc creates bulleted lists. And I don’t know anything about TeX templates.</p>
 <p>The bookdown handbook recommends to start from the original Pandoc LaTeX template but I could not get the template to work out of the box from GitHub. Something about not knowing what to do with plots.</p>
-<p>Once you have the template you can call it in the YAML like:</p>
+<p>There are lots of templates out there that don’t necessarily use {exam} that you could use. Once you have the template you can call it in the YAML like:</p>
 <pre><code>output:
   pdf_document:
     template: template.tex</code></pre>
-<p>There are lots of exam templates out there that don’t necessarily use {exam}, which may work.</p>
 </div>
 <div id="preambles" class="section level2">
 <h2>3. Preambles</h2>
@@ -723,6 +718,19 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
       
       
       <li>
+        <a href="https://ecoevo.social/share?url=https://jacintak.github.io/post/latex-exam-template/&amp;text=LaTeX%20exam%20templates%20with%20R%20&amp;amp;%20Rmarkdown" target="_blank" rel="noopener" class="share-btn-mastodon">
+          <i class="fab fa-mastodon"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
         <a href="https://www.facebook.com/sharer.php?u=https://jacintak.github.io/post/latex-exam-template/&amp;t=LaTeX%20exam%20templates%20with%20R%20&amp;amp;%20Rmarkdown" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
@@ -789,7 +797,7 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
 
     <div class="media-body">
       <h5 class="card-title"><a href="https://jacintak.github.io/">Jacinta Kong</a></h5>
-      <h6 class="card-subtitle">Postdoctoral Researcher</h6>
+      <h6 class="card-subtitle">Postdoctoral Fellow</h6>
       <p class="card-text">My research interests include species distributions, phenology &amp; climate adaptation of ectotherms.</p>
       <ul class="network-icon" aria-hidden="true">
   
@@ -822,6 +830,23 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
     <li>
       <a href="https://twitter.com/jacintakong" target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://ecoevo.social/@jacintakong" target="_blank" rel="noopener">
+        <i class="fab fa-mastodon"></i>
       </a>
     </li>
   
@@ -884,6 +909,21 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
 
 
 
+
+<div class="article-widget">
+  
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/post/knitting-an-interactive-document/" rel="prev">Knitting an interactive document</a>
+  </div>
+  
+</div>
+
+</div>
 
 
 
@@ -1014,7 +1054,7 @@ tl;dr I made an rmarkdown template for an exam paper using LaTeX."><meta propert
     
     
     
-    <script src="/js/academic.min.b0eb497f925b52e879cdcf74e986d3a7.js"></script>
+    <script src="/js/academic.min.ac80aef1645b04773bb960ab12539497.js"></script>
 
     
 

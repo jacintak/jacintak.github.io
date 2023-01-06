@@ -8,6 +8,14 @@
   icon_pack = "fab"
   icon = "twitter"
   enable = true
+  
+[[buttons]]
+  id = "mastodon"
+  url = "https://ecoevo.social/share?url={url}&text={title}"
+  title = "Mastodon [ecoevo.social]"
+  icon_pack = "fab"
+  icon = "mastodon"
+  enable = true
 
 [[buttons]]
   id = "facebook"

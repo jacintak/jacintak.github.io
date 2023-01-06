@@ -9,7 +9,7 @@ tags:
 - R stats
 - code
 subtitle: ''
-summary: ''
+summary: 'Make an exam paper (with optional solutions) in R Studio with R code and LaTeX {exam}'
 authors: []
 lastmod: 
 featured: no
@@ -24,50 +24,49 @@ projects: [biostats-tutorials]
 
 Happy New Year! 2022's holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the `rmarkdown` environment so I wanted to familiarize myself with its more advanced typesetting features. 
 
-If you're thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).
+If you're thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended) to play with.
 
-> tl;dr I made an `rmarkdown` template for an exam paper using LaTeX. It supports R code chunks and shows or hides the answers.
+> tl;dr I made an `rmarkdown` template for an exam paper using LaTeX {exam}. It supports R code chunks and shows or hides the answers.
 
 ## Accessing the template
 You need to be able to create PDFs with `rmarkdown` (pandoc and LaTeX). `rmarkdown` templates need to be housed within a package.
 
  * If you don't want to create your own R package, the template can be downloaded ready to use via the package `biostats.tutorials` on my [GitHub](https://github.com/jacintak/biostats-tutorials)
- * You can get the files to add to your own package from the [gist](https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830)
+ * You can get the files to add to your own package from the [Gist](https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830)
+ 
+When you have the templates installed, you should be able to see them listed when you create a an R markdown document from template.
  
 ## LaTeX {exam}
 
-LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or adding marks. It's pretty straightforward to get a basic template set up by following the documentation.
+LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or showing mark allocations. It's pretty straightforward to get a basic template set up by following the documentation.
 
-This is fine if you are working purely in LaTeX and a TeX editor. **But** it doesn't work with R. R would be pretty important if for example you wanted a data analysis type exam.
-
-Of course, you could typeset an exam in `rmarkdown` with a more generic document class but you miss out on the more specific functions.
+This option is fine if you are working purely in LaTeX and a TeX editor. **But** it doesn't work with R. R would be pretty important if for example you wanted to integrate R output. Of course, you could typeset an exam in `rmarkdown` with a more generic document class but you miss out on the more specific functions.
 
 ***
 
 # Rmarkdown & LaTeX
 
-There's a lot of technical information to gloss over but there are three general ways to use LaTeX with `rmarkdown.` Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code and with optional answers.
+There's a lot of technical information to gloss over but there are three general ways to use LaTeX with `rmarkdown`. Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code that's able to also show the answers.
 
 ## 1. Rnw
 
 An Rnw (Sweave) file is a LaTeX file that supports R code. Meaning rather than a document written in markdown with code chunks and some LaTeX, you have a document written in LaTeX with code chunks and no markdown. Knitting proceeds as normal - be sure to change your setting from Sweave to knitr for Rnw files in your global settings.
 
-I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX if not your strong point.
+I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX is not your strong suit.
 
 ## 2. TeX template
 
-Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and utilising LaTeX to the best of its ability but involving Pandoc makes the behind-the-scenes workflow more complex. And I don't know anything about TeX templates.
+Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and using LaTeX to the best of its ability. But involving Pandoc makes the behind-the-scenes workflow more complex, such as specifying to LaTeX how Pandoc creates bulleted lists. And I don't know anything about TeX templates.
 
 The bookdown handbook recommends to start from the original Pandoc LaTeX template but I could not get the template to work out of the box from GitHub. Something about not knowing what to do with plots. 
 
-Once you have the template you can call it in the YAML like:
+There are lots of templates out there that don't necessarily use {exam} that you could use. Once you have the template you can call it in the YAML like:
 
 ```
 output:
   pdf_document:
     template: template.tex
 ```
-There are lots of exam templates out there that don't necessarily use {exam}, which may work.
 
 ## 3. Preambles
 

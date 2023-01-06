@@ -24,9 +24,9 @@ design:
     text_color_light: true
 ---
   
-At Trinity College Dublin, I teach Animal Diversity I (ZOU33003, third year, ~35 students, 5 credits), Animal Diversity II (ZOU33004, third year, ~35 students, 5 credits), and Statistics and Computation (BYU22S01, second year, ~250 students, 5 credits). My teaching integrates hands-on experiences through practicals with lectures.  
+At Trinity College Dublin, I taught Animal Diversity I (ZOU33003, third year, ~35 students, 5 credits), Animal Diversity II (ZOU33004, third year, ~35 students, 5 credits), and Statistics and Computation (BYU22S01, second year, ~250 students, 5 credits). My teaching integrates hands-on experiences through practicals with lectures.  
 
-## Blog posts
+## Blog posts (external)
 
 * [Links for teaching zoology online](https://jacintakongresearch.wordpress.com/2020/05/19/online-resources-for-teaching-zoology/)
 * [Links for teaching biostatistics](https://jacintakongresearch.wordpress.com/2020/06/15/links-about-teaching-statistics-for-biologists/)

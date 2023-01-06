@@ -23,43 +23,42 @@
 &lt;div id=&#34;latex-the-final-fontier&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;LaTeX: The final fontier&lt;/h1&gt;
 &lt;p&gt;Happy New Year! 2022’s holiday blog post is brought to you by the letters LaTeX. I do not use LaTeX outside the &lt;code&gt;rmarkdown&lt;/code&gt; environment so I wanted to familiarize myself with its more advanced typesetting features.&lt;/p&gt;
-&lt;p&gt;If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended).&lt;/p&gt;
+&lt;p&gt;If you’re thinking of typesetting a manuscript, then this is not the post for you. I used an exam as the example (pun not intended) to play with.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;tl;dr I made an &lt;code&gt;rmarkdown&lt;/code&gt; template for an exam paper using LaTeX. It supports R code chunks and shows or hides the answers.&lt;/p&gt;
+&lt;p&gt;tl;dr I made an &lt;code&gt;rmarkdown&lt;/code&gt; template for an exam paper using LaTeX {exam}. It supports R code chunks and shows or hides the answers.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div id=&#34;accessing-the-template&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Accessing the template&lt;/h2&gt;
 &lt;p&gt;You need to be able to create PDFs with &lt;code&gt;rmarkdown&lt;/code&gt; (pandoc and LaTeX). &lt;code&gt;rmarkdown&lt;/code&gt; templates need to be housed within a package.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;If you don’t want to create your own R package, the template can be downloaded ready to use via the package &lt;code&gt;biostats.tutorials&lt;/code&gt; on my &lt;a href=&#34;https://github.com/jacintak/biostats-tutorials&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;You can get the files to add to your own package from the &lt;a href=&#34;https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830&#34;&gt;gist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;You can get the files to add to your own package from the &lt;a href=&#34;https://gist.github.com/jacintak/71c9978cc5b3d9a2c1b8f82403a31830&#34;&gt;Gist&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;When you have the templates installed, you should be able to see them listed when you create a an R markdown document from template.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;latex-exam&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;LaTeX {exam}&lt;/h2&gt;
-&lt;p&gt;LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or adding marks. It’s pretty straightforward to get a basic template set up by following the documentation.&lt;/p&gt;
-&lt;p&gt;This is fine if you are working purely in LaTeX and a TeX editor. &lt;strong&gt;But&lt;/strong&gt; it doesn’t work with R. R would be pretty important if for example you wanted a data analysis type exam.&lt;/p&gt;
-&lt;p&gt;Of course, you could typeset an exam in &lt;code&gt;rmarkdown&lt;/code&gt; with a more generic document class but you miss out on the more specific functions.&lt;/p&gt;
+&lt;p&gt;LaTeX has a document type called {exam} that contains helper functions for typesetting an exam. For example, defining questions, solutions, or showing mark allocations. It’s pretty straightforward to get a basic template set up by following the documentation.&lt;/p&gt;
+&lt;p&gt;This option is fine if you are working purely in LaTeX and a TeX editor. &lt;strong&gt;But&lt;/strong&gt; it doesn’t work with R. R would be pretty important if for example you wanted to integrate R output. Of course, you could typeset an exam in &lt;code&gt;rmarkdown&lt;/code&gt; with a more generic document class but you miss out on the more specific functions.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;rmarkdown-latex&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Rmarkdown &amp;amp; LaTeX&lt;/h1&gt;
-&lt;p&gt;There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with &lt;code&gt;rmarkdown.&lt;/code&gt; Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code and with optional answers.&lt;/p&gt;
+&lt;p&gt;There’s a lot of technical information to gloss over but there are three general ways to use LaTeX with &lt;code&gt;rmarkdown&lt;/code&gt;. Each way has its advantages and disadvantages to achieve our desired outcome: a nicely formatted exam template with R code that’s able to also show the answers.&lt;/p&gt;
 &lt;div id=&#34;rnw&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;1. Rnw&lt;/h2&gt;
 &lt;p&gt;An Rnw (Sweave) file is a LaTeX file that supports R code. Meaning rather than a document written in markdown with code chunks and some LaTeX, you have a document written in LaTeX with code chunks and no markdown. Knitting proceeds as normal - be sure to change your setting from Sweave to knitr for Rnw files in your global settings.&lt;/p&gt;
-&lt;p&gt;I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX if not your strong point.&lt;/p&gt;
+&lt;p&gt;I found this to be the second best option and a decent alternative to my best option. It produces the desired outcome using {exam} provided the R code is relatively simple. However, your document will be very TeX heavy so avoid it if TeX is not your strong suit.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tex-template&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;2. TeX template&lt;/h2&gt;
-&lt;p&gt;Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and utilising LaTeX to the best of its ability but involving Pandoc makes the behind-the-scenes workflow more complex. And I don’t know anything about TeX templates.&lt;/p&gt;
+&lt;p&gt;Another one for advanced TeX users. This way you make your own template that Pandoc uses to generate the PDF. However, this template seems to override the Pandoc template so you need a complete template with all the bells and whistles. This is probably the better option in terms of customisation and using LaTeX to the best of its ability. But involving Pandoc makes the behind-the-scenes workflow more complex, such as specifying to LaTeX how Pandoc creates bulleted lists. And I don’t know anything about TeX templates.&lt;/p&gt;
 &lt;p&gt;The bookdown handbook recommends to start from the original Pandoc LaTeX template but I could not get the template to work out of the box from GitHub. Something about not knowing what to do with plots.&lt;/p&gt;
-&lt;p&gt;Once you have the template you can call it in the YAML like:&lt;/p&gt;
+&lt;p&gt;There are lots of templates out there that don’t necessarily use {exam} that you could use. Once you have the template you can call it in the YAML like:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;output:
   pdf_document:
     template: template.tex&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There are lots of exam templates out there that don’t necessarily use {exam}, which may work.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;preambles&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;3. Preambles&lt;/h2&gt;
@@ -751,31 +750,26 @@ Info!
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;student_number&lt;/td&gt;
-&lt;td&gt;numeric&lt;/td&gt;
-&lt;td&gt;your student number&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
 &lt;td&gt;total_time&lt;/td&gt;
 &lt;td&gt;numeric&lt;/td&gt;
 &lt;td&gt;in minutes&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td&gt;prey_density&lt;/td&gt;
 &lt;td&gt;numeric&lt;/td&gt;
 &lt;td&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;replicate&lt;/td&gt;
 &lt;td&gt;numeric&lt;/td&gt;
 &lt;td&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td&gt;prey_eaten&lt;/td&gt;
 &lt;td&gt;numeric&lt;/td&gt;
 &lt;td&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;foraging_strategy&lt;/td&gt;
 &lt;td&gt;character&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;no_lid&lt;/code&gt; for no lid or &lt;code&gt;yes_lid&lt;/code&gt; for a jar with a lid&lt;/td&gt;
@@ -3120,13 +3114,14 @@ exams2blackboard(file = myexam, n = 10, name = &amp;#39;Jacinta&amp;#39;, dir = 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/project/biostats-tutorials/</guid>
       <description>
-&lt;script src=&#34;https://jacintak.github.io/project/biostats-tutorials/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;biostats.tutorials&lt;/code&gt; is an &lt;code&gt;R&lt;/code&gt; package of &lt;code&gt;learnr&lt;/code&gt; tutorials for introductory biostatistics and &lt;code&gt;R&lt;/code&gt; at an undergraduate level.&lt;/p&gt;
-&lt;p&gt;The package is still in development so stay tuned for updates. You can checkout various tutorials about using R for NERD club (postgraduates and staff) at Trinity College Dublin &lt;a href=&#34;https://jacintak.github.io/project/NERD-club/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The package is still in development so stay tuned for updates.&lt;/p&gt;
+&lt;p&gt;You can check out a &lt;code&gt;learnr&lt;/code&gt; package for practicals on statistical modelling and functional responses &lt;a href=&#34;https://jacintak.github.io/project/statistical-modelling/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can check out various tutorials about using R for NERD club (postgraduates and staff) at Trinity College Dublin &lt;a href=&#34;https://jacintak.github.io/project/NERD-club/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

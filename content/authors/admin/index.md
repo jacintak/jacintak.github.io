@@ -26,7 +26,7 @@ name: Jacinta Kong
 organizations:
 - name: Carleton University
   url: "https://jacintak.github.io"
-role: Postdoctoral Researcher
+role: Postdoctoral Fellow
 social:
 - icon: envelope
   icon_pack: fas
@@ -34,6 +34,9 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/jacintakong
+- icon: mastodon
+  icon_pack: fab
+  link: https://ecoevo.social/@jacintakong
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=637pv-sAAAAJ&hl=en

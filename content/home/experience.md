@@ -40,7 +40,7 @@ date_format = "Jan 2006"
 
 
 [[experience]]
-  title = "Postdoctoral Researcher"
+  title = "Postdoctoral Fellow"
   company = "Carleton University"
   company_url = ""
   location = "Canada"

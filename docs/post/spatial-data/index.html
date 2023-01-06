@@ -496,7 +496,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -576,10 +576,9 @@
 
     <div class="article-style">
       
-<script src="https://jacintak.github.io/post/spatial-data/index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version can be found on the <a href="project/NERD-club/">Project</a> page.</p>
+<p>NB: This was originally a tutorial given to Space Lunch members on 6th October 2021. This is an adapted version. The original version, which uses a marine example, can be found on the <a href="project/NERD-club/">Project</a> page.</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>This is going to be an introduction to a simple workflow for spatial data in R using rasters. I will assume you have some basic knowledge about spatial analyses and co-ordinate systems. This is not meant to be a documentation of the full suite of spatial analysis available in R. Some simple ways of plotting data is covered.</p>
@@ -587,7 +586,7 @@
 <ul>
 <li>Each grid cell contains a single value. E.g. temperature, elevation, species richness</li>
 <li>Often stored in three dimensions (e.g. latitude, longitude and time).</li>
-<li>The main <code>R</code> package for handling rasters is <code>raster</code>. It’s a base package.</li>
+<li>The main <code>R</code> package for handling rasters is <code>raster</code>.</li>
 </ul>
 <p>We will consider a common workflow of associating rasters with spatial point data (e.g. lat and long).
 I will be sticking to base R throughout.</p>
@@ -604,6 +603,8 @@ I will be sticking to base R throughout.</p>
 <pre class="r"><code>library(raster)</code></pre>
 <pre><code>## Loading required package: sp</code></pre>
 <pre class="r"><code>temp &lt;- getData(&quot;worldclim&quot;,var=&quot;bio&quot;,res=10)</code></pre>
+<pre><code>## Warning in getData(&quot;worldclim&quot;, var = &quot;bio&quot;, res = 10): getData will be removed in a future version of raster
+## . Please use the geodata package instead</code></pre>
 </div>
 <div id="subsetting-rasters" class="section level2">
 <h2>Subsetting rasters</h2>
@@ -652,12 +653,13 @@ Figure 3: That’s much much better
 <ul>
 <li>You need the unique identification key for the species you want. <code>name_suggest</code> can help with that so you don’t have to manually search GBIF.</li>
 <li>The data comes as a list with some metadata. <code>.$data</code> is the actual occurrence records. The dot <code>.</code> is a placeholder meaning it represents an R variable (e.g. a dataframe). This is commonly used in <code>tidyverse</code> and piping via <code>magrittr</code>. It is also a cheat’s way of using base functions within a pipe.</li>
-<li>Co-ordinates are stored as <code>decimalLatitude</code> and <code>decimalLongitude</code>. I’ve removed any missing values.</li>
+<li>Co-ordinates are stored as <code>decimalLatitude</code> and <code>decimalLongitude</code>. I’ve removed any missing values manually but <code>occ_search</code> has a variable called <code>hasCoordinate</code> to return records with lat/long data.</li>
+<li><code>rgbif</code> gets a max 500 records each time by default (<code>limit</code>). Use <code>page</code> to denote which record number to start at.</li>
 </ul>
 <pre class="r"><code>library(rgbif)
 # get ID key for bird
 bird_key &lt;- name_suggest(q =&quot;Passer domesticus&quot;, rank=&#39;species&#39;)$data$key[1]
-# get occurence points
+# get occurrence points
 bird_points &lt;- occ_search(taxonKey = bird_key) # Get all records, max 500 (see variable limit)
 # exclude metadata
 bird_points &lt;- bird_points$data
@@ -673,7 +675,7 @@ title(main = &quot;The distribution of house sparrow&quot;) # plot title
 points(decimalLatitude ~ decimalLongitude, bird_points, pch = 16, col = 2) # plot points
 legend(x = -150, y= -50, legend = &quot;occurence&quot;, pch = 16, col = 2, bty = &quot;n&quot;)</code></pre>
 <p><img src="https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>We see that points come mainly from around northern Europe.</p>
+<p>We see that the 500 points from GBIF come mainly from around northern Europe. Here is a good point to check for sampling bias of points or any potential erroneous points - I will ignore this step for this demonstration.</p>
 <p>For more advanced mapping in R check out <code>ggmaps</code>, which can interface with Open Street Maps (free) and Google Maps (for a fee), and <code>osmdata</code>, which interfaces directly with OSM and allows you to customise which features to include - check out the related tutorial about mapping cities in R in the Space Club folder or <a href="https://jacintak.github.io/post/2021-07-01-OSM-in-R/">online</a>.</p>
 <hr />
 </div>
@@ -693,7 +695,7 @@ Figure 4: The distribution of sparrows with mean annual temperature
 <hr />
 <div id="what-range-of-temperatures-do-house-sparrows-live-in" class="section level2">
 <h2>What range of temperatures do house sparrows live in?</h2>
-<p>We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is <code>raster::extract</code>. The same can be used within <code>tidyverse</code> via <code>mutate</code>.</p>
+<p>We can use our new species distribution points to query the raster and extract values corresponding with the occurrence points. The function to query a raster is <code>raster::extract</code>. The same can be used within <code>tidyverse::mutate</code>.</p>
 <pre class="r"><code># Get temp
 temps &lt;- extract(temp, SpatialPoints(cbind(bird_points$decimalLongitude, bird_points$decimalLatitude)), method = &quot;bilinear&quot;)
 # Add new column
@@ -706,7 +708,7 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
 <p>Now we can plot the distribution of temperatures:</p>
 <pre class="r"><code>hist(bird_temps$temps, main = &quot;Temperature distribution of house sparrows&quot;)</code></pre>
 <p><img src="https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>We can see they live between -2.7 and 11.6 °C.</p>
+<p>We can see they live between -2.7 and 8.2 °C, which here reflects the fact that all the points were sampled from northern Europe.</p>
 <p>Finally, we can plot the relationship between temperature and latitude:</p>
 <pre class="r"><code>plot(temps ~ decimalLatitude, bird_temps, pch = 16)</code></pre>
 <p><img src="https://jacintak.github.io/post/spatial-data/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
@@ -745,6 +747,19 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
       <li>
         <a href="https://twitter.com/intent/tweet?url=https://jacintak.github.io/post/spatial-data/&amp;text=An%20introduction%20to%20spatial%20data%20in%20R" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://ecoevo.social/share?url=https://jacintak.github.io/post/spatial-data/&amp;text=An%20introduction%20to%20spatial%20data%20in%20R" target="_blank" rel="noopener" class="share-btn-mastodon">
+          <i class="fab fa-mastodon"></i>
         </a>
       </li>
     
@@ -822,7 +837,7 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
 
     <div class="media-body">
       <h5 class="card-title"><a href="https://jacintak.github.io/">Jacinta Kong</a></h5>
-      <h6 class="card-subtitle">Postdoctoral Researcher</h6>
+      <h6 class="card-subtitle">Postdoctoral Fellow</h6>
       <p class="card-text">My research interests include species distributions, phenology &amp; climate adaptation of ectotherms.</p>
       <ul class="network-icon" aria-hidden="true">
   
@@ -855,6 +870,23 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
     <li>
       <a href="https://twitter.com/jacintakong" target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://ecoevo.social/@jacintakong" target="_blank" rel="noopener">
+        <i class="fab fa-mastodon"></i>
       </a>
     </li>
   
@@ -917,6 +949,28 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
 
 
 
+
+<div class="article-widget">
+  
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/post/2021-11-01-gifs-in-r/" rel="next">Gifs keep on giving</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/post/purrr/" rel="prev">Beyond the valley of intermediate competence</a>
+  </div>
+  
+</div>
+
+</div>
 
 
 
@@ -1047,7 +1101,7 @@ bird_temps &lt;- bird_temps[!is.na(bird_temps$temps),]</code></pre>
     
     
     
-    <script src="/js/academic.min.b0eb497f925b52e879cdcf74e986d3a7.js"></script>
+    <script src="/js/academic.min.ac80aef1645b04773bb960ab12539497.js"></script>
 
     
 

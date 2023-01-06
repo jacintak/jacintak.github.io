@@ -90,7 +90,7 @@ phone = ""
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "", city = "Carleton University", region = "Ottawa", postcode = "", country = "Canada", country_code = "CA"}
+address = {street = "Department of Biology", city = "Carleton University", region = "Ottawa", postcode = "", country = "Canada", country_code = "CA"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
@@ -153,7 +153,7 @@ main_menu = {align = "l", show_logo = true}
 reading_time = true
 
 # Display next/previous section pager? (true/false)
-section_pager = false
+section_pager = true
 docs_section_pager = true  # Display pager in Docs layout (e.g. tutorials)?
 
 # Enable in-built social sharing buttons? (true/false)
@@ -171,15 +171,15 @@ plugins_js  = []
 
 # Available address formats.
 [address_formats]
-  en-us = {order = ['street', 'city', 'region', 'postcode'], delimiters = [', ', ', ', ' ', '']}
-  en-gb = {order = ['street', 'city', 'region', 'postcode'], delimiters = [', ', ', ', ', ', '']}
+  en-us = {order = ['street', 'city', 'region', 'country', 'postcode'], delimiters = [', ', ', ', ' ', '']}
+  en-gb = {order = ['street', 'city', 'region', 'country', 'postcode'], delimiters = [', ', ', ', ', ', '']}
   de = {order = ['street', 'postcode', 'city'], delimiters = [', ', ' ', '']}
   fr-fr = {order = ['street', 'postcode', 'city'], delimiters = ['<br>', ' ', '']}
   zh = {order = ['postcode', 'region', 'city', 'street'], delimiters = [' ', ' ', ' ', '']}
 
 # Configuration of publication pages.
 [publications]
-  # Date format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
+  # Date format (refer to https://sourcethemes.com/academic/docs/customization/#date-format)
   #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
   date_format = "January 2006"
 
