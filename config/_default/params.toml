@@ -85,7 +85,7 @@ edit_page = {repo_url = "https://github.com/jacintak/jacintak.github.io", conten
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "JacintaKong@cunet.carleton.ca"
+email = "jacinta.kong@carleton.ca"
 phone = ""
 
 # Address

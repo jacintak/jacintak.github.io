@@ -30,7 +30,7 @@ role: Postdoctoral Fellow
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:JacintaKong@cunet.carleton.ca'
+  link: 'mailto:jacinta.kong@carleton.ca'
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/jacintakong
