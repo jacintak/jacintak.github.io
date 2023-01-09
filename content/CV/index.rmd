@@ -20,6 +20,11 @@ links:
 
 Last updated `r format(Sys.Date(), '%d %B %Y')`
 
+**Contact**  
+[Website](https://jacintak.github.io)  
+E-mail: jacinta.kong@carleton.ca  
+@jacintakong on <a rel="me" href="https://ecoevo.social/@jacintakong">Mastodon</a> and [Twitter](https://twitter.com/jacintakong)
+
 ***
 
 # Research and teaching appointments

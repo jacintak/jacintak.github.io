@@ -14,7 +14,7 @@ education:
   - course: BSc in Ecology & Zoology
     institution: University of Queensland, Australia
     year: 2012
-email: "JacintaKong@cunet.carleton.ca"
+email: "jacinta.kong@carleton.ca"
 
 interests:
 - Ecological & evolutionary physiology
