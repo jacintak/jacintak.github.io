@@ -25,7 +25,7 @@ interests:
 name: Jacinta Kong
 organizations:
 - name: Carleton University
-  url: "https://jacintak.github.io"
+  url: "http://macmillanlab.com/research"
 role: Postdoctoral Fellow
 social:
 - icon: envelope

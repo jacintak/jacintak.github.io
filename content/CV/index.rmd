@@ -114,8 +114,8 @@ Conferred 17.12.2012
 
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i> [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl)  
-H-index: 4 (GS)  
-Total citations: 101  
+H-index: 5 (GS)  
+Total citations: 105  
 
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
     * **Science**: 20 News outlets, 1 blog, 86 tweeters. Altmetric score: 212

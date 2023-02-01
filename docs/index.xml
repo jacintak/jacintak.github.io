@@ -5,12 +5,76 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>R exams template</title>
+      <link>https://jacintak.github.io/post/r-exams-template/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/post/r-exams-template/</guid>
+      <description>
+
+
+&lt;div id=&#34;pdf-exams-in-r-with-exams&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;PDF exams in R with &lt;code&gt;exams&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;post/latex-exam-template/index.html&#34;&gt;Last month&lt;/a&gt; I described a way of creating PDF exam papers that integrate R code. This method used LaTeX to typeset a document with the document class {exam}. This way you could leverage the beautiful advantages of LaTeX within the R markdown environment.&lt;/p&gt;
+&lt;p&gt;There is an another way of creating PDF exam papers with R code in R markdown I didn’t mention! The R package &lt;code&gt;exams&lt;/code&gt; has a function &lt;code&gt;exams2pdf&lt;/code&gt; that will create a PDF exam sheet (and solutions!) for you using the &lt;code&gt;exams&lt;/code&gt; workflow. I’ve written about &lt;code&gt;exams&lt;/code&gt; &lt;a href=&#34;teaching/rexams/index.html&#34;&gt;before&lt;/a&gt;. Check it out if you need an introduction to the package. The package is pretty handy but quite technical. I use the package to create randomised MCQ tests for Blackboard.&lt;/p&gt;
+&lt;p&gt;The advantages of the &lt;code&gt;exams&lt;/code&gt; workflow is that the content is dynamic and it’s easy to randomise the questions and their content. The questions I use to create a Blackboard test can be used to create a paper test. The disadvantage is that the questions are limited to the types that &lt;code&gt;exams&lt;/code&gt; supports, which is great for MCQ but not for short answer or essays. For short answer exams, you’re better off using LaTeX.&lt;/p&gt;
+&lt;p&gt;The default settings/examples of &lt;code&gt;exams2pdf&lt;/code&gt; are not that helpful to deploy an exam right away. There is a TeX template with basic features but that is for demonstration only. Here’s what you need to change to generate a more usable exam sheet with a cover page, an answer page, and customized headers. I’m assuming that you have a bank of questions ready to go.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;modifying-the-tex-template&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Modifying the TeX template&lt;/h1&gt;
+&lt;p&gt;You can save a copy of the template from &lt;code&gt;exams&lt;/code&gt; in your working directory and start from that. The question and the solution sheet have different templates called exam and solution, respectively.&lt;br /&gt;
+Alternatively, my resulting TeX templates (and script) are on &lt;a href=&#34;https://gist.github.com/jacintak/2943f10e4f80f27c93f4044b9086a8be&#34;&gt;Gist&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Aside from minor aesthetics like changing text, I’ve made two major modifications to the default template:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Allowing a user-defined class name as the title of the exam (called &lt;code&gt;Class&lt;/code&gt;). In LaTeX this is the variable &lt;code&gt;\myClass&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Placed the answer sheet on a new page. The original had it on the cover sheet but if you have a lot of questions then it spans two pages.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-r-script&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The R script&lt;/h1&gt;
+&lt;p&gt;The R script to generate the exam is simple: get a list of questions then run &lt;code&gt;exams2pdf&lt;/code&gt; with the right variables. Here is the script (also on &lt;a href=&#34;https://gist.github.com/jacintak/2943f10e4f80f27c93f4044b9086a8be&#34;&gt;Gist&lt;/a&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Creates PDF exam 
+# Write questions as Rmd, use latex symbols instead of HTML
+
+# get files as list from directory. Could pool questions as well.
+questions &amp;lt;- as.list(list.files(&amp;quot;&amp;lt;directory&amp;gt;&amp;quot;,
+                                pattern = &amp;quot;*.Rmd&amp;quot;,
+                                full.names = TRUE))
+
+exams::exams2pdf(questions,
+                 # list of questions
+                 n = 10,
+                 # Number of unique copies
+                 template = c(&amp;quot;PDF template/exam&amp;quot;, &amp;quot;PDF template/solution&amp;quot;),
+                 # Use template
+                 name = c(&amp;quot;Blank&amp;quot;, &amp;quot;Answer&amp;quot;),
+                 # Give names to files
+                 dir = &amp;quot;&amp;lt;output directory&amp;gt;&amp;quot;,
+                 # Location to save files
+                 header = list(Date = &amp;quot;2023-02-01&amp;quot;,
+                               ID = &amp;quot;Code2023&amp;quot;,
+                               Class = &amp;quot;Stats&amp;quot;)
+                 # Exam information
+                 )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Most variables are the same if you’ve used &lt;code&gt;exams&lt;/code&gt; before. The key differences are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template&lt;/code&gt;: the address of your modified TeX files. If blank, then the default package one is used which shows the answers and solutions - not very useful. Using &lt;code&gt;c(&#34;exam&#34;, &#34;solution&#34;)&lt;/code&gt; will use the default package ones - also not very useful.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: This is a vector of file names. You need two names because this script is going to generate two versions of the exam: the blank question sheet and the solution.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;header&lt;/code&gt;: These are variables passed to LaTeX to fill in the corresponding fields on the document. Date, class ID and class name can be changed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now you are ready to print the files!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>LaTeX exam templates with R &amp; Rmarkdown</title>
@@ -4739,7 +4803,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 09 January 2023&lt;/p&gt;
+&lt;p&gt;Last updated 01 February 2023&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://jacintak.github.io&#34;&gt;Website&lt;/a&gt;&lt;br /&gt;
 E-mail: &lt;a href=&#34;mailto:jacinta.kong@carleton.ca&#34; class=&#34;email&#34;&gt;jacinta.kong@carleton.ca&lt;/a&gt;&lt;br /&gt;
@@ -4826,8 +4890,8 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;h1&gt;Research highlights&lt;/h1&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-orcid&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://orcid.org/0000-0002-1085-8612&#34;&gt;ORCID&lt;/a&gt;&lt;br /&gt;
 &lt;i class=&#34;ai ai-google-scholar&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://scholar.google.com/citations?user=637pv-sAAAAJ&amp;amp;hl&#34;&gt;Google scholar&lt;/a&gt;&lt;br /&gt;
-H-index: 4 (GS)&lt;br /&gt;
-Total citations: 101&lt;/p&gt;
+H-index: 5 (GS)&lt;br /&gt;
+Total citations: 105&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;High attention papers in the top 5% of all research outputs scored by Altmetric:
 &lt;ul&gt;

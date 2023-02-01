@@ -46,7 +46,7 @@ date_format = "Jan 2006"
   location = "Canada"
   date_start = "2023-01-16"
   date_end = ""
-  description = "NSERC-Mitacs funded position"
+  description = "Manipulating diet and rearing context for improving insect farming yields. NSERC Alliance-Mitacs Accelerate postdoctoral fellowship in partnership with Entomo Farms."
   
 [[experience]]
   title = "Teaching and Research Fellow"
