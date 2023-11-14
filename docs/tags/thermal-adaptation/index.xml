@@ -5,12 +5,23 @@
     <link>https://jacintak.github.io/tags/thermal-adaptation/</link>
       <atom:link href="https://jacintak.github.io/tags/thermal-adaptation/index.xml" rel="self" type="application/rss+xml" />
     <description>thermal adaptation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>thermal adaptation</title>
       <link>https://jacintak.github.io/tags/thermal-adaptation/</link>
     </image>
+    
+    <item>
+      <title>Insect farming for food and feed</title>
+      <link>https://jacintak.github.io/project/insect-farming/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/insect-farming/</guid>
+      <description>&lt;p&gt;The global demand for protein is expected to increase wth a growing population. Current farming practices are expected to fall short of meeting this demand. The problem is to find alternative sources of protein that can scale with a growing global population, while also being sustainable and space-efficient. Insect farming is a promising solution to provide a sustainable source of protein. The challenge is to improve the scalability and output of farming operations to continue to meet the growing demand for alternative protein.&lt;/p&gt;
+&lt;p&gt;One way to improve the output of a farm is to increase the yield of a harvest. To this end, the life history traits of an insect, as well as the biotic and abiotic conditions of the farm form avenues of exploration to increase yield through experimental manipulation of these variables. This project will quantify how changes in biotic and abiotic conditions affect farming output, identify optimal values that maximise yield, and evaluate how to translate experiments to a farm. These results will inform farming practices for a growing population.&lt;/p&gt;
+&lt;p&gt;This is a NSERC-Mitacs Alliance grant awarded to Heath MacMillan and Sue Bertram at Carleton University.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Parthenogenesis without costs in a grasshopper with hybrid origins</title>
@@ -35,7 +46,7 @@
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation yet many temperature-dependent traits show great diversity within and among species with direct consequences for how organisms respond to a warming climate.&lt;/p&gt;
 &lt;p&gt;To understand the effect of the temperature-dependence of biological rates shapes trends in physiological trait diversity, my colleages and I take a comparative approach on a macroecological scale using the non-linear relationship between biological rates and temperature as a null hypothesis.&lt;/p&gt;
 &lt;p&gt;We find that much variation in widely characterised critical temperature limits in ectotherms can be explained by the non-linear relationship between biological rates and temperature, acclimation temperature, and rates of heating. Theses results suggest that rising temperatures are not as detrimental to ectotherms as previously suggested and that ectotherms have unappreciated capabilities of responding to thermal variability, at least based on laboratory derived measures of thermal tolerance.&lt;/p&gt;
-&lt;p&gt;This is an Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
+&lt;p&gt;This is a Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
 </description>
     </item>
     

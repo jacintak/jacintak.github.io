@@ -5,12 +5,26 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 26 Aug 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>ICE 2024</title>
+      <link>https://jacintak.github.io/talk/ICE2024/</link>
+      <pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/ICE2024/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;accepting-abstracts&#34;&gt;Accepting abstracts&lt;/h1&gt;
+&lt;p&gt;I am organising a symposium on using physiology in insect mass-rearing practice at the International Congress of Entomology in Kyoto, Japan in 2024. We would be delighted if you joined us at the symposium and if you submitted an abstract to the symposium.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;symposium-description&#34;&gt;Symposium description&lt;/h1&gt;
+&lt;p&gt;Rearing insects en masse is crucial for numerous industries. Mass reared insects are used for releases related to pollination, disease control, conservation or pest management, and for food and feed production and waste processing. Physiological performance underpins the quantities and qualities of insects necessary for success in mass rearing programs. In turn, performance gains and deficits depend on biotic and abiotic factors like diet, temperature, social environments, and disease (e.g. viruses). We will connect experts working on various modulators of performance across as many applications as possible and showcase how insect physiology can be leveraged to optimise mass rearing.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>R exams template</title>
@@ -73,6 +87,17 @@ exams::exams2pdf(questions,
 &lt;/ul&gt;
 &lt;p&gt;Now you are ready to print the files!&lt;/p&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Insect farming for food and feed</title>
+      <link>https://jacintak.github.io/project/insect-farming/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/project/insect-farming/</guid>
+      <description>&lt;p&gt;The global demand for protein is expected to increase wth a growing population. Current farming practices are expected to fall short of meeting this demand. The problem is to find alternative sources of protein that can scale with a growing global population, while also being sustainable and space-efficient. Insect farming is a promising solution to provide a sustainable source of protein. The challenge is to improve the scalability and output of farming operations to continue to meet the growing demand for alternative protein.&lt;/p&gt;
+&lt;p&gt;One way to improve the output of a farm is to increase the yield of a harvest. To this end, the life history traits of an insect, as well as the biotic and abiotic conditions of the farm form avenues of exploration to increase yield through experimental manipulation of these variables. This project will quantify how changes in biotic and abiotic conditions affect farming output, identify optimal values that maximise yield, and evaluate how to translate experiments to a farm. These results will inform farming practices for a growing population.&lt;/p&gt;
+&lt;p&gt;This is a NSERC-Mitacs Alliance grant awarded to Heath MacMillan and Sue Bertram at Carleton University.&lt;/p&gt;
 </description>
     </item>
     
@@ -4694,7 +4719,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
       <description>&lt;p&gt;Temperature affects biological processes on many levels of biological organisation yet many temperature-dependent traits show great diversity within and among species with direct consequences for how organisms respond to a warming climate.&lt;/p&gt;
 &lt;p&gt;To understand the effect of the temperature-dependence of biological rates shapes trends in physiological trait diversity, my colleages and I take a comparative approach on a macroecological scale using the non-linear relationship between biological rates and temperature as a null hypothesis.&lt;/p&gt;
 &lt;p&gt;We find that much variation in widely characterised critical temperature limits in ectotherms can be explained by the non-linear relationship between biological rates and temperature, acclimation temperature, and rates of heating. Theses results suggest that rising temperatures are not as detrimental to ectotherms as previously suggested and that ectotherms have unappreciated capabilities of responding to thermal variability, at least based on laboratory derived measures of thermal tolerance.&lt;/p&gt;
-&lt;p&gt;This is an Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
+&lt;p&gt;This is a Science Foundation Ireland funded position with Nicholas Payne&lt;/p&gt;
 </description>
     </item>
     
@@ -4803,7 +4828,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 01 February 2023&lt;/p&gt;
+&lt;p&gt;Last updated 14 November 2023&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://jacintak.github.io&#34;&gt;Website&lt;/a&gt;&lt;br /&gt;
 E-mail: &lt;a href=&#34;mailto:jacinta.kong@carleton.ca&#34; class=&#34;email&#34;&gt;jacinta.kong@carleton.ca&lt;/a&gt;&lt;br /&gt;
@@ -5081,6 +5106,10 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;/div&gt;
 &lt;div id=&#34;community-outreach-and-communication&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Community outreach and communication&lt;/h1&gt;
+&lt;p&gt;2023&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interview on CBC Radio about effects of hot weather on insects. 2nd October.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;2022&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Chown SL, Hoffmann AA and Kearney MR. (2022) Reply to Adamo: No Signs of Pathogen Susceptibility in Warramaba virgo. Science. eLetter. DOI: &lt;a href=&#34;https://doi.org/10.1126/science.abm1072&#34;&gt;10.1126/science.abm1072&lt;/a&gt;.&lt;/li&gt;

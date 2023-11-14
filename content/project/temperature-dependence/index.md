@@ -28,4 +28,4 @@ To understand the effect of the temperature-dependence of biological rates shape
 
 We find that much variation in widely characterised critical temperature limits in ectotherms can be explained by the non-linear relationship between biological rates and temperature, acclimation temperature, and rates of heating. Theses results suggest that rising temperatures are not as detrimental to ectotherms as previously suggested and that ectotherms have unappreciated capabilities of responding to thermal variability, at least based on laboratory derived measures of thermal tolerance. 
 
-This is an Science Foundation Ireland funded position with Nicholas Payne
+This is a Science Foundation Ireland funded position with Nicholas Payne

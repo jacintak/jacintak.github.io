@@ -5,12 +5,26 @@
     <link>https://jacintak.github.io/talk/</link>
       <atom:link href="https://jacintak.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>Recent &amp; Upcoming Talks</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 19 Dec 2022 17:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 26 Aug 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Recent &amp; Upcoming Talks</title>
       <link>https://jacintak.github.io/talk/</link>
     </image>
+    
+    <item>
+      <title>ICE 2024</title>
+      <link>https://jacintak.github.io/talk/ICE2024/</link>
+      <pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/ICE2024/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;accepting-abstracts&#34;&gt;Accepting abstracts&lt;/h1&gt;
+&lt;p&gt;I am organising a symposium on using physiology in insect mass-rearing practice at the International Congress of Entomology in Kyoto, Japan in 2024. We would be delighted if you joined us at the symposium and if you submitted an abstract to the symposium.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;symposium-description&#34;&gt;Symposium description&lt;/h1&gt;
+&lt;p&gt;Rearing insects en masse is crucial for numerous industries. Mass reared insects are used for releases related to pollination, disease control, conservation or pest management, and for food and feed production and waste processing. Physiological performance underpins the quantities and qualities of insects necessary for success in mass rearing programs. In turn, performance gains and deficits depend on biotic and abiotic factors like diet, temperature, social environments, and disease (e.g. viruses). We will connect experts working on various modulators of performance across as many applications as possible and showcase how insect physiology can be leveraged to optimise mass rearing.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>BES 2022</title>

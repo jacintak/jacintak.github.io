@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jacintak.github.io/authors/admin/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/conference/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/ectotherms/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/talk/ICE2024/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/insect-farming/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/postdoc/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/talk/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/temperature/</loc>
+    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jacintak.github.io/categories/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -9,9 +45,6 @@
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/categories/code/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/post/</loc>
@@ -23,23 +56,20 @@
     <loc>https://jacintak.github.io/tags/R-stats/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/tags/teaching/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://jacintak.github.io/project/insect-farming/</loc>
+    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/project/</loc>
+    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/thermal-adaptation/</loc>
+    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jacintak.github.io/post/latex-exam-template/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/authors/admin/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/authors/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/authors/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/talk/BES2022/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
@@ -47,22 +77,7 @@
     <loc>https://jacintak.github.io/tags/comparative-analysis/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/conference/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/ectotherms/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/authors/N.-C.-Wu/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/postdoc/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/talk/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/temperature/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/publication_types/3/</loc>
@@ -100,9 +115,6 @@
   </url><url>
     <loc>https://jacintak.github.io/teaching/</loc>
     <lastmod>2022-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/project/</loc>
-    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/teaching/introR/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
@@ -144,9 +156,6 @@
     <lastmod>2022-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/S.-L.-Chown/</loc>
-    <lastmod>2022-06-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/thermal-adaptation/</loc>
     <lastmod>2022-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/thermal-response/</loc>
