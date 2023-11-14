@@ -34,7 +34,6 @@ At Trinity College Dublin, I taught Animal Diversity I (ZOU33003, third year, ~3
 ## BYU22S01 Statistics and Computation course notes
 
 * [Setting up R & RStudio](/teaching/introR)
-* Statistical modelling [notes](/teaching/GLM/lectures)
 * Practicals on statistical modelling using functional responses. Made in `learnr` - see [Project page](/project/statistical-modelling).
 
 ## Other
