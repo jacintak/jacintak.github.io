@@ -1,7 +1,7 @@
 ---
 title: "CV"
 subtitle: Jacinta D Kong
-output:
+output: 
   blogdown::html_page:
     toc: yes
 urlcolor: blue
@@ -29,7 +29,7 @@ E-mail: jacinta.kong@carleton.ca
 
 # Research and teaching appointments
 
- * Postdoctoral Fellow  
+ * NSERC-Mitacs Alliance Postdoctoral Fellow  
    Department of Biology, Carleton University, Canada 	
    1.2023 – Present
  * Teaching and Research Fellow  
@@ -114,16 +114,17 @@ Conferred 17.12.2012
 
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i> [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl)  
-H-index: 5 (GS)  
-Total citations: 105  
+H-index: 7 (GS)  
+Total citations: 142  
 
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
-    * **Science**: 20 News outlets, 1 blog, 86 tweeters. Altmetric score: 212
+    * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 222
     * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61
  * Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
-    * **Journal of Experimental Biology**. Altmetric score: 12
-    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 20
-    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 43
+    * **Methods in Ecology and Evolution**. Altmetric score: 20
+    * **Journal of Experimental Biology**. Altmetric score: 20
+    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 21
+    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 63
 
 I have peer reviewed for:
 
@@ -140,13 +141,16 @@ I have peer reviewed for:
  * Conservation Physiology
  * American Naturalist
  * Functional Ecology
+ * Physiological Entomology
+ * Journal of Evolutionary Biology
 
 ***
 
 # Research grants or awards
 
-**TOTAL: $13 750 AUD** :australia:
+**TOTAL: $22 205 AUD** :australia:
 
+ * **$7 500 CAD**. Summer 2023 NSERC-Mitacs Alliance Internship
  * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
 Equity Trustees Charitable Foundation & the Ecological Society of Australia
  * **$300 AUD**. 12.2018 	2nd runner up student presentation  
@@ -178,6 +182,8 @@ The University of Queensland Undergraduate Research Conference
 ***
 
 # Teaching contributions and course development
+
+I have developed several graduate level tutorials or teaching material for journal or coding clubs that I provide freely through my website or through my GitHub.
 
 Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
@@ -219,10 +225,15 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 # Conference presentations and invited talks
 
+2023
+
+ * Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, University of Queensland Gatton Campus, QLD, Australia
+
 2022  
 
+ * Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates^. Society for Experimental Biology Annual Meeting, Montpellier, France. ^presented by Nicholas Payne
  * Can we improve our ability to understand ectotherm thermal tolerance? Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October. Tvärminne Zoological Station, Finland. 
-  * Can we improve our ability to identify climate vulnerability in ectotherm life cycles? British Ecological Society Annual Meeting, Edinburgh, UK
+ * Can we improve our ability to identify climate vulnerability in ectotherm life cycles? British Ecological Society Annual Meeting, Edinburgh, UK
 
 2021
 
@@ -279,8 +290,10 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 # Professional service and affiliations
 
+ * 2023 – Present    Member: Society for Comparative and Integrative Biology (SICB)
+ * 2024 – Present    Member: Canadian Society of Zoologists (CSZ)
  * 2015 – Present 	Member: Australian and New Zealand Society for Comparative Physiology and Biochemistry (ANZSCPB)
- * 2019 – Present 	Member: British Ecological Society (BES) & Irish Ecological Association (IEA)
+ * 2019 – 2023 	Member: British Ecological Society (BES) & Irish Ecological Association (IEA)
  * 2018 	Member: Royal Society of Victoria (RSV)
  * 2017 – Present 	Member: Society for Experimental Biology (SEB)
  * 2015 – 2020 	Member: Australian Entomological Society (AES)
@@ -288,12 +301,19 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
  * 2017 – 2018 	President, BioSciences Postgraduate Society, the University of Melbourne
  * 2016 – 2017 	Vice President, BioSciences Postgraduate Society, the University of Melbourne
 
+ * Co-organiser of the Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October 2022. Tvärminne Zoological Station, Finland. 
+ * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30th August 2024. Kyoto, Japan
+
+I have mentored 2 undergraduate students, and 4 PhD students. 
+
 ***
 
 # Professional development qualifications
 
+ * 14 Feb 2024 Mitacs Course: Applying the principles of sound leadership and team building
+ * 29 Jan 2024 Mitacs Course: High performing leadership and teams
  * 26 Jan 2021 Epigeum Research Integrity Course
- * 19 Mar 2021 Dynamic Energy Budget Course
+ * 19 Mar 2021 Dynamic Energy Budget Course (online)
 
 ***
 

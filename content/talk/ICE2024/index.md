@@ -33,12 +33,8 @@ url_video: ""
 
 ***
 
-# Accepting abstracts
-
-I am organising a symposium on using physiology in insect mass-rearing practice at the International Congress of Entomology in Kyoto, Japan in 2024. We would be delighted if you joined us at the symposium and if you submitted an abstract to the symposium.
-
-***
-
 # Symposium description
+
+I am organising a symposium on using physiology in insect mass-rearing practice at the International Congress of Entomology in Kyoto, Japan in 2024.
 
 Rearing insects en masse is crucial for numerous industries. Mass reared insects are used for releases related to pollination, disease control, conservation or pest management, and for food and feed production and waste processing. Physiological performance underpins the quantities and qualities of insects necessary for success in mass rearing programs. In turn, performance gains and deficits depend on biotic and abiotic factors like diet, temperature, social environments, and disease (e.g. viruses). We will connect experts working on various modulators of performance across as many applications as possible and showcase how insect physiology can be leveraged to optimise mass rearing.
