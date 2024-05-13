@@ -148,8 +148,10 @@ I have peer reviewed for:
 
 # Research grants or awards
 
-**TOTAL: $22 205 AUD** :australia:
+**TOTAL: $13 750 AUD** :australia: and **$15 100 CAD** :canada:
 
+ * **$7 500 CAD**. Summer 2024 NSERC-Mitacs Alliance Internship
+ * **$100 CAD**. 4.2024 Canadian Society of Zoologists Travel Grant
  * **$7 500 CAD**. Summer 2023 NSERC-Mitacs Alliance Internship
  * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
 Equity Trustees Charitable Foundation & the Ecological Society of Australia
@@ -171,6 +173,7 @@ The University of Queensland Undergraduate Research Conference
 
 ## Other Awards and Scholarships
 
+ * 2024 Finalist. President’s Award, Canadian Society of Zoologists Annual Meeting
  * **$13 541 AUD**. 2018 	Research Training Program Scholarship, Australian Government
  * **$26 682 AUD**. 2017 	Research Training Program Scholarship, Australian Government
  * **$200 AUD**. 2017 	Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne
@@ -224,6 +227,13 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 ***
 
 # Conference presentations and invited talks
+
+Presented by Jacinta unless otherwise stated.
+
+2024
+
+ * Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Canadian Society of Zoologists Annual Meeting, Moncton, New Brunswick, Canada
+ * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. International Congress of Entomology, Kyoto, Japan. Poster
 
 2023
 
@@ -302,7 +312,8 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
  * 2016 – 2017 	Vice President, BioSciences Postgraduate Society, the University of Melbourne
 
  * Co-organiser of the Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October 2022. Tvärminne Zoological Station, Finland. 
- * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30th August 2024. Kyoto, Japan
+ * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan
+ *	Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada
 
 I have mentored 2 undergraduate students, and 4 PhD students. 
 

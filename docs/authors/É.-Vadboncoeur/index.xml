@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>É. Vadboncoeur | Jacinta&#39;s Website</title>
+    <link>https://jacintak.github.io/authors/%C3%89.-Vadboncoeur/</link>
+      <atom:link href="https://jacintak.github.io/authors/%C3%89.-Vadboncoeur/index.xml" rel="self" type="application/rss+xml" />
+    <description>É. Vadboncoeur</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://jacintak.github.io/img/icon-512.png</url>
+      <title>É. Vadboncoeur</title>
+      <link>https://jacintak.github.io/authors/%C3%89.-Vadboncoeur/</link>
+    </image>
+    
+    <item>
+      <title>CSZ 2024</title>
+      <link>https://jacintak.github.io/talk/CSZ2024/</link>
+      <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CSZ2024/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;This was a submission to the Presidents&#39; Award for postdoctoral fellows.&lt;/p&gt;
+&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Insects are reared en masse for releases related to conservation or pest management, for food and feed 
+production and waste processing, as well as important services like pollination, decomposition, and disease control. Physiological performance fundamentally underpins the quantities and qualities of insects necessary for success in mass rearing programs. Such characteristics include growth, development and survival that, in turn, are modulated by extrinsic factors such as temperature and diet. However the relationships between these factors and how they modulate performance deficits and gains at the scale of a mass rearing operation are poorly understood. Here, I showcase how rearing temperature and diet affects the performance of farmed crickets through trade offs in growth, development and survival. Higher rearing temperatures (30-38°C) resulted in rapidly maturing and larger crickets at the expense of lower survival and shorter lifespans compared with lower rearing temperatures (20-28°C). Group reared crickets reared on higher protein diets did not differ in growth and development metrics but had lower survival than control diets, and these patterns contrasted with individually reared crickets. I discuss how manipulating insect physiology through rearing conditions and context can ensure the continued success and optimisation of mass rearing programs and the services they provide.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ANZSCPB 2023</title>
+      <link>https://jacintak.github.io/talk/ANZSCPB2023/</link>
+      <pubDate>Sat, 09 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/ANZSCPB2023/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Insects are reared en masse for releases related to conservation or pest management, for food and feed 
+production and waste processing, as well as important services like pollination, decomposition, and disease control. Physiological performance fundamentally underpins the quantities and qualities of insects necessary for success in mass rearing programs. Such characteristics include growth, development and survival that, in turn, are modulated by extrinsic factors such as temperature and diet. However the relationships between these factors and how they modulate performance deficits and gains at the scale of a mass rearing operation are poorly understood. Here, I showcase how rearing temperature and diet affects the performance of farmed crickets through trade offs in growth, development and survival. Higher rearing temperatures (30-38°C) resulted in rapidly maturing and larger crickets at the expense of lower survival and shorter lifespans compared with lower rearing temperatures (20-28°C). Group reared crickets reared on higher protein diets did not differ in growth and development metrics but had lower survival than control diets, and these patterns contrasted with individually reared crickets. I discuss how manipulating insect physiology through rearing conditions and context can ensure the continued success and optimisation of mass rearing programs and the services they provide.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

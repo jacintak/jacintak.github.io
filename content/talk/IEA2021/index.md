@@ -24,7 +24,7 @@ publishDate: "2020-12-13"
 slides: 
 summary: 
 tags: [postdoc, conference, ectotherms, temperature]
-title: IEA2021
+title: IEA 2021
 url_code: ""
 url_pdf: ""
 url_slides: ""

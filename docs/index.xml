@@ -25,6 +25,31 @@
     </item>
     
     <item>
+      <title>CSZ 2024</title>
+      <link>https://jacintak.github.io/talk/CSZ2024/</link>
+      <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CSZ2024/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;This was a submission to the Presidents&#39; Award for postdoctoral fellows.&lt;/p&gt;
+&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Insects are reared en masse for releases related to conservation or pest management, for food and feed 
+production and waste processing, as well as important services like pollination, decomposition, and disease control. Physiological performance fundamentally underpins the quantities and qualities of insects necessary for success in mass rearing programs. Such characteristics include growth, development and survival that, in turn, are modulated by extrinsic factors such as temperature and diet. However the relationships between these factors and how they modulate performance deficits and gains at the scale of a mass rearing operation are poorly understood. Here, I showcase how rearing temperature and diet affects the performance of farmed crickets through trade offs in growth, development and survival. Higher rearing temperatures (30-38°C) resulted in rapidly maturing and larger crickets at the expense of lower survival and shorter lifespans compared with lower rearing temperatures (20-28°C). Group reared crickets reared on higher protein diets did not differ in growth and development metrics but had lower survival than control diets, and these patterns contrasted with individually reared crickets. I discuss how manipulating insect physiology through rearing conditions and context can ensure the continued success and optimisation of mass rearing programs and the services they provide.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ANZSCPB 2023</title>
+      <link>https://jacintak.github.io/talk/ANZSCPB2023/</link>
+      <pubDate>Sat, 09 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/ANZSCPB2023/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Insects are reared en masse for releases related to conservation or pest management, for food and feed 
+production and waste processing, as well as important services like pollination, decomposition, and disease control. Physiological performance fundamentally underpins the quantities and qualities of insects necessary for success in mass rearing programs. Such characteristics include growth, development and survival that, in turn, are modulated by extrinsic factors such as temperature and diet. However the relationships between these factors and how they modulate performance deficits and gains at the scale of a mass rearing operation are poorly understood. Here, I showcase how rearing temperature and diet affects the performance of farmed crickets through trade offs in growth, development and survival. Higher rearing temperatures (30-38°C) resulted in rapidly maturing and larger crickets at the expense of lower survival and shorter lifespans compared with lower rearing temperatures (20-28°C). Group reared crickets reared on higher protein diets did not differ in growth and development metrics but had lower survival than control diets, and these patterns contrasted with individually reared crickets. I discuss how manipulating insect physiology through rearing conditions and context can ensure the continued success and optimisation of mass rearing programs and the services they provide.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>R exams template</title>
       <link>https://jacintak.github.io/post/r-exams-template/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
@@ -4454,7 +4479,7 @@ ggsave(tree_graph, filename = &amp;quot;tree_graph.png&amp;quot;, bg = &amp;quot
     </item>
     
     <item>
-      <title>IEA2021</title>
+      <title>IEA 2021</title>
       <link>https://jacintak.github.io/talk/IEA2021/</link>
       <pubDate>Thu, 07 Jan 2021 09:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/talk/IEA2021/</guid>
@@ -4826,7 +4851,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 02 February 2024&lt;/p&gt;
+&lt;p&gt;Last updated 13 May 2024&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://jacintak.github.io&#34;&gt;Website&lt;/a&gt;&lt;br /&gt;
 E-mail: &lt;a href=&#34;mailto:jacinta.kong@carleton.ca&#34; class=&#34;email&#34;&gt;jacinta.kong@carleton.ca&lt;/a&gt;&lt;br /&gt;
@@ -4951,8 +4976,10 @@ Total citations: 142&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;research-grants-or-awards&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Research grants or awards&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;TOTAL: $22 205 AUD&lt;/strong&gt; 🇦🇺&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TOTAL: $13 750 AUD&lt;/strong&gt; 🇦🇺 and &lt;strong&gt;$15 100 CAD&lt;/strong&gt; 🇨🇦&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;$7 500 CAD&lt;/strong&gt;. Summer 2024 NSERC-Mitacs Alliance Internship&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$100 CAD&lt;/strong&gt;. 4.2024 Canadian Society of Zoologists Travel Grant&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$7 500 CAD&lt;/strong&gt;. Summer 2023 NSERC-Mitacs Alliance Internship&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$2 500 AUD&lt;/strong&gt;. 6.2018 Holsworth Wildlife Research Endowment&lt;br /&gt;
 Equity Trustees Charitable Foundation &amp;amp; the Ecological Society of Australia&lt;/li&gt;
@@ -4974,6 +5001,7 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;div id=&#34;other-awards-and-scholarships&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Other Awards and Scholarships&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;2024 Finalist. President’s Award, Canadian Society of Zoologists Annual Meeting&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$13 541 AUD&lt;/strong&gt;. 2018 Research Training Program Scholarship, Australian Government&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$26 682 AUD&lt;/strong&gt;. 2017 Research Training Program Scholarship, Australian Government&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$200 AUD&lt;/strong&gt;. 2017 Runners-up in the Sustainability Prize photo competition, Graduate Student Association, the University of Melbourne&lt;/li&gt;
@@ -5027,6 +5055,12 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conference-presentations-and-invited-talks&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Conference presentations and invited talks&lt;/h1&gt;
+&lt;p&gt;Presented by Jacinta unless otherwise stated.&lt;/p&gt;
+&lt;p&gt;2024&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Canadian Society of Zoologists Annual Meeting, Moncton, New Brunswick, Canada&lt;/li&gt;
+&lt;li&gt;Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. International Congress of Entomology, Kyoto, Japan. Poster&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;2023&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Australian and New Zealand Society for Comparative Physiology and Biochemistry Conference, University of Queensland Gatton Campus, QLD, Australia&lt;/li&gt;
@@ -5104,7 +5138,8 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;2017 – 2018 President, BioSciences Postgraduate Society, the University of Melbourne&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;2016 – 2017 Vice President, BioSciences Postgraduate Society, the University of Melbourne&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Co-organiser of the Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October 2022. Tvärminne Zoological Station, Finland.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30th August 2024. Kyoto, Japan&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I have mentored 2 undergraduate students, and 4 PhD students.&lt;/p&gt;
 &lt;hr /&gt;
