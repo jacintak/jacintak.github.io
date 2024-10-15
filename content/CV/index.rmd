@@ -88,6 +88,8 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
+* Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024), in press.
+
 * Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: [10.1098/rsos.211869](https://doi.org/10.1098/rsos.211869). ^+^Joint first author. 
 
 * Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, **Kong JD**, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: [10.1126/science.abm1072](https://doi.org/10.1126/science.abm1072). Altmetric score: 204
@@ -104,6 +106,10 @@ Conferred 17.12.2012
 
 ## Preprints
 
+* **Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, and Bertram SM. (2024) Growth, development, and life history of a mass-reared edible insect, *Gryllodes sigillatus* (Orthoptera: Gryllidae). bioRxiv. DOI: [10.1101/2024.10.08.617250](https://doi.org/10.1101/2024.10.08.617250).
+
+* Muzzatti M, **Kong JD**, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. bioRxiv.  DOI: [2024:2024.2008.2013.607817](https://doi.org/10.1101/2024.08.13.607817).
+
 * **Kong JD**, Wu NC. (2022) Can we improve our ability to identify climate vulnerability in ectotherm life cycles?. bioRxiv. DOI: [10.1101/2022.12.14.520433](https://doi.org/10.1101/2022.12.14.520433).
 
 * **Kong JD**^+^, Arnoldi J-F^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Payne NL^+^. (2022) Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates. bioRxiv. DOI: [10.1101/2022.12.06.519315](https://doi.org/10.1101/2022.12.06.519315). ^+^Joint first author. 
@@ -115,16 +121,16 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i> [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl)  
 H-index: 7 (GS)  
-Total citations: 142  
+Total citations: 178  
 
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
-    * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 222
-    * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61
+    * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 16
+    * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61. Citations: 14
  * Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
-    * **Methods in Ecology and Evolution**. Altmetric score: 20
-    * **Journal of Experimental Biology**. Altmetric score: 20
-    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 21
-    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 63
+    * **Methods in Ecology and Evolution**. Altmetric score: 20. Citations: 16
+    * **Journal of Experimental Biology**. Altmetric score: 20. Citations: 16
+    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 25
+    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 73
 
 I have peer reviewed for:
 
@@ -158,16 +164,16 @@ Equity Trustees Charitable Foundation & the Ecological Society of Australia
  * **$300 AUD**. 12.2018 	2nd runner up student presentation  
  Australian and New Zealand Society for Comparative Physiology and Biochemistry, Australia
  * **$500 AUD**. 8.2018 	Student Travel Grant  
-Australian Entomological Society, Australia
- * **$1 500 AUD**. 2018 	Science Abroad Travelling Scholarship  
+To attend the 2018 Australian Entomological Society Annual Meeting, Australia
+ * **$1 500 AUD**. 2018 	Science Abroad Travelling Scholarship (SATS) 
 Faculty of Science, the University of Melbourne, Australia
- * **$950 AUD**. 2018 	FH Drummond Travel Award  
+ * **$950 AUD**. 8.2018 	FH Drummond Travel Award  
 School of BioSciences, the University of Melbourne, Australia
- * **$1 500 AUD**. 2018 	School of BioSciences Travelling Scholarship  
-School of BioSciences, the University of Melbourne, Australia
- * **$6 000 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
+ * **$1 500 AUD**. 2016 	School of BioSciences Research Higher Degree Financial Support for Research or Conference Travel  
+ The University of Melbourne, Australia
+ * **$6 000 AUD**. 2015 	Holsworth Wildlife Research Endowment  
 Equity Trustees Charitable Foundation
- * **$500 AUD**. 6.2018 	Three Minute Thesis (3MT) People’s Choice Winner  
+ * **$500 AUD**. 2013 	Three Minute Thesis (3MT) People’s Choice Winner  
 The University of Queensland Undergraduate Research Conference
 
 
@@ -188,9 +194,9 @@ The University of Queensland Undergraduate Research Conference
 
 I have developed several graduate level tutorials or teaching material for journal or coding clubs that I provide freely through my website or through my GitHub.
 
-Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
 2022
+Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). In-person lectures & practicals.
  * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
@@ -232,8 +238,13 @@ Presented by Jacinta unless otherwise stated.
 
 2024
 
+ * The effects of diet and temperature on Gryllodes sigillatus life history. Presentation to Aspire Food Group, BugMars, and Western University. 23rd January 2024
  * Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Canadian Society of Zoologists Annual Meeting, Moncton, New Brunswick, Canada
  * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. International Congress of Entomology, Kyoto, Japan. Poster
+ * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada.
+ * The effect of temperature on Gryllodes sigillatus life history. Presentation to Aspire Food Group. 26th August 2024
+ * The effect of laybox location on pinhead emergence. Presentation to Aspire Food Group and Cornell University. 16th October 2024
+
 
 2023
 
@@ -315,7 +326,7 @@ Presented by Jacinta unless otherwise stated.
  * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan
  *	Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada
 
-I have mentored 2 undergraduate students, and 4 PhD students. 
+I have mentored 3 undergraduate students, and 4 PhD students. 
 
 ***
 
