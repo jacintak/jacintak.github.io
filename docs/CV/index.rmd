@@ -88,7 +88,7 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-* Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024), in press.
+* Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: [10.1038/s41558-024-02167-z](https://doi.org/10.1038/s41558-024-02167-z). Altmetric score: 95
 
 * Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: [10.1098/rsos.211869](https://doi.org/10.1098/rsos.211869). ^+^Joint first author. 
 
@@ -126,6 +126,7 @@ Total citations: 178
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
     * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 16
     * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61. Citations: 14
+    * **Nature Climate Change**: 10 News outlets. Altmetric score: 95
  * Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
     * **Methods in Ecology and Evolution**. Altmetric score: 20. Citations: 16
     * **Journal of Experimental Biology**. Altmetric score: 20. Citations: 16
@@ -149,13 +150,15 @@ I have peer reviewed for:
  * Functional Ecology
  * Physiological Entomology
  * Journal of Evolutionary Biology
+ * Journal of Experimental Biology 
 
 ***
 
 # Research grants or awards
 
-**TOTAL: $13 750 AUD** :australia: and **$15 100 CAD** :canada:
+**TOTAL: $13 750 AUD** :australia: and **$16 450 CAD** :canada:
 
+ * **$1 350 CAD**. 2024 Winner. Carleton University Postdoctoral Fellow Award 
  * **$7 500 CAD**. Summer 2024 NSERC-Mitacs Alliance Internship
  * **$100 CAD**. 4.2024 Canadian Society of Zoologists Travel Grant
  * **$7 500 CAD**. Summer 2023 NSERC-Mitacs Alliance Internship
@@ -194,9 +197,9 @@ The University of Queensland Undergraduate Research Conference
 
 I have developed several graduate level tutorials or teaching material for journal or coding clubs that I provide freely through my website or through my GitHub.
 
+Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
 2022
-Trinity College Dublin implements a 4 year degree program with 2 years of general subjects (e.g. biological sciences stream, ~250 students) and 2 years towards a specific major (e.g. zoology, ~ 35 students). Total of 60 credits per year. Degree consists of mandatory core subjects and electives. 
 
  * Lecturer & course development: Statistics and computation for biologists (BYU22S01). 2nd year undergraduate core subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material, implemented novel R packages for interactive teaching within the R environment (learnr package). In-person lectures & practicals.
  * Lecturer & course development: Animal Diversity I (ZOU33003). 3rd year undergraduate, core zoology major subject, 5 credits. Trinity College Dublin. Developed course lectures and practical material. In-person lectures & practicals.
@@ -238,12 +241,15 @@ Presented by Jacinta unless otherwise stated.
 
 2024
 
- * The effects of diet and temperature on Gryllodes sigillatus life history. Presentation to Aspire Food Group, BugMars, and Western University. 23rd January 2024
+ * The effects of diet and temperature on *Gryllodes sigillatus* life history. Presentation to Aspire Food Group, BugMars, and Western University. 23rd January 2024
  * Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Canadian Society of Zoologists Annual Meeting, Moncton, New Brunswick, Canada
  * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. International Congress of Entomology, Kyoto, Japan. Poster
  * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada.
- * The effect of temperature on Gryllodes sigillatus life history. Presentation to Aspire Food Group. 26th August 2024
+ * The effect of temperature on *Gryllodes sigillatus* life history. Presentation to Aspire Food Group. 26th August 2024
  * The effect of laybox location on pinhead emergence. Presentation to Aspire Food Group and Cornell University. 16th October 2024
+ * Species Traits and Distributions: Past, Present & Future. Department of Biology Seminar Series, Carleton University, Canada
+ * Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada
+
 
 
 2023
@@ -311,22 +317,25 @@ Presented by Jacinta unless otherwise stated.
 
 # Professional service and affiliations
 
- * 2023 – Present    Member: Society for Comparative and Integrative Biology (SICB)
  * 2024 – Present    Member: Canadian Society of Zoologists (CSZ)
+ *	2024     Member: Entomological Society of Canada (ESC)
+ * 2023 – Present    Member: Society for Comparative and Integrative Biology (SICB)
  * 2015 – Present 	Member: Australian and New Zealand Society for Comparative Physiology and Biochemistry (ANZSCPB)
  * 2019 – 2023 	Member: British Ecological Society (BES) & Irish Ecological Association (IEA)
- * 2018 	Member: Royal Society of Victoria (RSV)
+ * 2018     Member: Royal Society of Victoria (RSV)
  * 2017 – Present 	Member: Society for Experimental Biology (SEB)
  * 2015 – 2020 	Member: Australian Entomological Society (AES)
  * 2019 – 2020 	Member: European Society for Evolutionary Biology (ESEB)
  * 2017 – 2018 	President, BioSciences Postgraduate Society, the University of Melbourne
  * 2016 – 2017 	Vice President, BioSciences Postgraduate Society, the University of Melbourne
 
+## Symposiums
+
  * Co-organiser of the Society for Experimental Biology Animal Biology Early Career Researcher Symposium. 3-7th October 2022. Tvärminne Zoological Station, Finland. 
  * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan
  *	Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada
 
-I have mentored 3 undergraduate students, and 4 PhD students. 
+I have mentored 2 undergraduate students, and 4 PhD students. 
 
 ***
 
@@ -340,6 +349,10 @@ I have mentored 3 undergraduate students, and 4 PhD students.
 ***
 
 # Community outreach and communication
+
+2024
+
+ * Profiled on the Canadian Society for Zoologists website for the Presidents’ Award. http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/ 
 
 2023
 

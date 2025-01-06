@@ -19,11 +19,11 @@ links:
 location: University of Queensland, Gatton, Australia
 math: false
 projects:
-- insect-farming
+- edible-insects
 publishDate: "2023-12-09"
 slides: 
 summary: 
-tags: [postdoc, conference, ectotherms, temperature, insect farming]
+tags: [postdoc, conference, ectotherms, temperature, edible insects]
 title: ANZSCPB 2023
 url_code: ""
 url_pdf: ""

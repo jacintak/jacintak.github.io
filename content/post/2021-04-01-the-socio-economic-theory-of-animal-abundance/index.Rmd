@@ -5,10 +5,6 @@ date: '2021-04-01'
 slug: []
 categories: []
 tags:
-- fun
-- ecology
-- crabs
-- theory
 subtitle: "A case study on ghost crabs"
 summary: >
     What if there's more to animals than what current ecological theory thinks?

@@ -2,55 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jacintak.github.io/publication_types/2/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jacintak.github.io/authors/admin/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/conference/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <loc>https://jacintak.github.io/authors/C.-Navas/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/comparative-analysis/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/ectotherms/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/talk/ICE2024/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/insect-farming/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <loc>https://jacintak.github.io/publication/2024-NCC/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/M.-R.-Kearney./</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/mechanistic-models/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/microclimate/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/N.-C.-Wu/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/postdoc/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/talk/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <loc>https://jacintak.github.io/publication_types/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/publication/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/R.-P.-Bovo/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/authors/S.-Clusella-Trullas/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/temperature/</loc>
-    <lastmod>2024-08-26T00:00:00+00:00</lastmod>
+    <loc>https://jacintak.github.io/authors/U.-Enriquez-Urzelai/</loc>
+    <lastmod>2024-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/conference/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/talk/CSZ2024/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/insect-farming/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/M.-J.-Muzzatti/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://jacintak.github.io/talk/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jacintak.github.io/authors/S.-M.-Bertram-H.-A.-MacMillan/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/temperature/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/%C3%89.-Vadboncoeur/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/talk/ANZSCPB2023/</loc>
+    <lastmod>2023-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacintak.github.io/tags/edible-insects/</loc>
     <lastmod>2023-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/categories/</loc>
@@ -74,7 +113,7 @@
     <loc>https://jacintak.github.io/tags/teaching/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/project/insect-farming/</loc>
+    <loc>https://jacintak.github.io/project/edible-insects/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/project/</loc>
@@ -87,12 +126,6 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/talk/BES2022/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/comparative-analysis/</loc>
-    <lastmod>2022-12-19T17:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/authors/N.-C.-Wu/</loc>
     <lastmod>2022-12-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/publication_types/3/</loc>
@@ -116,12 +149,6 @@
     <loc>https://jacintak.github.io/authors/N.-L.-Payne/</loc>
     <lastmod>2022-12-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/publication_types/</loc>
-    <lastmod>2022-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/publication/</loc>
-    <lastmod>2022-12-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/authors/S.-A.-Morley/</loc>
     <lastmod>2022-12-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -143,9 +170,6 @@
     <loc>https://jacintak.github.io/post/knitting-an-interactive-document/</loc>
     <lastmod>2022-06-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/publication_types/2/</loc>
-    <lastmod>2022-06-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/authors/A.-A.-Hoffmann/</loc>
     <lastmod>2022-06-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -156,9 +180,6 @@
     <lastmod>2022-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/M.-J.-Blacket/</loc>
-    <lastmod>2022-06-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/authors/M.-R.-Kearney./</loc>
     <lastmod>2022-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/tags/parthenogenesis/</loc>
@@ -257,19 +278,7 @@
     <loc>https://jacintak.github.io/post/2021-05-01-formatting-p-values/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacintak.github.io/tags/crabs/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/ecology/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/fun/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jacintak.github.io/post/2021-04-01-the-socio-economic-theory-of-animal-abundance/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/theory/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/post/using-mapply/</loc>
@@ -318,12 +327,6 @@
     <lastmod>2019-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/authors/J.-Deutscher/</loc>
-    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/mechanistic-models/</loc>
-    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jacintak.github.io/tags/microclimate/</loc>
     <lastmod>2018-03-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jacintak.github.io/publication/2018-inte-zool/</loc>

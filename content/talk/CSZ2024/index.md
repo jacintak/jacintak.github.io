@@ -19,7 +19,7 @@ links:
 location: Moncton, New Brunswick, Canada
 math: false
 projects:
-- insect-farming
+- edible-insects
 publishDate: "2024-05-01"
 slides: 
 summary: 

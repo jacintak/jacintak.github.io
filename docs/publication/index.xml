@@ -5,12 +5,22 @@
     <link>https://jacintak.github.io/publication/</link>
       <atom:link href="https://jacintak.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 06 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Oct 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Publications</title>
       <link>https://jacintak.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Global exposure risk of frogs to increasing environmental dryness</title>
+      <link>https://jacintak.github.io/publication/2024-NCC/</link>
+      <pubDate>Mon, 28 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2024-NCC/</guid>
+      <description>&lt;h1 id=&#34;research-briefing&#34;&gt;Research briefing&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s41558-024-02169-x&#34;&gt;Nature Climate Change&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates</title>
