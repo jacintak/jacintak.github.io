@@ -29,7 +29,7 @@ E-mail: jacinta.kong@carleton.ca
 
 # Research and teaching appointments
 
- * NSERC-Mitacs Alliance Postdoctoral Fellow  
+ * NSERC Alliance -Mitacs Accelerate Postdoctoral Fellow  
    Department of Biology, Carleton University, Canada 	
    1.2023 – Present
  * Teaching and Research Fellow  
@@ -88,6 +88,14 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
+*	Payne NL^+^, **Kong JD**^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F^+^: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol 2025, in press. DOI: http://doi.org/10.1111/1365-2656.70042. ^+^Authors contributed equally.
+
+*	Kong JD, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol in press, DOI: https://doi.org/10.1093/jee/toaf073. 
+
+*	Kong JD, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: doi:https://doi.org/10.1016/j.cris.2025.100109.
+
+*	Muzzatti M, Kong JD, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. J Insects Food Feed. In press. DOI: 10.1101/2024.08.13.607817.
+
 * Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: [10.1038/s41558-024-02167-z](https://doi.org/10.1038/s41558-024-02167-z). Altmetric score: 95
 
 * Iosilevskii G^+^, **Kong JD**^+^, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: [10.1098/rsos.211869](https://doi.org/10.1098/rsos.211869). ^+^Joint first author. 
@@ -106,13 +114,13 @@ Conferred 17.12.2012
 
 ## Preprints
 
-* **Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, and Bertram SM. (2024) Growth, development, and life history of a mass-reared edible insect, *Gryllodes sigillatus* (Orthoptera: Gryllidae). bioRxiv. DOI: [10.1101/2024.10.08.617250](https://doi.org/10.1101/2024.10.08.617250).
+* **Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, and Bertram SM. (2024) Growth, development, and life history of a mass-reared edible insect, *Gryllodes sigillatus* (Orthoptera: Gryllidae). bioRxiv. DOI: [10.1101/2024.10.08.617250](https://doi.org/10.1101/2024.10.08.617250). Published in the Journal of Economic Entomology.
 
 * Muzzatti M, **Kong JD**, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. bioRxiv.  DOI: [2024:2024.2008.2013.607817](https://doi.org/10.1101/2024.08.13.607817).
 
 * **Kong JD**, Wu NC. (2022) Can we improve our ability to identify climate vulnerability in ectotherm life cycles?. bioRxiv. DOI: [10.1101/2022.12.14.520433](https://doi.org/10.1101/2022.12.14.520433).
 
-* **Kong JD**^+^, Arnoldi J-F^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Payne NL^+^. (2022) Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates. bioRxiv. DOI: [10.1101/2022.12.06.519315](https://doi.org/10.1101/2022.12.06.519315). ^+^Joint first author. 
+* **Kong JD**^+^, Arnoldi J-F^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Payne NL^+^. (2022) Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates. bioRxiv. DOI: [10.1101/2022.12.06.519315](https://doi.org/10.1101/2022.12.06.519315). ^+^Joint first author. Published in the Journal of Animal Ecology.
 
 ***
 
@@ -151,6 +159,7 @@ I have peer reviewed for:
  * Physiological Entomology
  * Journal of Evolutionary Biology
  * Journal of Experimental Biology 
+ * Journal of Insects as Food and Feed 
 
 ***
 
@@ -159,9 +168,9 @@ I have peer reviewed for:
 **TOTAL: $13 750 AUD** :australia: and **$16 450 CAD** :canada:
 
  * **$1 350 CAD**. 2024 Winner. Carleton University Postdoctoral Fellow Award 
- * **$7 500 CAD**. Summer 2024 NSERC-Mitacs Alliance Internship
+ * **$7 500 CAD**. Summer 2024 NSERC Alliance-Mitacs Accelerate Internship
  * **$100 CAD**. 4.2024 Canadian Society of Zoologists Travel Grant
- * **$7 500 CAD**. Summer 2023 NSERC-Mitacs Alliance Internship
+ * **$7 500 CAD**. Summer 2023 NSERC Alliance-Mitacs Accelerate Internship
  * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
 Equity Trustees Charitable Foundation & the Ecological Society of Australia
  * **$300 AUD**. 12.2018 	2nd runner up student presentation  
@@ -237,20 +246,22 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 # Conference presentations and invited talks
 
-Presented by Jacinta unless otherwise stated.
+Talks presented by Jacinta unless otherwise stated.
+
+2025
+
+*	Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Canadian Society of Zoologists Annual Meeting, Waterloo-Kitchner, Ontario, Canada. 15th May 2025
 
 2024
 
  * The effects of diet and temperature on *Gryllodes sigillatus* life history. Presentation to Aspire Food Group, BugMars, and Western University. 23rd January 2024
  * Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance. Canadian Society of Zoologists Annual Meeting, Moncton, New Brunswick, Canada
  * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. International Congress of Entomology, Kyoto, Japan. Poster
- * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada.
+ * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada
  * The effect of temperature on *Gryllodes sigillatus* life history. Presentation to Aspire Food Group. 26th August 2024
  * The effect of laybox location on pinhead emergence. Presentation to Aspire Food Group and Cornell University. 16th October 2024
  * Species Traits and Distributions: Past, Present & Future. Department of Biology Seminar Series, Carleton University, Canada
  * Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada
-
-
 
 2023
 
