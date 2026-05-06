@@ -2,7 +2,7 @@
 abstract: "Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance"
 address:
 all_day: true
-authors: [admin, M. J. Muzzatti, É. Vadboncoeur, S. M. Bertram & H. A. MacMillan]
+authors: [admin, M. J. Muzzatti, É. Vadboncoeur, S. M. Bertram, H. A. MacMillan]
 date: "2023-12-09T00:00:00"
 date_end: "2023-12-30T00:00:00"
 event: Australian and New Zealand Society for Comparative Physiology and Biochemistry
@@ -12,10 +12,6 @@ image:
   caption: 
   focal_point: Right
 links:
-- icon: twitter
-  icon_pack: fab
-  name: Hashtag
-  url:
 location: University of Queensland, Gatton, Australia
 math: false
 projects:

@@ -5,12 +5,43 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 13 May 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>CSZ 2026</title>
+      <link>https://jacintak.github.io/talk/CSZ2026/</link>
+      <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CSZ2026/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Les grillons régulent le volume de l&amp;rsquo;hémolymphe et l&amp;rsquo;équilibre ionique pendant la dessiccation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Desiccation is a prevalent stress for small insects and desiccation risk is expected to increase with increasing aridity under climate change. To survive in low humidity, insects must resist or tolerate water loss, but our understanding of how they do this remains incomplete. Here, we tested the hypothesis that crickets progressively lose haemolymph water volume which disrupts sodium and potassium balance during desiccation. We further tested that crickets restore extracellular ion balance if provided water for rehydration. We found that crickets strongly regulate haemolymph potassium concentration in the extracellular space during up to 18 h of desiccation, and sodium concentration increased somewhat during desiccation, but crickets were able to restore sodium concentrations to baseline levels after rehydration. Crickets lost 9.5% ± 0.4 of their initial mass (mean ± s.e.) during desiccation. Losses of over 35% of wet mass increased the risk of mortality and crickets were able to restore 90% of their initial mass after rehydration on average. Both sexes maintained haemolymph volume for up to 6 h of desiccation, after which haemolymph volume of females decreased after 18 h and recovered slightly after rehydration, whereas males maintained haemolymph volume throughout desiccation. Our results suggest that crickets are susceptible to desiccation and have limited tolerance for water loss, but can actively regulate ion concentration and haemolymph volume to avoid desiccation-induced hyperkalaemia. These mechanisms may serve as adaptive responses to increasing aridity under climate change.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Carleton University-PSAC Research Award</title>
+      <link>https://jacintak.github.io/talk/CarletonPDFAward/</link>
+      <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CarletonPDFAward/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;Winning presentation for the 2024 Carleton University-PSAC Research Award for postdoctoral fellows.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Carleton University Department of Biology Seminar Series</title>
+      <link>https://jacintak.github.io/talk/CarletonBioSeminar/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CarletonBioSeminar/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;Part of the Carleton University Department of Biology Seminar Series&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Global exposure risk of frogs to increasing environmental dryness</title>
@@ -120,6 +151,14 @@ exams::exams2pdf(questions,
 &lt;p&gt;The global demand for protein is expected to increase with a growing population. Current farming practices are expected to fall short of meeting this demand. The problem is to find alternative sources of protein that can scale with a growing global population, while also being sustainable and space-efficient. Insect farming is a promising solution to provide a sustainable source of protein. The challenge for farming operations is to improve the scalability and output to meet the growing demand for alternative protein.&lt;/p&gt;
 &lt;p&gt;One way to improve the output of a farm is to increase the yield of a harvest. To this end, the life history traits of an insect, as well as the biotic and abiotic conditions of the farm form avenues of exploration to increase yield through experimental manipulation of these variables. This project will quantify how changes in biotic and abiotic conditions affect farming output, identify optimal values that maximise yield, and evaluate how to translate experiments to a farm with a focus on crickets for human consumption. These results will inform farming practices for a growing population.&lt;/p&gt;
 &lt;p&gt;This is a NSERC-Mitacs Alliance grant awarded to Heath MacMillan and Susan Bertram at Carleton University.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;publications&#34;&gt;Publications&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34;&gt;https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34;&gt;https://doi.org/10.1163/23524588-00001365&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All publications involve student co-authors.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;symposia&#34;&gt;Symposia&lt;/h1&gt;
 &lt;p&gt;I have organised two symposia as part of this project:&lt;/p&gt;
@@ -4867,7 +4906,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 20 May 2025&lt;/p&gt;
+&lt;p&gt;Last updated 06 May 2026&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://jacintak.github.io&#34;&gt;Website&lt;/a&gt;&lt;br /&gt;
 E-mail: &lt;a href=&#34;mailto:jacinta.kong@carleton.ca&#34; class=&#34;email&#34;&gt;jacinta.kong@carleton.ca&lt;/a&gt;&lt;br /&gt;
@@ -4933,10 +4972,10 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;div id=&#34;refereed-journal-articles&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Refereed journal articles&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Payne NL&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F&lt;sup&gt;+&lt;/sup&gt;: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol 2025, in press. DOI: &lt;a href=&#34;http://doi.org/10.1111/1365-2656.70042&#34; class=&#34;uri&#34;&gt;http://doi.org/10.1111/1365-2656.70042&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Authors contributed equally.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Kong JD, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol in press, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Kong JD, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;doi:https://doi.org/10.1016/j.cris.2025.100109&#34; class=&#34;uri&#34;&gt;doi:https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Muzzatti M, Kong JD, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. J Insects Food Feed. In press. DOI: 10.1101/2024.08.13.607817.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Payne NL&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F&lt;sup&gt;+&lt;/sup&gt;: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: &lt;a href=&#34;http://doi.org/10.1111/1365-2656.70042&#34; class=&#34;uri&#34;&gt;http://doi.org/10.1111/1365-2656.70042&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Authors contributed equally.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1163/23524588-00001365&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, &lt;strong&gt;Kong JD&lt;/strong&gt;: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: &lt;a href=&#34;https://doi.org/10.1038/s41558-024-02167-z&#34;&gt;10.1038/s41558-024-02167-z&lt;/a&gt;. Altmetric score: 95&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Iosilevskii G&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: &lt;a href=&#34;https://doi.org/10.1098/rsos.211869&#34;&gt;10.1098/rsos.211869&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Joint first author.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: &lt;a href=&#34;https://doi.org/10.1126/science.abm1072&#34;&gt;10.1126/science.abm1072&lt;/a&gt;. Altmetric score: 204&lt;/p&gt;&lt;/li&gt;
@@ -4961,21 +5000,21 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;h1&gt;Research highlights&lt;/h1&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-orcid&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://orcid.org/0000-0002-1085-8612&#34;&gt;ORCID&lt;/a&gt;&lt;br /&gt;
 &lt;i class=&#34;ai ai-google-scholar&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://scholar.google.com/citations?user=637pv-sAAAAJ&amp;amp;hl&#34;&gt;Google scholar&lt;/a&gt;&lt;br /&gt;
-H-index: 7 (GS)&lt;br /&gt;
-Total citations: 178&lt;/p&gt;
+H-index: 9 (GS)&lt;br /&gt;
+Total citations: 320&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;High attention papers in the top 5% of all research outputs scored by Altmetric:
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Science&lt;/strong&gt;: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 16&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Royal Society Open Science&lt;/strong&gt;: 90 tweeters. Altmetric score: 61. Citations: 14&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Nature Climate Change&lt;/strong&gt;: 10 News outlets. Altmetric score: 95&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Science&lt;/strong&gt;: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 27&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Royal Society Open Science&lt;/strong&gt;: 90 tweeters. Altmetric score: 61. Citations: 22&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nature Climate Change&lt;/strong&gt;: 10 News outlets. Altmetric score: 95. Citations: 45&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Methods in Ecology and Evolution&lt;/strong&gt;. Altmetric score: 20. Citations: 16&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Journal of Experimental Biology&lt;/strong&gt;. Altmetric score: 20. Citations: 16&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Philosophical Transactions of the Royal Society B&lt;/strong&gt;. Altmetric score: 8. Citations: 25&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Current Opinion in Insect Science&lt;/strong&gt;. Altmetric score: 6. Citations: 73&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Methods in Ecology and Evolution&lt;/strong&gt;. Altmetric score: 20. Citations: 18&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Journal of Experimental Biology&lt;/strong&gt;. Altmetric score: 20. Citations: 24&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Philosophical Transactions of the Royal Society B&lt;/strong&gt;. Altmetric score: 8. Citations: 35&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Current Opinion in Insect Science&lt;/strong&gt;. Altmetric score: 6. Citations: 98&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I have peer reviewed for:&lt;/p&gt;
@@ -4997,6 +5036,7 @@ Total citations: 178&lt;/p&gt;
 &lt;li&gt;Journal of Evolutionary Biology&lt;/li&gt;
 &lt;li&gt;Journal of Experimental Biology&lt;/li&gt;
 &lt;li&gt;Journal of Insects as Food and Feed&lt;/li&gt;
+&lt;li&gt;Journal of Applied Entomology&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
@@ -5083,9 +5123,15 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;div id=&#34;conference-presentations-and-invited-talks&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Conference presentations and invited talks&lt;/h1&gt;
 &lt;p&gt;Talks presented by Jacinta unless otherwise stated.&lt;/p&gt;
+&lt;p&gt;2026&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;House crickets tolerate water loss during desiccation. Ottawa-Carleton Institute of Biology Symposium, Ottawa, Canada. 28th April 2026&lt;/li&gt;
+&lt;li&gt;Crickets maintain haemolymph volume and ion balance during desiccation. Canadian Society of Zoologists Annual Meeting, Ottawa, Canada. 6th May 2026.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;2025&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Canadian Society of Zoologists Annual Meeting, Waterloo-Kitchner, Ontario, Canada. 15th May 2025&lt;/li&gt;
+&lt;li&gt;Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. International Symposium on the Environmental Physiology of Ectotherms and Plants, Vancouver, British Columbia, Canada. 17th July 2025&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;2024&lt;/p&gt;
 &lt;ul&gt;
@@ -5095,8 +5141,8 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;li&gt;Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada&lt;/li&gt;
 &lt;li&gt;The effect of temperature on &lt;em&gt;Gryllodes sigillatus&lt;/em&gt; life history. Presentation to Aspire Food Group. 26th August 2024&lt;/li&gt;
 &lt;li&gt;The effect of laybox location on pinhead emergence. Presentation to Aspire Food Group and Cornell University. 16th October 2024&lt;/li&gt;
-&lt;li&gt;Species Traits and Distributions: Past, Present &amp;amp; Future. Department of Biology Seminar Series, Carleton University, Canada&lt;/li&gt;
-&lt;li&gt;Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada&lt;/li&gt;
+&lt;li&gt;Species Traits and Distributions: Past, Present &amp;amp; Future. Department of Biology Seminar Series, Carleton University, Canada. &lt;a href=&#34;https://carleton.ca/biology/department-of-biology-seminar-series-fall-winter-2024-25/&#34;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada. &lt;a href=&#34;https://gradstudents.carleton.ca/2024/five-postdoctoral-fellows-win-cu-psac-research-award/&#34;&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;2023&lt;/p&gt;
 &lt;ul&gt;
@@ -5113,6 +5159,10 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;li&gt;Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland (online)&lt;/li&gt;
 &lt;li&gt;Ectotherm heat limits track biological rates. British Ecological Society Macroecology Special Interest Group meeting (online)&lt;/li&gt;
 &lt;li&gt;Thermal adaptation and plasticity of egg development generates latitudinal patterns in insect life cycles under seasonal climates. Society for Experimental Biology Annual Meeting (online)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2020&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Grasshoppers have cute faces. Department of Botany Seminar Series, Trinity College Dublin, Ireland. 29th January&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;2019&lt;/p&gt;
 &lt;ul&gt;
@@ -5183,13 +5233,14 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;li&gt;Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan&lt;/li&gt;
 &lt;li&gt;Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I have mentored 2 undergraduate students, and 4 PhD students.&lt;/p&gt;
+&lt;p&gt;I have mentored 3 undergraduate students, and 3 PhD students.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;professional-development-qualifications&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Professional development qualifications&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;17 October 2025 Mitacs Course: Enhance your communication skills&lt;/li&gt;
 &lt;li&gt;14 Feb 2024 Mitacs Course: Applying the principles of sound leadership and team building&lt;/li&gt;
 &lt;li&gt;29 Jan 2024 Mitacs Course: High performing leadership and teams&lt;/li&gt;
 &lt;li&gt;26 Jan 2021 Epigeum Research Integrity Course&lt;/li&gt;
@@ -5199,9 +5250,18 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;/div&gt;
 &lt;div id=&#34;community-outreach-and-communication&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Community outreach and communication&lt;/h1&gt;
+&lt;p&gt;2026&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poster judge. Ottawa-Carleton Institute of Biology Symposium, Ottawa, Canada. 28 April 2026&lt;/li&gt;
+&lt;li&gt;Local organizing committee and volunteer for the Canadian Society of Zoologists Annual Meeting, Ottawa, Canada. 4-8 May 2026.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2025&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Session chair and judge. Ontario Biology Day 22nd March. Carleton University, Canada&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;2024&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Profiled on the Canadian Society for Zoologists website for the Presidents’ Award. &lt;a href=&#34;http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/&#34; class=&#34;uri&#34;&gt;http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Profiled on the Canadian Society for Zoologists website for the Presidents’ Award. &lt;a href=&#34;http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/&#34;&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;2023&lt;/p&gt;
 &lt;ul&gt;

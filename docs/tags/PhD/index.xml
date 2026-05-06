@@ -5,12 +5,22 @@
     <link>https://jacintak.github.io/tags/PhD/</link>
       <atom:link href="https://jacintak.github.io/tags/PhD/index.xml" rel="self" type="application/rss+xml" />
     <description>PhD</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>PhD</title>
       <link>https://jacintak.github.io/tags/PhD/</link>
     </image>
+    
+    <item>
+      <title>Carleton University Department of Biology Seminar Series</title>
+      <link>https://jacintak.github.io/talk/CarletonBioSeminar/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CarletonBioSeminar/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;Part of the Carleton University Department of Biology Seminar Series&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Parthenogenesis without costs in a grasshopper with hybrid origins</title>

@@ -88,13 +88,13 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-*	Payne NL^+^, **Kong JD**^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F^+^: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol 2025, in press. DOI: http://doi.org/10.1111/1365-2656.70042. ^+^Authors contributed equally.
+*	Payne NL^+^, **Kong JD**^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F^+^: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: http://doi.org/10.1111/1365-2656.70042. ^+^Authors contributed equally.
 
-*	Kong JD, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol in press, DOI: https://doi.org/10.1093/jee/toaf073. 
+*	**Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: https://doi.org/10.1093/jee/toaf073.
 
-*	Kong JD, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: doi:https://doi.org/10.1016/j.cris.2025.100109.
+*	**Kong JD**, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: https://doi.org/10.1016/j.cris.2025.100109.
 
-*	Muzzatti M, Kong JD, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. J Insects Food Feed. In press. DOI: 10.1101/2024.08.13.607817.
+*	Muzzatti MJ, **Kong JD**, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: https://doi.org/10.1163/23524588-00001365
 
 * Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: [10.1038/s41558-024-02167-z](https://doi.org/10.1038/s41558-024-02167-z). Altmetric score: 95
 
@@ -128,18 +128,18 @@ Conferred 17.12.2012
 
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i> [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl)  
-H-index: 7 (GS)  
-Total citations: 178  
+H-index: 9 (GS)  
+Total citations: 320  
 
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
-    * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 16
-    * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61. Citations: 14
-    * **Nature Climate Change**: 10 News outlets. Altmetric score: 95
+    * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 27
+    * **Royal Society Open Science**: 90 tweeters. Altmetric score: 61. Citations: 22
+    * **Nature Climate Change**: 10 News outlets. Altmetric score: 95. Citations: 45
  * Ecology/evolution studies in some of the best journals in their respective disciplines, and in the top 25% of all research outputs scored by Altmetric:
-    * **Methods in Ecology and Evolution**. Altmetric score: 20. Citations: 16
-    * **Journal of Experimental Biology**. Altmetric score: 20. Citations: 16
-    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 25
-    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 73
+    * **Methods in Ecology and Evolution**. Altmetric score: 20. Citations: 18
+    * **Journal of Experimental Biology**. Altmetric score: 20. Citations: 24
+    * **Philosophical Transactions of the Royal Society B**. Altmetric score: 8. Citations: 35
+    * **Current Opinion in Insect Science**. Altmetric score: 6. Citations: 98
 
 I have peer reviewed for:
 
@@ -159,7 +159,8 @@ I have peer reviewed for:
  * Physiological Entomology
  * Journal of Evolutionary Biology
  * Journal of Experimental Biology 
- * Journal of Insects as Food and Feed 
+ * Journal of Insects as Food and Feed
+ * Journal of Applied Entomology
 
 ***
 
@@ -248,9 +249,15 @@ Trinity College Dublin implements a 4 year degree program with 2 years of genera
 
 Talks presented by Jacinta unless otherwise stated.
 
+2026
+
+* House crickets tolerate water loss during desiccation. Ottawa-Carleton Institute of Biology Symposium, Ottawa, Canada. 28th April 2026
+* Crickets maintain haemolymph volume and ion balance during desiccation. Canadian Society of Zoologists Annual Meeting, Ottawa, Canada. 6th May 2026.
+
 2025
 
 *	Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Canadian Society of Zoologists Annual Meeting, Waterloo-Kitchner, Ontario, Canada. 15th May 2025
+* Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. International Symposium on the Environmental Physiology of Ectotherms and Plants, Vancouver, British Columbia, Canada. 17th July 2025
 
 2024
 
@@ -260,8 +267,8 @@ Talks presented by Jacinta unless otherwise stated.
  * Grinding feed does not affect growth, development and survival in individually and group reared edible crickets. Entomological Society of Canada Annual Meeting, Quebec City, Quebec, Canada
  * The effect of temperature on *Gryllodes sigillatus* life history. Presentation to Aspire Food Group. 26th August 2024
  * The effect of laybox location on pinhead emergence. Presentation to Aspire Food Group and Cornell University. 16th October 2024
- * Species Traits and Distributions: Past, Present & Future. Department of Biology Seminar Series, Carleton University, Canada
- * Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada
+ * Species Traits and Distributions: Past, Present & Future. Department of Biology Seminar Series, Carleton University, Canada. [Link](https://carleton.ca/biology/department-of-biology-seminar-series-fall-winter-2024-25/)
+ * Building bigger, better bugs for insect protein. Carleton University Postdoctoral Fellow Award 2024, 10th December 2024, Carleton University, Ottawa, Canada. [Link](https://gradstudents.carleton.ca/2024/five-postdoctoral-fellows-win-cu-psac-research-award/)
 
 2023
 
@@ -278,6 +285,10 @@ Talks presented by Jacinta unless otherwise stated.
  * Energetic turnover explains the inflexibility of upper thermal tolerances in ectotherms. Irish Ecological Association Meeting, University College Cork, Ireland (online)
  * Ectotherm heat limits track biological rates. British Ecological Society Macroecology Special Interest Group meeting (online)
  * Thermal adaptation and plasticity of egg development generates latitudinal patterns in insect life cycles under seasonal climates. Society for Experimental Biology Annual Meeting (online)
+ 
+2020
+
+* Grasshoppers have cute faces. Department of Botany Seminar Series, Trinity College Dublin, Ireland. 29th January
 
 2019
 
@@ -346,12 +357,13 @@ Talks presented by Jacinta unless otherwise stated.
  * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan
  *	Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada
 
-I have mentored 2 undergraduate students, and 4 PhD students. 
+I have mentored 3 undergraduate students, and 3 PhD students. 
 
 ***
 
 # Professional development qualifications
 
+ * 17 October 2025 Mitacs Course: Enhance your communication skills
  * 14 Feb 2024 Mitacs Course: Applying the principles of sound leadership and team building
  * 29 Jan 2024 Mitacs Course: High performing leadership and teams
  * 26 Jan 2021 Epigeum Research Integrity Course
@@ -361,9 +373,18 @@ I have mentored 2 undergraduate students, and 4 PhD students.
 
 # Community outreach and communication
 
+2026
+
+* Poster judge. Ottawa-Carleton Institute of Biology Symposium, Ottawa, Canada. 28 April 2026
+* Local organizing committee and volunteer for the Canadian Society of Zoologists Annual Meeting, Ottawa, Canada. 4-8 May 2026.
+
+2025
+
+* Session chair and judge. Ontario Biology Day 22nd March. Carleton University, Canada
+
 2024
 
- * Profiled on the Canadian Society for Zoologists website for the Presidents’ Award. http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/ 
+ * Profiled on the Canadian Society for Zoologists website for the Presidents’ Award. [Link](http://blog.csz-scz.ca/2024/07/22/meet-the-2024-w-s-hoar-and-presidents-award-finalists-voici-les-finalistes-du-prix-w-s-hoar-et-du-prix-des-presidents-2024/)
 
 2023
 

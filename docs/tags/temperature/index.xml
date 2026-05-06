@@ -5,12 +5,32 @@
     <link>https://jacintak.github.io/tags/temperature/</link>
       <atom:link href="https://jacintak.github.io/tags/temperature/index.xml" rel="self" type="application/rss+xml" />
     <description>temperature</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>temperature</title>
       <link>https://jacintak.github.io/tags/temperature/</link>
     </image>
+    
+    <item>
+      <title>Carleton University-PSAC Research Award</title>
+      <link>https://jacintak.github.io/talk/CarletonPDFAward/</link>
+      <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CarletonPDFAward/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;Winning presentation for the 2024 Carleton University-PSAC Research Award for postdoctoral fellows.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Carleton University Department of Biology Seminar Series</title>
+      <link>https://jacintak.github.io/talk/CarletonBioSeminar/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/talk/CarletonBioSeminar/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;Part of the Carleton University Department of Biology Seminar Series&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>CSZ 2024</title>

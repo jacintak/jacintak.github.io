@@ -2,7 +2,7 @@
 abstract: "Leveraging physiology for insect mass rearing: effects of diet and temperature on cricket performance"
 address:
 all_day: true
-authors: [admin, M. J. Muzzatti, É. Vadboncoeur, S. M. Bertram & H. A. MacMillan]
+authors: [admin, M. J. Muzzatti, É. Vadboncoeur, S. M. Bertram, H. A. MacMillan]
 date: "2024-05-06T00:00:00"
 date_end: "2024-05-09T00:00:00"
 event: Canadian Society of Zoologists
@@ -12,10 +12,6 @@ image:
   caption: 
   focal_point: Right
 links:
-- icon: twitter
-  icon_pack: fab
-  name: Hashtag
-  url:
 location: Moncton, New Brunswick, Canada
 math: false
 projects:
