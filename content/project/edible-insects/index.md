@@ -36,11 +36,12 @@ This is a NSERC-Mitacs Alliance grant awarded to Heath MacMillan and Susan Bertr
 
 # Publications
 
-*	**Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: https://doi.org/10.1093/jee/toaf073.
-*	**Kong JD**, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: https://doi.org/10.1016/j.cris.2025.100109.
-*	Muzzatti MJ, **Kong JD**, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: https://doi.org/10.1163/23524588-00001365
+* **Kong JD**, Muzzatti MJ, Cullingham CI, Hoffmann V, Bertram SM and MacMillan HA. The insects as food and feed industry needs integrative solutions. Curr Res Insect Sci (2026), 9: 100127. DOI: https://doi.org/10.1016/j.cris.2026.100127).
+*	**Kong JD**, \*Ritchie MW, \*Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: https://doi.org/10.1093/jee/toaf073.
+*	**Kong JD**, \*Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: https://doi.org/10.1016/j.cris.2025.100109.
+*	\*Muzzatti MJ, **Kong JD**, \*McColville ER, \*Brzezinski H, \*Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: https://doi.org/10.1163/23524588-00001365
 
-All publications involve student co-authors.
+\* indicates student co-authors.
 
 ***
 

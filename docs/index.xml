@@ -5,12 +5,20 @@
     <link>https://jacintak.github.io/</link>
       <atom:link href="https://jacintak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jacinta&#39;s Website</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 13 May 2026 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://jacintak.github.io/img/icon-512.png</url>
       <title>Jacinta&#39;s Website</title>
       <link>https://jacintak.github.io/</link>
     </image>
+    
+    <item>
+      <title>The insects as food and feed industry needs integrative solutions</title>
+      <link>https://jacintak.github.io/publication/2026-CRIS/</link>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://jacintak.github.io/publication/2026-CRIS/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CSZ 2026</title>
@@ -154,11 +162,12 @@ exams::exams2pdf(questions,
 &lt;hr&gt;
 &lt;h1 id=&#34;publications&#34;&gt;Publications&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34;&gt;https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34;&gt;https://doi.org/10.1163/23524588-00001365&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Muzzatti MJ, Cullingham CI, Hoffmann V, Bertram SM and MacMillan HA. The insects as food and feed industry needs integrative solutions. Curr Res Insect Sci (2026), 9: 100127. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2026.100127)&#34;&gt;https://doi.org/10.1016/j.cris.2026.100127)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, *Ritchie MW, *Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, *Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34;&gt;https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;*Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, *McColville ER, *Brzezinski H, *Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34;&gt;https://doi.org/10.1163/23524588-00001365&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;All publications involve student co-authors.&lt;/p&gt;
+&lt;p&gt;* indicates student co-authors.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;symposia&#34;&gt;Symposia&lt;/h1&gt;
 &lt;p&gt;I have organised two symposia as part of this project:&lt;/p&gt;
@@ -268,16 +277,6 @@ exams::exams2pdf(questions,
       <pubDate>Mon, 19 Dec 2022 17:00:00 +0000</pubDate>
       <guid>https://jacintak.github.io/talk/BES2022/</guid>
       <description>&lt;p&gt;Thermal tolerances, such as critical temperatures, are important indices for understanding an organism’s vulnerability to changing environmental temperature. Differences in thermal tolerance over ontogeny may generate a ‘thermal bottleneck’ that sets the climate vulnerability for organisms with complex life cycles. However, a species’ microhabitat preference and methodological differences among studies can generate confounding variation in thermal tolerance that may mask trends in large-scale comparative studies and may hinder our ability to assess climate change vulnerability within and among species. Here, we evaluated two approaches to resolving ontogenetic and environmental drivers of thermal tolerance and methodological variation: mathematical standardisation of thermal tolerance and classifying microhabitat preferences. Using phylogenetically informed, multi-level models with a global dataset of upper critical temperatures from 438 Anuran species, we found ontogenetic trends in thermal tolerance were similar across microhabitat preferences and standardising critical temperatures against common methodological variation had little impact on our conclusions. Our results suggested thermal bottlenecks are not strongly present in Anurans but instead, implied strong developmental or genetic conservatism of thermal tolerance within families and ecotypes. We discussed considerations for resolving confounding variation to interpret thermal tolerance at a macrophysiological scale.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates</title>
-      <link>https://jacintak.github.io/publication/2022-biorxiv/</link>
-      <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://jacintak.github.io/publication/2022-biorxiv/</guid>
-      <description>&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;
-&lt;p&gt;The capacity of ectotherms to adjust their thermal tolerance limits through evolution or acclimation seems relatively modest and highly variable, and we lack satisfying explanations for both findings given a limited understanding of what ultimately determines an organism’s thermal tolerance. Here, we test if the amount of heating an ectotherm tolerates throughout a heating event until organismal failure scales with temperature’s non-linear influence on biological rates. To account for the non-linear influence of temperature on biological rates on heating tolerance, we rescaled the duration of heating events of 316 ectothermic taxa acclimated to different temperatures and describe the biological rate-corrected heating duration. This rescaling reveals that the capacity of an organism to resist a heating event is in fact remarkably constant across any acclimation temperature, enabling high-precision estimates of how organismal thermal tolerance limits vary under different thermal regimes. We also find that faster heating consistently reduces biological rate-corrected heating durations, which helps further explain why thermal tolerance limits seem so variable on absolute temperature scales. Existing paradigms are that heating tolerances and thermal tolerance limits reflect incomplete metabolic compensatory responses, are constrained by evolutionary conservatism, or index failure of systems such as membrane function; our data provide a different perspective and show that an organism’s thermal tolerance emerges from the interaction between the non-linear thermal dependence of biological rates and heating durations, which is an approximately-fixed property of a species.&lt;/p&gt;
 </description>
     </item>
     
@@ -4906,7 +4905,7 @@ The relative effects of environmental and individual variation on phenology.&lt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Last updated 06 May 2026&lt;/p&gt;
+&lt;p&gt;Last updated 11 September 2026&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://jacintak.github.io&#34;&gt;Website&lt;/a&gt;&lt;br /&gt;
 E-mail: &lt;a href=&#34;mailto:jacinta.kong@carleton.ca&#34; class=&#34;email&#34;&gt;jacinta.kong@carleton.ca&lt;/a&gt;&lt;br /&gt;
@@ -4972,10 +4971,11 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;div id=&#34;refereed-journal-articles&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Refereed journal articles&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Payne NL&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F&lt;sup&gt;+&lt;/sup&gt;: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: &lt;a href=&#34;http://doi.org/10.1111/1365-2656.70042&#34; class=&#34;uri&#34;&gt;http://doi.org/10.1111/1365-2656.70042&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Authors contributed equally.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1093/jee/toaf073&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1163/23524588-00001365&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Muzzatti MJ, Cullingham CI, Hoffmann V, Bertram SM and MacMillan HA. The insects as food and feed industry needs integrative solutions. Curr Res Insect Sci (2026), 9: 100127. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2026.100127&#34;&gt;10.1016/j.cris.2026.100127&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Payne NL&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F&lt;sup&gt;+&lt;/sup&gt;: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: &lt;a href=&#34;http://doi.org/10.1111/1365-2656.70042&#34;&gt;10.1111/1365-2656.70042&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Authors contributed equally.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: &lt;a href=&#34;https://doi.org/10.1093/jee/toaf073&#34;&gt;10.1093/jee/toaf073&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.cris.2025.100109&#34;&gt;10.1016/j.cris.2025.100109&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Muzzatti MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: &lt;a href=&#34;https://doi.org/10.1163/23524588-00001365&#34;&gt;10.1163/23524588-00001365&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, &lt;strong&gt;Kong JD&lt;/strong&gt;: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: &lt;a href=&#34;https://doi.org/10.1038/s41558-024-02167-z&#34;&gt;10.1038/s41558-024-02167-z&lt;/a&gt;. Altmetric score: 95&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Iosilevskii G&lt;sup&gt;+&lt;/sup&gt;, &lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Meyer CG, Watanabe YY, Papastamatiou YP, Royer MA, Nakamura I, Sato K, Doyle TK, Harman L, Houghton JDR, Barnett A, Semmens JM, Maoiléidigh NÓ, Drumm A, O’Neill R, Coffey DM, Payne NL (2022) A general swimming response in exhausted obligate swimming fish. Royal Society Open Science. 9: 211869. DOI: &lt;a href=&#34;https://doi.org/10.1098/rsos.211869&#34;&gt;10.1098/rsos.211869&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Joint first author.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Kearney MR, Jasper ME, White VL, Aitkenhead IJ, Blacket MJ, &lt;strong&gt;Kong JD&lt;/strong&gt;, Chown SL, Hoffmann AA. (2022) Parthenogenesis without costs in a grasshopper with hybrid origins. Science. 376: 1110 – 1114 DOI: &lt;a href=&#34;https://doi.org/10.1126/science.abm1072&#34;&gt;10.1126/science.abm1072&lt;/a&gt;. Altmetric score: 204&lt;/p&gt;&lt;/li&gt;
@@ -4990,7 +4990,7 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Ritchie MW, Vadboncoeur É, MacMillan HA, and Bertram SM. (2024) Growth, development, and life history of a mass-reared edible insect, &lt;em&gt;Gryllodes sigillatus&lt;/em&gt; (Orthoptera: Gryllidae). bioRxiv. DOI: &lt;a href=&#34;https://doi.org/10.1101/2024.10.08.617250&#34;&gt;10.1101/2024.10.08.617250&lt;/a&gt;. Published in the Journal of Economic Entomology.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Muzzatti M, &lt;strong&gt;Kong JD&lt;/strong&gt;, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. bioRxiv. DOI: &lt;a href=&#34;https://doi.org/10.1101/2024.08.13.607817&#34;&gt;2024:2024.2008.2013.607817&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Wu NC. (2022) Can we improve our ability to identify climate vulnerability in ectotherm life cycles?. bioRxiv. DOI: &lt;a href=&#34;https://doi.org/10.1101/2022.12.14.520433&#34;&gt;10.1101/2022.12.14.520433&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;, Wu NC. (2022) Microhabitat and ontogenetic variation of thermal tolerance in complex ectotherm life cycles. bioRxiv. DOI: &lt;a href=&#34;https://doi.org/10.1101/2022.12.14.520433&#34;&gt;10.1101/2022.12.14.520433&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Kong JD&lt;/strong&gt;&lt;sup&gt;+&lt;/sup&gt;, Arnoldi J-F&lt;sup&gt;+&lt;/sup&gt;, Jackson AL, Bates AE, Morley SA, Smith JA, Payne NL&lt;sup&gt;+&lt;/sup&gt;. (2022) Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates. bioRxiv. DOI: &lt;a href=&#34;https://doi.org/10.1101/2022.12.06.519315&#34;&gt;10.1101/2022.12.06.519315&lt;/a&gt;. &lt;sup&gt;+&lt;/sup&gt;Joint first author. Published in the Journal of Animal Ecology.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
@@ -5001,7 +5001,7 @@ Conferred 17.12.2012&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-orcid&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://orcid.org/0000-0002-1085-8612&#34;&gt;ORCID&lt;/a&gt;&lt;br /&gt;
 &lt;i class=&#34;ai ai-google-scholar&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://scholar.google.com/citations?user=637pv-sAAAAJ&amp;amp;hl&#34;&gt;Google scholar&lt;/a&gt;&lt;br /&gt;
 H-index: 9 (GS)&lt;br /&gt;
-Total citations: 320&lt;/p&gt;
+Total citations: 355&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;High attention papers in the top 5% of all research outputs scored by Altmetric:
 &lt;ul&gt;
@@ -5037,17 +5037,18 @@ Total citations: 320&lt;/p&gt;
 &lt;li&gt;Journal of Experimental Biology&lt;/li&gt;
 &lt;li&gt;Journal of Insects as Food and Feed&lt;/li&gt;
 &lt;li&gt;Journal of Applied Entomology&lt;/li&gt;
+&lt;li&gt;Journal of Insect Physiology&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;div id=&#34;research-grants-or-awards&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Research grants or awards&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;TOTAL: $13 750 AUD&lt;/strong&gt; 🇦🇺 and &lt;strong&gt;$16 450 CAD&lt;/strong&gt; 🇨🇦&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TOTAL: $13 750 AUD&lt;/strong&gt; 🇦🇺 and &lt;strong&gt;$38 905 CAD&lt;/strong&gt; 🇨🇦&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;$1 350 CAD&lt;/strong&gt;. 2024 Winner. Carleton University Postdoctoral Fellow Award&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;$7 500 CAD&lt;/strong&gt;. Summer 2024 NSERC Alliance-Mitacs Accelerate Internship&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$22 500 CAD&lt;/strong&gt;. 2025 NSERC Alliance-Mitacs Accelerate Internship&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$100 CAD&lt;/strong&gt;. 4.2024 Canadian Society of Zoologists Travel Grant&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;$7 500 CAD&lt;/strong&gt;. Summer 2023 NSERC Alliance-Mitacs Accelerate Internship&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$15 000 CAD&lt;/strong&gt;. 2024 NSERC Alliance-Mitacs Accelerate Internship&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$2 500 AUD&lt;/strong&gt;. 6.2018 Holsworth Wildlife Research Endowment&lt;br /&gt;
 Equity Trustees Charitable Foundation &amp;amp; the Ecological Society of Australia&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;$300 AUD&lt;/strong&gt;. 12.2018 2nd runner up student presentation&lt;br /&gt;
@@ -5233,7 +5234,7 @@ The University of Queensland Undergraduate Research Conference&lt;/li&gt;
 &lt;li&gt;Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan&lt;/li&gt;
 &lt;li&gt;Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I have mentored 3 undergraduate students, and 3 PhD students.&lt;/p&gt;
+&lt;p&gt;I have mentored 3 undergraduate students, and 4 PhD students.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;

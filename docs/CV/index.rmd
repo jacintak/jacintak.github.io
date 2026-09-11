@@ -88,13 +88,15 @@ Conferred 17.12.2012
 
 # Refereed journal articles
 
-*	Payne NL^+^, **Kong JD**^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F^+^: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: http://doi.org/10.1111/1365-2656.70042. ^+^Authors contributed equally.
+* **Kong JD**, Muzzatti MJ, Cullingham CI, Hoffmann V, Bertram SM and MacMillan HA. The insects as food and feed industry needs integrative solutions. Curr Res Insect Sci (2026), 9: 100127. DOI: [10.1016/j.cris.2026.100127](https://doi.org/10.1016/j.cris.2026.100127).
 
-*	**Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: https://doi.org/10.1093/jee/toaf073.
+*	Payne NL^+^, **Kong JD**^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Arnoldi J-F^+^: Heat limits scale with metabolism in ectothermic animals. J Anim Ecol (2025), 94:1307-1316. DOI: [10.1111/1365-2656.70042](http://doi.org/10.1111/1365-2656.70042). ^+^Authors contributed equally.
 
-*	**Kong JD**, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: https://doi.org/10.1016/j.cris.2025.100109.
+*	**Kong JD**, Ritchie MW, Vadboncoeur É, MacMillan HA, Bertram SM: Growth, development, and life history of a mass-reared edible insect, Gryllodes sigillatus (Orthoptera: Gryllidae). J Econ Entomol (2025), 118:1093-1103, DOI: [10.1093/jee/toaf073](https://doi.org/10.1093/jee/toaf073).
 
-*	Muzzatti MJ, **Kong JD**, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: https://doi.org/10.1163/23524588-00001365
+*	**Kong JD**, Vadboncoeur É, Bertram SM, MacMillan HA: Temperature-dependence of life history in an edible cricket: Implications for optimising mass-rearing. Curr Res Insect Sci (2025), 7:100109. DOI: [10.1016/j.cris.2025.100109](https://doi.org/10.1016/j.cris.2025.100109).
+
+*	Muzzatti MJ, **Kong JD**, McColville ER, Brzezinski H, Stabile CC, MacMillan HA, and Bertram SM. Diet particle size influences tropical house cricket life history. Journal of Insects as Food and Feed (2025) 11:1431-1441. DOI: [10.1163/23524588-00001365](https://doi.org/10.1163/23524588-00001365).
 
 * Wu NC, Bovo RP, Enriquez-Urzelai U, Clusella-Trullas S, Kearney MR, Navas C, **Kong JD**: Global exposure risk of frogs to increasing environmental dryness. Nature Climate Change (2024) 14: 1314–1322. DOI: [10.1038/s41558-024-02167-z](https://doi.org/10.1038/s41558-024-02167-z). Altmetric score: 95
 
@@ -118,7 +120,7 @@ Conferred 17.12.2012
 
 * Muzzatti M, **Kong JD**, McColville E, Brzezinski H, Stabile C, MacMillan HA, Bertram SM: Larger diet particle sizes cause crickets to grow faster with no effect on final body size. bioRxiv.  DOI: [2024:2024.2008.2013.607817](https://doi.org/10.1101/2024.08.13.607817).
 
-* **Kong JD**, Wu NC. (2022) Can we improve our ability to identify climate vulnerability in ectotherm life cycles?. bioRxiv. DOI: [10.1101/2022.12.14.520433](https://doi.org/10.1101/2022.12.14.520433).
+* **Kong JD**, Wu NC. (2022) Microhabitat and ontogenetic variation of thermal tolerance in complex ectotherm life cycles. bioRxiv. DOI: [10.1101/2022.12.14.520433](https://doi.org/10.1101/2022.12.14.520433).
 
 * **Kong JD**^+^, Arnoldi J-F^+^, Jackson AL, Bates AE, Morley SA, Smith JA, Payne NL^+^. (2022) Heating tolerance of ectotherms is explained by temperature’s non-linear influence on biological rates. bioRxiv. DOI: [10.1101/2022.12.06.519315](https://doi.org/10.1101/2022.12.06.519315). ^+^Joint first author. Published in the Journal of Animal Ecology.
 
@@ -129,7 +131,7 @@ Conferred 17.12.2012
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0000-0002-1085-8612)   
 <i class="ai ai-google-scholar"></i> [Google scholar](https://scholar.google.com/citations?user=637pv-sAAAAJ&hl)  
 H-index: 9 (GS)  
-Total citations: 320  
+Total citations: 355  
 
  * High attention papers in the top 5% of all research outputs scored by Altmetric: 
     * **Science**: 22 News outlets, 1 blog, 86 tweeters. 1 Wikipedia page. Altmetric score: 223. Citations: 27
@@ -161,17 +163,18 @@ I have peer reviewed for:
  * Journal of Experimental Biology 
  * Journal of Insects as Food and Feed
  * Journal of Applied Entomology
+ * Journal of Insect Physiology
 
 ***
 
 # Research grants or awards
 
-**TOTAL: $13 750 AUD** :australia: and **$16 450 CAD** :canada:
+**TOTAL: $13 750 AUD** :australia: and **$38 905 CAD** :canada:
 
  * **$1 350 CAD**. 2024 Winner. Carleton University Postdoctoral Fellow Award 
- * **$7 500 CAD**. Summer 2024 NSERC Alliance-Mitacs Accelerate Internship
+ * **$22 500 CAD**. 2025 NSERC Alliance-Mitacs Accelerate Internship
  * **$100 CAD**. 4.2024 Canadian Society of Zoologists Travel Grant
- * **$7 500 CAD**. Summer 2023 NSERC Alliance-Mitacs Accelerate Internship
+ * **$15 000 CAD**. 2024 NSERC Alliance-Mitacs Accelerate Internship
  * **$2 500 AUD**. 6.2018 	Holsworth Wildlife Research Endowment  
 Equity Trustees Charitable Foundation & the Ecological Society of Australia
  * **$300 AUD**. 12.2018 	2nd runner up student presentation  
@@ -357,7 +360,7 @@ Talks presented by Jacinta unless otherwise stated.
  * Organiser of symposium “Leveraging insect physiology for mass rearing practice” for the 2024 International Congress of Entomology (ICE). 25-30 August 2024. Kyoto, Japan
  *	Co-organiser of symposium “Interdisciplinary advances in insect mass rearing in Canada” for the 2024 Entomological Society of Canada. 21-23 October 2024. Quebec City, Canada
 
-I have mentored 3 undergraduate students, and 3 PhD students. 
+I have mentored 3 undergraduate students, and 4 PhD students. 
 
 ***
 
